@@ -26,7 +26,7 @@
 */
 package com.aspose.imaging.cloud.sdk.stablemodel;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import com.aspose.imaging.cloud.sdk.model.BmpProperties;
 import com.aspose.imaging.cloud.sdk.model.DicomProperties;
 import com.aspose.imaging.cloud.sdk.model.DjvuProperties;
@@ -40,14 +40,11 @@ import com.aspose.imaging.cloud.sdk.model.PsdProperties;
 import com.aspose.imaging.cloud.sdk.model.TiffProperties;
 import com.aspose.imaging.cloud.sdk.model.WebPProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.aspose.imaging.cloud.sdk.stablemodel.SaaSposeResponse;
 
 /**
  * Represents information about image.
  */
-@ApiModel(description = "Represents information about image.")
 public class ImagingResponse extends SaaSposeResponse {
   @JsonProperty("Height")
   private Integer height = null;
@@ -112,7 +109,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the height of image.
    * @return height
   **/
-  @ApiModelProperty(value = "Gets or sets the height of image.")
   public Integer getHeight() {
     return height;
   }
@@ -130,7 +126,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the width of image.
    * @return width
   **/
-  @ApiModelProperty(value = "Gets or sets the width of image.")
   public Integer getWidth() {
     return width;
   }
@@ -148,7 +143,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the bits per pixel for image.
    * @return bitsPerPixel
   **/
-  @ApiModelProperty(value = "Gets or sets the bits per pixel for image.")
   public Integer getBitsPerPixel() {
     return bitsPerPixel;
   }
@@ -166,7 +160,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the BMP properties.
    * @return bmpProperties
   **/
-  @ApiModelProperty(value = "Gets or sets the BMP properties.")
   public BmpProperties getBmpProperties() {
     return bmpProperties;
   }
@@ -184,7 +177,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the GIF properties.
    * @return gifProperties
   **/
-  @ApiModelProperty(value = "Gets or sets the GIF properties.")
   public GifProperties getGifProperties() {
     return gifProperties;
   }
@@ -202,7 +194,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the JPEG properties.
    * @return jpegProperties
   **/
-  @ApiModelProperty(value = "Gets or sets the JPEG properties.")
   public JpegProperties getJpegProperties() {
     return jpegProperties;
   }
@@ -220,7 +211,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the PNG properties.
    * @return pngProperties
   **/
-  @ApiModelProperty(value = "Gets or sets the PNG properties.")
   public PngProperties getPngProperties() {
     return pngProperties;
   }
@@ -238,7 +228,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the TIFF properties.
    * @return tiffProperties
   **/
-  @ApiModelProperty(value = "Gets or sets the TIFF properties.")
   public TiffProperties getTiffProperties() {
     return tiffProperties;
   }
@@ -256,7 +245,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the PSD properties.
    * @return psdProperties
   **/
-  @ApiModelProperty(value = "Gets or sets the PSD properties.")
   public PsdProperties getPsdProperties() {
     return psdProperties;
   }
@@ -274,7 +262,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the DJVU properties.
    * @return djvuProperties
   **/
-  @ApiModelProperty(value = "Gets or sets the DJVU properties.")
   public DjvuProperties getDjvuProperties() {
     return djvuProperties;
   }
@@ -292,7 +279,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the WEBP properties.
    * @return webPProperties
   **/
-  @ApiModelProperty(value = "Gets or sets the WEBP properties.")
   public WebPProperties getWebPProperties() {
     return webPProperties;
   }
@@ -310,7 +296,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the JPEG2000 properties.
    * @return jpeg2000Properties
   **/
-  @ApiModelProperty(value = "Gets or sets the JPEG2000 properties.")
   public Jpeg2000Properties getJpeg2000Properties() {
     return jpeg2000Properties;
   }
@@ -328,7 +313,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the DICOM properties.
    * @return dicomProperties
   **/
-  @ApiModelProperty(value = "Gets or sets the DICOM properties.")
   public DicomProperties getDicomProperties() {
     return dicomProperties;
   }
@@ -346,7 +330,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the DNG properties.
    * @return dngProperties
   **/
-  @ApiModelProperty(value = "Gets or sets the DNG properties.")
   public DngProperties getDngProperties() {
     return dngProperties;
   }
@@ -364,7 +347,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the the ODG properties.
    * @return odgProperties
   **/
-  @ApiModelProperty(value = "Gets or sets the the ODG properties.")
   public OdgProperties getOdgProperties() {
     return odgProperties;
   }
@@ -382,7 +364,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the horizontal resolution of an image.
    * @return horizontalResolution
   **/
-  @ApiModelProperty(value = "Gets or sets the horizontal resolution of an image.")
   public Double getHorizontalResolution() {
     return horizontalResolution;
   }
@@ -400,7 +381,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets the vertical resolution of an image.
    * @return verticalResolution
   **/
-  @ApiModelProperty(value = "Gets or sets the vertical resolution of an image.")
   public Double getVerticalResolution() {
     return verticalResolution;
   }
@@ -418,7 +398,6 @@ public class ImagingResponse extends SaaSposeResponse {
    * Gets or sets a value indicating whether image is cached.
    * @return isCached
   **/
-  @ApiModelProperty(value = "Gets or sets a value indicating whether image is cached.")
   public Boolean isIsCached() {
     return isCached;
   }
@@ -437,30 +416,30 @@ public class ImagingResponse extends SaaSposeResponse {
       return false;
     }
     ImagingResponse imagingResponse = (ImagingResponse) o;
-    return Objects.equals(this.height, imagingResponse.height) &&
-        Objects.equals(this.width, imagingResponse.width) &&
-        Objects.equals(this.bitsPerPixel, imagingResponse.bitsPerPixel) &&
-        Objects.equals(this.bmpProperties, imagingResponse.bmpProperties) &&
-        Objects.equals(this.gifProperties, imagingResponse.gifProperties) &&
-        Objects.equals(this.jpegProperties, imagingResponse.jpegProperties) &&
-        Objects.equals(this.pngProperties, imagingResponse.pngProperties) &&
-        Objects.equals(this.tiffProperties, imagingResponse.tiffProperties) &&
-        Objects.equals(this.psdProperties, imagingResponse.psdProperties) &&
-        Objects.equals(this.djvuProperties, imagingResponse.djvuProperties) &&
-        Objects.equals(this.webPProperties, imagingResponse.webPProperties) &&
-        Objects.equals(this.jpeg2000Properties, imagingResponse.jpeg2000Properties) &&
-        Objects.equals(this.dicomProperties, imagingResponse.dicomProperties) &&
-        Objects.equals(this.dngProperties, imagingResponse.dngProperties) &&
-        Objects.equals(this.odgProperties, imagingResponse.odgProperties) &&
-        Objects.equals(this.horizontalResolution, imagingResponse.horizontalResolution) &&
-        Objects.equals(this.verticalResolution, imagingResponse.verticalResolution) &&
-        Objects.equals(this.isCached, imagingResponse.isCached) &&
+    return ObjectUtils.equals(this.height, imagingResponse.height) &&
+    	ObjectUtils.equals(this.width, imagingResponse.width) &&
+    	ObjectUtils.equals(this.bitsPerPixel, imagingResponse.bitsPerPixel) &&
+    	ObjectUtils.equals(this.bmpProperties, imagingResponse.bmpProperties) &&
+        ObjectUtils.equals(this.gifProperties, imagingResponse.gifProperties) &&
+        ObjectUtils.equals(this.jpegProperties, imagingResponse.jpegProperties) &&
+        ObjectUtils.equals(this.pngProperties, imagingResponse.pngProperties) &&
+        ObjectUtils.equals(this.tiffProperties, imagingResponse.tiffProperties) &&
+        ObjectUtils.equals(this.psdProperties, imagingResponse.psdProperties) &&
+        ObjectUtils.equals(this.djvuProperties, imagingResponse.djvuProperties) &&
+        ObjectUtils.equals(this.webPProperties, imagingResponse.webPProperties) &&
+        ObjectUtils.equals(this.jpeg2000Properties, imagingResponse.jpeg2000Properties) &&
+        ObjectUtils.equals(this.dicomProperties, imagingResponse.dicomProperties) &&
+        ObjectUtils.equals(this.dngProperties, imagingResponse.dngProperties) &&
+        ObjectUtils.equals(this.odgProperties, imagingResponse.odgProperties) &&
+        ObjectUtils.equals(this.horizontalResolution, imagingResponse.horizontalResolution) &&
+        ObjectUtils.equals(this.verticalResolution, imagingResponse.verticalResolution) &&
+        ObjectUtils.equals(this.isCached, imagingResponse.isCached) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(height, width, bitsPerPixel, bmpProperties, gifProperties, jpegProperties, pngProperties, tiffProperties, psdProperties, djvuProperties, webPProperties, jpeg2000Properties, dicomProperties, dngProperties, odgProperties, horizontalResolution, verticalResolution, isCached, super.hashCode());
+    return ObjectUtils.hashCodeMulti(height, width, bitsPerPixel, bmpProperties, gifProperties, jpegProperties, pngProperties, tiffProperties, psdProperties, djvuProperties, webPProperties, jpeg2000Properties, dicomProperties, dngProperties, odgProperties, horizontalResolution, verticalResolution, isCached, super.hashCode());
   }
 
 

@@ -47,11 +47,6 @@ public class FramesApiTests extends ApiTester {
 
 	private GetImageFrameRequest getImageFrameRequest;
 	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-	
     /**
      * Test operation: Get separate frame from existing TIFF image.
      * 
@@ -168,17 +163,17 @@ public class FramesApiTests extends ApiTester {
 	{
 		Assert.assertNotNull(resultProperties.getTiffProperties());
         Assert.assertNotNull(resultProperties.getTiffProperties().getFrames());
-        Assert.assertEquals(resultProperties.getTiffProperties().getFrames().size(), 1);
+        Assert.assertEquals(1, resultProperties.getTiffProperties().getFrames().size());
 
         // please note that rotation was performed, so switching of width and height comparison is valid
-        Assert.assertEquals(resultProperties.getTiffProperties().getFrames().get(0).getWidth(), getImageFrameRequest.rectHeight);
-        Assert.assertEquals(resultProperties.getTiffProperties().getFrames().get(0).getHeight(), getImageFrameRequest.rectWidth);
-        Assert.assertEquals((long)resultProperties.getTiffProperties().getFrames().get(0).getFrameOptions().getImageWidth(),
-        		(long)getImageFrameRequest.rectHeight);
-        Assert.assertEquals((long)resultProperties.getTiffProperties().getFrames().get(0).getFrameOptions().getImageLength(), 
-        		(long)getImageFrameRequest.rectWidth);
-        Assert.assertEquals(resultProperties.getWidth(), getImageFrameRequest.rectHeight);
-        Assert.assertEquals(resultProperties.getHeight(), getImageFrameRequest.rectWidth);
+        Assert.assertEquals(getImageFrameRequest.rectHeight, resultProperties.getTiffProperties().getFrames().get(0).getWidth());
+        Assert.assertEquals(getImageFrameRequest.rectWidth, resultProperties.getTiffProperties().getFrames().get(0).getHeight());
+        Assert.assertEquals((long)getImageFrameRequest.rectHeight,
+        		(long)resultProperties.getTiffProperties().getFrames().get(0).getFrameOptions().getImageWidth());
+        Assert.assertEquals((long)getImageFrameRequest.rectWidth,
+        		(long)resultProperties.getTiffProperties().getFrames().get(0).getFrameOptions().getImageLength());
+        Assert.assertEquals(getImageFrameRequest.rectHeight, resultProperties.getWidth());
+        Assert.assertEquals(getImageFrameRequest.rectWidth, resultProperties.getHeight());
         
         GetImageFramePropertiesRequest framePropertiesRequest = new GetImageFramePropertiesRequest(getImageFrameRequest.name + "_singleFrame." + "tiff", 0, 
         		getImageFrameRequest.folder, getImageFrameRequest.storage);
@@ -211,60 +206,18 @@ public class FramesApiTests extends ApiTester {
         Assert.assertNotNull(resultProperties);
         Assert.assertNotNull(resultProperties.getTiffProperties());
         Assert.assertNotNull(resultProperties.getTiffProperties().getFrames());
-        Assert.assertEquals(resultProperties.getTiffProperties().getFrames().size(), originalProperties.getTiffProperties().getFrames().size());
-        Assert.assertEquals(resultProperties.getWidth(), originalProperties.getWidth());
-        Assert.assertEquals(resultProperties.getHeight(), originalProperties.getHeight());
+        Assert.assertEquals(originalProperties.getTiffProperties().getFrames().size(), resultProperties.getTiffProperties().getFrames().size());
+        Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
+        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
 
         // please note that rotation was performed, so switching of width and height comparison is valid
-        Assert.assertEquals(resultProperties.getTiffProperties().getFrames().get(getImageFrameRequest.frameId).getWidth(), 
-        		getImageFrameRequest.rectHeight);
-        Assert.assertEquals(resultProperties.getTiffProperties().getFrames().get(getImageFrameRequest.frameId).getHeight(),
-        		getImageFrameRequest.rectWidth);
-        Assert.assertEquals((long)resultProperties.getTiffProperties().getFrames().get(getImageFrameRequest.frameId).getFrameOptions().getImageWidth(), 
-        		(long)getImageFrameRequest.rectHeight);
-        Assert.assertEquals((long)resultProperties.getTiffProperties().getFrames().get(getImageFrameRequest.frameId).getFrameOptions().getImageLength(), 
-        		(long)getImageFrameRequest.rectWidth);
-
-        for (int frameIndex = 0; frameIndex < resultProperties.getTiffProperties().getFrames().size(); frameIndex++)
-        {
-        	GetImageFramePropertiesRequest framePropertiesRequest = new GetImageFramePropertiesRequest(getImageFrameRequest.name + 
-        			"_allFrames." + "tiff", frameIndex, getImageFrameRequest.folder, getImageFrameRequest.storage);
-            ImagingResponse framePropertiesResponse = ImagingApi.getImageFrameProperties(framePropertiesRequest).getImagingResponse();
-            Assert.assertNotNull(framePropertiesResponse);
-            Assert.assertNotNull(framePropertiesResponse.getTiffProperties());
-            Assert.assertNotNull(framePropertiesResponse.getTiffProperties().getFrames());
-            Assert.assertEquals(framePropertiesResponse.getTiffProperties().getFrames().size(), 1);
-            Assert.assertEquals(resultProperties.getTiffProperties().getFrames().get(frameIndex).getWidth(), 
-            		framePropertiesResponse.getTiffProperties().getFrames().get(0).getWidth());
-            Assert.assertEquals(resultProperties.getTiffProperties().getFrames().get(frameIndex).getHeight(), 
-            		framePropertiesResponse.getTiffProperties().getFrames().get(0).getHeight());
-            Assert.assertEquals((long)resultProperties.getTiffProperties().getFrames().get(frameIndex).getWidth(),
-            		(long)framePropertiesResponse.getTiffProperties().getFrames().get(0).getFrameOptions().getImageWidth());
-            Assert.assertEquals((long)resultProperties.getTiffProperties().getFrames().get(frameIndex).getHeight(), 
-            		(long)framePropertiesResponse.getTiffProperties().getFrames().get(0).getFrameOptions().getImageLength());
-
-            if (getImageFrameRequest.frameId == frameIndex)
-            {
-                Assert.assertNotEquals(resultProperties.getTiffProperties().getFrames().get(frameIndex).getWidth(),
-                		originalProperties.getTiffProperties().getFrames().get(frameIndex).getWidth());
-                Assert.assertNotEquals(resultProperties.getTiffProperties().getFrames().get(frameIndex).getHeight(), 
-                		originalProperties.getTiffProperties().getFrames().get(frameIndex).getHeight());
-                Assert.assertNotEquals((long)resultProperties.getTiffProperties().getFrames().get(frameIndex).getFrameOptions().getImageWidth(), 
-                		(long)originalProperties.getTiffProperties().getFrames().get(frameIndex).getFrameOptions().getImageWidth());
-                Assert.assertNotEquals((long)resultProperties.getTiffProperties().getFrames().get(frameIndex).getFrameOptions().getImageLength(), 
-                		(long)originalProperties.getTiffProperties().getFrames().get(frameIndex).getFrameOptions().getImageLength());
-            }
-            else
-            {
-            	Assert.assertEquals(resultProperties.getTiffProperties().getFrames().get(frameIndex).getWidth(),
-                		originalProperties.getTiffProperties().getFrames().get(frameIndex).getWidth());
-                Assert.assertEquals(resultProperties.getTiffProperties().getFrames().get(frameIndex).getHeight(), 
-                		originalProperties.getTiffProperties().getFrames().get(frameIndex).getHeight());
-                Assert.assertEquals((long)resultProperties.getTiffProperties().getFrames().get(frameIndex).getFrameOptions().getImageWidth(), 
-                		(long)originalProperties.getTiffProperties().getFrames().get(frameIndex).getFrameOptions().getImageWidth());
-                Assert.assertEquals((long)resultProperties.getTiffProperties().getFrames().get(frameIndex).getFrameOptions().getImageLength(), 
-                		(long)originalProperties.getTiffProperties().getFrames().get(frameIndex).getFrameOptions().getImageLength());
-            }
-        }
+        Assert.assertEquals(getImageFrameRequest.rectHeight,
+        		resultProperties.getTiffProperties().getFrames().get(getImageFrameRequest.frameId).getWidth());
+        Assert.assertEquals(getImageFrameRequest.rectWidth,
+        		resultProperties.getTiffProperties().getFrames().get(getImageFrameRequest.frameId).getHeight());
+        Assert.assertEquals((long)getImageFrameRequest.rectHeight,
+        		(long)resultProperties.getTiffProperties().getFrames().get(getImageFrameRequest.frameId).getFrameOptions().getImageWidth());
+        Assert.assertEquals((long)getImageFrameRequest.rectWidth,
+        		(long)resultProperties.getTiffProperties().getFrames().get(getImageFrameRequest.frameId).getFrameOptions().getImageLength());
 	}
 }

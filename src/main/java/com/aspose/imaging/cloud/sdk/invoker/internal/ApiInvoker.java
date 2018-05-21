@@ -78,7 +78,7 @@ public class ApiInvoker
      */
     public ApiInvoker(IRequestHandler[] requestHandlers)
     {
-        String sdkVersion = "18.4";
+        String sdkVersion = "18.6";
         this.addDefaultHeader(AsposeClientHeaderName, "java sdk");
         this.addDefaultHeader(AsposeClientVersionHeaderName, sdkVersion);
         this.requestHandlers = requestHandlers;
@@ -420,24 +420,10 @@ public class ApiInvoker
             	handler.beforeSend(connection, streamToSend);
             }
 
-            int readTimeout = connection.getReadTimeout();
             if (streamToSend != null)
             {
-            	if (readTimeout > 0)
-            	{
-            		connection.setReadTimeout(readTimeout + (int)(streamToSend.size() / TimeoutDivisionIncreaseCoefficient));
-            	}
-
             	outStream = connection.getOutputStream();
             	outStream.write(streamToSend.toByteArray());
-            }
-            else
-            {
-            	if (readTimeout > 0)
-            	{
-            		// TODO: change the behavior according to IMAGINGCLOUD-52 resolution
-                	connection.setReadTimeout(readTimeout + 120000);
-            	}
             }
         }
         finally

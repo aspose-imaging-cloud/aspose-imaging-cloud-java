@@ -56,11 +56,6 @@ public class TiffApiTests extends ApiTester {
 	private PostImageTiffRequest postImageTiffRequest;
 	private GetTiffToFaxRequest getTiffToFaxRequest;
 	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-	
     /**
      * Test operation: Update parameters of existing TIFF image.
      * 
@@ -220,7 +215,7 @@ public class TiffApiTests extends ApiTester {
           
             ResponseMessage downloadMessage = StorageApi.GetDownload(inputPath, "", storage);
             Assert.assertNotNull(downloadMessage);
-            Assert.assertEquals((int)downloadMessage.getCode(), 200);
+            Assert.assertEquals(200, (int)downloadMessage.getCode());
             File targetFile = new File(resultFileName);
             Assert.assertTrue(targetFile.createNewFile());
             
@@ -233,14 +228,14 @@ public class TiffApiTests extends ApiTester {
             
             ResponseMessage storageResponseMessage = StorageApi.PutCreate(outPath, "", storage, targetFile);
             Assert.assertNotNull(storageResponseMessage);
-            Assert.assertEquals((int)storageResponseMessage.getCode(), 200);
+            Assert.assertEquals(200, (int)storageResponseMessage.getCode());
             Assert.assertTrue(StorageApi.GetIsExist(outPath, "", storage).getFileExist().getIsExist());
             
             PostTiffAppendRequest request = new PostTiffAppendRequest(resultFileName, inputFileName, storage, folder);
             ApiResponse response = ImagingApi.postTiffAppend(request);
             Assert.assertNotNull(response);
             Assert.assertNotNull(response.getSaaSposeResponse());
-            Assert.assertEquals((int)response.getSaaSposeResponse().getCode(), 200);
+            Assert.assertEquals(200, (int)response.getSaaSposeResponse().getCode());
 
             StorageFileInfo referenceInfo = getStorageFileInfo(referencePath, resultFileName, storage);
             if (referenceInfo == null)
@@ -351,11 +346,11 @@ public class TiffApiTests extends ApiTester {
 	{
 		Assert.assertNotNull(resultProperties.getTiffProperties());
 		Integer bitDepth = getImageTiffRequest.bitDepth > 1 ? getImageTiffRequest.bitDepth * 4 : getImageTiffRequest.bitDepth;
-        Assert.assertEquals(resultProperties.getBitsPerPixel(), bitDepth);
-        Assert.assertEquals((int)Math.ceil((double)resultProperties.getVerticalResolution()), 
-        		(int)Math.ceil((double)getImageTiffRequest.verticalResolution));
-        Assert.assertEquals((int)Math.ceil((double)resultProperties.getHorizontalResolution()), 
-        		(int)Math.ceil((double)getImageTiffRequest.horizontalResolution));
+        Assert.assertEquals(bitDepth, resultProperties.getBitsPerPixel());
+        Assert.assertEquals((int)Math.ceil((double)getImageTiffRequest.verticalResolution),
+        		(int)Math.ceil((double)resultProperties.getVerticalResolution()));
+        Assert.assertEquals((int)Math.ceil((double)getImageTiffRequest.horizontalResolution),
+        		(int)Math.ceil((double)resultProperties.getHorizontalResolution()));
 
         Assert.assertNotNull(originalProperties.getTiffProperties());
         Assert.assertEquals(originalProperties.getTiffProperties().getFrames().size(), resultProperties.getTiffProperties().getFrames().size());
@@ -372,11 +367,11 @@ public class TiffApiTests extends ApiTester {
 	{
 		Assert.assertNotNull(resultProperties.getTiffProperties());
 		Integer bitDepth = postImageTiffRequest.bitDepth > 1 ? postImageTiffRequest.bitDepth * 4 : postImageTiffRequest.bitDepth;
-        Assert.assertEquals(resultProperties.getBitsPerPixel(), bitDepth);
-        Assert.assertEquals((int)Math.ceil((double)resultProperties.getVerticalResolution()), 
-        		(int)Math.ceil((double)postImageTiffRequest.verticalResolution));
-        Assert.assertEquals((int)Math.ceil((double)resultProperties.getHorizontalResolution()), 
-        		(int)Math.ceil((double)postImageTiffRequest.horizontalResolution));
+        Assert.assertEquals(bitDepth, resultProperties.getBitsPerPixel());
+        Assert.assertEquals((int)Math.ceil((double)postImageTiffRequest.verticalResolution),
+        		(int)Math.ceil((double)resultProperties.getVerticalResolution()));
+        Assert.assertEquals((int)Math.ceil((double)postImageTiffRequest.horizontalResolution),
+        		(int)Math.ceil((double)resultProperties.getHorizontalResolution()));
 
         Assert.assertNotNull(originalProperties.getTiffProperties());
         Assert.assertEquals(originalProperties.getTiffProperties().getFrames().size(), resultProperties.getTiffProperties().getFrames().size());
@@ -392,10 +387,10 @@ public class TiffApiTests extends ApiTester {
 	private void getTiffToFaxPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getTiffProperties());
-        Assert.assertEquals((int)resultProperties.getBitsPerPixel(), 1);
-        Assert.assertEquals((int)Math.ceil((double)resultProperties.getVerticalResolution()), 196);
-        Assert.assertEquals((int)Math.ceil((double)resultProperties.getHorizontalResolution()), 204);
-        Assert.assertEquals((int)resultProperties.getWidth(), 1728);
-        Assert.assertEquals((int)resultProperties.getHeight(), 2200);
+        Assert.assertEquals(1, (int)resultProperties.getBitsPerPixel());
+        Assert.assertEquals(196, (int)Math.ceil((double)resultProperties.getVerticalResolution()));
+        Assert.assertEquals(204, (int)Math.ceil((double)resultProperties.getHorizontalResolution()));
+        Assert.assertEquals(1728, (int)resultProperties.getWidth());
+        Assert.assertEquals(2200, (int)resultProperties.getHeight());
 	}
 }

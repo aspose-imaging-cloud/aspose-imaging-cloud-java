@@ -47,12 +47,7 @@ public class WmfApiTests extends ApiTester {
 
 	private GetImageWmfRequest getImageWmfRequest;
 	private PostImageWmfRequest postImageWmfRequest;
-	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-	
+
     /**
      * Test operation: Rasterize existing WMF image to PNG using given parameters.
      * 
@@ -172,10 +167,10 @@ public class WmfApiTests extends ApiTester {
 	private void getImageWmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-        Assert.assertEquals((int)resultProperties.getWidth(), 
-        		(int)(getImageWmfRequest.pageWidth + getImageWmfRequest.borderX * 2));
-        Assert.assertEquals((int)resultProperties.getHeight(), 
-        		(int)(getImageWmfRequest.pageHeight + getImageWmfRequest.borderY * 2));
+        Assert.assertEquals((int)(getImageWmfRequest.pageWidth + getImageWmfRequest.borderX * 2),
+        		(int)resultProperties.getWidth());
+        Assert.assertEquals((int)(getImageWmfRequest.pageHeight + getImageWmfRequest.borderY * 2),
+        		(int)resultProperties.getHeight());
 	}
 	
 	/**
@@ -186,9 +181,9 @@ public class WmfApiTests extends ApiTester {
 	private void postImageWmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-        Assert.assertEquals((int)resultProperties.getWidth(), 
-        		(int)(postImageWmfRequest.pageWidth + postImageWmfRequest.borderX * 2));
-        Assert.assertEquals((int)resultProperties.getHeight(), 
-        		(int)(postImageWmfRequest.pageHeight + postImageWmfRequest.borderY * 2));
+        Assert.assertEquals((int)(postImageWmfRequest.pageWidth + postImageWmfRequest.borderX * 2),
+        		(int)resultProperties.getWidth());
+        Assert.assertEquals((int)(postImageWmfRequest.pageHeight + postImageWmfRequest.borderY * 2),
+        		(int)resultProperties.getHeight());
 	}
 }

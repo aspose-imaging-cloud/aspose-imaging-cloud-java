@@ -48,11 +48,6 @@ public class Jpeg2000ApiTests extends ApiTester {
 	private GetImageJpeg2000Request getImageJpeg2000Request;
 	private PostImageJpeg2000Request postImageJpeg2000Request;
 	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-	
     /**
      * Test operation: Update parameters of existing JPEG2000 image.
      * 
@@ -165,7 +160,7 @@ public class Jpeg2000ApiTests extends ApiTester {
 	 */
 	private void getImageJpeg2000PropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
-        Assert.assertEquals(resultProperties.getJpeg2000Properties().getCodec().toString().toLowerCase(), getImageJpeg2000Request.codec);
+        Assert.assertEquals(getImageJpeg2000Request.codec, resultProperties.getJpeg2000Properties().getCodec().toString().toLowerCase());
         Assert.assertNotNull(resultProperties.getJpeg2000Properties().getComments());
         Assert.assertTrue(resultProperties.getJpeg2000Properties().getComments().contains(getImageJpeg2000Request.comment));
 
@@ -183,7 +178,7 @@ public class Jpeg2000ApiTests extends ApiTester {
 	 */
 	private void postImageJpeg2000PropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
-        Assert.assertEquals(resultProperties.getJpeg2000Properties().getCodec().toString().toLowerCase(), postImageJpeg2000Request.codec);
+		Assert.assertEquals(postImageJpeg2000Request.codec, resultProperties.getJpeg2000Properties().getCodec().toString().toLowerCase());
         Assert.assertNotNull(resultProperties.getJpeg2000Properties().getComments());
         Assert.assertTrue(resultProperties.getJpeg2000Properties().getComments().contains(postImageJpeg2000Request.comment));
 

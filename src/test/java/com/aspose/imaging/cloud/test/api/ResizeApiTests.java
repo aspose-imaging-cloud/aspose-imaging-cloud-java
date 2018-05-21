@@ -51,11 +51,6 @@ public class ResizeApiTests extends ApiTester {
 	private GetImageResizeRequest getImageResizeRequest;
 	private PostImageResizeRequest postImageResizeRequest;
 	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-
     /**
      * Test operation: Resize an existing image.
      * 
@@ -67,36 +62,8 @@ public class ResizeApiTests extends ApiTester {
      */
     @Test
 	@Parameters({
-		".bmp, true,", 
-		".bmp, false,",
-		".dng, true,", 
-		".dng, false,",
-		//".gif, true,", TODO: enable after IMAGINGCLOUD-51 is resolved
-		//".gif, false,",
-		".png, true,", 
-		".png, false,",
 		".jpg, true,", 
 		".jpg, false,",
-		".jpeg, true,", 
-		".jpeg, false,",
-		".tif, true,", 
-		".tif, false,",
-		".tiff, true,", 
-		".tiff, false,",
-		".webp, true,", 
-		".webp, false,",
-		".j2k, true,", 
-		".j2k, false,",
-		".jpf, true,", 
-		".jpf, false,",
-		".jpx, true,", 
-		".jpx, false,",
-		".jpm, true,", 
-		".jpm, false,",
-		".mj2, true,", 
-		".mj2, false,",
-		".jpg2, true,", 
-		".jpg2, false,"
 		})
     public void getImageResizeTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
         String name = null;
@@ -164,36 +131,8 @@ public class ResizeApiTests extends ApiTester {
      */
     @Test
 	@Parameters({
-		".bmp, true,", 
-		".bmp, false,",
-		".dng, true,", 
-		".dng, false,",
-		//".gif, true,", TODO: enable after IMAGINGCLOUD-51 is resolved
-		//".gif, false,",
-		".png, true,", 
-		".png, false,",
 		".jpg, true,", 
 		".jpg, false,",
-		".jpeg, true,", 
-		".jpeg, false,",
-		".tif, true,", 
-		".tif, false,",
-		".tiff, true,", 
-		".tiff, false,",
-		".webp, true,", 
-		".webp, false,",
-		".j2k, true,", 
-		".j2k, false,",
-		".jpf, true,", 
-		".jpf, false,",
-		".jpx, true,", 
-		".jpx, false,",
-		".jpm, true,", 
-		".jpm, false,",
-		".mj2, true,", 
-		".mj2, false,",
-		".jpg2, true,", 
-		".jpg2, false,"
 		})
     public void postImageResizeTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
     	byte[] imageData = null;
@@ -286,8 +225,8 @@ public class ResizeApiTests extends ApiTester {
 	 */
 	private void getImageResizePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
-		Assert.assertEquals(resultProperties.getWidth(), getImageResizeRequest.newWidth);
-        Assert.assertEquals(resultProperties.getHeight(), getImageResizeRequest.newHeight);
+		Assert.assertEquals(getImageResizeRequest.newWidth, resultProperties.getWidth());
+        Assert.assertEquals(getImageResizeRequest.newHeight, resultProperties.getHeight());
 	}
 	
 	/**
@@ -297,7 +236,7 @@ public class ResizeApiTests extends ApiTester {
 	 */
 	private void postImageResizePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
-		Assert.assertEquals(resultProperties.getWidth(), postImageResizeRequest.newWidth);
-        Assert.assertEquals(resultProperties.getHeight(), postImageResizeRequest.newHeight);
+		Assert.assertEquals(postImageResizeRequest.newWidth, resultProperties.getWidth());
+        Assert.assertEquals(postImageResizeRequest.newHeight, resultProperties.getHeight());
 	}
 }

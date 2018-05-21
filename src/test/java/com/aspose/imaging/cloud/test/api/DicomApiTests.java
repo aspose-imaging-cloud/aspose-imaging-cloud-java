@@ -48,11 +48,6 @@ public class DicomApiTests extends ApiTester {
 	private GetImageDicomRequest getImageDicomRequest;
 	private PostImageDicomRequest postImageDicomRequest;
 	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-	
     /**
      * Test operation: Rasterize existing DICOM image to PNG using given parameters. 
      * 
@@ -162,8 +157,8 @@ public class DicomApiTests extends ApiTester {
 	private void getImageDicomPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-        Assert.assertEquals(resultProperties.getWidth(), originalProperties.getWidth());
-        Assert.assertEquals(resultProperties.getHeight(), originalProperties.getHeight());
+        Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
+        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
         Assert.assertNotNull(originalProperties.getDicomProperties());
         Assert.assertEquals(10, (int)originalProperties.getDicomProperties().getNumberOfFrames());
         Assert.assertEquals(originalProperties.getWidth(), originalProperties.getDicomProperties().getWidth());
@@ -178,8 +173,8 @@ public class DicomApiTests extends ApiTester {
 	private void postImageDicomPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-        Assert.assertEquals(resultProperties.getWidth(), originalProperties.getWidth());
-        Assert.assertEquals(resultProperties.getHeight(), originalProperties.getHeight());
+        Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
+        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
         Assert.assertNotNull(originalProperties.getDicomProperties());
         Assert.assertEquals(10, (int)originalProperties.getDicomProperties().getNumberOfFrames());
         Assert.assertEquals(originalProperties.getWidth(), originalProperties.getDicomProperties().getWidth());

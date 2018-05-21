@@ -27,10 +27,9 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -54,14 +53,13 @@ public class JfifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the density units.
    * @return densityUnits
   **/
-  @ApiModelProperty(value = "Gets or sets the density units.")
   public String getDensityUnits() {
     return densityUnits;
-  }
+  }  
 
   public void setDensityUnits(String densityUnits) {
     this.densityUnits = densityUnits;
@@ -72,14 +70,13 @@ public class JfifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the version.
    * @return version
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the version.")
   public Integer getVersion() {
     return version;
-  }
+  }  
 
   public void setVersion(Integer version) {
     this.version = version;
@@ -90,14 +87,13 @@ public class JfifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the X density.
    * @return xdensity
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the X density.")
   public Integer getXdensity() {
     return xdensity;
-  }
+  }  
 
   public void setXdensity(Integer xdensity) {
     this.xdensity = xdensity;
@@ -108,14 +104,13 @@ public class JfifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the Y density.
    * @return ydensity
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the Y density.")
   public Integer getYdensity() {
     return ydensity;
-  }
+  }  
 
   public void setYdensity(Integer ydensity) {
     this.ydensity = ydensity;
@@ -124,22 +119,22 @@ public class JfifData {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     JfifData jfifData = (JfifData) o;
-    return Objects.equals(this.densityUnits, jfifData.densityUnits) &&
-        Objects.equals(this.version, jfifData.version) &&
-        Objects.equals(this.xdensity, jfifData.xdensity) &&
-        Objects.equals(this.ydensity, jfifData.ydensity);
+    return ObjectUtils.equals(this.densityUnits, jfifData.densityUnits) &&
+    ObjectUtils.equals(this.version, jfifData.version) &&
+    ObjectUtils.equals(this.xdensity, jfifData.xdensity) &&
+    ObjectUtils.equals(this.ydensity, jfifData.ydensity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(densityUnits, version, xdensity, ydensity);
+    return ObjectUtils.hashCodeMulti(densityUnits, version, xdensity, ydensity);
   }
 
 
