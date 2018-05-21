@@ -27,10 +27,9 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -90,14 +89,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the artist.
    * @return artist
   **/
-  @ApiModelProperty(value = "Gets or sets the artist.")
   public String getArtist() {
     return artist;
-  }
+  }  
 
   public void setArtist(String artist) {
     this.artist = artist;
@@ -108,14 +106,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the copyright info.
    * @return copyright
   **/
-  @ApiModelProperty(value = "Gets or sets the copyright info.")
   public String getCopyright() {
     return copyright;
-  }
+  }  
 
   public void setCopyright(String copyright) {
     this.copyright = copyright;
@@ -126,14 +123,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the date and time.
    * @return dateTime
   **/
-  @ApiModelProperty(value = "Gets or sets the date and time.")
   public String getDateTime() {
     return dateTime;
-  }
+  }  
 
   public void setDateTime(String dateTime) {
     this.dateTime = dateTime;
@@ -144,14 +140,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the image description.
    * @return imageDescription
   **/
-  @ApiModelProperty(value = "Gets or sets the image description.")
   public String getImageDescription() {
     return imageDescription;
-  }
+  }  
 
   public void setImageDescription(String imageDescription) {
     this.imageDescription = imageDescription;
@@ -162,14 +157,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the manufacturer.
    * @return make
   **/
-  @ApiModelProperty(value = "Gets or sets the manufacturer.")
   public String getMake() {
     return make;
-  }
+  }  
 
   public void setMake(String make) {
     this.make = make;
@@ -180,14 +174,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the model.
    * @return model
   **/
-  @ApiModelProperty(value = "Gets or sets the model.")
   public String getModel() {
     return model;
-  }
+  }  
 
   public void setModel(String model) {
     this.model = model;
@@ -198,14 +191,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the orientation.
    * @return orientation
   **/
-  @ApiModelProperty(value = "Gets or sets the orientation.")
   public String getOrientation() {
     return orientation;
-  }
+  }  
 
   public void setOrientation(String orientation) {
     this.orientation = orientation;
@@ -224,14 +216,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the primary chromaticities.
    * @return primaryChromaticities
   **/
-  @ApiModelProperty(value = "Gets or sets the primary chromaticities.")
   public List<Double> getPrimaryChromaticities() {
     return primaryChromaticities;
-  }
+  }  
 
   public void setPrimaryChromaticities(List<Double> primaryChromaticities) {
     this.primaryChromaticities = primaryChromaticities;
@@ -250,14 +241,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the reference black and white.
    * @return referenceBlackWhite
   **/
-  @ApiModelProperty(value = "Gets or sets the reference black and white.")
   public List<Double> getReferenceBlackWhite() {
     return referenceBlackWhite;
-  }
+  }  
 
   public void setReferenceBlackWhite(List<Double> referenceBlackWhite) {
     this.referenceBlackWhite = referenceBlackWhite;
@@ -268,14 +258,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the resolution unit.
    * @return resolutionUnit
   **/
-  @ApiModelProperty(value = "Gets or sets the resolution unit.")
   public String getResolutionUnit() {
     return resolutionUnit;
-  }
+  }  
 
   public void setResolutionUnit(String resolutionUnit) {
     this.resolutionUnit = resolutionUnit;
@@ -286,14 +275,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the software.
    * @return software
   **/
-  @ApiModelProperty(value = "Gets or sets the software.")
   public String getSoftware() {
     return software;
-  }
+  }  
 
   public void setSoftware(String software) {
     this.software = software;
@@ -312,14 +300,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the transfer function.
    * @return transferFunction
   **/
-  @ApiModelProperty(value = "Gets or sets the transfer function.")
   public List<Integer> getTransferFunction() {
     return transferFunction;
-  }
+  }  
 
   public void setTransferFunction(List<Integer> transferFunction) {
     this.transferFunction = transferFunction;
@@ -330,14 +317,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the X resolution.
    * @return xresolution
   **/
-  @ApiModelProperty(value = "Gets or sets the X resolution.")
   public Double getXresolution() {
     return xresolution;
-  }
+  }  
 
   public void setXresolution(Double xresolution) {
     this.xresolution = xresolution;
@@ -356,14 +342,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the YCbCr coefficients.
    * @return ycbCrCoefficients
   **/
-  @ApiModelProperty(value = "Gets or sets the YCbCr coefficients.")
   public List<Double> getYcbCrCoefficients() {
     return ycbCrCoefficients;
-  }
+  }  
 
   public void setYcbCrCoefficients(List<Double> ycbCrCoefficients) {
     this.ycbCrCoefficients = ycbCrCoefficients;
@@ -374,14 +359,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the YCbCr positioning.
    * @return ycbCrPositioning
   **/
-  @ApiModelProperty(value = "Gets or sets the YCbCr positioning.")
   public String getYcbCrPositioning() {
     return ycbCrPositioning;
-  }
+  }  
 
   public void setYcbCrPositioning(String ycbCrPositioning) {
     this.ycbCrPositioning = ycbCrPositioning;
@@ -392,14 +376,13 @@ public class JpegExifData extends ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the Y resolution.
    * @return yresolution
   **/
-  @ApiModelProperty(value = "Gets or sets the Y resolution.")
   public Double getYresolution() {
     return yresolution;
-  }
+  }  
 
   public void setYresolution(Double yresolution) {
     this.yresolution = yresolution;
@@ -408,35 +391,35 @@ public class JpegExifData extends ExifData {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     JpegExifData jpegExifData = (JpegExifData) o;
-    return Objects.equals(this.artist, jpegExifData.artist) &&
-        Objects.equals(this.copyright, jpegExifData.copyright) &&
-        Objects.equals(this.dateTime, jpegExifData.dateTime) &&
-        Objects.equals(this.imageDescription, jpegExifData.imageDescription) &&
-        Objects.equals(this.make, jpegExifData.make) &&
-        Objects.equals(this.model, jpegExifData.model) &&
-        Objects.equals(this.orientation, jpegExifData.orientation) &&
-        Objects.equals(this.primaryChromaticities, jpegExifData.primaryChromaticities) &&
-        Objects.equals(this.referenceBlackWhite, jpegExifData.referenceBlackWhite) &&
-        Objects.equals(this.resolutionUnit, jpegExifData.resolutionUnit) &&
-        Objects.equals(this.software, jpegExifData.software) &&
-        Objects.equals(this.transferFunction, jpegExifData.transferFunction) &&
-        Objects.equals(this.xresolution, jpegExifData.xresolution) &&
-        Objects.equals(this.ycbCrCoefficients, jpegExifData.ycbCrCoefficients) &&
-        Objects.equals(this.ycbCrPositioning, jpegExifData.ycbCrPositioning) &&
-        Objects.equals(this.yresolution, jpegExifData.yresolution) &&
-        super.equals(o);
+    return ObjectUtils.equals(this.artist, jpegExifData.artist) &&
+    ObjectUtils.equals(this.copyright, jpegExifData.copyright) &&
+    ObjectUtils.equals(this.dateTime, jpegExifData.dateTime) &&
+    ObjectUtils.equals(this.imageDescription, jpegExifData.imageDescription) &&
+    ObjectUtils.equals(this.make, jpegExifData.make) &&
+    ObjectUtils.equals(this.model, jpegExifData.model) &&
+    ObjectUtils.equals(this.orientation, jpegExifData.orientation) &&
+    ObjectUtils.equals(this.primaryChromaticities, jpegExifData.primaryChromaticities) &&
+    ObjectUtils.equals(this.referenceBlackWhite, jpegExifData.referenceBlackWhite) &&
+    ObjectUtils.equals(this.resolutionUnit, jpegExifData.resolutionUnit) &&
+    ObjectUtils.equals(this.software, jpegExifData.software) &&
+    ObjectUtils.equals(this.transferFunction, jpegExifData.transferFunction) &&
+    ObjectUtils.equals(this.xresolution, jpegExifData.xresolution) &&
+    ObjectUtils.equals(this.ycbCrCoefficients, jpegExifData.ycbCrCoefficients) &&
+    ObjectUtils.equals(this.ycbCrPositioning, jpegExifData.ycbCrPositioning) &&
+    ObjectUtils.equals(this.yresolution, jpegExifData.yresolution) &&
+    super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(artist, copyright, dateTime, imageDescription, make, model, orientation, primaryChromaticities, referenceBlackWhite, resolutionUnit, software, transferFunction, xresolution, ycbCrCoefficients, ycbCrPositioning, yresolution, super.hashCode());
+    return ObjectUtils.hashCodeMulti(artist, copyright, dateTime, imageDescription, make, model, orientation, primaryChromaticities, referenceBlackWhite, resolutionUnit, software, transferFunction, xresolution, ycbCrCoefficients, ycbCrPositioning, yresolution, super.hashCode());
   }
 
 

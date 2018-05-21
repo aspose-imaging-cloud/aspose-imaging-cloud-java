@@ -48,11 +48,6 @@ public class JpgApiTests extends ApiTester {
 	private GetImageJpgRequest getImageJpgRequest;
 	private PostImageJpgRequest postImageJpgRequest;
 	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-	
     /**
      * Test operation: Update parameters of existing JPG image.
      * 

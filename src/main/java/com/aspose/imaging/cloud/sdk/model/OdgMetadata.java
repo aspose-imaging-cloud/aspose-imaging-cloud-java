@@ -27,10 +27,9 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -96,14 +95,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the generator.             
    * @return generator
   **/
-  @ApiModelProperty(value = "Gets or sets the generator.             ")
   public String getGenerator() {
     return generator;
-  }
+  }  
 
   public void setGenerator(String generator) {
     this.generator = generator;
@@ -114,14 +112,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the title.             
    * @return title
   **/
-  @ApiModelProperty(value = "Gets or sets the title.             ")
   public String getTitle() {
     return title;
-  }
+  }  
 
   public void setTitle(String title) {
     this.title = title;
@@ -132,14 +129,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the description.             
    * @return description
   **/
-  @ApiModelProperty(value = "Gets or sets the description.             ")
   public String getDescription() {
     return description;
-  }
+  }  
 
   public void setDescription(String description) {
     this.description = description;
@@ -150,14 +146,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the subject.             
    * @return subject
   **/
-  @ApiModelProperty(value = "Gets or sets the subject.             ")
   public String getSubject() {
     return subject;
-  }
+  }  
 
   public void setSubject(String subject) {
     this.subject = subject;
@@ -168,14 +163,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the keywords.             
    * @return keywords
   **/
-  @ApiModelProperty(value = "Gets or sets the keywords.             ")
   public String getKeywords() {
     return keywords;
-  }
+  }  
 
   public void setKeywords(String keywords) {
     this.keywords = keywords;
@@ -186,14 +180,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the initial creator.             
    * @return initialCreator
   **/
-  @ApiModelProperty(value = "Gets or sets the initial creator.             ")
   public String getInitialCreator() {
     return initialCreator;
-  }
+  }  
 
   public void setInitialCreator(String initialCreator) {
     this.initialCreator = initialCreator;
@@ -204,14 +197,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the creator.             
    * @return creator
   **/
-  @ApiModelProperty(value = "Gets or sets the creator.             ")
   public String getCreator() {
     return creator;
-  }
+  }  
 
   public void setCreator(String creator) {
     this.creator = creator;
@@ -222,14 +214,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the \&quot;PrintedBy\&quot; record.             
    * @return printedBy
   **/
-  @ApiModelProperty(value = "Gets or sets the \"PrintedBy\" record.             ")
   public String getPrintedBy() {
     return printedBy;
-  }
+  }  
 
   public void setPrintedBy(String printedBy) {
     this.printedBy = printedBy;
@@ -240,14 +231,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the creation date and time.             
    * @return creationDateTime
   **/
-  @ApiModelProperty(value = "Gets or sets the creation date and time.             ")
   public String getCreationDateTime() {
     return creationDateTime;
-  }
+  }  
 
   public void setCreationDateTime(String creationDateTime) {
     this.creationDateTime = creationDateTime;
@@ -258,14 +248,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the modification date and time.             
    * @return modificationDateTime
   **/
-  @ApiModelProperty(value = "Gets or sets the modification date and time.             ")
   public String getModificationDateTime() {
     return modificationDateTime;
-  }
+  }  
 
   public void setModificationDateTime(String modificationDateTime) {
     this.modificationDateTime = modificationDateTime;
@@ -276,14 +265,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the print date and time.             
    * @return printDateTime
   **/
-  @ApiModelProperty(value = "Gets or sets the print date and time.             ")
   public String getPrintDateTime() {
     return printDateTime;
-  }
+  }  
 
   public void setPrintDateTime(String printDateTime) {
     this.printDateTime = printDateTime;
@@ -294,14 +282,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the document template.             
    * @return documentTemplate
   **/
-  @ApiModelProperty(value = "Gets or sets the document template.             ")
   public String getDocumentTemplate() {
     return documentTemplate;
-  }
+  }  
 
   public void setDocumentTemplate(String documentTemplate) {
     this.documentTemplate = documentTemplate;
@@ -312,14 +299,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the automatic reload.             
    * @return automaticReload
   **/
-  @ApiModelProperty(value = "Gets or sets the automatic reload.             ")
   public String getAutomaticReload() {
     return automaticReload;
-  }
+  }  
 
   public void setAutomaticReload(String automaticReload) {
     this.automaticReload = automaticReload;
@@ -330,14 +316,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the hyperlink behavior.             
    * @return hyperlinkBehavior
   **/
-  @ApiModelProperty(value = "Gets or sets the hyperlink behavior.             ")
   public String getHyperlinkBehavior() {
     return hyperlinkBehavior;
-  }
+  }  
 
   public void setHyperlinkBehavior(String hyperlinkBehavior) {
     this.hyperlinkBehavior = hyperlinkBehavior;
@@ -348,14 +333,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the language.             
    * @return language
   **/
-  @ApiModelProperty(value = "Gets or sets the language.             ")
   public String getLanguage() {
     return language;
-  }
+  }  
 
   public void setLanguage(String language) {
     this.language = language;
@@ -366,14 +350,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the editing cycles.             
    * @return editingCycles
   **/
-  @ApiModelProperty(value = "Gets or sets the editing cycles.             ")
   public String getEditingCycles() {
     return editingCycles;
-  }
+  }  
 
   public void setEditingCycles(String editingCycles) {
     this.editingCycles = editingCycles;
@@ -384,14 +367,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the duration of the editing.             
    * @return editingDuration
   **/
-  @ApiModelProperty(value = "Gets or sets the duration of the editing.             ")
   public String getEditingDuration() {
     return editingDuration;
-  }
+  }  
 
   public void setEditingDuration(String editingDuration) {
     this.editingDuration = editingDuration;
@@ -402,14 +384,13 @@ public class OdgMetadata {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the document statistics.             
    * @return documentStatistics
   **/
-  @ApiModelProperty(value = "Gets or sets the document statistics.             ")
   public String getDocumentStatistics() {
     return documentStatistics;
-  }
+  }  
 
   public void setDocumentStatistics(String documentStatistics) {
     this.documentStatistics = documentStatistics;
@@ -418,36 +399,36 @@ public class OdgMetadata {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     OdgMetadata odgMetadata = (OdgMetadata) o;
-    return Objects.equals(this.generator, odgMetadata.generator) &&
-        Objects.equals(this.title, odgMetadata.title) &&
-        Objects.equals(this.description, odgMetadata.description) &&
-        Objects.equals(this.subject, odgMetadata.subject) &&
-        Objects.equals(this.keywords, odgMetadata.keywords) &&
-        Objects.equals(this.initialCreator, odgMetadata.initialCreator) &&
-        Objects.equals(this.creator, odgMetadata.creator) &&
-        Objects.equals(this.printedBy, odgMetadata.printedBy) &&
-        Objects.equals(this.creationDateTime, odgMetadata.creationDateTime) &&
-        Objects.equals(this.modificationDateTime, odgMetadata.modificationDateTime) &&
-        Objects.equals(this.printDateTime, odgMetadata.printDateTime) &&
-        Objects.equals(this.documentTemplate, odgMetadata.documentTemplate) &&
-        Objects.equals(this.automaticReload, odgMetadata.automaticReload) &&
-        Objects.equals(this.hyperlinkBehavior, odgMetadata.hyperlinkBehavior) &&
-        Objects.equals(this.language, odgMetadata.language) &&
-        Objects.equals(this.editingCycles, odgMetadata.editingCycles) &&
-        Objects.equals(this.editingDuration, odgMetadata.editingDuration) &&
-        Objects.equals(this.documentStatistics, odgMetadata.documentStatistics);
+    return ObjectUtils.equals(this.generator, odgMetadata.generator) &&
+    ObjectUtils.equals(this.title, odgMetadata.title) &&
+    ObjectUtils.equals(this.description, odgMetadata.description) &&
+    ObjectUtils.equals(this.subject, odgMetadata.subject) &&
+    ObjectUtils.equals(this.keywords, odgMetadata.keywords) &&
+    ObjectUtils.equals(this.initialCreator, odgMetadata.initialCreator) &&
+    ObjectUtils.equals(this.creator, odgMetadata.creator) &&
+    ObjectUtils.equals(this.printedBy, odgMetadata.printedBy) &&
+    ObjectUtils.equals(this.creationDateTime, odgMetadata.creationDateTime) &&
+    ObjectUtils.equals(this.modificationDateTime, odgMetadata.modificationDateTime) &&
+    ObjectUtils.equals(this.printDateTime, odgMetadata.printDateTime) &&
+    ObjectUtils.equals(this.documentTemplate, odgMetadata.documentTemplate) &&
+    ObjectUtils.equals(this.automaticReload, odgMetadata.automaticReload) &&
+    ObjectUtils.equals(this.hyperlinkBehavior, odgMetadata.hyperlinkBehavior) &&
+    ObjectUtils.equals(this.language, odgMetadata.language) &&
+    ObjectUtils.equals(this.editingCycles, odgMetadata.editingCycles) &&
+    ObjectUtils.equals(this.editingDuration, odgMetadata.editingDuration) &&
+    ObjectUtils.equals(this.documentStatistics, odgMetadata.documentStatistics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(generator, title, description, subject, keywords, initialCreator, creator, printedBy, creationDateTime, modificationDateTime, printDateTime, documentTemplate, automaticReload, hyperlinkBehavior, language, editingCycles, editingDuration, documentStatistics);
+    return ObjectUtils.hashCodeMulti(generator, title, description, subject, keywords, initialCreator, creator, printedBy, creationDateTime, modificationDateTime, printDateTime, documentTemplate, automaticReload, hyperlinkBehavior, language, editingCycles, editingDuration, documentStatistics);
   }
 
 

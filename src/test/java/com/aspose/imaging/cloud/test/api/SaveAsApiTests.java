@@ -50,11 +50,6 @@ public class SaveAsApiTests extends ApiTester {
 
 	private GetImageSaveAsRequest getImageSaveAsRequest;
 	private PostImageSaveAsRequest postImageSaveAsRequest;
-	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
 
     /**
      * Test operation: SaveAs an existing image.
@@ -67,36 +62,8 @@ public class SaveAsApiTests extends ApiTester {
      */
     @Test
 	@Parameters({
-		".bmp, true,", 
-		".bmp, false,",
-		".dng, true,", 
-		".dng, false,",
-		".gif, true,",
-		".gif, false,",
-		".png, true,", 
-		".png, false,",
 		".jpg, true,", 
 		".jpg, false,",
-		".jpeg, true,", 
-		".jpeg, false,",
-		".tif, true,", 
-		".tif, false,",
-		".tiff, true,", 
-		".tiff, false,",
-		".webp, true,", 
-		".webp, false,",
-		".j2k, true,", 
-		".j2k, false,",
-		".jpf, true,", 
-		".jpf, false,",
-		".jpx, true,", 
-		".jpx, false,",
-		".jpm, true,", 
-		".jpm, false,",
-		".mj2, true,", 
-		".mj2, false,",
-		".jpg2, true,", 
-		".jpg2, false,"
 		})
     public void getImageSaveAsTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
         String name = null;
@@ -162,36 +129,8 @@ public class SaveAsApiTests extends ApiTester {
      */
     @Test
 	@Parameters({
-		".bmp, true,", 
-		".bmp, false,",
-		".dng, true,", 
-		".dng, false,",
-		".gif, true,",
-		".gif, false,",
-		".png, true,", 
-		".png, false,",
 		".jpg, true,", 
 		".jpg, false,",
-		".jpeg, true,", 
-		".jpeg, false,",
-		".tif, true,", 
-		".tif, false,",
-		".tiff, true,", 
-		".tiff, false,",
-		".webp, true,", 
-		".webp, false,",
-		".j2k, true,", 
-		".j2k, false,",
-		".jpf, true,", 
-		".jpf, false,",
-		".jpx, true,", 
-		".jpx, false,",
-		".jpm, true,", 
-		".jpm, false,",
-		".mj2, true,", 
-		".mj2, false,",
-		".jpg2, true,", 
-		".jpg2, false,"
 		})
     public void postImageSaveAsTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
     	byte[] imageData = null;

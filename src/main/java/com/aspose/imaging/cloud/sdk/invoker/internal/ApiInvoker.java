@@ -78,7 +78,7 @@ public class ApiInvoker
      */
     public ApiInvoker(IRequestHandler[] requestHandlers)
     {
-        String sdkVersion = "18.4";
+        String sdkVersion = "18.6";
         this.addDefaultHeader(AsposeClientHeaderName, "java sdk");
         this.addDefaultHeader(AsposeClientVersionHeaderName, sdkVersion);
         this.requestHandlers = requestHandlers;

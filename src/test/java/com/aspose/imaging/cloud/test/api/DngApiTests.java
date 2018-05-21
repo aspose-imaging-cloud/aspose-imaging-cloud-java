@@ -48,11 +48,6 @@ public class DngApiTests extends ApiTester {
 	private GetImageDngRequest getImageDngRequest;
 	private PostImageDngRequest postImageDngRequest;
 	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-	
     /**
      * Test operation: Rasterize existing DNG image to PNG using given parameters. 
      * 
@@ -162,8 +157,8 @@ public class DngApiTests extends ApiTester {
 	private void getImageDngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-		Assert.assertEquals(resultProperties.getWidth(), originalProperties.getWidth());
-        Assert.assertEquals(resultProperties.getHeight(), originalProperties.getHeight());
+		Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
+        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
         Assert.assertNotNull(originalProperties.getDngProperties());
 	}
 	
@@ -175,8 +170,8 @@ public class DngApiTests extends ApiTester {
 	private void postImageDngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-		Assert.assertEquals(resultProperties.getWidth(), originalProperties.getWidth());
-        Assert.assertEquals(resultProperties.getHeight(), originalProperties.getHeight());
+		Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
+        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
         Assert.assertNotNull(originalProperties.getDngProperties());
 	}
 }

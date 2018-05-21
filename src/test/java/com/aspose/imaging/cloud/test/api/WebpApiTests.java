@@ -50,11 +50,6 @@ public class WebpApiTests extends ApiTester {
 	private GetImageWebPRequest getImageWebPRequest;
 	private PostImageWebPRequest postImageWebPRequest;
 	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-	
     /**
      * Test operation: Update parameters of existing WEBP image.
      * 
@@ -174,9 +169,9 @@ public class WebpApiTests extends ApiTester {
 		Assert.assertNotNull(resultProperties.getWebPProperties());
 		
 		/* TODO: uncomment after IMAGINGNET-2869 is done
-        Assert.assertEquals(resultProperties.getWebPProperties().isLossless(), getImageWebPRequest.lossLess);
-        Assert.assertEquals(resultProperties.getWebPProperties().getAnimLoopCount(), getImageWebPRequest.animLoopCount);
-        Assert.assertEquals((int) Math.ceil(resultProperties.getWebPProperties().getQuality()), (int)getImageWebPRequest.quality);
+        Assert.assertEquals(getImageWebPRequest.lossLess, resultProperties.getWebPProperties().isLossless());
+        Assert.assertEquals(getImageWebPRequest.animLoopCount, resultProperties.getWebPProperties().getAnimLoopCount());
+        Assert.assertEquals((int)getImageWebPRequest.quality, (int) Math.ceil(resultProperties.getWebPProperties().getQuality()));
         */
 
         Assert.assertNotNull(originalProperties.getWebPProperties());
@@ -191,12 +186,12 @@ public class WebpApiTests extends ApiTester {
 	 */
 	private void postImageWebPPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
-		Assert.assertNotNull(resultProperties.getWebPProperties());
+        Assert.assertNotNull(resultProperties.getWebPProperties());
 		
 		/* TODO: uncomment after IMAGINGNET-2869 is done
-        Assert.assertEquals(resultProperties.getWebPProperties().isLossless(), postImageWebPRequest.lossLess);
-        Assert.assertEquals(resultProperties.getWebPProperties().getAnimLoopCount(), postImageWebPRequest.animLoopCount);
-        Assert.assertEquals((int) Math.ceil(resultProperties.getWebPProperties().getQuality()), (int)postImageWebPRequest.quality);
+        Assert.assertEquals(postImageWebPRequest.lossLess, resultProperties.getWebPProperties().isLossless());
+        Assert.assertEquals(postImageWebPRequest.animLoopCount, resultProperties.getWebPProperties().getAnimLoopCount());
+        Assert.assertEquals((int)postImageWebPRequest.quality, (int) Math.ceil(resultProperties.getWebPProperties().getQuality()));
         */
 
         Assert.assertNotNull(originalProperties.getWebPProperties());

@@ -50,11 +50,6 @@ public class CropApiTests extends ApiTester {
 
 	private GetImageCropRequest getImageCropRequest;
 	private PostImageCropRequest postImageCropRequest;
-	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
 
     /**
      * Test operation: Crop an existing image.
@@ -67,36 +62,8 @@ public class CropApiTests extends ApiTester {
      */
     @Test
 	@Parameters({
-		".bmp, true,", 
-		".bmp, false,",
-		".dng, true,", 
-		".dng, false,",
-		//".gif, true,", TODO: enable after IMAGINGCLOUD-51 is resolved
-		//".gif, false,",
-		".png, true,", 
-		".png, false,",
 		".jpg, true,", 
 		".jpg, false,",
-		".jpeg, true,", 
-		".jpeg, false,",
-		".tif, true,", 
-		".tif, false,",
-		".tiff, true,", 
-		".tiff, false,",
-		".webp, true,", 
-		".webp, false,",
-		".j2k, true,", 
-		".j2k, false,",
-		".jpf, true,", 
-		".jpf, false,",
-		".jpx, true,", 
-		".jpx, false,",
-		".jpm, true,", 
-		".jpm, false,",
-		".mj2, true,", 
-		".mj2, false,",
-		".jpg2, true,", 
-		".jpg2, false,"
 		})
     public void getImageCropTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
         String name = null;
@@ -166,36 +133,8 @@ public class CropApiTests extends ApiTester {
      */
     @Test
 	@Parameters({
-		".bmp, true,", 
-		".bmp, false,",
-		".dng, true,", 
-		".dng, false,",
-		//".gif, true,", TODO: enable after IMAGINGCLOUD-51 is resolved
-		//".gif, false,",
-		".png, true,", 
-		".png, false,",
 		".jpg, true,", 
 		".jpg, false,",
-		".jpeg, true,", 
-		".jpeg, false,",
-		".tif, true,", 
-		".tif, false,",
-		".tiff, true,", 
-		".tiff, false,",
-		".webp, true,", 
-		".webp, false,",
-		".j2k, true,", 
-		".j2k, false,",
-		".jpf, true,", 
-		".jpf, false,",
-		".jpx, true,", 
-		".jpx, false,",
-		".jpm, true,", 
-		".jpm, false,",
-		".mj2, true,", 
-		".mj2, false,",
-		".jpg2, true,", 
-		".jpg2, false,"
 		})
     public void postImageCropTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
     	byte[] imageData = null;
@@ -290,8 +229,8 @@ public class CropApiTests extends ApiTester {
 	 */
 	private void getImageCropPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
-		Assert.assertEquals(resultProperties.getWidth(), getImageCropRequest.width);
-        Assert.assertEquals(resultProperties.getHeight(), getImageCropRequest.height);
+		Assert.assertEquals(getImageCropRequest.width, resultProperties.getWidth());
+        Assert.assertEquals(getImageCropRequest.height, resultProperties.getHeight());
 	}
 	
 	/**
@@ -301,7 +240,7 @@ public class CropApiTests extends ApiTester {
 	 */
 	private void postImageCropPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
-		Assert.assertEquals(resultProperties.getWidth(), postImageCropRequest.width);
-        Assert.assertEquals(resultProperties.getHeight(), postImageCropRequest.height);
+		Assert.assertEquals(postImageCropRequest.width, resultProperties.getWidth());
+        Assert.assertEquals(postImageCropRequest.height, resultProperties.getHeight());
 	}
 }

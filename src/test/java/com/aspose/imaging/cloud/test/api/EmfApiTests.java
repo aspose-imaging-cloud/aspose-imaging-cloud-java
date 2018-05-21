@@ -48,11 +48,6 @@ public class EmfApiTests extends ApiTester {
 	private GetImageEmfRequest getImageEmfRequest;
 	private PostImageEmfRequest postImageEmfRequest;
 	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-	
     /**
      * Test operation: Rasterize existing EMF image to PNG using given parameters.
      * 
@@ -172,10 +167,10 @@ public class EmfApiTests extends ApiTester {
 	private void getImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-        Assert.assertEquals((int)resultProperties.getWidth(), 
-        		(int)((getImageEmfRequest.pageWidth + getImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)));
-        Assert.assertEquals((int)resultProperties.getHeight(), 
-        		(int)((getImageEmfRequest.pageHeight + getImageEmfRequest.borderY * 2) * (resultProperties.getVerticalResolution() / 72)));
+        Assert.assertEquals((int)((getImageEmfRequest.pageWidth + getImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)),
+        		(int)resultProperties.getWidth());
+        Assert.assertEquals((int)((getImageEmfRequest.pageHeight + getImageEmfRequest.borderY * 2) * (resultProperties.getVerticalResolution() / 72)),
+        		(int)resultProperties.getHeight());
 	}
 	
 	/**
@@ -186,9 +181,9 @@ public class EmfApiTests extends ApiTester {
 	private void postImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-        Assert.assertEquals((int)resultProperties.getWidth(), 
-        		(int)((postImageEmfRequest.pageWidth + postImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)));
-        Assert.assertEquals((int)resultProperties.getHeight(), 
-        		(int)((postImageEmfRequest.pageHeight + postImageEmfRequest.borderY * 2) * (resultProperties.getVerticalResolution() / 72)));
+        Assert.assertEquals((int)((postImageEmfRequest.pageWidth + postImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)),
+        		(int)resultProperties.getWidth());
+        Assert.assertEquals((int)((postImageEmfRequest.pageHeight + postImageEmfRequest.borderY * 2) * (resultProperties.getVerticalResolution() / 72)),
+        		(int)resultProperties.getHeight());
 	}
 }

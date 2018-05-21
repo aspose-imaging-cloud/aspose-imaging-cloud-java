@@ -27,10 +27,9 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -51,14 +50,13 @@ public class JpegProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the comment.
    * @return comment
   **/
-  @ApiModelProperty(value = "Gets or sets the comment.")
   public String getComment() {
     return comment;
-  }
+  }  
 
   public void setComment(String comment) {
     this.comment = comment;
@@ -69,14 +67,13 @@ public class JpegProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the JPEG EXIF data.
    * @return jpegExifData
   **/
-  @ApiModelProperty(value = "Gets or sets the JPEG EXIF data.")
   public JpegExifData getJpegExifData() {
     return jpegExifData;
-  }
+  }  
 
   public void setJpegExifData(JpegExifData jpegExifData) {
     this.jpegExifData = jpegExifData;
@@ -87,14 +84,13 @@ public class JpegProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the JPEG JFIF data.
    * @return jpegJfifData
   **/
-  @ApiModelProperty(value = "Gets or sets the JPEG JFIF data.")
   public JfifData getJpegJfifData() {
     return jpegJfifData;
-  }
+  }  
 
   public void setJpegJfifData(JfifData jpegJfifData) {
     this.jpegJfifData = jpegJfifData;
@@ -103,21 +99,21 @@ public class JpegProperties {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     JpegProperties jpegProperties = (JpegProperties) o;
-    return Objects.equals(this.comment, jpegProperties.comment) &&
-        Objects.equals(this.jpegExifData, jpegProperties.jpegExifData) &&
-        Objects.equals(this.jpegJfifData, jpegProperties.jpegJfifData);
+    return ObjectUtils.equals(this.comment, jpegProperties.comment) &&
+    ObjectUtils.equals(this.jpegExifData, jpegProperties.jpegExifData) &&
+    ObjectUtils.equals(this.jpegJfifData, jpegProperties.jpegJfifData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(comment, jpegExifData, jpegJfifData);
+    return ObjectUtils.hashCodeMulti(comment, jpegExifData, jpegJfifData);
   }
 
 

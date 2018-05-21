@@ -27,10 +27,9 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -75,14 +74,13 @@ public class DngProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the DNG version.
    * @return dngVersion
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the DNG version.")
   public Long getDngVersion() {
     return dngVersion;
-  }
+  }  
 
   public void setDngVersion(Long dngVersion) {
     this.dngVersion = dngVersion;
@@ -93,14 +91,13 @@ public class DngProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the description of colors (RGBG, RGBE, GMCY or GBTG).
    * @return description
   **/
-  @ApiModelProperty(value = "Gets or sets the description of colors (RGBG, RGBE, GMCY or GBTG).")
   public String getDescription() {
     return description;
-  }
+  }  
 
   public void setDescription(String description) {
     this.description = description;
@@ -111,14 +108,13 @@ public class DngProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the camera model.
    * @return model
   **/
-  @ApiModelProperty(value = "Gets or sets the camera model.")
   public String getModel() {
     return model;
-  }
+  }  
 
   public void setModel(String model) {
     this.model = model;
@@ -129,14 +125,13 @@ public class DngProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the camera manufacturer.
    * @return cameraManufacturer
   **/
-  @ApiModelProperty(value = "Gets or sets the camera manufacturer.")
   public String getCameraManufacturer() {
     return cameraManufacturer;
-  }
+  }  
 
   public void setCameraManufacturer(String cameraManufacturer) {
     this.cameraManufacturer = cameraManufacturer;
@@ -147,14 +142,13 @@ public class DngProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the value indicating whether it&#39;s a Foveon matrix.
    * @return isFoveon
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the value indicating whether it's a Foveon matrix.")
   public Long getIsFoveon() {
     return isFoveon;
-  }
+  }  
 
   public void setIsFoveon(Long isFoveon) {
     this.isFoveon = isFoveon;
@@ -165,14 +159,13 @@ public class DngProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the software.
    * @return software
   **/
-  @ApiModelProperty(value = "Gets or sets the software.")
   public String getSoftware() {
     return software;
-  }
+  }  
 
   public void setSoftware(String software) {
     this.software = software;
@@ -183,14 +176,13 @@ public class DngProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the number of RAW images in file (0 means that the file has not been recognized).
    * @return rawCount
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the number of RAW images in file (0 means that the file has not been recognized).")
   public Long getRawCount() {
     return rawCount;
-  }
+  }  
 
   public void setRawCount(Long rawCount) {
     this.rawCount = rawCount;
@@ -201,14 +193,13 @@ public class DngProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the bit mask describing the order of color pixels in the matrix.
    * @return filters
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the bit mask describing the order of color pixels in the matrix.")
   public Long getFilters() {
     return filters;
-  }
+  }  
 
   public void setFilters(Long filters) {
     this.filters = filters;
@@ -219,14 +210,13 @@ public class DngProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the colors count.
    * @return colorsCount
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the colors count.")
   public Integer getColorsCount() {
     return colorsCount;
-  }
+  }  
 
   public void setColorsCount(Integer colorsCount) {
     this.colorsCount = colorsCount;
@@ -237,14 +227,13 @@ public class DngProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the XMP data.
    * @return xmpData
   **/
-  @ApiModelProperty(value = "Gets or sets the XMP data.")
   public String getXmpData() {
     return xmpData;
-  }
+  }  
 
   public void setXmpData(String xmpData) {
     this.xmpData = xmpData;
@@ -263,14 +252,13 @@ public class DngProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the translation array for CFA mosaic of DNG format.
    * @return translationCfaDng
   **/
-  @ApiModelProperty(value = "Gets or sets the translation array for CFA mosaic of DNG format.")
   public List<String> getTranslationCfaDng() {
     return translationCfaDng;
-  }
+  }  
 
   public void setTranslationCfaDng(List<String> translationCfaDng) {
     this.translationCfaDng = translationCfaDng;
@@ -279,29 +267,29 @@ public class DngProperties {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     DngProperties dngProperties = (DngProperties) o;
-    return Objects.equals(this.dngVersion, dngProperties.dngVersion) &&
-        Objects.equals(this.description, dngProperties.description) &&
-        Objects.equals(this.model, dngProperties.model) &&
-        Objects.equals(this.cameraManufacturer, dngProperties.cameraManufacturer) &&
-        Objects.equals(this.isFoveon, dngProperties.isFoveon) &&
-        Objects.equals(this.software, dngProperties.software) &&
-        Objects.equals(this.rawCount, dngProperties.rawCount) &&
-        Objects.equals(this.filters, dngProperties.filters) &&
-        Objects.equals(this.colorsCount, dngProperties.colorsCount) &&
-        Objects.equals(this.xmpData, dngProperties.xmpData) &&
-        Objects.equals(this.translationCfaDng, dngProperties.translationCfaDng);
+    return ObjectUtils.equals(this.dngVersion, dngProperties.dngVersion) &&
+    ObjectUtils.equals(this.description, dngProperties.description) &&
+    ObjectUtils.equals(this.model, dngProperties.model) &&
+    ObjectUtils.equals(this.cameraManufacturer, dngProperties.cameraManufacturer) &&
+    ObjectUtils.equals(this.isFoveon, dngProperties.isFoveon) &&
+    ObjectUtils.equals(this.software, dngProperties.software) &&
+    ObjectUtils.equals(this.rawCount, dngProperties.rawCount) &&
+    ObjectUtils.equals(this.filters, dngProperties.filters) &&
+    ObjectUtils.equals(this.colorsCount, dngProperties.colorsCount) &&
+    ObjectUtils.equals(this.xmpData, dngProperties.xmpData) &&
+    ObjectUtils.equals(this.translationCfaDng, dngProperties.translationCfaDng);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dngVersion, description, model, cameraManufacturer, isFoveon, software, rawCount, filters, colorsCount, xmpData, translationCfaDng);
+    return ObjectUtils.hashCodeMulti(dngVersion, description, model, cameraManufacturer, isFoveon, software, rawCount, filters, colorsCount, xmpData, translationCfaDng);
   }
 
 

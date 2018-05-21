@@ -27,10 +27,9 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -56,14 +55,13 @@ public class Jpeg2000Properties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the JPEG comment markers.
    * @return comments
   **/
-  @ApiModelProperty(value = "Gets or sets the JPEG comment markers.")
   public List<String> getComments() {
     return comments;
-  }
+  }  
 
   public void setComments(List<String> comments) {
     this.comments = comments;
@@ -74,14 +72,13 @@ public class Jpeg2000Properties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the JPEG2000 codec
    * @return codec
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the JPEG2000 codec")
   public Jpeg2000Codec getCodec() {
     return codec;
-  }
+  }  
 
   public void setCodec(Jpeg2000Codec codec) {
     this.codec = codec;
@@ -90,20 +87,20 @@ public class Jpeg2000Properties {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     Jpeg2000Properties jpeg2000Properties = (Jpeg2000Properties) o;
-    return Objects.equals(this.comments, jpeg2000Properties.comments) &&
-        Objects.equals(this.codec, jpeg2000Properties.codec);
+    return ObjectUtils.equals(this.comments, jpeg2000Properties.comments) &&
+    ObjectUtils.equals(this.codec, jpeg2000Properties.codec);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(comments, codec);
+    return ObjectUtils.hashCodeMulti(comments, codec);
   }
 
 

@@ -1,27 +1,6 @@
+# %W% %E%
 #
-# 
-# Copyright (c) 2003, 2011, Oracle and/or its affiliates. All rights reserved.
-# ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+# Copyright (c) 2009, 2011, Oracle and/or its affiliates. All rights reserved.
 #
 
 # Version
@@ -40,9 +19,7 @@ allfonts.devanagari=Mangal
 allfonts.dingbats=Wingdings
 allfonts.lucida=Lucida Sans Regular
 allfonts.symbol=Symbol
-allfonts.symbols=Segoe UI Symbol
 allfonts.thai=Lucida Sans Regular
-allfonts.georgian=Sylfaen
 
 serif.plain.alphabetic=Times New Roman
 serif.plain.chinese-ms950=MingLiU
@@ -103,28 +80,28 @@ sansserif.bolditalic.korean=Gulim
 monospaced.plain.alphabetic=Courier New
 monospaced.plain.chinese-ms950=MingLiU
 monospaced.plain.chinese-ms950-extb=MingLiU-ExtB
-monospaced.plain.hebrew=Courier New
+monospaced.plain.hebrew=David
 monospaced.plain.japanese=MS Gothic
 monospaced.plain.korean=GulimChe
 
 monospaced.bold.alphabetic=Courier New Bold
 monospaced.bold.chinese-ms950=PMingLiU
 monospaced.bold.chinese-ms950-extb=PMingLiU-ExtB
-monospaced.bold.hebrew=Courier New Bold
+monospaced.bold.hebrew=David Bold
 monospaced.bold.japanese=MS Gothic
 monospaced.bold.korean=GulimChe
 
 monospaced.italic.alphabetic=Courier New Italic
 monospaced.italic.chinese-ms950=PMingLiU
 monospaced.italic.chinese-ms950-extb=PMingLiU-ExtB
-monospaced.italic.hebrew=Courier New
+monospaced.italic.hebrew=David
 monospaced.italic.japanese=MS Gothic
 monospaced.italic.korean=GulimChe
 
 monospaced.bolditalic.alphabetic=Courier New Bold Italic
 monospaced.bolditalic.chinese-ms950=PMingLiU
 monospaced.bolditalic.chinese-ms950-extb=PMingLiU-ExtB
-monospaced.bolditalic.hebrew=Courier New Bold
+monospaced.bolditalic.hebrew=David Bold
 monospaced.bolditalic.japanese=MS Gothic
 monospaced.bolditalic.korean=GulimChe
 
@@ -237,13 +214,13 @@ sequence.dialoginput.x-windows-949=alphabetic,korean,dingbats,symbol
 
 sequence.allfonts.x-windows-874=alphabetic,thai,dingbats,symbol
 
-sequence.fallback=lucida,symbols,\
+sequence.fallback=lucida,\
                   chinese-ms950,chinese-hkscs,chinese-ms936,chinese-gb18030,\
-                  japanese,korean,chinese-ms950-extb,chinese-ms936-extb,georgian
+                  japanese,korean,chinese-ms950-extb,chinese-ms936-extb
 
 # Exclusion Ranges
 
-exclusion.alphabetic=0700-1e9f,1f00-2017,2020-20ab,20ad-f8ff
+exclusion.alphabetic=0700-1e9f,1f00-20ab,20ad-f8ff
 exclusion.chinese-gb18030=0390-03d6,2200-22ef,2701-27be
 exclusion.hebrew=0041-005a,0060-007a,007f-00ff,20ac-20ac
 
@@ -298,5 +275,3 @@ filename.Mangal=MANGAL.TTF
 filename.Symbol=SYMBOL.TTF
 filename.Wingdings=WINGDING.TTF
 
-filename.Sylfaen=sylfaen.ttf
-filename.Segoe_UI_Symbol=SEGUISYM.TTF
