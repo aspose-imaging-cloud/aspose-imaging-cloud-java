@@ -35,7 +35,7 @@ public class Configuration
         /**
          * The default base URL
          */
-        public final String DefaultBaseUrl = "https://api.aspose.cloud";
+        public final String DefaultBaseUrl = "https://api.aspose.cloud/";
 
         /**
     	 * The default API version
@@ -89,6 +89,10 @@ public class Configuration
         public void setApiBaseUrl(String value)
         {
         	this.apiBaseUrl = value;
+        	if (!this.apiBaseUrl.endsWith("/"))
+        	{
+        		this.apiBaseUrl += "/";
+        	}
         }
         
         /**
@@ -133,8 +137,6 @@ public class Configuration
          */
         public String getApiRootUrl()
         {
-            String result = this.getApiBaseUrl() + "/" + this.getApiVersion();
-
-            return result.endsWith("/") ? result.substring(0, result.length() - 1) : result;
+        	return this.getApiBaseUrl() + this.getApiVersion();
         }
 }
