@@ -38,6 +38,7 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.aspose.imaging.cloud.sdk.api.ImagingApi;
 import com.aspose.imaging.cloud.sdk.invoker.ApiException;
 import com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers.IRequestHandler;
 
@@ -57,12 +58,6 @@ public class ApiInvoker
     private final String AsposeClientVersionHeaderName = "x-aspose-client-version";
 
     /**
-     * The timeout division increase coefficient - size in bytes is divided by its' value, getting milliseconds.
-     * I.e., this is a number of bytes indicating timeout increase for 1 millisecond.
-     */
-    private final int TimeoutDivisionIncreaseCoefficient = 40;
-
-    /**
      * The default header map
      */
     private final HashMap<String, String> defaultHeaderMap = new HashMap<String, String>();
@@ -78,7 +73,7 @@ public class ApiInvoker
      */
     public ApiInvoker(IRequestHandler[] requestHandlers)
     {
-        String sdkVersion = "18.6";
+        String sdkVersion = ImagingApi.Version;
         this.addDefaultHeader(AsposeClientHeaderName, "java sdk");
         this.addDefaultHeader(AsposeClientVersionHeaderName, sdkVersion);
         this.requestHandlers = requestHandlers;
