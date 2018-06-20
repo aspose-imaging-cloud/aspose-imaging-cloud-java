@@ -184,7 +184,7 @@ public abstract class ApiTester
      */
     protected static void createApiInstances() throws Exception
     {
-        createApiInstances(AppKey, AppSid, BaseUrl, "v1", AuthType.OAuth2, false);
+        createApiInstances(AppKey, AppSid, BaseUrl, "v2", AuthType.OAuth2, false);
     }
     
     /**
