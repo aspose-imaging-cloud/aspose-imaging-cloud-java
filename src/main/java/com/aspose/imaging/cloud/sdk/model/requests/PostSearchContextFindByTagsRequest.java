@@ -34,7 +34,7 @@ public class PostSearchContextFindByTagsRequest
 {
 	/**
 	* Initializes a new instance of the PostSearchContextFindByTagsRequest class.   
-    * @param tags Tags for searching
+    * @param tags Tags array for searching
     * @param searchContextId The search context identifier.
     * @param similarityThreshold The similarity threshold.
     * @param maxCount The maximum count.
@@ -48,7 +48,7 @@ public class PostSearchContextFindByTagsRequest
     }
 		
     /**
-    * Tags for searching
+    * Tags array for searching
     **/
     public  tags;
 
