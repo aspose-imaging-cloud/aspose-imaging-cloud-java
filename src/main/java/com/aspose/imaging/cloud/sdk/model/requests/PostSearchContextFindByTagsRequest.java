@@ -34,17 +34,24 @@ public class PostSearchContextFindByTagsRequest
 {
 	/**
 	* Initializes a new instance of the PostSearchContextFindByTagsRequest class.   
+    * @param tags Tags for searching
     * @param searchContextId The search context identifier.
     * @param similarityThreshold The similarity threshold.
     * @param maxCount The maximum count.
 	**/
-    public PostSearchContextFindByTagsRequest(String searchContextId, Double similarityThreshold, Integer maxCount)             
+    public PostSearchContextFindByTagsRequest( tags, String searchContextId, Double similarityThreshold, Integer maxCount)             
     {
+        this.tags = tags;
         this.searchContextId = searchContextId;
         this.similarityThreshold = similarityThreshold;
         this.maxCount = maxCount;
     }
 		
+    /**
+    * Tags for searching
+    **/
+    public  tags;
+
     /**
     * The search context identifier.
     **/

@@ -35,13 +35,15 @@ public class PostSearchContextExtractImageFeaturesRequest
 	/**
 	* Initializes a new instance of the PostSearchContextExtractImageFeaturesRequest class.   
     * @param searchContextId The search context identifier.
+    * @param imageData Input image
     * @param imageId The image identifier.
     * @param folder The folder.
     * @param storage The storage.
 	**/
-    public PostSearchContextExtractImageFeaturesRequest(String searchContextId, String imageId, String folder, String storage)             
+    public PostSearchContextExtractImageFeaturesRequest(String searchContextId, byte[] imageData, String imageId, String folder, String storage)             
     {
         this.searchContextId = searchContextId;
+        this.imageData = imageData;
         this.imageId = imageId;
         this.folder = folder;
         this.storage = storage;
@@ -51,6 +53,11 @@ public class PostSearchContextExtractImageFeaturesRequest
     * The search context identifier.
     **/
     public String searchContextId;
+
+    /**
+    * Input image
+    **/
+    public byte[] imageData;
 
     /**
     * The image identifier.

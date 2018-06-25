@@ -34,26 +34,19 @@ public class GetSearchContextImageRequest
 {
 	/**
 	* Initializes a new instance of the GetSearchContextImageRequest class.   
-    * @param imageData Input image
     * @param searchContextId Search context identifier.
     * @param imageId Image identifier.
     * @param folder Folder.
     * @param storage Storage
 	**/
-    public GetSearchContextImageRequest(byte[] imageData, String searchContextId, String imageId, String folder, String storage)             
+    public GetSearchContextImageRequest(String searchContextId, String imageId, String folder, String storage)             
     {
-        this.imageData = imageData;
         this.searchContextId = searchContextId;
         this.imageId = imageId;
         this.folder = folder;
         this.storage = storage;
     }
 		
-    /**
-    * Input image
-    **/
-    public byte[] imageData;
-
     /**
     * Search context identifier.
     **/

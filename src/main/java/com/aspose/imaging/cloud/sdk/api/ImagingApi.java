@@ -2350,10 +2350,6 @@ public class ImagingApi
      */
     public ApiResponse getSearchContextImage(GetSearchContextImageRequest request) throws Exception 
     {
-       // verify the required parameter 'request.imageData' is set
-      if (request.imageData == null) {
-        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling getSearchContextImage");
-      }
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
         throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling getSearchContextImage");
@@ -2373,10 +2369,7 @@ public class ImagingApi
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
 	  
 	  
-	  if (request.imageData != null) 
-      {
-          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
-      }
+	  
 	
 	  try 
       {                               
@@ -4487,7 +4480,10 @@ public class ImagingApi
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
 	  
 	  
-	  
+	  if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
 	
 	  try 
       {                               
@@ -4543,6 +4539,10 @@ public class ImagingApi
      */
     public ApiResponse postSearchContextFindByTags(PostSearchContextFindByTagsRequest request) throws Exception 
     {
+       // verify the required parameter 'request.tags' is set
+      if (request.tags == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.tags' when calling postSearchContextFindByTags");
+      }
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
         throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling postSearchContextFindByTags");
@@ -4564,7 +4564,7 @@ public class ImagingApi
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "maxCount", request.maxCount);
 	  
-	  
+	  String postBody = SerializationHelper.serialize(request.tags); // http body (model) parameter
 	  
 	
 	  try 
@@ -4572,7 +4572,7 @@ public class ImagingApi
 	      byte[] response = this.apiInvoker.invokeApi(
               resourcePath, 
               "POST", 
-              null, 
+              postBody, 
               null, 
               formParams);
 				
