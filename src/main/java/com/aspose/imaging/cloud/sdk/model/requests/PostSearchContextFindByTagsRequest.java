@@ -39,7 +39,7 @@ public class PostSearchContextFindByTagsRequest
     * @param similarityThreshold The similarity threshold.
     * @param maxCount The maximum count.
 	**/
-    public PostSearchContextFindByTagsRequest( tags, String searchContextId, Double similarityThreshold, Integer maxCount)             
+    public PostSearchContextFindByTagsRequest(String tags, String searchContextId, Double similarityThreshold, Integer maxCount)             
     {
         this.tags = tags;
         this.searchContextId = searchContextId;
@@ -50,7 +50,7 @@ public class PostSearchContextFindByTagsRequest
     /**
     * Tags array for searching
     **/
-    public  tags;
+    public String tags;
 
     /**
     * The search context identifier.

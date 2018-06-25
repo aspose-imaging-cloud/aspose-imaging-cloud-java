@@ -4564,15 +4564,18 @@ public class ImagingApi
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "maxCount", request.maxCount);
 	  
-	  String postBody = SerializationHelper.serialize(request.tags); // http body (model) parameter
 	  
+	  if (request.tags != null) 
+      {
+          formParams.put("tags", request.tags); // form parameter
+      }
 	
 	  try 
       {                               
 	      byte[] response = this.apiInvoker.invokeApi(
               resourcePath, 
               "POST", 
-              postBody, 
+              null, 
               null, 
               formParams);
 				
