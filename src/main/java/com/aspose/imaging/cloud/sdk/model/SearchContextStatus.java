@@ -42,9 +42,6 @@ public class SearchContextStatus extends SaaSposeResponse {
   @JsonProperty("SearchStatus")
   private String searchStatus = null;
 
-  @JsonProperty("Progress")
-  private Double progress = null;
-
   public SearchContextStatus id(String id) {
     this.id = id;
     return this;
@@ -79,23 +76,6 @@ public class SearchContextStatus extends SaaSposeResponse {
     this.searchStatus = searchStatus;
   }
 
-  public SearchContextStatus progress(Double progress) {
-    this.progress = progress;
-    return this;
-  }
-
-  /**
-   * Gets or sets the progress (in %).
-   * @return progress
-  **/
-  public Double getProgress() {
-    return progress;
-  }  
-
-  public void setProgress(Double progress) {
-    this.progress = progress;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -108,13 +88,12 @@ public class SearchContextStatus extends SaaSposeResponse {
     SearchContextStatus searchContextStatus = (SearchContextStatus) o;
     return ObjectUtils.equals(this.id, searchContextStatus.id) &&
     ObjectUtils.equals(this.searchStatus, searchContextStatus.searchStatus) &&
-    ObjectUtils.equals(this.progress, searchContextStatus.progress) &&
     super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(id, searchStatus, progress, super.hashCode());
+    return ObjectUtils.hashCodeMulti(id, searchStatus, super.hashCode());
   }
 
 
@@ -125,7 +104,6 @@ public class SearchContextStatus extends SaaSposeResponse {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    searchStatus: ").append(toIndentedString(searchStatus)).append("\n");
-    sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
     sb.append("}");
     return sb.toString();
   }
