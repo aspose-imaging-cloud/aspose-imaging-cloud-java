@@ -156,6 +156,224 @@ public class ImagingApi
     }
 	
     /**
+     * Deletes the search context.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return File
+     * @throws Exception 
+     */
+    public ApiResponse deleteSearchContext(DeleteSearchContextRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling deleteSearchContext");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  
+	  
+	  
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "DELETE", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (File.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Delete image and images features from search context
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return File
+     * @throws Exception 
+     */
+    public ApiResponse deleteSearchContextImage(DeleteSearchContextImageRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling deleteSearchContextImage");
+      }
+       // verify the required parameter 'request.imageId' is set
+      if (request.imageId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling deleteSearchContextImage");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  
+	  
+	  
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "DELETE", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (File.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Deletes image features from search context.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return SaaSposeResponse
+     * @throws Exception 
+     */
+    public ApiResponse deleteSearchContextImageFeatures(DeleteSearchContextImageFeaturesRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling deleteSearchContextImageFeatures");
+      }
+       // verify the required parameter 'request.imageId' is set
+      if (request.imageId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling deleteSearchContextImageFeatures");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  
+	  
+	  
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "DELETE", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (SaaSposeResponse.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (SaaSposeResponse.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (SaaSposeResponse.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
      * Update parameters of existing BMP image.
      * 
      * @param request Holds parameters for this request invocation.
@@ -1889,6 +2107,481 @@ public class ImagingApi
     }
   
     /**
+     * Extract features from image without adding to search context.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return ImageFeatures
+     * @throws Exception 
+     */
+    public ApiResponse getSearchContextExtractImageFeatures(GetSearchContextExtractImageFeaturesRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling getSearchContextExtractImageFeatures");
+      }
+       // verify the required parameter 'request.imageId' is set
+      if (request.imageId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling getSearchContextExtractImageFeatures");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image2features";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  
+	  
+	  if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "GET", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (ImageFeatures.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (ImageFeatures.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (ImageFeatures.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Find images duplicates.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return ImageDuplicatesSet
+     * @throws Exception 
+     */
+    public ApiResponse getSearchContextFindDuplicates(GetSearchContextFindDuplicatesRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling getSearchContextFindDuplicates");
+      }
+       // verify the required parameter 'request.similarityThreshold' is set
+      if (request.similarityThreshold == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.similarityThreshold' when calling getSearchContextFindDuplicates");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findDuplicates";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
+	  
+	  
+	  
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "GET", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (ImageDuplicatesSet.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (ImageDuplicatesSet.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (ImageDuplicatesSet.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Find similar images.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return SearchResultsSet
+     * @throws Exception 
+     */
+    public ApiResponse getSearchContextFindSimilar(GetSearchContextFindSimilarRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling getSearchContextFindSimilar");
+      }
+       // verify the required parameter 'request.similarityThreshold' is set
+      if (request.similarityThreshold == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.similarityThreshold' when calling getSearchContextFindSimilar");
+      }
+       // verify the required parameter 'request.maxCount' is set
+      if (request.maxCount == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.maxCount' when calling getSearchContextFindSimilar");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findSimilar";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "maxCount", request.maxCount);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  
+	  
+	  if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "GET", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (SearchResultsSet.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (SearchResultsSet.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Get image from search context
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return File
+     * @throws Exception 
+     */
+    public ApiResponse getSearchContextImage(GetSearchContextImageRequest request) throws Exception 
+    {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling getSearchContextImage");
+      }
+>>>>>>> SDK regenerated by CI server
+=======
+>>>>>>> SDK regenerated by CI server
+=======
+>>>>>>> SDK regenerated by CI server
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling getSearchContextImage");
+      }
+       // verify the required parameter 'request.imageId' is set
+      if (request.imageId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling getSearchContextImage");
+<<<<<<< HEAD
+=======
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageDicom");
+>>>>>>> SDK regenerated by CI server
+=======
+>>>>>>> SDK regenerated by CI server
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  
+	  
+	  
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "GET", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (File.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Gets image features from search context.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return ImageFeatures
+     * @throws Exception 
+     */
+    public ApiResponse getSearchContextImageFeatures(GetSearchContextImageFeaturesRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling getSearchContextImageFeatures");
+      }
+       // verify the required parameter 'request.imageId' is set
+      if (request.imageId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling getSearchContextImageFeatures");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  
+	  
+	  
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "GET", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (ImageFeatures.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (ImageFeatures.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (ImageFeatures.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Gets the search context status.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return SearchContextStatus
+     * @throws Exception 
+     */
+    public ApiResponse getSearchContextStatus(GetSearchContextStatusRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling getSearchContextStatus");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/status";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  
+	  
+	  
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "GET", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (SearchContextStatus.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (SearchContextStatus.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (SearchContextStatus.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
      * Update parameters of existing TIFF image accordingly to fax parameters.
      * 
      * @param request Holds parameters for this request invocation.
@@ -1938,6 +2631,73 @@ public class ImagingApi
 			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
 		  }
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Create new search context.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return SearchContextStatus
+     * @throws Exception 
+     */
+    public ApiResponse postCreateSearchContext(PostCreateSearchContextRequest request) throws Exception 
+    {
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/create";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "detector", request.detector);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "matchingAlgorithm", request.matchingAlgorithm);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  
+	  
+	  
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "POST", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (SearchContextStatus.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (SearchContextStatus.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (SearchContextStatus.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
@@ -2153,29 +2913,9 @@ public class ImagingApi
      */
     public ApiResponse postImageDicom(PostImageDicomRequest request) throws Exception 
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-       // verify the required parameter 'request.imageData' is set
-      if (request.imageData == null) {
-        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling getSearchContextImage");
-      }
->>>>>>> SDK regenerated by CI server
-=======
->>>>>>> SDK regenerated by CI server
-       // verify the required parameter 'request.searchContextId' is set
-      if (request.searchContextId == null) {
-        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling getSearchContextImage");
-      }
-       // verify the required parameter 'request.imageId' is set
-      if (request.imageId == null) {
-        throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling getSearchContextImage");
-=======
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageDicom");
->>>>>>> SDK regenerated by CI server
       }
       // create path and map variables
       String resourcePath = this.configuration.getApiRootUrl() + "/imaging/dicom";
@@ -2891,10 +3631,99 @@ public class ImagingApi
       String resourcePath = this.configuration.getApiRootUrl() + "/imaging/resize";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+<<<<<<< HEAD
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "appendFile", request.appendFile);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+<<<<<<< HEAD
+	  
+	  
+	  if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "POST", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (File.class.getName().equals(File.class.getName()))
+<<<<<<< HEAD
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Rotate and/or flip an image. Image is passed in a request stream.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return File
+     * @throws Exception 
+     */
+    public ApiResponse postImageRotateFlip(PostImageRotateFlipRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageRotateFlip");
+      }
+       // verify the required parameter 'request.format' is set
+      if (request.format == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.format' when calling postImageRotateFlip");
+      }
+       // verify the required parameter 'request.method' is set
+      if (request.method == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.method' when calling postImageRotateFlip");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/rotateflip";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "method", request.method);
+=======
 	  
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+>>>>>>> SDK regenerated by CI server
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
 	  
@@ -2920,6 +3749,8 @@ public class ImagingApi
 		
 	      ApiResponse finalResponse; 
 		  if (File.class.getName().equals(File.class.getName()))
+<<<<<<< HEAD
+=======
 		  {
 			  finalResponse = new ApiResponse(response, null, null);
 		  }
@@ -3502,31 +4333,31 @@ public class ImagingApi
     }
   
     /**
-     * Appends existing TIFF image to another existing TIFF image (i.e. merges TIFF images).
+     * Add image and images features to search context.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return SaaSposeResponse
+     * @return File
      * @throws Exception 
      */
-    public ApiResponse postTiffAppend(PostTiffAppendRequest request) throws Exception 
+    public ApiResponse postSearchContextAddImage(PostSearchContextAddImageRequest request) throws Exception 
     {
-       // verify the required parameter 'request.name' is set
-      if (request.name == null) {
-        throw new ApiException(400, "Missing the required parameter 'request.name' when calling postTiffAppend");
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling postSearchContextAddImage");
       }
-       // verify the required parameter 'request.appendFile' is set
-      if (request.appendFile == null) {
-        throw new ApiException(400, "Missing the required parameter 'request.appendFile' when calling postTiffAppend");
+       // verify the required parameter 'request.imageId' is set
+      if (request.imageId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling postSearchContextAddImage");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/tiff/{name}/appendTiff";
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
-	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
       
-	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "appendFile", request.appendFile);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
-<<<<<<< HEAD
 	  
 	  
 	  if (request.imageData != null) 
@@ -3550,7 +4381,6 @@ public class ImagingApi
 		
 	      ApiResponse finalResponse; 
 		  if (File.class.getName().equals(File.class.getName()))
-<<<<<<< HEAD
 		  {
 			  finalResponse = new ApiResponse(response, null, null);
 		  }
@@ -3581,34 +4411,185 @@ public class ImagingApi
     }
   
     /**
-     * Rotate and/or flip an image. Image is passed in a request stream.
+     * Add tag and reference image to search context.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageRotateFlip(PostImageRotateFlipRequest request) throws Exception 
+    public ApiResponse postSearchContextAddTag(PostSearchContextAddTagRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
-        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageRotateFlip");
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postSearchContextAddTag");
       }
-       // verify the required parameter 'request.format' is set
-      if (request.format == null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling postImageRotateFlip");
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling postSearchContextAddTag");
       }
-       // verify the required parameter 'request.method' is set
-      if (request.method == null) {
-        throw new ApiException(400, "Missing the required parameter 'request.method' when calling postImageRotateFlip");
+       // verify the required parameter 'request.tagName' is set
+      if (request.tagName == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.tagName' when calling postSearchContextAddTag");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/rotateflip";
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/addTag";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "tagName", request.tagName);
 	  
-	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
-	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "method", request.method);
-	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+	  
+	  if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "POST", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (File.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Compare two images.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return SearchResultsSet
+     * @throws Exception 
+     */
+    public ApiResponse postSearchContextCompareImages(PostSearchContextCompareImagesRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling postSearchContextCompareImages");
+      }
+       // verify the required parameter 'request.imageId1' is set
+      if (request.imageId1 == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageId1' when calling postSearchContextCompareImages");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/compare";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId1", request.imageId1);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId2", request.imageId2);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  
+	  
+	  if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "POST", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (SearchResultsSet.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (SearchResultsSet.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Extract images features and add them to search context
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return File
+     * @throws Exception 
+     */
+    public ApiResponse postSearchContextExtractImageFeatures(PostSearchContextExtractImageFeaturesRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling postSearchContextExtractImageFeatures");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
 	  
 	  
@@ -3633,6 +4614,167 @@ public class ImagingApi
 		
 	      ApiResponse finalResponse; 
 		  if (File.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Find images by tag.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return SearchResultsSet
+     * @throws Exception 
+     */
+    public ApiResponse postSearchContextFindByTags(PostSearchContextFindByTagsRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.tags' is set
+      if (request.tags == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.tags' when calling postSearchContextFindByTags");
+      }
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling postSearchContextFindByTags");
+      }
+       // verify the required parameter 'request.similarityThreshold' is set
+      if (request.similarityThreshold == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.similarityThreshold' when calling postSearchContextFindByTags");
+      }
+       // verify the required parameter 'request.maxCount' is set
+      if (request.maxCount == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.maxCount' when calling postSearchContextFindByTags");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findByTags";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "maxCount", request.maxCount);
+	  
+	  
+	  if (request.tags != null) 
+      {
+          formParams.put("tags", request.tags); // form parameter
+      }
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "POST", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (SearchResultsSet.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (SearchResultsSet.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Appends existing TIFF image to another existing TIFF image (i.e. merges TIFF images).
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return SaaSposeResponse
+     * @throws Exception 
+     */
+    public ApiResponse postTiffAppend(PostTiffAppendRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.name' is set
+      if (request.name == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.name' when calling postTiffAppend");
+      }
+       // verify the required parameter 'request.appendFile' is set
+      if (request.appendFile == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.appendFile' when calling postTiffAppend");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/tiff/{name}/appendTiff";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "appendFile", request.appendFile);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  
+	  
+	  
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "POST", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (SaaSposeResponse.class.getName().equals(File.class.getName()))
+>>>>>>> SDK regenerated by CI server
 		  {
 			  finalResponse = new ApiResponse(response, null, null);
 		  }
@@ -5612,6 +6754,162 @@ public class ImagingApi
 			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
 		  }
 		  else if (SaaSposeResponse.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Update image and images features in search context.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return File
+     * @throws Exception 
+     */
+    public ApiResponse putSearchContextImage(PutSearchContextImageRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling putSearchContextImage");
+      }
+       // verify the required parameter 'request.imageId' is set
+      if (request.imageId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling putSearchContextImage");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  
+	  
+	  if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "PUT", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (File.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else
+		  {
+		  	  finalResponse = new ApiResponse(null, null, null);
+		  }
+				
+		  return finalResponse;
+      } 
+      catch (ApiException ex) 
+      {
+          if (ex.ErrorCode == 404) 
+          {
+              return null;
+          }
+                
+          throw ex;                
+      }
+    }
+  
+    /**
+     * Update images features in search context.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return File
+     * @throws Exception 
+     */
+    public ApiResponse putSearchContextImageFeatures(PutSearchContextImageFeaturesRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling putSearchContextImageFeatures");
+      }
+       // verify the required parameter 'request.imageId' is set
+      if (request.imageId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling putSearchContextImageFeatures");
+      }
+      // create path and map variables
+      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  
+	  
+	  if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+	
+	  try 
+      {                               
+	      byte[] response = this.apiInvoker.invokeApi(
+              resourcePath, 
+              "PUT", 
+              null, 
+              null, 
+              formParams);
+				
+		  if (response == null)
+		  {
+			  return null;
+		  }
+		
+	      ApiResponse finalResponse; 
+		  if (File.class.getName().equals(File.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(response, null, null);
+		  }
+		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
+		  }
+		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
