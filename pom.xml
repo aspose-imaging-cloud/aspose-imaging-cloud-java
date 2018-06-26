@@ -23,14 +23,11 @@
         <url>https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-java</url>
     </scm>
     
-    <developers>
-        <developer>
-            <name>Maksym Shnurenok</name>
-            <email>maksym.shnurenok@aspose.com</email>
-            <organization>Aspose Pty Ltd.</organization>
-            <organizationUrl>https://www.aspose.cloud/</organizationUrl>
-        </developer>
-    </developers>
+    <organization>
+        <name>Aspose Pty Ltd</name>
+        <url>http://www.aspose.com</url>
+    </organization>
+
 	
 	<properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
