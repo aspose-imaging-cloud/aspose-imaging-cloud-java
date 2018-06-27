@@ -5,11 +5,13 @@ This repository contains Aspose.Imaging for Cloud Java SDK source code. This SDK
 
 To use this SDK, you will need App SID and App Key which can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) (free registration in Aspose Cloud is required for this).
 
+The solution is updated using [code generator](https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-codegen).
+
 # Example
 ```java
 // optional parameters are base URL, API version, authentication type and debug mode
-// default base URL is https://api.aspose.cloud
-// default API version is v1.1
+// default base URL is https://api.aspose.cloud/
+// default API version is v2
 // default authentication type is OAuth2.0
 // default debug mode is false
 ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
@@ -65,14 +67,20 @@ responseData = apiResponse.getResponseData();
 // another requests typically follow the same principles
 ```
 
+# Tests 
+Tests are intended for internal usage only.
+
 # Licensing
 All Aspose.Imaging for Cloud SDKs, helper scripts and templates are licensed under [MIT License](LICENSE).
+
+## Contact Us
+Your feedback is very important to us. Please feel free to contact via
++ [**Free Support Forum**](https://forum.aspose.cloud/c/imaging)
++ [**Paid Support Helpdesk**](https://helpdesk.aspose.imaging/)
 
 # Resources
 + [**Web API reference**](https://apireference.aspose.cloud/imaging/)
 + [**Website**](https://www.aspose.cloud)
 + [**Product Home**](https://products.aspose.cloud/imaging/cloud)
 + [**Documentation**](https://docs.aspose.cloud/display/imagingcloud/Home)
-+ [**Free Support Forum**](https://forum.aspose.cloud/c/imaging)
-+ [**Paid Support Helpdesk**](https://helpdesk.aspose.imaging/)
 + [**Blog**](https://blog.aspose.cloud/category/aspose-products/aspose.imaging-cloud/)

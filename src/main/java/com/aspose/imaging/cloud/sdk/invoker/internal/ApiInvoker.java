@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiInvoker.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,6 +38,7 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.aspose.imaging.cloud.sdk.api.ImagingApi;
 import com.aspose.imaging.cloud.sdk.invoker.ApiException;
 import com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers.IRequestHandler;
 
@@ -57,12 +58,6 @@ public class ApiInvoker
     private final String AsposeClientVersionHeaderName = "x-aspose-client-version";
 
     /**
-     * The timeout division increase coefficient - size in bytes is divided by its' value, getting milliseconds.
-     * I.e., this is a number of bytes indicating timeout increase for 1 millisecond.
-     */
-    private final int TimeoutDivisionIncreaseCoefficient = 40;
-
-    /**
      * The default header map
      */
     private final HashMap<String, String> defaultHeaderMap = new HashMap<String, String>();
@@ -78,7 +73,7 @@ public class ApiInvoker
      */
     public ApiInvoker(IRequestHandler[] requestHandlers)
     {
-        String sdkVersion = "18.4";
+        String sdkVersion = ImagingApi.Version;
         this.addDefaultHeader(AsposeClientHeaderName, "java sdk");
         this.addDefaultHeader(AsposeClientVersionHeaderName, sdkVersion);
         this.requestHandlers = requestHandlers;
@@ -420,24 +415,10 @@ public class ApiInvoker
             	handler.beforeSend(connection, streamToSend);
             }
 
-            int readTimeout = connection.getReadTimeout();
             if (streamToSend != null)
             {
-            	if (readTimeout > 0)
-            	{
-            		connection.setReadTimeout(readTimeout + (int)(streamToSend.size() / TimeoutDivisionIncreaseCoefficient));
-            	}
-
             	outStream = connection.getOutputStream();
             	outStream.write(streamToSend.toByteArray());
-            }
-            else
-            {
-            	if (readTimeout > 0)
-            	{
-            		// TODO: change the behavior according to IMAGINGCLOUD-52 resolution
-                	connection.setReadTimeout(readTimeout + 120000);
-            	}
             }
         }
         finally

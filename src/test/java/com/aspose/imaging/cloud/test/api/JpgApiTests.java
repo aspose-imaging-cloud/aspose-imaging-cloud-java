@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="JpgApiTests.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,11 +47,6 @@ public class JpgApiTests extends ApiTester {
 
 	private GetImageJpgRequest getImageJpgRequest;
 	private PostImageJpgRequest postImageJpgRequest;
-	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
 	
     /**
      * Test operation: Update parameters of existing JPG image.

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiTester.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,15 +28,17 @@
 package com.aspose.imaging.cloud.test.base;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.concurrent.Callable;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 
 import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.invoker.AuthType;
@@ -53,35 +55,15 @@ import com.aspose.storage.model.ResponseMessage;
  */
 public abstract class ApiTester
 {
-	/**
-	 * The server access file
-	 */
-    private final String ServerAccessFile = "serverAccess.json";
-
-    /**
-     * The application key
-     */
-    private final String AppKey = "xxx";
-
-    /**
-     * The application SID
-     */
-    private final String AppSid = "xxx";
-
-    /**
-     * The base URL
-     */
-    private final String BaseUrl = "http://api.aspose.cloud/";
-    
     /**
      * The local test folder
      */
-    protected final String LocalTestFolder = "testData";
+    protected final static String LocalTestFolder = "testData";
 
     /**
      * The cloud storage test folder
      */
-    protected final String CloudTestFolder = "CloudTestJava";
+    protected final static String CloudTestFolder = "CloudTestJava";
 
     /**
      * The cloud storage references folder
@@ -91,42 +73,52 @@ public abstract class ApiTester
     /**
      * The default cloud storage
      */
-    protected final String DefaultStorage = "Imaging-QA";
-
-    /**
-     * The size difference division
-     */
-    protected final long SizeDiffDivision = 20;
-
+    protected final static String DefaultStorage = "Imaging-QA";
+    
     /**
      * Input test files info
      */
-    protected List<StorageFileInfo> InputTestFiles;
+    protected static List<StorageFileInfo> InputTestFiles;
 
     /**
      * Aspose.Imaging API
      */
-    protected com.aspose.imaging.cloud.sdk.api.ImagingApi ImagingApi;
+    protected static com.aspose.imaging.cloud.sdk.api.ImagingApi ImagingApi;
 
     /**
      * Aspose.Storage API
      */
-    protected com.aspose.storage.api.StorageApi StorageApi;
+    protected static com.aspose.storage.api.StorageApi StorageApi;
+	
+	/**
+	 * The server access file
+	 */
+    private final static String ServerAccessFile = "serverAccess.json";
 
     /**
-     * The basic export formats
+     * The application key
      */
-    protected final String[] BasicExportFormats = new String[]
-    {
-        "bmp",
-        "jpg",
-        "psd",
-        "tiff",
-        "gif",
-        "png",
-        "j2k",
-        "webp"
-    };
+    private final static String AppKey = "xxx";
+
+    /**
+     * The application SID
+     */
+    private final static String AppSid = "xxx";
+
+    /**
+     * The base URL
+     */
+    private final static String BaseUrl = "http://api.aspose.cloud/";
+    
+    /**
+     * Original test data folder
+     */
+    private final static String OriginalDataFolder = "CloudTest";
+    
+    /**
+     * Temporary file name
+     */
+    private final static String tempFileName = "imagingJavaSdkTempFile";
 
     /**
      * Gets or sets a value indicating whether resulting images should be removed from cloud storage.
@@ -138,14 +130,61 @@ public abstract class ApiTester
      * Please, change this value ONLY if you clearly understand the consequences, or it may lead to replacement of the images you need, so they will be lost.
      */
     public Boolean AutoRecoverReference = false;
+    
+    /**
+     * The size difference division
+     */
+    protected final long SizeDiffDivision = 20;
+
+    /**
+     * The basic export formats
+     */
+    protected final String[] BasicExportFormats = new String[]
+    {
+        "bmp",
+        "gif",
+        "jpg",
+        "png",
+        "psd",
+        "tiff"
+    };
+
+    /**
+     * Initializes tester class.
+     * @throws Exception
+     */
+    @BeforeClass
+    public static void initTester() throws Exception
+    {
+    	createApiInstances();
+    	finilizeTester();
+    }
+    
+    /**
+     * Finalizes tester class.
+     */
+    @AfterClass
+    public static void finilizeTester()
+    {
+    	File tempFile = new File(tempFileName);
+    	if (tempFile.exists())
+    	{
+    		tempFile.delete();
+    	}
+    	
+    	if (StorageApi.GetIsExist(CloudTestFolder, "", DefaultStorage).getFileExist().getIsExist())
+        {
+            StorageApi.DeleteFolder(CloudTestFolder, DefaultStorage, true);
+        }
+    }
 
     /**
      * Creates the API instances using default access parameters.
      * @throws Exception 
      */
-    protected void createApiInstances() throws Exception
+    protected static void createApiInstances() throws Exception
     {
-        this.createApiInstances(AppKey, AppSid, BaseUrl, "v1.1", AuthType.OAuth2, false);
+        createApiInstances(AppKey, AppSid, BaseUrl, "v2", AuthType.OAuth2, false);
     }
     
     /**
@@ -158,14 +197,13 @@ public abstract class ApiTester
      * @param debug If set to true, debug.
      * @throws Exception 
      */
-    protected void createApiInstances(String appKey, String appSid, String baseUrl, String apiVersion, AuthType authType, Boolean debug) throws Exception
+    protected static void createApiInstances(String appKey, String appSid, String baseUrl, String apiVersion, AuthType authType, Boolean debug) throws Exception
     {
             if (appKey.equals(AppKey) || appSid.equals(AppSid) || baseUrl == null || baseUrl.equals(""))
             {
-            	File serverAccessFile = Paths.get(LocalTestFolder, ServerAccessFile).toFile();
+            	File serverAccessFile = new File(LocalTestFolder, ServerAccessFile);
                 if (serverAccessFile.exists() && serverAccessFile.length() > 0)
                 {
-                	
                 	String serverCredentials = FileUtils.readFileToString(serverAccessFile);
                 	ServerAccessData accessData = JSON.deserialize(serverCredentials, ServerAccessData.class);
                     appKey = accessData.AppKey;
@@ -360,7 +398,7 @@ public abstract class ApiTester
         String storage) throws Exception
     {
         ResponseMessage fileListResponse = StorageApi.GetListFiles(folder, storage);
-        Assert.assertEquals((int)fileListResponse.getCode(), 200);
+        Assert.assertEquals(200, (int)fileListResponse.getCode());
         InputStream stream = fileListResponse.getInputStream();
         byte[] stringBytes = StreamHelper.readAsBytes(stream);
         stream.close();
@@ -383,10 +421,10 @@ public abstract class ApiTester
      * @return The input test files info.
      * @throws Exception 
      */
-    private List<StorageFileInfo> fetchInputTestFilesInfo() throws Exception
+    private static List<StorageFileInfo> fetchInputTestFilesInfo() throws Exception
     {
-        ResponseMessage filesResponse = StorageApi.GetListFiles(CloudTestFolder, DefaultStorage);
-        Assert.assertEquals((int)filesResponse.getCode(), 200);
+        ResponseMessage filesResponse = StorageApi.GetListFiles(OriginalDataFolder, DefaultStorage);
+        Assert.assertEquals(200, (int)filesResponse.getCode());
         InputStream stream = filesResponse.getInputStream();
         byte[] stringBytes = StreamHelper.readAsBytes(stream);
         stream.close();
@@ -513,6 +551,37 @@ public abstract class ApiTester
             		String.format("Input file %s doesn't exist in the specified storage folder: %s. Please, upload it first.",
             				inputFileName, folder));
         }
+        
+        if (!StorageApi.GetIsExist(folder + "/" + inputFileName, "", storage).getFileExist().getIsExist())
+        {
+        	File inputFile = new File(tempFileName);
+        	if (!inputFile.exists())
+        	{
+        		ResponseMessage downResponse = StorageApi.GetDownload(OriginalDataFolder + "/" + inputFileName, "", storage);
+                Assert.assertEquals("OK", downResponse.getStatus().toUpperCase());
+                InputStream downStream = null;
+                FileOutputStream outStream = null;
+                
+                try {
+                     outStream = new FileOutputStream(tempFileName);
+                     outStream.write(StreamHelper.readAsBytes(downResponse.getInputStream()));
+                     
+    			} finally {
+    				if (outStream != null)
+    				{
+    					outStream.close();
+    				}
+    				
+    				if (downStream != null)
+    				{
+    					downStream.close();
+    				}
+    			}
+        	}
+        	
+            ResponseMessage putResponse = StorageApi.PutCreate(folder + "/" + inputFileName, "", storage, new File(tempFileName));
+            Assert.assertEquals("OK", putResponse.getStatus().toUpperCase());
+        }
 
         Boolean passed = false;
         String outPath = null;
@@ -585,7 +654,7 @@ public abstract class ApiTester
             if (saveResultToStorage && !passed && this.AutoRecoverReference && StorageApi.GetIsExist(outPath, "", storage).getFileExist().getIsExist())
             {
                 MoveFileResponse moveFileResponse = StorageApi.PostMoveFile(outPath, referencePath + resultFileName, "", storage, storage);
-                Assert.assertEquals(moveFileResponse.getStatus(), "OK");
+                Assert.assertEquals("OK", moveFileResponse.getStatus());
             }
             else if (saveResultToStorage && this.RemoveResult && StorageApi.GetIsExist(outPath, "", storage).getFileExist().getIsExist())
             {

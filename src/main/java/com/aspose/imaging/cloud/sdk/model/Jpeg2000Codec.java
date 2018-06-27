@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Jpeg2000Codec.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,10 +27,9 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import com.fasterxml.jackson.annotation.JsonCreator;

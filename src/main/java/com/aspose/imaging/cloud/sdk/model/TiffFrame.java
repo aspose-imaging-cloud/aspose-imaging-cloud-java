@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TiffFrame.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,10 +27,9 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -54,14 +53,13 @@ public class TiffFrame {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets options for the frame.
    * @return frameOptions
   **/
-  @ApiModelProperty(value = "Gets or sets options for the frame.")
   public TiffOptions getFrameOptions() {
     return frameOptions;
-  }
+  }  
 
   public void setFrameOptions(TiffOptions frameOptions) {
     this.frameOptions = frameOptions;
@@ -72,14 +70,13 @@ public class TiffFrame {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the frame height.
    * @return height
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the frame height.")
   public Integer getHeight() {
     return height;
-  }
+  }  
 
   public void setHeight(Integer height) {
     this.height = height;
@@ -90,14 +87,13 @@ public class TiffFrame {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the frame width.
    * @return width
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the frame width.")
   public Integer getWidth() {
     return width;
-  }
+  }  
 
   public void setWidth(Integer width) {
     this.width = width;
@@ -108,14 +104,13 @@ public class TiffFrame {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the EXIF data.
    * @return exifData
   **/
-  @ApiModelProperty(value = "Gets or sets the EXIF data.")
   public ExifData getExifData() {
     return exifData;
-  }
+  }  
 
   public void setExifData(ExifData exifData) {
     this.exifData = exifData;
@@ -124,22 +119,22 @@ public class TiffFrame {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     TiffFrame tiffFrame = (TiffFrame) o;
-    return Objects.equals(this.frameOptions, tiffFrame.frameOptions) &&
-        Objects.equals(this.height, tiffFrame.height) &&
-        Objects.equals(this.width, tiffFrame.width) &&
-        Objects.equals(this.exifData, tiffFrame.exifData);
+    return ObjectUtils.equals(this.frameOptions, tiffFrame.frameOptions) &&
+    ObjectUtils.equals(this.height, tiffFrame.height) &&
+    ObjectUtils.equals(this.width, tiffFrame.width) &&
+    ObjectUtils.equals(this.exifData, tiffFrame.exifData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(frameOptions, height, width, exifData);
+    return ObjectUtils.hashCodeMulti(frameOptions, height, width, exifData);
   }
 
 

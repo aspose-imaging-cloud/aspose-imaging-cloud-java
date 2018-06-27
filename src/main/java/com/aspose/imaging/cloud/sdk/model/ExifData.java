@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ExifData.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,10 +27,9 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -345,14 +344,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the aperture.
    * @return apertureValue
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the aperture.")
   public Double getApertureValue() {
     return apertureValue;
-  }
+  }  
 
   public void setApertureValue(Double apertureValue) {
     this.apertureValue = apertureValue;
@@ -363,14 +361,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the body serial number.
    * @return bodySerialNumber
   **/
-  @ApiModelProperty(value = "Gets or sets the body serial number.")
   public String getBodySerialNumber() {
     return bodySerialNumber;
-  }
+  }  
 
   public void setBodySerialNumber(String bodySerialNumber) {
     this.bodySerialNumber = bodySerialNumber;
@@ -381,14 +378,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the brightness.
    * @return brightnessValue
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the brightness.")
   public Double getBrightnessValue() {
     return brightnessValue;
-  }
+  }  
 
   public void setBrightnessValue(Double brightnessValue) {
     this.brightnessValue = brightnessValue;
@@ -399,14 +395,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the CFA pattern.
    * @return cfAPattern
   **/
-  @ApiModelProperty(value = "Gets or sets the CFA pattern.")
   public byte[] getCfAPattern() {
     return cfAPattern;
-  }
+  }  
 
   public void setCfAPattern(byte[] cfAPattern) {
     this.cfAPattern = cfAPattern;
@@ -417,14 +412,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the camera owner name.
    * @return cameraOwnerName
   **/
-  @ApiModelProperty(value = "Gets or sets the camera owner name.")
   public String getCameraOwnerName() {
     return cameraOwnerName;
-  }
+  }  
 
   public void setCameraOwnerName(String cameraOwnerName) {
     this.cameraOwnerName = cameraOwnerName;
@@ -435,14 +429,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the color space.
    * @return colorSpace
   **/
-  @ApiModelProperty(value = "Gets or sets the color space.")
   public String getColorSpace() {
     return colorSpace;
-  }
+  }  
 
   public void setColorSpace(String colorSpace) {
     this.colorSpace = colorSpace;
@@ -453,14 +446,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the components configuration.
    * @return componentsConfiguration
   **/
-  @ApiModelProperty(value = "Gets or sets the components configuration.")
   public byte[] getComponentsConfiguration() {
     return componentsConfiguration;
-  }
+  }  
 
   public void setComponentsConfiguration(byte[] componentsConfiguration) {
     this.componentsConfiguration = componentsConfiguration;
@@ -471,14 +463,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the compressed bits per pixel.
    * @return compressedBitsPerPixel
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the compressed bits per pixel.")
   public Double getCompressedBitsPerPixel() {
     return compressedBitsPerPixel;
-  }
+  }  
 
   public void setCompressedBitsPerPixel(Double compressedBitsPerPixel) {
     this.compressedBitsPerPixel = compressedBitsPerPixel;
@@ -489,14 +480,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the contrast.
    * @return contrast
   **/
-  @ApiModelProperty(value = "Gets or sets the contrast.")
   public String getContrast() {
     return contrast;
-  }
+  }  
 
   public void setContrast(String contrast) {
     this.contrast = contrast;
@@ -507,14 +497,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the value indincating if custom rendering is performed.
    * @return customRendered
   **/
-  @ApiModelProperty(value = "Gets or sets the value indincating if custom rendering is performed.")
   public String getCustomRendered() {
     return customRendered;
-  }
+  }  
 
   public void setCustomRendered(String customRendered) {
     this.customRendered = customRendered;
@@ -525,14 +514,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets date and time when image was digitized.
    * @return dateTimeDigitized
   **/
-  @ApiModelProperty(value = "Gets or sets date and time when image was digitized.")
   public String getDateTimeDigitized() {
     return dateTimeDigitized;
-  }
+  }  
 
   public void setDateTimeDigitized(String dateTimeDigitized) {
     this.dateTimeDigitized = dateTimeDigitized;
@@ -543,14 +531,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets date and time of the original image.
    * @return dateTimeOriginal
   **/
-  @ApiModelProperty(value = "Gets or sets date and time of the original image.")
   public String getDateTimeOriginal() {
     return dateTimeOriginal;
-  }
+  }  
 
   public void setDateTimeOriginal(String dateTimeOriginal) {
     this.dateTimeOriginal = dateTimeOriginal;
@@ -561,14 +548,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the device setting description.
    * @return deviceSettingDescription
   **/
-  @ApiModelProperty(value = "Gets or sets the device setting description.")
   public byte[] getDeviceSettingDescription() {
     return deviceSettingDescription;
-  }
+  }  
 
   public void setDeviceSettingDescription(byte[] deviceSettingDescription) {
     this.deviceSettingDescription = deviceSettingDescription;
@@ -579,14 +565,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the digital zoom ratio.
    * @return digitalZoomRatio
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the digital zoom ratio.")
   public Double getDigitalZoomRatio() {
     return digitalZoomRatio;
-  }
+  }  
 
   public void setDigitalZoomRatio(Double digitalZoomRatio) {
     this.digitalZoomRatio = digitalZoomRatio;
@@ -597,14 +582,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets EXIF version.
    * @return exifVersion
   **/
-  @ApiModelProperty(value = "Gets or sets EXIF version.")
   public byte[] getExifVersion() {
     return exifVersion;
-  }
+  }  
 
   public void setExifVersion(byte[] exifVersion) {
     this.exifVersion = exifVersion;
@@ -615,14 +599,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the exposure bias.
    * @return exposureBiasValue
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the exposure bias.")
   public Double getExposureBiasValue() {
     return exposureBiasValue;
-  }
+  }  
 
   public void setExposureBiasValue(Double exposureBiasValue) {
     this.exposureBiasValue = exposureBiasValue;
@@ -633,14 +616,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the exposure index.
    * @return exposureIndex
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the exposure index.")
   public Double getExposureIndex() {
     return exposureIndex;
-  }
+  }  
 
   public void setExposureIndex(Double exposureIndex) {
     this.exposureIndex = exposureIndex;
@@ -651,14 +633,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the exposure mode.
    * @return exposureMode
   **/
-  @ApiModelProperty(value = "Gets or sets the exposure mode.")
   public String getExposureMode() {
     return exposureMode;
-  }
+  }  
 
   public void setExposureMode(String exposureMode) {
     this.exposureMode = exposureMode;
@@ -669,14 +650,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the exposure program.
    * @return exposureProgram
   **/
-  @ApiModelProperty(value = "Gets or sets the exposure program.")
   public String getExposureProgram() {
     return exposureProgram;
-  }
+  }  
 
   public void setExposureProgram(String exposureProgram) {
     this.exposureProgram = exposureProgram;
@@ -687,14 +667,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the exposure time.
    * @return exposureTime
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the exposure time.")
   public Double getExposureTime() {
     return exposureTime;
-  }
+  }  
 
   public void setExposureTime(Double exposureTime) {
     this.exposureTime = exposureTime;
@@ -705,14 +684,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the focal number.
    * @return fnumber
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the focal number.")
   public Double getFnumber() {
     return fnumber;
-  }
+  }  
 
   public void setFnumber(Double fnumber) {
     this.fnumber = fnumber;
@@ -723,14 +701,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the file source.
    * @return fileSource
   **/
-  @ApiModelProperty(value = "Gets or sets the file source.")
   public String getFileSource() {
     return fileSource;
-  }
+  }  
 
   public void setFileSource(String fileSource) {
     this.fileSource = fileSource;
@@ -741,14 +718,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the flash.
    * @return flash
   **/
-  @ApiModelProperty(value = "Gets or sets the flash.")
   public String getFlash() {
     return flash;
-  }
+  }  
 
   public void setFlash(String flash) {
     this.flash = flash;
@@ -759,14 +735,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the flash energy.
    * @return flashEnergy
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the flash energy.")
   public Double getFlashEnergy() {
     return flashEnergy;
-  }
+  }  
 
   public void setFlashEnergy(Double flashEnergy) {
     this.flashEnergy = flashEnergy;
@@ -777,14 +752,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the Flashpix version.
    * @return flashpixVersion
   **/
-  @ApiModelProperty(value = "Gets or sets the Flashpix version.")
   public byte[] getFlashpixVersion() {
     return flashpixVersion;
-  }
+  }  
 
   public void setFlashpixVersion(byte[] flashpixVersion) {
     this.flashpixVersion = flashpixVersion;
@@ -795,14 +769,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the focal length.
    * @return focalLength
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the focal length.")
   public Double getFocalLength() {
     return focalLength;
-  }
+  }  
 
   public void setFocalLength(Double focalLength) {
     this.focalLength = focalLength;
@@ -813,14 +786,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the focal length in 35mm film.
    * @return focalLengthIn35MmFilm
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the focal length in 35mm film.")
   public Integer getFocalLengthIn35MmFilm() {
     return focalLengthIn35MmFilm;
-  }
+  }  
 
   public void setFocalLengthIn35MmFilm(Integer focalLengthIn35MmFilm) {
     this.focalLengthIn35MmFilm = focalLengthIn35MmFilm;
@@ -831,14 +803,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the focal plane resolution unit.
    * @return focalPlaneResolutionUnit
   **/
-  @ApiModelProperty(value = "Gets or sets the focal plane resolution unit.")
   public String getFocalPlaneResolutionUnit() {
     return focalPlaneResolutionUnit;
-  }
+  }  
 
   public void setFocalPlaneResolutionUnit(String focalPlaneResolutionUnit) {
     this.focalPlaneResolutionUnit = focalPlaneResolutionUnit;
@@ -849,14 +820,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the focal plane X resolution.
    * @return focalPlaneXResolution
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the focal plane X resolution.")
   public Double getFocalPlaneXResolution() {
     return focalPlaneXResolution;
-  }
+  }  
 
   public void setFocalPlaneXResolution(Double focalPlaneXResolution) {
     this.focalPlaneXResolution = focalPlaneXResolution;
@@ -867,14 +837,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the focal plane Y resolution.
    * @return focalPlaneYResolution
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the focal plane Y resolution.")
   public Double getFocalPlaneYResolution() {
     return focalPlaneYResolution;
-  }
+  }  
 
   public void setFocalPlaneYResolution(Double focalPlaneYResolution) {
     this.focalPlaneYResolution = focalPlaneYResolution;
@@ -885,14 +854,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS altitude.
    * @return gpSAltitude
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the GPS altitude.")
   public Double getGpSAltitude() {
     return gpSAltitude;
-  }
+  }  
 
   public void setGpSAltitude(Double gpSAltitude) {
     this.gpSAltitude = gpSAltitude;
@@ -903,14 +871,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS altitude reference (if it&#39;s above or below sea level).
    * @return gpSAltitudeRef
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS altitude reference (if it's above or below sea level).")
   public String getGpSAltitudeRef() {
     return gpSAltitudeRef;
-  }
+  }  
 
   public void setGpSAltitudeRef(String gpSAltitudeRef) {
     this.gpSAltitudeRef = gpSAltitudeRef;
@@ -921,14 +888,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS area information.
    * @return gpSAreaInformation
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS area information.")
   public byte[] getGpSAreaInformation() {
     return gpSAreaInformation;
-  }
+  }  
 
   public void setGpSAreaInformation(byte[] gpSAreaInformation) {
     this.gpSAreaInformation = gpSAreaInformation;
@@ -939,14 +905,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS DOP (data degree of precision).
    * @return GPSDOP
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the GPS DOP (data degree of precision).")
   public Double getGPSDOP() {
     return GPSDOP;
-  }
+  }  
 
   public void setGPSDOP(Double GPSDOP) {
     this.GPSDOP = GPSDOP;
@@ -957,14 +922,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS bearing of the destination.
    * @return gpSDestBearing
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the GPS bearing of the destination.")
   public Double getGpSDestBearing() {
     return gpSDestBearing;
-  }
+  }  
 
   public void setGpSDestBearing(Double gpSDestBearing) {
     this.gpSDestBearing = gpSDestBearing;
@@ -975,14 +939,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS reference unit for bearing of the destination.
    * @return gpSDestBearingRef
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS reference unit for bearing of the destination.")
   public String getGpSDestBearingRef() {
     return gpSDestBearingRef;
-  }
+  }  
 
   public void setGpSDestBearingRef(String gpSDestBearingRef) {
     this.gpSDestBearingRef = gpSDestBearingRef;
@@ -993,14 +956,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS destination distance.
    * @return gpSDestDistance
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the GPS destination distance.")
   public Double getGpSDestDistance() {
     return gpSDestDistance;
-  }
+  }  
 
   public void setGpSDestDistance(Double gpSDestDistance) {
     this.gpSDestDistance = gpSDestDistance;
@@ -1011,14 +973,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS reference unit for destination distance.
    * @return gpSDestDistanceRef
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS reference unit for destination distance.")
   public String getGpSDestDistanceRef() {
     return gpSDestDistanceRef;
-  }
+  }  
 
   public void setGpSDestDistanceRef(String gpSDestDistanceRef) {
     this.gpSDestDistanceRef = gpSDestDistanceRef;
@@ -1037,14 +998,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS destination latitude.
    * @return gpSDestLatitude
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS destination latitude.")
   public List<Double> getGpSDestLatitude() {
     return gpSDestLatitude;
-  }
+  }  
 
   public void setGpSDestLatitude(List<Double> gpSDestLatitude) {
     this.gpSDestLatitude = gpSDestLatitude;
@@ -1055,14 +1015,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS reference destination latitude (north or south).
    * @return gpSDestLatitudeRef
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS reference destination latitude (north or south).")
   public String getGpSDestLatitudeRef() {
     return gpSDestLatitudeRef;
-  }
+  }  
 
   public void setGpSDestLatitudeRef(String gpSDestLatitudeRef) {
     this.gpSDestLatitudeRef = gpSDestLatitudeRef;
@@ -1081,14 +1040,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS destination longtitude.
    * @return gpSDestLongitude
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS destination longtitude.")
   public List<Double> getGpSDestLongitude() {
     return gpSDestLongitude;
-  }
+  }  
 
   public void setGpSDestLongitude(List<Double> gpSDestLongitude) {
     this.gpSDestLongitude = gpSDestLongitude;
@@ -1099,14 +1057,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS reference destination longtitude (east or west).
    * @return gpSDestLongitudeRef
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS reference destination longtitude (east or west).")
   public String getGpSDestLongitudeRef() {
     return gpSDestLongitudeRef;
-  }
+  }  
 
   public void setGpSDestLongitudeRef(String gpSDestLongitudeRef) {
     this.gpSDestLongitudeRef = gpSDestLongitudeRef;
@@ -1117,14 +1074,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS differential.
    * @return gpSDifferential
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the GPS differential.")
   public Integer getGpSDifferential() {
     return gpSDifferential;
-  }
+  }  
 
   public void setGpSDifferential(Integer gpSDifferential) {
     this.gpSDifferential = gpSDifferential;
@@ -1135,14 +1091,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS image direction.
    * @return gpSImgDirection
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the GPS image direction.")
   public Double getGpSImgDirection() {
     return gpSImgDirection;
-  }
+  }  
 
   public void setGpSImgDirection(Double gpSImgDirection) {
     this.gpSImgDirection = gpSImgDirection;
@@ -1153,14 +1108,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS reference image direction.
    * @return gpSImgDirectionRef
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS reference image direction.")
   public String getGpSImgDirectionRef() {
     return gpSImgDirectionRef;
-  }
+  }  
 
   public void setGpSImgDirectionRef(String gpSImgDirectionRef) {
     this.gpSImgDirectionRef = gpSImgDirectionRef;
@@ -1171,14 +1125,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS date stamp.
    * @return gpSDateStamp
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS date stamp.")
   public String getGpSDateStamp() {
     return gpSDateStamp;
-  }
+  }  
 
   public void setGpSDateStamp(String gpSDateStamp) {
     this.gpSDateStamp = gpSDateStamp;
@@ -1197,14 +1150,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS latitude.
    * @return gpSLatitude
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS latitude.")
   public List<Double> getGpSLatitude() {
     return gpSLatitude;
-  }
+  }  
 
   public void setGpSLatitude(List<Double> gpSLatitude) {
     this.gpSLatitude = gpSLatitude;
@@ -1215,14 +1167,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS latitude reference (north or south).
    * @return gpSLatitudeRef
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS latitude reference (north or south).")
   public String getGpSLatitudeRef() {
     return gpSLatitudeRef;
-  }
+  }  
 
   public void setGpSLatitudeRef(String gpSLatitudeRef) {
     this.gpSLatitudeRef = gpSLatitudeRef;
@@ -1241,14 +1192,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS longitude.
    * @return gpSLongitude
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS longitude.")
   public List<Double> getGpSLongitude() {
     return gpSLongitude;
-  }
+  }  
 
   public void setGpSLongitude(List<Double> gpSLongitude) {
     this.gpSLongitude = gpSLongitude;
@@ -1259,14 +1209,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS longitude reference (east or west).
    * @return gpSLongitudeRef
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS longitude reference (east or west).")
   public String getGpSLongitudeRef() {
     return gpSLongitudeRef;
-  }
+  }  
 
   public void setGpSLongitudeRef(String gpSLongitudeRef) {
     this.gpSLongitudeRef = gpSLongitudeRef;
@@ -1277,14 +1226,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the geodetic survey data used by the GPS receiver.
    * @return gpSMapDatum
   **/
-  @ApiModelProperty(value = "Gets or sets the geodetic survey data used by the GPS receiver.")
   public String getGpSMapDatum() {
     return gpSMapDatum;
-  }
+  }  
 
   public void setGpSMapDatum(String gpSMapDatum) {
     this.gpSMapDatum = gpSMapDatum;
@@ -1295,14 +1243,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS measure mode.
    * @return gpSMeasureMode
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS measure mode.")
   public String getGpSMeasureMode() {
     return gpSMeasureMode;
-  }
+  }  
 
   public void setGpSMeasureMode(String gpSMeasureMode) {
     this.gpSMeasureMode = gpSMeasureMode;
@@ -1313,14 +1260,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or setsthe GPS processing method.
    * @return gpSProcessingMethod
   **/
-  @ApiModelProperty(value = "Gets or setsthe GPS processing method.")
   public byte[] getGpSProcessingMethod() {
     return gpSProcessingMethod;
-  }
+  }  
 
   public void setGpSProcessingMethod(byte[] gpSProcessingMethod) {
     this.gpSProcessingMethod = gpSProcessingMethod;
@@ -1331,14 +1277,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS satellites info.
    * @return gpSSatellites
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS satellites info.")
   public String getGpSSatellites() {
     return gpSSatellites;
-  }
+  }  
 
   public void setGpSSatellites(String gpSSatellites) {
     this.gpSSatellites = gpSSatellites;
@@ -1349,14 +1294,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS speed.
    * @return gpSSpeed
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the GPS speed.")
   public Double getGpSSpeed() {
     return gpSSpeed;
-  }
+  }  
 
   public void setGpSSpeed(Double gpSSpeed) {
     this.gpSSpeed = gpSSpeed;
@@ -1367,14 +1311,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS speed reference unit.
    * @return gpSSpeedRef
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS speed reference unit.")
   public String getGpSSpeedRef() {
     return gpSSpeedRef;
-  }
+  }  
 
   public void setGpSSpeedRef(String gpSSpeedRef) {
     this.gpSSpeedRef = gpSSpeedRef;
@@ -1385,14 +1328,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS status.
    * @return gpSStatus
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS status.")
   public String getGpSStatus() {
     return gpSStatus;
-  }
+  }  
 
   public void setGpSStatus(String gpSStatus) {
     this.gpSStatus = gpSStatus;
@@ -1411,14 +1353,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS times tamp.
    * @return gpSTimestamp
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS times tamp.")
   public List<Double> getGpSTimestamp() {
     return gpSTimestamp;
-  }
+  }  
 
   public void setGpSTimestamp(List<Double> gpSTimestamp) {
     this.gpSTimestamp = gpSTimestamp;
@@ -1429,14 +1370,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS track.
    * @return gpSTrack
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS track.")
   public String getGpSTrack() {
     return gpSTrack;
-  }
+  }  
 
   public void setGpSTrack(String gpSTrack) {
     this.gpSTrack = gpSTrack;
@@ -1447,14 +1387,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS track reference.
    * @return gpSTrackRef
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS track reference.")
   public String getGpSTrackRef() {
     return gpSTrackRef;
-  }
+  }  
 
   public void setGpSTrackRef(String gpSTrackRef) {
     this.gpSTrackRef = gpSTrackRef;
@@ -1465,14 +1404,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the GPS version ID.
    * @return gpSVersionID
   **/
-  @ApiModelProperty(value = "Gets or sets the GPS version ID.")
   public byte[] getGpSVersionID() {
     return gpSVersionID;
-  }
+  }  
 
   public void setGpSVersionID(byte[] gpSVersionID) {
     this.gpSVersionID = gpSVersionID;
@@ -1483,14 +1421,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the gain control.
    * @return gainControl
   **/
-  @ApiModelProperty(value = "Gets or sets the gain control.")
   public String getGainControl() {
     return gainControl;
-  }
+  }  
 
   public void setGainControl(String gainControl) {
     this.gainControl = gainControl;
@@ -1501,14 +1438,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the gamma.
    * @return gamma
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the gamma.")
   public Double getGamma() {
     return gamma;
-  }
+  }  
 
   public void setGamma(Double gamma) {
     this.gamma = gamma;
@@ -1519,14 +1455,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the ISO speed.
    * @return isOSpeed
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the ISO speed.")
   public Long getIsOSpeed() {
     return isOSpeed;
-  }
+  }  
 
   public void setIsOSpeed(Long isOSpeed) {
     this.isOSpeed = isOSpeed;
@@ -1537,14 +1472,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the ISO speed latitude YYY value.
    * @return isOSpeedLatitudeYYY
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the ISO speed latitude YYY value.")
   public Long getIsOSpeedLatitudeYYY() {
     return isOSpeedLatitudeYYY;
-  }
+  }  
 
   public void setIsOSpeedLatitudeYYY(Long isOSpeedLatitudeYYY) {
     this.isOSpeedLatitudeYYY = isOSpeedLatitudeYYY;
@@ -1555,14 +1489,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the ISO speed latitude ZZZ value.
    * @return isOSpeedLatitudeZZZ
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the ISO speed latitude ZZZ value.")
   public Long getIsOSpeedLatitudeZZZ() {
     return isOSpeedLatitudeZZZ;
-  }
+  }  
 
   public void setIsOSpeedLatitudeZZZ(Long isOSpeedLatitudeZZZ) {
     this.isOSpeedLatitudeZZZ = isOSpeedLatitudeZZZ;
@@ -1573,14 +1506,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the photographic sensitivity.
    * @return photographicSensitivity
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the photographic sensitivity.")
   public Long getPhotographicSensitivity() {
     return photographicSensitivity;
-  }
+  }  
 
   public void setPhotographicSensitivity(Long photographicSensitivity) {
     this.photographicSensitivity = photographicSensitivity;
@@ -1591,14 +1523,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the image unique ID.
    * @return imageUniqueID
   **/
-  @ApiModelProperty(value = "Gets or sets the image unique ID.")
   public String getImageUniqueID() {
     return imageUniqueID;
-  }
+  }  
 
   public void setImageUniqueID(String imageUniqueID) {
     this.imageUniqueID = imageUniqueID;
@@ -1609,14 +1540,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the lens manufacturer.
    * @return lensMake
   **/
-  @ApiModelProperty(value = "Gets or sets the lens manufacturer.")
   public String getLensMake() {
     return lensMake;
-  }
+  }  
 
   public void setLensMake(String lensMake) {
     this.lensMake = lensMake;
@@ -1627,14 +1557,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the lens model.
    * @return lensModel
   **/
-  @ApiModelProperty(value = "Gets or sets the lens model.")
   public String getLensModel() {
     return lensModel;
-  }
+  }  
 
   public void setLensModel(String lensModel) {
     this.lensModel = lensModel;
@@ -1645,14 +1574,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the lens serial number.
    * @return lensSerialNumber
   **/
-  @ApiModelProperty(value = "Gets or sets the lens serial number.")
   public String getLensSerialNumber() {
     return lensSerialNumber;
-  }
+  }  
 
   public void setLensSerialNumber(String lensSerialNumber) {
     this.lensSerialNumber = lensSerialNumber;
@@ -1671,14 +1599,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the lens specification.
    * @return lensSpecification
   **/
-  @ApiModelProperty(value = "Gets or sets the lens specification.")
   public List<Double> getLensSpecification() {
     return lensSpecification;
-  }
+  }  
 
   public void setLensSpecification(List<Double> lensSpecification) {
     this.lensSpecification = lensSpecification;
@@ -1689,14 +1616,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the light source.
    * @return lightSource
   **/
-  @ApiModelProperty(value = "Gets or sets the light source.")
   public String getLightSource() {
     return lightSource;
-  }
+  }  
 
   public void setLightSource(String lightSource) {
     this.lightSource = lightSource;
@@ -1707,14 +1633,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the maker note raw data.
    * @return makerNoteRawData
   **/
-  @ApiModelProperty(value = "Gets or sets the maker note raw data.")
   public byte[] getMakerNoteRawData() {
     return makerNoteRawData;
-  }
+  }  
 
   public void setMakerNoteRawData(byte[] makerNoteRawData) {
     this.makerNoteRawData = makerNoteRawData;
@@ -1725,14 +1650,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the max aperture.
    * @return maxApertureValue
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the max aperture.")
   public Double getMaxApertureValue() {
     return maxApertureValue;
-  }
+  }  
 
   public void setMaxApertureValue(Double maxApertureValue) {
     this.maxApertureValue = maxApertureValue;
@@ -1743,14 +1667,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the metering mode.
    * @return meteringMode
   **/
-  @ApiModelProperty(value = "Gets or sets the metering mode.")
   public String getMeteringMode() {
     return meteringMode;
-  }
+  }  
 
   public void setMeteringMode(String meteringMode) {
     this.meteringMode = meteringMode;
@@ -1761,14 +1684,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the OECF (Opto-Electric Conversion Function).
    * @return OECF
   **/
-  @ApiModelProperty(value = "Gets or sets the OECF (Opto-Electric Conversion Function).")
   public byte[] getOECF() {
     return OECF;
-  }
+  }  
 
   public void setOECF(byte[] OECF) {
     this.OECF = OECF;
@@ -1779,14 +1701,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the pixel X dimension.
    * @return pixelXDimension
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the pixel X dimension.")
   public Long getPixelXDimension() {
     return pixelXDimension;
-  }
+  }  
 
   public void setPixelXDimension(Long pixelXDimension) {
     this.pixelXDimension = pixelXDimension;
@@ -1797,14 +1718,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the pixel Y dimension.
    * @return pixelYDimension
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the pixel Y dimension.")
   public Long getPixelYDimension() {
     return pixelYDimension;
-  }
+  }  
 
   public void setPixelYDimension(Long pixelYDimension) {
     this.pixelYDimension = pixelYDimension;
@@ -1815,14 +1735,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the recommended exposure index.
    * @return recommendedExposureIndex
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the recommended exposure index.")
   public Long getRecommendedExposureIndex() {
     return recommendedExposureIndex;
-  }
+  }  
 
   public void setRecommendedExposureIndex(Long recommendedExposureIndex) {
     this.recommendedExposureIndex = recommendedExposureIndex;
@@ -1833,14 +1752,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the related sound file.
    * @return relatedSoundFile
   **/
-  @ApiModelProperty(value = "Gets or sets the related sound file.")
   public String getRelatedSoundFile() {
     return relatedSoundFile;
-  }
+  }  
 
   public void setRelatedSoundFile(String relatedSoundFile) {
     this.relatedSoundFile = relatedSoundFile;
@@ -1851,14 +1769,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the saturation.
    * @return saturation
   **/
-  @ApiModelProperty(value = "Gets or sets the saturation.")
   public String getSaturation() {
     return saturation;
-  }
+  }  
 
   public void setSaturation(String saturation) {
     this.saturation = saturation;
@@ -1869,14 +1786,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the scene capture type.
    * @return sceneCaptureType
   **/
-  @ApiModelProperty(value = "Gets or sets the scene capture type.")
   public String getSceneCaptureType() {
     return sceneCaptureType;
-  }
+  }  
 
   public void setSceneCaptureType(String sceneCaptureType) {
     this.sceneCaptureType = sceneCaptureType;
@@ -1887,14 +1803,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the scene type.
    * @return sceneType
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the scene type.")
   public Integer getSceneType() {
     return sceneType;
-  }
+  }  
 
   public void setSceneType(Integer sceneType) {
     this.sceneType = sceneType;
@@ -1905,14 +1820,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the sensing method.
    * @return sensingMethod
   **/
-  @ApiModelProperty(value = "Gets or sets the sensing method.")
   public String getSensingMethod() {
     return sensingMethod;
-  }
+  }  
 
   public void setSensingMethod(String sensingMethod) {
     this.sensingMethod = sensingMethod;
@@ -1923,14 +1837,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the sensitivity type.
    * @return sensitivityType
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the sensitivity type.")
   public Integer getSensitivityType() {
     return sensitivityType;
-  }
+  }  
 
   public void setSensitivityType(Integer sensitivityType) {
     this.sensitivityType = sensitivityType;
@@ -1941,14 +1854,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the sharpness.
    * @return sharpness
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the sharpness.")
   public Integer getSharpness() {
     return sharpness;
-  }
+  }  
 
   public void setSharpness(Integer sharpness) {
     this.sharpness = sharpness;
@@ -1959,14 +1871,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the shutter speed.
    * @return shutterSpeedValue
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the shutter speed.")
   public Double getShutterSpeedValue() {
     return shutterSpeedValue;
-  }
+  }  
 
   public void setShutterSpeedValue(Double shutterSpeedValue) {
     this.shutterSpeedValue = shutterSpeedValue;
@@ -1977,14 +1888,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the spatial frequency response.
    * @return spatialFrequencyResponse
   **/
-  @ApiModelProperty(value = "Gets or sets the spatial frequency response.")
   public byte[] getSpatialFrequencyResponse() {
     return spatialFrequencyResponse;
-  }
+  }  
 
   public void setSpatialFrequencyResponse(byte[] spatialFrequencyResponse) {
     this.spatialFrequencyResponse = spatialFrequencyResponse;
@@ -1995,14 +1905,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the spectral sensitivity.
    * @return spectralSensitivity
   **/
-  @ApiModelProperty(value = "Gets or sets the spectral sensitivity.")
   public String getSpectralSensitivity() {
     return spectralSensitivity;
-  }
+  }  
 
   public void setSpectralSensitivity(String spectralSensitivity) {
     this.spectralSensitivity = spectralSensitivity;
@@ -2013,14 +1922,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the standard output sensitivity.
    * @return standardOutputSensitivity
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the standard output sensitivity.")
   public Long getStandardOutputSensitivity() {
     return standardOutputSensitivity;
-  }
+  }  
 
   public void setStandardOutputSensitivity(Long standardOutputSensitivity) {
     this.standardOutputSensitivity = standardOutputSensitivity;
@@ -2039,14 +1947,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the subject area.
    * @return subjectArea
   **/
-  @ApiModelProperty(value = "Gets or sets the subject area.")
   public List<Integer> getSubjectArea() {
     return subjectArea;
-  }
+  }  
 
   public void setSubjectArea(List<Integer> subjectArea) {
     this.subjectArea = subjectArea;
@@ -2057,14 +1964,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the subject distance.
    * @return subjectDistance
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the subject distance.")
   public Double getSubjectDistance() {
     return subjectDistance;
-  }
+  }  
 
   public void setSubjectDistance(Double subjectDistance) {
     this.subjectDistance = subjectDistance;
@@ -2075,14 +1981,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the subject distance range.
    * @return subjectDistanceRange
   **/
-  @ApiModelProperty(value = "Gets or sets the subject distance range.")
   public String getSubjectDistanceRange() {
     return subjectDistanceRange;
-  }
+  }  
 
   public void setSubjectDistanceRange(String subjectDistanceRange) {
     this.subjectDistanceRange = subjectDistanceRange;
@@ -2101,14 +2006,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the subject location.
    * @return subjectLocation
   **/
-  @ApiModelProperty(value = "Gets or sets the subject location.")
   public List<Integer> getSubjectLocation() {
     return subjectLocation;
-  }
+  }  
 
   public void setSubjectLocation(List<Integer> subjectLocation) {
     this.subjectLocation = subjectLocation;
@@ -2119,14 +2023,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the fractions of seconds for the DateTime tag.
    * @return subsecTime
   **/
-  @ApiModelProperty(value = "Gets or sets the fractions of seconds for the DateTime tag.")
   public String getSubsecTime() {
     return subsecTime;
-  }
+  }  
 
   public void setSubsecTime(String subsecTime) {
     this.subsecTime = subsecTime;
@@ -2137,14 +2040,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the fractions of seconds for the DateTimeDigitized tag.
    * @return subsecTimeDigitized
   **/
-  @ApiModelProperty(value = "Gets or sets the fractions of seconds for the DateTimeDigitized tag.")
   public String getSubsecTimeDigitized() {
     return subsecTimeDigitized;
-  }
+  }  
 
   public void setSubsecTimeDigitized(String subsecTimeDigitized) {
     this.subsecTimeDigitized = subsecTimeDigitized;
@@ -2155,14 +2057,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the fractions of seconds for the DateTimeOriginal tag.
    * @return subsecTimeOriginal
   **/
-  @ApiModelProperty(value = "Gets or sets the fractions of seconds for the DateTimeOriginal tag.")
   public String getSubsecTimeOriginal() {
     return subsecTimeOriginal;
-  }
+  }  
 
   public void setSubsecTimeOriginal(String subsecTimeOriginal) {
     this.subsecTimeOriginal = subsecTimeOriginal;
@@ -2173,14 +2074,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the user comment.
    * @return userComment
   **/
-  @ApiModelProperty(value = "Gets or sets the user comment.")
   public String getUserComment() {
     return userComment;
-  }
+  }  
 
   public void setUserComment(String userComment) {
     this.userComment = userComment;
@@ -2191,14 +2091,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the white balance.
    * @return whiteBalance
   **/
-  @ApiModelProperty(value = "Gets or sets the white balance.")
   public String getWhiteBalance() {
     return whiteBalance;
-  }
+  }  
 
   public void setWhiteBalance(String whiteBalance) {
     this.whiteBalance = whiteBalance;
@@ -2217,14 +2116,13 @@ public class ExifData {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the white point.
    * @return whitePoint
   **/
-  @ApiModelProperty(value = "Gets or sets the white point.")
   public List<Double> getWhitePoint() {
     return whitePoint;
-  }
+  }  
 
   public void setWhitePoint(List<Double> whitePoint) {
     this.whitePoint = whitePoint;
@@ -2233,119 +2131,119 @@ public class ExifData {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     ExifData exifData = (ExifData) o;
-    return Objects.equals(this.apertureValue, exifData.apertureValue) &&
-        Objects.equals(this.bodySerialNumber, exifData.bodySerialNumber) &&
-        Objects.equals(this.brightnessValue, exifData.brightnessValue) &&
-        Objects.equals(this.cfAPattern, exifData.cfAPattern) &&
-        Objects.equals(this.cameraOwnerName, exifData.cameraOwnerName) &&
-        Objects.equals(this.colorSpace, exifData.colorSpace) &&
-        Objects.equals(this.componentsConfiguration, exifData.componentsConfiguration) &&
-        Objects.equals(this.compressedBitsPerPixel, exifData.compressedBitsPerPixel) &&
-        Objects.equals(this.contrast, exifData.contrast) &&
-        Objects.equals(this.customRendered, exifData.customRendered) &&
-        Objects.equals(this.dateTimeDigitized, exifData.dateTimeDigitized) &&
-        Objects.equals(this.dateTimeOriginal, exifData.dateTimeOriginal) &&
-        Objects.equals(this.deviceSettingDescription, exifData.deviceSettingDescription) &&
-        Objects.equals(this.digitalZoomRatio, exifData.digitalZoomRatio) &&
-        Objects.equals(this.exifVersion, exifData.exifVersion) &&
-        Objects.equals(this.exposureBiasValue, exifData.exposureBiasValue) &&
-        Objects.equals(this.exposureIndex, exifData.exposureIndex) &&
-        Objects.equals(this.exposureMode, exifData.exposureMode) &&
-        Objects.equals(this.exposureProgram, exifData.exposureProgram) &&
-        Objects.equals(this.exposureTime, exifData.exposureTime) &&
-        Objects.equals(this.fnumber, exifData.fnumber) &&
-        Objects.equals(this.fileSource, exifData.fileSource) &&
-        Objects.equals(this.flash, exifData.flash) &&
-        Objects.equals(this.flashEnergy, exifData.flashEnergy) &&
-        Objects.equals(this.flashpixVersion, exifData.flashpixVersion) &&
-        Objects.equals(this.focalLength, exifData.focalLength) &&
-        Objects.equals(this.focalLengthIn35MmFilm, exifData.focalLengthIn35MmFilm) &&
-        Objects.equals(this.focalPlaneResolutionUnit, exifData.focalPlaneResolutionUnit) &&
-        Objects.equals(this.focalPlaneXResolution, exifData.focalPlaneXResolution) &&
-        Objects.equals(this.focalPlaneYResolution, exifData.focalPlaneYResolution) &&
-        Objects.equals(this.gpSAltitude, exifData.gpSAltitude) &&
-        Objects.equals(this.gpSAltitudeRef, exifData.gpSAltitudeRef) &&
-        Objects.equals(this.gpSAreaInformation, exifData.gpSAreaInformation) &&
-        Objects.equals(this.GPSDOP, exifData.GPSDOP) &&
-        Objects.equals(this.gpSDestBearing, exifData.gpSDestBearing) &&
-        Objects.equals(this.gpSDestBearingRef, exifData.gpSDestBearingRef) &&
-        Objects.equals(this.gpSDestDistance, exifData.gpSDestDistance) &&
-        Objects.equals(this.gpSDestDistanceRef, exifData.gpSDestDistanceRef) &&
-        Objects.equals(this.gpSDestLatitude, exifData.gpSDestLatitude) &&
-        Objects.equals(this.gpSDestLatitudeRef, exifData.gpSDestLatitudeRef) &&
-        Objects.equals(this.gpSDestLongitude, exifData.gpSDestLongitude) &&
-        Objects.equals(this.gpSDestLongitudeRef, exifData.gpSDestLongitudeRef) &&
-        Objects.equals(this.gpSDifferential, exifData.gpSDifferential) &&
-        Objects.equals(this.gpSImgDirection, exifData.gpSImgDirection) &&
-        Objects.equals(this.gpSImgDirectionRef, exifData.gpSImgDirectionRef) &&
-        Objects.equals(this.gpSDateStamp, exifData.gpSDateStamp) &&
-        Objects.equals(this.gpSLatitude, exifData.gpSLatitude) &&
-        Objects.equals(this.gpSLatitudeRef, exifData.gpSLatitudeRef) &&
-        Objects.equals(this.gpSLongitude, exifData.gpSLongitude) &&
-        Objects.equals(this.gpSLongitudeRef, exifData.gpSLongitudeRef) &&
-        Objects.equals(this.gpSMapDatum, exifData.gpSMapDatum) &&
-        Objects.equals(this.gpSMeasureMode, exifData.gpSMeasureMode) &&
-        Objects.equals(this.gpSProcessingMethod, exifData.gpSProcessingMethod) &&
-        Objects.equals(this.gpSSatellites, exifData.gpSSatellites) &&
-        Objects.equals(this.gpSSpeed, exifData.gpSSpeed) &&
-        Objects.equals(this.gpSSpeedRef, exifData.gpSSpeedRef) &&
-        Objects.equals(this.gpSStatus, exifData.gpSStatus) &&
-        Objects.equals(this.gpSTimestamp, exifData.gpSTimestamp) &&
-        Objects.equals(this.gpSTrack, exifData.gpSTrack) &&
-        Objects.equals(this.gpSTrackRef, exifData.gpSTrackRef) &&
-        Objects.equals(this.gpSVersionID, exifData.gpSVersionID) &&
-        Objects.equals(this.gainControl, exifData.gainControl) &&
-        Objects.equals(this.gamma, exifData.gamma) &&
-        Objects.equals(this.isOSpeed, exifData.isOSpeed) &&
-        Objects.equals(this.isOSpeedLatitudeYYY, exifData.isOSpeedLatitudeYYY) &&
-        Objects.equals(this.isOSpeedLatitudeZZZ, exifData.isOSpeedLatitudeZZZ) &&
-        Objects.equals(this.photographicSensitivity, exifData.photographicSensitivity) &&
-        Objects.equals(this.imageUniqueID, exifData.imageUniqueID) &&
-        Objects.equals(this.lensMake, exifData.lensMake) &&
-        Objects.equals(this.lensModel, exifData.lensModel) &&
-        Objects.equals(this.lensSerialNumber, exifData.lensSerialNumber) &&
-        Objects.equals(this.lensSpecification, exifData.lensSpecification) &&
-        Objects.equals(this.lightSource, exifData.lightSource) &&
-        Objects.equals(this.makerNoteRawData, exifData.makerNoteRawData) &&
-        Objects.equals(this.maxApertureValue, exifData.maxApertureValue) &&
-        Objects.equals(this.meteringMode, exifData.meteringMode) &&
-        Objects.equals(this.OECF, exifData.OECF) &&
-        Objects.equals(this.pixelXDimension, exifData.pixelXDimension) &&
-        Objects.equals(this.pixelYDimension, exifData.pixelYDimension) &&
-        Objects.equals(this.recommendedExposureIndex, exifData.recommendedExposureIndex) &&
-        Objects.equals(this.relatedSoundFile, exifData.relatedSoundFile) &&
-        Objects.equals(this.saturation, exifData.saturation) &&
-        Objects.equals(this.sceneCaptureType, exifData.sceneCaptureType) &&
-        Objects.equals(this.sceneType, exifData.sceneType) &&
-        Objects.equals(this.sensingMethod, exifData.sensingMethod) &&
-        Objects.equals(this.sensitivityType, exifData.sensitivityType) &&
-        Objects.equals(this.sharpness, exifData.sharpness) &&
-        Objects.equals(this.shutterSpeedValue, exifData.shutterSpeedValue) &&
-        Objects.equals(this.spatialFrequencyResponse, exifData.spatialFrequencyResponse) &&
-        Objects.equals(this.spectralSensitivity, exifData.spectralSensitivity) &&
-        Objects.equals(this.standardOutputSensitivity, exifData.standardOutputSensitivity) &&
-        Objects.equals(this.subjectArea, exifData.subjectArea) &&
-        Objects.equals(this.subjectDistance, exifData.subjectDistance) &&
-        Objects.equals(this.subjectDistanceRange, exifData.subjectDistanceRange) &&
-        Objects.equals(this.subjectLocation, exifData.subjectLocation) &&
-        Objects.equals(this.subsecTime, exifData.subsecTime) &&
-        Objects.equals(this.subsecTimeDigitized, exifData.subsecTimeDigitized) &&
-        Objects.equals(this.subsecTimeOriginal, exifData.subsecTimeOriginal) &&
-        Objects.equals(this.userComment, exifData.userComment) &&
-        Objects.equals(this.whiteBalance, exifData.whiteBalance) &&
-        Objects.equals(this.whitePoint, exifData.whitePoint);
+    return ObjectUtils.equals(this.apertureValue, exifData.apertureValue) &&
+    ObjectUtils.equals(this.bodySerialNumber, exifData.bodySerialNumber) &&
+    ObjectUtils.equals(this.brightnessValue, exifData.brightnessValue) &&
+    ObjectUtils.equals(this.cfAPattern, exifData.cfAPattern) &&
+    ObjectUtils.equals(this.cameraOwnerName, exifData.cameraOwnerName) &&
+    ObjectUtils.equals(this.colorSpace, exifData.colorSpace) &&
+    ObjectUtils.equals(this.componentsConfiguration, exifData.componentsConfiguration) &&
+    ObjectUtils.equals(this.compressedBitsPerPixel, exifData.compressedBitsPerPixel) &&
+    ObjectUtils.equals(this.contrast, exifData.contrast) &&
+    ObjectUtils.equals(this.customRendered, exifData.customRendered) &&
+    ObjectUtils.equals(this.dateTimeDigitized, exifData.dateTimeDigitized) &&
+    ObjectUtils.equals(this.dateTimeOriginal, exifData.dateTimeOriginal) &&
+    ObjectUtils.equals(this.deviceSettingDescription, exifData.deviceSettingDescription) &&
+    ObjectUtils.equals(this.digitalZoomRatio, exifData.digitalZoomRatio) &&
+    ObjectUtils.equals(this.exifVersion, exifData.exifVersion) &&
+    ObjectUtils.equals(this.exposureBiasValue, exifData.exposureBiasValue) &&
+    ObjectUtils.equals(this.exposureIndex, exifData.exposureIndex) &&
+    ObjectUtils.equals(this.exposureMode, exifData.exposureMode) &&
+    ObjectUtils.equals(this.exposureProgram, exifData.exposureProgram) &&
+    ObjectUtils.equals(this.exposureTime, exifData.exposureTime) &&
+    ObjectUtils.equals(this.fnumber, exifData.fnumber) &&
+    ObjectUtils.equals(this.fileSource, exifData.fileSource) &&
+    ObjectUtils.equals(this.flash, exifData.flash) &&
+    ObjectUtils.equals(this.flashEnergy, exifData.flashEnergy) &&
+    ObjectUtils.equals(this.flashpixVersion, exifData.flashpixVersion) &&
+    ObjectUtils.equals(this.focalLength, exifData.focalLength) &&
+    ObjectUtils.equals(this.focalLengthIn35MmFilm, exifData.focalLengthIn35MmFilm) &&
+    ObjectUtils.equals(this.focalPlaneResolutionUnit, exifData.focalPlaneResolutionUnit) &&
+    ObjectUtils.equals(this.focalPlaneXResolution, exifData.focalPlaneXResolution) &&
+    ObjectUtils.equals(this.focalPlaneYResolution, exifData.focalPlaneYResolution) &&
+    ObjectUtils.equals(this.gpSAltitude, exifData.gpSAltitude) &&
+    ObjectUtils.equals(this.gpSAltitudeRef, exifData.gpSAltitudeRef) &&
+    ObjectUtils.equals(this.gpSAreaInformation, exifData.gpSAreaInformation) &&
+    ObjectUtils.equals(this.GPSDOP, exifData.GPSDOP) &&
+    ObjectUtils.equals(this.gpSDestBearing, exifData.gpSDestBearing) &&
+    ObjectUtils.equals(this.gpSDestBearingRef, exifData.gpSDestBearingRef) &&
+    ObjectUtils.equals(this.gpSDestDistance, exifData.gpSDestDistance) &&
+    ObjectUtils.equals(this.gpSDestDistanceRef, exifData.gpSDestDistanceRef) &&
+    ObjectUtils.equals(this.gpSDestLatitude, exifData.gpSDestLatitude) &&
+    ObjectUtils.equals(this.gpSDestLatitudeRef, exifData.gpSDestLatitudeRef) &&
+    ObjectUtils.equals(this.gpSDestLongitude, exifData.gpSDestLongitude) &&
+    ObjectUtils.equals(this.gpSDestLongitudeRef, exifData.gpSDestLongitudeRef) &&
+    ObjectUtils.equals(this.gpSDifferential, exifData.gpSDifferential) &&
+    ObjectUtils.equals(this.gpSImgDirection, exifData.gpSImgDirection) &&
+    ObjectUtils.equals(this.gpSImgDirectionRef, exifData.gpSImgDirectionRef) &&
+    ObjectUtils.equals(this.gpSDateStamp, exifData.gpSDateStamp) &&
+    ObjectUtils.equals(this.gpSLatitude, exifData.gpSLatitude) &&
+    ObjectUtils.equals(this.gpSLatitudeRef, exifData.gpSLatitudeRef) &&
+    ObjectUtils.equals(this.gpSLongitude, exifData.gpSLongitude) &&
+    ObjectUtils.equals(this.gpSLongitudeRef, exifData.gpSLongitudeRef) &&
+    ObjectUtils.equals(this.gpSMapDatum, exifData.gpSMapDatum) &&
+    ObjectUtils.equals(this.gpSMeasureMode, exifData.gpSMeasureMode) &&
+    ObjectUtils.equals(this.gpSProcessingMethod, exifData.gpSProcessingMethod) &&
+    ObjectUtils.equals(this.gpSSatellites, exifData.gpSSatellites) &&
+    ObjectUtils.equals(this.gpSSpeed, exifData.gpSSpeed) &&
+    ObjectUtils.equals(this.gpSSpeedRef, exifData.gpSSpeedRef) &&
+    ObjectUtils.equals(this.gpSStatus, exifData.gpSStatus) &&
+    ObjectUtils.equals(this.gpSTimestamp, exifData.gpSTimestamp) &&
+    ObjectUtils.equals(this.gpSTrack, exifData.gpSTrack) &&
+    ObjectUtils.equals(this.gpSTrackRef, exifData.gpSTrackRef) &&
+    ObjectUtils.equals(this.gpSVersionID, exifData.gpSVersionID) &&
+    ObjectUtils.equals(this.gainControl, exifData.gainControl) &&
+    ObjectUtils.equals(this.gamma, exifData.gamma) &&
+    ObjectUtils.equals(this.isOSpeed, exifData.isOSpeed) &&
+    ObjectUtils.equals(this.isOSpeedLatitudeYYY, exifData.isOSpeedLatitudeYYY) &&
+    ObjectUtils.equals(this.isOSpeedLatitudeZZZ, exifData.isOSpeedLatitudeZZZ) &&
+    ObjectUtils.equals(this.photographicSensitivity, exifData.photographicSensitivity) &&
+    ObjectUtils.equals(this.imageUniqueID, exifData.imageUniqueID) &&
+    ObjectUtils.equals(this.lensMake, exifData.lensMake) &&
+    ObjectUtils.equals(this.lensModel, exifData.lensModel) &&
+    ObjectUtils.equals(this.lensSerialNumber, exifData.lensSerialNumber) &&
+    ObjectUtils.equals(this.lensSpecification, exifData.lensSpecification) &&
+    ObjectUtils.equals(this.lightSource, exifData.lightSource) &&
+    ObjectUtils.equals(this.makerNoteRawData, exifData.makerNoteRawData) &&
+    ObjectUtils.equals(this.maxApertureValue, exifData.maxApertureValue) &&
+    ObjectUtils.equals(this.meteringMode, exifData.meteringMode) &&
+    ObjectUtils.equals(this.OECF, exifData.OECF) &&
+    ObjectUtils.equals(this.pixelXDimension, exifData.pixelXDimension) &&
+    ObjectUtils.equals(this.pixelYDimension, exifData.pixelYDimension) &&
+    ObjectUtils.equals(this.recommendedExposureIndex, exifData.recommendedExposureIndex) &&
+    ObjectUtils.equals(this.relatedSoundFile, exifData.relatedSoundFile) &&
+    ObjectUtils.equals(this.saturation, exifData.saturation) &&
+    ObjectUtils.equals(this.sceneCaptureType, exifData.sceneCaptureType) &&
+    ObjectUtils.equals(this.sceneType, exifData.sceneType) &&
+    ObjectUtils.equals(this.sensingMethod, exifData.sensingMethod) &&
+    ObjectUtils.equals(this.sensitivityType, exifData.sensitivityType) &&
+    ObjectUtils.equals(this.sharpness, exifData.sharpness) &&
+    ObjectUtils.equals(this.shutterSpeedValue, exifData.shutterSpeedValue) &&
+    ObjectUtils.equals(this.spatialFrequencyResponse, exifData.spatialFrequencyResponse) &&
+    ObjectUtils.equals(this.spectralSensitivity, exifData.spectralSensitivity) &&
+    ObjectUtils.equals(this.standardOutputSensitivity, exifData.standardOutputSensitivity) &&
+    ObjectUtils.equals(this.subjectArea, exifData.subjectArea) &&
+    ObjectUtils.equals(this.subjectDistance, exifData.subjectDistance) &&
+    ObjectUtils.equals(this.subjectDistanceRange, exifData.subjectDistanceRange) &&
+    ObjectUtils.equals(this.subjectLocation, exifData.subjectLocation) &&
+    ObjectUtils.equals(this.subsecTime, exifData.subsecTime) &&
+    ObjectUtils.equals(this.subsecTimeDigitized, exifData.subsecTimeDigitized) &&
+    ObjectUtils.equals(this.subsecTimeOriginal, exifData.subsecTimeOriginal) &&
+    ObjectUtils.equals(this.userComment, exifData.userComment) &&
+    ObjectUtils.equals(this.whiteBalance, exifData.whiteBalance) &&
+    ObjectUtils.equals(this.whitePoint, exifData.whitePoint);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apertureValue, bodySerialNumber, brightnessValue, cfAPattern, cameraOwnerName, colorSpace, componentsConfiguration, compressedBitsPerPixel, contrast, customRendered, dateTimeDigitized, dateTimeOriginal, deviceSettingDescription, digitalZoomRatio, exifVersion, exposureBiasValue, exposureIndex, exposureMode, exposureProgram, exposureTime, fnumber, fileSource, flash, flashEnergy, flashpixVersion, focalLength, focalLengthIn35MmFilm, focalPlaneResolutionUnit, focalPlaneXResolution, focalPlaneYResolution, gpSAltitude, gpSAltitudeRef, gpSAreaInformation, GPSDOP, gpSDestBearing, gpSDestBearingRef, gpSDestDistance, gpSDestDistanceRef, gpSDestLatitude, gpSDestLatitudeRef, gpSDestLongitude, gpSDestLongitudeRef, gpSDifferential, gpSImgDirection, gpSImgDirectionRef, gpSDateStamp, gpSLatitude, gpSLatitudeRef, gpSLongitude, gpSLongitudeRef, gpSMapDatum, gpSMeasureMode, gpSProcessingMethod, gpSSatellites, gpSSpeed, gpSSpeedRef, gpSStatus, gpSTimestamp, gpSTrack, gpSTrackRef, gpSVersionID, gainControl, gamma, isOSpeed, isOSpeedLatitudeYYY, isOSpeedLatitudeZZZ, photographicSensitivity, imageUniqueID, lensMake, lensModel, lensSerialNumber, lensSpecification, lightSource, makerNoteRawData, maxApertureValue, meteringMode, OECF, pixelXDimension, pixelYDimension, recommendedExposureIndex, relatedSoundFile, saturation, sceneCaptureType, sceneType, sensingMethod, sensitivityType, sharpness, shutterSpeedValue, spatialFrequencyResponse, spectralSensitivity, standardOutputSensitivity, subjectArea, subjectDistance, subjectDistanceRange, subjectLocation, subsecTime, subsecTimeDigitized, subsecTimeOriginal, userComment, whiteBalance, whitePoint);
+    return ObjectUtils.hashCodeMulti(apertureValue, bodySerialNumber, brightnessValue, cfAPattern, cameraOwnerName, colorSpace, componentsConfiguration, compressedBitsPerPixel, contrast, customRendered, dateTimeDigitized, dateTimeOriginal, deviceSettingDescription, digitalZoomRatio, exifVersion, exposureBiasValue, exposureIndex, exposureMode, exposureProgram, exposureTime, fnumber, fileSource, flash, flashEnergy, flashpixVersion, focalLength, focalLengthIn35MmFilm, focalPlaneResolutionUnit, focalPlaneXResolution, focalPlaneYResolution, gpSAltitude, gpSAltitudeRef, gpSAreaInformation, GPSDOP, gpSDestBearing, gpSDestBearingRef, gpSDestDistance, gpSDestDistanceRef, gpSDestLatitude, gpSDestLatitudeRef, gpSDestLongitude, gpSDestLongitudeRef, gpSDifferential, gpSImgDirection, gpSImgDirectionRef, gpSDateStamp, gpSLatitude, gpSLatitudeRef, gpSLongitude, gpSLongitudeRef, gpSMapDatum, gpSMeasureMode, gpSProcessingMethod, gpSSatellites, gpSSpeed, gpSSpeedRef, gpSStatus, gpSTimestamp, gpSTrack, gpSTrackRef, gpSVersionID, gainControl, gamma, isOSpeed, isOSpeedLatitudeYYY, isOSpeedLatitudeZZZ, photographicSensitivity, imageUniqueID, lensMake, lensModel, lensSerialNumber, lensSpecification, lightSource, makerNoteRawData, maxApertureValue, meteringMode, OECF, pixelXDimension, pixelYDimension, recommendedExposureIndex, relatedSoundFile, saturation, sceneCaptureType, sceneType, sensingMethod, sensitivityType, sharpness, shutterSpeedValue, spatialFrequencyResponse, spectralSensitivity, standardOutputSensitivity, subjectArea, subjectDistance, subjectDistanceRange, subjectLocation, subsecTime, subsecTimeDigitized, subsecTimeOriginal, userComment, whiteBalance, whitePoint);
   }
 
 

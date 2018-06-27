@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BmpApiTests.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,11 +47,6 @@ public class BmpApiTests extends ApiTester {
 
 	private GetImageBmpRequest getImageBmpRequest;
 	private PostImageBmpRequest postImageBmpRequest;
-	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
 	
     /**
      * Test operation: Update parameters of existing BMP image.
@@ -168,9 +163,9 @@ public class BmpApiTests extends ApiTester {
 	private void getImageBmpPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getBmpProperties());
-        Assert.assertEquals(resultProperties.getBitsPerPixel(), getImageBmpRequest.bitsPerPixel);
-        Assert.assertEquals((int)Math.ceil(resultProperties.getVerticalResolution()), (int)getImageBmpRequest.verticalResolution);
-        Assert.assertEquals((int)Math.ceil(resultProperties.getHorizontalResolution()), (int)getImageBmpRequest.horizontalResolution);
+        Assert.assertEquals(getImageBmpRequest.bitsPerPixel, resultProperties.getBitsPerPixel());
+        Assert.assertEquals((int)getImageBmpRequest.verticalResolution, (int)Math.ceil(resultProperties.getVerticalResolution()));
+        Assert.assertEquals((int)getImageBmpRequest.horizontalResolution, (int)Math.ceil(resultProperties.getHorizontalResolution()));
 
         Assert.assertNotNull(originalProperties.getBmpProperties());
         Assert.assertEquals(originalProperties.getBmpProperties().getCompression(), resultProperties.getBmpProperties().getCompression());
@@ -186,9 +181,9 @@ public class BmpApiTests extends ApiTester {
 	private void postImageBmpPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getBmpProperties());
-        Assert.assertEquals(resultProperties.getBitsPerPixel(), postImageBmpRequest.bitsPerPixel);
-        Assert.assertEquals((int)Math.ceil(resultProperties.getVerticalResolution()), (int)postImageBmpRequest.verticalResolution);
-        Assert.assertEquals((int)Math.ceil(resultProperties.getHorizontalResolution()), (int)postImageBmpRequest.horizontalResolution);
+        Assert.assertEquals(postImageBmpRequest.bitsPerPixel, resultProperties.getBitsPerPixel());
+        Assert.assertEquals((int)postImageBmpRequest.verticalResolution, (int)Math.ceil(resultProperties.getVerticalResolution()));
+        Assert.assertEquals((int)postImageBmpRequest.horizontalResolution, (int)Math.ceil(resultProperties.getHorizontalResolution()));
 
         Assert.assertNotNull(originalProperties.getBmpProperties());
         Assert.assertEquals(originalProperties.getBmpProperties().getCompression(), resultProperties.getBmpProperties().getCompression());

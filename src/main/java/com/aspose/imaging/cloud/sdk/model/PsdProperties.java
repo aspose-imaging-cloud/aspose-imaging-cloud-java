@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PsdProperties.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,10 +27,9 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -54,14 +53,13 @@ public class PsdProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the bits per channel.
    * @return bitsPerChannel
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the bits per channel.")
   public Integer getBitsPerChannel() {
     return bitsPerChannel;
-  }
+  }  
 
   public void setBitsPerChannel(Integer bitsPerChannel) {
     this.bitsPerChannel = bitsPerChannel;
@@ -72,14 +70,13 @@ public class PsdProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the channels count.
    * @return channelsCount
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the channels count.")
   public Integer getChannelsCount() {
     return channelsCount;
-  }
+  }  
 
   public void setChannelsCount(Integer channelsCount) {
     this.channelsCount = channelsCount;
@@ -90,14 +87,13 @@ public class PsdProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the color mode.
    * @return colorMode
   **/
-  @ApiModelProperty(value = "Gets or sets the color mode.")
   public String getColorMode() {
     return colorMode;
-  }
+  }  
 
   public void setColorMode(String colorMode) {
     this.colorMode = colorMode;
@@ -108,14 +104,13 @@ public class PsdProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the compression.
    * @return compression
   **/
-  @ApiModelProperty(value = "Gets or sets the compression.")
   public String getCompression() {
     return compression;
-  }
+  }  
 
   public void setCompression(String compression) {
     this.compression = compression;
@@ -124,22 +119,22 @@ public class PsdProperties {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     PsdProperties psdProperties = (PsdProperties) o;
-    return Objects.equals(this.bitsPerChannel, psdProperties.bitsPerChannel) &&
-        Objects.equals(this.channelsCount, psdProperties.channelsCount) &&
-        Objects.equals(this.colorMode, psdProperties.colorMode) &&
-        Objects.equals(this.compression, psdProperties.compression);
+    return ObjectUtils.equals(this.bitsPerChannel, psdProperties.bitsPerChannel) &&
+    ObjectUtils.equals(this.channelsCount, psdProperties.channelsCount) &&
+    ObjectUtils.equals(this.colorMode, psdProperties.colorMode) &&
+    ObjectUtils.equals(this.compression, psdProperties.compression);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bitsPerChannel, channelsCount, colorMode, compression);
+    return ObjectUtils.hashCodeMulti(bitsPerChannel, channelsCount, colorMode, compression);
   }
 
 

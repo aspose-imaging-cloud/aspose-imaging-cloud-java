@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ImageUpdateApiTests.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -51,11 +51,6 @@ public class UpdateImageApiTests extends ApiTester {
 	private GetImageUpdateRequest getImageUpdateRequest;
 	private PostImageUpdateRequest postImageUpdateRequest;
 	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-
     /**
      * Test operation: Update an existing image.
      * 
@@ -67,36 +62,8 @@ public class UpdateImageApiTests extends ApiTester {
      */
     @Test
 	@Parameters({
-		".bmp, true,", 
-		".bmp, false,",
-		".dng, true,", 
-		".dng, false,",
-		//".gif, true,", TODO: enable after IMAGINGCLOUD-51 is resolved
-		//".gif, false,",
-		".png, true,", 
-		".png, false,",
 		".jpg, true,", 
 		".jpg, false,",
-		".jpeg, true,", 
-		".jpeg, false,",
-		".tif, true,", 
-		".tif, false,",
-		".tiff, true,", 
-		".tiff, false,",
-		".webp, true,", 
-		".webp, false,",
-		".j2k, true,", 
-		".j2k, false,",
-		".jpf, true,", 
-		".jpf, false,",
-		".jpx, true,", 
-		".jpx, false,",
-		".jpm, true,", 
-		".jpm, false,",
-		".mj2, true,", 
-		".mj2, false,",
-		".jpg2, true,", 
-		".jpg2, false,"
 		})
     public void getImageUpdateTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
         String name = null;
@@ -170,36 +137,8 @@ public class UpdateImageApiTests extends ApiTester {
      */
     @Test
 	@Parameters({
-		".bmp, true,", 
-		".bmp, false,",
-		".dng, true,", 
-		".dng, false,",
-		//".gif, true,", TODO: enable after IMAGINGCLOUD-51 is resolved
-		//".gif, false,",
-		".png, true,", 
-		".png, false,",
 		".jpg, true,", 
 		".jpg, false,",
-		".jpeg, true,", 
-		".jpeg, false,",
-		".tif, true,", 
-		".tif, false,",
-		".tiff, true,", 
-		".tiff, false,",
-		".webp, true,", 
-		".webp, false,",
-		".j2k, true,", 
-		".j2k, false,",
-		".jpf, true,", 
-		".jpf, false,",
-		".jpx, true,", 
-		".jpx, false,",
-		".jpm, true,", 
-		".jpm, false,",
-		".mj2, true,", 
-		".mj2, false,",
-		".jpg2, true,", 
-		".jpg2, false,"
 		})
     public void postImageUpdateTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
     	byte[] imageData = null;
@@ -299,8 +238,8 @@ public class UpdateImageApiTests extends ApiTester {
 	 */
 	private void getImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
-		Assert.assertEquals(resultProperties.getWidth(), getImageUpdateRequest.rectHeight);
-        Assert.assertEquals(resultProperties.getHeight(), getImageUpdateRequest.rectWidth);
+		Assert.assertEquals(getImageUpdateRequest.rectHeight, resultProperties.getWidth());
+        Assert.assertEquals(getImageUpdateRequest.rectWidth, resultProperties.getHeight());
 	}
 	
 	/**
@@ -310,7 +249,7 @@ public class UpdateImageApiTests extends ApiTester {
 	 */
 	private void postImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
-		Assert.assertEquals(resultProperties.getWidth(), postImageUpdateRequest.rectHeight);
-        Assert.assertEquals(resultProperties.getHeight(), postImageUpdateRequest.rectWidth);
+		Assert.assertEquals(postImageUpdateRequest.rectHeight, resultProperties.getWidth());
+        Assert.assertEquals(postImageUpdateRequest.rectWidth, resultProperties.getHeight());
 	}
 }

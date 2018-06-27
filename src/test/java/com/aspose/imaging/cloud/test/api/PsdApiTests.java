@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PsdApiTests.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,11 +47,6 @@ public class PsdApiTests extends ApiTester {
 
 	private GetImagePsdRequest getImagePsdRequest;
 	private PostImagePsdRequest postImagePsdRequest;
-	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
 	
     /**
      * Test operation: Update parameters of existing PSD image.
@@ -166,8 +161,8 @@ public class PsdApiTests extends ApiTester {
 	private void getImagePsdPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getPsdProperties());
-        Assert.assertEquals(resultProperties.getPsdProperties().getCompression().toLowerCase(), getImagePsdRequest.compressionMethod);
-        Assert.assertEquals(resultProperties.getPsdProperties().getChannelsCount(), getImagePsdRequest.channelsCount);
+        Assert.assertEquals(getImagePsdRequest.compressionMethod, resultProperties.getPsdProperties().getCompression().toLowerCase());
+        Assert.assertEquals(getImagePsdRequest.channelsCount, resultProperties.getPsdProperties().getChannelsCount());
 
         Assert.assertNotNull(originalProperties.getPsdProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
@@ -183,8 +178,8 @@ public class PsdApiTests extends ApiTester {
 	private void postImagePsdPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getPsdProperties());
-        Assert.assertEquals(resultProperties.getPsdProperties().getCompression().toLowerCase(), postImagePsdRequest.compressionMethod);
-        Assert.assertEquals(resultProperties.getPsdProperties().getChannelsCount(), postImagePsdRequest.channelsCount);
+		Assert.assertEquals(postImagePsdRequest.compressionMethod, resultProperties.getPsdProperties().getCompression().toLowerCase());
+        Assert.assertEquals(postImagePsdRequest.channelsCount, resultProperties.getPsdProperties().getChannelsCount());
 
         Assert.assertNotNull(originalProperties.getPsdProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());

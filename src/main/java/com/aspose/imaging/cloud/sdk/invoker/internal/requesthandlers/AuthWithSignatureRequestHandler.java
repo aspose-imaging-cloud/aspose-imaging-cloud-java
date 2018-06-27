@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="AuthWithSignatureRequestHandler.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -106,6 +106,7 @@ public class AuthWithSignatureRequestHandler implements IRequestHandler
     private String sign(String url)
     {
     	try {
+    		url = url.replaceAll("(?<!(http:|https:))[//]+", "/");
             Mac mac = Mac.getInstance("HmacSHA1");
             mac.init(new SecretKeySpec(this.configuration.AppKey.getBytes(), "HmacSHA1"));
             
@@ -115,7 +116,7 @@ public class AuthWithSignatureRequestHandler implements IRequestHandler
                 signature = signature.substring(0, signature.length() - 1);
             }
 
-            return URLEncoder.encode(signature, "UTF-8");
+            return String.format("%s&signature=%s", url, URLEncoder.encode(signature, "UTF-8"));
 			
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BmpProperties.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,10 +27,9 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -45,14 +44,13 @@ public class BmpProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets compression of bitmap.
    * @return compression
   **/
-  @ApiModelProperty(value = "Gets or sets compression of bitmap.")
   public String getCompression() {
     return compression;
-  }
+  }  
 
   public void setCompression(String compression) {
     this.compression = compression;
@@ -61,19 +59,19 @@ public class BmpProperties {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     BmpProperties bmpProperties = (BmpProperties) o;
-    return Objects.equals(this.compression, bmpProperties.compression);
+    return ObjectUtils.equals(this.compression, bmpProperties.compression);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(compression);
+    return ObjectUtils.hashCodeMulti(compression);
   }
 
 

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PngApiTests.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,11 +47,6 @@ public class PngApiTests extends ApiTester {
 
 	private GetImagePngRequest getImagePngRequest;
 	private PostImagePngRequest postImagePngRequest;
-	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
 	
     /**
      * Test operation: Update parameters of existing PNG image.
@@ -162,8 +157,8 @@ public class PngApiTests extends ApiTester {
 	private void getImagePngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-		Assert.assertEquals(resultProperties.getWidth(), originalProperties.getWidth());
-        Assert.assertEquals(resultProperties.getHeight(), originalProperties.getHeight());
+		Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
+        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
         
         // TODO: this should be uncommented when IMAGINGCLOUD-48 is done
         //Assert.assertEquals(originalProperties.getBitsPerPixel(), resultProperties.getBitsPerPixel());
@@ -178,6 +173,10 @@ public class PngApiTests extends ApiTester {
 	 */
 	private void postImagePngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
 	{
+		Assert.assertNotNull(resultProperties.getPngProperties());
+		Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
+        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
+		
 		// TODO: this should be uncommented when IMAGINGCLOUD-48 is done
         //Assert.assertEquals(originalProperties.getBitsPerPixel(), resultProperties.getBitsPerPixel());
         Assert.assertEquals(originalProperties.getHorizontalResolution(), resultProperties.getHorizontalResolution());
