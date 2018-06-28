@@ -38,13 +38,17 @@ public class PostSearchContextFindByTagsRequest
     * @param searchContextId The search context identifier.
     * @param similarityThreshold The similarity threshold.
     * @param maxCount The maximum count.
+    * @param folder The folder.
+    * @param storage The storage.
 	**/
-    public PostSearchContextFindByTagsRequest(String tags, String searchContextId, Double similarityThreshold, Integer maxCount)             
+    public PostSearchContextFindByTagsRequest(String tags, String searchContextId, Double similarityThreshold, Integer maxCount, String folder, String storage)             
     {
         this.tags = tags;
         this.searchContextId = searchContextId;
         this.similarityThreshold = similarityThreshold;
         this.maxCount = maxCount;
+        this.folder = folder;
+        this.storage = storage;
     }
 		
     /**
@@ -66,4 +70,14 @@ public class PostSearchContextFindByTagsRequest
     * The maximum count.
     **/
     public Integer maxCount;
+
+    /**
+    * The folder.
+    **/
+    public String folder;
+
+    /**
+    * The storage.
+    **/
+    public String storage;
 }

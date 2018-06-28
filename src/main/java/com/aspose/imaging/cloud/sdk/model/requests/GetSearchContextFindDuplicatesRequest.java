@@ -36,11 +36,15 @@ public class GetSearchContextFindDuplicatesRequest
 	* Initializes a new instance of the GetSearchContextFindDuplicatesRequest class.   
     * @param searchContextId The search context identifier.
     * @param similarityThreshold The similarity threshold.
+    * @param folder The folder.
+    * @param storage The storage.
 	**/
-    public GetSearchContextFindDuplicatesRequest(String searchContextId, Double similarityThreshold)             
+    public GetSearchContextFindDuplicatesRequest(String searchContextId, Double similarityThreshold, String folder, String storage)             
     {
         this.searchContextId = searchContextId;
         this.similarityThreshold = similarityThreshold;
+        this.folder = folder;
+        this.storage = storage;
     }
 		
     /**
@@ -52,4 +56,14 @@ public class GetSearchContextFindDuplicatesRequest
     * The similarity threshold.
     **/
     public Double similarityThreshold;
+
+    /**
+    * The folder.
+    **/
+    public String folder;
+
+    /**
+    * The storage.
+    **/
+    public String storage;
 }
