@@ -174,6 +174,8 @@ public class ImagingApi
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
       
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
 	  
 	  
 	  
@@ -2208,6 +2210,8 @@ public class ImagingApi
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
       
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
 	  
 	  
 	  
@@ -2532,6 +2536,8 @@ public class ImagingApi
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
       
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
 	  
 	  
 	  
@@ -4438,6 +4444,8 @@ public class ImagingApi
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
       
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "tagName", request.tagName);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
 	  
 	  
 	  if (request.imageData != null) 
@@ -4589,6 +4597,7 @@ public class ImagingApi
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
       
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imagesFolder", request.imagesFolder);
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
 	  
@@ -4676,6 +4685,8 @@ public class ImagingApi
       
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
 	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "maxCount", request.maxCount);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
 	  
 	  
 	  if (request.tags != null) 

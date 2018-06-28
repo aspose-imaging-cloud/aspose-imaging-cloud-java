@@ -43,14 +43,28 @@ public class DeleteSearchContextRequest
 	/**
 	* Initializes a new instance of the DeleteSearchContextRequest class.   
     * @param searchContextId The search context identifier.
+    * @param folder The folder.
+    * @param storage The storage.
 	**/
-    public DeleteSearchContextRequest(String searchContextId)             
+    public DeleteSearchContextRequest(String searchContextId, String folder, String storage)             
     {
         this.searchContextId = searchContextId;
+        this.folder = folder;
+        this.storage = storage;
     }
 		
     /**
     * The search context identifier.
     **/
     public String searchContextId;
+
+    /**
+    * The folder.
+    **/
+    public String folder;
+
+    /**
+    * The storage.
+    **/
+    public String storage;
 }
