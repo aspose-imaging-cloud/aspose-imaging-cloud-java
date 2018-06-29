@@ -30,7 +30,6 @@ import com.aspose.imaging.cloud.sdk.model.*;
 import com.aspose.imaging.cloud.sdk.invoker.*;
 import com.aspose.imaging.cloud.sdk.invoker.internal.*;
 import com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers.*;
-import com.aspose.imaging.cloud.sdk.model.*;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import java.io.File;
@@ -209,6 +208,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -284,6 +299,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -358,6 +389,22 @@ public class ImagingApi
 		  else if (SaaSposeResponse.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (SaaSposeResponse.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (SaaSposeResponse.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (SaaSposeResponse.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (SaaSposeResponse.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -445,6 +492,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -542,6 +605,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -614,6 +693,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -685,6 +780,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -783,6 +894,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -867,6 +994,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -941,6 +1084,22 @@ public class ImagingApi
 		  else if (ImagingResponse.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (ImagingResponse.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (ImagingResponse.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (ImagingResponse.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (ImagingResponse.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -1020,6 +1179,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -1098,6 +1273,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -1172,6 +1363,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -1243,6 +1450,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -1316,6 +1539,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -1385,6 +1624,22 @@ public class ImagingApi
 		  else if (ImagingResponse.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (ImagingResponse.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (ImagingResponse.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (ImagingResponse.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (ImagingResponse.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -1459,6 +1714,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -1546,6 +1817,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -1627,6 +1914,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -1702,6 +2005,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -1791,6 +2110,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -1903,6 +2238,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -1994,6 +2345,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -2092,6 +2459,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -2170,6 +2553,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (ImageFeatures.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (ImageFeatures.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (ImageFeatures.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (ImageFeatures.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -2244,6 +2643,22 @@ public class ImagingApi
 		  else if (ImageDuplicatesSet.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (ImageDuplicatesSet.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (ImageDuplicatesSet.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (ImageDuplicatesSet.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (ImageDuplicatesSet.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -2329,6 +2744,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (SearchResultsSet.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -2403,6 +2834,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -2479,6 +2926,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (ImageFeatures.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (ImageFeatures.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (ImageFeatures.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (ImageFeatures.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -2548,6 +3011,22 @@ public class ImagingApi
 		  else if (SearchContextStatus.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (SearchContextStatus.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (SearchContextStatus.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (SearchContextStatus.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (SearchContextStatus.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -2620,6 +3099,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -2686,6 +3181,22 @@ public class ImagingApi
 		  else if (SearchContextStatus.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (SearchContextStatus.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (SearchContextStatus.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (SearchContextStatus.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (SearchContextStatus.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -2774,6 +3285,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -2872,6 +3399,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -2945,6 +3488,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -3017,6 +3576,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -3116,6 +3691,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -3194,6 +3785,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -3274,6 +3881,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -3349,6 +3972,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -3422,6 +4061,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -3494,6 +4149,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -3569,6 +4240,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -3657,6 +4344,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -3739,6 +4442,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -3815,6 +4534,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -3905,6 +4640,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -4018,6 +4769,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -4110,6 +4877,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -4209,6 +4992,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -4286,6 +5085,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -4369,6 +5184,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -4447,7 +5278,23 @@ public class ImagingApi
 		  else if (SearchResultsSet.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }		 
+		  }
+		  else if (SearchResultsSet.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -4522,6 +5369,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -4610,6 +5473,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (SearchResultsSet.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (SearchResultsSet.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -4684,6 +5563,22 @@ public class ImagingApi
 		  else if (SaaSposeResponse.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (SaaSposeResponse.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (SaaSposeResponse.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (SaaSposeResponse.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (SaaSposeResponse.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
@@ -4763,6 +5658,22 @@ public class ImagingApi
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
 		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
+		  }
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
@@ -4840,6 +5751,22 @@ public class ImagingApi
 		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
+		  }
+		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
+		  }
+		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
+		  {
+			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
 		  }
 		  else
 		  {
