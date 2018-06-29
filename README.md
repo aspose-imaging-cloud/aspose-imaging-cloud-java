@@ -64,6 +64,9 @@ apiResponse = imagingApi.postImageSaveAs(postStreamRequest);
 // process resulting bytes
 responseData = apiResponse.getResponseData();
 
+// process response for AI methods (possible responses: ImageFeatures, ImageDuplicates, ImageDuplicateSet, SearchResult, SearchResultSet):
+ImageFeatures result = (ImageFeatures) apiResponse.getSaaSposeResponse();
+
 // another requests typically follow the same principles
 ```
 
