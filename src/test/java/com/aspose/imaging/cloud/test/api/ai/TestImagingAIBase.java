@@ -5,8 +5,6 @@ import com.aspose.imaging.cloud.sdk.model.SearchContextStatus;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 
-import java.nio.file.Paths;
-
 import org.apache.commons.lang.StringUtils;
 import org.junit.*;
 
@@ -35,7 +33,7 @@ public abstract class TestImagingAIBase extends ApiTester {
 	protected final static String TempFolder = "TempImagingAI";
 
 	protected static String getStoragePath(String imageName, String folder) {
-		return Paths.get((folder != null ? folder : OriginalDataFolder), imageName).toString();
+		return (folder != null ? folder : OriginalDataFolder) +  imageName;
 	}
 
 	protected static String createSearchContext() throws Exception {
