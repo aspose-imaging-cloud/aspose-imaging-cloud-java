@@ -33,6 +33,7 @@ import java.util.List;
 
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
  * Search results set.
