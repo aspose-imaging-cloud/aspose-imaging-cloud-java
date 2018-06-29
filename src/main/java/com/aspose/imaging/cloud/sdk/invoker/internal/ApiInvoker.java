@@ -345,16 +345,16 @@ public class ApiInvoker
      * @throws IOException 
      */
     private HttpURLConnection prepareRequest(String path, String method, HashMap<String, Object> formParams, 
-    		HashMap<String, String> headerParams, String body, String contentType) throws IOException
+      HashMap<String, String> headerParams, String body, String contentType) throws IOException
     {
-    	HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
-    	if (method.equals("DELETE") || method.equals("PUT") || method.equals("POST"))
-    	{   
-    		connection.setDoOutput(true);
-    	}
+     HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
+     if (method.equals("PUT") || method.equals("POST"))
+     {   
+      connection.setDoOutput(true);
+     }
         
         connection.setUseCaches(false);
-    	connection.setRequestMethod(method);
+     connection.setRequestMethod(method);
 
         byte[] formData = null;
         if (formParams.size() > 0)
@@ -367,27 +367,23 @@ public class ApiInvoker
             }
             else
             {
-            	connection.setRequestProperty("Content-Type", "multipart/form-data");
+             connection.setRequestProperty("Content-Type", "multipart/form-data");
                 formData = getMultipartFormData(formParams, "");
             }
 
             connection.setFixedLengthStreamingMode(formData.length);
         }
-        else
-        {
-        	connection.setRequestProperty("Content-Type", contentType);
-        }
 
         for (Map.Entry<String, String> headerParamsItem : this.defaultHeaderMap.entrySet())
         {
-        	connection.setRequestProperty(headerParamsItem.getKey(), headerParamsItem.getValue());
+         connection.setRequestProperty(headerParamsItem.getKey(), headerParamsItem.getValue());
         }
 
         for (Map.Entry<String, String> defaultHeaderMapItem : headerParams.entrySet())
         {
-        	if (!headerParams.containsKey(defaultHeaderMapItem.getKey()))
+         if (!headerParams.containsKey(defaultHeaderMapItem.getKey()))
             {
-            	connection.setRequestProperty(defaultHeaderMapItem.getKey(), defaultHeaderMapItem.getValue());
+             connection.setRequestProperty(defaultHeaderMapItem.getKey(), defaultHeaderMapItem.getValue());
             }
         }
         
@@ -395,9 +391,9 @@ public class ApiInvoker
         ByteArrayOutputStream streamToSend = null;
         try
         {
-        	if (method.equals("DELETE") || method.equals("PUT") || method.equals("POST"))
-        	{       		
-        		streamToSend = new ByteArrayOutputStream();
+         if (method.equals("PUT") || method.equals("POST"))
+         {         
+          streamToSend = new ByteArrayOutputStream();
 
                 if (formData != null)
                 {
@@ -406,45 +402,41 @@ public class ApiInvoker
 
                 if (body != null)
                 {
-                	byte[] bodyBytes = body.getBytes();
-                	streamToSend.write(bodyBytes, 0, bodyBytes.length);
+                 byte[] bodyBytes = body.getBytes();
+                 streamToSend.write(bodyBytes, 0, bodyBytes.length);
                 }
-        	}
-        	else if (!method.equals("GET")) 
-        	{
-        		throw new ApiException(500, "Unknown method type " + method);
-        	}
+         }
 
             for (IRequestHandler handler : this.requestHandlers)
             {
-            	handler.beforeSend(connection, streamToSend);
+             handler.beforeSend(connection, streamToSend);
             }
-
+            
             if (streamToSend != null)
             {
-	             if (streamToSend.size() > 0)
-	             {
-	            	 connection.connect();
-	                 outStream = connection.getOutputStream();
-	                 outStream.write(streamToSend.toByteArray());
-	             }
-	             else
-	             {
-	              connection.setFixedLengthStreamingMode(0);
-	             }
+             if (streamToSend.size() > 0)
+             {
+              connection.connect();
+                 outStream = connection.getOutputStream();
+                 outStream.write(streamToSend.toByteArray());
+             }
+             else
+             {
+              connection.setFixedLengthStreamingMode(0);
+             }
             }
         }
         finally
         {
             if (outStream != null)
             {
-            	outStream.flush();
-            	outStream.close();
+             outStream.flush();
+             outStream.close();
             }
             
             if (streamToSend != null)
             {
-            	streamToSend.close();
+             streamToSend.close();
             }
         }
 
