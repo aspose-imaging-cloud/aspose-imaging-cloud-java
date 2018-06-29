@@ -12,13 +12,13 @@ import org.junit.*;
 
 public abstract class TestImagingAIBase extends ApiTester {
 
-	@BeforeClass
-	public static void initTest() throws Exception {
+	@Before
+	public void initTest() throws Exception {
 		SearchContextId = createSearchContext();
 	}
 
-	@AfterClass
-	public static void finalizeTest() throws Exception {
+	@After
+	public void finalizeTest() throws Exception {
 		if (StringUtils.isNotEmpty(SearchContextId)) {
 			deleteSearchContext(SearchContextId);
 		}
@@ -28,7 +28,7 @@ public abstract class TestImagingAIBase extends ApiTester {
 		}
 	}
 
-	protected static String SearchContextId;
+	protected String SearchContextId;
 
 	protected final static String OriginalDataFolder = "ImagingAI";
 
@@ -47,11 +47,11 @@ public abstract class TestImagingAIBase extends ApiTester {
 		return status.getId();
 	}
 
-	protected static void deleteSearchContext(String searchContextId) throws Exception {
+	protected void deleteSearchContext(String searchContextId) throws Exception {
 		ImagingApi.deleteSearchContext(new DeleteSearchContextRequest(searchContextId, null, DefaultStorage));
 	}
 
-	protected static String getSearchContextStatus(String searchContextId) throws Exception {
+	protected String getSearchContextStatus(String searchContextId) throws Exception {
 		ApiResponse response = ImagingApi
 				.getSearchContextStatus(new GetSearchContextStatusRequest(SearchContextId, null, DefaultStorage));
 		SearchContextStatus status = (SearchContextStatus) response.getSaaSposeResponse();
@@ -59,11 +59,11 @@ public abstract class TestImagingAIBase extends ApiTester {
 		return status.getSearchStatus();
 	}
 
-	protected static void addImageFeaturesToSearchContext(String storageSourcePath, Boolean isFolder) throws Exception {
+	protected  void addImageFeaturesToSearchContext(String storageSourcePath, Boolean isFolder) throws Exception {
 		
 		PostSearchContextExtractImageFeaturesRequest request = isFolder 
-				  ? new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, storageSourcePath, null, null, DefaultStorage)
-				 : new  PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, null,  storageSourcePath, null,  DefaultStorage);
+				 ? new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, null,  storageSourcePath, null,  DefaultStorage)
+				 : new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, storageSourcePath, null, null, DefaultStorage);
 		  ImagingApi.postSearchContextExtractImageFeatures(request);		 
 	}
 }

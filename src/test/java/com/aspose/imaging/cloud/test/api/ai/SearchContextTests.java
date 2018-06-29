@@ -1,9 +1,10 @@
 package com.aspose.imaging.cloud.test.api.ai;
 
+import java.io.IOException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiException;
 import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
 import com.aspose.imaging.cloud.sdk.model.ImageFeatures;
@@ -28,7 +29,7 @@ public class SearchContextTests extends TestImagingAIBase {
 		Assert.assertNotNull(SearchContextId);
 	}
 
-	@Test(expected = ApiException.class)
+	@Test(expected = IOException.class)
 	public void deleteSearchContextTest() throws Exception {
 		deleteSearchContext(SearchContextId);
 
@@ -41,7 +42,7 @@ public class SearchContextTests extends TestImagingAIBase {
 		this.addImage(TestImage);
 	}
 
-	@Test(expected = ApiException.class)
+	@Test(expected = IOException.class)
 	public void deleteImageTest() throws Exception {
 		String image = TestImage;
 		this.addImage(image);
@@ -87,7 +88,7 @@ public class SearchContextTests extends TestImagingAIBase {
 	}
 
 	@Test
-	public void ExtractImageFeaturesTest() throws Exception {
+	public void extractImageFeaturesTest() throws Exception {
 		String image = TestImage;
 
 		this.addImage(image);
@@ -133,7 +134,7 @@ public class SearchContextTests extends TestImagingAIBase {
 		Assert.assertTrue(features.length > 0);
 	}
 
-	@Test(expected = ApiException.class)
+	@Test(expected = IOException.class)
 	public void deleteImageFeaturesTest() throws Exception {
 		String image = TestImage;
 		this.addImageFeatures(image);
