@@ -148,6 +148,16 @@ public abstract class ApiTester
         "psd",
         "tiff"
     };
+    
+    /**
+     * API call retry count
+     */
+    private final int retryCount = 5;
+    
+    /**
+     * API call retry time (in seconds)
+     */
+    private final int retryTime = 3;
 
     /**
      * Initializes tester class.
@@ -554,33 +564,36 @@ public abstract class ApiTester
         
         if (!StorageApi.GetIsExist(folder + "/" + inputFileName, "", storage).getFileExist().getIsExist())
         {
-        	File inputFile = new File(tempFileName);
-        	if (!inputFile.exists())
+        	File tempFile = new File(tempFileName);
+        	if (tempFile.exists())
         	{
-        		ResponseMessage downResponse = StorageApi.GetDownload(OriginalDataFolder + "/" + inputFileName, "", storage);
-                Assert.assertEquals("OK", downResponse.getStatus().toUpperCase());
-                InputStream downStream = null;
-                FileOutputStream outStream = null;
-                
-                try {
-                     outStream = new FileOutputStream(tempFileName);
-                     outStream.write(StreamHelper.readAsBytes(downResponse.getInputStream()));
-                     
-    			} finally {
-    				if (outStream != null)
-    				{
-    					outStream.close();
-    				}
-    				
-    				if (downStream != null)
-    				{
-    					downStream.close();
-    				}
-    			}
+        		tempFile.delete();
         	}
+        	
+        	ResponseMessage downResponse = StorageApi.GetDownload(OriginalDataFolder + "/" + inputFileName, "", storage);
+            Assert.assertEquals("OK", downResponse.getStatus().toUpperCase());
+            InputStream downStream = null;
+            FileOutputStream outStream = null;
+            
+            try {
+                 outStream = new FileOutputStream(tempFileName);
+                 outStream.write(StreamHelper.readAsBytes(downResponse.getInputStream()));
+                 
+			} finally {
+				if (outStream != null)
+				{
+					outStream.close();
+				}
+				
+				if (downStream != null)
+				{
+					downStream.close();
+				}
+			}
         	
             ResponseMessage putResponse = StorageApi.PutCreate(folder + "/" + inputFileName, "", storage, new File(tempFileName));
             Assert.assertEquals("OK", putResponse.getStatus().toUpperCase());
+            Assert.assertTrue(StorageApi.GetIsExist(folder + "/" + inputFileName, "", storage).getFileExist().getIsExist());
         }
 
         Boolean passed = false;
@@ -610,7 +623,7 @@ public abstract class ApiTester
             }
 
             long referenceLength = referenceInfo.getSize();
-            long responseLength = invokeRequestFunc.call();
+            long responseLength = this.invokeRequestWithRetry(invokeRequestFunc, this.retryCount);
             
             if (saveResultToStorage)
             {
@@ -627,6 +640,7 @@ public abstract class ApiTester
                 ImagingResponse resultProperties =
                     ImagingApi.getImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage)).getImagingResponse();
                 Assert.assertNotNull(resultProperties);
+                Assert.assertTrue(StorageApi.GetIsExist(folder + "/" + inputFileName, "", storage).getFileExist().getIsExist());
                 ImagingResponse originalProperties =
                     ImagingApi.getImageProperties(new GetImagePropertiesRequest(inputFileName, folder, storage)).getImagingResponse();
                 Assert.assertNotNull(originalProperties);
@@ -662,6 +676,35 @@ public abstract class ApiTester
             }
 
             System.out.println("Test passed: " + passed);
+        }
+    }
+    
+    /**
+     * Invokes test request with attempts to retry on fail.
+     * @param invokeRequestFunc Request.
+     * @param currentRetryCount Retry count that's left.
+     * @return Result of the request invocation.
+     * @throws Exception
+     */
+    private long invokeRequestWithRetry(Callable<Long> invokeRequestFunc, int currentRetryCount) throws Exception
+    {
+    	try
+        {
+            return invokeRequestFunc.call();
+        }
+        catch (java.lang.reflect.InvocationTargetException exception)
+        {
+        	if (--currentRetryCount > 0)
+        	{
+        		Thread.sleep(this.retryTime * 1000);
+            	System.out.println("Retrying request invocation");
+        		return this.invokeRequestWithRetry(invokeRequestFunc, currentRetryCount);
+        	}
+        	else
+        	{
+        		System.out.println(exception.getCause().getStackTrace().toString());
+        		throw exception;
+        	}
         }
     }
 }
