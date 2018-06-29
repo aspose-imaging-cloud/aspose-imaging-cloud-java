@@ -64,11 +64,14 @@ apiResponse = imagingApi.postImageSaveAs(postStreamRequest);
 // process resulting bytes
 responseData = apiResponse.getResponseData();
 
+// process response for AI methods (possible responses: ImageFeatures, ImageDuplicates, ImageDuplicateSet, SearchResult, SearchResultSet):
+ImageFeatures result = (ImageFeatures) apiResponse.getSaaSposeResponse();
+
 // another requests typically follow the same principles
 ```
 
 # Tests 
-Tests are intended for internal usage only.
+Tests from this repo are intended for internal usage only.
 
 # Licensing
 All Aspose.Imaging for Cloud SDKs, helper scripts and templates are licensed under [MIT License](LICENSE).

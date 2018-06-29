@@ -184,9 +184,8 @@ public class ApiInvoker
             for (Map.Entry<String, Object> param : postParameters.entrySet())
             {
                 if (needsClrf)
-                {
-                	ByteBuffer clrfBytes = utf8.encode("\r\n");
-                    formDataStream.write(clrfBytes.array(), 0, clrfBytes.position());
+                {                	
+                    WriteStringToStream(formDataStream, "\r\n", utf8);
                 }
 
                 needsClrf = true;
@@ -201,8 +200,8 @@ public class ApiInvoker
                             boundary,
                             param.getKey(),
                             fileInfo.MimeType);
-                    ByteBuffer postBytes = utf8.encode(postData);
-                    formDataStream.write(postBytes.array(), 0, postBytes.position());
+                   
+                    WriteStringToStream(formDataStream, postData, utf8);
 
                     // Write the file data directly to the Stream, rather than serializing it to a String.
                     formDataStream.write(fileInfo.file, 0, fileInfo.file.length);
@@ -225,15 +224,15 @@ public class ApiInvoker
                             boundary,
                             param.getKey(),
                             StringData);
-                    ByteBuffer postBytes = utf8.encode(postData);
-                    formDataStream.write(postBytes.array(), 0, postBytes.position());
+                   
+                    WriteStringToStream(formDataStream, postData, utf8);
                 }
             }
 
             // Add the end of the request.  Start with a newline
-            String footer = "\r\n--" + boundary + "--\r\n";
-            ByteBuffer footerBytes = utf8.encode(footer);
-            formDataStream.write(footerBytes.array(), 0, footerBytes.position());
+            String footer = "\r\n--" + boundary + "--\r\n";             
+           
+            WriteStringToStream(formDataStream, footer, utf8);
         }
         else
         {
@@ -257,15 +256,21 @@ public class ApiInvoker
                     else
                     {
                         postData = (String)paramValue;
-                    }
-
-                    ByteBuffer postBytes = utf8.encode(postData);
-                    formDataStream.write(postBytes.array(), 0, postBytes.position());
+                    }   
+                    
+                    WriteStringToStream(formDataStream, postData, utf8);
                 }
             }
         }
 
         return formDataStream.toByteArray();
+    }
+    
+    private static void WriteStringToStream(ByteArrayOutputStream formDataStream, String data, Charset charset)
+    {
+    	 ByteBuffer postBytes = charset.encode(data);
+    	 byte[] bytesArray = postBytes.array();
+         formDataStream.write(bytesArray, 0, bytesArray.length);
     }
 
     /**
@@ -442,7 +447,7 @@ public class ApiInvoker
 
         return connection;
     }
-
+    
     /**
      * Reads the response.
      * @param client The client.

@@ -37,12 +37,16 @@ public class PostSearchContextAddTagRequest
     * @param imageData Input image
     * @param searchContextId The search context identifier.
     * @param tagName The tag.
+    * @param folder The folder.
+    * @param storage The storage.
 	**/
-    public PostSearchContextAddTagRequest(byte[] imageData, String searchContextId, String tagName)             
+    public PostSearchContextAddTagRequest(byte[] imageData, String searchContextId, String tagName, String folder, String storage)             
     {
         this.imageData = imageData;
         this.searchContextId = searchContextId;
         this.tagName = tagName;
+        this.folder = folder;
+        this.storage = storage;
     }
 		
     /**
@@ -59,4 +63,14 @@ public class PostSearchContextAddTagRequest
     * The tag.
     **/
     public String tagName;
+
+    /**
+    * The folder.
+    **/
+    public String folder;
+
+    /**
+    * The storage.
+    **/
+    public String storage;
 }
