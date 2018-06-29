@@ -342,19 +342,19 @@ public class ApiInvoker
      * @param body The body.
      * @param contentType Type of the content.
      * @return Prepared request.
-     * @throws IOException 
+     * @throws Exception 
      */
     private HttpURLConnection prepareRequest(String path, String method, HashMap<String, Object> formParams, 
-      HashMap<String, String> headerParams, String body, String contentType) throws IOException
+    		HashMap<String, String> headerParams, String body, String contentType) throws Exception
     {
-     HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
-     if (method.equals("PUT") || method.equals("POST"))
-     {   
-      connection.setDoOutput(true);
-     }
+    	HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
+    	if (method.equals("PUT") || method.equals("POST"))
+    	{   
+    		connection.setDoOutput(true);
+    	}
         
         connection.setUseCaches(false);
-     connection.setRequestMethod(method);
+    	connection.setRequestMethod(method);
 
         byte[] formData = null;
         if (formParams.size() > 0)
@@ -367,7 +367,7 @@ public class ApiInvoker
             }
             else
             {
-             connection.setRequestProperty("Content-Type", "multipart/form-data");
+            	connection.setRequestProperty("Content-Type", "multipart/form-data");
                 formData = getMultipartFormData(formParams, "");
             }
 
@@ -376,14 +376,14 @@ public class ApiInvoker
 
         for (Map.Entry<String, String> headerParamsItem : this.defaultHeaderMap.entrySet())
         {
-         connection.setRequestProperty(headerParamsItem.getKey(), headerParamsItem.getValue());
+        	connection.setRequestProperty(headerParamsItem.getKey(), headerParamsItem.getValue());
         }
 
         for (Map.Entry<String, String> defaultHeaderMapItem : headerParams.entrySet())
         {
-         if (!headerParams.containsKey(defaultHeaderMapItem.getKey()))
+        	if (!headerParams.containsKey(defaultHeaderMapItem.getKey()))
             {
-             connection.setRequestProperty(defaultHeaderMapItem.getKey(), defaultHeaderMapItem.getValue());
+            	connection.setRequestProperty(defaultHeaderMapItem.getKey(), defaultHeaderMapItem.getValue());
             }
         }
         
@@ -391,9 +391,9 @@ public class ApiInvoker
         ByteArrayOutputStream streamToSend = null;
         try
         {
-         if (method.equals("PUT") || method.equals("POST"))
-         {         
-          streamToSend = new ByteArrayOutputStream();
+        	if (method.equals("PUT") || method.equals("POST"))
+        	{       		
+        		streamToSend = new ByteArrayOutputStream();
 
                 if (formData != null)
                 {
@@ -402,47 +402,52 @@ public class ApiInvoker
 
                 if (body != null)
                 {
-                 byte[] bodyBytes = body.getBytes();
-                 streamToSend.write(bodyBytes, 0, bodyBytes.length);
+                	byte[] bodyBytes = body.getBytes();
+                	streamToSend.write(bodyBytes, 0, bodyBytes.length);
                 }
-         }
+        	}
 
             for (IRequestHandler handler : this.requestHandlers)
             {
-             handler.beforeSend(connection, streamToSend);
+            	handler.beforeSend(connection, streamToSend);
             }
             
+            connection.setReadTimeout(300000);
             if (streamToSend != null)
             {
-             if (streamToSend.size() > 0)
-             {
-              connection.connect();
-                 outStream = connection.getOutputStream();
-                 outStream.write(streamToSend.toByteArray());
-             }
-             else
-             {
-              connection.setFixedLengthStreamingMode(0);
-             }
+            	if (streamToSend.size() > 0)
+            	{
+            		try {
+            			connection.connect();
+            			outStream = connection.getOutputStream();
+                    	outStream.write(streamToSend.toByteArray());
+					} catch (Exception e) {
+						e.printStackTrace();
+						throw e;
+					}
+            	}
+            	else
+            	{
+            		connection.setFixedLengthStreamingMode(0);
+            	}
             }
         }
         finally
         {
             if (outStream != null)
             {
-             outStream.flush();
-             outStream.close();
+            	outStream.flush();
             }
             
             if (streamToSend != null)
             {
-             streamToSend.close();
+            	streamToSend.close();
             }
         }
 
         return connection;
     }
-
+    
     /**
      * Reads the response.
      * @param client The client.
