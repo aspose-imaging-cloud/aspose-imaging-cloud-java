@@ -7,23 +7,6 @@ To use this SDK, you will need App SID and App Key which can be looked up at [As
 
 The solution is updated using [code generator](https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-codegen).
 
-# Android compatibility
-Aspose.Imaging for Cloud Java SDK sources are fully compatible with Android and internally tested on a real device for each release along with automated testing on AVD.
-
-To be able to use them in your own Android application, the following steps are required.
-
-1. Since this library is consuming Aspose.Imaging for Cloud web APIs, please add *android.permission.INTERNET* to your manifest.
-2. Add gradle dependencies:
-- implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.3.2'
-- implementation group: 'commons-io', name: 'commons-io', version: '2.4'
-- implementation group: 'com.brsanthu', name: 'migbase64', version: '2.2'
-- implementation group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version: '2.6.4'
-- implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.6.4'
-- implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.6.4'
-- implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.6.4'
-
-This is also true for a ready-to-go package from our [Aspose Cloud repository](https://artifact.aspose.cloud/repo/).
-
 # Example
 ```java
 // optional parameters are base URL, API version, authentication type and debug mode
