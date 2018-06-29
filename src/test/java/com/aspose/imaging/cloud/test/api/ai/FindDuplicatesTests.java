@@ -19,13 +19,13 @@ public class FindDuplicatesTests extends TestImagingAIBase{
         addImageFeaturesToSearchContext(OriginalDataFolder +"/FindSimilar", true);
 
         String image = getStoragePath(ComparableImage, null);
-        addImageFeaturesToSearchContext(image, null);
+        addImageFeaturesToSearchContext(image, false);
 
         image = getStoragePath(ComparingImageSimilarLess15, null);
-        addImageFeaturesToSearchContext(image, null);
+        addImageFeaturesToSearchContext(image, false);
 
         image = getStoragePath(ComparingImageSimilarMore75, null);
-        addImageFeaturesToSearchContext(image, null);
+        addImageFeaturesToSearchContext(image, false);
 
         ApiResponse response = ImagingApi.getSearchContextFindDuplicates(
             new GetSearchContextFindDuplicatesRequest(SearchContextId, 80.0, null,null));

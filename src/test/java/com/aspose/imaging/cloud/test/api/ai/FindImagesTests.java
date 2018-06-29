@@ -52,7 +52,7 @@ public class FindImagesTests extends TestImagingAIBase {
 
          List<String> tagsList = new ArrayList<String>();
          tagsList.add(tag);
-         String tags = new Gson().toJson(tagsList);
+         String tags = "[\"TestTag\"]";//new Gson().toJson(tagsList);
          ApiResponse response = ImagingApi.postSearchContextFindByTags(
              new PostSearchContextFindByTagsRequest(tags, SearchContextId, 60.0, 5, null, DefaultStorage));
        
