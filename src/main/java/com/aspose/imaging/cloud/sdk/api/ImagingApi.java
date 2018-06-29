@@ -26,6 +26,7 @@
 */
 package com.aspose.imaging.cloud.sdk.api;
 
+import com.aspose.imaging.cloud.sdk.model.*;
 import com.aspose.imaging.cloud.sdk.invoker.*;
 import com.aspose.imaging.cloud.sdk.invoker.internal.*;
 import com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers.*;
