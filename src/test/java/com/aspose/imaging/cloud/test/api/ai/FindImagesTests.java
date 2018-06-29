@@ -47,12 +47,11 @@ public class FindImagesTests extends TestImagingAIBase {
          byte[] imageData = StreamHelper.readAsBytes(tagImageStream.getInputStream());
          
          ImagingApi.postSearchContextAddTag(
-        		 new PostSearchContextAddTagRequest(imageData, SearchContextId, tag, null, DefaultStorage));
-           
+        		 new PostSearchContextAddTagRequest(imageData, SearchContextId, tag, null, DefaultStorage));           
 
          List<String> tagsList = new ArrayList<String>();
          tagsList.add(tag);
-         String tags = "[\"TestTag\"]";//new Gson().toJson(tagsList);
+         String tags = new Gson().toJson(tagsList);
          ApiResponse response = ImagingApi.postSearchContextFindByTags(
              new PostSearchContextFindByTagsRequest(tags, SearchContextId, 60.0, 5, null, DefaultStorage));
        
