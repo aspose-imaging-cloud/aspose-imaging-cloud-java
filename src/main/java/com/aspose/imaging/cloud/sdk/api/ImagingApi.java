@@ -30,6 +30,7 @@ import com.aspose.imaging.cloud.sdk.model.*;
 import com.aspose.imaging.cloud.sdk.invoker.*;
 import com.aspose.imaging.cloud.sdk.invoker.internal.*;
 import com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers.*;
+import com.aspose.imaging.cloud.sdk.model.*;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import java.io.File;
@@ -4559,7 +4560,7 @@ public class ImagingApi
 		  else if (SearchResultsSet.class.getName().equals(SaaSposeResponse.class.getName()))
 		  {
 			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
+		  }		 
 		  else
 		  {
 		  	  finalResponse = new ApiResponse(null, null, null);
