@@ -420,7 +420,7 @@ public class ApiInvoker
             	handler.beforeSend(connection, streamToSend);
             }
 
-            if (streamToSend != null)
+            if (streamToSend != null && streamToSend.size() > 0)
             {
             	outStream = connection.getOutputStream();
             	outStream.write(streamToSend.toByteArray());
