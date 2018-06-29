@@ -337,13 +337,13 @@ public class ApiInvoker
      * @param body The body.
      * @param contentType Type of the content.
      * @return Prepared request.
-     * @throws IOException 
+     * @throws Exception 
      */
     private HttpURLConnection prepareRequest(String path, String method, HashMap<String, Object> formParams, 
-    		HashMap<String, String> headerParams, String body, String contentType) throws IOException
+    		HashMap<String, String> headerParams, String body, String contentType) throws Exception
     {
     	HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
-    	if (method.equals("DELETE") || method.equals("PUT") || method.equals("POST"))
+    	if (method.equals("PUT") || method.equals("POST"))
     	{   
     		connection.setDoOutput(true);
     	}
@@ -368,10 +368,6 @@ public class ApiInvoker
 
             connection.setFixedLengthStreamingMode(formData.length);
         }
-        else
-        {
-        	connection.setRequestProperty("Content-Type", contentType);
-        }
 
         for (Map.Entry<String, String> headerParamsItem : this.defaultHeaderMap.entrySet())
         {
@@ -390,7 +386,7 @@ public class ApiInvoker
         ByteArrayOutputStream streamToSend = null;
         try
         {
-        	if (method.equals("DELETE") || method.equals("PUT") || method.equals("POST"))
+        	if (method.equals("PUT") || method.equals("POST"))
         	{       		
         		streamToSend = new ByteArrayOutputStream();
 
@@ -405,20 +401,30 @@ public class ApiInvoker
                 	streamToSend.write(bodyBytes, 0, bodyBytes.length);
                 }
         	}
-        	else if (!method.equals("GET")) 
-        	{
-        		throw new ApiException(500, "Unknown method type " + method);
-        	}
 
             for (IRequestHandler handler : this.requestHandlers)
             {
             	handler.beforeSend(connection, streamToSend);
             }
-
+            
+            connection.setReadTimeout(300000);
             if (streamToSend != null)
             {
-            	outStream = connection.getOutputStream();
-            	outStream.write(streamToSend.toByteArray());
+            	if (streamToSend.size() > 0)
+            	{
+            		try {
+            			connection.connect();
+            			outStream = connection.getOutputStream();
+                    	outStream.write(streamToSend.toByteArray());
+					} catch (Exception e) {
+						e.printStackTrace();
+						throw e;
+					}
+            	}
+            	else
+            	{
+            		connection.setFixedLengthStreamingMode(0);
+            	}
             }
         }
         finally
@@ -426,7 +432,6 @@ public class ApiInvoker
             if (outStream != null)
             {
             	outStream.flush();
-            	outStream.close();
             }
             
             if (streamToSend != null)
