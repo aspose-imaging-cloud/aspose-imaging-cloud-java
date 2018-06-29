@@ -33,7 +33,7 @@ public abstract class TestImagingAIBase extends ApiTester {
 	protected final static String TempFolder = "TempImagingAI";
 
 	protected static String getStoragePath(String imageName, String folder) {
-		return (folder != null ? folder : OriginalDataFolder) +  imageName;
+		return (folder != null ? folder : OriginalDataFolder) + "/" + imageName;
 	}
 
 	protected static String createSearchContext() throws Exception {
