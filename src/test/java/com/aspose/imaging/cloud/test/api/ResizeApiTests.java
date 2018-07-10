@@ -31,13 +31,14 @@ import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 import com.aspose.imaging.cloud.test.base.StorageFileInfo;
+import com.aspose.imaging.cloud.test.categories.ResizeTestCategory;
 
 import junitparams.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.Assert;
-import org.junit.Before;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,6 +46,7 @@ import java.util.Collections;
 /**
  * Class for testing crop-related API calls
  */
+@Category(ResizeTestCategory.class)
 @RunWith(JUnitParamsRunner.class)
 public class ResizeApiTests extends ApiTester {
 
@@ -71,7 +73,7 @@ public class ResizeApiTests extends ApiTester {
         Integer newHeight = 150;
         String outPath = null;
         String folder = CloudTestFolder;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
 		String outName = null;
 		
 		ArrayList<String> formatsToExport = new ArrayList<String>();
@@ -141,7 +143,7 @@ public class ResizeApiTests extends ApiTester {
         Integer newHeight = 150;
         String outPath = null;
         String folder = CloudTestFolder;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
 		String outName = null;
 		
 		ArrayList<String> formatsToExport = new ArrayList<String>();

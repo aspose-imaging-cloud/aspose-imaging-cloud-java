@@ -30,18 +30,20 @@ import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
+import com.aspose.imaging.cloud.test.categories.TiffTestCategory;
 
 import junitparams.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.Assert;
-import org.junit.Before;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing TIFF frames related API calls
  */
+@Category(TiffTestCategory.class)
 @RunWith(JUnitParamsRunner.class)
 public class FramesApiTests extends ApiTester {
 
@@ -69,7 +71,7 @@ public class FramesApiTests extends ApiTester {
         Boolean saveOtherFrames = false;
         String outPath = null;
         String folder = CloudTestFolder;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
 		String outName = name + "_singleFrame." + "tiff";
 		getImageFrameRequest = new GetImageFrameRequest(name, frameId, newWidth, newHeight, x, y, 
 				rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, outPath, folder, storage);
@@ -115,7 +117,7 @@ public class FramesApiTests extends ApiTester {
         Boolean saveOtherFrames = true;
         String outPath = null;
         String folder = CloudTestFolder;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
 		String outName = name + "_allFrames." + "tiff";
 		getImageFrameRequest = new GetImageFrameRequest(name, frameId, newWidth, newHeight, x, y, 
 				rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, outPath, folder, storage);

@@ -44,7 +44,7 @@ public class ImagingApi
 	/**
 	 * Current SDK version
 	 */
-	public static final String Version = "18.6";
+	public static final String Version = "18.7";
 
 	/**
 	 * The API invoker
@@ -148,11 +148,10 @@ public class ImagingApi
     private void initImagingApi(Configuration configuration)
     {
         this.configuration = configuration;
-		IRequestHandler[] requestHandlers = new IRequestHandler[4];
+		IRequestHandler[] requestHandlers = new IRequestHandler[3];
 		requestHandlers[0] = new OAuthRequestHandler(this.configuration);
         requestHandlers[1] = new DebugLogRequestHandler(this.configuration);
         requestHandlers[2] = new ApiExceptionRequestHandler();
-        requestHandlers[3] = new AuthWithSignatureRequestHandler(this.configuration);
         this.apiInvoker = new ApiInvoker(requestHandlers);
     }
 	

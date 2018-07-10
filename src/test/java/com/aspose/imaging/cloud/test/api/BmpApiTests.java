@@ -30,18 +30,20 @@ import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
+import com.aspose.imaging.cloud.test.categories.BmpTestCategory;
 
 import junitparams.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.Assert;
-import org.junit.Before;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing BMP-related API calls
  */
+@Category(BmpTestCategory.class)
 @RunWith(JUnitParamsRunner.class)
 public class BmpApiTests extends ApiTester {
 
@@ -65,7 +67,7 @@ public class BmpApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String folder = CloudTestFolder;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
 		String outName = name + "_specific." + "bmp";
 		getImageBmpRequest = new GetImageBmpRequest(name, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, folder, storage);
 		
@@ -103,7 +105,7 @@ public class BmpApiTests extends ApiTester {
         Integer verticalResolution = 300;
         Boolean fromScratch = null;
         String outPath = null;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
         String folder = CloudTestFolder;
         String name = "test.bmp";
 		String outName = name + "_specific." + "bmp";

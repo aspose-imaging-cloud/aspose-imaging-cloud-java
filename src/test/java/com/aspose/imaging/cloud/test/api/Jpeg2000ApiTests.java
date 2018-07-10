@@ -30,18 +30,20 @@ import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
+import com.aspose.imaging.cloud.test.categories.Jpeg2000TestCategory;
 
 import junitparams.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.Assert;
-import org.junit.Before;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing JPEG2000-related API calls
  */
+@Category(Jpeg2000TestCategory.class)
 @RunWith(JUnitParamsRunner.class)
 public class Jpeg2000ApiTests extends ApiTester {
 
@@ -64,7 +66,7 @@ public class Jpeg2000ApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String folder = CloudTestFolder;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
 		String outName = name + "_specific." + "jp2";
 		getImageJpeg2000Request = new GetImageJpeg2000Request(name, comment, codec, fromScratch, outPath, folder, storage);
 		
@@ -101,7 +103,7 @@ public class Jpeg2000ApiTests extends ApiTester {
         String comment = "Aspose";
         Boolean fromScratch = null;
         String outPath = null;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
         String folder = CloudTestFolder;
         String name = "test.j2k";
 		String outName = name + "_specific." + "jp2";

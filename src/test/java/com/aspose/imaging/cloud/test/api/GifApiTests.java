@@ -30,18 +30,20 @@ import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
+import com.aspose.imaging.cloud.test.categories.GifTestCategory;
 
 import junitparams.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.Assert;
-import org.junit.Before;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing GIF-related API calls
  */
+@Category(GifTestCategory.class)
 @RunWith(JUnitParamsRunner.class)
 public class GifApiTests extends ApiTester {
 
@@ -68,7 +70,7 @@ public class GifApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String folder = CloudTestFolder;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
 		String outName = name + "_specific." + "gif";
 		getImageGifRequest = new GetImageGifRequest(name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted, 
 				pixelAspectRatio, fromScratch, outPath, folder, storage);
@@ -111,7 +113,7 @@ public class GifApiTests extends ApiTester {
         Integer pixelAspectRatio = 4;
         Boolean fromScratch = null;
         String outPath = null;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
         String folder = CloudTestFolder;
         String name = "test.gif";
 		String outName = name + "_specific." + "gif";
