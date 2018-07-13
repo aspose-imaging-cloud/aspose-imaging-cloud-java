@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OdgProperties.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,11 +27,11 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
  * ODG format specific properties
@@ -51,14 +51,13 @@ public class OdgProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the page count.
    * @return pageCount
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the page count.")
   public Integer getPageCount() {
     return pageCount;
-  }
+  }  
 
   public void setPageCount(Integer pageCount) {
     this.pageCount = pageCount;
@@ -69,14 +68,13 @@ public class OdgProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the metadata.
    * @return metadata
   **/
-  @ApiModelProperty(value = "Gets or sets the metadata.")
   public OdgMetadata getMetadata() {
     return metadata;
-  }
+  }  
 
   public void setMetadata(OdgMetadata metadata) {
     this.metadata = metadata;
@@ -95,14 +93,13 @@ public class OdgProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the pages.
    * @return pages
   **/
-  @ApiModelProperty(value = "Gets or sets the pages.")
   public List<OdgPage> getPages() {
     return pages;
-  }
+  }  
 
   public void setPages(List<OdgPage> pages) {
     this.pages = pages;
@@ -111,21 +108,21 @@ public class OdgProperties {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     OdgProperties odgProperties = (OdgProperties) o;
-    return Objects.equals(this.pageCount, odgProperties.pageCount) &&
-        Objects.equals(this.metadata, odgProperties.metadata) &&
-        Objects.equals(this.pages, odgProperties.pages);
+    return ObjectUtils.equals(this.pageCount, odgProperties.pageCount) &&
+    ObjectUtils.equals(this.metadata, odgProperties.metadata) &&
+    ObjectUtils.equals(this.pages, odgProperties.pages);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pageCount, metadata, pages);
+    return ObjectUtils.hashCodeMulti(pageCount, metadata, pages);
   }
 
 

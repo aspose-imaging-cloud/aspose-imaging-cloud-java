@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OdgPage.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,11 +27,11 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
  * ODG page info
@@ -48,14 +48,13 @@ public class OdgPage {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the width.
    * @return width
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the width.")
   public Integer getWidth() {
     return width;
-  }
+  }  
 
   public void setWidth(Integer width) {
     this.width = width;
@@ -66,14 +65,13 @@ public class OdgPage {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the height.
    * @return height
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the height.")
   public Integer getHeight() {
     return height;
-  }
+  }  
 
   public void setHeight(Integer height) {
     this.height = height;
@@ -82,20 +80,20 @@ public class OdgPage {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     OdgPage odgPage = (OdgPage) o;
-    return Objects.equals(this.width, odgPage.width) &&
-        Objects.equals(this.height, odgPage.height);
+    return ObjectUtils.equals(this.width, odgPage.width) &&
+    ObjectUtils.equals(this.height, odgPage.height);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height);
+    return ObjectUtils.hashCodeMulti(width, height);
   }
 
 

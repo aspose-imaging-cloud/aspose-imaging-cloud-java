@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DicomProperties.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,11 +27,11 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
  * Represents information about image in dicom format.
@@ -114,14 +114,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the planar configuration.
    * @return planarConfiguration
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the planar configuration.")
   public Integer getPlanarConfiguration() {
     return planarConfiguration;
-  }
+  }  
 
   public void setPlanarConfiguration(Integer planarConfiguration) {
     this.planarConfiguration = planarConfiguration;
@@ -132,14 +131,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the array of red colors.
    * @return reds
   **/
-  @ApiModelProperty(value = "Gets or sets the array of red colors.")
   public byte[] getReds() {
     return reds;
-  }
+  }  
 
   public void setReds(byte[] reds) {
     this.reds = reds;
@@ -150,14 +148,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the array of green colors.
    * @return greens
   **/
-  @ApiModelProperty(value = "Gets or sets the array of green colors.")
   public byte[] getGreens() {
     return greens;
-  }
+  }  
 
   public void setGreens(byte[] greens) {
     this.greens = greens;
@@ -168,14 +165,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the array of blue colors.
    * @return blues
   **/
-  @ApiModelProperty(value = "Gets or sets the array of blue colors.")
   public byte[] getBlues() {
     return blues;
-  }
+  }  
 
   public void setBlues(byte[] blues) {
     this.blues = blues;
@@ -186,14 +182,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the header information by bytes.
    * @return dicomHeaderInfoByBytes
   **/
-  @ApiModelProperty(value = "Gets or sets the header information by bytes.")
   public byte[] getDicomHeaderInfoByBytes() {
     return dicomHeaderInfoByBytes;
-  }
+  }  
 
   public void setDicomHeaderInfoByBytes(byte[] dicomHeaderInfoByBytes) {
     this.dicomHeaderInfoByBytes = dicomHeaderInfoByBytes;
@@ -204,14 +199,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets a value indicating whether it&#39;s a signed image.
    * @return signedImage
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets a value indicating whether it's a signed image.")
   public Boolean isSignedImage() {
     return signedImage;
-  }
+  }  
 
   public void setSignedImage(Boolean signedImage) {
     this.signedImage = signedImage;
@@ -230,14 +224,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the header information of the DICOM file.
    * @return dicomInfo
   **/
-  @ApiModelProperty(value = "Gets or sets the header information of the DICOM file.")
   public List<String> getDicomInfo() {
     return dicomInfo;
-  }
+  }  
 
   public void setDicomInfo(List<String> dicomInfo) {
     this.dicomInfo = dicomInfo;
@@ -248,14 +241,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets samples per pixel count.
    * @return samplesPerPixel
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets samples per pixel count.")
   public Integer getSamplesPerPixel() {
     return samplesPerPixel;
-  }
+  }  
 
   public void setSamplesPerPixel(Integer samplesPerPixel) {
     this.samplesPerPixel = samplesPerPixel;
@@ -266,14 +258,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets allocated bits count.
    * @return bitsAllocated
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets allocated bits count.")
   public Integer getBitsAllocated() {
     return bitsAllocated;
-  }
+  }  
 
   public void setBitsAllocated(Integer bitsAllocated) {
     this.bitsAllocated = bitsAllocated;
@@ -284,14 +275,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the photo interpretation.
    * @return photoInterpretation
   **/
-  @ApiModelProperty(value = "Gets or sets the photo interpretation.")
   public String getPhotoInterpretation() {
     return photoInterpretation;
-  }
+  }  
 
   public void setPhotoInterpretation(String photoInterpretation) {
     this.photoInterpretation = photoInterpretation;
@@ -302,14 +292,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets a value indicating whether width tag found.
    * @return widthTagFound
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets a value indicating whether width tag found.")
   public Boolean isWidthTagFound() {
     return widthTagFound;
-  }
+  }  
 
   public void setWidthTagFound(Boolean widthTagFound) {
     this.widthTagFound = widthTagFound;
@@ -320,14 +309,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets a value indicating whether height tag found.
    * @return heightTagFound
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets a value indicating whether height tag found.")
   public Boolean isHeightTagFound() {
     return heightTagFound;
-  }
+  }  
 
   public void setHeightTagFound(Boolean heightTagFound) {
     this.heightTagFound = heightTagFound;
@@ -338,14 +326,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the width.
    * @return width
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the width.")
   public Integer getWidth() {
     return width;
-  }
+  }  
 
   public void setWidth(Integer width) {
     this.width = width;
@@ -356,14 +343,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the height.
    * @return height
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the height.")
   public Integer getHeight() {
     return height;
-  }
+  }  
 
   public void setHeight(Integer height) {
     this.height = height;
@@ -374,14 +360,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the window centre.
    * @return windowCentre
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the window centre.")
   public Double getWindowCentre() {
     return windowCentre;
-  }
+  }  
 
   public void setWindowCentre(Double windowCentre) {
     this.windowCentre = windowCentre;
@@ -392,14 +377,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the width of the window.
    * @return windowWidth
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the width of the window.")
   public Double getWindowWidth() {
     return windowWidth;
-  }
+  }  
 
   public void setWindowWidth(Double windowWidth) {
     this.windowWidth = windowWidth;
@@ -410,14 +394,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets data representation of the pixel samples.
    * @return pixelRepresentation
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets data representation of the pixel samples.")
   public Integer getPixelRepresentation() {
     return pixelRepresentation;
-  }
+  }  
 
   public void setPixelRepresentation(Integer pixelRepresentation) {
     this.pixelRepresentation = pixelRepresentation;
@@ -428,14 +411,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets a value of the rescale intercept.
    * @return rescaleIntercept
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets a value of the rescale intercept.")
   public Double getRescaleIntercept() {
     return rescaleIntercept;
-  }
+  }  
 
   public void setRescaleIntercept(Double rescaleIntercept) {
     this.rescaleIntercept = rescaleIntercept;
@@ -446,14 +428,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets a value of the rescale slope.
    * @return rescaleSlope
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets a value of the rescale slope.")
   public Double getRescaleSlope() {
     return rescaleSlope;
-  }
+  }  
 
   public void setRescaleSlope(Double rescaleSlope) {
     this.rescaleSlope = rescaleSlope;
@@ -464,14 +445,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the number of frames.
    * @return numberOfFrames
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the number of frames.")
   public Integer getNumberOfFrames() {
     return numberOfFrames;
-  }
+  }  
 
   public void setNumberOfFrames(Integer numberOfFrames) {
     this.numberOfFrames = numberOfFrames;
@@ -482,14 +462,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the length of element.
    * @return lengthValue
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the length of element.")
   public Integer getLengthValue() {
     return lengthValue;
-  }
+  }  
 
   public void setLengthValue(Integer lengthValue) {
     this.lengthValue = lengthValue;
@@ -500,14 +479,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Indicates if DICOM image has little endian byte order.
    * @return isLittleEndian
   **/
-  @ApiModelProperty(required = true, value = "Indicates if DICOM image has little endian byte order.")
   public Boolean isIsLittleEndian() {
     return isLittleEndian;
-  }
+  }  
 
   public void setIsLittleEndian(Boolean isLittleEndian) {
     this.isLittleEndian = isLittleEndian;
@@ -518,14 +496,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the offset.
    * @return offset
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the offset.")
   public Integer getOffset() {
     return offset;
-  }
+  }  
 
   public void setOffset(Integer offset) {
     this.offset = offset;
@@ -536,14 +513,13 @@ public class DicomProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets a value indicating whether \&quot;DICOM\&quot; data is found.
    * @return dicomFound
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets a value indicating whether \"DICOM\" data is found.")
   public Boolean isDicomFound() {
     return dicomFound;
-  }
+  }  
 
   public void setDicomFound(Boolean dicomFound) {
     this.dicomFound = dicomFound;
@@ -552,42 +528,42 @@ public class DicomProperties {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     DicomProperties dicomProperties = (DicomProperties) o;
-    return Objects.equals(this.planarConfiguration, dicomProperties.planarConfiguration) &&
-        Objects.equals(this.reds, dicomProperties.reds) &&
-        Objects.equals(this.greens, dicomProperties.greens) &&
-        Objects.equals(this.blues, dicomProperties.blues) &&
-        Objects.equals(this.dicomHeaderInfoByBytes, dicomProperties.dicomHeaderInfoByBytes) &&
-        Objects.equals(this.signedImage, dicomProperties.signedImage) &&
-        Objects.equals(this.dicomInfo, dicomProperties.dicomInfo) &&
-        Objects.equals(this.samplesPerPixel, dicomProperties.samplesPerPixel) &&
-        Objects.equals(this.bitsAllocated, dicomProperties.bitsAllocated) &&
-        Objects.equals(this.photoInterpretation, dicomProperties.photoInterpretation) &&
-        Objects.equals(this.widthTagFound, dicomProperties.widthTagFound) &&
-        Objects.equals(this.heightTagFound, dicomProperties.heightTagFound) &&
-        Objects.equals(this.width, dicomProperties.width) &&
-        Objects.equals(this.height, dicomProperties.height) &&
-        Objects.equals(this.windowCentre, dicomProperties.windowCentre) &&
-        Objects.equals(this.windowWidth, dicomProperties.windowWidth) &&
-        Objects.equals(this.pixelRepresentation, dicomProperties.pixelRepresentation) &&
-        Objects.equals(this.rescaleIntercept, dicomProperties.rescaleIntercept) &&
-        Objects.equals(this.rescaleSlope, dicomProperties.rescaleSlope) &&
-        Objects.equals(this.numberOfFrames, dicomProperties.numberOfFrames) &&
-        Objects.equals(this.lengthValue, dicomProperties.lengthValue) &&
-        Objects.equals(this.isLittleEndian, dicomProperties.isLittleEndian) &&
-        Objects.equals(this.offset, dicomProperties.offset) &&
-        Objects.equals(this.dicomFound, dicomProperties.dicomFound);
+    return ObjectUtils.equals(this.planarConfiguration, dicomProperties.planarConfiguration) &&
+    ObjectUtils.equals(this.reds, dicomProperties.reds) &&
+    ObjectUtils.equals(this.greens, dicomProperties.greens) &&
+    ObjectUtils.equals(this.blues, dicomProperties.blues) &&
+    ObjectUtils.equals(this.dicomHeaderInfoByBytes, dicomProperties.dicomHeaderInfoByBytes) &&
+    ObjectUtils.equals(this.signedImage, dicomProperties.signedImage) &&
+    ObjectUtils.equals(this.dicomInfo, dicomProperties.dicomInfo) &&
+    ObjectUtils.equals(this.samplesPerPixel, dicomProperties.samplesPerPixel) &&
+    ObjectUtils.equals(this.bitsAllocated, dicomProperties.bitsAllocated) &&
+    ObjectUtils.equals(this.photoInterpretation, dicomProperties.photoInterpretation) &&
+    ObjectUtils.equals(this.widthTagFound, dicomProperties.widthTagFound) &&
+    ObjectUtils.equals(this.heightTagFound, dicomProperties.heightTagFound) &&
+    ObjectUtils.equals(this.width, dicomProperties.width) &&
+    ObjectUtils.equals(this.height, dicomProperties.height) &&
+    ObjectUtils.equals(this.windowCentre, dicomProperties.windowCentre) &&
+    ObjectUtils.equals(this.windowWidth, dicomProperties.windowWidth) &&
+    ObjectUtils.equals(this.pixelRepresentation, dicomProperties.pixelRepresentation) &&
+    ObjectUtils.equals(this.rescaleIntercept, dicomProperties.rescaleIntercept) &&
+    ObjectUtils.equals(this.rescaleSlope, dicomProperties.rescaleSlope) &&
+    ObjectUtils.equals(this.numberOfFrames, dicomProperties.numberOfFrames) &&
+    ObjectUtils.equals(this.lengthValue, dicomProperties.lengthValue) &&
+    ObjectUtils.equals(this.isLittleEndian, dicomProperties.isLittleEndian) &&
+    ObjectUtils.equals(this.offset, dicomProperties.offset) &&
+    ObjectUtils.equals(this.dicomFound, dicomProperties.dicomFound);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(planarConfiguration, reds, greens, blues, dicomHeaderInfoByBytes, signedImage, dicomInfo, samplesPerPixel, bitsAllocated, photoInterpretation, widthTagFound, heightTagFound, width, height, windowCentre, windowWidth, pixelRepresentation, rescaleIntercept, rescaleSlope, numberOfFrames, lengthValue, isLittleEndian, offset, dicomFound);
+    return ObjectUtils.hashCodeMulti(planarConfiguration, reds, greens, blues, dicomHeaderInfoByBytes, signedImage, dicomInfo, samplesPerPixel, bitsAllocated, photoInterpretation, widthTagFound, heightTagFound, width, height, windowCentre, windowWidth, pixelRepresentation, rescaleIntercept, rescaleSlope, numberOfFrames, lengthValue, isLittleEndian, offset, dicomFound);
   }
 
 

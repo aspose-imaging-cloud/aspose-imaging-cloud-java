@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GifApiTests.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,11 +47,6 @@ public class GifApiTests extends ApiTester {
 
 	private GetImageGifRequest getImageGifRequest;
 	private PostImageGifRequest postImageGifRequest;
-	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
 	
     /**
      * Test operation: Update parameters of existing GIF image.
@@ -179,8 +174,8 @@ public class GifApiTests extends ApiTester {
 	{
         Assert.assertNotNull(resultProperties.getGifProperties());
 
-        //Assert.assertEquals(outProperties.getGifProperties().getHasTrailer(), hasTrailer);
-        Assert.assertEquals(resultProperties.getGifProperties().getPixelAspectRatio(), getImageGifRequest.pixelAspectRatio);
+        //Assert.assertEquals(hasTrailer, outProperties.getGifProperties().getHasTrailer());
+        Assert.assertEquals(getImageGifRequest.pixelAspectRatio, resultProperties.getGifProperties().getPixelAspectRatio());
 
         Assert.assertNotNull(originalProperties.getGifProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
@@ -196,8 +191,8 @@ public class GifApiTests extends ApiTester {
 	{
 		Assert.assertNotNull(resultProperties.getGifProperties());
 
-        //Assert.assertEquals(outProperties.getGifProperties().getHasTrailer(), hasTrailer);
-        Assert.assertEquals(resultProperties.getGifProperties().getPixelAspectRatio(), postImageGifRequest.pixelAspectRatio);
+        //Assert.assertEquals(hasTrailer, outProperties.getGifProperties().getHasTrailer());
+        Assert.assertEquals(postImageGifRequest.pixelAspectRatio, resultProperties.getGifProperties().getPixelAspectRatio());
 
         Assert.assertNotNull(originalProperties.getGifProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());

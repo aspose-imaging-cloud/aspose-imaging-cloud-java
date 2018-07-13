@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="WebPProperties.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,11 +27,11 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
  * Represents information about image in WEBP format.
@@ -54,14 +54,13 @@ public class WebPProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets a value indicating whether these  is lossless.
    * @return lossless
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets a value indicating whether these  is lossless.")
   public Boolean isLossless() {
     return lossless;
-  }
+  }  
 
   public void setLossless(Boolean lossless) {
     this.lossless = lossless;
@@ -72,14 +71,13 @@ public class WebPProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the quality.
    * @return quality
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the quality.")
   public Double getQuality() {
     return quality;
-  }
+  }  
 
   public void setQuality(Double quality) {
     this.quality = quality;
@@ -90,14 +88,13 @@ public class WebPProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the animation loop count.
    * @return animLoopCount
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the animation loop count.")
   public Integer getAnimLoopCount() {
     return animLoopCount;
-  }
+  }  
 
   public void setAnimLoopCount(Integer animLoopCount) {
     this.animLoopCount = animLoopCount;
@@ -108,14 +105,13 @@ public class WebPProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the color of the animation background.
    * @return animBackgroundColor
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the color of the animation background.")
   public Long getAnimBackgroundColor() {
     return animBackgroundColor;
-  }
+  }  
 
   public void setAnimBackgroundColor(Long animBackgroundColor) {
     this.animBackgroundColor = animBackgroundColor;
@@ -124,22 +120,22 @@ public class WebPProperties {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     WebPProperties webPProperties = (WebPProperties) o;
-    return Objects.equals(this.lossless, webPProperties.lossless) &&
-        Objects.equals(this.quality, webPProperties.quality) &&
-        Objects.equals(this.animLoopCount, webPProperties.animLoopCount) &&
-        Objects.equals(this.animBackgroundColor, webPProperties.animBackgroundColor);
+    return ObjectUtils.equals(this.lossless, webPProperties.lossless) &&
+    ObjectUtils.equals(this.quality, webPProperties.quality) &&
+    ObjectUtils.equals(this.animLoopCount, webPProperties.animLoopCount) &&
+    ObjectUtils.equals(this.animBackgroundColor, webPProperties.animBackgroundColor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lossless, quality, animLoopCount, animBackgroundColor);
+    return ObjectUtils.hashCodeMulti(lossless, quality, animLoopCount, animBackgroundColor);
   }
 
 

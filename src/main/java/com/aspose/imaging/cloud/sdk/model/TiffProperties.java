@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TiffProperties.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,11 +27,11 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
  * Represents properties of TIFF image.
@@ -51,14 +51,13 @@ public class TiffProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the byte order.
    * @return byteOrder
   **/
-  @ApiModelProperty(value = "Gets or sets the byte order.")
   public String getByteOrder() {
     return byteOrder;
-  }
+  }  
 
   public void setByteOrder(String byteOrder) {
     this.byteOrder = byteOrder;
@@ -69,14 +68,13 @@ public class TiffProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the EXIF data.
    * @return exifData
   **/
-  @ApiModelProperty(value = "Gets or sets the EXIF data.")
   public ExifData getExifData() {
     return exifData;
-  }
+  }  
 
   public void setExifData(ExifData exifData) {
     this.exifData = exifData;
@@ -95,14 +93,13 @@ public class TiffProperties {
     return this;
   }
 
-   /**
+  /**
    * Frames information.
    * @return frames
   **/
-  @ApiModelProperty(value = "Frames information.")
   public List<TiffFrame> getFrames() {
     return frames;
-  }
+  }  
 
   public void setFrames(List<TiffFrame> frames) {
     this.frames = frames;
@@ -111,21 +108,21 @@ public class TiffProperties {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     TiffProperties tiffProperties = (TiffProperties) o;
-    return Objects.equals(this.byteOrder, tiffProperties.byteOrder) &&
-        Objects.equals(this.exifData, tiffProperties.exifData) &&
-        Objects.equals(this.frames, tiffProperties.frames);
+    return ObjectUtils.equals(this.byteOrder, tiffProperties.byteOrder) &&
+    ObjectUtils.equals(this.exifData, tiffProperties.exifData) &&
+    ObjectUtils.equals(this.frames, tiffProperties.frames);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(byteOrder, exifData, frames);
+    return ObjectUtils.hashCodeMulti(byteOrder, exifData, frames);
   }
 
 

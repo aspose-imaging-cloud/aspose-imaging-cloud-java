@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SaaSposeResponse.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,10 +26,8 @@
 */
 package com.aspose.imaging.cloud.sdk.stablemodel;
 
-import java.util.Objects;
-
+import org.apache.commons.lang3.ObjectUtils;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * The basic response class kept from the old Aspose for Cloud Platform. We keep this base class and use it because most probably users are already using it to get API responses. The plan in future is to get rid of it.
@@ -48,7 +46,6 @@ public class SaaSposeResponse {
    * HTTP status code.
    * @return code
   **/
-  @ApiModelProperty(required = true, value = "HTTP status code.")
   public Integer getCode() {
     return code;
   }
@@ -61,7 +58,6 @@ public class SaaSposeResponse {
    * Status description.
    * @return status
   **/
-  @ApiModelProperty(value = "Status description.")
   public String getStatus() {
     return status;
   }
@@ -80,13 +76,13 @@ public class SaaSposeResponse {
       return false;
     }
     SaaSposeResponse saaSposeResponse = (SaaSposeResponse) o;
-    return Objects.equals(this.code, saaSposeResponse.code) &&
-        Objects.equals(this.status, saaSposeResponse.status);
+    return ObjectUtils.equals(this.code, saaSposeResponse.code) &&
+    		ObjectUtils.equals(this.status, saaSposeResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, status);
+    return ObjectUtils.hashCodeMulti(code, status);
   }
 
 

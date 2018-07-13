@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DjvuProperties.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,11 +27,11 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
  * Represents properties of djvu file.
@@ -51,14 +51,13 @@ public class DjvuProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets background color.
    * @return backgroundColor
   **/
-  @ApiModelProperty(value = "Gets or sets background color.")
   public String getBackgroundColor() {
     return backgroundColor;
-  }
+  }  
 
   public void setBackgroundColor(String backgroundColor) {
     this.backgroundColor = backgroundColor;
@@ -69,14 +68,13 @@ public class DjvuProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets a value indicating whether background color is used.
    * @return hasBackgroundColor
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets a value indicating whether background color is used.")
   public Boolean isHasBackgroundColor() {
     return hasBackgroundColor;
-  }
+  }  
 
   public void setHasBackgroundColor(Boolean hasBackgroundColor) {
     this.hasBackgroundColor = hasBackgroundColor;
@@ -87,14 +85,13 @@ public class DjvuProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets pages count.
    * @return pagesCount
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets pages count.")
   public Integer getPagesCount() {
     return pagesCount;
-  }
+  }  
 
   public void setPagesCount(Integer pagesCount) {
     this.pagesCount = pagesCount;
@@ -103,21 +100,21 @@ public class DjvuProperties {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     DjvuProperties djvuProperties = (DjvuProperties) o;
-    return Objects.equals(this.backgroundColor, djvuProperties.backgroundColor) &&
-        Objects.equals(this.hasBackgroundColor, djvuProperties.hasBackgroundColor) &&
-        Objects.equals(this.pagesCount, djvuProperties.pagesCount);
+    return ObjectUtils.equals(this.backgroundColor, djvuProperties.backgroundColor) &&
+    ObjectUtils.equals(this.hasBackgroundColor, djvuProperties.hasBackgroundColor) &&
+    ObjectUtils.equals(this.pagesCount, djvuProperties.pagesCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(backgroundColor, hasBackgroundColor, pagesCount);
+    return ObjectUtils.hashCodeMulti(backgroundColor, hasBackgroundColor, pagesCount);
   }
 
 

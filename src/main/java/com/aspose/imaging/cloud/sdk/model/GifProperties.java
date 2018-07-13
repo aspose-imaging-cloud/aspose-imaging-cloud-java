@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GifProperties.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,11 +27,11 @@
 
 package com.aspose.imaging.cloud.sdk.model;
 
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 import java.util.ArrayList;
 import java.util.List;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
  * Represents information about image in GIF format.
@@ -54,14 +54,13 @@ public class GifProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the background color.
    * @return backgroundColor
   **/
-  @ApiModelProperty(value = "Gets or sets the background color.")
   public String getBackgroundColor() {
     return backgroundColor;
-  }
+  }  
 
   public void setBackgroundColor(String backgroundColor) {
     this.backgroundColor = backgroundColor;
@@ -72,14 +71,13 @@ public class GifProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets a value indicating whether background color is used.
    * @return hasBackgroundColor
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets a value indicating whether background color is used.")
   public Boolean isHasBackgroundColor() {
     return hasBackgroundColor;
-  }
+  }  
 
   public void setHasBackgroundColor(Boolean hasBackgroundColor) {
     this.hasBackgroundColor = hasBackgroundColor;
@@ -90,14 +88,13 @@ public class GifProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets a value indicating whether image has trailer.
    * @return hasTrailer
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets a value indicating whether image has trailer.")
   public Boolean isHasTrailer() {
     return hasTrailer;
-  }
+  }  
 
   public void setHasTrailer(Boolean hasTrailer) {
     this.hasTrailer = hasTrailer;
@@ -108,14 +105,13 @@ public class GifProperties {
     return this;
   }
 
-   /**
+  /**
    * Gets or sets the pixel aspect ratio.
    * @return pixelAspectRatio
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets the pixel aspect ratio.")
   public Integer getPixelAspectRatio() {
     return pixelAspectRatio;
-  }
+  }  
 
   public void setPixelAspectRatio(Integer pixelAspectRatio) {
     this.pixelAspectRatio = pixelAspectRatio;
@@ -124,22 +120,22 @@ public class GifProperties {
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
     GifProperties gifProperties = (GifProperties) o;
-    return Objects.equals(this.backgroundColor, gifProperties.backgroundColor) &&
-        Objects.equals(this.hasBackgroundColor, gifProperties.hasBackgroundColor) &&
-        Objects.equals(this.hasTrailer, gifProperties.hasTrailer) &&
-        Objects.equals(this.pixelAspectRatio, gifProperties.pixelAspectRatio);
+    return ObjectUtils.equals(this.backgroundColor, gifProperties.backgroundColor) &&
+    ObjectUtils.equals(this.hasBackgroundColor, gifProperties.hasBackgroundColor) &&
+    ObjectUtils.equals(this.hasTrailer, gifProperties.hasTrailer) &&
+    ObjectUtils.equals(this.pixelAspectRatio, gifProperties.pixelAspectRatio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(backgroundColor, hasBackgroundColor, hasTrailer, pixelAspectRatio);
+    return ObjectUtils.hashCodeMulti(backgroundColor, hasBackgroundColor, hasTrailer, pixelAspectRatio);
   }
 
 

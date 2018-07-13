@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RotateFlipApiTests.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,11 +53,6 @@ public class RotateFlipApiTests extends ApiTester {
 	private GetImageRotateFlipRequest getImageRotateFlipRequest;
 	private PostImageRotateFlipRequest postImageRotateFlipRequest;
 	
-	@Before
-    public void setUp() throws Exception { 
-	    this.createApiInstances();
-    }
-
     /**
      * Test operation: RotateFlip an existing image.
      * 
@@ -69,36 +64,8 @@ public class RotateFlipApiTests extends ApiTester {
      */
     @Test
 	@Parameters({
-		".bmp, true,", 
-		".bmp, false,",
-		".dng, true,", 
-		".dng, false,",
-		//".gif, true, ", TODO: enable after IMAGINGCLOUD-51 is resolved
-		//".gif, false, ",
-		".png, true,", 
-		".png, false,",
 		".jpg, true,", 
 		".jpg, false,",
-		".jpeg, true,", 
-		".jpeg, false,",
-		".tif, true,", 
-		".tif, false,",
-		".tiff, true,", 
-		".tiff, false,",
-		".webp, true,", 
-		".webp, false,",
-		".j2k, true,", 
-		".j2k, false,",
-		".jpf, true,", 
-		".jpf, false,",
-		".jpx, true,", 
-		".jpx, false,",
-		".jpm, true,", 
-		".jpm, false,",
-		".mj2, true,", 
-		".mj2, false,",
-		".jpg2, true,", 
-		".jpg2, false,"
 		})
     public void getImageRotateFlipTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
         String name = null;
@@ -165,36 +132,8 @@ public class RotateFlipApiTests extends ApiTester {
      */
     @Test
 	@Parameters({
-		".bmp, true,", 
-		".bmp, false,",
-		".dng, true,", 
-		".dng, false,",
-		//".gif, true,", TODO: enable after IMAGINGCLOUD-51 is resolved
-		//".gif, false,",
-		".png, true,", 
-		".png, false,",
 		".jpg, true,", 
 		".jpg, false,",
-		".jpeg, true,", 
-		".jpeg, false,",
-		".tif, true,", 
-		".tif, false,",
-		".tiff, true,", 
-		".tiff, false,",
-		".webp, true,", 
-		".webp, false,",
-		".j2k, true,", 
-		".j2k, false,",
-		".jpf, true,", 
-		".jpf, false,",
-		".jpx, true,", 
-		".jpx, false,",
-		".jpm, true,", 
-		".jpm, false,",
-		".mj2, true,", 
-		".mj2, false,",
-		".jpg2, true,", 
-		".jpg2, false,"
 		})
     public void postImageRotateFlipTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
     	byte[] imageData = null;
@@ -288,20 +227,20 @@ public class RotateFlipApiTests extends ApiTester {
 	{
 		try
         {
-            Assert.assertEquals(resultProperties.getWidth(), originalProperties.getHeight());
+            Assert.assertEquals(originalProperties.getHeight(), resultProperties.getWidth());
         }
-        catch (Exception ex)
+        catch (AssertionError e)
         {
-            Assert.assertEquals((int)resultProperties.getWidth(), originalProperties.getHeight() - 1);
+            Assert.assertEquals((int)originalProperties.getHeight(), (int)resultProperties.getWidth() + 1);
         }
 
-        try
+		try
         {
-            Assert.assertEquals(resultProperties.getHeight(), originalProperties.getWidth());
+            Assert.assertEquals(originalProperties.getWidth(), resultProperties.getHeight());
         }
-        catch (Exception ex)
+        catch (AssertionError e)
         {
-            Assert.assertEquals((int)resultProperties.getHeight(), originalProperties.getWidth() - 1);
+            Assert.assertEquals((int)originalProperties.getWidth(), (int)resultProperties.getHeight() + 1);
         }
 	}
 	
@@ -314,20 +253,20 @@ public class RotateFlipApiTests extends ApiTester {
 	{
 		try
         {
-            Assert.assertEquals(resultProperties.getWidth(), originalProperties.getHeight());
+            Assert.assertEquals(originalProperties.getHeight(), resultProperties.getWidth());
         }
-        catch (Exception ex)
+        catch (AssertionError e)
         {
-            Assert.assertEquals((int)resultProperties.getWidth(), originalProperties.getHeight() - 1);
+            Assert.assertEquals((int)originalProperties.getHeight(), (int)resultProperties.getWidth() + 1);
         }
 
-        try
+		try
         {
-            Assert.assertEquals(resultProperties.getHeight(), originalProperties.getWidth());
+            Assert.assertEquals(originalProperties.getWidth(), resultProperties.getHeight());
         }
-        catch (Exception ex)
+        catch (AssertionError e)
         {
-            Assert.assertEquals((int)resultProperties.getHeight(), originalProperties.getWidth() - 1);
+            Assert.assertEquals((int)originalProperties.getWidth(), (int)resultProperties.getHeight() + 1);
         }
 	}
 }

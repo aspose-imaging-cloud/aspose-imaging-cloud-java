@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiInvoker.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,6 +38,7 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.aspose.imaging.cloud.sdk.api.ImagingApi;
 import com.aspose.imaging.cloud.sdk.invoker.ApiException;
 import com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers.IRequestHandler;
 
@@ -57,12 +58,6 @@ public class ApiInvoker
     private final String AsposeClientVersionHeaderName = "x-aspose-client-version";
 
     /**
-     * The timeout division increase coefficient - size in bytes is divided by its' value, getting milliseconds.
-     * I.e., this is a number of bytes indicating timeout increase for 1 millisecond.
-     */
-    private final int TimeoutDivisionIncreaseCoefficient = 40;
-
-    /**
      * The default header map
      */
     private final HashMap<String, String> defaultHeaderMap = new HashMap<String, String>();
@@ -78,7 +73,7 @@ public class ApiInvoker
      */
     public ApiInvoker(IRequestHandler[] requestHandlers)
     {
-        String sdkVersion = "18.4";
+        String sdkVersion = ImagingApi.Version;
         this.addDefaultHeader(AsposeClientHeaderName, "java sdk");
         this.addDefaultHeader(AsposeClientVersionHeaderName, sdkVersion);
         this.requestHandlers = requestHandlers;
@@ -189,9 +184,8 @@ public class ApiInvoker
             for (Map.Entry<String, Object> param : postParameters.entrySet())
             {
                 if (needsClrf)
-                {
-                	ByteBuffer clrfBytes = utf8.encode("\r\n");
-                    formDataStream.write(clrfBytes.array(), 0, clrfBytes.position());
+                {                	
+                    WriteStringToStream(formDataStream, "\r\n", utf8);
                 }
 
                 needsClrf = true;
@@ -206,8 +200,8 @@ public class ApiInvoker
                             boundary,
                             param.getKey(),
                             fileInfo.MimeType);
-                    ByteBuffer postBytes = utf8.encode(postData);
-                    formDataStream.write(postBytes.array(), 0, postBytes.position());
+                   
+                    WriteStringToStream(formDataStream, postData, utf8);
 
                     // Write the file data directly to the Stream, rather than serializing it to a String.
                     formDataStream.write(fileInfo.file, 0, fileInfo.file.length);
@@ -230,15 +224,15 @@ public class ApiInvoker
                             boundary,
                             param.getKey(),
                             StringData);
-                    ByteBuffer postBytes = utf8.encode(postData);
-                    formDataStream.write(postBytes.array(), 0, postBytes.position());
+                   
+                    WriteStringToStream(formDataStream, postData, utf8);
                 }
             }
 
             // Add the end of the request.  Start with a newline
-            String footer = "\r\n--" + boundary + "--\r\n";
-            ByteBuffer footerBytes = utf8.encode(footer);
-            formDataStream.write(footerBytes.array(), 0, footerBytes.position());
+            String footer = "\r\n--" + boundary + "--\r\n";             
+           
+            WriteStringToStream(formDataStream, footer, utf8);
         }
         else
         {
@@ -262,15 +256,21 @@ public class ApiInvoker
                     else
                     {
                         postData = (String)paramValue;
-                    }
-
-                    ByteBuffer postBytes = utf8.encode(postData);
-                    formDataStream.write(postBytes.array(), 0, postBytes.position());
+                    }   
+                    
+                    WriteStringToStream(formDataStream, postData, utf8);
                 }
             }
         }
 
         return formDataStream.toByteArray();
+    }
+    
+    private static void WriteStringToStream(ByteArrayOutputStream formDataStream, String data, Charset charset)
+    {
+    	 ByteBuffer postBytes = charset.encode(data);
+    	 byte[] bytesArray = postBytes.array();
+         formDataStream.write(bytesArray, 0, bytesArray.length);
     }
 
     /**
@@ -342,13 +342,13 @@ public class ApiInvoker
      * @param body The body.
      * @param contentType Type of the content.
      * @return Prepared request.
-     * @throws IOException 
+     * @throws Exception 
      */
     private HttpURLConnection prepareRequest(String path, String method, HashMap<String, Object> formParams, 
-    		HashMap<String, String> headerParams, String body, String contentType) throws IOException
+    		HashMap<String, String> headerParams, String body, String contentType) throws Exception
     {
     	HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
-    	if (method.equals("DELETE") || method.equals("PUT") || method.equals("POST"))
+    	if (method.equals("PUT") || method.equals("POST"))
     	{   
     		connection.setDoOutput(true);
     	}
@@ -373,10 +373,6 @@ public class ApiInvoker
 
             connection.setFixedLengthStreamingMode(formData.length);
         }
-        else
-        {
-        	connection.setRequestProperty("Content-Type", contentType);
-        }
 
         for (Map.Entry<String, String> headerParamsItem : this.defaultHeaderMap.entrySet())
         {
@@ -395,7 +391,7 @@ public class ApiInvoker
         ByteArrayOutputStream streamToSend = null;
         try
         {
-        	if (method.equals("DELETE") || method.equals("PUT") || method.equals("POST"))
+        	if (method.equals("PUT") || method.equals("POST"))
         	{       		
         		streamToSend = new ByteArrayOutputStream();
 
@@ -410,33 +406,29 @@ public class ApiInvoker
                 	streamToSend.write(bodyBytes, 0, bodyBytes.length);
                 }
         	}
-        	else if (!method.equals("GET")) 
-        	{
-        		throw new ApiException(500, "Unknown method type " + method);
-        	}
 
             for (IRequestHandler handler : this.requestHandlers)
             {
             	handler.beforeSend(connection, streamToSend);
             }
-
-            int readTimeout = connection.getReadTimeout();
+            
+            connection.setReadTimeout(300000);
             if (streamToSend != null)
             {
-            	if (readTimeout > 0)
+            	if (streamToSend.size() > 0)
             	{
-            		connection.setReadTimeout(readTimeout + (int)(streamToSend.size() / TimeoutDivisionIncreaseCoefficient));
+            		try {
+            			connection.connect();
+            			outStream = connection.getOutputStream();
+                    	outStream.write(streamToSend.toByteArray());
+					} catch (Exception e) {
+						e.printStackTrace();
+						throw e;
+					}
             	}
-
-            	outStream = connection.getOutputStream();
-            	outStream.write(streamToSend.toByteArray());
-            }
-            else
-            {
-            	if (readTimeout > 0)
+            	else
             	{
-            		// TODO: change the behavior according to IMAGINGCLOUD-52 resolution
-                	connection.setReadTimeout(readTimeout + 120000);
+            		connection.setFixedLengthStreamingMode(0);
             	}
             }
         }
@@ -445,7 +437,6 @@ public class ApiInvoker
             if (outStream != null)
             {
             	outStream.flush();
-            	outStream.close();
             }
             
             if (streamToSend != null)
@@ -456,7 +447,7 @@ public class ApiInvoker
 
         return connection;
     }
-
+    
     /**
      * Reads the response.
      * @param client The client.

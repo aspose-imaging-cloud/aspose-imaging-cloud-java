@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Configuration.java">
-*   Copyright (c) 2018 Aspose.Imaging for Cloud
+*   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,12 +35,12 @@ public class Configuration
         /**
          * The default base URL
          */
-        public final String DefaultBaseUrl = "https://api.aspose.cloud";
+        public final String DefaultBaseUrl = "https://api.aspose.cloud/";
 
         /**
     	 * The default API version
     	 */
-        public final String DefaultApiVersion = "v1.1";
+        public final String DefaultApiVersion = "v2";
 
         /**
     	 * The API base URL
@@ -89,6 +89,10 @@ public class Configuration
         public void setApiBaseUrl(String value)
         {
         	this.apiBaseUrl = value;
+        	if (!this.apiBaseUrl.endsWith("/"))
+        	{
+        		this.apiBaseUrl += "/";
+        	}
         }
         
         /**
@@ -133,8 +137,6 @@ public class Configuration
          */
         public String getApiRootUrl()
         {
-            String result = this.getApiBaseUrl() + "/" + this.getApiVersion();
-
-            return result.endsWith("/") ? result.substring(0, result.length() - 1) : result;
+        	return this.getApiBaseUrl() + this.getApiVersion();
         }
 }
