@@ -89,6 +89,28 @@ public abstract class TestImagingAIBase extends ApiTester {
 		PostSearchContextExtractImageFeaturesRequest request = isFolder 
 				 ? new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, null,  storageSourcePath, null,  DefaultStorage)
 				 : new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, storageSourcePath, null, null, DefaultStorage);
-		  ImagingApi.postSearchContextExtractImageFeatures(request);		 
+		  ImagingApi.postSearchContextExtractImageFeatures(request);	
+		  
+		  if (isFolder)
+		  {
+			  waitSearchContextIdle(120);
+		  }
 	}
+	
+	  protected void waitSearchContextIdle(int maxTimeInSeconds) throws Exception
+      {
+          int timeout = 10;
+          int spentTime = 0;
+          String status="unknown";
+
+          while ("Idle".equalsIgnoreCase(status) && spentTime < maxTimeInSeconds)
+          {
+        	  ApiResponse response  =  ImagingApi.getSearchContextStatus(
+        			  new GetSearchContextStatusRequest(this.SearchContextId, null, DefaultStorage)); 
+        	  SearchContextStatus contextStatus = (SearchContextStatus) response.getSaaSposeResponse();
+        	  status = contextStatus.getSearchStatus();
+              Thread.sleep(timeout);
+              spentTime += timeout;
+          }
+      }
 }

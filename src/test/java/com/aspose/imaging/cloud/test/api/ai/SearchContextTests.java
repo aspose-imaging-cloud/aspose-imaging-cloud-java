@@ -143,6 +143,8 @@ public class SearchContextTests extends TestImagingAIBase {
 		ImagingApi.postSearchContextExtractImageFeatures(new PostSearchContextExtractImageFeaturesRequest(
 				SearchContextId, null, null, OriginalDataFolder + "/FindSimilar", null, DefaultStorage));
 
+		waitSearchContextIdle(120);
+		  
 		ApiResponse response = ImagingApi.getSearchContextImageFeatures(new GetSearchContextImageFeaturesRequest(
 				SearchContextId, OriginalDataFolder + "/FindSimilar/3.jpg", null, DefaultStorage));
 
