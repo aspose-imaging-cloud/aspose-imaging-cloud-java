@@ -84,7 +84,7 @@ public abstract class TestImagingAIBase extends ApiTester {
 		return status.getSearchStatus();
 	}
 
-	protected  void addImageFeaturesToSearchContext(String storageSourcePath, Boolean isFolder) throws Exception {
+	protected void addImageFeaturesToSearchContext(String storageSourcePath, Boolean isFolder) throws Exception {
 		
 		PostSearchContextExtractImageFeaturesRequest request = isFolder 
 				 ? new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, null,  storageSourcePath, null,  DefaultStorage)
@@ -103,7 +103,7 @@ public abstract class TestImagingAIBase extends ApiTester {
           int spentTime = 0;
           String status="unknown";
 
-          while ("Idle".equalsIgnoreCase(status) && spentTime < maxTimeInSeconds)
+          while (!"Idle".equalsIgnoreCase(status) && spentTime < maxTimeInSeconds)
           {
         	  ApiResponse response  =  ImagingApi.getSearchContextStatus(
         			  new GetSearchContextStatusRequest(this.SearchContextId, null, DefaultStorage)); 
