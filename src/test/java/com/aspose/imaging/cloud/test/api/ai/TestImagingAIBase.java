@@ -109,7 +109,7 @@ public abstract class TestImagingAIBase extends ApiTester {
         			  new GetSearchContextStatusRequest(this.SearchContextId, null, DefaultStorage)); 
         	  SearchContextStatus contextStatus = (SearchContextStatus) response.getSaaSposeResponse();
         	  status = contextStatus.getSearchStatus();
-              Thread.sleep(timeout);
+              Thread.sleep(timeout*1000);
               spentTime += timeout;
           }
       }
