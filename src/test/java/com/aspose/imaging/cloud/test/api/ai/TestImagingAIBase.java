@@ -32,9 +32,6 @@ import com.aspose.imaging.cloud.sdk.model.SearchContextStatus;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 
-import java.time.Duration;
-import java.time.Instant;
-
 import org.apache.commons.lang.StringUtils;
 import org.junit.*;
 
