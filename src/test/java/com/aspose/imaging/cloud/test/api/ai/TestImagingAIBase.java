@@ -32,12 +32,15 @@ import com.aspose.imaging.cloud.sdk.model.SearchContextStatus;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 
+import java.time.Duration;
+import java.time.Instant;
+
 import org.apache.commons.lang.StringUtils;
 import org.junit.*;
 
 public abstract class TestImagingAIBase extends ApiTester {
 
-	protected static int WaitTimeoutInSeconds = 120;
+	protected static int WaitTimeoutInSeconds = 300;
 	
 	@Before
 	public void initTest() throws Exception {
@@ -102,17 +105,16 @@ public abstract class TestImagingAIBase extends ApiTester {
 	}
 
 	protected void waitSearchContextIdle(int maxTimeInSeconds) throws Exception {
-		int timeout = 10;
-		int spentTime = 0;
+		int timeout = 10;		
 		String status = "unknown";
+		Instant startTime = Instant.now();
 
-		while (!"Idle".equalsIgnoreCase(status) && spentTime < maxTimeInSeconds) {
+		while (!"Idle".equalsIgnoreCase(status) && Duration.between(startTime, Instant.now()).getSeconds() < maxTimeInSeconds) {
 			ApiResponse response = ImagingApi.getSearchContextStatus(
 					new GetSearchContextStatusRequest(this.SearchContextId, null, DefaultStorage));
 			SearchContextStatus contextStatus = (SearchContextStatus) response.getSaaSposeResponse();
 			status = contextStatus.getSearchStatus();
 			Thread.sleep(timeout * 1000);
-			spentTime += timeout;
 		}
 	}
 }
