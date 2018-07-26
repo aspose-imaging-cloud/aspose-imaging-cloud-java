@@ -107,9 +107,10 @@ public abstract class TestImagingAIBase extends ApiTester {
 	protected void waitSearchContextIdle(int maxTimeInSeconds) throws Exception {
 		int timeout = 10;		
 		String status = "unknown";
-		Instant startTime = Instant.now();
+		
+		long startTime = System.currentTimeMillis();
 
-		while (!"Idle".equalsIgnoreCase(status) && Duration.between(startTime, Instant.now()).getSeconds() < maxTimeInSeconds) {
+		while (!"Idle".equalsIgnoreCase(status) && (System.currentTimeMillis() - startTime) * 1000 < maxTimeInSeconds) {
 			ApiResponse response = ImagingApi.getSearchContextStatus(
 					new GetSearchContextStatusRequest(this.SearchContextId, null, DefaultStorage));
 			SearchContextStatus contextStatus = (SearchContextStatus) response.getSaaSposeResponse();
