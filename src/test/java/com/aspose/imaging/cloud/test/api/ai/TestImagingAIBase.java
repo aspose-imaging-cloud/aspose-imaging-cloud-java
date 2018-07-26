@@ -37,6 +37,8 @@ import org.junit.*;
 
 public abstract class TestImagingAIBase extends ApiTester {
 
+	protected static int WaitTimeout = 60;
+	
 	@Before
 	public void initTest() throws Exception {
 		SearchContextId = createSearchContext();
@@ -68,7 +70,7 @@ public abstract class TestImagingAIBase extends ApiTester {
 				.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, DefaultStorage));
 
 		SearchContextStatus status = (SearchContextStatus) response.getSaaSposeResponse();
-		Assert.assertEquals((long)200, (long)status.getCode());
+		Assert.assertEquals((long) 200, (long) status.getCode());
 		return status.getId();
 	}
 
@@ -80,37 +82,37 @@ public abstract class TestImagingAIBase extends ApiTester {
 		ApiResponse response = ImagingApi
 				.getSearchContextStatus(new GetSearchContextStatusRequest(SearchContextId, null, DefaultStorage));
 		SearchContextStatus status = (SearchContextStatus) response.getSaaSposeResponse();
-		Assert.assertEquals((long)200, (long)status.getCode());
+		Assert.assertEquals((long) 200, (long) status.getCode());
 		return status.getSearchStatus();
 	}
 
 	protected void addImageFeaturesToSearchContext(String storageSourcePath, Boolean isFolder) throws Exception {
-		
-		PostSearchContextExtractImageFeaturesRequest request = isFolder 
-				 ? new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, null,  storageSourcePath, null,  DefaultStorage)
-				 : new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, storageSourcePath, null, null, DefaultStorage);
-		  ImagingApi.postSearchContextExtractImageFeatures(request);	
-		  
-		  if (isFolder)
-		  {
-			  waitSearchContextIdle(120);
-		  }
-	}
-	
-	  protected void waitSearchContextIdle(int maxTimeInSeconds) throws Exception
-      {
-          int timeout = 10;
-          int spentTime = 0;
-          String status="unknown";
 
-          while (!"Idle".equalsIgnoreCase(status) && spentTime < maxTimeInSeconds)
-          {
-        	  ApiResponse response  =  ImagingApi.getSearchContextStatus(
-        			  new GetSearchContextStatusRequest(this.SearchContextId, null, DefaultStorage)); 
-        	  SearchContextStatus contextStatus = (SearchContextStatus) response.getSaaSposeResponse();
-        	  status = contextStatus.getSearchStatus();
-              Thread.sleep(timeout*1000);
-              spentTime += timeout;
-          }
-      }
+		PostSearchContextExtractImageFeaturesRequest request = isFolder
+				? new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, null, storageSourcePath, null,
+						DefaultStorage)
+				: new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, storageSourcePath, null, null,
+						DefaultStorage);
+		ImagingApi.postSearchContextExtractImageFeatures(request);		
+		waitSearchContextIdle();		
+	}
+
+	protected void waitSearchContextIdle() throws Exception {
+		waitSearchContextIdle(WaitTimeout);
+	}
+
+	protected void waitSearchContextIdle(int maxTimeInSeconds) throws Exception {
+		int timeout = 10;
+		int spentTime = 0;
+		String status = "unknown";
+
+		while (!"Idle".equalsIgnoreCase(status) && spentTime < maxTimeInSeconds) {
+			ApiResponse response = ImagingApi.getSearchContextStatus(
+					new GetSearchContextStatusRequest(this.SearchContextId, null, DefaultStorage));
+			SearchContextStatus contextStatus = (SearchContextStatus) response.getSaaSposeResponse();
+			status = contextStatus.getSearchStatus();
+			Thread.sleep(timeout * 1000);
+			spentTime += timeout;
+		}
+	}
 }
