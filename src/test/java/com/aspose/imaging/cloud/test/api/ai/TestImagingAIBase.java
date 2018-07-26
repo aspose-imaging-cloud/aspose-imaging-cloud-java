@@ -37,7 +37,7 @@ import org.junit.*;
 
 public abstract class TestImagingAIBase extends ApiTester {
 
-	protected static int WaitTimeout = 60;
+	protected static int WaitTimeoutInSeconds = 120;
 	
 	@Before
 	public void initTest() throws Exception {
@@ -98,7 +98,7 @@ public abstract class TestImagingAIBase extends ApiTester {
 	}
 
 	protected void waitSearchContextIdle() throws Exception {
-		waitSearchContextIdle(WaitTimeout);
+		waitSearchContextIdle(WaitTimeoutInSeconds);
 	}
 
 	protected void waitSearchContextIdle(int maxTimeInSeconds) throws Exception {
