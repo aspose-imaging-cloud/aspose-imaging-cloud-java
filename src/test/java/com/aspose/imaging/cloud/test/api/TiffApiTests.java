@@ -32,14 +32,15 @@ import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 import com.aspose.imaging.cloud.test.base.StorageFileInfo;
+import com.aspose.imaging.cloud.test.categories.TiffTestCategory;
 import com.aspose.storage.model.ResponseMessage;
 
 import junitparams.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.Assert;
-import org.junit.Before;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,6 +50,7 @@ import java.lang.reflect.Method;
 /**
  * Class for testing TIFF-related API calls
  */
+@Category(TiffTestCategory.class)
 @RunWith(JUnitParamsRunner.class)
 public class TiffApiTests extends ApiTester {
 
@@ -75,7 +77,7 @@ public class TiffApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String folder = CloudTestFolder;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
 		String outName = name + "_specific." + "tiff";
 		getImageTiffRequest = new GetImageTiffRequest(name, compression, resolutionUnit, bitDepth, fromScratch, 
 				horizontalResolution, verticalResolution, outPath, folder, storage);
@@ -116,7 +118,7 @@ public class TiffApiTests extends ApiTester {
         double verticalResolution = 150;
         Boolean fromScratch = null;
         String outPath = null;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
         String folder = CloudTestFolder;
         String name = "test.tiff";
 		String outName = name + "_specific." + "tiff";
@@ -152,7 +154,7 @@ public class TiffApiTests extends ApiTester {
     	String name = "test.tiff";
         String outPath = null;
         String folder = CloudTestFolder;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
 		String outName = name + "_fax." + "tiff";
 		getTiffToFaxRequest = new GetTiffToFaxRequest(name, storage, folder, outPath);
 		
@@ -198,7 +200,7 @@ public class TiffApiTests extends ApiTester {
         String resultFileName = inputFileName + "_merged.tiff";
         String outPath = null;
         String inputPath = CloudTestFolder + "/" + inputFileName;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
         String referencePath = CloudReferencesFolder + "/Tiff";
 
         try

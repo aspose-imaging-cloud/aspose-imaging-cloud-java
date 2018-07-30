@@ -30,20 +30,21 @@ import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
+import com.aspose.imaging.cloud.test.categories.WebpTestCategory;
 
 import junitparams.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Ignore;
 
 import java.lang.reflect.Method;
 
 /**
  * Class for testing WEBP-related API calls
  */
+@Category(WebpTestCategory.class)
 @RunWith(JUnitParamsRunner.class)
 public class WebpApiTests extends ApiTester {
 
@@ -68,7 +69,7 @@ public class WebpApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String folder = CloudTestFolder;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
 		String outName = name + "_specific." + "webp";
 		getImageWebPRequest = new GetImageWebPRequest(name, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, folder, storage);
 		
@@ -107,7 +108,7 @@ public class WebpApiTests extends ApiTester {
         String animBackgroundColor = "gray";
         Boolean fromScratch = null;
         String outPath = null;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
         String folder = CloudTestFolder;
         String name = "Animation.webp";
 		String outName = name + "_specific." + "webp";
@@ -168,12 +169,6 @@ public class WebpApiTests extends ApiTester {
 	{
 		Assert.assertNotNull(resultProperties.getWebPProperties());
 		
-		/* TODO: uncomment after IMAGINGNET-2869 is done
-        Assert.assertEquals(getImageWebPRequest.lossLess, resultProperties.getWebPProperties().isLossless());
-        Assert.assertEquals(getImageWebPRequest.animLoopCount, resultProperties.getWebPProperties().getAnimLoopCount());
-        Assert.assertEquals((int)getImageWebPRequest.quality, (int) Math.ceil(resultProperties.getWebPProperties().getQuality()));
-        */
-
         Assert.assertNotNull(originalProperties.getWebPProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
         Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
@@ -188,12 +183,6 @@ public class WebpApiTests extends ApiTester {
 	{
         Assert.assertNotNull(resultProperties.getWebPProperties());
 		
-		/* TODO: uncomment after IMAGINGNET-2869 is done
-        Assert.assertEquals(postImageWebPRequest.lossLess, resultProperties.getWebPProperties().isLossless());
-        Assert.assertEquals(postImageWebPRequest.animLoopCount, resultProperties.getWebPProperties().getAnimLoopCount());
-        Assert.assertEquals((int)postImageWebPRequest.quality, (int) Math.ceil(resultProperties.getWebPProperties().getQuality()));
-        */
-
         Assert.assertNotNull(originalProperties.getWebPProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
         Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());

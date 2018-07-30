@@ -31,9 +31,11 @@ import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.SearchContextStatus;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
+import com.aspose.imaging.cloud.test.categories.AITestCategory;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.*;
+import org.junit.experimental.categories.Category;
 
 public abstract class TestImagingAIBase extends ApiTester {
 
@@ -50,8 +52,8 @@ public abstract class TestImagingAIBase extends ApiTester {
 			deleteSearchContext(SearchContextId);
 		}
 
-		if (StorageApi.GetIsExist(TempFolder, null, DefaultStorage).getFileExist().getIsExist()) {
-			StorageApi.DeleteFolder(TempFolder, DefaultStorage, true);
+		if (StorageApi.GetIsExist(TempFolder, null, TestStorage).getFileExist().getIsExist()) {
+			StorageApi.DeleteFolder(TempFolder, TestStorage, true);
 		}
 	}
 
@@ -67,7 +69,7 @@ public abstract class TestImagingAIBase extends ApiTester {
 
 	protected static String createSearchContext() throws Exception {
 		ApiResponse response = ImagingApi
-				.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, DefaultStorage));
+				.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, TestStorage));
 
 		SearchContextStatus status = (SearchContextStatus) response.getSaaSposeResponse();
 		Assert.assertEquals((long) 200, (long) status.getCode());
@@ -75,25 +77,23 @@ public abstract class TestImagingAIBase extends ApiTester {
 	}
 
 	protected void deleteSearchContext(String searchContextId) throws Exception {
-		ImagingApi.deleteSearchContext(new DeleteSearchContextRequest(searchContextId, null, DefaultStorage));
+		ImagingApi.deleteSearchContext(new DeleteSearchContextRequest(searchContextId, null, TestStorage));
 	}
 
 	protected String getSearchContextStatus(String searchContextId) throws Exception {
 		ApiResponse response = ImagingApi
-				.getSearchContextStatus(new GetSearchContextStatusRequest(SearchContextId, null, DefaultStorage));
+				.getSearchContextStatus(new GetSearchContextStatusRequest(SearchContextId, null, TestStorage));
 		SearchContextStatus status = (SearchContextStatus) response.getSaaSposeResponse();
 		Assert.assertEquals((long) 200, (long) status.getCode());
 		return status.getSearchStatus();
 	}
 
-	protected void addImageFeaturesToSearchContext(String storageSourcePath, Boolean isFolder) throws Exception {
-
-		PostSearchContextExtractImageFeaturesRequest request = isFolder
-				? new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, null, storageSourcePath, null,
-						DefaultStorage)
-				: new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, storageSourcePath, null, null,
-						DefaultStorage);
-		ImagingApi.postSearchContextExtractImageFeatures(request);		
+	protected  void addImageFeaturesToSearchContext(String storageSourcePath, Boolean isFolder) throws Exception {
+		
+		PostSearchContextExtractImageFeaturesRequest request = isFolder 
+				 ? new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, null,  storageSourcePath, null,  TestStorage)
+				 : new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, storageSourcePath, null, null, TestStorage);
+		  ImagingApi.postSearchContextExtractImageFeatures(request);		 
 		waitSearchContextIdle();		
 	}
 

@@ -29,9 +29,12 @@ package com.aspose.imaging.cloud.test.base;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -63,17 +66,22 @@ public abstract class ApiTester
     /**
      * The cloud storage test folder
      */
-    protected final static String CloudTestFolder = "CloudTestJava";
-
+    protected final static String CloudTestFolder = "ImagingCloudTestJava";
+    
     /**
-     * The cloud storage references folder
+     * The cloud references folder
      */
-    protected final String CloudReferencesFolder = "CloudTestReferences";
+    protected final static String CloudReferencesFolder = "ImagingCloudSdkTestReferences";
 
     /**
      * The default cloud storage
      */
     protected final static String DefaultStorage = "Imaging-QA";
+    
+    /**
+     * Original data folder.
+     */
+    protected final static String OriginalDataFolder = "ImagingCloudSdkInputTestData";
     
     /**
      * Input test files info
@@ -94,6 +102,11 @@ public abstract class ApiTester
 	 * The server access file
 	 */
     private final static String ServerAccessFile = "serverAccess.json";
+    
+    /**
+	 * The API version
+	 */
+    private final static String ApiVersion = "v2.0";
 
     /**
      * The application key
@@ -111,14 +124,14 @@ public abstract class ApiTester
     private final static String BaseUrl = "http://api.aspose.cloud/";
     
     /**
-     * Original test data folder
-     */
-    private final static String OriginalDataFolder = "CloudTest";
-    
-    /**
      * Temporary file name
      */
     private final static String tempFileName = "imagingJavaSdkTempFile";
+    
+    /**
+     * Current test storage
+     */
+    protected static String TestStorage;
 
     /**
      * Gets or sets a value indicating whether resulting images should be removed from cloud storage.
@@ -148,7 +161,7 @@ public abstract class ApiTester
         "psd",
         "tiff"
     };
-    
+
     /**
      * API call retry count
      */
@@ -166,6 +179,14 @@ public abstract class ApiTester
     @BeforeClass
     public static void initTester() throws Exception
     {
+        TestStorage = System.getenv("StorageName");
+
+        if (isNullOrEmpty(TestStorage))
+        {
+            System.out.println("Storage name is not set by environment variable. Using the default one.");
+            TestStorage = DefaultStorage;
+        }
+        
     	createApiInstances();
     	finilizeTester();
     }
@@ -182,9 +203,9 @@ public abstract class ApiTester
     		tempFile.delete();
     	}
     	
-    	if (StorageApi.GetIsExist(CloudTestFolder, "", DefaultStorage).getFileExist().getIsExist())
+    	if (StorageApi.GetIsExist(CloudTestFolder, "", TestStorage).getFileExist().getIsExist())
         {
-            StorageApi.DeleteFolder(CloudTestFolder, DefaultStorage, true);
+            StorageApi.DeleteFolder(CloudTestFolder, TestStorage, true);
         }
     }
 
@@ -194,7 +215,7 @@ public abstract class ApiTester
      */
     protected static void createApiInstances() throws Exception
     {
-        createApiInstances(AppKey, AppSid, BaseUrl, "v2", AuthType.OAuth2, false);
+        createApiInstances(AppKey, AppSid, BaseUrl, ApiVersion, AuthType.OAuth2, false);
     }
     
     /**
@@ -209,28 +230,77 @@ public abstract class ApiTester
      */
     protected static void createApiInstances(String appKey, String appSid, String baseUrl, String apiVersion, AuthType authType, Boolean debug) throws Exception
     {
-            if (appKey.equals(AppKey) || appSid.equals(AppSid) || baseUrl == null || baseUrl.equals(""))
-            {
-            	File serverAccessFile = new File(LocalTestFolder, ServerAccessFile);
-                if (serverAccessFile.exists() && serverAccessFile.length() > 0)
-                {
-                	String serverCredentials = FileUtils.readFileToString(serverAccessFile);
-                	ServerAccessData accessData = JSON.deserialize(serverCredentials, ServerAccessData.class);
-                    appKey = accessData.AppKey;
-                    appSid = accessData.AppSid;
-                    baseUrl = accessData.BaseURL;
-                }
-                else
-                {
-                    throw new Exception("Please, specify valid access data (AppKey, AppSid, Base URL)");
-                }
-            }
+    	 if (appKey.equals(AppKey) || appSid.equals(AppSid))
+         {
+    		 System.out.println("Access data isn't set explicitly. Trying to obtain it from environment variables.");
 
-            ImagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(appKey, appSid, baseUrl, apiVersion, authType, debug);
-            StorageApi = new com.aspose.storage.api.StorageApi(baseUrl + apiVersion, appKey, appSid);
-            InputTestFiles = fetchInputTestFilesInfo();
+             appKey = System.getenv("AppKEY");
+             appSid = System.getenv("AppSID");
+             baseUrl = System.getenv("ApiEndpoint");
+             apiVersion = System.getenv("ApiVersion");
+         }
+
+         if (isNullOrEmpty(appKey) || isNullOrEmpty(appSid) || isNullOrEmpty(baseUrl) || isNullOrEmpty(apiVersion))
+         {
+        	 System.out.println("Access data isn't set completely by environment variables. Filling unset data with default values.");
+         }
+
+         if (isNullOrEmpty(apiVersion))
+         {
+             apiVersion = ApiVersion;
+             System.out.println("Set default API version");
+         }
+    	
+         File serverAccessFile = new File(LocalTestFolder, ServerAccessFile);
+         if (serverAccessFile.exists() && serverAccessFile.length() > 0)
+         {
+             String serverCredentials = FileUtils.readFileToString(serverAccessFile);
+             ServerAccessData accessData = JSON.deserialize(serverCredentials, ServerAccessData.class);
+             if (isNullOrEmpty(appKey))
+             {
+                 appKey = accessData.AppKey;
+                 System.out.println("Set default App key");
+             }
+
+             if (isNullOrEmpty(appSid))
+             {
+                 appSid = accessData.AppSid;
+                 System.out.println("Set default App SID");
+             }
+
+             if (isNullOrEmpty(baseUrl))
+             {
+                 baseUrl = accessData.BaseURL;
+                 System.out.println("Set default base URL");
+             }
+         }
+         else
+         {
+             throw new Exception("Please, specify valid access data (AppKey, AppSid, Base URL)");
+         }
+         
+         System.out.println("App key: " + appKey);
+         System.out.println("App SID: " + appSid);
+         System.out.println("Storage: " + TestStorage);
+         System.out.println("Base URL: " + baseUrl);
+         System.out.println("API version: " + apiVersion);
+
+         ImagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(appKey, appSid, baseUrl, apiVersion, authType, debug);
+         StorageApi = new com.aspose.storage.api.StorageApi(baseUrl + "v2", appKey, appSid);
+         
+         InputTestFiles = fetchInputTestFilesInfo();
     }
-
+    
+    /**
+     * Checks if string is null or empty.
+     * @param str String to check.
+     * @return If string is null or empty
+     */
+    private static Boolean isNullOrEmpty(String str)
+    {
+    	return str == null || str == "";
+    }
+    
     /**
      * Tests the typical GET request.
      * @param testMethodName Name of the test method.
@@ -404,17 +474,10 @@ public abstract class ApiTester
      * @return The storage file information.
      * @throws Exception 
      */
-    protected StorageFileInfo getStorageFileInfo(String folder, String fileName,
+    protected static StorageFileInfo getStorageFileInfo(String folder, String fileName,
         String storage) throws Exception
     {
-        ResponseMessage fileListResponse = StorageApi.GetListFiles(folder, storage);
-        Assert.assertEquals(200, (int)fileListResponse.getCode());
-        InputStream stream = fileListResponse.getInputStream();
-        byte[] stringBytes = StreamHelper.readAsBytes(stream);
-        stream.close();
-        
-        String responseString = new String(stringBytes);
-        FilesList references = SerializationHelper.deserialize(responseString, FilesList.class);
+        FilesList references = getStorageFolderInfo(folder, storage);
         for (StorageFileInfo storageFileInfo : references.Files)
         {
             if (storageFileInfo.getName().equals(fileName))
@@ -425,6 +488,26 @@ public abstract class ApiTester
 
         return null;
     }
+    
+    /**
+     * Gets the storage file information.
+     * @param folder The folder which contains a file.
+     * @param fileName Name of the file.
+     * @param storage The storage.
+     * @return The storage file information.
+     * @throws Exception 
+     */
+    protected static FilesList getStorageFolderInfo(String folder, String storage) throws Exception
+    {
+        ResponseMessage fileListResponse = StorageApi.GetListFiles(folder, storage);
+        Assert.assertEquals(200, (int)fileListResponse.getCode());
+        InputStream stream = fileListResponse.getInputStream();
+        byte[] stringBytes = StreamHelper.readAsBytes(stream);
+        stream.close();
+        
+        String responseString = new String(stringBytes);
+        return SerializationHelper.deserialize(responseString, FilesList.class);
+    }
 
     /**
      * Fetches the input test files info.
@@ -433,7 +516,7 @@ public abstract class ApiTester
      */
     private static List<StorageFileInfo> fetchInputTestFilesInfo() throws Exception
     {
-        ResponseMessage filesResponse = StorageApi.GetListFiles(OriginalDataFolder, DefaultStorage);
+        ResponseMessage filesResponse = StorageApi.GetListFiles(OriginalDataFolder, TestStorage);
         Assert.assertEquals(200, (int)filesResponse.getCode());
         InputStream stream = filesResponse.getInputStream();
         byte[] stringBytes = StreamHelper.readAsBytes(stream);

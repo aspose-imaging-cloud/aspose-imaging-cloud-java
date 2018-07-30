@@ -30,18 +30,20 @@ import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
+import com.aspose.imaging.cloud.test.categories.OdgTestCategory;
 
 import junitparams.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.Assert;
-import org.junit.Before;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing ODG-related API calls
  */
+@Category(OdgTestCategory.class)
 @RunWith(JUnitParamsRunner.class)
 public class OdgApiTests extends ApiTester {
 
@@ -62,7 +64,7 @@ public class OdgApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String folder = CloudTestFolder;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
 		String outName = name + "_specific." + "png";
 		getImageOdgRequest = new GetImageOdgRequest(name, fromScratch, outPath, folder, storage);
 		
@@ -97,7 +99,7 @@ public class OdgApiTests extends ApiTester {
         byte[] imageData = null;
         Boolean fromScratch = null;
         String outPath = null;
-        String storage = DefaultStorage;
+        String storage = TestStorage;
         String folder = CloudTestFolder;
         String name = "test.odg";
 		String outName = name + "_specific." + "png";
