@@ -77,7 +77,7 @@ public class UpdateImageApiTests extends ApiTester {
         Integer rectWidth = 200;
         Integer rectHeight = 300;
         String rotateFlipMethod = "Rotate90FlipX";
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = null;
 		
@@ -153,7 +153,7 @@ public class UpdateImageApiTests extends ApiTester {
         Integer rectWidth = 200;
         Integer rectHeight = 300;
         String rotateFlipMethod = "Rotate90FlipX";
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = null;
 		
@@ -202,6 +202,56 @@ public class UpdateImageApiTests extends ApiTester {
 		            folder,
 		            storage);
             }
+		}
+    }
+    
+    /**
+     * Extended test set for Update operation.
+     * @throws Exception
+     */
+    @Test
+    public void ExtendedUpdateTests() throws Exception
+    {
+		if (isExtendedTests())
+    	{
+    		this.getImageUpdateTest(".bmp", true);
+    		this.getImageUpdateTest(".bmp", false);
+    		this.postImageUpdateTest(".bmp", true);
+    		this.postImageUpdateTest(".bmp", false);
+    		this.getImageUpdateTest(".dicom", true);
+    		this.getImageUpdateTest(".dicom", false);
+    		this.postImageUpdateTest(".dicom", true);
+    		this.postImageUpdateTest(".dicom", false);
+    		/* TODO: enable after IMAGINGCLOUD-51 is resolved
+    		this.getImageUpdateTest(".gif", true);
+    		this.getImageUpdateTest(".gif", false);
+    		this.postImageUpdateTest(".gif", true);
+    		this.postImageUpdateTest(".gif", false);
+    		*/
+    		this.getImageUpdateTest(".j2k", true);
+    		this.getImageUpdateTest(".j2k", false);
+    		this.postImageUpdateTest(".j2k", true);
+    		this.postImageUpdateTest(".j2k", false);
+    		this.getImageUpdateTest(".png", true);
+    		this.getImageUpdateTest(".png", false);
+    		this.postImageUpdateTest(".png", true);
+    		this.postImageUpdateTest(".png", false);
+    		this.getImageUpdateTest(".psd", true);
+    		this.getImageUpdateTest(".psd", false);
+    		this.postImageUpdateTest(".psd", true);
+    		this.postImageUpdateTest(".psd", false);
+    		this.getImageUpdateTest(".tiff", true);
+    		this.getImageUpdateTest(".tiff", false);
+    		this.postImageUpdateTest(".tiff", true);
+    		this.postImageUpdateTest(".tiff", false);
+    		this.getImageUpdateTest(".webp", true);
+    		this.getImageUpdateTest(".webp", false);
+    		this.postImageUpdateTest(".webp", true);
+    		this.postImageUpdateTest(".webp", false);
+    	}
+		else
+		{
+			System.out.println("Extended tests had been disabled");
 		}
     }
 	

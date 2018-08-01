@@ -29,12 +29,9 @@ package com.aspose.imaging.cloud.test.base;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -50,7 +47,6 @@ import com.aspose.imaging.cloud.sdk.invoker.internal.SerializationHelper;
 import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
 import com.aspose.imaging.cloud.sdk.model.requests.GetImagePropertiesRequest;
 import com.aspose.imaging.cloud.sdk.stablemodel.ImagingResponse;
-import com.aspose.storage.model.MoveFileResponse;
 import com.aspose.storage.model.ResponseMessage;
 
 /**
@@ -66,7 +62,7 @@ public abstract class ApiTester
     /**
      * The cloud storage test folder
      */
-    protected final static String CloudTestFolder = "ImagingCloudTestJava";
+    protected final static String TempFolder = "ImagingCloudTestJava_" + getTempFolderId();
     
     /**
      * The cloud references folder
@@ -132,17 +128,16 @@ public abstract class ApiTester
      * Current test storage
      */
     protected static String TestStorage;
+    
+    /**
+     * If any test failed
+     */
+    private static Boolean failedAnyTest = false;
 
     /**
      * Gets or sets a value indicating whether resulting images should be removed from cloud storage.
      */
-    public Boolean RemoveResult = true;
-
-    /**
-     * Gets or sets a value indicating whether to automatic recover reference (i.e. if resulting images of failed tests are considered as new valid references).
-     * Please, change this value ONLY if you clearly understand the consequences, or it may lead to replacement of the images you need, so they will be lost.
-     */
-    public Boolean AutoRecoverReference = false;
+    public static Boolean RemoveResult = true;
     
     /**
      * The size difference division
@@ -203,9 +198,9 @@ public abstract class ApiTester
     		tempFile.delete();
     	}
     	
-    	if (StorageApi.GetIsExist(CloudTestFolder, "", TestStorage).getFileExist().getIsExist())
+    	if (!failedAnyTest && RemoveResult && StorageApi.GetIsExist(TempFolder, "", TestStorage).getFileExist().getIsExist())
         {
-            StorageApi.DeleteFolder(CloudTestFolder, TestStorage, true);
+            StorageApi.DeleteFolder(TempFolder, TestStorage, true);
         }
     }
 
@@ -217,6 +212,21 @@ public abstract class ApiTester
     {
         createApiInstances(AppKey, AppSid, BaseUrl, ApiVersion, AuthType.OAuth2, false);
     }
+    
+    /**
+     * If extended test set is enabled.
+     * @return if extended test set is enabled.
+     */
+	protected static Boolean isExtendedTests()
+	{
+		String envValue = System.getenv("ExtendedTests");
+		if (!isNullOrEmpty(envValue) && envValue.equals("true"))
+		{
+			return true;
+		}
+		
+		return false;
+	}
     
     /**
      * Creates the API instances using given access parameters.
@@ -301,6 +311,65 @@ public abstract class ApiTester
     	return str == null || str == "";
     }
     
+
+    /**
+     * Gets the storage file information.
+     * @param folder The folder which contains a file.
+     * @param fileName Name of the file.
+     * @param storage The storage.
+     * @return The storage file information.
+     * @throws Exception 
+     */
+    protected static StorageFileInfo getStorageFileInfo(String folder, String fileName,
+        String storage) throws Exception
+    {
+        FilesList references = getStorageFolderInfo(folder, storage);
+        for (StorageFileInfo storageFileInfo : references.Files)
+        {
+            if (storageFileInfo.getName().equals(fileName))
+            {
+                return storageFileInfo;
+            }
+        }
+
+        return null;
+    }
+    
+    /**
+     * Gets the storage file information.
+     * @param folder The folder which contains a file.
+     * @param fileName Name of the file.
+     * @param storage The storage.
+     * @return The storage file information.
+     * @throws Exception 
+     */
+    protected static FilesList getStorageFolderInfo(String folder, String storage) throws Exception
+    {
+        ResponseMessage fileListResponse = StorageApi.GetListFiles(folder, storage);
+        Assert.assertEquals(200, (int)fileListResponse.getCode());
+        InputStream stream = fileListResponse.getInputStream();
+        byte[] stringBytes = StreamHelper.readAsBytes(stream);
+        stream.close();
+        
+        String responseString = new String(stringBytes);
+        return SerializationHelper.deserialize(responseString, FilesList.class);
+    }
+    
+    /**
+     * Retrieves temp folder ID for dynamic name generation.
+     * @return Temp folder ID.
+     */
+    protected static String getTempFolderId()
+    {
+    	String id = System.getenv("BUILD_NUMBER");
+    	if (isNullOrEmpty(id))
+    	{
+    		id = System.getProperty("user.name");
+    	}
+    	
+    	return id;
+    }
+    
     /**
      * Tests the typical GET request.
      * @param testMethodName Name of the test method.
@@ -317,7 +386,7 @@ public abstract class ApiTester
     		String resultFileName, String localSubfolder, Method requestInvoker, Method propertiesTester) throws NoSuchMethodException, Exception
     {
         this.testGetRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName, localSubfolder,
-        		requestInvoker, propertiesTester, CloudTestFolder, DefaultStorage);
+        		requestInvoker, propertiesTester, TempFolder, DefaultStorage);
     }
     
     /**
@@ -356,7 +425,7 @@ public abstract class ApiTester
             		return (Long)result;
                 }
             }, 
-            propertiesTester, folder, storage);
+            propertiesTester, folder, storage, true);
     }
 
     /**
@@ -375,7 +444,7 @@ public abstract class ApiTester
     		String resultFileName, String localSubfolder, Method requestInvoker, Method propertiesTester) throws NoSuchMethodException, Exception
     {
         this.testPostRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName, localSubfolder,
-        		requestInvoker, propertiesTester, CloudTestFolder, DefaultStorage);
+        		requestInvoker, propertiesTester, TempFolder, DefaultStorage);
     }
     
     /**
@@ -416,7 +485,7 @@ public abstract class ApiTester
             		return (Long)obtainMethod.invoke(thisReference, finalFolder + "/" + finalInputFileName, outPath, finalStorage, finalRequestInvoker);
                 }
             }, 
-            propertiesTester, folder, storage);
+            propertiesTester, folder, storage, true);
         }
 
     /**
@@ -464,49 +533,6 @@ public abstract class ApiTester
         }
 
         return false;
-    }
-
-    /**
-     * Gets the storage file information.
-     * @param folder The folder which contains a file.
-     * @param fileName Name of the file.
-     * @param storage The storage.
-     * @return The storage file information.
-     * @throws Exception 
-     */
-    protected static StorageFileInfo getStorageFileInfo(String folder, String fileName,
-        String storage) throws Exception
-    {
-        FilesList references = getStorageFolderInfo(folder, storage);
-        for (StorageFileInfo storageFileInfo : references.Files)
-        {
-            if (storageFileInfo.getName().equals(fileName))
-            {
-                return storageFileInfo;
-            }
-        }
-
-        return null;
-    }
-    
-    /**
-     * Gets the storage file information.
-     * @param folder The folder which contains a file.
-     * @param fileName Name of the file.
-     * @param storage The storage.
-     * @return The storage file information.
-     * @throws Exception 
-     */
-    protected static FilesList getStorageFolderInfo(String folder, String storage) throws Exception
-    {
-        ResponseMessage fileListResponse = StorageApi.GetListFiles(folder, storage);
-        Assert.assertEquals(200, (int)fileListResponse.getCode());
-        InputStream stream = fileListResponse.getInputStream();
-        byte[] stringBytes = StreamHelper.readAsBytes(stream);
-        stream.close();
-        
-        String responseString = new String(stringBytes);
-        return SerializationHelper.deserialize(responseString, FilesList.class);
     }
 
     /**
@@ -615,7 +641,7 @@ public abstract class ApiTester
     		String resultFileName, String referenceSubfolder, Callable<Long> invokeRequestFunc, Method propertiesTester) throws Exception
     {
         this.testRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName, 
-        		referenceSubfolder, invokeRequestFunc, propertiesTester, CloudTestFolder, DefaultStorage);
+        		referenceSubfolder, invokeRequestFunc, propertiesTester, TempFolder, DefaultStorage, true);
     }
     
     /**
@@ -630,11 +656,12 @@ public abstract class ApiTester
      * @param propertiesTester The properties tester.
      * @param folder The folder.
      * @param storage The storage.
+     * @param tryFallback If test fails and Fallback folder is to be checked for another reference.
      * @throws Exception 
      */
     private void testRequest(String testMethodName, Boolean saveResultToStorage, String parametersLine, String inputFileName, 
     		String resultFileName, String referenceSubfolder, Callable<Long> invokeRequestFunc, Method propertiesTester, 
-    		String folder, String storage) throws Exception
+    		String folder, String storage, Boolean tryFallback) throws Exception
     {
         System.out.println("Test method: " + testMethodName);
 
@@ -655,7 +682,6 @@ public abstract class ApiTester
         	
         	ResponseMessage downResponse = StorageApi.GetDownload(OriginalDataFolder + "/" + inputFileName, "", storage);
             Assert.assertEquals("OK", downResponse.getStatus().toUpperCase());
-            InputStream downStream = null;
             FileOutputStream outStream = null;
             
             try {
@@ -667,11 +693,6 @@ public abstract class ApiTester
 				{
 					outStream.close();
 				}
-				
-				if (downStream != null)
-				{
-					downStream.close();
-				}
 			}
         	
             ResponseMessage putResponse = StorageApi.PutCreate(folder + "/" + inputFileName, "", storage, new File(tempFileName));
@@ -680,6 +701,7 @@ public abstract class ApiTester
         }
 
         Boolean passed = false;
+        Boolean usedFallback = false;
         String outPath = null;
         String referencePath = CloudReferencesFolder + "/" + referenceSubfolder;
 
@@ -708,52 +730,78 @@ public abstract class ApiTester
             long referenceLength = referenceInfo.getSize();
             long responseLength = this.invokeRequestWithRetry(invokeRequestFunc, this.retryCount);
             
-            if (saveResultToStorage)
+            try
             {
-                StorageFileInfo resultInfo = getStorageFileInfo(folder, resultFileName, storage);
-                if (resultInfo == null)
+            	if (saveResultToStorage)
                 {
-                    throw new Exception(
-                        String.format("Result file %s doesn't exist in the specified storage folder: %s. Result isn't present in the storage by an unknown reason.", 
-                        		resultFileName, folder));
+                    StorageFileInfo resultInfo = getStorageFileInfo(folder, resultFileName, storage);
+                    if (resultInfo == null)
+                    {
+                        throw new Exception(
+                            String.format("Result file %s doesn't exist in the specified storage folder: %s. Result isn't present in the storage by an unknown reason.", 
+                            		resultFileName, folder));
+                    }
+
+                    this.checkSizeDiff(referenceLength, resultInfo.getSize());
+
+                    ImagingResponse resultProperties =
+                        ImagingApi.getImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage)).getImagingResponse();
+                    Assert.assertNotNull(resultProperties);
+                    Assert.assertTrue(StorageApi.GetIsExist(folder + "/" + inputFileName, "", storage).getFileExist().getIsExist());
+                    ImagingResponse originalProperties =
+                        ImagingApi.getImageProperties(new GetImagePropertiesRequest(inputFileName, folder, storage)).getImagingResponse();
+                    Assert.assertNotNull(originalProperties);
+
+                    if (propertiesTester != null)
+                    {
+                    	propertiesTester.invoke(this, originalProperties, resultProperties);
+                    }
                 }
-
-                this.checkSizeDiff(referenceLength, resultInfo.getSize());
-
-                ImagingResponse resultProperties =
-                    ImagingApi.getImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage)).getImagingResponse();
-                Assert.assertNotNull(resultProperties);
-                Assert.assertTrue(StorageApi.GetIsExist(folder + "/" + inputFileName, "", storage).getFileExist().getIsExist());
-                ImagingResponse originalProperties =
-                    ImagingApi.getImageProperties(new GetImagePropertiesRequest(inputFileName, folder, storage)).getImagingResponse();
-                Assert.assertNotNull(originalProperties);
-
-                if (propertiesTester != null)
+                else
                 {
-                	propertiesTester.invoke(this, originalProperties, resultProperties);
+                    // check resulting image from response stream
+                    this.checkSizeDiff(referenceLength, responseLength);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                // check resulting image from response stream
-                this.checkSizeDiff(referenceLength, responseLength);
+            	if (tryFallback)
+            	{
+            		 System.out.println("Test failed. Trying to scan Fallback folder for " + resultFileName + " in " + TestStorage);
+            		 if (StorageApi.GetIsExist(referencePath + "/Fallback/" + resultFileName, "", storage).getFileExist().getIsExist())
+            		 {
+            			 usedFallback = true;
+            			 String fallbackSubfolder = referenceSubfolder + "/Fallback";
+            			 this.testRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName, 
+                                 fallbackSubfolder, invokeRequestFunc, propertiesTester, folder, storage, false);
+                         return;
+            		 }
+            		 else
+            		 {
+            			 System.out.println("No Fallback folder or " + resultFileName + " in it exists in " + TestStorage);
+            			 throw ex;
+            		 }
+            	}
+            	else
+            	{
+            		throw ex;
+            	}
             }
-
+            
             passed = true;
         }
         catch (Exception ex)
         {
-            System.out.println(ex.getMessage());
-            throw ex;
+        	failedAnyTest = true;
+        	System.out.println(ex.getMessage());
+        	throw ex;
+        	
         }
         finally
         {
-            if (saveResultToStorage && !passed && this.AutoRecoverReference && StorageApi.GetIsExist(outPath, "", storage).getFileExist().getIsExist())
-            {
-                MoveFileResponse moveFileResponse = StorageApi.PostMoveFile(outPath, referencePath + resultFileName, "", storage, storage);
-                Assert.assertEquals("OK", moveFileResponse.getStatus());
-            }
-            else if (saveResultToStorage && this.RemoveResult && StorageApi.GetIsExist(outPath, "", storage).getFileExist().getIsExist())
+        	if (usedFallback) return;
+        	
+            if (passed && saveResultToStorage && RemoveResult && StorageApi.GetIsExist(outPath, "", storage).getFileExist().getIsExist())
             {
                 StorageApi.DeleteFile(outPath, "", storage);
             }

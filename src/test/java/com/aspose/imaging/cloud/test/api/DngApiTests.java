@@ -63,7 +63,7 @@ public class DngApiTests extends ApiTester {
     	String name = "test.dng";
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
 		getImageDngRequest = new GetImageDngRequest(name, fromScratch, outPath, folder, storage);
@@ -100,7 +100,7 @@ public class DngApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String name = "test.dng";
 		String outName = name + "_specific." + "png";
 		postImageDngRequest = new PostImageDngRequest(imageData, fromScratch, outPath, storage);

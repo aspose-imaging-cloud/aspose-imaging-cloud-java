@@ -66,7 +66,7 @@ public class BmpApiTests extends ApiTester {
         Integer verticalResolution = 300;
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_specific." + "bmp";
 		getImageBmpRequest = new GetImageBmpRequest(name, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, folder, storage);
@@ -106,7 +106,7 @@ public class BmpApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String name = "test.bmp";
 		String outName = name + "_specific." + "bmp";
 		postImageBmpRequest = new PostImageBmpRequest(imageData, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);

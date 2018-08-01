@@ -69,7 +69,7 @@ public class SaveAsApiTests extends ApiTester {
     public void getImageSaveAsTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
         String name = null;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = null;
 		
@@ -137,7 +137,7 @@ public class SaveAsApiTests extends ApiTester {
     	byte[] imageData = null;
 		String name = null;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = null;
 		
@@ -184,6 +184,56 @@ public class SaveAsApiTests extends ApiTester {
 		            folder,
 		            storage);
             }
+		}
+    }
+    
+    /**
+     * Extended test set for SaveAs operation.
+     * @throws Exception
+     */
+    @Test
+    public void ExtendedSaveAsTests() throws Exception
+    {
+		if (isExtendedTests())
+    	{
+    		this.getImageSaveAsTest(".bmp", true);
+    		this.getImageSaveAsTest(".bmp", false);
+    		this.postImageSaveAsTest(".bmp", true);
+    		this.postImageSaveAsTest(".bmp", false);
+    		this.getImageSaveAsTest(".dicom", true);
+    		this.getImageSaveAsTest(".dicom", false);
+    		this.postImageSaveAsTest(".dicom", true);
+    		this.postImageSaveAsTest(".dicom", false);
+    		/* TODO: enable after IMAGINGCLOUD-51 is resolved
+    		this.getImageSaveAsTest(".gif", true);
+    		this.getImageSaveAsTest(".gif", false);
+    		this.postImageSaveAsTest(".gif", true);
+    		this.postImageSaveAsTest(".gif", false);
+    		*/
+    		this.getImageSaveAsTest(".j2k", true);
+    		this.getImageSaveAsTest(".j2k", false);
+    		this.postImageSaveAsTest(".j2k", true);
+    		this.postImageSaveAsTest(".j2k", false);
+    		this.getImageSaveAsTest(".png", true);
+    		this.getImageSaveAsTest(".png", false);
+    		this.postImageSaveAsTest(".png", true);
+    		this.postImageSaveAsTest(".png", false);
+    		this.getImageSaveAsTest(".psd", true);
+    		this.getImageSaveAsTest(".psd", false);
+    		this.postImageSaveAsTest(".psd", true);
+    		this.postImageSaveAsTest(".psd", false);
+    		this.getImageSaveAsTest(".tiff", true);
+    		this.getImageSaveAsTest(".tiff", false);
+    		this.postImageSaveAsTest(".tiff", true);
+    		this.postImageSaveAsTest(".tiff", false);
+    		this.getImageSaveAsTest(".webp", true);
+    		this.getImageSaveAsTest(".webp", false);
+    		this.postImageSaveAsTest(".webp", true);
+    		this.postImageSaveAsTest(".webp", false);
+    	}
+		else
+		{
+			System.out.println("Extended tests had been disabled");
 		}
     }
 	

@@ -44,7 +44,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Class for testing crop-related API calls
+ * Class for testing Resize-related API calls
  */
 @Category(ResizeTestCategory.class)
 @RunWith(JUnitParamsRunner.class)
@@ -72,7 +72,7 @@ public class ResizeApiTests extends ApiTester {
         Integer newWidth = 100;
         Integer newHeight = 150;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = null;
 		
@@ -142,7 +142,7 @@ public class ResizeApiTests extends ApiTester {
 		Integer newWidth = 100;
         Integer newHeight = 150;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = null;
 		
@@ -189,6 +189,56 @@ public class ResizeApiTests extends ApiTester {
 		            folder,
 		            storage);
             }
+		}
+    }
+    
+    /**
+     * Extended test set for Resize operation.
+     * @throws Exception
+     */
+    @Test
+    public void ExtendedResizeTests() throws Exception
+    {
+		if (isExtendedTests())
+    	{
+    		this.getImageResizeTest(".bmp", true);
+    		this.getImageResizeTest(".bmp", false);
+    		this.postImageResizeTest(".bmp", true);
+    		this.postImageResizeTest(".bmp", false);
+    		this.getImageResizeTest(".dicom", true);
+    		this.getImageResizeTest(".dicom", false);
+    		this.postImageResizeTest(".dicom", true);
+    		this.postImageResizeTest(".dicom", false);
+    		/* TODO: enable after IMAGINGCLOUD-51 is resolved
+    		this.getImageResizeTest(".gif", true);
+    		this.getImageResizeTest(".gif", false);
+    		this.postImageResizeTest(".gif", true);
+    		this.postImageResizeTest(".gif", false);
+    		*/
+    		this.getImageResizeTest(".j2k", true);
+    		this.getImageResizeTest(".j2k", false);
+    		this.postImageResizeTest(".j2k", true);
+    		this.postImageResizeTest(".j2k", false);
+    		this.getImageResizeTest(".png", true);
+    		this.getImageResizeTest(".png", false);
+    		this.postImageResizeTest(".png", true);
+    		this.postImageResizeTest(".png", false);
+    		this.getImageResizeTest(".psd", true);
+    		this.getImageResizeTest(".psd", false);
+    		this.postImageResizeTest(".psd", true);
+    		this.postImageResizeTest(".psd", false);
+    		this.getImageResizeTest(".tiff", true);
+    		this.getImageResizeTest(".tiff", false);
+    		this.postImageResizeTest(".tiff", true);
+    		this.postImageResizeTest(".tiff", false);
+    		this.getImageResizeTest(".webp", true);
+    		this.getImageResizeTest(".webp", false);
+    		this.postImageResizeTest(".webp", true);
+    		this.postImageResizeTest(".webp", false);
+    	}
+		else
+		{
+			System.out.println("Extended tests had been disabled");
 		}
     }
 	

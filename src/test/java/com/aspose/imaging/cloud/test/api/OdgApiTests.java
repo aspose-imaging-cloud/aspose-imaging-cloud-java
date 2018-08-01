@@ -63,7 +63,7 @@ public class OdgApiTests extends ApiTester {
     	String name = "test.odg";
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
 		getImageOdgRequest = new GetImageOdgRequest(name, fromScratch, outPath, folder, storage);
@@ -100,7 +100,7 @@ public class OdgApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String name = "test.odg";
 		String outName = name + "_specific." + "png";
 		postImageOdgRequest = new PostImageOdgRequest(imageData, fromScratch, outPath, storage);
