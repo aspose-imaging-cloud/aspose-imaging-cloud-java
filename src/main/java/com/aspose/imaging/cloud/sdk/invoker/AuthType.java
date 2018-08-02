@@ -36,9 +36,4 @@ public enum AuthType
 	 * OAuth 2.0
 	 */
     OAuth2,
-		
-    /**
-     * Authentication with signing of URL
-     */
-    RequestSignature;
 }

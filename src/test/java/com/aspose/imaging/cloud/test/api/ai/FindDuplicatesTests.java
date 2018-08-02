@@ -29,11 +29,14 @@ package com.aspose.imaging.cloud.test.api.ai;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.ImageDuplicatesSet;
 import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextFindDuplicatesRequest;
+import com.aspose.imaging.cloud.test.categories.AITestCategory;
 
+@Category(AITestCategory.class)
 public class FindDuplicatesTests extends TestImagingAIBase{
 	
 	 private final String ComparableImage = "ComparableImage.jpg";

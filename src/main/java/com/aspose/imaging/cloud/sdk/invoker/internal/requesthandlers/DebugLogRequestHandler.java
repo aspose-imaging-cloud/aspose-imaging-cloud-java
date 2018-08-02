@@ -103,7 +103,7 @@ public class DebugLogRequestHandler implements IRequestHandler
      */
     private void logRequest(HttpURLConnection connection, OutputStream streamToSend)
     {
-        String header = String.format("$s: $s", connection.getRequestMethod(), connection.getURL());
+        String header = String.format("$s: $s", connection.getRequestMethod(), connection.getURL().toString());
         this.log(header);
         if (streamToSend != null)
         {
@@ -119,7 +119,7 @@ public class DebugLogRequestHandler implements IRequestHandler
      */
     private void logResponse(HttpURLConnection connection, byte[] resultData) throws IOException
     {
-    	String header = String.format("\r\nResponse %s: %s", connection.getResponseCode(), connection.getResponseMessage());
+    	String header = String.format("\r\nResponse %d: %s", connection.getResponseCode(), connection.getResponseMessage());
     	this.log(header);
     	
     	StringBuilder sb = new StringBuilder();
