@@ -72,7 +72,7 @@ public class RotateFlipApiTests extends ApiTester {
         String name = null;
         String method = "Rotate90FlipX";
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = null;
 		
@@ -141,7 +141,7 @@ public class RotateFlipApiTests extends ApiTester {
 		String name = null;
 		String method = "Rotate90FlipX";
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = null;
 		
@@ -188,6 +188,56 @@ public class RotateFlipApiTests extends ApiTester {
 		            folder,
 		            storage);
             }
+		}
+    }
+    
+    /**
+     * Extended test set for RotateFlip operation.
+     * @throws Exception
+     */
+    @Test
+    public void ExtendedRotateFlipTests() throws Exception
+    {
+		if (isExtendedTests())
+    	{
+    		this.getImageRotateFlipTest(".bmp", true);
+    		this.getImageRotateFlipTest(".bmp", false);
+    		this.postImageRotateFlipTest(".bmp", true);
+    		this.postImageRotateFlipTest(".bmp", false);
+    		this.getImageRotateFlipTest(".dicom", true);
+    		this.getImageRotateFlipTest(".dicom", false);
+    		this.postImageRotateFlipTest(".dicom", true);
+    		this.postImageRotateFlipTest(".dicom", false);
+    		/* TODO: enable after IMAGINGCLOUD-51 is resolved
+    		this.getImageRotateFlipTest(".gif", true);
+    		this.getImageRotateFlipTest(".gif", false);
+    		this.postImageRotateFlipTest(".gif", true);
+    		this.postImageRotateFlipTest(".gif", false);
+    		*/
+    		this.getImageRotateFlipTest(".j2k", true);
+    		this.getImageRotateFlipTest(".j2k", false);
+    		this.postImageRotateFlipTest(".j2k", true);
+    		this.postImageRotateFlipTest(".j2k", false);
+    		this.getImageRotateFlipTest(".png", true);
+    		this.getImageRotateFlipTest(".png", false);
+    		this.postImageRotateFlipTest(".png", true);
+    		this.postImageRotateFlipTest(".png", false);
+    		this.getImageRotateFlipTest(".psd", true);
+    		this.getImageRotateFlipTest(".psd", false);
+    		this.postImageRotateFlipTest(".psd", true);
+    		this.postImageRotateFlipTest(".psd", false);
+    		this.getImageRotateFlipTest(".tiff", true);
+    		this.getImageRotateFlipTest(".tiff", false);
+    		this.postImageRotateFlipTest(".tiff", true);
+    		this.postImageRotateFlipTest(".tiff", false);
+    		this.getImageRotateFlipTest(".webp", true);
+    		this.getImageRotateFlipTest(".webp", false);
+    		this.postImageRotateFlipTest(".webp", true);
+    		this.postImageRotateFlipTest(".webp", false);
+    	}
+		else
+		{
+			System.out.println("Extended tests had been disabled");
 		}
     }
 	

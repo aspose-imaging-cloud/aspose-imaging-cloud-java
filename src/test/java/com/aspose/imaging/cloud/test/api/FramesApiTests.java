@@ -70,7 +70,7 @@ public class FramesApiTests extends ApiTester {
         String rotateFlipMethod = "Rotate90FlipX";
         Boolean saveOtherFrames = false;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_singleFrame." + "tiff";
 		getImageFrameRequest = new GetImageFrameRequest(name, frameId, newWidth, newHeight, x, y, 
@@ -116,7 +116,7 @@ public class FramesApiTests extends ApiTester {
         String rotateFlipMethod = "Rotate90FlipX";
         Boolean saveOtherFrames = true;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_allFrames." + "tiff";
 		getImageFrameRequest = new GetImageFrameRequest(name, frameId, newWidth, newHeight, x, y, 

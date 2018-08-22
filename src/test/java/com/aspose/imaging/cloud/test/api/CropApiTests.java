@@ -74,7 +74,7 @@ public class CropApiTests extends ApiTester {
         Integer width = 100;
         Integer height = 150;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = null;
 		
@@ -146,7 +146,7 @@ public class CropApiTests extends ApiTester {
         Integer width = 100;
         Integer height = 150;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = null;
 		
@@ -193,6 +193,56 @@ public class CropApiTests extends ApiTester {
 		            folder,
 		            storage);
             }
+		}
+    }
+    
+    /**
+     * Extended test set for Crop operation.
+     * @throws Exception
+     */
+    @Test
+    public void ExtendedCropTests() throws Exception
+    {
+		if (isExtendedTests())
+    	{
+    		this.getImageCropTest(".bmp", true);
+    		this.getImageCropTest(".bmp", false);
+    		this.postImageCropTest(".bmp", true);
+    		this.postImageCropTest(".bmp", false);
+    		this.getImageCropTest(".dicom", true);
+    		this.getImageCropTest(".dicom", false);
+    		this.postImageCropTest(".dicom", true);
+    		this.postImageCropTest(".dicom", false);
+    		/* TODO: enable after IMAGINGCLOUD-51 is resolved
+    		this.getImageCropTest(".gif", true);
+    		this.getImageCropTest(".gif", false);
+    		this.postImageCropTest(".gif", true);
+    		this.postImageCropTest(".gif", false);
+    		*/
+    		this.getImageCropTest(".j2k", true);
+    		this.getImageCropTest(".j2k", false);
+    		this.postImageCropTest(".j2k", true);
+    		this.postImageCropTest(".j2k", false);
+    		this.getImageCropTest(".png", true);
+    		this.getImageCropTest(".png", false);
+    		this.postImageCropTest(".png", true);
+    		this.postImageCropTest(".png", false);
+    		this.getImageCropTest(".psd", true);
+    		this.getImageCropTest(".psd", false);
+    		this.postImageCropTest(".psd", true);
+    		this.postImageCropTest(".psd", false);
+    		this.getImageCropTest(".tiff", true);
+    		this.getImageCropTest(".tiff", false);
+    		this.postImageCropTest(".tiff", true);
+    		this.postImageCropTest(".tiff", false);
+    		this.getImageCropTest(".webp", true);
+    		this.getImageCropTest(".webp", false);
+    		this.postImageCropTest(".webp", true);
+    		this.postImageCropTest(".webp", false);
+    	}
+		else
+		{
+			System.out.println("Extended tests had been disabled");
 		}
     }
 	
