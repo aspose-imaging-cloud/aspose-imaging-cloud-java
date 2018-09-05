@@ -65,7 +65,7 @@ public class JpgApiTests extends ApiTester {
         String compressionType = "progressive";
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_specific." + "jpg";
 		getImageJpgRequest = new GetImageJpgRequest(name, quality, compressionType, fromScratch, outPath, folder, storage);
@@ -104,7 +104,7 @@ public class JpgApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String name = "test.jpg";
 		String outName = name + "_specific." + "jpg";
 		postImageJpgRequest = new PostImageJpgRequest(imageData, quality, compressionType, fromScratch, outPath, storage);

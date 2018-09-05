@@ -65,7 +65,7 @@ public class Jpeg2000ApiTests extends ApiTester {
         String comment = "Aspose";
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_specific." + "jp2";
 		getImageJpeg2000Request = new GetImageJpeg2000Request(name, comment, codec, fromScratch, outPath, folder, storage);
@@ -104,7 +104,7 @@ public class Jpeg2000ApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String name = "test.j2k";
 		String outName = name + "_specific." + "jp2";
 		postImageJpeg2000Request = new PostImageJpeg2000Request(imageData, comment, codec, fromScratch, outPath, storage);

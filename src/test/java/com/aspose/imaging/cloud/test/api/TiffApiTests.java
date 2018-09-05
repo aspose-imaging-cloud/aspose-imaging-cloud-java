@@ -76,7 +76,7 @@ public class TiffApiTests extends ApiTester {
         double verticalResolution = 150;
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_specific." + "tiff";
 		getImageTiffRequest = new GetImageTiffRequest(name, compression, resolutionUnit, bitDepth, fromScratch, 
@@ -119,7 +119,7 @@ public class TiffApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String name = "test.tiff";
 		String outName = name + "_specific." + "tiff";
 		postImageTiffRequest = new PostImageTiffRequest(imageData, compression, resolutionUnit, bitDepth, fromScratch, 
@@ -153,7 +153,7 @@ public class TiffApiTests extends ApiTester {
     public void getTiffToFaxTest() throws Exception {
     	String name = "test.tiff";
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_fax." + "tiff";
 		getTiffToFaxRequest = new GetTiffToFaxRequest(name, storage, folder, outPath);
@@ -188,7 +188,7 @@ public class TiffApiTests extends ApiTester {
         System.out.println("Test method: postTiffAppendTest");
 
         String inputFileName = "test.tiff";
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
 
         if (!checkInputFileExists(inputFileName))
         {
@@ -199,7 +199,7 @@ public class TiffApiTests extends ApiTester {
 
         String resultFileName = inputFileName + "_merged.tiff";
         String outPath = null;
-        String inputPath = CloudTestFolder + "/" + inputFileName;
+        String inputPath = TempFolder + "/" + inputFileName;
         String storage = TestStorage;
         String referencePath = CloudReferencesFolder + "/Tiff";
 
@@ -282,7 +282,7 @@ public class TiffApiTests extends ApiTester {
         }
         finally
         {
-            if (this.RemoveResult && StorageApi.GetIsExist(outPath, "", storage).getFileExist().getIsExist())
+            if (RemoveResult && StorageApi.GetIsExist(outPath, "", storage).getFileExist().getIsExist())
             {
                 StorageApi.DeleteFile(outPath, "", storage);
             }

@@ -63,7 +63,7 @@ public class PngApiTests extends ApiTester {
     	String name = "test.png";
         Boolean fromScratch = false;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
 		getImagePngRequest = new GetImagePngRequest(name, fromScratch, outPath, folder, storage);
@@ -100,7 +100,7 @@ public class PngApiTests extends ApiTester {
         Boolean fromScratch = false;
         String outPath = null;
         String storage = TestStorage;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String name = "test.png";
 		String outName = name + "_specific." + "png";
 		postImagePngRequest = new PostImagePngRequest(imageData, fromScratch, outPath, storage);

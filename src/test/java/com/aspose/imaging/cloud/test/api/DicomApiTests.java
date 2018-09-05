@@ -63,7 +63,7 @@ public class DicomApiTests extends ApiTester {
     	String name = "test.dicom";
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
 		getImageDicomRequest = new GetImageDicomRequest(name, fromScratch, outPath, folder, storage);
@@ -100,7 +100,7 @@ public class DicomApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String name = "test.dicom";
 		String outName = name + "_specific." + "png";
 		postImageDicomRequest = new PostImageDicomRequest(imageData, fromScratch, outPath, storage);

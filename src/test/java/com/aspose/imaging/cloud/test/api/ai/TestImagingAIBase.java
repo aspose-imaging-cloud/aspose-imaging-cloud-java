@@ -31,11 +31,9 @@ import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.SearchContextStatus;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.categories.AITestCategory;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.*;
-import org.junit.experimental.categories.Category;
 
 public abstract class TestImagingAIBase extends ApiTester {
 
@@ -59,9 +57,9 @@ public abstract class TestImagingAIBase extends ApiTester {
 
 	protected String SearchContextId;
 
-	protected final static String OriginalDataFolder = "ImagingAI";
+	protected final static String OriginalDataFolder = "ImagingAiSdk";
 
-	protected final static String TempFolder = "TempImagingAI";
+	protected final static String TempFolder = "ImagingAICloudTestJava_" + getTempFolderId();
 
 	protected static String getStoragePath(String imageName, String folder) {
 		return (folder != null ? folder : OriginalDataFolder) + "/" + imageName;

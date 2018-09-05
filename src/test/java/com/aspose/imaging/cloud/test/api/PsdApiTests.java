@@ -65,7 +65,7 @@ public class PsdApiTests extends ApiTester {
         String compressionMethod = "raw";
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String storage = TestStorage;
 		String outName = name + "_specific." + "psd";
 		getImagePsdRequest = new GetImagePsdRequest(name, channelsCount, compressionMethod, fromScratch, outPath, folder, storage);
@@ -104,7 +104,7 @@ public class PsdApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = CloudTestFolder;
+        String folder = TempFolder;
         String name = "test.psd";
 		String outName = name + "_specific." + "psd";
 		postImagePsdRequest = new PostImagePsdRequest(imageData, channelsCount, compressionMethod, fromScratch, outPath, storage);
