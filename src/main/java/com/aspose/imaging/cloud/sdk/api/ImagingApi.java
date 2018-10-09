@@ -44,7 +44,7 @@ public class ImagingApi
 	/**
 	 * Current SDK version
 	 */
-	public static final String Version = "18.8";
+	public static final String Version = "18.9";
 
 	/**
 	 * The API invoker
