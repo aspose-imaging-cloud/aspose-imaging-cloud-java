@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getImageResize request invocation.
+* Class that holds parameters for GetImageResize request invocation.
 **/   
 public class GetImageResizeRequest
 {

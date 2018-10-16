@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for postImageWmf request invocation.
+* Class that holds parameters for PostImageWmf request invocation.
 **/   
 public class PostImageWmfRequest
 {

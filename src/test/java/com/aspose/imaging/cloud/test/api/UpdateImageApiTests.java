@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ImageUpdateApiTests.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,19 +26,19 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 import com.aspose.imaging.cloud.test.base.StorageFileInfo;
-import com.aspose.imaging.cloud.test.categories.UpdateTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,28 +46,56 @@ import java.util.Collections;
 /**
  * Class for testing crop-related API calls
  */
-@Category(UpdateTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class UpdateImageApiTests extends ApiTester {
 
 	private GetImageUpdateRequest getImageUpdateRequest;
 	private PostImageUpdateRequest postImageUpdateRequest;
+
+    @Parameters
+    public static Iterable<Object[]> data() {
+        if (isExtendedTests()) {
+            return Arrays.asList(new Object[][] {
+                    { ".bmp", true, new String[] {} }, { ".bmp", false, new String[] {} },
+                    { ".dicom", true, new String[] {} }, { ".dicom", false, new String[] {} },
+                    /* TODO: enable after IMAGINGCLOUD-51 is resolved
+                    { ".gif", true, new String[] {} }, { ".gif", false, new String[] {} },
+                    */
+                    { ".j2k", true, new String[] {} }, { ".j2k", false, new String[] {} },
+                    { ".jpg", true, new String[] {} }, { ".jpg", false, new String[] {} },
+                    { ".png", true, new String[] {} }, { ".png", false, new String[] {} },
+                    { ".psd", true, new String[] {} }, { ".psd", false, new String[] {} },
+                    { ".tiff", true, new String[] {} }, { ".tiff", false, new String[] {} },
+                    { ".webp", true, new String[] {} }, { ".webp", false, new String[] {} }
+            });
+        }
+        else {
+            System.out.println("Extended tests had been disabled");
+            return Arrays.asList(new Object[][] {
+                    { ".jpg", true, new String[] {} }, { ".jpg", false, new String[] {} }
+            });
+        }
+    }
+
+	private String formatExtension;
+	private Boolean saveResultToStorage;
+	String[] additionalExportFormats;
+
+	public UpdateImageApiTests(String extension, Boolean saveResult, String[] additionalFormats)
+	{
+		this.formatExtension = extension;
+		this.saveResultToStorage = saveResult;
+		this.additionalExportFormats = additionalFormats;
+	}
 	
     /**
      * Test operation: Update an existing image.
-     * 
-     * @param formatExtension Format extension to search for input images in the test folder
-     * @param saveResultToStorage If result should be saved to storage
-     * @param additionalExportFormats Additional formats to export to
+     *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({
-		".jpg, true,", 
-		".jpg, false,",
-		})
-    public void getImageUpdateTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
+    public void getImageUpdateTest() throws Exception {
         String name = null;
         String outPath = null;
         Integer newWidth = 300;
@@ -77,7 +105,7 @@ public class UpdateImageApiTests extends ApiTester {
         Integer rectWidth = 200;
         Integer rectHeight = 300;
         String rotateFlipMethod = "Rotate90FlipX";
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = null;
 		
@@ -107,7 +135,7 @@ public class UpdateImageApiTests extends ApiTester {
 				getImageUpdateRequest = new GetImageUpdateRequest(name, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, folder, storage);
 				outName = name + "_update." + format;
 				
-				Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdatePropertiesTester", ImagingResponse.class, ImagingResponse.class);
+				Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdatePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 				propertiesTester.setAccessible(true);
 				Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdateGetRequestInvoker", String.class, String.class);
 				requestInvoker.setAccessible(true);
@@ -119,7 +147,6 @@ public class UpdateImageApiTests extends ApiTester {
 		            		name, format, newWidth, newHeight, rotateFlipMethod, x, y, rectWidth, rectHeight),
 		            name,
 		            outName,
-		            "Update",
 		            requestInvoker,
 		            propertiesTester,
 		            folder,
@@ -130,19 +157,12 @@ public class UpdateImageApiTests extends ApiTester {
     
     /**
      * Test operation: Update an image. Image is passed in a request stream.
-     * 
-     * @param formatExtension Format extension to search for input images in the test folder
-     * @param saveResultToStorage If result should be saved to storage
-     * @param additionalExportFormats Additional formats to export to
+     *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({
-		".jpg, true,", 
-		".jpg, false,",
-		})
-    public void postImageUpdateTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
+    public void postImageUpdateTest() throws Exception {
     	byte[] imageData = null;
 		String name = null;
         String outPath = null;
@@ -153,7 +173,7 @@ public class UpdateImageApiTests extends ApiTester {
         Integer rectWidth = 200;
         Integer rectHeight = 300;
         String rotateFlipMethod = "Rotate90FlipX";
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = null;
 		
@@ -184,7 +204,7 @@ public class UpdateImageApiTests extends ApiTester {
 						rotateFlipMethod, outPath, storage);
 				outName = name + "_update." + format;
 				
-				Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("postImageUpdatePropertiesTester", ImagingResponse.class, ImagingResponse.class);
+				Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("postImageUpdatePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 				propertiesTester.setAccessible(true);
 				Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("postImageUpdatePostRequestInvoker", byte[].class, String.class);
 				requestInvoker.setAccessible(true);
@@ -196,62 +216,11 @@ public class UpdateImageApiTests extends ApiTester {
 		            		name, format, newWidth, newHeight, rotateFlipMethod, x, y, rectWidth, rectHeight),
 		            name,
 		            outName,
-		            "Update",
 		            requestInvoker,
 		            propertiesTester,
 		            folder,
 		            storage);
             }
-		}
-    }
-    
-    /**
-     * Extended test set for Update operation.
-     * @throws Exception
-     */
-    @Test
-    public void ExtendedUpdateTests() throws Exception
-    {
-		if (isExtendedTests())
-    	{
-    		this.getImageUpdateTest(".bmp", true);
-    		this.getImageUpdateTest(".bmp", false);
-    		this.postImageUpdateTest(".bmp", true);
-    		this.postImageUpdateTest(".bmp", false);
-    		this.getImageUpdateTest(".dicom", true);
-    		this.getImageUpdateTest(".dicom", false);
-    		this.postImageUpdateTest(".dicom", true);
-    		this.postImageUpdateTest(".dicom", false);
-    		/* TODO: enable after IMAGINGCLOUD-51 is resolved
-    		this.getImageUpdateTest(".gif", true);
-    		this.getImageUpdateTest(".gif", false);
-    		this.postImageUpdateTest(".gif", true);
-    		this.postImageUpdateTest(".gif", false);
-    		*/
-    		this.getImageUpdateTest(".j2k", true);
-    		this.getImageUpdateTest(".j2k", false);
-    		this.postImageUpdateTest(".j2k", true);
-    		this.postImageUpdateTest(".j2k", false);
-    		this.getImageUpdateTest(".png", true);
-    		this.getImageUpdateTest(".png", false);
-    		this.postImageUpdateTest(".png", true);
-    		this.postImageUpdateTest(".png", false);
-    		this.getImageUpdateTest(".psd", true);
-    		this.getImageUpdateTest(".psd", false);
-    		this.postImageUpdateTest(".psd", true);
-    		this.postImageUpdateTest(".psd", false);
-    		this.getImageUpdateTest(".tiff", true);
-    		this.getImageUpdateTest(".tiff", false);
-    		this.postImageUpdateTest(".tiff", true);
-    		this.postImageUpdateTest(".tiff", false);
-    		this.getImageUpdateTest(".webp", true);
-    		this.getImageUpdateTest(".webp", false);
-    		this.postImageUpdateTest(".webp", true);
-    		this.postImageUpdateTest(".webp", false);
-    	}
-		else
-		{
-			System.out.println("Extended tests had been disabled");
 		}
     }
 	
@@ -262,7 +231,7 @@ public class UpdateImageApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImageUpdateGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImageUpdateGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImageUpdateRequest.name = name;
 		getImageUpdateRequest.outPath = outPath;
@@ -276,7 +245,7 @@ public class UpdateImageApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImageUpdatePostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImageUpdatePostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImageUpdateRequest.imageData = imageData;
 		postImageUpdateRequest.outPath = outPath;
@@ -287,8 +256,9 @@ public class UpdateImageApiTests extends ApiTester {
 	 * Tests properties for getImageUpdate operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertEquals(getImageUpdateRequest.rectHeight, resultProperties.getWidth());
         Assert.assertEquals(getImageUpdateRequest.rectWidth, resultProperties.getHeight());
@@ -298,8 +268,9 @@ public class UpdateImageApiTests extends ApiTester {
 	 * Tests properties for postImageUpdate operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertEquals(postImageUpdateRequest.rectHeight, resultProperties.getWidth());
         Assert.assertEquals(postImageUpdateRequest.rectWidth, resultProperties.getHeight());

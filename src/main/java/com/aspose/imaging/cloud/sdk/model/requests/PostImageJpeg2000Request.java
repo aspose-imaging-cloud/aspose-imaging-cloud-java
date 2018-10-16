@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for postImageJpeg2000 request invocation.
+* Class that holds parameters for PostImageJpeg2000 request invocation.
 **/   
 public class PostImageJpeg2000Request
 {

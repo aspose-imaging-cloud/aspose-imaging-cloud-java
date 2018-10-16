@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Jpeg2000ApiTests.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,51 +26,60 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.categories.Jpeg2000TestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing JPEG2000-related API calls
  */
-@Category(Jpeg2000TestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class Jpeg2000ApiTests extends ApiTester {
 
 	private GetImageJpeg2000Request getImageJpeg2000Request;
 	private PostImageJpeg2000Request postImageJpeg2000Request;
+
+	@Parameters
+	public static Iterable<Object> data() {
+		return Arrays.asList(new Object[] { true, false });
+	}
+
+	private Boolean saveResultToStorage;
+
+	public Jpeg2000ApiTests(Boolean saveResult)
+	{
+		this.saveResultToStorage = saveResult;
+	}
 	
     /**
      * Test operation: Update parameters of existing JPEG2000 image.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void getImageJpeg2000Test(Boolean saveResultToStorage) throws Exception {
+    public void getImageJpeg2000Test() throws Exception {
     	String name = "test.j2k";
         String codec = "jp2";
         String comment = "Aspose";
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = name + "_specific." + "jp2";
 		getImageJpeg2000Request = new GetImageJpeg2000Request(name, comment, codec, fromScratch, outPath, folder, storage);
 		
-		Method propertiesTester = Jpeg2000ApiTests.class.getDeclaredMethod("getImageJpeg2000PropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = Jpeg2000ApiTests.class.getDeclaredMethod("getImageJpeg2000PropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = Jpeg2000ApiTests.class.getDeclaredMethod("getImageJpeg2000GetRequestInvoker", String.class, String.class);
 		requestInvoker.setAccessible(true);
@@ -81,7 +90,6 @@ public class Jpeg2000ApiTests extends ApiTester {
             		name, comment, codec),
             name,
             outName,
-            "Jpeg2000",
             requestInvoker,
             propertiesTester,
             folder,
@@ -91,25 +99,23 @@ public class Jpeg2000ApiTests extends ApiTester {
     /**
      * Test operation: Update parameters of JPEG2000 image. Image is passed in a request stream.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void postImageJpeg2000Test(Boolean saveResultToStorage) throws Exception {
+    public void postImageJpeg2000Test() throws Exception {
         byte[] imageData = null;
         String codec = "jp2";
         String comment = "Aspose";
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String name = "test.j2k";
 		String outName = name + "_specific." + "jp2";
 		postImageJpeg2000Request = new PostImageJpeg2000Request(imageData, comment, codec, fromScratch, outPath, storage);
 		
-		Method propertiesTester = Jpeg2000ApiTests.class.getDeclaredMethod("postImageJpeg2000PropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = Jpeg2000ApiTests.class.getDeclaredMethod("postImageJpeg2000PropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = Jpeg2000ApiTests.class.getDeclaredMethod("postImageJpeg2000PostRequestInvoker", byte[].class, String.class);
 		requestInvoker.setAccessible(true);
@@ -120,7 +126,6 @@ public class Jpeg2000ApiTests extends ApiTester {
             		name, comment, codec),
             name,
             outName,
-            "Jpeg2000",
             requestInvoker,
             propertiesTester,
             folder,
@@ -134,7 +139,7 @@ public class Jpeg2000ApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImageJpeg2000GetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImageJpeg2000GetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImageJpeg2000Request.name = name;
 		getImageJpeg2000Request.outPath = outPath;
@@ -148,7 +153,7 @@ public class Jpeg2000ApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImageJpeg2000PostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImageJpeg2000PostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImageJpeg2000Request.imageData = imageData;
 		postImageJpeg2000Request.outPath = outPath;
@@ -159,8 +164,9 @@ public class Jpeg2000ApiTests extends ApiTester {
 	 * Tests properties for getImageJpeg2000 operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImageJpeg2000PropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImageJpeg2000PropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
         Assert.assertEquals(getImageJpeg2000Request.codec, resultProperties.getJpeg2000Properties().getCodec().toString().toLowerCase());
         Assert.assertNotNull(resultProperties.getJpeg2000Properties().getComments());
@@ -177,8 +183,9 @@ public class Jpeg2000ApiTests extends ApiTester {
 	 * Tests properties for postImageJpeg2000 operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImageJpeg2000PropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImageJpeg2000PropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertEquals(postImageJpeg2000Request.codec, resultProperties.getJpeg2000Properties().getCodec().toString().toLowerCase());
         Assert.assertNotNull(resultProperties.getJpeg2000Properties().getComments());

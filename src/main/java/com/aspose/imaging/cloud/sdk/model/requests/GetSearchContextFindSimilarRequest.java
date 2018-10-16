@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getSearchContextFindSimilar request invocation.
+* Class that holds parameters for GetSearchContextFindSimilar request invocation.
 **/   
 public class GetSearchContextFindSimilarRequest
 {

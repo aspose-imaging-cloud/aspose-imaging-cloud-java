@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ServerAccessData.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,4 +45,15 @@ public class ServerAccessData
      * The base URL.
      */
 	public String BaseURL;
+	
+	/**
+     * The API version (used for Android).
+     */
+	public String ApiVersion;
+
+    /**
+     * The storage name (used for Android).
+     */
+	public String StorageName;
+
 }

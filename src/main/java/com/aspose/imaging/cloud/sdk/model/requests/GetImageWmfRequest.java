@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getImageWmf request invocation.
+* Class that holds parameters for GetImageWmf request invocation.
 **/   
 public class GetImageWmfRequest
 {

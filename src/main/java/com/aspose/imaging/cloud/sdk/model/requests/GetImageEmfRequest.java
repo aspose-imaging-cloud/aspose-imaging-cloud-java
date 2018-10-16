@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getImageEmf request invocation.
+* Class that holds parameters for GetImageEmf request invocation.
 **/   
 public class GetImageEmfRequest
 {

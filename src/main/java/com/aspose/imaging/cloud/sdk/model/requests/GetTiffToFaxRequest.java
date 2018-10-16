@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getTiffToFax request invocation.
+* Class that holds parameters for GetTiffToFax request invocation.
 **/   
 public class GetTiffToFaxRequest
 {

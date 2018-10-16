@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ApiResponse.java">
+* <copyright company="Aspose" file="PostImageFramePropertiesRequest.java">
 *   Copyright (c) 2018 Aspose Pty Ltd.
 * </copyright>
 * <summary>
@@ -24,49 +24,32 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-package com.aspose.imaging.cloud.sdk.invoker;
 
-import com.aspose.imaging.cloud.sdk.stablemodel.ImagingResponse;
-import com.aspose.imaging.cloud.sdk.stablemodel.SaaSposeResponse;
+package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
- * Represents Imaging for Cloud response.
- * @author User
- *
- */
-public class ApiResponse 
+* Class that holds parameters for PostImageFrameProperties request invocation.
+**/   
+public class PostImageFramePropertiesRequest
 {
-	private byte[] responseData;
-	
-	private SaaSposeResponse saasposeResponse;
-	
-	private ImagingResponse imagingResponse;
-	
 	/**
-	 * 
-	 * @param responseData The response data that represents image bytes in most cases (if present).
-	 * @param saasposeResponse Old API format response (if present).
-	 * @param imagingResponse Regular API format response (if present).
-	 */
-	public ApiResponse(byte[] responseData, SaaSposeResponse saasposeResponse, ImagingResponse imagingResponse)
-	{
-		this.responseData = responseData;
-		this.saasposeResponse = saasposeResponse;
-		this.imagingResponse = imagingResponse;
-	}
-	
-	public byte[] getResponseData()
-	{
-		return this.responseData;
-	}
-	
-	public SaaSposeResponse getSaaSposeResponse()
-	{
-		return this.saasposeResponse;
-	}
-	
-	public ImagingResponse getImagingResponse()
-	{
-		return this.imagingResponse;
-	}
+	* Initializes a new instance of the PostImageFramePropertiesRequest class.   
+    * @param imageData Input image
+    * @param frameId Number of a frame.
+	**/
+    public PostImageFramePropertiesRequest(byte[] imageData, Integer frameId)             
+    {
+        this.imageData = imageData;
+        this.frameId = frameId;
+    }
+		
+    /**
+    * Input image
+    **/
+    public byte[] imageData;
+
+    /**
+    * Number of a frame.
+    **/
+    public Integer frameId;
 }

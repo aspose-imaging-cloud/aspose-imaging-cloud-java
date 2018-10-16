@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for postImageCrop request invocation.
+* Class that holds parameters for PostImageCrop request invocation.
 **/   
 public class PostImageCropRequest
 {

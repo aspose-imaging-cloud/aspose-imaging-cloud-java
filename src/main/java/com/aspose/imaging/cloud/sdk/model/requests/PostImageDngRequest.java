@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for postImageDng request invocation.
+* Class that holds parameters for PostImageDng request invocation.
 **/   
 public class PostImageDngRequest
 {

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CropApiTests.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,19 +26,19 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 import com.aspose.imaging.cloud.test.base.StorageFileInfo;
-import com.aspose.imaging.cloud.test.categories.CropTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,35 +46,63 @@ import java.util.Collections;
 /**
  * Class for testing crop-related API calls
  */
-@Category(CropTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class CropApiTests extends ApiTester {
 
 	private GetImageCropRequest getImageCropRequest;
 	private PostImageCropRequest postImageCropRequest;
 
+	@Parameters
+	public static Iterable<Object[]> data() {
+        if (isExtendedTests()) {
+            return Arrays.asList(new Object[][] {
+                    { ".bmp", true, new String[] {} }, { ".bmp", false, new String[] {} },
+                    { ".dicom", true, new String[] {} }, { ".dicom", false, new String[] {} },
+                    /* TODO: enable after IMAGINGCLOUD-51 is resolved
+                    { ".gif", true, new String[] {} }, { ".gif", false, new String[] {} },
+                    */
+                    { ".j2k", true, new String[] {} }, { ".j2k", false, new String[] {} },
+                    { ".jpg", true, new String[] {} }, { ".jpg", false, new String[] {} },
+                    { ".png", true, new String[] {} }, { ".png", false, new String[] {} },
+                    { ".psd", true, new String[] {} }, { ".psd", false, new String[] {} },
+                    { ".tiff", true, new String[] {} }, { ".tiff", false, new String[] {} },
+                    { ".webp", true, new String[] {} }, { ".webp", false, new String[] {} }
+            });
+        }
+        else {
+            System.out.println("Extended tests had been disabled");
+            return Arrays.asList(new Object[][] {
+                    { ".jpg", true, new String[] {} }, { ".jpg", false, new String[] {} }
+            });
+        }
+	}
+
+	private String formatExtension;
+    private Boolean saveResultToStorage;
+    String[] additionalExportFormats;
+
+    public CropApiTests(String extension, Boolean saveResult, String[] additionalFormats)
+    {
+        this.formatExtension = extension;
+        this.saveResultToStorage = saveResult;
+        this.additionalExportFormats = additionalFormats;
+    }
+
     /**
      * Test operation: Crop an existing image.
      * 
-     * @param formatExtension Format extension to search for input images in the test folder
-     * @param saveResultToStorage If result should be saved to storage
-     * @param additionalExportFormats Additional formats to export to
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({
-		".jpg, true,", 
-		".jpg, false,",
-		})
-    public void getImageCropTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
+    public void getImageCropTest() throws Exception {
         String name = null;
         Integer x = 10;
         Integer y = 10;
         Integer width = 100;
         Integer height = 150;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = null;
 		
@@ -104,7 +132,7 @@ public class CropApiTests extends ApiTester {
 				getImageCropRequest = new GetImageCropRequest(name, format, x, y, width, height, outPath, folder, storage);
 				outName = name + "_crop." + format;
 				
-				Method propertiesTester = CropApiTests.class.getDeclaredMethod("getImageCropPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+				Method propertiesTester = CropApiTests.class.getDeclaredMethod("getImageCropPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 				propertiesTester.setAccessible(true);
 				Method requestInvoker = CropApiTests.class.getDeclaredMethod("getImageCropGetRequestInvoker", String.class, String.class);
 				requestInvoker.setAccessible(true);
@@ -115,7 +143,6 @@ public class CropApiTests extends ApiTester {
 		            		name, format, width, height, x, y),
 		            name,
 		            outName,
-		            "Crop",
 		            requestInvoker,
 		            propertiesTester,
 		            folder,
@@ -126,19 +153,12 @@ public class CropApiTests extends ApiTester {
     
     /**
      * Test operation: Crop an image. Image is passed in a request stream.
-     * 
-     * @param formatExtension Format extension to search for input images in the test folder
-     * @param saveResultToStorage If result should be saved to storage
-     * @param additionalExportFormats Additional formats to export to
+     *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({
-		".jpg, true,", 
-		".jpg, false,",
-		})
-    public void postImageCropTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
+    public void postImageCropTest() throws Exception {
     	byte[] imageData = null;
 		String name = null;
         Integer x = 10;
@@ -146,7 +166,7 @@ public class CropApiTests extends ApiTester {
         Integer width = 100;
         Integer height = 150;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = null;
 		
@@ -176,7 +196,7 @@ public class CropApiTests extends ApiTester {
 				postImageCropRequest = new PostImageCropRequest(imageData, format, x, y, width, height, outPath, storage);
 				outName = name + "_crop." + format;
 				
-				Method propertiesTester = CropApiTests.class.getDeclaredMethod("postImageCropPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+				Method propertiesTester = CropApiTests.class.getDeclaredMethod("postImageCropPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 				propertiesTester.setAccessible(true);
 				Method requestInvoker = CropApiTests.class.getDeclaredMethod("postImageCropPostRequestInvoker", byte[].class, String.class);
 				requestInvoker.setAccessible(true);
@@ -187,62 +207,11 @@ public class CropApiTests extends ApiTester {
 		            		name, format, width, height, x, y),
 		            name,
 		            outName,
-		            "Crop",
 		            requestInvoker,
 		            propertiesTester,
 		            folder,
 		            storage);
             }
-		}
-    }
-    
-    /**
-     * Extended test set for Crop operation.
-     * @throws Exception
-     */
-    @Test
-    public void ExtendedCropTests() throws Exception
-    {
-		if (isExtendedTests())
-    	{
-    		this.getImageCropTest(".bmp", true);
-    		this.getImageCropTest(".bmp", false);
-    		this.postImageCropTest(".bmp", true);
-    		this.postImageCropTest(".bmp", false);
-    		this.getImageCropTest(".dicom", true);
-    		this.getImageCropTest(".dicom", false);
-    		this.postImageCropTest(".dicom", true);
-    		this.postImageCropTest(".dicom", false);
-    		/* TODO: enable after IMAGINGCLOUD-51 is resolved
-    		this.getImageCropTest(".gif", true);
-    		this.getImageCropTest(".gif", false);
-    		this.postImageCropTest(".gif", true);
-    		this.postImageCropTest(".gif", false);
-    		*/
-    		this.getImageCropTest(".j2k", true);
-    		this.getImageCropTest(".j2k", false);
-    		this.postImageCropTest(".j2k", true);
-    		this.postImageCropTest(".j2k", false);
-    		this.getImageCropTest(".png", true);
-    		this.getImageCropTest(".png", false);
-    		this.postImageCropTest(".png", true);
-    		this.postImageCropTest(".png", false);
-    		this.getImageCropTest(".psd", true);
-    		this.getImageCropTest(".psd", false);
-    		this.postImageCropTest(".psd", true);
-    		this.postImageCropTest(".psd", false);
-    		this.getImageCropTest(".tiff", true);
-    		this.getImageCropTest(".tiff", false);
-    		this.postImageCropTest(".tiff", true);
-    		this.postImageCropTest(".tiff", false);
-    		this.getImageCropTest(".webp", true);
-    		this.getImageCropTest(".webp", false);
-    		this.postImageCropTest(".webp", true);
-    		this.postImageCropTest(".webp", false);
-    	}
-		else
-		{
-			System.out.println("Extended tests had been disabled");
 		}
     }
 	
@@ -253,7 +222,7 @@ public class CropApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImageCropGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImageCropGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImageCropRequest.name = name;
 		getImageCropRequest.outPath = outPath;
@@ -267,7 +236,7 @@ public class CropApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImageCropPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImageCropPostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImageCropRequest.imageData = imageData;
 		postImageCropRequest.outPath = outPath;
@@ -278,8 +247,9 @@ public class CropApiTests extends ApiTester {
 	 * Tests properties for getImageCrop operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImageCropPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImageCropPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertEquals(getImageCropRequest.width, resultProperties.getWidth());
         Assert.assertEquals(getImageCropRequest.height, resultProperties.getHeight());
@@ -289,8 +259,9 @@ public class CropApiTests extends ApiTester {
 	 * Tests properties for postImageCrop operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImageCropPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImageCropPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertEquals(postImageCropRequest.width, resultProperties.getWidth());
         Assert.assertEquals(postImageCropRequest.height, resultProperties.getHeight());

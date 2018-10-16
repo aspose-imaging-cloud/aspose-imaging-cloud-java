@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for postImageRotateFlip request invocation.
+* Class that holds parameters for PostImageRotateFlip request invocation.
 **/   
 public class PostImageRotateFlipRequest
 {

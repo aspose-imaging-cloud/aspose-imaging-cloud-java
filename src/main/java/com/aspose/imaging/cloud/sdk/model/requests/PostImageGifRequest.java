@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for postImageGif request invocation.
+* Class that holds parameters for PostImageGif request invocation.
 **/   
 public class PostImageGifRequest
 {

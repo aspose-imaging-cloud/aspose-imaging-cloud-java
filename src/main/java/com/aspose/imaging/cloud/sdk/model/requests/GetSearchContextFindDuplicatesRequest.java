@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getSearchContextFindDuplicates request invocation.
+* Class that holds parameters for GetSearchContextFindDuplicates request invocation.
 **/   
 public class GetSearchContextFindDuplicatesRequest
 {

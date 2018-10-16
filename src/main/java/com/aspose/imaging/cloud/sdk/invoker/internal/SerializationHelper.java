@@ -27,8 +27,8 @@
 
 package com.aspose.imaging.cloud.sdk.invoker.internal;
 
-import java.io.StringReader;
-import javax.xml.bind.JAXBContext;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
 
 import com.aspose.imaging.cloud.sdk.invoker.JSON;
 import com.aspose.imaging.cloud.sdk.invoker.ApiException;
@@ -71,9 +71,8 @@ public class SerializationHelper
             }
             else
             {
-            	JAXBContext context = JAXBContext.newInstance(returnType);
-            	StringReader reader = new StringReader(jsonString);
-            	return (T)context.createUnmarshaller().unmarshal(reader);
+            	Serializer serializer = new Persister();
+            	return serializer.read(returnType, jsonString);
             }
         }
         catch (Exception e)

@@ -32,19 +32,15 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
 import com.aspose.imaging.cloud.sdk.model.SearchResultsSet;
 import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextFindSimilarRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextAddTagRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextFindByTagsRequest;
-import com.aspose.imaging.cloud.test.categories.AITestCategory;
 import com.aspose.storage.model.ResponseMessage;
 import com.google.gson.Gson;
 
-@Category(AITestCategory.class)
 public class FindImagesTests extends TestImagingAIBase {
 	
 	 private final String ImageToFind = "4.jpg";
@@ -55,10 +51,9 @@ public class FindImagesTests extends TestImagingAIBase {
      {
          addImageFeaturesToSearchContext(OriginalDataFolder +"/FindSimilar", true);
          String findImageId = OriginalDataFolder +"/FindSimilar/"+ImageToFind;
-         ApiResponse response = ImagingApi.getSearchContextFindSimilar(
+         SearchResultsSet result = ImagingApi.getSearchContextFindSimilar(
         		 new GetSearchContextFindSimilarRequest(SearchContextId, 3.0, 3, null, findImageId, null, TestStorage));
 
-         SearchResultsSet result = (SearchResultsSet)response.getSaaSposeResponse();
          Assert.assertEquals((long)200, (long)result.getCode());
          Assert.assertEquals(2, result.getResults().size());       
      }
@@ -82,10 +77,9 @@ public class FindImagesTests extends TestImagingAIBase {
          List<String> tagsList = new ArrayList<String>();
          tagsList.add(tag);
          String tags = new Gson().toJson(tagsList);
-         ApiResponse response = ImagingApi.postSearchContextFindByTags(
+         SearchResultsSet result = ImagingApi.postSearchContextFindByTags(
              new PostSearchContextFindByTagsRequest(tags, SearchContextId, 60.0, 5, null, TestStorage));
        
-         SearchResultsSet result = (SearchResultsSet)response.getSaaSposeResponse();
          Assert.assertEquals((long)200, (long)result.getCode());
          Assert.assertEquals(1, result.getResults().size());  
          Assert.assertTrue(result.getResults().get(0).getImageId().contains("2.jpg"));  

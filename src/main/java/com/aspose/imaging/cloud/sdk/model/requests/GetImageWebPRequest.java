@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getImageWebP request invocation.
+* Class that holds parameters for GetImageWebP request invocation.
 **/   
 public class GetImageWebPRequest
 {

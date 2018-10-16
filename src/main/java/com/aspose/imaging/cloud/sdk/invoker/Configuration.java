@@ -71,7 +71,7 @@ public class Configuration
          * Authentication type.
          * Default is OAuth.
          */
-        public AuthType AuthType;
+        public AuthType AuthType = com.aspose.imaging.cloud.sdk.invoker.AuthType.OAuth2;
         
         /**
          * Get Aspose Cloud API base URL.

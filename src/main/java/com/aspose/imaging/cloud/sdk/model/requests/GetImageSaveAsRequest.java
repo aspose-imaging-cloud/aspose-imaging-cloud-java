@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getImageSaveAs request invocation.
+* Class that holds parameters for GetImageSaveAs request invocation.
 **/   
 public class GetImageSaveAsRequest
 {

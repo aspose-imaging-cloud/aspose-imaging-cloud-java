@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for postImageDicom request invocation.
+* Class that holds parameters for PostImageDicom request invocation.
 **/   
 public class PostImageDicomRequest
 {

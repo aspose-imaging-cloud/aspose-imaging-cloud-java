@@ -27,7 +27,6 @@
 
 package com.aspose.imaging.cloud.test.api.ai;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.SearchContextStatus;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
@@ -50,8 +49,8 @@ public abstract class TestImagingAIBase extends ApiTester {
 			deleteSearchContext(SearchContextId);
 		}
 
-		if (StorageApi.GetIsExist(TempFolder, null, TestStorage).getFileExist().getIsExist()) {
-			StorageApi.DeleteFolder(TempFolder, TestStorage, true);
+		if (StorageApi.GetIsExist(getTempFolder(), null, TestStorage).getFileExist().getIsExist()) {
+			StorageApi.DeleteFolder(getTempFolder(), TestStorage, true);
 		}
 	}
 
@@ -59,34 +58,47 @@ public abstract class TestImagingAIBase extends ApiTester {
 
 	protected final static String OriginalDataFolder = "ImagingAiSdk";
 
-	protected final static String TempFolder = "ImagingAICloudTestJava_" + getTempFolderId();
-
 	protected static String getStoragePath(String imageName, String folder) {
 		return (folder != null ? folder : OriginalDataFolder) + "/" + imageName;
 	}
 
 	protected static String createSearchContext() throws Exception {
-		ApiResponse response = ImagingApi
+		SearchContextStatus status = ImagingApi
 				.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, TestStorage));
 
-		SearchContextStatus status = (SearchContextStatus) response.getSaaSposeResponse();
 		Assert.assertEquals((long) 200, (long) status.getCode());
 		return status.getId();
 	}
+	
+	/**
+     * Retrieves temp folder for dynamic name generation.
+     * @return Temp folder name.
+     */
+    protected static String getTempFolder()
+    {
+        String folder;
+        if (!IsAndroid) {
+        	folder = "ImagingAICloudTestJava_";
+        }
+        else {
+        	folder = "ImagingAICloudTestAndroid_";
+        }
+        
+        return folder + getTempFolderId();
+    }
 
 	protected void deleteSearchContext(String searchContextId) throws Exception {
 		ImagingApi.deleteSearchContext(new DeleteSearchContextRequest(searchContextId, null, TestStorage));
 	}
 
 	protected String getSearchContextStatus(String searchContextId) throws Exception {
-		ApiResponse response = ImagingApi
+		SearchContextStatus status = ImagingApi
 				.getSearchContextStatus(new GetSearchContextStatusRequest(SearchContextId, null, TestStorage));
-		SearchContextStatus status = (SearchContextStatus) response.getSaaSposeResponse();
 		Assert.assertEquals((long) 200, (long) status.getCode());
 		return status.getSearchStatus();
 	}
 
-	protected  void addImageFeaturesToSearchContext(String storageSourcePath, Boolean isFolder) throws Exception {
+	protected void addImageFeaturesToSearchContext(String storageSourcePath, Boolean isFolder) throws Exception {
 		
 		PostSearchContextExtractImageFeaturesRequest request = isFolder 
 				 ? new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, null,  storageSourcePath, null,  TestStorage)
@@ -106,9 +118,8 @@ public abstract class TestImagingAIBase extends ApiTester {
 		long startTime = System.currentTimeMillis();
 
 		while (!"Idle".equalsIgnoreCase(status) && (System.currentTimeMillis() - startTime) * 1000 < maxTimeInSeconds) {
-			ApiResponse response = ImagingApi.getSearchContextStatus(
-					new GetSearchContextStatusRequest(this.SearchContextId, null, DefaultStorage));
-			SearchContextStatus contextStatus = (SearchContextStatus) response.getSaaSposeResponse();
+			SearchContextStatus contextStatus = ImagingApi.getSearchContextStatus(
+					new GetSearchContextStatusRequest(this.SearchContextId, null, TestStorage));
 			status = contextStatus.getSearchStatus();
 			Thread.sleep(timeout * 1000);
 		}

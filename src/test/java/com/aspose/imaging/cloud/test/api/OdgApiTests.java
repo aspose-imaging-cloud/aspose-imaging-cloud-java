@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OdgApiTests.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,49 +26,58 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.categories.OdgTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing ODG-related API calls
  */
-@Category(OdgTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class OdgApiTests extends ApiTester {
 
 	private GetImageOdgRequest getImageOdgRequest;
 	private PostImageOdgRequest postImageOdgRequest;
+
+	@Parameters
+	public static Iterable<Object> data() {
+		return Arrays.asList(new Object[] { true, false });
+	}
+
+	private Boolean saveResultToStorage;
+
+	public OdgApiTests(Boolean saveResult)
+	{
+		this.saveResultToStorage = saveResult;
+	}
 	
     /**
      * Test operation: Rasterize existing ODG image to PNG using given parameters. 
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void getImageOdgTest(Boolean saveResultToStorage) throws Exception {
+    public void getImageOdgTest() throws Exception {
     	String name = "test.odg";
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
 		getImageOdgRequest = new GetImageOdgRequest(name, fromScratch, outPath, folder, storage);
 		
-		Method propertiesTester = OdgApiTests.class.getDeclaredMethod("getImageOdgPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = OdgApiTests.class.getDeclaredMethod("getImageOdgPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = OdgApiTests.class.getDeclaredMethod("getImageOdgGetRequestInvoker", String.class, String.class);
 		requestInvoker.setAccessible(true);
@@ -79,7 +88,6 @@ public class OdgApiTests extends ApiTester {
             		name),
             name,
             outName,
-            "Odg",
             requestInvoker,
             propertiesTester,
             folder,
@@ -89,23 +97,21 @@ public class OdgApiTests extends ApiTester {
     /**
      * Test operation: Rasterize ODG image to PNG using given parameters. Image is passed in a request stream.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void postImageOdgTest(Boolean saveResultToStorage) throws Exception {
+    public void postImageOdgTest() throws Exception {
         byte[] imageData = null;
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String name = "test.odg";
 		String outName = name + "_specific." + "png";
 		postImageOdgRequest = new PostImageOdgRequest(imageData, fromScratch, outPath, storage);
 		
-		Method propertiesTester = OdgApiTests.class.getDeclaredMethod("postImageOdgPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = OdgApiTests.class.getDeclaredMethod("postImageOdgPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = OdgApiTests.class.getDeclaredMethod("postImageOdgPostRequestInvoker", byte[].class, String.class);
 		requestInvoker.setAccessible(true);
@@ -116,7 +122,6 @@ public class OdgApiTests extends ApiTester {
             		name),
             name,
             outName,
-            "Odg",
             requestInvoker,
             propertiesTester,
             folder,
@@ -130,7 +135,7 @@ public class OdgApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImageOdgGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImageOdgGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImageOdgRequest.name = name;
 		getImageOdgRequest.outPath = outPath;
@@ -144,7 +149,7 @@ public class OdgApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImageOdgPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImageOdgPostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImageOdgRequest.imageData = imageData;
 		postImageOdgRequest.outPath = outPath;
@@ -155,8 +160,9 @@ public class OdgApiTests extends ApiTester {
 	 * Tests properties for getImageOdg operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImageOdgPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImageOdgPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
 		
@@ -185,8 +191,9 @@ public class OdgApiTests extends ApiTester {
 	 * Tests properties for postImageOdg operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImageOdgPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImageOdgPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
         Assert.assertNotNull(resultProperties.getPngProperties());
 		

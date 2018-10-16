@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getImagePsd request invocation.
+* Class that holds parameters for GetImagePsd request invocation.
 **/   
 public class GetImagePsdRequest
 {

@@ -17,11 +17,8 @@ imagingApi.getImageSaveAs(getSaveRequest);
 
 GetImageSaveAsRequest getStreamRequest = new GetImageSaveAsRequest("inputImage.jpg", "png", null, "InputFolder", null);
 
-// returns ApiResponse with resulting image bytes
-ApiResponse apiResponse = imagingApi.getImageSaveAs(getStreamRequest);
-
-// process resulting bytes
-byte[] responseData = apiResponse.getResponseData();
+// returns resulting image bytes
+byte[] responseData = imagingApi.getImageSaveAs(getStreamRequest);
 
 // another option is to use POST request and send image in a stream, if it's not present in your storage
 
@@ -49,11 +46,8 @@ imagingApi.postImageSaveAs(postSaveRequest);
 
 PostImageSaveAsRequest postStreamRequest = new PostImageSaveAsRequest(inputBytes, "png", null, null);
 	
-// returns ApiResponse with resulting image bytes
-apiResponse = imagingApi.postImageSaveAs(postStreamRequest);
-
-// process resulting bytes
-responseData = apiResponse.getResponseData();
+// returns resulting image bytes
+responseData = imagingApi.postImageSaveAs(postStreamRequest);
 
 // another requests typically follow the same principles
 ```
@@ -68,8 +62,7 @@ responseData = apiResponse.getResponseData();
 ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
 	 
 // create search context or use existing search context ID if search context was created earlier
-ApiResponse apiResponse = imagingApi.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, null));
-SearchContextStatus status = (SearchContextStatus) apiResponse.getSaaSposeResponse();
+SearchContextStatus status = imagingApi.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, null));
 String searchContextId = status.getId();
 	 
 // specify images for comparing (image ID is a path to image in storage)
@@ -77,9 +70,8 @@ String imageInStorage1 = "WorkFolder/Image1.jpg";
 String imageInStorage2 = "WorkFolder/Image2.jpg";
 	  
 // compare images
-ApiResponse response = imagingApi.postSearchContextCompareImages(
+SearchResultsSet result = imagingApi.postSearchContextCompareImages(
             new PostSearchContextCompareImagesRequest(searchContextId, imageInStorage1, null, imageInStorage2, null, null));
-SearchResultsSet result = (SearchResultsSet)response.getSaaSposeResponse();
 Double similarity = result.getResults().get(0).getSimilarity();
 ```
 
@@ -93,8 +85,7 @@ Double similarity = result.getResults().get(0).getSimilarity();
 ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
 	 
 // create search context or use existing search context ID if search context was created earlier
-ApiResponse apiResponse = imagingApi.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, null));
-SearchContextStatus status = (SearchContextStatus) apiResponse.getSaaSposeResponse();
+SearchContextStatus status = imagingApi.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, null));
 String searchContextId = status.getId();
 	 
 // extract images features if it was not done before
@@ -104,9 +95,8 @@ imagingApi.postSearchContextExtractImageFeatures(new PostSearchContextExtractIma
 // wait 'till image features extraction is completed
 String searchStatus = "unknown";
 while (!"Idle".equalsIgnoreCase(searchStatus)) {
-	ApiResponse response = imagingApi.getSearchContextStatus(
+	SearchContextStatus contextStatus = imagingApi.getSearchContextStatus(
 			new GetSearchContextStatusRequest(searchContextId, null, null));
-	SearchContextStatus contextStatus = (SearchContextStatus) response.getSaaSposeResponse();
 	searchStatus = contextStatus.getSearchStatus();
 	Thread.sleep(10000);
 }
@@ -118,8 +108,8 @@ if (imageFromStorage)
 {
     // use search image from storage
     String storageImageId = "searhImage.jpg";
-    results = (SearchResultsSet) imagingApi.getSearchContextFindSimilar(
-        new GetSearchContextFindSimilarRequest(searchContextId, 90.0, 5, null, storageImageId, null, null)).getSaaSposeResponse();
+    results = imagingApi.getSearchContextFindSimilar(
+        new GetSearchContextFindSimilarRequest(searchContextId, 90.0, 5, null, storageImageId, null, null));
 }
 else
 {
@@ -132,8 +122,8 @@ else
 		byte[] inputBytes = new byte[(int) inputFile.length()];
 		inputStream = new FileInputStream(inputFile);
 		inputStream.read(inputBytes);
-		results = (SearchResultsSet) imagingApi.getSearchContextFindSimilar(
-			       new GetSearchContextFindSimilarRequest(searchContextId, 90.0, 5, inputBytes, null, null, null)).getSaaSposeResponse();
+		results = imagingApi.getSearchContextFindSimilar(
+			       new GetSearchContextFindSimilarRequest(searchContextId, 90.0, 5, inputBytes, null, null, null));
 	}
 	finally
 	{
@@ -161,8 +151,7 @@ for (SearchResult searchResult : results.getResults())
 ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
 	 
 // create search context or use existing search context ID if search context was created earlier
-ApiResponse apiResponse = imagingApi.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, null));
-SearchContextStatus status = (SearchContextStatus) apiResponse.getSaaSposeResponse();
+SearchContextStatus status = imagingApi.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, null));
 String searchContextId = status.getId();
 	 
 // extract images features if it was not done before
@@ -172,17 +161,15 @@ imagingApi.postSearchContextExtractImageFeatures(new PostSearchContextExtractIma
 // wait 'till image features extraction is completed
 String searchStatus = "unknown";
 while (!"Idle".equalsIgnoreCase(searchStatus)) {
-	ApiResponse response = imagingApi.getSearchContextStatus(
+	SearchContextStatus contextStatus = imagingApi.getSearchContextStatus(
 			new GetSearchContextStatusRequest(searchContextId, null, null));
-	SearchContextStatus contextStatus = (SearchContextStatus) response.getSaaSposeResponse();
 	searchStatus = contextStatus.getSearchStatus();
 	Thread.sleep(10000);
 }  
 
 // request finding duplicates
-ApiResponse response = imagingApi.getSearchContextFindDuplicates(
+ImageDuplicatesSet result = imagingApi.getSearchContextFindDuplicates(
     new GetSearchContextFindDuplicatesRequest(searchContextId, 90.0, null, null));
-ImageDuplicatesSet result = (ImageDuplicatesSet)response.getSaaSposeResponse();
 
 for (ImageDuplicates duplicates : result.getDuplicates())
 {
@@ -204,8 +191,7 @@ for (ImageDuplicates duplicates : result.getDuplicates())
 ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
 	 
 // create search context or use existing search context ID if search context was created earlier
-ApiResponse apiResponse = imagingApi.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, null));
-SearchContextStatus status = (SearchContextStatus) apiResponse.getSaaSposeResponse();
+SearchContextStatus status = imagingApi.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, null));
 String searchContextId = status.getId();
  
 // extract images features if it was not done before
@@ -215,9 +201,8 @@ imagingApi.postSearchContextExtractImageFeatures(new PostSearchContextExtractIma
 // wait 'till image features extraction is completed
 String searchStatus = "unknown";
 while (!"Idle".equalsIgnoreCase(searchStatus)) {
-	ApiResponse response = imagingApi.getSearchContextStatus(
+	SearchContextStatus contextStatus = imagingApi.getSearchContextStatus(
 			new GetSearchContextStatusRequest(searchContextId, null, null));
-	SearchContextStatus contextStatus = (SearchContextStatus) response.getSaaSposeResponse();
 	searchStatus = contextStatus.getSearchStatus();
 	Thread.sleep(10000);
 }  
@@ -249,9 +234,8 @@ tagsList.add(tag);
 String tags = new Gson().toJson(tagsList);
 	 
 // search images by tags
-ApiResponse response = imagingApi.postSearchContextFindByTags(
+SearchResultsSet result = imagingApi.postSearchContextFindByTags(
 	new PostSearchContextFindByTagsRequest(tags, searchContextId, 90.0, 10, null, null));
-SearchResultsSet result = (SearchResultsSet)response.getSaaSposeResponse(); 
     
 // process search results
 for (SearchResult searchResult : result.getResults())

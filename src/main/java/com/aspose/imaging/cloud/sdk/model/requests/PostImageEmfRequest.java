@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for postImageEmf request invocation.
+* Class that holds parameters for PostImageEmf request invocation.
 **/   
 public class PostImageEmfRequest
 {

@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for postSearchContextFindByTags request invocation.
+* Class that holds parameters for PostSearchContextFindByTags request invocation.
 **/   
 public class PostSearchContextFindByTagsRequest
 {

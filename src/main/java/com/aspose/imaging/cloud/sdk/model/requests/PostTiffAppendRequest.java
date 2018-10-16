@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for postTiffAppend request invocation.
+* Class that holds parameters for PostTiffAppend request invocation.
 **/   
 public class PostTiffAppendRequest
 {

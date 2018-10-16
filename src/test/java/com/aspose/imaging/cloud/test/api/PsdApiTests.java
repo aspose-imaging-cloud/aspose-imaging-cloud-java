@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PsdApiTests.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,51 +26,60 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.categories.PsdTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing PSD-related API calls
  */
-@Category(PsdTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class PsdApiTests extends ApiTester {
 
 	private GetImagePsdRequest getImagePsdRequest;
 	private PostImagePsdRequest postImagePsdRequest;
+
+	@Parameters
+	public static Iterable<Object> data() {
+		return Arrays.asList(new Object[] { true, false });
+	}
+
+	private Boolean saveResultToStorage;
+
+	public PsdApiTests(Boolean saveResult)
+	{
+		this.saveResultToStorage = saveResult;
+	}
 	
     /**
      * Test operation: Update parameters of existing PSD image.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void getImagePsdTest(Boolean saveResultToStorage) throws Exception {
+    public void getImagePsdTest() throws Exception {
     	String name = "test.psd";
     	int channelsCount = 3;
         String compressionMethod = "raw";
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = name + "_specific." + "psd";
 		getImagePsdRequest = new GetImagePsdRequest(name, channelsCount, compressionMethod, fromScratch, outPath, folder, storage);
 		
-		Method propertiesTester = PsdApiTests.class.getDeclaredMethod("getImagePsdPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = PsdApiTests.class.getDeclaredMethod("getImagePsdPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = PsdApiTests.class.getDeclaredMethod("getImagePsdGetRequestInvoker", String.class, String.class);
 		requestInvoker.setAccessible(true);
@@ -81,7 +90,6 @@ public class PsdApiTests extends ApiTester {
             		name, channelsCount, compressionMethod),
             name,
             outName,
-            "Psd",
             requestInvoker,
             propertiesTester,
             folder,
@@ -91,25 +99,23 @@ public class PsdApiTests extends ApiTester {
     /**
      * Test operation: Update parameters of PSD image. Image is passed in a request stream.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void postImagePsdTest(Boolean saveResultToStorage) throws Exception {
+    public void postImagePsdTest() throws Exception {
         byte[] imageData = null;
         int channelsCount = 3;
         String compressionMethod = "raw";
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String name = "test.psd";
 		String outName = name + "_specific." + "psd";
 		postImagePsdRequest = new PostImagePsdRequest(imageData, channelsCount, compressionMethod, fromScratch, outPath, storage);
 		
-		Method propertiesTester = PsdApiTests.class.getDeclaredMethod("postImagePsdPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = PsdApiTests.class.getDeclaredMethod("postImagePsdPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = PsdApiTests.class.getDeclaredMethod("postImagePsdPostRequestInvoker", byte[].class, String.class);
 		requestInvoker.setAccessible(true);
@@ -120,7 +126,6 @@ public class PsdApiTests extends ApiTester {
             		name, channelsCount, compressionMethod),
             name,
             outName,
-            "Psd",
             requestInvoker,
             propertiesTester,
             folder,
@@ -134,7 +139,7 @@ public class PsdApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImagePsdGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImagePsdGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImagePsdRequest.name = name;
 		getImagePsdRequest.outPath = outPath;
@@ -148,7 +153,7 @@ public class PsdApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImagePsdPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImagePsdPostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImagePsdRequest.imageData = imageData;
 		postImagePsdRequest.outPath = outPath;
@@ -159,8 +164,9 @@ public class PsdApiTests extends ApiTester {
 	 * Tests properties for getImagePsd operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImagePsdPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImagePsdPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPsdProperties());
         Assert.assertEquals(getImagePsdRequest.compressionMethod, resultProperties.getPsdProperties().getCompression().toLowerCase());
@@ -176,8 +182,9 @@ public class PsdApiTests extends ApiTester {
 	 * Tests properties for postImagePsd operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImagePsdPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImagePsdPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPsdProperties());
 		Assert.assertEquals(postImagePsdRequest.compressionMethod, resultProperties.getPsdProperties().getCompression().toLowerCase());

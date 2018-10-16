@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ResizeApiTests.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,53 +26,81 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 import com.aspose.imaging.cloud.test.base.StorageFileInfo;
-import com.aspose.imaging.cloud.test.categories.ResizeTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Class for testing Resize-related API calls
+ * Class for testing crop-related API calls
  */
-@Category(ResizeTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class ResizeApiTests extends ApiTester {
 
 	private GetImageResizeRequest getImageResizeRequest;
 	private PostImageResizeRequest postImageResizeRequest;
+
+    @Parameters
+    public static Iterable<Object[]> data() {
+        if (isExtendedTests()) {
+            return Arrays.asList(new Object[][] {
+                    { ".bmp", true, new String[] {} }, { ".bmp", false, new String[] {} },
+                    { ".dicom", true, new String[] {} }, { ".dicom", false, new String[] {} },
+                    /* TODO: enable after IMAGINGCLOUD-51 is resolved
+                    { ".gif", true, new String[] {} }, { ".gif", false, new String[] {} },
+                    */
+                    { ".j2k", true, new String[] {} }, { ".j2k", false, new String[] {} },
+                    { ".jpg", true, new String[] {} }, { ".jpg", false, new String[] {} },
+                    { ".png", true, new String[] {} }, { ".png", false, new String[] {} },
+                    { ".psd", true, new String[] {} }, { ".psd", false, new String[] {} },
+                    { ".tiff", true, new String[] {} }, { ".tiff", false, new String[] {} },
+                    { ".webp", true, new String[] {} }, { ".webp", false, new String[] {} }
+            });
+        }
+        else {
+            System.out.println("Extended tests had been disabled");
+            return Arrays.asList(new Object[][] {
+                    { ".jpg", true, new String[] {} }, { ".jpg", false, new String[] {} }
+            });
+        }
+    }
+
+	private String formatExtension;
+	private Boolean saveResultToStorage;
+	String[] additionalExportFormats;
+
+	public ResizeApiTests(String extension, Boolean saveResult, String[] additionalFormats)
+	{
+		this.formatExtension = extension;
+		this.saveResultToStorage = saveResult;
+		this.additionalExportFormats = additionalFormats;
+	}
 	
     /**
      * Test operation: Resize an existing image.
-     * 
-     * @param formatExtension Format extension to search for input images in the test folder
-     * @param saveResultToStorage If result should be saved to storage
-     * @param additionalExportFormats Additional formats to export to
+     *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({
-		".jpg, true,", 
-		".jpg, false,",
-		})
-    public void getImageResizeTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
+    public void getImageResizeTest() throws Exception {
         String name = null;
         Integer newWidth = 100;
         Integer newHeight = 150;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = null;
 		
@@ -102,7 +130,7 @@ public class ResizeApiTests extends ApiTester {
 				getImageResizeRequest = new GetImageResizeRequest(name, format, newWidth, newHeight, outPath, folder, storage);
 				outName = name + "_resize." + format;
 				
-				Method propertiesTester = ResizeApiTests.class.getDeclaredMethod("getImageResizePropertiesTester", ImagingResponse.class, ImagingResponse.class);
+				Method propertiesTester = ResizeApiTests.class.getDeclaredMethod("getImageResizePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 				propertiesTester.setAccessible(true);
 				Method requestInvoker = ResizeApiTests.class.getDeclaredMethod("getImageResizeGetRequestInvoker", String.class, String.class);
 				requestInvoker.setAccessible(true);
@@ -113,7 +141,6 @@ public class ResizeApiTests extends ApiTester {
 		            		name, format, newWidth, newHeight),
 		            name,
 		            outName,
-		            "Resize",
 		            requestInvoker,
 		            propertiesTester,
 		            folder,
@@ -124,25 +151,18 @@ public class ResizeApiTests extends ApiTester {
     
     /**
      * Test operation: Resize an image. Image is passed in a request stream.
-     * 
-     * @param formatExtension Format extension to search for input images in the test folder
-     * @param saveResultToStorage If result should be saved to storage
-     * @param additionalExportFormats Additional formats to export to
+     *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({
-		".jpg, true,", 
-		".jpg, false,",
-		})
-    public void postImageResizeTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
+    public void postImageResizeTest() throws Exception {
     	byte[] imageData = null;
 		String name = null;
 		Integer newWidth = 100;
         Integer newHeight = 150;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = null;
 		
@@ -172,7 +192,7 @@ public class ResizeApiTests extends ApiTester {
 				postImageResizeRequest = new PostImageResizeRequest(imageData, format, newWidth, newHeight, outPath, storage);
 				outName = name + "_resize." + format;
 				
-				Method propertiesTester = ResizeApiTests.class.getDeclaredMethod("postImageResizePropertiesTester", ImagingResponse.class, ImagingResponse.class);
+				Method propertiesTester = ResizeApiTests.class.getDeclaredMethod("postImageResizePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 				propertiesTester.setAccessible(true);
 				Method requestInvoker = ResizeApiTests.class.getDeclaredMethod("postImageResizePostRequestInvoker", byte[].class, String.class);
 				requestInvoker.setAccessible(true);
@@ -183,62 +203,11 @@ public class ResizeApiTests extends ApiTester {
 		            		name, format, newWidth, newHeight),
 		            name,
 		            outName,
-		            "Resize",
 		            requestInvoker,
 		            propertiesTester,
 		            folder,
 		            storage);
             }
-		}
-    }
-    
-    /**
-     * Extended test set for Resize operation.
-     * @throws Exception
-     */
-    @Test
-    public void ExtendedResizeTests() throws Exception
-    {
-		if (isExtendedTests())
-    	{
-    		this.getImageResizeTest(".bmp", true);
-    		this.getImageResizeTest(".bmp", false);
-    		this.postImageResizeTest(".bmp", true);
-    		this.postImageResizeTest(".bmp", false);
-    		this.getImageResizeTest(".dicom", true);
-    		this.getImageResizeTest(".dicom", false);
-    		this.postImageResizeTest(".dicom", true);
-    		this.postImageResizeTest(".dicom", false);
-    		/* TODO: enable after IMAGINGCLOUD-51 is resolved
-    		this.getImageResizeTest(".gif", true);
-    		this.getImageResizeTest(".gif", false);
-    		this.postImageResizeTest(".gif", true);
-    		this.postImageResizeTest(".gif", false);
-    		*/
-    		this.getImageResizeTest(".j2k", true);
-    		this.getImageResizeTest(".j2k", false);
-    		this.postImageResizeTest(".j2k", true);
-    		this.postImageResizeTest(".j2k", false);
-    		this.getImageResizeTest(".png", true);
-    		this.getImageResizeTest(".png", false);
-    		this.postImageResizeTest(".png", true);
-    		this.postImageResizeTest(".png", false);
-    		this.getImageResizeTest(".psd", true);
-    		this.getImageResizeTest(".psd", false);
-    		this.postImageResizeTest(".psd", true);
-    		this.postImageResizeTest(".psd", false);
-    		this.getImageResizeTest(".tiff", true);
-    		this.getImageResizeTest(".tiff", false);
-    		this.postImageResizeTest(".tiff", true);
-    		this.postImageResizeTest(".tiff", false);
-    		this.getImageResizeTest(".webp", true);
-    		this.getImageResizeTest(".webp", false);
-    		this.postImageResizeTest(".webp", true);
-    		this.postImageResizeTest(".webp", false);
-    	}
-		else
-		{
-			System.out.println("Extended tests had been disabled");
 		}
     }
 	
@@ -249,7 +218,7 @@ public class ResizeApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImageResizeGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImageResizeGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImageResizeRequest.name = name;
 		getImageResizeRequest.outPath = outPath;
@@ -263,7 +232,7 @@ public class ResizeApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImageResizePostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImageResizePostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImageResizeRequest.imageData = imageData;
 		postImageResizeRequest.outPath = outPath;
@@ -274,8 +243,9 @@ public class ResizeApiTests extends ApiTester {
 	 * Tests properties for getImageResize operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImageResizePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImageResizePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertEquals(getImageResizeRequest.newWidth, resultProperties.getWidth());
         Assert.assertEquals(getImageResizeRequest.newHeight, resultProperties.getHeight());
@@ -285,8 +255,9 @@ public class ResizeApiTests extends ApiTester {
 	 * Tests properties for postImageResize operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImageResizePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImageResizePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertEquals(postImageResizeRequest.newWidth, resultProperties.getWidth());
         Assert.assertEquals(postImageResizeRequest.newHeight, resultProperties.getHeight());

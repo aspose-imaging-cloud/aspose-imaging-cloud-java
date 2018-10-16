@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getSearchContextImage request invocation.
+* Class that holds parameters for GetSearchContextImage request invocation.
 **/   
 public class GetSearchContextImageRequest
 {

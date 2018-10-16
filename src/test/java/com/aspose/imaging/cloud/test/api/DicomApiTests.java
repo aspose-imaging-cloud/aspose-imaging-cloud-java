@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DicomApiTests.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,49 +26,58 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.categories.DicomTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing DICOM-related API calls
  */
-@Category(DicomTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class DicomApiTests extends ApiTester {
 
 	private GetImageDicomRequest getImageDicomRequest;
 	private PostImageDicomRequest postImageDicomRequest;
+
+	@Parameters
+	public static Iterable<Object> data() {
+		return Arrays.asList(new Object[] { true, false });
+	}
+
+	private Boolean saveResultToStorage;
+
+	public DicomApiTests(Boolean saveResult)
+	{
+		this.saveResultToStorage = saveResult;
+	}
 	
     /**
      * Test operation: Rasterize existing DICOM image to PNG using given parameters. 
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void getImageDicomTest(Boolean saveResultToStorage) throws Exception {
+    public void getImageDicomTest() throws Exception {
     	String name = "test.dicom";
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
 		getImageDicomRequest = new GetImageDicomRequest(name, fromScratch, outPath, folder, storage);
 		
-		Method propertiesTester = DicomApiTests.class.getDeclaredMethod("getImageDicomPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = DicomApiTests.class.getDeclaredMethod("getImageDicomPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = DicomApiTests.class.getDeclaredMethod("getImageDicomGetRequestInvoker", String.class, String.class);
 		requestInvoker.setAccessible(true);
@@ -79,7 +88,6 @@ public class DicomApiTests extends ApiTester {
             		name),
             name,
             outName,
-            "Dicom",
             requestInvoker,
             propertiesTester,
             folder,
@@ -89,23 +97,21 @@ public class DicomApiTests extends ApiTester {
     /**
      * Test operation: Rasterize DICOM image to PNG using given parameters. Image is passed in a request stream.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void postImageDicomTest(Boolean saveResultToStorage) throws Exception {
+    public void postImageDicomTest() throws Exception {
         byte[] imageData = null;
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String name = "test.dicom";
 		String outName = name + "_specific." + "png";
 		postImageDicomRequest = new PostImageDicomRequest(imageData, fromScratch, outPath, storage);
 		
-		Method propertiesTester = DicomApiTests.class.getDeclaredMethod("postImageDicomPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = DicomApiTests.class.getDeclaredMethod("postImageDicomPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = DicomApiTests.class.getDeclaredMethod("postImageDicomPostRequestInvoker", byte[].class, String.class);
 		requestInvoker.setAccessible(true);
@@ -116,7 +122,6 @@ public class DicomApiTests extends ApiTester {
             		name),
             name,
             outName,
-            "Dicom",
             requestInvoker,
             propertiesTester,
             folder,
@@ -130,7 +135,7 @@ public class DicomApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImageDicomGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImageDicomGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImageDicomRequest.name = name;
 		getImageDicomRequest.outPath = outPath;
@@ -144,7 +149,7 @@ public class DicomApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImageDicomPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImageDicomPostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImageDicomRequest.imageData = imageData;
 		postImageDicomRequest.outPath = outPath;
@@ -155,8 +160,9 @@ public class DicomApiTests extends ApiTester {
 	 * Tests properties for getImageDicom operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImageDicomPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImageDicomPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
@@ -171,8 +177,9 @@ public class DicomApiTests extends ApiTester {
 	 * Tests properties for postImageDicom operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImageDicomPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImageDicomPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());

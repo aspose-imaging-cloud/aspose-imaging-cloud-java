@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getImageDicom request invocation.
+* Class that holds parameters for GetImageDicom request invocation.
 **/   
 public class GetImageDicomRequest
 {

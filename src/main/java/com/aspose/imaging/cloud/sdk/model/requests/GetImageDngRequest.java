@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getImageDng request invocation.
+* Class that holds parameters for GetImageDng request invocation.
 **/   
 public class GetImageDngRequest
 {

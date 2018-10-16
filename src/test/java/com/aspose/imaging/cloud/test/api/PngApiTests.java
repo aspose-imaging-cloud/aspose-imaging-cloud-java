@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PngApiTests.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,49 +26,58 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.categories.PngTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing PNG-related API calls
  */
-@Category(PngTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class PngApiTests extends ApiTester {
 
 	private GetImagePngRequest getImagePngRequest;
 	private PostImagePngRequest postImagePngRequest;
+
+	@Parameters
+	public static Iterable<Object> data() {
+		return Arrays.asList(new Object[] { true, false });
+	}
+
+	private Boolean saveResultToStorage;
+
+	public PngApiTests(Boolean saveResult)
+	{
+		this.saveResultToStorage = saveResult;
+	}
 	
     /**
      * Test operation: Update parameters of existing PNG image.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void getImagePngTest(Boolean saveResultToStorage) throws Exception {
+    public void getImagePngTest() throws Exception {
     	String name = "test.png";
         Boolean fromScratch = false;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
 		getImagePngRequest = new GetImagePngRequest(name, fromScratch, outPath, folder, storage);
 		
-		Method propertiesTester = PngApiTests.class.getDeclaredMethod("getImagePngPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = PngApiTests.class.getDeclaredMethod("getImagePngPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = PngApiTests.class.getDeclaredMethod("getImagePngGetRequestInvoker", String.class, String.class);
 		requestInvoker.setAccessible(true);
@@ -79,7 +88,6 @@ public class PngApiTests extends ApiTester {
             		name),
             name,
             outName,
-            "Png",
             requestInvoker,
             propertiesTester,
             folder,
@@ -89,23 +97,21 @@ public class PngApiTests extends ApiTester {
     /**
      * Test operation: Update parameters of PNG image. Image is passed in a request stream.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void postImagePngTest(Boolean saveResultToStorage) throws Exception {
+    public void postImagePngTest() throws Exception {
         byte[] imageData = null;
         Boolean fromScratch = false;
         String outPath = null;
         String storage = TestStorage;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String name = "test.png";
 		String outName = name + "_specific." + "png";
 		postImagePngRequest = new PostImagePngRequest(imageData, fromScratch, outPath, storage);
 		
-		Method propertiesTester = PngApiTests.class.getDeclaredMethod("postImagePngPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = PngApiTests.class.getDeclaredMethod("postImagePngPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = PngApiTests.class.getDeclaredMethod("postImagePngPostRequestInvoker", byte[].class, String.class);
 		requestInvoker.setAccessible(true);
@@ -116,7 +122,6 @@ public class PngApiTests extends ApiTester {
             		name),
             name,
             outName,
-            "Png",
             requestInvoker,
             propertiesTester,
             folder,
@@ -130,7 +135,7 @@ public class PngApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImagePngGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImagePngGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImagePngRequest.name = name;
 		getImagePngRequest.outPath = outPath;
@@ -144,7 +149,7 @@ public class PngApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImagePngPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImagePngPostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImagePngRequest.imageData = imageData;
 		postImagePngRequest.outPath = outPath;
@@ -155,8 +160,9 @@ public class PngApiTests extends ApiTester {
 	 * Tests properties for getImagePng operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImagePngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImagePngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
 		Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
@@ -172,8 +178,9 @@ public class PngApiTests extends ApiTester {
 	 * Tests properties for postImagePng operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImagePngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImagePngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
 		Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());

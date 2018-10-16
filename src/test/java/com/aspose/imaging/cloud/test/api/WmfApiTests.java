@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="WmfApiTests.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,40 +26,49 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.categories.WmfTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing WMF-related API calls
  */
-@Category(WmfTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class WmfApiTests extends ApiTester {
 
 	private GetImageWmfRequest getImageWmfRequest;
 	private PostImageWmfRequest postImageWmfRequest;
 
+	@Parameters
+	public static Iterable<Object> data() {
+		return Arrays.asList(new Object[] { true, false });
+	}
+
+	private Boolean saveResultToStorage;
+
+	public WmfApiTests(Boolean saveResult)
+	{
+		this.saveResultToStorage = saveResult;
+	}
+
     /**
      * Test operation: Rasterize existing WMF image to PNG using given parameters.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void getImageWmfTest(Boolean saveResultToStorage) throws Exception {
+    public void getImageWmfTest() throws Exception {
     	String name = "test.wmf";
         String bkColor = "gray";
         Integer pageWidth = 300;
@@ -68,12 +77,12 @@ public class WmfApiTests extends ApiTester {
         Integer borderY = 50;
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
 		getImageWmfRequest = new GetImageWmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, folder, storage);
 		
-		Method propertiesTester = WmfApiTests.class.getDeclaredMethod("getImageWmfPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = WmfApiTests.class.getDeclaredMethod("getImageWmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = WmfApiTests.class.getDeclaredMethod("getImageWmfGetRequestInvoker", String.class, String.class);
 		requestInvoker.setAccessible(true);
@@ -84,7 +93,6 @@ public class WmfApiTests extends ApiTester {
             		name, bkColor, pageWidth, pageHeight, borderX, borderY),
             name,
             outName,
-            "Wmf",
             requestInvoker,
             propertiesTester,
             folder,
@@ -94,13 +102,11 @@ public class WmfApiTests extends ApiTester {
     /**
      * Test operation: Rasterize WMF image to PNG using given parameters. Image is passed in a request stream.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void postImageWmfTest(Boolean saveResultToStorage) throws Exception {
+    public void postImageWmfTest() throws Exception {
         byte[] imageData = null;
         String bkColor = "gray";
         Integer pageWidth = 300;
@@ -110,12 +116,12 @@ public class WmfApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String name = "test.wmf";
 		String outName = name + "_specific." + "png";
 		postImageWmfRequest = new PostImageWmfRequest(imageData, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, storage);
 		
-		Method propertiesTester = WmfApiTests.class.getDeclaredMethod("postImageWmfPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = WmfApiTests.class.getDeclaredMethod("postImageWmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = WmfApiTests.class.getDeclaredMethod("postImageWmfPostRequestInvoker", byte[].class, String.class);
 		requestInvoker.setAccessible(true);
@@ -126,7 +132,6 @@ public class WmfApiTests extends ApiTester {
             		name, bkColor, pageWidth, pageHeight, borderX, borderY),
             name,
             outName,
-            "Wmf",
             requestInvoker,
             propertiesTester,
             folder,
@@ -140,7 +145,7 @@ public class WmfApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImageWmfGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImageWmfGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImageWmfRequest.name = name;
 		getImageWmfRequest.outPath = outPath;
@@ -154,7 +159,7 @@ public class WmfApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImageWmfPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImageWmfPostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImageWmfRequest.imageData = imageData;
 		postImageWmfRequest.outPath = outPath;
@@ -166,7 +171,7 @@ public class WmfApiTests extends ApiTester {
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
 	 */
-	private void getImageWmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImageWmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
         Assert.assertEquals((int)(getImageWmfRequest.pageWidth + getImageWmfRequest.borderX * 2),
@@ -179,8 +184,9 @@ public class WmfApiTests extends ApiTester {
 	 * Tests properties for postImageWmf operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImageWmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImageWmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
         Assert.assertEquals((int)(postImageWmfRequest.pageWidth + postImageWmfRequest.borderX * 2),

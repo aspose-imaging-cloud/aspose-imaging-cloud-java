@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for deleteSearchContext request invocation.
+* Class that holds parameters for DeleteSearchContext request invocation.
 **/   
 public class DeleteSearchContextRequest
 {

@@ -28,7 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for getImageFrameProperties request invocation.
+* Class that holds parameters for GetImageFrameProperties request invocation.
 **/   
 public class GetImageFramePropertiesRequest
 {
