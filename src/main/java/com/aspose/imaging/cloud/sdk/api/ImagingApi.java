@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ImagingApi.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -178,32 +178,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "DELETE", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "DELETE", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -235,32 +218,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "DELETE", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "DELETE", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -292,32 +258,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "DELETE", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "DELETE", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), SaaSposeResponse.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SaaSposeResponse.class);
     }
   
     /**
@@ -361,32 +315,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -439,32 +376,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -493,32 +413,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -547,32 +450,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -626,32 +512,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -692,32 +561,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -749,32 +601,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
     }
   
     /**
@@ -809,32 +649,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -869,32 +692,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -925,32 +731,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -979,32 +768,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -1033,32 +805,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -1085,32 +840,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
     }
   
     /**
@@ -1141,32 +884,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -1209,32 +935,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -1272,32 +981,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -1330,32 +1022,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -1401,32 +1076,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -1494,32 +1152,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -1568,32 +1209,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -1647,32 +1271,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -1707,32 +1314,20 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), ImageFeatures.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImageFeatures.class);
     }
   
     /**
@@ -1764,32 +1359,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class);
     }
   
     /**
@@ -1830,32 +1413,20 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), SearchResultsSet.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SearchResultsSet.class);
     }
   
     /**
@@ -1887,32 +1458,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -1944,32 +1498,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), ImageFeatures.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImageFeatures.class);
     }
   
     /**
@@ -1996,32 +1538,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), SearchContextStatus.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SearchContextStatus.class);
     }
   
     /**
@@ -2049,32 +1579,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2098,32 +1611,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), SearchContextStatus.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SearchContextStatus.class);
     }
   
     /**
@@ -2168,32 +1669,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2247,32 +1731,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2302,32 +1769,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2357,32 +1807,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2437,32 +1870,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2504,32 +1920,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2561,32 +1960,20 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
     }
   
     /**
@@ -2622,32 +2009,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2683,32 +2053,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2740,32 +2093,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2795,32 +2131,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2850,32 +2169,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -2902,32 +2204,20 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
     }
   
     /**
@@ -2959,32 +2249,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3028,32 +2301,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3092,32 +2348,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3151,32 +2390,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3223,32 +2445,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3317,32 +2522,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3392,32 +2580,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3472,32 +2643,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3532,32 +2686,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3596,32 +2733,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3657,32 +2777,20 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), SearchResultsSet.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SearchResultsSet.class);
     }
   
     /**
@@ -3714,32 +2822,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3783,32 +2874,20 @@ public class ImagingApi
       {
           formParams.put("tags", request.tags); // form parameter
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), SearchResultsSet.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SearchResultsSet.class);
     }
   
     /**
@@ -3840,32 +2919,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return SerializationHelper.deserialize(new String(response), SaaSposeResponse.class);
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SaaSposeResponse.class);
     }
   
     /**
@@ -3900,32 +2967,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "PUT", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "PUT", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
     /**
@@ -3960,32 +3010,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "PUT", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "PUT", 
+          null, 
+          null, 
+          formParams);
 		  
-		  return response;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  return response;
+	  
     }
   
 }

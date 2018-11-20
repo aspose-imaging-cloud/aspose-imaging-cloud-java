@@ -249,3 +249,16 @@ for (SearchResult searchResult : result.getResults())
 // search context is stored in the storage, and in case if search context is not needed anymore it should be removed
 imagingApi.deleteSearchContext(new DeleteSearchContextRequest(searchContextId, null, null));
 ```
+
+### Exception handling and error codes
+```java
+try
+{
+    imagingApi.deleteSearchContext(new DeleteSearchContextRequest(searchContextId, null, null));
+}
+catch (ApiException ex) 
+{
+    System.out.println(ex.getErrorCode());
+    System.out.println(ex.getMessage());
+}
+```
