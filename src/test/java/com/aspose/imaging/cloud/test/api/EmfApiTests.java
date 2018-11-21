@@ -26,40 +26,49 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.categories.EmfTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing EMF-related API calls
  */
-@Category(EmfTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class EmfApiTests extends ApiTester {
 
 	private GetImageEmfRequest getImageEmfRequest;
 	private PostImageEmfRequest postImageEmfRequest;
+
+	@Parameters
+	public static Iterable<Object> data() {
+		return Arrays.asList(new Object[] { true, false });
+	}
+
+	private Boolean saveResultToStorage;
+
+	public EmfApiTests(Boolean saveResult)
+	{
+		this.saveResultToStorage = saveResult;
+	}
 	
     /**
      * Test operation: Rasterize existing EMF image to PNG using given parameters.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void getImageEmfTest(Boolean saveResultToStorage) throws Exception {
+    public void getImageEmfTest() throws Exception {
     	String name = "test.emf";
         String bkColor = "gray";
         Integer pageWidth = 300;
@@ -68,12 +77,12 @@ public class EmfApiTests extends ApiTester {
         Integer borderY = 50;
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
 		getImageEmfRequest = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, folder, storage);
 		
-		Method propertiesTester = EmfApiTests.class.getDeclaredMethod("getImageEmfPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = EmfApiTests.class.getDeclaredMethod("getImageEmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = EmfApiTests.class.getDeclaredMethod("getImageEmfGetRequestInvoker", String.class, String.class);
 		requestInvoker.setAccessible(true);
@@ -84,7 +93,6 @@ public class EmfApiTests extends ApiTester {
             		name, bkColor, pageWidth, pageHeight, borderX, borderY),
             name,
             outName,
-            "Emf",
             requestInvoker,
             propertiesTester,
             folder,
@@ -94,13 +102,11 @@ public class EmfApiTests extends ApiTester {
     /**
      * Test operation: Rasterize EMF image to PNG using given parameters. Image is passed in a request stream.
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void postImageEmfTest(Boolean saveResultToStorage) throws Exception {
+    public void postImageEmfTest() throws Exception {
         byte[] imageData = null;
         String bkColor = "gray";
         Integer pageWidth = 300;
@@ -110,12 +116,12 @@ public class EmfApiTests extends ApiTester {
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String name = "test.emf";
 		String outName = name + "_specific." + "png";
 		postImageEmfRequest = new PostImageEmfRequest(imageData, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, storage);
 		
-		Method propertiesTester = EmfApiTests.class.getDeclaredMethod("postImageEmfPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = EmfApiTests.class.getDeclaredMethod("postImageEmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = EmfApiTests.class.getDeclaredMethod("postImageEmfPostRequestInvoker", byte[].class, String.class);
 		requestInvoker.setAccessible(true);
@@ -126,7 +132,6 @@ public class EmfApiTests extends ApiTester {
             		name, bkColor, pageWidth, pageHeight, borderX, borderY),
             name,
             outName,
-            "Emf",
             requestInvoker,
             propertiesTester,
             folder,
@@ -140,7 +145,7 @@ public class EmfApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImageEmfGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImageEmfGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImageEmfRequest.name = name;
 		getImageEmfRequest.outPath = outPath;
@@ -154,7 +159,7 @@ public class EmfApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImageEmfPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImageEmfPostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImageEmfRequest.imageData = imageData;
 		postImageEmfRequest.outPath = outPath;
@@ -165,8 +170,9 @@ public class EmfApiTests extends ApiTester {
 	 * Tests properties for getImageEmf operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
         Assert.assertEquals((int)((getImageEmfRequest.pageWidth + getImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)),
@@ -179,8 +185,9 @@ public class EmfApiTests extends ApiTester {
 	 * Tests properties for postImageEmf operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
         Assert.assertEquals((int)((postImageEmfRequest.pageWidth + postImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)),

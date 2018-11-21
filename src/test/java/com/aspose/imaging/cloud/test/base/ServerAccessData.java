@@ -45,4 +45,15 @@ public class ServerAccessData
      * The base URL.
      */
 	public String BaseURL;
+	
+	/**
+     * The API version (used for Android).
+     */
+	public String ApiVersion;
+
+    /**
+     * The storage name (used for Android).
+     */
+	public String StorageName;
+
 }

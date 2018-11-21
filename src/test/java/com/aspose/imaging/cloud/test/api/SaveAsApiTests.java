@@ -26,18 +26,18 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 import com.aspose.imaging.cloud.test.base.StorageFileInfo;
-import com.aspose.imaging.cloud.test.categories.SaveAsTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,31 +45,59 @@ import java.util.Collections;
 /**
  * Class for testing crop-related API calls
  */
-@Category(SaveAsTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class SaveAsApiTests extends ApiTester {
 
 	private GetImageSaveAsRequest getImageSaveAsRequest;
 	private PostImageSaveAsRequest postImageSaveAsRequest;
 
+    @Parameters
+    public static Iterable<Object[]> data() {
+        if (isExtendedTests()) {
+            return Arrays.asList(new Object[][] {
+                    { ".bmp", true, new String[] {} }, { ".bmp", false, new String[] {} },
+                    { ".dicom", true, new String[] {} }, { ".dicom", false, new String[] {} },
+                    /* TODO: enable after IMAGINGCLOUD-51 is resolved
+                    { ".gif", true, new String[] {} }, { ".gif", false, new String[] {} },
+                    */
+                    { ".j2k", true, new String[] {} }, { ".j2k", false, new String[] {} },
+                    { ".jpg", true, new String[] {} }, { ".jpg", false, new String[] {} },
+                    { ".png", true, new String[] {} }, { ".png", false, new String[] {} },
+                    { ".psd", true, new String[] {} }, { ".psd", false, new String[] {} },
+                    { ".tiff", true, new String[] {} }, { ".tiff", false, new String[] {} },
+                    { ".webp", true, new String[] {} }, { ".webp", false, new String[] {} }
+            });
+        }
+        else {
+            System.out.println("Extended tests had been disabled");
+            return Arrays.asList(new Object[][] {
+                    { ".jpg", true, new String[] {} }, { ".jpg", false, new String[] {} }
+            });
+        }
+    }
+
+	private String formatExtension;
+	private Boolean saveResultToStorage;
+	String[] additionalExportFormats;
+
+	public SaveAsApiTests(String extension, Boolean saveResult, String[] additionalFormats)
+	{
+		this.formatExtension = extension;
+		this.saveResultToStorage = saveResult;
+		this.additionalExportFormats = additionalFormats;
+	}
+
     /**
      * Test operation: SaveAs an existing image.
-     * 
-     * @param formatExtension Format extension to search for input images in the test folder
-     * @param saveResultToStorage If result should be saved to storage
-     * @param additionalExportFormats Additional formats to export to
+     *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({
-		".jpg, true,", 
-		".jpg, false,",
-		})
-    public void getImageSaveAsTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
+    public void getImageSaveAsTest() throws Exception {
         String name = null;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = null;
 		
@@ -99,7 +127,7 @@ public class SaveAsApiTests extends ApiTester {
 				getImageSaveAsRequest = new GetImageSaveAsRequest(name, format, outPath, folder, storage);
 				outName = name + "." + format;
 				
-				Method propertiesTester = SaveAsApiTests.class.getDeclaredMethod("getImageSaveAsPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+				Method propertiesTester = SaveAsApiTests.class.getDeclaredMethod("getImageSaveAsPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 				propertiesTester.setAccessible(true);
 				Method requestInvoker = SaveAsApiTests.class.getDeclaredMethod("getImageSaveAsGetRequestInvoker", String.class, String.class);
 				requestInvoker.setAccessible(true);
@@ -110,7 +138,6 @@ public class SaveAsApiTests extends ApiTester {
 		            		name, format),
 		            name,
 		            outName,
-		            "Common",
 		            requestInvoker,
 		            propertiesTester,
 		            folder,
@@ -121,23 +148,16 @@ public class SaveAsApiTests extends ApiTester {
     
     /**
      * Test operation: SaveAs an image. Image is passed in a request stream.
-     * 
-     * @param formatExtension Format extension to search for input images in the test folder
-     * @param saveResultToStorage If result should be saved to storage
-     * @param additionalExportFormats Additional formats to export to
+     *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({
-		".jpg, true,", 
-		".jpg, false,",
-		})
-    public void postImageSaveAsTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
+    public void postImageSaveAsTest() throws Exception {
     	byte[] imageData = null;
 		String name = null;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = null;
 		
@@ -167,7 +187,7 @@ public class SaveAsApiTests extends ApiTester {
 				postImageSaveAsRequest = new PostImageSaveAsRequest(imageData, format, outPath, storage);
 				outName = name + "." + format;
 				
-				Method propertiesTester = SaveAsApiTests.class.getDeclaredMethod("postImageSaveAsPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+				Method propertiesTester = SaveAsApiTests.class.getDeclaredMethod("postImageSaveAsPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 				propertiesTester.setAccessible(true);
 				Method requestInvoker = SaveAsApiTests.class.getDeclaredMethod("postImageSaveAsPostRequestInvoker", byte[].class, String.class);
 				requestInvoker.setAccessible(true);
@@ -178,62 +198,11 @@ public class SaveAsApiTests extends ApiTester {
 		            		name, format),
 		            name,
 		            outName,
-		            "Common",
 		            requestInvoker,
 		            propertiesTester,
 		            folder,
 		            storage);
             }
-		}
-    }
-    
-    /**
-     * Extended test set for SaveAs operation.
-     * @throws Exception
-     */
-    @Test
-    public void ExtendedSaveAsTests() throws Exception
-    {
-		if (isExtendedTests())
-    	{
-    		this.getImageSaveAsTest(".bmp", true);
-    		this.getImageSaveAsTest(".bmp", false);
-    		this.postImageSaveAsTest(".bmp", true);
-    		this.postImageSaveAsTest(".bmp", false);
-    		this.getImageSaveAsTest(".dicom", true);
-    		this.getImageSaveAsTest(".dicom", false);
-    		this.postImageSaveAsTest(".dicom", true);
-    		this.postImageSaveAsTest(".dicom", false);
-    		/* TODO: enable after IMAGINGCLOUD-51 is resolved
-    		this.getImageSaveAsTest(".gif", true);
-    		this.getImageSaveAsTest(".gif", false);
-    		this.postImageSaveAsTest(".gif", true);
-    		this.postImageSaveAsTest(".gif", false);
-    		*/
-    		this.getImageSaveAsTest(".j2k", true);
-    		this.getImageSaveAsTest(".j2k", false);
-    		this.postImageSaveAsTest(".j2k", true);
-    		this.postImageSaveAsTest(".j2k", false);
-    		this.getImageSaveAsTest(".png", true);
-    		this.getImageSaveAsTest(".png", false);
-    		this.postImageSaveAsTest(".png", true);
-    		this.postImageSaveAsTest(".png", false);
-    		this.getImageSaveAsTest(".psd", true);
-    		this.getImageSaveAsTest(".psd", false);
-    		this.postImageSaveAsTest(".psd", true);
-    		this.postImageSaveAsTest(".psd", false);
-    		this.getImageSaveAsTest(".tiff", true);
-    		this.getImageSaveAsTest(".tiff", false);
-    		this.postImageSaveAsTest(".tiff", true);
-    		this.postImageSaveAsTest(".tiff", false);
-    		this.getImageSaveAsTest(".webp", true);
-    		this.getImageSaveAsTest(".webp", false);
-    		this.postImageSaveAsTest(".webp", true);
-    		this.postImageSaveAsTest(".webp", false);
-    	}
-		else
-		{
-			System.out.println("Extended tests had been disabled");
 		}
     }
 	
@@ -244,7 +213,7 @@ public class SaveAsApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImageSaveAsGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImageSaveAsGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImageSaveAsRequest.name = name;
 		getImageSaveAsRequest.outPath = outPath;
@@ -258,7 +227,7 @@ public class SaveAsApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImageSaveAsPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImageSaveAsPostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImageSaveAsRequest.imageData = imageData;
 		postImageSaveAsRequest.outPath = outPath;
@@ -269,8 +238,9 @@ public class SaveAsApiTests extends ApiTester {
 	 * Tests properties for getImageSaveAs operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImageSaveAsPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImageSaveAsPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 	}
 	
@@ -278,8 +248,9 @@ public class SaveAsApiTests extends ApiTester {
 	 * Tests properties for postImageSaveAs operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImageSaveAsPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImageSaveAsPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 	}
 }

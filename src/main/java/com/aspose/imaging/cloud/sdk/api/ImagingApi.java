@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ImagingApi.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,7 +32,6 @@ import com.aspose.imaging.cloud.sdk.invoker.internal.*;
 import com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers.*;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
-import java.io.File;
 
 import java.util.HashMap;
 
@@ -44,17 +43,17 @@ public class ImagingApi
 	/**
 	 * Current SDK version
 	 */
-	public static final String Version = "18.9";
+	public static final String Version = "18.11";
 
+	    /**
+     * The configuration
+     */
+    public Configuration Configuration;
+	
 	/**
 	 * The API invoker
 	 */
     private ApiInvoker apiInvoker;
-
-    /**
-     * The configuration
-     */
-    private Configuration configuration;
 
     /**
      * Initializes a new instance of the ImagingApi class.
@@ -147,10 +146,10 @@ public class ImagingApi
      */
     private void initImagingApi(Configuration configuration)
     {
-        this.configuration = configuration;
+        this.Configuration = configuration;
 		IRequestHandler[] requestHandlers = new IRequestHandler[3];
-		requestHandlers[0] = new OAuthRequestHandler(this.configuration);
-        requestHandlers[1] = new DebugLogRequestHandler(this.configuration);
+		requestHandlers[0] = new OAuthRequestHandler(this.Configuration);
+        requestHandlers[1] = new DebugLogRequestHandler(this.Configuration);
         requestHandlers[2] = new ApiExceptionRequestHandler();
         this.apiInvoker = new ApiInvoker(requestHandlers);
     }
@@ -162,14 +161,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse deleteSearchContext(DeleteSearchContextRequest request) throws Exception 
+    public byte[] deleteSearchContext(DeleteSearchContextRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
         throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling deleteSearchContext");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -179,66 +178,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "DELETE", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "DELETE", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -248,7 +196,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse deleteSearchContextImage(DeleteSearchContextImageRequest request) throws Exception 
+    public byte[] deleteSearchContextImage(DeleteSearchContextImageRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
@@ -259,7 +207,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling deleteSearchContextImage");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -270,66 +218,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "DELETE", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "DELETE", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -339,7 +236,7 @@ public class ImagingApi
      * @return SaaSposeResponse
      * @throws Exception 
      */
-    public ApiResponse deleteSearchContextImageFeatures(DeleteSearchContextImageFeaturesRequest request) throws Exception 
+    public SaaSposeResponse deleteSearchContextImageFeatures(DeleteSearchContextImageFeaturesRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
@@ -350,7 +247,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling deleteSearchContextImageFeatures");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -361,66 +258,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "DELETE", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (SaaSposeResponse.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "DELETE", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SaaSposeResponse.class);
     }
   
     /**
@@ -430,7 +281,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageBmp(GetImageBmpRequest request) throws Exception 
+    public byte[] getImageBmp(GetImageBmpRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -449,7 +300,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.verticalResolution' when calling getImageBmp");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/bmp";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/bmp";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -464,66 +315,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -533,7 +333,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageCrop(GetImageCropRequest request) throws Exception 
+    public byte[] getImageCrop(GetImageCropRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -560,7 +360,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.height' when calling getImageCrop");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/crop";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/crop";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -576,66 +376,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -645,14 +394,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageDicom(GetImageDicomRequest request) throws Exception 
+    public byte[] getImageDicom(GetImageDicomRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling getImageDicom");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/dicom";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/dicom";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -664,66 +413,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -733,14 +431,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageDng(GetImageDngRequest request) throws Exception 
+    public byte[] getImageDng(GetImageDngRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling getImageDng");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/dng";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/dng";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -752,66 +450,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -821,7 +468,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageEmf(GetImageEmfRequest request) throws Exception 
+    public byte[] getImageEmf(GetImageEmfRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -848,7 +495,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.borderY' when calling getImageEmf");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/emf";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/emf";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -865,66 +512,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -934,7 +530,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageFrame(GetImageFrameRequest request) throws Exception 
+    public byte[] getImageFrame(GetImageFrameRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -945,7 +541,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.frameId' when calling getImageFrame");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/frames/{frameId}";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/frames/{frameId}";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -965,66 +561,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -1034,7 +579,7 @@ public class ImagingApi
      * @return ImagingResponse
      * @throws Exception 
      */
-    public ApiResponse getImageFrameProperties(GetImageFramePropertiesRequest request) throws Exception 
+    public ImagingResponse getImageFrameProperties(GetImageFramePropertiesRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -1045,7 +590,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.frameId' when calling getImageFrameProperties");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/frames/{frameId}/properties";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/frames/{frameId}/properties";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -1056,66 +601,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (ImagingResponse.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (ImagingResponse.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (ImagingResponse.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (ImagingResponse.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (ImagingResponse.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (ImagingResponse.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (ImagingResponse.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
     }
   
     /**
@@ -1125,14 +624,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageGif(GetImageGifRequest request) throws Exception 
+    public byte[] getImageGif(GetImageGifRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling getImageGif");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/gif";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/gif";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -1150,66 +649,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -1219,7 +667,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageJpeg2000(GetImageJpeg2000Request request) throws Exception 
+    public byte[] getImageJpeg2000(GetImageJpeg2000Request request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -1230,7 +678,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.comment' when calling getImageJpeg2000");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/jpg2000";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/jpg2000";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -1244,66 +692,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -1313,14 +710,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageJpg(GetImageJpgRequest request) throws Exception 
+    public byte[] getImageJpg(GetImageJpgRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling getImageJpg");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/jpg";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/jpg";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -1334,66 +731,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -1403,14 +749,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageOdg(GetImageOdgRequest request) throws Exception 
+    public byte[] getImageOdg(GetImageOdgRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling getImageOdg");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/odg";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/odg";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -1422,66 +768,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -1491,14 +786,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImagePng(GetImagePngRequest request) throws Exception 
+    public byte[] getImagePng(GetImagePngRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling getImagePng");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/png";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/png";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -1510,66 +805,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -1579,14 +823,14 @@ public class ImagingApi
      * @return ImagingResponse
      * @throws Exception 
      */
-    public ApiResponse getImageProperties(GetImagePropertiesRequest request) throws Exception 
+    public ImagingResponse getImageProperties(GetImagePropertiesRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling getImageProperties");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/properties";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/properties";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -1596,66 +840,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (ImagingResponse.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (ImagingResponse.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (ImagingResponse.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (ImagingResponse.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (ImagingResponse.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (ImagingResponse.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (ImagingResponse.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
     }
   
     /**
@@ -1665,14 +863,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImagePsd(GetImagePsdRequest request) throws Exception 
+    public byte[] getImagePsd(GetImagePsdRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling getImagePsd");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/psd";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/psd";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -1686,66 +884,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -1755,7 +902,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageResize(GetImageResizeRequest request) throws Exception 
+    public byte[] getImageResize(GetImageResizeRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -1774,7 +921,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.newHeight' when calling getImageResize");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/resize";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/resize";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -1788,66 +935,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -1857,7 +953,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageRotateFlip(GetImageRotateFlipRequest request) throws Exception 
+    public byte[] getImageRotateFlip(GetImageRotateFlipRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -1872,7 +968,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.method' when calling getImageRotateFlip");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/rotateflip";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/rotateflip";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -1885,66 +981,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -1954,7 +999,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageSaveAs(GetImageSaveAsRequest request) throws Exception 
+    public byte[] getImageSaveAs(GetImageSaveAsRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -1965,7 +1010,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.format' when calling getImageSaveAs");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/saveAs";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/saveAs";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -1977,66 +1022,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -2046,7 +1040,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageTiff(GetImageTiffRequest request) throws Exception 
+    public byte[] getImageTiff(GetImageTiffRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -2065,7 +1059,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.bitDepth' when calling getImageTiff");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/tiff";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/tiff";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -2082,66 +1076,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -2151,7 +1094,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageUpdate(GetImageUpdateRequest request) throws Exception 
+    public byte[] getImageUpdate(GetImageUpdateRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -2190,7 +1133,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.rotateFlipMethod' when calling getImageUpdate");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/updateImage";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/updateImage";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -2209,66 +1152,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -2278,7 +1170,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageWebP(GetImageWebPRequest request) throws Exception 
+    public byte[] getImageWebP(GetImageWebPRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -2301,7 +1193,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.animBackgroundColor' when calling getImageWebP");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/webp";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/webp";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -2317,66 +1209,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -2386,7 +1227,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getImageWmf(GetImageWmfRequest request) throws Exception 
+    public byte[] getImageWmf(GetImageWmfRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -2413,7 +1254,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.borderY' when calling getImageWmf");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/{name}/wmf";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/wmf";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -2430,66 +1271,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -2499,7 +1289,7 @@ public class ImagingApi
      * @return ImageFeatures
      * @throws Exception 
      */
-    public ApiResponse getSearchContextExtractImageFeatures(GetSearchContextExtractImageFeaturesRequest request) throws Exception 
+    public ImageFeatures getSearchContextExtractImageFeatures(GetSearchContextExtractImageFeaturesRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
@@ -2510,7 +1300,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling getSearchContextExtractImageFeatures");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image2features";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image2features";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -2524,66 +1314,20 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (ImageFeatures.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (ImageFeatures.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (ImageFeatures.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (ImageFeatures.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (ImageFeatures.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (ImageFeatures.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (ImageFeatures.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImageFeatures.class);
     }
   
     /**
@@ -2593,7 +1337,7 @@ public class ImagingApi
      * @return ImageDuplicatesSet
      * @throws Exception 
      */
-    public ApiResponse getSearchContextFindDuplicates(GetSearchContextFindDuplicatesRequest request) throws Exception 
+    public ImageDuplicatesSet getSearchContextFindDuplicates(GetSearchContextFindDuplicatesRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
@@ -2604,7 +1348,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.similarityThreshold' when calling getSearchContextFindDuplicates");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findDuplicates";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findDuplicates";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -2615,66 +1359,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (ImageDuplicatesSet.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (ImageDuplicatesSet.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (ImageDuplicatesSet.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (ImageDuplicatesSet.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (ImageDuplicatesSet.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (ImageDuplicatesSet.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (ImageDuplicatesSet.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class);
     }
   
     /**
@@ -2684,7 +1382,7 @@ public class ImagingApi
      * @return SearchResultsSet
      * @throws Exception 
      */
-    public ApiResponse getSearchContextFindSimilar(GetSearchContextFindSimilarRequest request) throws Exception 
+    public SearchResultsSet getSearchContextFindSimilar(GetSearchContextFindSimilarRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
@@ -2699,7 +1397,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.maxCount' when calling getSearchContextFindSimilar");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findSimilar";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findSimilar";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -2715,66 +1413,20 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (SearchResultsSet.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (SearchResultsSet.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SearchResultsSet.class);
     }
   
     /**
@@ -2784,7 +1436,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getSearchContextImage(GetSearchContextImageRequest request) throws Exception 
+    public byte[] getSearchContextImage(GetSearchContextImageRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
@@ -2795,7 +1447,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling getSearchContextImage");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -2806,66 +1458,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -2875,7 +1476,7 @@ public class ImagingApi
      * @return ImageFeatures
      * @throws Exception 
      */
-    public ApiResponse getSearchContextImageFeatures(GetSearchContextImageFeaturesRequest request) throws Exception 
+    public ImageFeatures getSearchContextImageFeatures(GetSearchContextImageFeaturesRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
@@ -2886,7 +1487,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling getSearchContextImageFeatures");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -2897,66 +1498,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (ImageFeatures.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (ImageFeatures.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (ImageFeatures.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (ImageFeatures.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (ImageFeatures.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (ImageFeatures.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (ImageFeatures.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImageFeatures.class);
     }
   
     /**
@@ -2966,14 +1521,14 @@ public class ImagingApi
      * @return SearchContextStatus
      * @throws Exception 
      */
-    public ApiResponse getSearchContextStatus(GetSearchContextStatusRequest request) throws Exception 
+    public SearchContextStatus getSearchContextStatus(GetSearchContextStatusRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
         throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling getSearchContextStatus");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/status";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/status";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -2983,66 +1538,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (SearchContextStatus.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (SearchContextStatus.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (SearchContextStatus.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (SearchContextStatus.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (SearchContextStatus.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (SearchContextStatus.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (SearchContextStatus.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SearchContextStatus.class);
     }
   
     /**
@@ -3052,14 +1561,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse getTiffToFax(GetTiffToFaxRequest request) throws Exception 
+    public byte[] getTiffToFax(GetTiffToFaxRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling getTiffToFax");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/tiff/{name}/toFax";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/tiff/{name}/toFax";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -3070,66 +1579,15 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "GET", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -3139,10 +1597,10 @@ public class ImagingApi
      * @return SearchContextStatus
      * @throws Exception 
      */
-    public ApiResponse postCreateSearchContext(PostCreateSearchContextRequest request) throws Exception 
+    public SearchContextStatus postCreateSearchContext(PostCreateSearchContextRequest request) throws Exception 
     {
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/create";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/create";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -3153,66 +1611,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (SearchContextStatus.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (SearchContextStatus.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (SearchContextStatus.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (SearchContextStatus.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (SearchContextStatus.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (SearchContextStatus.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (SearchContextStatus.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SearchContextStatus.class);
     }
   
     /**
@@ -3222,7 +1634,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageBmp(PostImageBmpRequest request) throws Exception 
+    public byte[] postImageBmp(PostImageBmpRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -3241,7 +1653,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.verticalResolution' when calling postImageBmp");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/bmp";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/bmp";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -3257,66 +1669,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -3326,7 +1687,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageCrop(PostImageCropRequest request) throws Exception 
+    public byte[] postImageCrop(PostImageCropRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -3353,7 +1714,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.height' when calling postImageCrop");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/crop";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/crop";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -3370,66 +1731,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -3439,14 +1749,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageDicom(PostImageDicomRequest request) throws Exception 
+    public byte[] postImageDicom(PostImageDicomRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageDicom");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/dicom";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/dicom";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -3459,66 +1769,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -3528,14 +1787,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageDng(PostImageDngRequest request) throws Exception 
+    public byte[] postImageDng(PostImageDngRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageDng");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/dng";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/dng";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -3548,66 +1807,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -3617,7 +1825,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageEmf(PostImageEmfRequest request) throws Exception 
+    public byte[] postImageEmf(PostImageEmfRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -3644,7 +1852,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.borderY' when calling postImageEmf");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/emf";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/emf";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -3662,66 +1870,110 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
+    }
+  
+    /**
+     * Get separate frame from existing TIFF image. Image is passed in a request stream.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return File
+     * @throws Exception 
+     */
+    public byte[] postImageFrame(PostImageFrameRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageFrame");
       }
+       // verify the required parameter 'request.frameId' is set
+      if (request.frameId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.frameId' when calling postImageFrame");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/frames/{frameId}";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "frameId", request.frameId);
+      
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "x", request.x);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "y", request.y);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectWidth", request.rectWidth);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "saveOtherFrames", request.saveOtherFrames);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+	  resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+	  
+	  
+	  if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
+    }
+  
+    /**
+     * Get separate frame properties of existing TIFF image. Image is passed in a request stream.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return ImagingResponse
+     * @throws Exception 
+     */
+    public ImagingResponse postImageFrameProperties(PostImageFramePropertiesRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageFrameProperties");
+      }
+       // verify the required parameter 'request.frameId' is set
+      if (request.frameId == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.frameId' when calling postImageFrameProperties");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/frames/{frameId}/properties";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  resourcePath = UrlHelper.addPathParameter(resourcePath, "frameId", request.frameId);
+      
+	  
+	  
+	  if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
     }
   
     /**
@@ -3731,14 +1983,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageGif(PostImageGifRequest request) throws Exception 
+    public byte[] postImageGif(PostImageGifRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageGif");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/gif";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/gif";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -3757,66 +2009,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -3826,7 +2027,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageJpeg2000(PostImageJpeg2000Request request) throws Exception 
+    public byte[] postImageJpeg2000(PostImageJpeg2000Request request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -3837,7 +2038,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.comment' when calling postImageJpeg2000");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/jpg2000";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/jpg2000";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -3852,66 +2053,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -3921,14 +2071,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageJpg(PostImageJpgRequest request) throws Exception 
+    public byte[] postImageJpg(PostImageJpgRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageJpg");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/jpg";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/jpg";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -3943,66 +2093,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -4012,14 +2111,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageOdg(PostImageOdgRequest request) throws Exception 
+    public byte[] postImageOdg(PostImageOdgRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageOdg");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/odg";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/odg";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -4032,66 +2131,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -4101,14 +2149,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImagePng(PostImagePngRequest request) throws Exception 
+    public byte[] postImagePng(PostImagePngRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImagePng");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/png";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/png";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -4121,66 +2169,55 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
+    }
+  
+    /**
+     * Get properties of an image. Image is passed in a request stream.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return ImagingResponse
+     * @throws Exception 
+     */
+    public ImagingResponse postImageProperties(PostImagePropertiesRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData == null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageProperties");
       }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/properties";
+	  
+	  HashMap<String, Object> formParams = new HashMap<String, Object>();
+	  
+	  
+	  
+	  if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
     }
   
     /**
@@ -4190,14 +2227,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImagePsd(PostImagePsdRequest request) throws Exception 
+    public byte[] postImagePsd(PostImagePsdRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImagePsd");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/psd";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/psd";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -4212,66 +2249,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -4281,7 +2267,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageResize(PostImageResizeRequest request) throws Exception 
+    public byte[] postImageResize(PostImageResizeRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -4300,7 +2286,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.newHeight' when calling postImageResize");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/resize";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/resize";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -4315,66 +2301,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -4384,7 +2319,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageRotateFlip(PostImageRotateFlipRequest request) throws Exception 
+    public byte[] postImageRotateFlip(PostImageRotateFlipRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -4399,7 +2334,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.method' when calling postImageRotateFlip");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/rotateflip";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/rotateflip";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -4413,66 +2348,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -4482,7 +2366,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageSaveAs(PostImageSaveAsRequest request) throws Exception 
+    public byte[] postImageSaveAs(PostImageSaveAsRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -4493,7 +2377,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.format' when calling postImageSaveAs");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/saveAs";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/saveAs";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -4506,66 +2390,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -4575,7 +2408,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageTiff(PostImageTiffRequest request) throws Exception 
+    public byte[] postImageTiff(PostImageTiffRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -4594,7 +2427,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.bitDepth' when calling postImageTiff");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/tiff";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/tiff";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -4612,66 +2445,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -4681,7 +2463,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageUpdate(PostImageUpdateRequest request) throws Exception 
+    public byte[] postImageUpdate(PostImageUpdateRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -4720,7 +2502,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.rotateFlipMethod' when calling postImageUpdate");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/updateImage";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/updateImage";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -4740,66 +2522,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -4809,7 +2540,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageWebP(PostImageWebPRequest request) throws Exception 
+    public byte[] postImageWebP(PostImageWebPRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -4832,7 +2563,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.animBackgroundColor' when calling postImageWebP");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/webp";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/webp";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -4849,66 +2580,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -4918,7 +2598,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postImageWmf(PostImageWmfRequest request) throws Exception 
+    public byte[] postImageWmf(PostImageWmfRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -4945,7 +2625,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.borderY' when calling postImageWmf");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/wmf";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/wmf";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  
@@ -4963,66 +2643,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -5032,7 +2661,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postSearchContextAddImage(PostSearchContextAddImageRequest request) throws Exception 
+    public byte[] postSearchContextAddImage(PostSearchContextAddImageRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
@@ -5043,7 +2672,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling postSearchContextAddImage");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -5057,66 +2686,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -5126,7 +2704,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postSearchContextAddTag(PostSearchContextAddTagRequest request) throws Exception 
+    public byte[] postSearchContextAddTag(PostSearchContextAddTagRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData == null) {
@@ -5141,7 +2719,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.tagName' when calling postSearchContextAddTag");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/addTag";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/addTag";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -5155,66 +2733,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -5224,7 +2751,7 @@ public class ImagingApi
      * @return SearchResultsSet
      * @throws Exception 
      */
-    public ApiResponse postSearchContextCompareImages(PostSearchContextCompareImagesRequest request) throws Exception 
+    public SearchResultsSet postSearchContextCompareImages(PostSearchContextCompareImagesRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
@@ -5235,7 +2762,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.imageId1' when calling postSearchContextCompareImages");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/compare";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/compare";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -5250,66 +2777,20 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (SearchResultsSet.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (SearchResultsSet.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SearchResultsSet.class);
     }
   
     /**
@@ -5319,14 +2800,14 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse postSearchContextExtractImageFeatures(PostSearchContextExtractImageFeaturesRequest request) throws Exception 
+    public byte[] postSearchContextExtractImageFeatures(PostSearchContextExtractImageFeaturesRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
         throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling postSearchContextExtractImageFeatures");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -5341,66 +2822,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -5410,7 +2840,7 @@ public class ImagingApi
      * @return SearchResultsSet
      * @throws Exception 
      */
-    public ApiResponse postSearchContextFindByTags(PostSearchContextFindByTagsRequest request) throws Exception 
+    public SearchResultsSet postSearchContextFindByTags(PostSearchContextFindByTagsRequest request) throws Exception 
     {
        // verify the required parameter 'request.tags' is set
       if (request.tags == null) {
@@ -5429,7 +2859,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.maxCount' when calling postSearchContextFindByTags");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findByTags";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findByTags";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -5444,66 +2874,20 @@ public class ImagingApi
       {
           formParams.put("tags", request.tags); // form parameter
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (SearchResultsSet.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (SearchResultsSet.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (SearchResultsSet.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SearchResultsSet.class);
     }
   
     /**
@@ -5513,7 +2897,7 @@ public class ImagingApi
      * @return SaaSposeResponse
      * @throws Exception 
      */
-    public ApiResponse postTiffAppend(PostTiffAppendRequest request) throws Exception 
+    public SaaSposeResponse postTiffAppend(PostTiffAppendRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name == null) {
@@ -5524,7 +2908,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.appendFile' when calling postTiffAppend");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/tiff/{name}/appendTiff";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/tiff/{name}/appendTiff";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
@@ -5535,66 +2919,20 @@ public class ImagingApi
 	  
 	  
 	  
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "POST", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (SaaSposeResponse.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (SaaSposeResponse.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+		  
+	  
+	  if (response == null)
+	  {
+	      return null;
+	  }
+	  
+	  return SerializationHelper.deserialize(new String(response), SaaSposeResponse.class);
     }
   
     /**
@@ -5604,7 +2942,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse putSearchContextImage(PutSearchContextImageRequest request) throws Exception 
+    public byte[] putSearchContextImage(PutSearchContextImageRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
@@ -5615,7 +2953,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling putSearchContextImage");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -5629,66 +2967,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "PUT", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "PUT", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
     /**
@@ -5698,7 +2985,7 @@ public class ImagingApi
      * @return File
      * @throws Exception 
      */
-    public ApiResponse putSearchContextImageFeatures(PutSearchContextImageFeaturesRequest request) throws Exception 
+    public byte[] putSearchContextImageFeatures(PutSearchContextImageFeaturesRequest request) throws Exception 
     {
        // verify the required parameter 'request.searchContextId' is set
       if (request.searchContextId == null) {
@@ -5709,7 +2996,7 @@ public class ImagingApi
         throw new ApiException(400, "Missing the required parameter 'request.imageId' when calling putSearchContextImageFeatures");
       }
       // create path and map variables
-      String resourcePath = this.configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
 	  
 	  HashMap<String, Object> formParams = new HashMap<String, Object>();
 	  resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
@@ -5723,66 +3010,15 @@ public class ImagingApi
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
-	
-	  try 
-      {                               
-	      byte[] response = this.apiInvoker.invokeApi(
-              resourcePath, 
-              "PUT", 
-              null, 
-              null, 
-              formParams);
-				
-		  if (response == null)
-		  {
-			  return null;
-		  }
-		
-	      ApiResponse finalResponse; 
-		  if (File.class.getName().equals(File.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(response, null, null);
-		  }
-		  else if (File.class.getName().equals(ImagingResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, null, SerializationHelper.deserialize(new String(response), ImagingResponse.class));
-		  }
-		  else if (File.class.getName().equals(SaaSposeResponse.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SaaSposeResponse.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageDuplicatesSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageDuplicatesSet.class), null);
-		  }
-		  else if (File.class.getName().equals(ImageFeatures.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), ImageFeatures.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchContextStatus.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchContextStatus.class), null);
-		  }
-		  else if (File.class.getName().equals(SearchResultsSet.class.getName()))
-		  {
-			  finalResponse = new ApiResponse(null, SerializationHelper.deserialize(new String(response), SearchResultsSet.class), null);
-		  }
-		  else
-		  {
-		  	  finalResponse = new ApiResponse(null, null, null);
-		  }
-				
-		  return finalResponse;
-      } 
-      catch (ApiException ex) 
-      {
-          if (ex.ErrorCode == 404) 
-          {
-              return null;
-          }
-                
-          throw ex;                
-      }
+	  byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "PUT", 
+          null, 
+          null, 
+          formParams);
+		  
+	  return response;
+	  
     }
   
 }

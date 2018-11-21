@@ -26,20 +26,19 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 import com.aspose.imaging.cloud.test.base.StorageFileInfo;
-import com.aspose.imaging.cloud.test.categories.RotateFlipTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
 
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,32 +46,60 @@ import java.util.Collections;
 /**
  * Class for testing crop-related API calls
  */
-@Category(RotateFlipTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class RotateFlipApiTests extends ApiTester {
 
 	private GetImageRotateFlipRequest getImageRotateFlipRequest;
 	private PostImageRotateFlipRequest postImageRotateFlipRequest;
+
+    @Parameters
+    public static Iterable<Object[]> data() {
+        if (isExtendedTests()) {
+            return Arrays.asList(new Object[][] {
+                    { ".bmp", true, new String[] {} }, { ".bmp", false, new String[] {} },
+                    { ".dicom", true, new String[] {} }, { ".dicom", false, new String[] {} },
+                    /* TODO: enable after IMAGINGCLOUD-51 is resolved
+                    { ".gif", true, new String[] {} }, { ".gif", false, new String[] {} },
+                    */
+                    { ".j2k", true, new String[] {} }, { ".j2k", false, new String[] {} },
+                    { ".jpg", true, new String[] {} }, { ".jpg", false, new String[] {} },
+                    { ".png", true, new String[] {} }, { ".png", false, new String[] {} },
+                    { ".psd", true, new String[] {} }, { ".psd", false, new String[] {} },
+                    { ".tiff", true, new String[] {} }, { ".tiff", false, new String[] {} },
+                    { ".webp", true, new String[] {} }, { ".webp", false, new String[] {} }
+            });
+        }
+        else {
+            System.out.println("Extended tests had been disabled");
+            return Arrays.asList(new Object[][] {
+                    { ".jpg", true, new String[] {} }, { ".jpg", false, new String[] {} }
+            });
+        }
+    }
+
+    private String formatExtension;
+    private Boolean saveResultToStorage;
+    String[] additionalExportFormats;
+
+    public RotateFlipApiTests(String extension, Boolean saveResult, String[] additionalFormats)
+    {
+        this.formatExtension = extension;
+        this.saveResultToStorage = saveResult;
+        this.additionalExportFormats = additionalFormats;
+    }
 	
     /**
      * Test operation: RotateFlip an existing image.
-     * 
-     * @param formatExtension Format extension to search for input images in the test folder
-     * @param saveResultToStorage If result should be saved to storage
-     * @param additionalExportFormats Additional formats to export to
+     *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({
-		".jpg, true,", 
-		".jpg, false,",
-		})
-    public void getImageRotateFlipTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
+    public void getImageRotateFlipTest() throws Exception {
         String name = null;
         String method = "Rotate90FlipX";
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = null;
 		
@@ -102,7 +129,7 @@ public class RotateFlipApiTests extends ApiTester {
 				getImageRotateFlipRequest = new GetImageRotateFlipRequest(name, format, method, outPath, folder, storage);
 				outName = name + "_rotateFlip." + format;
 				
-				Method propertiesTester = RotateFlipApiTests.class.getDeclaredMethod("getImageRotateFlipPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+				Method propertiesTester = RotateFlipApiTests.class.getDeclaredMethod("getImageRotateFlipPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 				propertiesTester.setAccessible(true);
 				Method requestInvoker = RotateFlipApiTests.class.getDeclaredMethod("getImageRotateFlipGetRequestInvoker", String.class, String.class);
 				requestInvoker.setAccessible(true);
@@ -113,7 +140,6 @@ public class RotateFlipApiTests extends ApiTester {
 		            		name, format, method),
 		            name,
 		            outName,
-		            "RotateFlip",
 		            requestInvoker,
 		            propertiesTester,
 		            folder,
@@ -124,24 +150,17 @@ public class RotateFlipApiTests extends ApiTester {
     
     /**
      * Test operation: RotateFlip an image. Image is passed in a request stream.
-     * 
-     * @param formatExtension Format extension to search for input images in the test folder
-     * @param saveResultToStorage If result should be saved to storage
-     * @param additionalExportFormats Additional formats to export to
+     *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({
-		".jpg, true,", 
-		".jpg, false,",
-		})
-    public void postImageRotateFlipTest(String formatExtension, Boolean saveResultToStorage, String... additionalExportFormats) throws Exception {
+    public void postImageRotateFlipTest() throws Exception {
     	byte[] imageData = null;
 		String name = null;
 		String method = "Rotate90FlipX";
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = null;
 		
@@ -171,7 +190,7 @@ public class RotateFlipApiTests extends ApiTester {
 				postImageRotateFlipRequest = new PostImageRotateFlipRequest(imageData, format, method, outPath, storage);
 				outName = name + "_rotateFlip." + format;
 				
-				Method propertiesTester = RotateFlipApiTests.class.getDeclaredMethod("postImageRotateFlipPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+				Method propertiesTester = RotateFlipApiTests.class.getDeclaredMethod("postImageRotateFlipPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 				propertiesTester.setAccessible(true);
 				Method requestInvoker = RotateFlipApiTests.class.getDeclaredMethod("postImageRotateFlipPostRequestInvoker", byte[].class, String.class);
 				requestInvoker.setAccessible(true);
@@ -182,62 +201,11 @@ public class RotateFlipApiTests extends ApiTester {
 		            		name, format, method),
 		            name,
 		            outName,
-		            "RotateFlip",
 		            requestInvoker,
 		            propertiesTester,
 		            folder,
 		            storage);
             }
-		}
-    }
-    
-    /**
-     * Extended test set for RotateFlip operation.
-     * @throws Exception
-     */
-    @Test
-    public void ExtendedRotateFlipTests() throws Exception
-    {
-		if (isExtendedTests())
-    	{
-    		this.getImageRotateFlipTest(".bmp", true);
-    		this.getImageRotateFlipTest(".bmp", false);
-    		this.postImageRotateFlipTest(".bmp", true);
-    		this.postImageRotateFlipTest(".bmp", false);
-    		this.getImageRotateFlipTest(".dicom", true);
-    		this.getImageRotateFlipTest(".dicom", false);
-    		this.postImageRotateFlipTest(".dicom", true);
-    		this.postImageRotateFlipTest(".dicom", false);
-    		/* TODO: enable after IMAGINGCLOUD-51 is resolved
-    		this.getImageRotateFlipTest(".gif", true);
-    		this.getImageRotateFlipTest(".gif", false);
-    		this.postImageRotateFlipTest(".gif", true);
-    		this.postImageRotateFlipTest(".gif", false);
-    		*/
-    		this.getImageRotateFlipTest(".j2k", true);
-    		this.getImageRotateFlipTest(".j2k", false);
-    		this.postImageRotateFlipTest(".j2k", true);
-    		this.postImageRotateFlipTest(".j2k", false);
-    		this.getImageRotateFlipTest(".png", true);
-    		this.getImageRotateFlipTest(".png", false);
-    		this.postImageRotateFlipTest(".png", true);
-    		this.postImageRotateFlipTest(".png", false);
-    		this.getImageRotateFlipTest(".psd", true);
-    		this.getImageRotateFlipTest(".psd", false);
-    		this.postImageRotateFlipTest(".psd", true);
-    		this.postImageRotateFlipTest(".psd", false);
-    		this.getImageRotateFlipTest(".tiff", true);
-    		this.getImageRotateFlipTest(".tiff", false);
-    		this.postImageRotateFlipTest(".tiff", true);
-    		this.postImageRotateFlipTest(".tiff", false);
-    		this.getImageRotateFlipTest(".webp", true);
-    		this.getImageRotateFlipTest(".webp", false);
-    		this.postImageRotateFlipTest(".webp", true);
-    		this.postImageRotateFlipTest(".webp", false);
-    	}
-		else
-		{
-			System.out.println("Extended tests had been disabled");
 		}
     }
 	
@@ -248,7 +216,7 @@ public class RotateFlipApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImageRotateFlipGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImageRotateFlipGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImageRotateFlipRequest.name = name;
 		getImageRotateFlipRequest.outPath = outPath;
@@ -262,7 +230,7 @@ public class RotateFlipApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImageRotateFlipPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImageRotateFlipPostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImageRotateFlipRequest.imageData = imageData;
 		postImageRotateFlipRequest.outPath = outPath;
@@ -273,8 +241,9 @@ public class RotateFlipApiTests extends ApiTester {
 	 * Tests properties for getImageRotateFlip operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImageRotateFlipPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImageRotateFlipPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		try
         {
@@ -299,8 +268,9 @@ public class RotateFlipApiTests extends ApiTester {
 	 * Tests properties for postImageRotateFlip operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImageRotateFlipPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImageRotateFlipPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		try
         {

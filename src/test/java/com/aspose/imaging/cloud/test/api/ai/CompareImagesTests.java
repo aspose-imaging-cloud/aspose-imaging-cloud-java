@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CompareImagesTests.java">
-*   Copyright (c) 2018  Aspose Pty Ltd. All rights reserved.
+*   Copyright (c) 2018  Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,16 +29,12 @@ package com.aspose.imaging.cloud.test.api.ai;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
 import com.aspose.imaging.cloud.sdk.model.SearchResultsSet;
 import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextCompareImagesRequest;
-import com.aspose.imaging.cloud.test.categories.AITestCategory;
 import com.aspose.storage.model.ResponseMessage;
 
-@Category(AITestCategory.class)
 public class CompareImagesTests extends TestImagingAIBase{
 	 private final String ComparableImage = "ComparableImage.jpg";
      private final String ComparingImageSimilarLess15 = "ComparingImageSimilar15.jpg";
@@ -53,10 +49,9 @@ public class CompareImagesTests extends TestImagingAIBase{
          String image2 = getStoragePath(ComparingImageSimilarMore75,null);
          addImageFeaturesToSearchContext(image2, false);
 
-         ApiResponse response = ImagingApi.postSearchContextCompareImages(
+         SearchResultsSet result = ImagingApi.postSearchContextCompareImages(
              new PostSearchContextCompareImagesRequest(SearchContextId, image1, null, image2, null, TestStorage));
 
-         SearchResultsSet result = (SearchResultsSet)response.getSaaSposeResponse();
          Assert.assertEquals(1, result.getResults().size());
          Assert.assertTrue(result.getResults().get(0).getSimilarity() >= 70);
      }
@@ -73,10 +68,9 @@ public class CompareImagesTests extends TestImagingAIBase{
          Assert.assertNotNull(imageResponse);         
          byte[] imageData = StreamHelper.readAsBytes(imageResponse.getInputStream());
 
-         ApiResponse response = ImagingApi.postSearchContextCompareImages(
+         SearchResultsSet result = ImagingApi.postSearchContextCompareImages(
              new PostSearchContextCompareImagesRequest(SearchContextId, image, imageData, null, null, TestStorage));
 
-         SearchResultsSet result = (SearchResultsSet)response.getSaaSposeResponse();
          Assert.assertEquals((long)200, (long)result.getCode());
          Assert.assertEquals(1, result.getResults().size());
          Assert.assertTrue(result.getResults().get(0).getSimilarity() <= 15);
