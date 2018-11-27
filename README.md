@@ -7,6 +7,79 @@ To use this SDK, you will need App SID and App Key which can be looked up at [As
 
 The solution is updated using [code generator](https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-codegen).
 
+# Features
+### Image Formats Support
+Process options, change and return image in the same format:
+* PSD
+* JPG
+* PNG
+* TIFF
+* GIF
+* BMP
+* JPEG2000
+
+Process options, change and return image in the PNG format:
+* DICOM
+* DNG
+* ODG
+* EMF
+* WMF
+
+### Supported Imaging Operations
+* Export to various image formats (currently, all supported formats can be exported to BMP, PSD, JPG, TIFF, GIF, PNG, JPEG2000 or WebP)
+* Resize
+* Crop
+* Rotate and Flip
+* TIFF frames extraction
+* TIFF frames manipulation
+* TIFF concatenation
+* TIFF conversion to fax-friendly format
+* Retrieve & update image properties
+* Conversion to and from PSD format
+
+### Supported Imaging AI Operations
+* Content-based image search
+* Image duplicates search
+* Image search by custom registered tags
+* Image comparison and similarity detection
+* Image features extraction (for now, AKAZE detector is supported)
+
+# Usage
+1. Add Aspose Cloud repository to your pom.xml.
+```xml
+<profiles>
+    <profile>
+        <repositories>
+            <repository>
+                <id>AsposeJavaAPI</id>
+                <name>Aspose Java API</name>
+                <url>http://artifact.aspose.cloud/repo/</url>
+                <snapshots>
+                    <enabled>false</enabled>
+                </snapshots>
+                <releases>
+                    <enabled>true</enabled>
+                </releases>
+            </repository>
+        </repositories>
+        <id>repositoryProfile</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+    </profile>
+</profiles>
+```
+2. Add Aspose.Imaging for Cloud Java SDK as a dependency.
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.aspose</groupId>
+        <artifactId>aspose-imaging-cloud</artifactId>
+        <version>18.11</version>
+    </dependency>
+</dependencies>
+```
+
 # Examples
 Please, look at [Examples](EXAMPLES.md) document.
 

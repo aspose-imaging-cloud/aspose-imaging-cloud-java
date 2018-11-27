@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ApiResponse.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+* <copyright company="Aspose" file="PostImagePropertiesRequest.java">
+*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,49 +24,25 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-package com.aspose.imaging.cloud.sdk.invoker;
 
-import com.aspose.imaging.cloud.sdk.stablemodel.ImagingResponse;
-import com.aspose.imaging.cloud.sdk.stablemodel.SaaSposeResponse;
+package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
- * Represents Imaging for Cloud response.
- * @author User
- *
- */
-public class ApiResponse 
+* Class that holds parameters for PostImageProperties request invocation.
+**/   
+public class PostImagePropertiesRequest
 {
-	private byte[] responseData;
-	
-	private SaaSposeResponse saasposeResponse;
-	
-	private ImagingResponse imagingResponse;
-	
 	/**
-	 * 
-	 * @param responseData The response data that represents image bytes in most cases (if present).
-	 * @param saasposeResponse Old API format response (if present).
-	 * @param imagingResponse Regular API format response (if present).
-	 */
-	public ApiResponse(byte[] responseData, SaaSposeResponse saasposeResponse, ImagingResponse imagingResponse)
-	{
-		this.responseData = responseData;
-		this.saasposeResponse = saasposeResponse;
-		this.imagingResponse = imagingResponse;
-	}
-	
-	public byte[] getResponseData()
-	{
-		return this.responseData;
-	}
-	
-	public SaaSposeResponse getSaaSposeResponse()
-	{
-		return this.saasposeResponse;
-	}
-	
-	public ImagingResponse getImagingResponse()
-	{
-		return this.imagingResponse;
-	}
+	* Initializes a new instance of the PostImagePropertiesRequest class.   
+    * @param imageData Input image
+	**/
+    public PostImagePropertiesRequest(byte[] imageData)             
+    {
+        this.imageData = imageData;
+    }
+		
+    /**
+    * Input image
+    **/
+    public byte[] imageData;
 }

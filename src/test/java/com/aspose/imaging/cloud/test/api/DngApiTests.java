@@ -26,49 +26,58 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.ApiResponse;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.categories.DngTestCategory;
-
-import junitparams.*;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.runners.Parameterized.Parameters;
+
+import java.lang.Iterable;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing DNG-related API calls
  */
-@Category(DngTestCategory.class)
-@RunWith(JUnitParamsRunner.class)
+@RunWith(Parameterized.class)
 public class DngApiTests extends ApiTester {
 
 	private GetImageDngRequest getImageDngRequest;
 	private PostImageDngRequest postImageDngRequest;
+
+	@Parameters
+	public static Iterable<Object> data() {
+		return Arrays.asList(new Object[] { true, false });
+	}
+
+	private Boolean saveResultToStorage;
+
+	public DngApiTests(Boolean saveResult)
+	{
+		this.saveResultToStorage = saveResult;
+	}
 	
     /**
      * Test operation: Rasterize existing DNG image to PNG using given parameters. 
      * 
-     * @param saveResultToStorage If result should be saved to storage
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void getImageDngTest(Boolean saveResultToStorage) throws Exception {
+    public void getImageDngTest() throws Exception {
     	String name = "test.dng";
         Boolean fromScratch = null;
         String outPath = null;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
 		getImageDngRequest = new GetImageDngRequest(name, fromScratch, outPath, folder, storage);
 		
-		Method propertiesTester = DngApiTests.class.getDeclaredMethod("getImageDngPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = DngApiTests.class.getDeclaredMethod("getImageDngPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = DngApiTests.class.getDeclaredMethod("getImageDngGetRequestInvoker", String.class, String.class);
 		requestInvoker.setAccessible(true);
@@ -79,7 +88,6 @@ public class DngApiTests extends ApiTester {
             		name),
             name,
             outName,
-            "Dng",
             requestInvoker,
             propertiesTester,
             folder,
@@ -88,24 +96,22 @@ public class DngApiTests extends ApiTester {
 	
     /**
      * Test operation: Rasterize DNG image to PNG using given parameters. Image is passed in a request stream.
-     * 
-     * @param saveResultToStorage If result should be saved to storage
+     *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-	@Parameters({"true", "false"})
-    public void postImageDngTest(Boolean saveResultToStorage) throws Exception {
+    public void postImageDngTest() throws Exception {
         byte[] imageData = null;
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
-        String folder = TempFolder;
+        String folder = getTempFolder();
         String name = "test.dng";
 		String outName = name + "_specific." + "png";
 		postImageDngRequest = new PostImageDngRequest(imageData, fromScratch, outPath, storage);
 		
-		Method propertiesTester = DngApiTests.class.getDeclaredMethod("postImageDngPropertiesTester", ImagingResponse.class, ImagingResponse.class);
+		Method propertiesTester = DngApiTests.class.getDeclaredMethod("postImageDngPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
 		Method requestInvoker = DngApiTests.class.getDeclaredMethod("postImageDngPostRequestInvoker", byte[].class, String.class);
 		requestInvoker.setAccessible(true);
@@ -116,7 +122,6 @@ public class DngApiTests extends ApiTester {
             		name),
             name,
             outName,
-            "Dng",
             requestInvoker,
             propertiesTester,
             folder,
@@ -130,7 +135,7 @@ public class DngApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse getImageDngGetRequestInvoker(String name, String outPath) throws Exception
+	private byte[] getImageDngGetRequestInvoker(String name, String outPath) throws Exception
 	{
 		getImageDngRequest.name = name;
 		getImageDngRequest.outPath = outPath;
@@ -144,7 +149,7 @@ public class DngApiTests extends ApiTester {
 	 * @return API response
 	 * @throws Exception 
 	 */
-	private ApiResponse postImageDngPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+	private byte[] postImageDngPostRequestInvoker(byte[] imageData, String outPath) throws Exception
 	{
 	    postImageDngRequest.imageData = imageData;
 		postImageDngRequest.outPath = outPath;
@@ -155,8 +160,9 @@ public class DngApiTests extends ApiTester {
 	 * Tests properties for getImageDng operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void getImageDngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void getImageDngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
 		Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
@@ -168,8 +174,9 @@ public class DngApiTests extends ApiTester {
 	 * Tests properties for postImageDng operation. Used indirectly by method reference.
 	 * @param originalProperties Original image properties
 	 * @param resultProperties Result image properties
+	 * @param resultData Result image data
 	 */
-	private void postImageDngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties)
+	private void postImageDngPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
 		Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());

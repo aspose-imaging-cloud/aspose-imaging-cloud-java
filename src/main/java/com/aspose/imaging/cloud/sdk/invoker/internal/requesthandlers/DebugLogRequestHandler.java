@@ -103,7 +103,7 @@ public class DebugLogRequestHandler implements IRequestHandler
      */
     private void logRequest(HttpURLConnection connection, OutputStream streamToSend)
     {
-        String header = String.format("$s: $s", connection.getRequestMethod(), connection.getURL().toString());
+        String header = String.format("\r\nRequest %s: %s", connection.getRequestMethod(), connection.getURL().toString());
         this.log(header);
         if (streamToSend != null)
         {

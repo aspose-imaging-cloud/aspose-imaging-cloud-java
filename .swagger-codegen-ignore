@@ -40,6 +40,7 @@ gradle/wrapper/
 gradle/wrapper
 gradle/wrapper/*
 gradle/wrapper/**
+**/*AndroidManifest.xml
 .travis.yml
 build.gradle
 build.sbt
