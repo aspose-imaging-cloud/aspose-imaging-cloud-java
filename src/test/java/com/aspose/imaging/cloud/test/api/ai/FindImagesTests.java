@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
@@ -59,6 +60,7 @@ public class FindImagesTests extends TestImagingAIBase {
      }
 
      @Test
+     @Ignore("Unstable result")
      public void findSimilarImagesByTagTest() throws Exception
      {
          addImageFeaturesToSearchContext(OriginalDataFolder +"/FindSimilar", true);
