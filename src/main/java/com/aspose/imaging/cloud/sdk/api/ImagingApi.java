@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ImagingApi.java">
-*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
+*   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36,14 +36,14 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import java.util.HashMap;
 
 /**
- * Aspose.Imaging for Cloud API
+ * Aspose.Imaging Cloud API
  */
 public class ImagingApi 
 {
 	/**
 	 * Current SDK version
 	 */
-	public static final String Version = "18.12";
+	public static final String Version = "19.01";
 
 	    /**
      * The configuration
