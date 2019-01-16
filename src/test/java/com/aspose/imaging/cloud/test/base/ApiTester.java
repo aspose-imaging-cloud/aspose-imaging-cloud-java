@@ -803,7 +803,12 @@ public abstract class ApiTester
             }
             else
             {
-                System.out.println(exception.getCause().getStackTrace().toString());
+            	System.out.println(exception.getCause().getMessage());
+            	for (StackTraceElement stackTrace : exception.getCause().getStackTrace())
+            	{
+            		System.out.println(stackTrace.toString());
+            	}
+            	
                 throw exception;
             }
         }

@@ -74,7 +74,7 @@ public class OAuthRequestHandler implements IRequestHandler
         IRequestHandler[] requestHandlers = new IRequestHandler[2];
         requestHandlers[0] = new DebugLogRequestHandler(this.configuration);
         requestHandlers[1] = new ApiExceptionRequestHandler();
-        this.apiInvoker = new ApiInvoker(requestHandlers);
+        this.apiInvoker = new ApiInvoker(requestHandlers, this.configuration);
     }
 
     /**

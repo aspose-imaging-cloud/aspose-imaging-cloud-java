@@ -75,7 +75,7 @@ Process options, change and return image in the PNG format:
     <dependency>
         <groupId>com.aspose</groupId>
         <artifactId>aspose-imaging-cloud</artifactId>
-        <version>19.01</version>
+        <version>19.1</version>
     </dependency>
 </dependencies>
 ```
