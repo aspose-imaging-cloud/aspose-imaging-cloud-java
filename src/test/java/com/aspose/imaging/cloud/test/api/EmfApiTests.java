@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="EmfApiTests.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -175,10 +175,18 @@ public class EmfApiTests extends ApiTester {
 	private void getImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-        Assert.assertEquals((int)((getImageEmfRequest.pageWidth + getImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)),
-        		(int)resultProperties.getWidth());
-        Assert.assertEquals((int)((getImageEmfRequest.pageHeight + getImageEmfRequest.borderY * 2) * (resultProperties.getVerticalResolution() / 72)),
-        		(int)resultProperties.getHeight());
+		if (this.ImagingApi.Configuration.getApiVersion().contains("v1."))
+		{
+	        Assert.assertEquals((int)((getImageEmfRequest.pageWidth + getImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)),
+	        		(int)resultProperties.getWidth());
+	        Assert.assertEquals((int)((getImageEmfRequest.pageHeight + getImageEmfRequest.borderY * 2) * (resultProperties.getVerticalResolution() / 72)),
+	        		(int)resultProperties.getHeight());
+		}
+		else
+		{
+			Assert.assertEquals(getImageEmfRequest.pageWidth + getImageEmfRequest.borderX * 2, (int)resultProperties.getWidth());
+	        Assert.assertEquals(getImageEmfRequest.pageHeight + getImageEmfRequest.borderY * 2, (int)resultProperties.getHeight());
+		}
 	}
 	
 	/**
@@ -190,9 +198,17 @@ public class EmfApiTests extends ApiTester {
 	private void postImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-        Assert.assertEquals((int)((postImageEmfRequest.pageWidth + postImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)),
-        		(int)resultProperties.getWidth());
-        Assert.assertEquals((int)((postImageEmfRequest.pageHeight + postImageEmfRequest.borderY * 2) * (resultProperties.getVerticalResolution() / 72)),
-        		(int)resultProperties.getHeight());
+		if (this.ImagingApi.Configuration.getApiVersion().contains("v1."))
+		{
+	        Assert.assertEquals((int)((postImageEmfRequest.pageWidth + postImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)),
+	        		(int)resultProperties.getWidth());
+	        Assert.assertEquals((int)((postImageEmfRequest.pageHeight + postImageEmfRequest.borderY * 2) * (resultProperties.getVerticalResolution() / 72)),
+	        		(int)resultProperties.getHeight());
+		}
+		else
+		{
+			Assert.assertEquals(postImageEmfRequest.pageWidth + postImageEmfRequest.borderX * 2, (int)resultProperties.getWidth());
+	        Assert.assertEquals(postImageEmfRequest.pageHeight + postImageEmfRequest.borderY * 2, (int)resultProperties.getHeight());
+		}
 	}
 }

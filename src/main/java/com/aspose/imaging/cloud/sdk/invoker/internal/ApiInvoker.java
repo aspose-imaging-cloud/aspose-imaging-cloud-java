@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiInvoker.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,13 +33,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.commons.io.Charsets;
 
 import com.aspose.imaging.cloud.sdk.api.ImagingApi;
 import com.aspose.imaging.cloud.sdk.invoker.ApiException;
+import com.aspose.imaging.cloud.sdk.invoker.Configuration;
 import com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers.IRequestHandler;
 
 /**
@@ -66,17 +66,24 @@ public class ApiInvoker
      * The request handlers
      */
     private final IRequestHandler[] requestHandlers;
+    
+    /**
+     * The configuration
+     */
+    private final Configuration configuration;
 
     /**
      * Initializes a new instance of the ApiInvoker class.
      * @param requestHandlers The request handlers.
+     * @param configuration The configuration.
      */
-    public ApiInvoker(IRequestHandler[] requestHandlers)
+    public ApiInvoker(IRequestHandler[] requestHandlers, Configuration configuration)
     {
         String sdkVersion = ImagingApi.Version;
         this.addDefaultHeader(AsposeClientHeaderName, "java sdk");
         this.addDefaultHeader(AsposeClientVersionHeaderName, sdkVersion);
         this.requestHandlers = requestHandlers;
+        this.configuration = configuration;
     }
 
     /**
@@ -177,100 +184,67 @@ public class ApiInvoker
     	ByteArrayOutputStream formDataStream = new ByteArrayOutputStream();
     	
         Boolean needsClrf = false;
-    	Charset utf8 = Charset.forName("UTF-8");
         
-        if (postParameters.size() > 1)
+    	for (Map.Entry<String, Object> param : postParameters.entrySet())
         {
-            for (Map.Entry<String, Object> param : postParameters.entrySet())
+            if (needsClrf)
+            {                	
+                WriteStringToStream(formDataStream, "\r\n");
+            }
+
+            needsClrf = true;
+
+            Object paramValue = param.getValue();
+            if (paramValue instanceof FileInfo)
             {
-                if (needsClrf)
-                {                	
-                    WriteStringToStream(formDataStream, "\r\n", utf8);
-                }
+                FileInfo fileInfo = (FileInfo)paramValue;
+                String postData =
+                    String.format(
+                        "--%s\r\nContent-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\nContent-Type: %s\r\n\r\n",
+                        boundary,
+                        param.getKey(),
+                        param.getKey(),
+                        fileInfo.MimeType);
+               
+                WriteStringToStream(formDataStream, postData);
 
-                needsClrf = true;
-
-                Object paramValue = param.getValue();
-                if (paramValue instanceof FileInfo)
+                int x = fileInfo.file.length;
+                formDataStream.write(fileInfo.file, 0, fileInfo.file.length);
+            }
+            else
+            {
+                String stringData;
+                if (paramValue instanceof String)
                 {
-                    FileInfo fileInfo = (FileInfo)paramValue;
-                    String postData =
-                        String.format(
-                            "--%s}\r\nContent-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\nContent-Type: %s\r\n\r\n",
-                            boundary,
-                            param.getKey(),
-                            fileInfo.MimeType);
-                   
-                    WriteStringToStream(formDataStream, postData, utf8);
-
-                    // Write the file data directly to the Stream, rather than serializing it to a String.
-                    formDataStream.write(fileInfo.file, 0, fileInfo.file.length);
+                	stringData = (String)paramValue;
                 }
                 else
                 {
-                    String StringData;
-                    if (paramValue instanceof String)
-                    {
-                        StringData = (String)paramValue;
-                    }
-                    else
-                    {
-                        StringData = SerializationHelper.serialize(paramValue);
-                    }
-
-                    String postData =
-                        String.format(
-                            "--%s\r\nContent-Disposition: form-data; name=\"%s\"\r\n\r\n%s",
-                            boundary,
-                            param.getKey(),
-                            StringData);
-                   
-                    WriteStringToStream(formDataStream, postData, utf8);
+                	stringData = SerializationHelper.serialize(paramValue);
                 }
-            }
 
-            // Add the end of the request.  Start with a newline
-            String footer = "\r\n--" + boundary + "--\r\n";             
-           
-            WriteStringToStream(formDataStream, footer, utf8);
-        }
-        else
-        {
-            for (Map.Entry<String, Object> param : postParameters.entrySet())
-            {
-            	Object paramValue = param.getValue();
-                if (paramValue instanceof FileInfo)
-                {
-                	FileInfo fileInfo = (FileInfo)paramValue;
-
-                    // Write the file data directly to the Stream, rather than serializing it to a String.
-                    formDataStream.write(fileInfo.file, 0, fileInfo.file.length);
-                }
-                else
-                {
-                    String postData;
-                    if (!(paramValue instanceof String))
-                    {
-                        postData = SerializationHelper.serialize(paramValue);
-                    }
-                    else
-                    {
-                        postData = (String)paramValue;
-                    }   
-                    
-                    WriteStringToStream(formDataStream, postData, utf8);
-                }
+                String postData =
+                    String.format(
+                        "--%s\r\nContent-Disposition: form-data; name=\"%s\"\r\n\r\n%s",
+                        boundary,
+                        param.getKey(),
+                        stringData);
+               
+                WriteStringToStream(formDataStream, postData);
             }
         }
+
+        String footer = "\r\n--" + boundary + "--\r\n";             
+       
+        WriteStringToStream(formDataStream, footer);
 
         return formDataStream.toByteArray();
     }
     
-    private static void WriteStringToStream(ByteArrayOutputStream formDataStream, String data, Charset charset)
+    private static void WriteStringToStream(ByteArrayOutputStream formDataStream, String data)
     {
-    	 ByteBuffer postBytes = charset.encode(data);
-    	 byte[] bytesArray = postBytes.array();
-         formDataStream.write(bytesArray, 0, bytesArray.length);
+    	byte[] bytesArray = data.getBytes(Charsets.UTF_8);
+        formDataStream.write(bytesArray, 0, bytesArray.length);
     }
 
     /**
@@ -356,22 +330,38 @@ public class ApiInvoker
         connection.setUseCaches(false);
     	connection.setRequestMethod(method);
 
-        byte[] formData = null;
+        byte[] data = null;
         if (formParams.size() > 0)
         {
-            if (formParams.size() > 1)
-            {
-                String formDataBoundary = "Somthing";
+        	if (!this.configuration.getApiVersion().contains("v1."))
+        	{
+        		String formDataBoundary = "Somthing";
                 connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + formDataBoundary);
-                formData = getMultipartFormData(formParams, formDataBoundary);
-            }
-            else
-            {
-            	connection.setRequestProperty("Content-Type", "multipart/form-data");
-                formData = getMultipartFormData(formParams, "");
-            }
-
-            connection.setFixedLengthStreamingMode(formData.length);
+                data = getMultipartFormData(formParams, formDataBoundary);
+                connection.setFixedLengthStreamingMode(data.length);
+        	}
+        	else
+        	{
+        		Object firstParam = formParams.values().toArray()[0];
+        		if (firstParam instanceof FileInfo)
+        		{
+        			data = ((FileInfo)firstParam).file;
+        		}
+        		else
+        		{
+        			String stringData = null;
+        			if (firstParam instanceof String)
+        			{
+        				stringData = (String)firstParam;
+        			}
+        			else
+        			{
+        				stringData = SerializationHelper.serialize(firstParam);
+        			}
+        			
+        			data = stringData.getBytes(Charsets.UTF_8);
+        		}
+        	}
         }
 
         for (Map.Entry<String, String> headerParamsItem : this.defaultHeaderMap.entrySet())
@@ -395,13 +385,18 @@ public class ApiInvoker
         	{       		
         		streamToSend = new ByteArrayOutputStream();
 
-                if (formData != null)
+                if (data != null)
                 {
-                    streamToSend.write(formData, 0, formData.length);
+                    streamToSend.write(data, 0, data.length);
                 }
 
                 if (body != null)
                 {
+                	if (data != null)
+                	{
+                		throw new ApiException(500, "You can't send both form data and body at once.");
+                	}
+                	
                 	byte[] bodyBytes = body.getBytes();
                 	streamToSend.write(bodyBytes, 0, bodyBytes.length);
                 }

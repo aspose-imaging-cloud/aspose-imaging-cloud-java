@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OAuthRequestHandler.java">
-*   Copyright (c) 2018 Aspose Pty Ltd.
+*   Copyright (c) 2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -74,7 +74,7 @@ public class OAuthRequestHandler implements IRequestHandler
         IRequestHandler[] requestHandlers = new IRequestHandler[2];
         requestHandlers[0] = new DebugLogRequestHandler(this.configuration);
         requestHandlers[1] = new ApiExceptionRequestHandler();
-        this.apiInvoker = new ApiInvoker(requestHandlers);
+        this.apiInvoker = new ApiInvoker(requestHandlers, this.configuration);
     }
 
     /**

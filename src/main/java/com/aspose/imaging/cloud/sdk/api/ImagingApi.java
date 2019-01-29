@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ImagingApi.java">
-*   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
+*   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36,14 +36,14 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import java.util.HashMap;
 
 /**
- * Aspose.Imaging for Cloud API
+ * Aspose.Imaging Cloud API
  */
 public class ImagingApi 
 {
 	/**
 	 * Current SDK version
 	 */
-	public static final String Version = "18.12";
+	public static final String Version = "19.1";
 
 	    /**
      * The configuration
@@ -151,7 +151,7 @@ public class ImagingApi
 		requestHandlers[0] = new OAuthRequestHandler(this.Configuration);
         requestHandlers[1] = new DebugLogRequestHandler(this.Configuration);
         requestHandlers[2] = new ApiExceptionRequestHandler();
-        this.apiInvoker = new ApiInvoker(requestHandlers);
+        this.apiInvoker = new ApiInvoker(requestHandlers, this.Configuration);
     }
 	
     /**
@@ -1283,7 +1283,7 @@ public class ImagingApi
     }
   
     /**
-     * Extract features from image without adding to search context.
+     * Extract features from image without adding to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return ImageFeatures
@@ -1376,7 +1376,7 @@ public class ImagingApi
     }
   
     /**
-     * Find similar images.
+     * Find similar images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return SearchResultsSet
@@ -1628,7 +1628,7 @@ public class ImagingApi
     }
   
     /**
-     * Update parameters of BMP image. Image is passed in a request stream.
+     * Update parameters of BMP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -1681,7 +1681,7 @@ public class ImagingApi
     }
   
     /**
-     * Crop an image. Image is passed in a request stream.
+     * Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -1743,7 +1743,7 @@ public class ImagingApi
     }
   
     /**
-     * Rasterize DICOM image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize DICOM image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -1781,7 +1781,7 @@ public class ImagingApi
     }
   
     /**
-     * Rasterize DNG image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize DNG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -1819,7 +1819,7 @@ public class ImagingApi
     }
   
     /**
-     * Rasterize EMF image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize EMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -1882,7 +1882,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame from existing TIFF image. Image is passed in a request stream.
+     * Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -1932,7 +1932,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame properties of existing TIFF image. Image is passed in a request stream.
+     * Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return ImagingResponse
@@ -1977,7 +1977,7 @@ public class ImagingApi
     }
   
     /**
-     * Update parameters of GIF image. Image is passed in a request stream.
+     * Update parameters of GIF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2021,7 +2021,7 @@ public class ImagingApi
     }
   
     /**
-     * Update parameters of JPEG2000 image. Image is passed in a request stream.
+     * Update parameters of JPEG2000 image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2065,7 +2065,7 @@ public class ImagingApi
     }
   
     /**
-     * Update parameters of JPEG image. Image is passed in a request stream.
+     * Update parameters of JPEG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2105,7 +2105,7 @@ public class ImagingApi
     }
   
     /**
-     * Rasterize ODG image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize ODG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2143,7 +2143,7 @@ public class ImagingApi
     }
   
     /**
-     * Update parameters of PNG image. Image is passed in a request stream.
+     * Update parameters of PNG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2181,7 +2181,7 @@ public class ImagingApi
     }
   
     /**
-     * Get properties of an image. Image is passed in a request stream.
+     * Get properties of an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return ImagingResponse
@@ -2221,7 +2221,7 @@ public class ImagingApi
     }
   
     /**
-     * Update parameters of PSD image. Image is passed in a request stream.
+     * Update parameters of PSD image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2261,7 +2261,7 @@ public class ImagingApi
     }
   
     /**
-     * Resize an image. Image is passed in a request stream.
+     * Resize an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2313,7 +2313,7 @@ public class ImagingApi
     }
   
     /**
-     * Rotate and/or flip an image. Image is passed in a request stream.
+     * Rotate and/or flip an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2360,7 +2360,7 @@ public class ImagingApi
     }
   
     /**
-     * Export existing image to another format. Image is passed in a request stream.             
+     * Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2402,7 +2402,7 @@ public class ImagingApi
     }
   
     /**
-     * Update parameters of TIFF image. Image is passed in a request stream.
+     * Update parameters of TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2457,7 +2457,7 @@ public class ImagingApi
     }
   
     /**
-     * Perform scaling, cropping and flipping of an image in a single request. Image is passed in a request stream.             
+     * Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2534,7 +2534,7 @@ public class ImagingApi
     }
   
     /**
-     * Update parameters of WEBP image. Image is passed in a request stream.
+     * Update parameters of WEBP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2592,7 +2592,7 @@ public class ImagingApi
     }
   
     /**
-     * Rasterize WMF image to PNG using given parameters. Image is passed in a request stream.
+     * Rasterize WMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2655,7 +2655,7 @@ public class ImagingApi
     }
   
     /**
-     * Add image and images features to search context.
+     * Add image and images features to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2698,7 +2698,7 @@ public class ImagingApi
     }
   
     /**
-     * Add tag and reference image to search context.
+     * Add tag and reference image to search context. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2745,7 +2745,7 @@ public class ImagingApi
     }
   
     /**
-     * Compare two images.
+     * Compare two images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return SearchResultsSet
@@ -2794,7 +2794,7 @@ public class ImagingApi
     }
   
     /**
-     * Extract images features and add them to search context
+     * Extract images features and add them to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2834,7 +2834,7 @@ public class ImagingApi
     }
   
     /**
-     * Find images by tag.
+     * Find images by tags. Tags JSON string is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return SearchResultsSet
@@ -2872,7 +2872,7 @@ public class ImagingApi
 	  
 	  if (request.tags != null) 
       {
-          formParams.put("tags", request.tags); // form parameter
+          formParams.put("tags", request.tags);
       }
 	  byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
@@ -2936,7 +2936,7 @@ public class ImagingApi
     }
   
     /**
-     * Update image and images features in search context.
+     * Update image and images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
@@ -2979,7 +2979,7 @@ public class ImagingApi
     }
   
     /**
-     * Update images features in search context.
+     * Update images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return File
