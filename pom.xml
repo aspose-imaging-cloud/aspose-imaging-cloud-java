@@ -4,10 +4,10 @@
     <groupId>com.aspose</groupId>
     <artifactId>aspose-imaging-cloud</artifactId>
     <packaging>jar</packaging>
-    <name>Aspose.Imaging for Cloud Java SDK</name>
+    <name>Aspose.Imaging Cloud Java SDK</name>
     <version>${releaseVersion}</version>
     <url>https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-java</url>
-    <description>Aspose.Imaging for Cloud Java SDK</description>
+    <description>Aspose.Imaging Cloud Java SDK</description>
 	
     <licenses>
         <license>
@@ -38,7 +38,7 @@
 		<maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
 		<javadoc.opts>-Xdoclint:none</javadoc.opts>
-		<releaseVersion>18.12</releaseVersion>
+		<releaseVersion>19.1</releaseVersion>
 		<testCategories></testCategories>
     </properties>
     
