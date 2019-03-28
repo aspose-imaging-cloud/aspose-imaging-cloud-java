@@ -32,19 +32,19 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImagePropertiesRequest
 {
-	/**
-	* Initializes a new instance of the GetImagePropertiesRequest class.   
+    /**
+    * Initializes a new instance of the GetImagePropertiesRequest class.   
     * @param name Filename of an image.
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public GetImagePropertiesRequest(String name, String folder, String storage)             
     {
         this.name = name;
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Filename of an image.
     **/

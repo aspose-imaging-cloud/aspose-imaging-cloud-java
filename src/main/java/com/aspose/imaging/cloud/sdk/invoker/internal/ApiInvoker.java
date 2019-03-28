@@ -322,46 +322,23 @@ public class ApiInvoker
     		HashMap<String, String> headerParams, String body, String contentType) throws Exception
     {
     	HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
+    	Boolean sendData = (formParams.size() > 0 || (body != null && body != "")) && (method.equals("PUT") || method.equals("POST"));
     	if (method.equals("PUT") || method.equals("POST"))
-    	{   
-    		connection.setDoOutput(true);
+    	{
+    		connection.setFixedLengthStreamingMode(0);
     	}
-        
+    	
+    	connection.setDoOutput(true);
         connection.setUseCaches(false);
     	connection.setRequestMethod(method);
 
         byte[] data = null;
         if (formParams.size() > 0)
         {
-        	if (!this.configuration.getApiVersion().contains("v1."))
-        	{
-        		String formDataBoundary = "Somthing";
-                connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + formDataBoundary);
-                data = getMultipartFormData(formParams, formDataBoundary);
-                connection.setFixedLengthStreamingMode(data.length);
-        	}
-        	else
-        	{
-        		Object firstParam = formParams.values().toArray()[0];
-        		if (firstParam instanceof FileInfo)
-        		{
-        			data = ((FileInfo)firstParam).file;
-        		}
-        		else
-        		{
-        			String stringData = null;
-        			if (firstParam instanceof String)
-        			{
-        				stringData = (String)firstParam;
-        			}
-        			else
-        			{
-        				stringData = SerializationHelper.serialize(firstParam);
-        			}
-        			
-        			data = stringData.getBytes(Charsets.UTF_8);
-        		}
-        	}
+        	String formDataBoundary = "Somthing";
+            connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + formDataBoundary);
+            data = getMultipartFormData(formParams, formDataBoundary);
+            connection.setFixedLengthStreamingMode(data.length);
         }
 
         for (Map.Entry<String, String> headerParamsItem : this.defaultHeaderMap.entrySet())
@@ -381,8 +358,8 @@ public class ApiInvoker
         ByteArrayOutputStream streamToSend = null;
         try
         {
-        	if (method.equals("PUT") || method.equals("POST"))
-        	{       		
+        	if (sendData)
+        	{
         		streamToSend = new ByteArrayOutputStream();
 
                 if (data != null)
@@ -398,8 +375,13 @@ public class ApiInvoker
                 	}
                 	
                 	byte[] bodyBytes = body.getBytes();
+                	connection.setFixedLengthStreamingMode(bodyBytes.length);
                 	streamToSend.write(bodyBytes, 0, bodyBytes.length);
                 }
+        	}
+        	else
+        	{
+        		
         	}
 
             for (IRequestHandler handler : this.requestHandlers)
@@ -420,10 +402,6 @@ public class ApiInvoker
 						e.printStackTrace();
 						throw e;
 					}
-            	}
-            	else
-            	{
-            		connection.setFixedLengthStreamingMode(0);
             	}
             }
         }
@@ -452,11 +430,15 @@ public class ApiInvoker
     private byte[] readResponse(HttpURLConnection client) throws Exception
     {
     	InputStream inputStream = null;
+    	byte[] resultData = null;
     	
         try
         {
-        	inputStream = client.getInputStream();
-        	byte[] resultData = StreamHelper.readAsBytes(inputStream);
+        	if (client.getResponseCode() == 200)
+        	{
+        		inputStream = client.getInputStream();
+            	resultData = StreamHelper.readAsBytes(inputStream);
+        	}
         	
         	for (IRequestHandler handler : this.requestHandlers)
         	{

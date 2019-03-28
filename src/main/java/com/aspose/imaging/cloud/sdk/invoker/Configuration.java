@@ -40,7 +40,7 @@ public class Configuration
         /**
     	 * The default API version
     	 */
-        public final String DefaultApiVersion = "v2.0";
+        public final String DefaultApiVersion = "v3.0";
 
         /**
     	 * The API base URL
@@ -66,13 +66,7 @@ public class Configuration
          * Gets or sets the app SID.
          */
         public String AppSid;
-        
-        /**
-         * Authentication type.
-         * Default is OAuth.
-         */
-        public AuthType AuthType = com.aspose.imaging.cloud.sdk.invoker.AuthType.OAuth2;
-        
+
         /**
          * Get Aspose Cloud API base URL.
          * @return Aspose Cloud API base URL.
@@ -103,13 +97,19 @@ public class Configuration
         {
         	return this.apiVersion;
         }
-        
+
         /**
          * Set Aspose Cloud API base URL.
          * @param value
+         * @throws Exception 
          */
-        public void setApiVersion(String value)
+        public void setApiVersion(String value) throws Exception
         {
+        	if (value.startsWith("v1") || value.startsWith("v2"))
+        	{
+        		throw new Exception("This SDK is intended to be used only with API v3 and higher due to breaking changes!");
+        	}
+        	
         	this.apiVersion = value;
         }
         

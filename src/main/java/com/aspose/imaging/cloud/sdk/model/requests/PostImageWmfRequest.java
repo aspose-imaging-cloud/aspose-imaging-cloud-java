@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostImageWmfRequest
 {
-	/**
-	* Initializes a new instance of the PostImageWmfRequest class.   
+    /**
+    * Initializes a new instance of the PostImageWmfRequest class.   
     * @param imageData Input image
     * @param bkColor Color of the background.
     * @param pageWidth Width of the page.
@@ -43,8 +43,9 @@ public class PostImageWmfRequest
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
-	**/
-    public PostImageWmfRequest(byte[] imageData, String bkColor, Integer pageWidth, Integer pageHeight, Integer borderX, Integer borderY, Boolean fromScratch, String outPath, String storage)             
+    * @param format Export format (PNG is the default one).
+    **/
+    public PostImageWmfRequest(byte[] imageData, String bkColor, Integer pageWidth, Integer pageHeight, Integer borderX, Integer borderY, Boolean fromScratch, String outPath, String storage, String format)             
     {
         this.imageData = imageData;
         this.bkColor = bkColor;
@@ -55,8 +56,9 @@ public class PostImageWmfRequest
         this.fromScratch = fromScratch;
         this.outPath = outPath;
         this.storage = storage;
+        this.format = format;
     }
-		
+        
     /**
     * Input image
     **/
@@ -101,4 +103,9 @@ public class PostImageWmfRequest
     * Your Aspose Cloud Storage name.
     **/
     public String storage;
+
+    /**
+    * Export format (PNG is the default one).
+    **/
+    public String format;
 }

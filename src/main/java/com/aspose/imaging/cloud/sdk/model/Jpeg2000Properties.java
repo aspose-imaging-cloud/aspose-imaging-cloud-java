@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,11 +38,11 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents information about image in JPEG2000 format.
  */
 public class Jpeg2000Properties {
-  @JsonProperty("Comments")
+  @JsonProperty("comments")
   private List<String> comments = null;
 
-  @JsonProperty("Codec")
-  private Jpeg2000Codec codec = null;
+  @JsonProperty("codec")
+  private String codec = null;
 
   public Jpeg2000Properties comments(List<String> comments) {
     this.comments = comments;
@@ -68,7 +69,7 @@ public class Jpeg2000Properties {
     this.comments = comments;
   }
 
-  public Jpeg2000Properties codec(Jpeg2000Codec codec) {
+  public Jpeg2000Properties codec(String codec) {
     this.codec = codec;
     return this;
   }
@@ -77,11 +78,11 @@ public class Jpeg2000Properties {
    * Gets or sets the JPEG2000 codec
    * @return codec
   **/
-  public Jpeg2000Codec getCodec() {
+  public String getCodec() {
     return codec;
   }  
 
-  public void setCodec(Jpeg2000Codec codec) {
+  public void setCodec(String codec) {
     this.codec = codec;
   }
 

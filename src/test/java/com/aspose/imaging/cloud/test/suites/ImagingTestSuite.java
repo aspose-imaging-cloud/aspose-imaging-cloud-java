@@ -29,18 +29,16 @@ package com.aspose.imaging.cloud.test.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import com.aspose.imaging.cloud.test.api.FramesPostApiTests;
+
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         BmpTestSuite.class,
         CropTestSuite.class,
-        DicomTestSuite.class,
-        DngTestSuite.class,
         EmfTestSuite.class,
         GifTestSuite.class,
         Jpeg2000TestSuite.class,
         JpgTestSuite.class,
-        OdgTestSuite.class,
-        PngTestSuite.class,
         PsdTestSuite.class,
         ResizeTestSuite.class,
         RotateFlipTestSuite.class,

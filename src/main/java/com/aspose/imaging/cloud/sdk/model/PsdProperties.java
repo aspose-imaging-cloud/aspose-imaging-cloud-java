@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,16 +38,16 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents information about PSD image
  */
 public class PsdProperties {
-  @JsonProperty("BitsPerChannel")
+  @JsonProperty("bitsPerChannel")
   private Integer bitsPerChannel = null;
 
-  @JsonProperty("ChannelsCount")
+  @JsonProperty("channelsCount")
   private Integer channelsCount = null;
 
-  @JsonProperty("ColorMode")
+  @JsonProperty("colorMode")
   private String colorMode = null;
 
-  @JsonProperty("Compression")
+  @JsonProperty("compression")
   private String compression = null;
 
   public PsdProperties bitsPerChannel(Integer bitsPerChannel) {

@@ -32,19 +32,19 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetSearchContextStatusRequest
 {
-	/**
-	* Initializes a new instance of the GetSearchContextStatusRequest class.   
+    /**
+    * Initializes a new instance of the GetSearchContextStatusRequest class.   
     * @param searchContextId The search context identifier.
     * @param folder The folder.
     * @param storage The storage.
-	**/
+    **/
     public GetSearchContextStatusRequest(String searchContextId, String folder, String storage)             
     {
         this.searchContextId = searchContextId;
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * The search context identifier.
     **/

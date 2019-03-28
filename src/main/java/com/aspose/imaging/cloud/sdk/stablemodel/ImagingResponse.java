@@ -40,64 +40,63 @@ import com.aspose.imaging.cloud.sdk.model.PsdProperties;
 import com.aspose.imaging.cloud.sdk.model.TiffProperties;
 import com.aspose.imaging.cloud.sdk.model.WebPProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.aspose.imaging.cloud.sdk.stablemodel.SaaSposeResponse;
 
 /**
  * Represents information about image.
  */
-public class ImagingResponse extends SaaSposeResponse {
-  @JsonProperty("Height")
+public class ImagingResponse {
+  @JsonProperty("height")
   private Integer height = null;
 
-  @JsonProperty("Width")
+  @JsonProperty("width")
   private Integer width = null;
 
-  @JsonProperty("BitsPerPixel")
+  @JsonProperty("bitsPerPixel")
   private Integer bitsPerPixel = null;
 
-  @JsonProperty("BmpProperties")
+  @JsonProperty("bmpProperties")
   private BmpProperties bmpProperties = null;
 
-  @JsonProperty("GifProperties")
+  @JsonProperty("gifProperties")
   private GifProperties gifProperties = null;
 
-  @JsonProperty("JpegProperties")
+  @JsonProperty("jpegProperties")
   private JpegProperties jpegProperties = null;
 
-  @JsonProperty("PngProperties")
+  @JsonProperty("pngProperties")
   private PngProperties pngProperties = null;
 
-  @JsonProperty("TiffProperties")
+  @JsonProperty("tiffProperties")
   private TiffProperties tiffProperties = null;
 
-  @JsonProperty("PsdProperties")
+  @JsonProperty("psdProperties")
   private PsdProperties psdProperties = null;
 
-  @JsonProperty("DjvuProperties")
+  @JsonProperty("djvuProperties")
   private DjvuProperties djvuProperties = null;
 
-  @JsonProperty("WebPProperties")
+  @JsonProperty("webPProperties")
   private WebPProperties webPProperties = null;
 
-  @JsonProperty("Jpeg2000Properties")
+  @JsonProperty("jpeg2000Properties")
   private Jpeg2000Properties jpeg2000Properties = null;
 
-  @JsonProperty("DicomProperties")
+  @JsonProperty("dicomProperties")
   private DicomProperties dicomProperties = null;
 
-  @JsonProperty("DngProperties")
+  @JsonProperty("dngProperties")
   private DngProperties dngProperties = null;
 
-  @JsonProperty("OdgProperties")
+  @JsonProperty("odgProperties")
   private OdgProperties odgProperties = null;
 
-  @JsonProperty("HorizontalResolution")
+  @JsonProperty("horizontalResolution")
   private Double horizontalResolution = null;
 
-  @JsonProperty("VerticalResolution")
+  @JsonProperty("verticalResolution")
   private Double verticalResolution = null;
 
-  @JsonProperty("IsCached")
+  @JsonProperty("isCached")
   private Boolean isCached = null;
 
   public ImagingResponse height(Integer height) {

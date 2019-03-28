@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,37 +38,37 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents information about image in DNG format.
  */
 public class DngProperties {
-  @JsonProperty("DngVersion")
+  @JsonProperty("dngVersion")
   private Long dngVersion = null;
 
-  @JsonProperty("Description")
+  @JsonProperty("description")
   private String description = null;
 
-  @JsonProperty("Model")
+  @JsonProperty("model")
   private String model = null;
 
-  @JsonProperty("CameraManufacturer")
+  @JsonProperty("cameraManufacturer")
   private String cameraManufacturer = null;
 
-  @JsonProperty("IsFoveon")
+  @JsonProperty("isFoveon")
   private Long isFoveon = null;
 
-  @JsonProperty("Software")
+  @JsonProperty("software")
   private String software = null;
 
-  @JsonProperty("RawCount")
+  @JsonProperty("rawCount")
   private Long rawCount = null;
 
-  @JsonProperty("Filters")
+  @JsonProperty("filters")
   private Long filters = null;
 
-  @JsonProperty("ColorsCount")
+  @JsonProperty("colorsCount")
   private Integer colorsCount = null;
 
-  @JsonProperty("XmpData")
+  @JsonProperty("xmpData")
   private String xmpData = null;
 
-  @JsonProperty("TranslationCfaDng")
+  @JsonProperty("translationCfaDng")
   private List<String> translationCfaDng = null;
 
   public DngProperties dngVersion(Long dngVersion) {

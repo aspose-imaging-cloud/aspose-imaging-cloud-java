@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,16 +38,16 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents information about image in GIF format.
  */
 public class GifProperties {
-  @JsonProperty("BackgroundColor")
+  @JsonProperty("backgroundColor")
   private String backgroundColor = null;
 
-  @JsonProperty("HasBackgroundColor")
+  @JsonProperty("hasBackgroundColor")
   private Boolean hasBackgroundColor = null;
 
-  @JsonProperty("HasTrailer")
+  @JsonProperty("hasTrailer")
   private Boolean hasTrailer = null;
 
-  @JsonProperty("PixelAspectRatio")
+  @JsonProperty("pixelAspectRatio")
   private Integer pixelAspectRatio = null;
 
   public GifProperties backgroundColor(String backgroundColor) {

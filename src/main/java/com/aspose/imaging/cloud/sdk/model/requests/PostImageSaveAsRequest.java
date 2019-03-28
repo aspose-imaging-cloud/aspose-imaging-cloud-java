@@ -32,13 +32,13 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostImageSaveAsRequest
 {
-	/**
-	* Initializes a new instance of the PostImageSaveAsRequest class.   
+    /**
+    * Initializes a new instance of the PostImageSaveAsRequest class.   
     * @param imageData Input image
-    * @param format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * @param format Resulting image format.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public PostImageSaveAsRequest(byte[] imageData, String format, String outPath, String storage)             
     {
         this.imageData = imageData;
@@ -46,14 +46,14 @@ public class PostImageSaveAsRequest
         this.outPath = outPath;
         this.storage = storage;
     }
-		
+        
     /**
     * Input image
     **/
     public byte[] imageData;
 
     /**
-    * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * Resulting image format.
     **/
     public String format;
 

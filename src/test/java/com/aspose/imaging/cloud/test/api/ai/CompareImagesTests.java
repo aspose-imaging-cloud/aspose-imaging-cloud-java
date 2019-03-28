@@ -32,8 +32,8 @@ import org.junit.Test;
 
 import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
 import com.aspose.imaging.cloud.sdk.model.SearchResultsSet;
+import com.aspose.imaging.cloud.sdk.model.requests.DownloadFileRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextCompareImagesRequest;
-import com.aspose.storage.model.ResponseMessage;
 
 public class CompareImagesTests extends TestImagingAIBase{
 	 private final String ComparableImage = "ComparableImage.jpg";
@@ -64,14 +64,11 @@ public class CompareImagesTests extends TestImagingAIBase{
 
          String storagePath = OriginalDataFolder + "/" + ComparingImageSimilarLess15;
 
-         ResponseMessage imageResponse = StorageApi.GetDownload(storagePath, null, TestStorage);
-         Assert.assertNotNull(imageResponse);         
-         byte[] imageData = StreamHelper.readAsBytes(imageResponse.getInputStream());
+         byte[] imageData = ImagingApi.downloadFile(new DownloadFileRequest(storagePath, TestStorage, null));
 
          SearchResultsSet result = ImagingApi.postSearchContextCompareImages(
              new PostSearchContextCompareImagesRequest(SearchContextId, image, imageData, null, null, TestStorage));
 
-         Assert.assertEquals((long)200, (long)result.getCode());
          Assert.assertEquals(1, result.getResults().size());
          Assert.assertTrue(result.getResults().get(0).getSimilarity() <= 15);
      }

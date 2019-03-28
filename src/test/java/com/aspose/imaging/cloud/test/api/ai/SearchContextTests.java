@@ -32,19 +32,20 @@ import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.aspose.imaging.cloud.sdk.invoker.ApiException;
 import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
 import com.aspose.imaging.cloud.sdk.model.ImageFeatures;
 import com.aspose.imaging.cloud.sdk.model.requests.DeleteSearchContextImageRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.DownloadFileRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextExtractImageFeaturesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextImageFeaturesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextImageRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextStatusRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.ObjectExistsRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextAddImageRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextExtractImageFeaturesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PutSearchContextImageFeaturesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PutSearchContextImageRequest;
-import com.aspose.storage.model.FileExistResponse;
-import com.aspose.storage.model.ResponseMessage;
 
 public class SearchContextTests extends TestImagingAIBase {
 	private final String SmallTestImage = "ComparableImage.jpg";
@@ -55,7 +56,7 @@ public class SearchContextTests extends TestImagingAIBase {
 		Assert.assertNotNull(SearchContextId);
 	}
 
-	@Test(expected = IOException.class)
+	@Test(expected = ApiException.class)
 	public void deleteSearchContextTest() throws Exception {
 		deleteSearchContext(SearchContextId);
 
@@ -68,7 +69,7 @@ public class SearchContextTests extends TestImagingAIBase {
 		this.addImage(TestImage);
 	}
 
-	@Test(expected = IOException.class)
+	@Test(expected = ApiException.class)
 	public void deleteImageTest() throws Exception {
 		String image = TestImage;
 		this.addImage(image);
@@ -102,9 +103,7 @@ public class SearchContextTests extends TestImagingAIBase {
 
 		String storagePath = OriginalDataFolder + "/" + image;
 
-		ResponseMessage tagImageStream = StorageApi.GetDownload(storagePath, null, TestStorage);
-		Assert.assertNotNull(tagImageStream);
-		byte[] imageData = StreamHelper.readAsBytes(tagImageStream.getInputStream());
+		byte[] imageData = ImagingApi.downloadFile(new DownloadFileRequest(storagePath, TestStorage, null));
 
 		ImagingApi.putSearchContextImage(new PutSearchContextImageRequest(SearchContextId, destServerPath,
 				imageData, null, TestStorage));
@@ -125,7 +124,6 @@ public class SearchContextTests extends TestImagingAIBase {
 				new GetSearchContextExtractImageFeaturesRequest(SearchContextId, destServerPath, null, null,
 						TestStorage));
 
-		Assert.assertEquals((long) 200, (long) result.getCode());
 		Assert.assertTrue(result.getImageId().contains(image));
 		Assert.assertTrue(result.getFeatures().length > 0);
 
@@ -146,7 +144,6 @@ public class SearchContextTests extends TestImagingAIBase {
 		ImageFeatures result = ImagingApi.getSearchContextImageFeatures(new GetSearchContextImageFeaturesRequest(
 				SearchContextId, OriginalDataFolder + "/FindSimilar/3.jpg", null, TestStorage));
 
-		Assert.assertEquals((long) 200, (long) result.getCode());
 		Assert.assertTrue(result.getImageId().contains("3.jp"));
 		Assert.assertTrue(result.getFeatures().length > 0);
 	}
@@ -160,7 +157,7 @@ public class SearchContextTests extends TestImagingAIBase {
 		Assert.assertTrue(features.length > 0);
 	}
 
-	@Test(expected = IOException.class)
+	@Test(expected = ApiException.class)
 	public void deleteImageFeaturesTest() throws Exception {
 		String image = TestImage;
 		this.addImageFeatures(image);
@@ -185,9 +182,7 @@ public class SearchContextTests extends TestImagingAIBase {
 
 		String storagePath = OriginalDataFolder + "/" + SmallTestImage;
 
-		ResponseMessage tagImageStream = StorageApi.GetDownload(storagePath, null, TestStorage);
-		Assert.assertNotNull(tagImageStream);
-		byte[] imageData = StreamHelper.readAsBytes(tagImageStream.getInputStream());
+		byte[] imageData = ImagingApi.downloadFile(new DownloadFileRequest(storagePath, TestStorage, null));
 
 		ImagingApi.putSearchContextImageFeatures(new PutSearchContextImageFeaturesRequest(SearchContextId,
 				destServerPath, imageData, null, TestStorage));
@@ -202,16 +197,12 @@ public class SearchContextTests extends TestImagingAIBase {
 
 		String storagePath = OriginalDataFolder + "/" + image;
 
-		ResponseMessage tagImageStream = StorageApi.GetDownload(storagePath, null, TestStorage);
-		Assert.assertNotNull(tagImageStream);
-		byte[] imageData = StreamHelper.readAsBytes(tagImageStream.getInputStream());
+		byte[] imageData = ImagingApi.downloadFile(new DownloadFileRequest(storagePath, TestStorage, null));
 
 		ImagingApi.postSearchContextAddImage(new PostSearchContextAddImageRequest(SearchContextId, destServerPath,
 				imageData, null, TestStorage));
 
-		FileExistResponse existResponse = StorageApi.GetIsExist(destServerPath, null, TestStorage);
-		Assert.assertNotNull(existResponse);
-		Assert.assertTrue(existResponse.getFileExist().getIsExist());
+		Assert.assertTrue(ImagingApi.objectExists(new ObjectExistsRequest(destServerPath, TestStorage, null)).isExists());
 	}
 
 	private byte[] getImage(String image) throws Exception {
@@ -234,8 +225,6 @@ public class SearchContextTests extends TestImagingAIBase {
 		String destServerPath = OriginalDataFolder + "/" + image;
 		ImageFeatures result = ImagingApi.getSearchContextImageFeatures(
 				new GetSearchContextImageFeaturesRequest(SearchContextId, destServerPath, null, TestStorage));
-
-		Assert.assertEquals((long) 200, (long) result.getCode());
 
 		return result;
 	}

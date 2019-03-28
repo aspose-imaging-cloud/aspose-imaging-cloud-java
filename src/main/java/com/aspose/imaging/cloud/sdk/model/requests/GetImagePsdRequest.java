@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImagePsdRequest
 {
-	/**
-	* Initializes a new instance of the GetImagePsdRequest class.   
+    /**
+    * Initializes a new instance of the GetImagePsdRequest class.   
     * @param name Filename of image.
     * @param channelsCount Count of color channels.
     * @param compressionMethod Compression method.
@@ -41,7 +41,7 @@ public class GetImagePsdRequest
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public GetImagePsdRequest(String name, Integer channelsCount, String compressionMethod, Boolean fromScratch, String outPath, String folder, String storage)             
     {
         this.name = name;
@@ -52,7 +52,7 @@ public class GetImagePsdRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Filename of image.
     **/

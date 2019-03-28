@@ -31,7 +31,7 @@ import com.aspose.imaging.cloud.sdk.model.SearchContextStatus;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.*;
 
 public abstract class TestImagingAIBase extends ApiTester {
@@ -49,14 +49,14 @@ public abstract class TestImagingAIBase extends ApiTester {
 			deleteSearchContext(SearchContextId);
 		}
 
-		if (StorageApi.GetIsExist(getTempFolder(), null, TestStorage).getFileExist().getIsExist()) {
-			StorageApi.DeleteFolder(getTempFolder(), TestStorage, true);
+		if (ImagingApi.objectExists(new ObjectExistsRequest(getTempFolder(), TestStorage, null)).isExists()) {
+			ImagingApi.deleteFolder(new DeleteFolderRequest(getTempFolder(), TestStorage, true));
 		}
 	}
 
 	protected String SearchContextId;
 
-	protected final static String OriginalDataFolder = "ImagingAiSdk";
+	protected final static String OriginalDataFolder = ApiTester.OriginalDataFolder + "/AI";
 
 	protected static String getStoragePath(String imageName, String folder) {
 		return (folder != null ? folder : OriginalDataFolder) + "/" + imageName;
@@ -66,7 +66,6 @@ public abstract class TestImagingAIBase extends ApiTester {
 		SearchContextStatus status = ImagingApi
 				.postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, TestStorage));
 
-		Assert.assertEquals((long) 200, (long) status.getCode());
 		return status.getId();
 	}
 	
@@ -94,7 +93,6 @@ public abstract class TestImagingAIBase extends ApiTester {
 	protected String getSearchContextStatus(String searchContextId) throws Exception {
 		SearchContextStatus status = ImagingApi
 				.getSearchContextStatus(new GetSearchContextStatusRequest(SearchContextId, null, TestStorage));
-		Assert.assertEquals((long) 200, (long) status.getCode());
 		return status.getSearchStatus();
 	}
 
@@ -117,7 +115,7 @@ public abstract class TestImagingAIBase extends ApiTester {
 		
 		long startTime = System.currentTimeMillis();
 
-		while (!"Idle".equalsIgnoreCase(status) && (System.currentTimeMillis() - startTime) * 1000 < maxTimeInSeconds) {
+		while (!"Idle".equalsIgnoreCase(status) && (System.currentTimeMillis() - startTime) / 1000 < maxTimeInSeconds) {
 			SearchContextStatus contextStatus = ImagingApi.getSearchContextStatus(
 					new GetSearchContextStatusRequest(this.SearchContextId, null, TestStorage));
 			status = contextStatus.getSearchStatus();

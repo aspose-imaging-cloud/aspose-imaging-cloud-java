@@ -52,8 +52,9 @@ public interface IRequestHandler
      * Processes parameters before sending.
      * @param connection The connection.
      * @param streamToSend The stream to send.
+     * @throws Exception 
      */
-    void beforeSend(HttpURLConnection connection, OutputStream streamToSend);
+    void beforeSend(HttpURLConnection connection, OutputStream streamToSend) throws Exception;
 
     /**
      * Processes the response.

@@ -80,7 +80,7 @@ public class EmfApiTests extends ApiTester {
         String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
-		getImageEmfRequest = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, folder, storage);
+		getImageEmfRequest = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, folder, storage, "png");
 		
 		Method propertiesTester = EmfApiTests.class.getDeclaredMethod("getImageEmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
@@ -119,7 +119,7 @@ public class EmfApiTests extends ApiTester {
         String folder = getTempFolder();
         String name = "test.emf";
 		String outName = name + "_specific." + "png";
-		postImageEmfRequest = new PostImageEmfRequest(imageData, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, storage);
+		postImageEmfRequest = new PostImageEmfRequest(imageData, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, storage, "png");
 		
 		Method propertiesTester = EmfApiTests.class.getDeclaredMethod("postImageEmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
@@ -175,18 +175,8 @@ public class EmfApiTests extends ApiTester {
 	private void getImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-		if (this.ImagingApi.Configuration.getApiVersion().contains("v1."))
-		{
-	        Assert.assertEquals((int)((getImageEmfRequest.pageWidth + getImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)),
-	        		(int)resultProperties.getWidth());
-	        Assert.assertEquals((int)((getImageEmfRequest.pageHeight + getImageEmfRequest.borderY * 2) * (resultProperties.getVerticalResolution() / 72)),
-	        		(int)resultProperties.getHeight());
-		}
-		else
-		{
-			Assert.assertEquals(getImageEmfRequest.pageWidth + getImageEmfRequest.borderX * 2, (int)resultProperties.getWidth());
-	        Assert.assertEquals(getImageEmfRequest.pageHeight + getImageEmfRequest.borderY * 2, (int)resultProperties.getHeight());
-		}
+		Assert.assertEquals(getImageEmfRequest.pageWidth + getImageEmfRequest.borderX * 2, (int)resultProperties.getWidth());
+	    Assert.assertEquals(getImageEmfRequest.pageHeight + getImageEmfRequest.borderY * 2, (int)resultProperties.getHeight());
 	}
 	
 	/**
@@ -198,17 +188,7 @@ public class EmfApiTests extends ApiTester {
 	private void postImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
 	{
 		Assert.assertNotNull(resultProperties.getPngProperties());
-		if (this.ImagingApi.Configuration.getApiVersion().contains("v1."))
-		{
-	        Assert.assertEquals((int)((postImageEmfRequest.pageWidth + postImageEmfRequest.borderX * 2) * (resultProperties.getHorizontalResolution() / 72)),
-	        		(int)resultProperties.getWidth());
-	        Assert.assertEquals((int)((postImageEmfRequest.pageHeight + postImageEmfRequest.borderY * 2) * (resultProperties.getVerticalResolution() / 72)),
-	        		(int)resultProperties.getHeight());
-		}
-		else
-		{
-			Assert.assertEquals(postImageEmfRequest.pageWidth + postImageEmfRequest.borderX * 2, (int)resultProperties.getWidth());
-	        Assert.assertEquals(postImageEmfRequest.pageHeight + postImageEmfRequest.borderY * 2, (int)resultProperties.getHeight());
-		}
+        Assert.assertEquals(postImageEmfRequest.pageWidth + postImageEmfRequest.borderX * 2, (int)resultProperties.getWidth());
+	    Assert.assertEquals(postImageEmfRequest.pageHeight + postImageEmfRequest.borderY * 2, (int)resultProperties.getHeight());
 	}
 }

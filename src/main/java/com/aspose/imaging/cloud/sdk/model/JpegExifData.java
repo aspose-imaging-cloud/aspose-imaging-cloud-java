@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,52 +38,52 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents EXIF data for JPEG
  */
 public class JpegExifData extends ExifData {
-  @JsonProperty("Artist")
+  @JsonProperty("artist")
   private String artist = null;
 
-  @JsonProperty("Copyright")
+  @JsonProperty("copyright")
   private String copyright = null;
 
-  @JsonProperty("DateTime")
+  @JsonProperty("dateTime")
   private String dateTime = null;
 
-  @JsonProperty("ImageDescription")
+  @JsonProperty("imageDescription")
   private String imageDescription = null;
 
-  @JsonProperty("Make")
+  @JsonProperty("make")
   private String make = null;
 
-  @JsonProperty("Model")
+  @JsonProperty("model")
   private String model = null;
 
-  @JsonProperty("Orientation")
+  @JsonProperty("orientation")
   private String orientation = null;
 
-  @JsonProperty("PrimaryChromaticities")
+  @JsonProperty("primaryChromaticities")
   private List<Double> primaryChromaticities = null;
 
-  @JsonProperty("ReferenceBlackWhite")
+  @JsonProperty("referenceBlackWhite")
   private List<Double> referenceBlackWhite = null;
 
-  @JsonProperty("ResolutionUnit")
+  @JsonProperty("resolutionUnit")
   private String resolutionUnit = null;
 
-  @JsonProperty("Software")
+  @JsonProperty("software")
   private String software = null;
 
-  @JsonProperty("TransferFunction")
+  @JsonProperty("transferFunction")
   private List<Integer> transferFunction = null;
 
-  @JsonProperty("XResolution")
+  @JsonProperty("xresolution")
   private Double xresolution = null;
 
-  @JsonProperty("YCbCrCoefficients")
+  @JsonProperty("ycbCrCoefficients")
   private List<Double> ycbCrCoefficients = null;
 
-  @JsonProperty("YCbCrPositioning")
+  @JsonProperty("ycbCrPositioning")
   private String ycbCrPositioning = null;
 
-  @JsonProperty("YResolution")
+  @JsonProperty("yresolution")
   private Double yresolution = null;
 
   public JpegExifData artist(String artist) {

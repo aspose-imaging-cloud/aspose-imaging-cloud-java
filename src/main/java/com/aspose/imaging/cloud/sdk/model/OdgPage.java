@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,10 +38,10 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * ODG page info
  */
 public class OdgPage {
-  @JsonProperty("Width")
+  @JsonProperty("width")
   private Integer width = null;
 
-  @JsonProperty("Height")
+  @JsonProperty("height")
   private Integer height = null;
 
   public OdgPage width(Integer width) {

@@ -80,7 +80,7 @@ public class WmfApiTests extends ApiTester {
         String folder = getTempFolder();
         String storage = TestStorage;
 		String outName = name + "_specific." + "png";
-		getImageWmfRequest = new GetImageWmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, folder, storage);
+		getImageWmfRequest = new GetImageWmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, folder, storage, "png");
 		
 		Method propertiesTester = WmfApiTests.class.getDeclaredMethod("getImageWmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);
@@ -119,7 +119,7 @@ public class WmfApiTests extends ApiTester {
         String folder = getTempFolder();
         String name = "test.wmf";
 		String outName = name + "_specific." + "png";
-		postImageWmfRequest = new PostImageWmfRequest(imageData, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, storage);
+		postImageWmfRequest = new PostImageWmfRequest(imageData, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, storage, "png");
 		
 		Method propertiesTester = WmfApiTests.class.getDeclaredMethod("postImageWmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
 		propertiesTester.setAccessible(true);

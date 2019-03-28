@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="Jpeg2000Codec.java">
+* <copyright company="Aspose" file="ApiError.java">
 *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -25,52 +25,22 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
-package com.aspose.imaging.cloud.sdk.model;
-
-import org.apache.commons.lang3.ObjectUtils;
-import java.util.ArrayList;
-import java.util.List;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.aspose.imaging.cloud.sdk.stablemodel.*;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+package com.aspose.imaging.cloud.sdk.invoker;
 
 /**
- * Represents JPEG2000 image type             
+ * API error container.
  */
-public enum Jpeg2000Codec {
-  
-  J2K("J2K"),
-  
-  JP2("Jp2"),
-  
-  JPT("Jpt");
-
-  private String value;
-
-  Jpeg2000Codec(String value) {
-    this.value = value;
-  }
-
-  @JsonValue
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static Jpeg2000Codec fromValue(String text) {
-    for (Jpeg2000Codec b : Jpeg2000Codec.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
-  }
+public class ApiError {
+	
+	/**
+	 * API error
+	 */
+    public com.aspose.imaging.cloud.sdk.model.Error error;
+    
+    /**
+     * ApiError constrcutor.
+     */
+	public ApiError() {
+		
+	}
 }
-

@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="DicomTestSuite.java">
+ * <copyright company="Aspose" file="V3_0TestSuite.java">
  *   Copyright (c) 2019 Aspose Pty Ltd.
  * </copyright>
  * <summary>
@@ -26,15 +26,35 @@
  */
 package com.aspose.imaging.cloud.test.suites;
 
-import com.aspose.imaging.cloud.test.api.DicomApiTests;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import com.aspose.imaging.cloud.test.api.FramesGetApiTests;
+import com.aspose.imaging.cloud.test.api.FramesPostApiTests;
+import com.aspose.imaging.cloud.test.api.TiffApiTests;
+import com.aspose.imaging.cloud.test.api.TiffSpecificApiTests;
+
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        DicomApiTests.class
+	BmpTestSuite.class,
+    CropTestSuite.class,
+    EmfTestSuite.class,
+    GifTestSuite.class,
+    Jpeg2000TestSuite.class,
+    JpgTestSuite.class,
+    PsdTestSuite.class,
+    ResizeTestSuite.class,
+    RotateFlipTestSuite.class,
+    SaveAsTestSuite.class,
+    UpdateTestSuite.class,
+    WebpTestSuite.class,
+    WmfTestSuite.class,
+    TiffApiTests.class,
+    FramesGetApiTests.class,
+    TiffSpecificApiTests.class,
+    AITestSuite.class,
+    FramesPostApiTests.class
 })
-public class DicomTestSuite {
+public class V3_0TestSuite {
 
 }

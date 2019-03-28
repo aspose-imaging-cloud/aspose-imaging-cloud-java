@@ -54,9 +54,8 @@ public class FindDuplicatesTests extends TestImagingAIBase{
         addImageFeaturesToSearchContext(image, false);
 
         ImageDuplicatesSet result = ImagingApi.getSearchContextFindDuplicates(
-            new GetSearchContextFindDuplicatesRequest(SearchContextId, 80.0, null,null));
+            new GetSearchContextFindDuplicatesRequest(SearchContextId, 80.0, null, TestStorage));
         
-        Assert.assertEquals((long)200, (long)result.getCode());
         Assert.assertEquals(1, result.getDuplicates().size());
     } 
 }

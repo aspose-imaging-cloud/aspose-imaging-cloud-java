@@ -28,16 +28,17 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
- * Duplicate images.
+ * ImageDuplicates
  */
 public class ImageDuplicates {
-  @JsonProperty("DuplicateImages")
+  @JsonProperty("duplicateImages")
   private List<SearchResult> duplicateImages = null;
 
   public ImageDuplicates duplicateImages(List<SearchResult> duplicateImages) {
@@ -54,7 +55,7 @@ public class ImageDuplicates {
   }
 
   /**
-   * Gets the array of duplicate images.
+   * Get duplicateImages
    * @return duplicateImages
   **/
   public List<SearchResult> getDuplicateImages() {

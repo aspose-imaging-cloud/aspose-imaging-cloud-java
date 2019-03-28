@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostImageTiffRequest
 {
-	/**
-	* Initializes a new instance of the PostImageTiffRequest class.   
+    /**
+    * Initializes a new instance of the PostImageTiffRequest class.   
     * @param imageData Input image
     * @param compression Compression.
     * @param resolutionUnit New resolution unit.
@@ -43,7 +43,7 @@ public class PostImageTiffRequest
     * @param verticalResolution New verstical resolution.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public PostImageTiffRequest(byte[] imageData, String compression, String resolutionUnit, Integer bitDepth, Boolean fromScratch, Double horizontalResolution, Double verticalResolution, String outPath, String storage)             
     {
         this.imageData = imageData;
@@ -56,7 +56,7 @@ public class PostImageTiffRequest
         this.outPath = outPath;
         this.storage = storage;
     }
-		
+        
     /**
     * Input image
     **/

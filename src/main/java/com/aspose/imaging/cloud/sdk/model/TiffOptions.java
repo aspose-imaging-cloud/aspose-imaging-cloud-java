@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,142 +38,142 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents options for TIFF frame.
  */
 public class TiffOptions {
-  @JsonProperty("IsValid")
+  @JsonProperty("isValid")
   private Boolean isValid = null;
 
-  @JsonProperty("Artist")
+  @JsonProperty("artist")
   private String artist = null;
 
-  @JsonProperty("ByteOrder")
+  @JsonProperty("byteOrder")
   private String byteOrder = null;
 
-  @JsonProperty("BitsPerSample")
+  @JsonProperty("bitsPerSample")
   private List<Integer> bitsPerSample = null;
 
-  @JsonProperty("Compression")
+  @JsonProperty("compression")
   private String compression = null;
 
-  @JsonProperty("Copyright")
+  @JsonProperty("copyright")
   private String copyright = null;
 
-  @JsonProperty("ColorMap")
+  @JsonProperty("colorMap")
   private List<Integer> colorMap = null;
 
-  @JsonProperty("DateTime")
+  @JsonProperty("dateTime")
   private String dateTime = null;
 
-  @JsonProperty("DocumentName")
+  @JsonProperty("documentName")
   private String documentName = null;
 
-  @JsonProperty("AlphaStorage")
+  @JsonProperty("alphaStorage")
   private String alphaStorage = null;
 
-  @JsonProperty("FillOrder")
+  @JsonProperty("fillOrder")
   private String fillOrder = null;
 
-  @JsonProperty("HalfToneHints")
+  @JsonProperty("halfToneHints")
   private List<Integer> halfToneHints = null;
 
-  @JsonProperty("ImageDescription")
+  @JsonProperty("imageDescription")
   private String imageDescription = null;
 
-  @JsonProperty("InkNames")
+  @JsonProperty("inkNames")
   private String inkNames = null;
 
-  @JsonProperty("ScannerManufacturer")
+  @JsonProperty("scannerManufacturer")
   private String scannerManufacturer = null;
 
-  @JsonProperty("MaxSampleValue")
+  @JsonProperty("maxSampleValue")
   private List<Integer> maxSampleValue = null;
 
-  @JsonProperty("MinSampleValue")
+  @JsonProperty("minSampleValue")
   private List<Integer> minSampleValue = null;
 
-  @JsonProperty("ScannerModel")
+  @JsonProperty("scannerModel")
   private String scannerModel = null;
 
-  @JsonProperty("PageName")
+  @JsonProperty("pageName")
   private String pageName = null;
 
-  @JsonProperty("Orientation")
+  @JsonProperty("orientation")
   private String orientation = null;
 
-  @JsonProperty("PageNumber")
+  @JsonProperty("pageNumber")
   private List<Integer> pageNumber = null;
 
-  @JsonProperty("Photometric")
+  @JsonProperty("photometric")
   private String photometric = null;
 
-  @JsonProperty("PlanarConfiguration")
+  @JsonProperty("planarConfiguration")
   private String planarConfiguration = null;
 
-  @JsonProperty("ResolutionUnit")
+  @JsonProperty("resolutionUnit")
   private String resolutionUnit = null;
 
-  @JsonProperty("RowsPerStrip")
+  @JsonProperty("rowsPerStrip")
   private Long rowsPerStrip = null;
 
-  @JsonProperty("SampleFormat")
+  @JsonProperty("sampleFormat")
   private List<String> sampleFormat = null;
 
-  @JsonProperty("SamplesPerPixel")
+  @JsonProperty("samplesPerPixel")
   private Integer samplesPerPixel = null;
 
-  @JsonProperty("SmaxSampleValue")
+  @JsonProperty("smaxSampleValue")
   private List<Long> smaxSampleValue = null;
 
-  @JsonProperty("SminSampleValue")
+  @JsonProperty("sminSampleValue")
   private List<Long> sminSampleValue = null;
 
-  @JsonProperty("SoftwareType")
+  @JsonProperty("softwareType")
   private String softwareType = null;
 
-  @JsonProperty("StripByteCounts")
+  @JsonProperty("stripByteCounts")
   private List<Long> stripByteCounts = null;
 
-  @JsonProperty("StripOffsets")
+  @JsonProperty("stripOffsets")
   private List<Long> stripOffsets = null;
 
-  @JsonProperty("SubFileType")
+  @JsonProperty("subFileType")
   private String subFileType = null;
 
-  @JsonProperty("TargetPrinter")
+  @JsonProperty("targetPrinter")
   private String targetPrinter = null;
 
-  @JsonProperty("Threshholding")
+  @JsonProperty("threshholding")
   private String threshholding = null;
 
-  @JsonProperty("TotalPages")
+  @JsonProperty("totalPages")
   private Integer totalPages = null;
 
-  @JsonProperty("Xposition")
+  @JsonProperty("xposition")
   private Double xposition = null;
 
-  @JsonProperty("Xresolution")
+  @JsonProperty("xresolution")
   private Double xresolution = null;
 
-  @JsonProperty("Yposition")
+  @JsonProperty("yposition")
   private Double yposition = null;
 
-  @JsonProperty("Yresolution")
+  @JsonProperty("yresolution")
   private Double yresolution = null;
 
-  @JsonProperty("FaxT4Options")
+  @JsonProperty("faxT4Options")
   private String faxT4Options = null;
 
-  @JsonProperty("Predictor")
+  @JsonProperty("predictor")
   private String predictor = null;
 
-  @JsonProperty("ImageLength")
+  @JsonProperty("imageLength")
   private Long imageLength = null;
 
-  @JsonProperty("ImageWidth")
+  @JsonProperty("imageWidth")
   private Long imageWidth = null;
 
-  @JsonProperty("ValidTagCount")
+  @JsonProperty("validTagCount")
   private Integer validTagCount = null;
 
-  @JsonProperty("BitsPerPixel")
+  @JsonProperty("bitsPerPixel")
   private Integer bitsPerPixel = null;
 
   public TiffOptions isValid(Boolean isValid) {

@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImageEmfRequest
 {
-	/**
-	* Initializes a new instance of the GetImageEmfRequest class.   
+    /**
+    * Initializes a new instance of the GetImageEmfRequest class.   
     * @param name Filename of image.
     * @param bkColor Color of the background.
     * @param pageWidth Width of the page.
@@ -44,8 +44,9 @@ public class GetImageEmfRequest
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
-    public GetImageEmfRequest(String name, String bkColor, Integer pageWidth, Integer pageHeight, Integer borderX, Integer borderY, Boolean fromScratch, String outPath, String folder, String storage)             
+    * @param format Export format (PNG is the default one).
+    **/
+    public GetImageEmfRequest(String name, String bkColor, Integer pageWidth, Integer pageHeight, Integer borderX, Integer borderY, Boolean fromScratch, String outPath, String folder, String storage, String format)             
     {
         this.name = name;
         this.bkColor = bkColor;
@@ -57,8 +58,9 @@ public class GetImageEmfRequest
         this.outPath = outPath;
         this.folder = folder;
         this.storage = storage;
+        this.format = format;
     }
-		
+        
     /**
     * Filename of image.
     **/
@@ -108,4 +110,9 @@ public class GetImageEmfRequest
     * Your Aspose Cloud Storage name.
     **/
     public String storage;
+
+    /**
+    * Export format (PNG is the default one).
+    **/
+    public String format;
 }

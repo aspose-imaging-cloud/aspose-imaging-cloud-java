@@ -28,19 +28,20 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
- * Search result.
+ * SearchResult
  */
 public class SearchResult {
-  @JsonProperty("ImageId")
+  @JsonProperty("imageId")
   private String imageId = null;
 
-  @JsonProperty("Similarity")
+  @JsonProperty("similarity")
   private Double similarity = null;
 
   public SearchResult imageId(String imageId) {
@@ -49,7 +50,7 @@ public class SearchResult {
   }
 
   /**
-   * Gets the image identifier.
+   * Get imageId
    * @return imageId
   **/
   public String getImageId() {
@@ -66,7 +67,7 @@ public class SearchResult {
   }
 
   /**
-   * Gets the similarity.
+   * Get similarity
    * @return similarity
   **/
   public Double getSimilarity() {

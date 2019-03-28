@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostImageWebPRequest
 {
-	/**
-	* Initializes a new instance of the PostImageWebPRequest class.   
+    /**
+    * Initializes a new instance of the PostImageWebPRequest class.   
     * @param imageData Input image
     * @param lossLess If WEBP is lossless.
     * @param quality Quality.
@@ -42,7 +42,7 @@ public class PostImageWebPRequest
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public PostImageWebPRequest(byte[] imageData, Boolean lossLess, Integer quality, Integer animLoopCount, String animBackgroundColor, Boolean fromScratch, String outPath, String storage)             
     {
         this.imageData = imageData;
@@ -54,7 +54,7 @@ public class PostImageWebPRequest
         this.outPath = outPath;
         this.storage = storage;
     }
-		
+        
     /**
     * Input image
     **/

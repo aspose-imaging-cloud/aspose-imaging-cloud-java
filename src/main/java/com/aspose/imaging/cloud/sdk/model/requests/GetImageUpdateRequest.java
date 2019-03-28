@@ -32,10 +32,10 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImageUpdateRequest
 {
-	/**
-	* Initializes a new instance of the GetImageUpdateRequest class.   
+    /**
+    * Initializes a new instance of the GetImageUpdateRequest class.   
     * @param name Filename of an image.
-    * @param format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * @param format Resulting image format.
     * @param newWidth New width of the scaled image.
     * @param newHeight New height of the scaled image.
     * @param x X position of start point for cropping rectangle.
@@ -46,7 +46,7 @@ public class GetImageUpdateRequest
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public GetImageUpdateRequest(String name, String format, Integer newWidth, Integer newHeight, Integer x, Integer y, Integer rectWidth, Integer rectHeight, String rotateFlipMethod, String outPath, String folder, String storage)             
     {
         this.name = name;
@@ -62,14 +62,14 @@ public class GetImageUpdateRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Filename of an image.
     **/
     public String name;
 
     /**
-    * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * Resulting image format.
     **/
     public String format;
 

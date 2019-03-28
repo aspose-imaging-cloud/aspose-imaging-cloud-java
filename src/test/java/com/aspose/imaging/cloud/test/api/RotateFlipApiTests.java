@@ -26,10 +26,10 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
+import com.aspose.imaging.cloud.sdk.model.StorageFile;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.base.StorageFileInfo;
 
 import org.junit.Test;
 import org.junit.Assert;
@@ -113,7 +113,7 @@ public class RotateFlipApiTests extends ApiTester {
             }
         }
 		
-		for (StorageFileInfo inputFile : InputTestFiles)
+		for (StorageFile inputFile : InputTestFiles)
 		{
 			if (inputFile.getName().endsWith(formatExtension))
             {
@@ -174,7 +174,7 @@ public class RotateFlipApiTests extends ApiTester {
             }
         }
 		
-		for (StorageFileInfo inputFile : InputTestFiles)
+		for (StorageFile inputFile : InputTestFiles)
 		{
 			if (inputFile.getName().endsWith(formatExtension))
             {

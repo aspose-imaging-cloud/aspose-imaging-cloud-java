@@ -25,9 +25,10 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
-package com.aspose.imaging.cloud.sdk.model;
+package com.aspose.imaging.cloud.sdk.stablemodel;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,17 +38,17 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents JFIF data.
  */
 public class JfifData {
-  @JsonProperty("DensityUnits")
+  @JsonProperty("densityUnits")
   private String densityUnits = null;
 
-  @JsonProperty("Version")
+  @JsonProperty("version")
   private Integer version = null;
 
-  @JsonProperty("XDensity")
-  private Integer xdensity = null;
+  @JsonProperty("xDensity")
+  private Integer xDensity = null;
 
-  @JsonProperty("YDensity")
-  private Integer ydensity = null;
+  @JsonProperty("yDensity")
+  private Integer yDensity = null;
 
   public JfifData densityUnits(String densityUnits) {
     this.densityUnits = densityUnits;
@@ -83,8 +84,8 @@ public class JfifData {
     this.version = version;
   }
 
-  public JfifData xdensity(Integer xdensity) {
-    this.xdensity = xdensity;
+  public JfifData xDensity(Integer xDensity) {
+    this.xDensity = xDensity;
     return this;
   }
 
@@ -93,15 +94,15 @@ public class JfifData {
    * @return xdensity
   **/
   public Integer getXdensity() {
-    return xdensity;
+    return xDensity;
   }  
 
-  public void setXdensity(Integer xdensity) {
-    this.xdensity = xdensity;
+  public void setXdensity(Integer xDensity) {
+    this.xDensity = xDensity;
   }
 
-  public JfifData ydensity(Integer ydensity) {
-    this.ydensity = ydensity;
+  public JfifData ydensity(Integer yDensity) {
+    this.yDensity = yDensity;
     return this;
   }
 
@@ -110,11 +111,11 @@ public class JfifData {
    * @return ydensity
   **/
   public Integer getYdensity() {
-    return ydensity;
+    return yDensity;
   }  
 
-  public void setYdensity(Integer ydensity) {
-    this.ydensity = ydensity;
+  public void setYdensity(Integer yDensity) {
+    this.yDensity = yDensity;
   }
 
 
@@ -129,13 +130,13 @@ public class JfifData {
     JfifData jfifData = (JfifData) o;
     return ObjectUtils.equals(this.densityUnits, jfifData.densityUnits) &&
     ObjectUtils.equals(this.version, jfifData.version) &&
-    ObjectUtils.equals(this.xdensity, jfifData.xdensity) &&
-    ObjectUtils.equals(this.ydensity, jfifData.ydensity);
+    ObjectUtils.equals(this.xDensity, jfifData.xDensity) &&
+    ObjectUtils.equals(this.yDensity, jfifData.yDensity);
   }
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(densityUnits, version, xdensity, ydensity);
+    return ObjectUtils.hashCodeMulti(densityUnits, version, xDensity, yDensity);
   }
 
 
@@ -146,8 +147,8 @@ public class JfifData {
     
     sb.append("    densityUnits: ").append(toIndentedString(densityUnits)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    xdensity: ").append(toIndentedString(xdensity)).append("\n");
-    sb.append("    ydensity: ").append(toIndentedString(ydensity)).append("\n");
+    sb.append("    xDensity: ").append(toIndentedString(xDensity)).append("\n");
+    sb.append("    yDensity: ").append(toIndentedString(yDensity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

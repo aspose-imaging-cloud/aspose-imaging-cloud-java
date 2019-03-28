@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,8 +37,8 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
 /**
  * Duplicate images set.  
  */
-public class ImageDuplicatesSet extends SaaSposeResponse {
-  @JsonProperty("Duplicates")
+public class ImageDuplicatesSet {
+  @JsonProperty("duplicates")
   private List<ImageDuplicates> duplicates = null;
 
   public ImageDuplicatesSet duplicates(List<ImageDuplicates> duplicates) {
@@ -75,13 +76,12 @@ public class ImageDuplicatesSet extends SaaSposeResponse {
     return false;
   }
     ImageDuplicatesSet imageDuplicatesSet = (ImageDuplicatesSet) o;
-    return ObjectUtils.equals(this.duplicates, imageDuplicatesSet.duplicates) &&
-    super.equals(o);
+    return ObjectUtils.equals(this.duplicates, imageDuplicatesSet.duplicates);
   }
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(duplicates, super.hashCode());
+    return ObjectUtils.hashCodeMulti(duplicates);
   }
 
 
@@ -89,7 +89,7 @@ public class ImageDuplicatesSet extends SaaSposeResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageDuplicatesSet {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    duplicates: ").append(toIndentedString(duplicates)).append("\n");
     sb.append("}");
     return sb.toString();
