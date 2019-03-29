@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="V3_0TestSuite.java">
+ * <copyright company="Aspose" file="StorageTestSuite.java">
  *   Copyright (c) 2019 Aspose Pty Ltd.
  * </copyright>
  * <summary>
@@ -29,38 +29,14 @@ package com.aspose.imaging.cloud.test.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import com.aspose.imaging.cloud.test.api.FramesGetApiTests;
-import com.aspose.imaging.cloud.test.api.FramesPostApiTests;
-import com.aspose.imaging.cloud.test.api.TiffApiTests;
-import com.aspose.imaging.cloud.test.api.TiffSpecificApiTests;
-import com.aspose.imaging.cloud.test.api.storage.FileApiTests;
-import com.aspose.imaging.cloud.test.api.storage.FolderApiTests;
-import com.aspose.imaging.cloud.test.api.storage.StorageApiTests;
+import com.aspose.imaging.cloud.test.api.storage.*;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	BmpTestSuite.class,
-    CropTestSuite.class,
-    EmfTestSuite.class,
-    GifTestSuite.class,
-    Jpeg2000TestSuite.class,
-    JpgTestSuite.class,
-    PsdTestSuite.class,
-    ResizeTestSuite.class,
-    RotateFlipTestSuite.class,
-    SaveAsTestSuite.class,
-    UpdateTestSuite.class,
-    WebpTestSuite.class,
-    WmfTestSuite.class,
-    TiffApiTests.class,
-    FramesGetApiTests.class,
-    TiffSpecificApiTests.class,
-    AITestSuite.class,
-    FramesPostApiTests.class,
-    FileApiTests.class,
-    FolderApiTests.class,
-    StorageApiTests.class
+        FileApiTests.class,
+        FolderApiTests.class,
+        StorageApiTests.class
 })
-public class V3_0TestSuite {
+public class StorageTestSuite {
 
 }

@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
- * SearchResult
+ * Image search result.
  */
 public class SearchResult {
   @JsonProperty("imageId")
@@ -50,7 +50,7 @@ public class SearchResult {
   }
 
   /**
-   * Get imageId
+   * Gets or sets the image identifier.
    * @return imageId
   **/
   public String getImageId() {
@@ -67,7 +67,7 @@ public class SearchResult {
   }
 
   /**
-   * Get similarity
+   * Gets or sets the similarity.
    * @return similarity
   **/
   public Double getSimilarity() {

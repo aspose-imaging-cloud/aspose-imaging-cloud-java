@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
- * ImageDuplicates
+ * Image duplicates.
  */
 public class ImageDuplicates {
   @JsonProperty("duplicateImages")
@@ -55,7 +55,7 @@ public class ImageDuplicates {
   }
 
   /**
-   * Get duplicateImages
+   * Gets or sets the duplicate images.
    * @return duplicateImages
   **/
   public List<SearchResult> getDuplicateImages() {
