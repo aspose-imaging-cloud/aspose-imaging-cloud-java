@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class AuthRequestHandler implements IRequestHandler
 {
-	/**
+    /**
      * The configuration
      */
     private final Configuration configuration;
@@ -98,7 +98,7 @@ public class AuthRequestHandler implements IRequestHandler
     {
         if (this.accessToken == null || this.accessToken == "")
         {
-        	this.requestJwtToken();
+            this.requestJwtToken();
         }
         
         connection.setRequestProperty("Authorization", "Bearer " + this.accessToken);
@@ -121,7 +121,7 @@ public class AuthRequestHandler implements IRequestHandler
      */
     private void requestJwtToken() throws Exception
     {
-    	String requestUrl = this.configuration.getApiBaseUrl() + "connect/token";
+        String requestUrl = this.configuration.getApiBaseUrl() + "connect/token";
 
         String postData = "grant_type=client_credentials";
         postData += "&client_id=" + this.configuration.AppSid;
@@ -140,7 +140,7 @@ public class AuthRequestHandler implements IRequestHandler
     private void requestToken(String tokenUrl, String postData) throws Exception
     {
         byte[] resultData = this.apiInvoker.invokeApi(
-        		tokenUrl,
+                tokenUrl,
                 "POST",
                 postData,
                 null,
@@ -159,18 +159,18 @@ public class AuthRequestHandler implements IRequestHandler
      */
     public static class GetAccessTokenResult
     {
-    	public GetAccessTokenResult()
-    	{
-    		
-    	}
-    	
-    	@JsonProperty("access_token")
+        public GetAccessTokenResult()
+        {
+            
+        }
+        
+        @JsonProperty("access_token")
         public String AccessToken;
-    	
-    	@JsonProperty("expires_in")
+        
+        @JsonProperty("expires_in")
         public String ExpiresIn;
-    	
-    	@JsonProperty("token_type")
+        
+        @JsonProperty("token_type")
         public String TokenType;
     }        
 }

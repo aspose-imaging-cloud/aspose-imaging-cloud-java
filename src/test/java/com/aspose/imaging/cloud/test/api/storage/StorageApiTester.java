@@ -38,33 +38,33 @@ import com.aspose.imaging.cloud.test.base.ApiTester;
  */
 public class StorageApiTester extends ApiTester {
 
-	protected final static String OriginalDataFolder = ApiTester.OriginalDataFolder + "/Storage";
+    protected final static String OriginalDataFolder = ApiTester.OriginalDataFolder + "/Storage";
 
-	protected final static String CloudTestFolderPrefix = "ImagingStorageCloudTestDotNet";
-	
-	protected StorageFile getFileWithName(List<StorageFile> files, String name) {
-		StorageFile result = null;
+    protected final static String CloudTestFolderPrefix = "ImagingStorageCloudTestDotNet";
+    
+    protected StorageFile getFileWithName(List<StorageFile> files, String name) {
+        StorageFile result = null;
 
-		for (StorageFile file : files) {
-			if (file.getName().equals(name)) {
-				result = file;
-				break;
-			}
-		}
+        for (StorageFile file : files) {
+            if (file.getName().equals(name)) {
+                result = file;
+                break;
+            }
+        }
 
-		return result;
-	}
-	
-	protected FileVersion getFileVersion(List<FileVersion> versions, Boolean recent) {
-		FileVersion result = null;
+        return result;
+    }
+    
+    protected FileVersion getFileVersion(List<FileVersion> versions, Boolean recent) {
+        FileVersion result = null;
 
-		for (FileVersion version : versions) {
-			if (version.isIsLatest() == recent) {
-				result = version;
-				break;
-			}
-		}
+        for (FileVersion version : versions) {
+            if (version.isIsLatest() == recent) {
+                result = version;
+                break;
+            }
+        }
 
-		return result;
-	}
+        return result;
+    }
 }

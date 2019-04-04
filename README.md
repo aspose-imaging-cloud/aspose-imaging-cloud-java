@@ -60,38 +60,23 @@ Process options, change and return images in any supported export format:
 * Image comparison and similarity detection
 * Image features extraction (for now, AKAZE detector is supported)
 
+# Storage API support
+#### Since version 19.4, SDK includes support of storage operations for better user experience and unification, so now there's no need to use 2 different SDKs!
+
+It gives you an ability to:
+* Upload, download, copy, move and delete files, including versions handling (if you are using Cloud storage that supports this feature - true by default)
+* Create, copy, move and delete folders
+* Copy and move files and folders accross separate storages in scope of a single operation
+* Check if certain file, folder or storage exists
+
 # Usage
-1. Add Aspose Cloud repository to your pom.xml.
-```xml
-<profiles>
-    <profile>
-        <repositories>
-            <repository>
-                <id>AsposeJavaAPI</id>
-                <name>Aspose Java API</name>
-                <url>http://artifact.aspose.cloud/repo/</url>
-                <snapshots>
-                    <enabled>false</enabled>
-                </snapshots>
-                <releases>
-                    <enabled>true</enabled>
-                </releases>
-            </repository>
-        </repositories>
-        <id>repositoryProfile</id>
-        <activation>
-            <activeByDefault>true</activeByDefault>
-        </activation>
-    </profile>
-</profiles>
-```
-2. Add Aspose.Imaging Cloud Java SDK as a dependency.
+Add Aspose.Imaging Cloud Java SDK as a dependency.
 ```xml
 <dependencies>
     <dependency>
         <groupId>com.aspose</groupId>
         <artifactId>aspose-imaging-cloud</artifactId>
-        <version>19.3</version>
+        <version>19.4</version>
     </dependency>
 </dependencies>
 ```

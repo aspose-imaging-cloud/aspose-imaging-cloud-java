@@ -40,27 +40,27 @@ import com.aspose.imaging.cloud.sdk.model.requests.StorageExistsRequest;
  * Specific Storage API tests.
  */
 public class StorageApiTests extends StorageApiTester {
-	@Test
-	public void getDiscUsageTest() throws Exception {
-		try {
-			DiscUsage discUsage = ImagingApi.getDiscUsage(new GetDiscUsageRequest(TestStorage));
-			Assert.assertTrue(discUsage.getUsedSize() < discUsage.getTotalSize());
-			Assert.assertTrue(discUsage.getTotalSize() > 0);
-			Assert.assertTrue(discUsage.getUsedSize() > 0);
-		} catch (ApiException ex) {
-			Assert.assertTrue(ex.errorCode == 501);
-		}
-	}
+    @Test
+    public void getDiscUsageTest() throws Exception {
+        try {
+            DiscUsage discUsage = ImagingApi.getDiscUsage(new GetDiscUsageRequest(TestStorage));
+            Assert.assertTrue(discUsage.getUsedSize() < discUsage.getTotalSize());
+            Assert.assertTrue(discUsage.getTotalSize() > 0);
+            Assert.assertTrue(discUsage.getUsedSize() > 0);
+        } catch (ApiException ex) {
+            Assert.assertTrue(ex.errorCode == 501);
+        }
+    }
 
-	@Test
-	public void storageExistsTest() throws Exception {
-		StorageExist storageExists = ImagingApi.storageExists(new StorageExistsRequest(TestStorage));
-		Assert.assertTrue(storageExists.isExists());
-	}
+    @Test
+    public void storageExistsTest() throws Exception {
+        StorageExist storageExists = ImagingApi.storageExists(new StorageExistsRequest(TestStorage));
+        Assert.assertTrue(storageExists.isExists());
+    }
 
-	@Test
-	public void storageDoesNotExistTest() throws Exception {
-		StorageExist storageExists = ImagingApi.storageExists(new StorageExistsRequest("NotExistingStorage"));
-		Assert.assertFalse(storageExists.isExists());
-	}
+    @Test
+    public void storageDoesNotExistTest() throws Exception {
+        StorageExist storageExists = ImagingApi.storageExists(new StorageExistsRequest("NotExistingStorage"));
+        Assert.assertFalse(storageExists.isExists());
+    }
 }

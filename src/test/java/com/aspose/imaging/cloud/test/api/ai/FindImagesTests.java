@@ -41,8 +41,8 @@ import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextFindByTagsRe
 import com.google.gson.Gson;
 
 public class FindImagesTests extends TestImagingAIBase {
-	
-	 private final String ImageToFind = "4.jpg";
+    
+     private final String ImageToFind = "4.jpg";
      private final String ImageToFindByTag = "ComparingImageSimilar75.jpg";
 
      @Test
@@ -51,7 +51,7 @@ public class FindImagesTests extends TestImagingAIBase {
          addImageFeaturesToSearchContext(OriginalDataFolder + "/FindSimilar", true);
          String findImageId = OriginalDataFolder +"/FindSimilar/"+ImageToFind;
          SearchResultsSet result = ImagingApi.getSearchContextFindSimilar(
-        		 new GetSearchContextFindSimilarRequest(SearchContextId, 3.0, 3, null, findImageId, null, TestStorage));
+                 new GetSearchContextFindSimilarRequest(SearchContextId, 3.0, 3, null, findImageId, null, TestStorage));
 
          Assert.assertTrue(result.getResults().size() >= 1);       
      }
@@ -67,7 +67,7 @@ public class FindImagesTests extends TestImagingAIBase {
          byte[] imageData = ImagingApi.downloadFile(new DownloadFileRequest(storagePath, TestStorage, null));
          
          ImagingApi.postSearchContextAddTag(
-        		 new PostSearchContextAddTagRequest(imageData, SearchContextId, tag, null, TestStorage));           
+                 new PostSearchContextAddTagRequest(imageData, SearchContextId, tag, null, TestStorage));           
 
          List<String> tagsList = new ArrayList<String>();
          tagsList.add(tag);

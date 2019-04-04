@@ -43,7 +43,7 @@ import com.aspose.imaging.cloud.sdk.invoker.Configuration;
 /// <summary>
 public class DebugLogRequestHandler implements IRequestHandler
 {
-	/**
+    /**
      * The configuration
      */
     private final Configuration configuration;
@@ -60,10 +60,10 @@ public class DebugLogRequestHandler implements IRequestHandler
     }
 
     /**
-	 * Processes the URL.
-	 * @param url The URL.
-	 * @return Processed URL.
-	 */
+     * Processes the URL.
+     * @param url The URL.
+     * @return Processed URL.
+     */
     public String processUrl(String url)
     {
         return url;
@@ -76,7 +76,7 @@ public class DebugLogRequestHandler implements IRequestHandler
      */
     public void beforeSend(HttpURLConnection connection, OutputStream streamToSend)
     {
-    	if (this.configuration.getDebugMode())
+        if (this.configuration.getDebugMode())
         {
             this.logRequest(connection, streamToSend);
         }
@@ -90,7 +90,7 @@ public class DebugLogRequestHandler implements IRequestHandler
      */
     public void processResponse(HttpURLConnection connection, byte[] resultData) throws IOException
     {
-    	if (this.configuration.getDebugMode())
+        if (this.configuration.getDebugMode())
         {
             this.logResponse(connection, resultData);
         }
@@ -107,7 +107,7 @@ public class DebugLogRequestHandler implements IRequestHandler
         this.log(header);
         if (streamToSend != null)
         {
-        	this.log(streamToSend.toString());
+            this.log(streamToSend.toString());
         }
     }
 
@@ -119,10 +119,10 @@ public class DebugLogRequestHandler implements IRequestHandler
      */
     private void logResponse(HttpURLConnection connection, byte[] resultData) throws IOException
     {
-    	String header = String.format("\r\nResponse %d: %s", connection.getResponseCode(), connection.getResponseMessage());
-    	this.log(header);
-    	
-    	StringBuilder sb = new StringBuilder();
+        String header = String.format("\r\nResponse %d: %s", connection.getResponseCode(), connection.getResponseMessage());
+        this.log(header);
+        
+        StringBuilder sb = new StringBuilder();
         this.formatHeaders(sb, connection.getHeaderFields());
         this.log(sb.toString());
         
@@ -143,7 +143,7 @@ public class DebugLogRequestHandler implements IRequestHandler
             List<String> values = headerDictionary.get(key);
             for (String value : values)
             {
-            	sb.append(value + "; ");
+                sb.append(value + "; ");
             }
             
             sb.append("\n");
@@ -156,7 +156,7 @@ public class DebugLogRequestHandler implements IRequestHandler
      */
     private void log(String string)
     {
-    	logger.log(Level.FINE, string);
-    	System.out.println(string);
+        logger.log(Level.FINE, string);
+        System.out.println(string);
     }
 }

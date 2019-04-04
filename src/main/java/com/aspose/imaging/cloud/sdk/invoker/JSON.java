@@ -39,15 +39,15 @@ import java.io.IOException;
  * JSON helper class.
  */
 public class JSON {
-	static final ObjectMapper mapper = new ObjectMapper();
-	static final ObjectWriter writer = mapper.writerWithDefaultPrettyPrinter();
-	
-	public static String serialize(Object object) throws JsonProcessingException
-	{
-		return writer.writeValueAsString(object);	}
-	
-	public static <T> T deserialize(String json, Class<T> type) throws JsonParseException, JsonMappingException, IOException
-	{
-		return mapper.readValue(json, type);
-	}
+    static final ObjectMapper mapper = new ObjectMapper();
+    static final ObjectWriter writer = mapper.writerWithDefaultPrettyPrinter();
+    
+    public static String serialize(Object object) throws JsonProcessingException
+    {
+        return writer.writeValueAsString(object);    }
+    
+    public static <T> T deserialize(String json, Class<T> type) throws JsonParseException, JsonMappingException, IOException
+    {
+        return mapper.readValue(json, type);
+    }
 }

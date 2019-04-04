@@ -36,7 +36,7 @@ import com.aspose.imaging.cloud.sdk.model.requests.DownloadFileRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextCompareImagesRequest;
 
 public class CompareImagesTests extends TestImagingAIBase{
-	 private final String ComparableImage = "ComparableImage.jpg";
+     private final String ComparableImage = "ComparableImage.jpg";
      private final String ComparingImageSimilarLess15 = "ComparingImageSimilar15.jpg";
      private final String ComparingImageSimilarMore75 = "ComparingImageSimilar75.jpg";
 

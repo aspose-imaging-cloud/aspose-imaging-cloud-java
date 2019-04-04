@@ -38,18 +38,18 @@ public class Configuration
         public final String DefaultBaseUrl = "https://api.aspose.cloud/";
 
         /**
-    	 * The default API version
-    	 */
+         * The default API version
+         */
         public final String DefaultApiVersion = "v3.0";
 
         /**
-    	 * The API base URL
-    	 */
+         * The API base URL
+         */
         private String apiBaseUrl = DefaultBaseUrl;
 
         /**
-    	 * The API version
-    	 */
+         * The API version
+         */
         private String apiVersion = DefaultApiVersion;
 
         /**
@@ -73,7 +73,7 @@ public class Configuration
          */
         public String getApiBaseUrl()
         {
-        	return this.apiBaseUrl;
+            return this.apiBaseUrl;
         }
         
         /**
@@ -82,11 +82,11 @@ public class Configuration
          */
         public void setApiBaseUrl(String value)
         {
-        	this.apiBaseUrl = value;
-        	if (!this.apiBaseUrl.endsWith("/"))
-        	{
-        		this.apiBaseUrl += "/";
-        	}
+            this.apiBaseUrl = value;
+            if (!this.apiBaseUrl.endsWith("/"))
+            {
+                this.apiBaseUrl += "/";
+            }
         }
         
         /**
@@ -95,7 +95,7 @@ public class Configuration
          */
         public String getApiVersion()
         {
-        	return this.apiVersion;
+            return this.apiVersion;
         }
 
         /**
@@ -105,12 +105,12 @@ public class Configuration
          */
         public void setApiVersion(String value) throws Exception
         {
-        	if (value.startsWith("v1") || value.startsWith("v2"))
-        	{
-        		throw new Exception("This SDK is intended to be used only with API v3 and higher due to breaking changes!");
-        	}
-        	
-        	this.apiVersion = value;
+            if (value.startsWith("v1") || value.startsWith("v2"))
+            {
+                throw new Exception("This SDK is intended to be used only with API v3 and higher due to breaking changes!");
+            }
+            
+            this.apiVersion = value;
         }
         
         /**
@@ -119,7 +119,7 @@ public class Configuration
          */
         public Boolean getDebugMode()
         {
-        	return this.debugMode;
+            return this.debugMode;
         }
         
         /**
@@ -128,7 +128,7 @@ public class Configuration
          */
         public void setDebugMode(Boolean value)
         {
-        	this.debugMode = value;
+            this.debugMode = value;
         }
 
         /**
@@ -137,6 +137,6 @@ public class Configuration
          */
         public String getApiRootUrl()
         {
-        	return this.getApiBaseUrl() + this.getApiVersion();
+            return this.getApiBaseUrl() + this.getApiVersion();
         }
 }

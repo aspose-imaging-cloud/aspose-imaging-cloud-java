@@ -416,9 +416,9 @@ public class ImagingResponse {
     }
     ImagingResponse imagingResponse = (ImagingResponse) o;
     return ObjectUtils.equals(this.height, imagingResponse.height) &&
-    	ObjectUtils.equals(this.width, imagingResponse.width) &&
-    	ObjectUtils.equals(this.bitsPerPixel, imagingResponse.bitsPerPixel) &&
-    	ObjectUtils.equals(this.bmpProperties, imagingResponse.bmpProperties) &&
+        ObjectUtils.equals(this.width, imagingResponse.width) &&
+        ObjectUtils.equals(this.bitsPerPixel, imagingResponse.bitsPerPixel) &&
+        ObjectUtils.equals(this.bmpProperties, imagingResponse.bmpProperties) &&
         ObjectUtils.equals(this.gifProperties, imagingResponse.gifProperties) &&
         ObjectUtils.equals(this.jpegProperties, imagingResponse.jpegProperties) &&
         ObjectUtils.equals(this.pngProperties, imagingResponse.pngProperties) &&

@@ -46,21 +46,21 @@ import java.lang.reflect.Method;
 @RunWith(Parameterized.class)
 public class JpgApiTests extends ApiTester {
 
-	private GetImageJpgRequest getImageJpgRequest;
-	private PostImageJpgRequest postImageJpgRequest;
+    private GetImageJpgRequest getImageJpgRequest;
+    private PostImageJpgRequest postImageJpgRequest;
 
-	@Parameters
-	public static Iterable<Object> data() {
-		return Arrays.asList(new Object[] { true, false });
-	}
+    @Parameters
+    public static Iterable<Object> data() {
+        return Arrays.asList(new Object[] { true, false });
+    }
 
-	private Boolean saveResultToStorage;
+    private Boolean saveResultToStorage;
 
-	public JpgApiTests(Boolean saveResult)
-	{
-		this.saveResultToStorage = saveResult;
-	}
-	
+    public JpgApiTests(Boolean saveResult)
+    {
+        this.saveResultToStorage = saveResult;
+    }
+    
     /**
      * Test operation: Update parameters of existing JPG image.
      * 
@@ -69,25 +69,25 @@ public class JpgApiTests extends ApiTester {
      */
     @Test
     public void getImageJpgTest() throws Exception {
-    	String name = "test.jpg";
-    	int quality = 65;
+        String name = "test.jpg";
+        int quality = 65;
         String compressionType = "progressive";
         Boolean fromScratch = null;
         String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-		String outName = name + "_specific." + "jpg";
-		getImageJpgRequest = new GetImageJpgRequest(name, quality, compressionType, fromScratch, outPath, folder, storage);
-		
-		Method propertiesTester = JpgApiTests.class.getDeclaredMethod("getImageJpgPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-		propertiesTester.setAccessible(true);
-		Method requestInvoker = JpgApiTests.class.getDeclaredMethod("getImageJpgGetRequestInvoker", String.class, String.class);
-		requestInvoker.setAccessible(true);
-	    this.testGetRequest(
+        String outName = name + "_specific." + "jpg";
+        getImageJpgRequest = new GetImageJpgRequest(name, quality, compressionType, fromScratch, outPath, folder, storage);
+        
+        Method propertiesTester = JpgApiTests.class.getDeclaredMethod("getImageJpgPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = JpgApiTests.class.getDeclaredMethod("getImageJpgGetRequestInvoker", String.class, String.class);
+        requestInvoker.setAccessible(true);
+        this.testGetRequest(
             "getImageJpgTest; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; Quality: %s; Compression type: %s",
-            		name, quality, compressionType),
+                    name, quality, compressionType),
             name,
             outName,
             requestInvoker,
@@ -95,7 +95,7 @@ public class JpgApiTests extends ApiTester {
             folder,
             storage);
     }
-	
+    
     /**
      * Test operation: Update parameters of JPG image. Image is passed in a request stream.
      * 
@@ -112,18 +112,18 @@ public class JpgApiTests extends ApiTester {
         String storage = TestStorage;
         String folder = getTempFolder();
         String name = "test.jpg";
-		String outName = name + "_specific." + "jpg";
-		postImageJpgRequest = new PostImageJpgRequest(imageData, quality, compressionType, fromScratch, outPath, storage);
-		
-		Method propertiesTester = JpgApiTests.class.getDeclaredMethod("postImageJpgPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-		propertiesTester.setAccessible(true);
-		Method requestInvoker = JpgApiTests.class.getDeclaredMethod("postImageJpgPostRequestInvoker", byte[].class, String.class);
-		requestInvoker.setAccessible(true);
-	    this.testPostRequest(
+        String outName = name + "_specific." + "jpg";
+        postImageJpgRequest = new PostImageJpgRequest(imageData, quality, compressionType, fromScratch, outPath, storage);
+        
+        Method propertiesTester = JpgApiTests.class.getDeclaredMethod("postImageJpgPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = JpgApiTests.class.getDeclaredMethod("postImageJpgPostRequestInvoker", byte[].class, String.class);
+        requestInvoker.setAccessible(true);
+        this.testPostRequest(
             "postImageJpgTest; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; Quality: %s; Compression type: %s",
-            		name, quality, compressionType),
+                    name, quality, compressionType),
             name,
             outName,
             requestInvoker,
@@ -132,61 +132,61 @@ public class JpgApiTests extends ApiTester {
             storage);
     }
     
-	/**
-	 * Invokes GET request for getImageJpg operation. Used indirectly by method reference.
-	 * @param name Image file name
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] getImageJpgGetRequestInvoker(String name, String outPath) throws Exception
-	{
-		getImageJpgRequest.name = name;
-		getImageJpgRequest.outPath = outPath;
+    /**
+     * Invokes GET request for getImageJpg operation. Used indirectly by method reference.
+     * @param name Image file name
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] getImageJpgGetRequestInvoker(String name, String outPath) throws Exception
+    {
+        getImageJpgRequest.name = name;
+        getImageJpgRequest.outPath = outPath;
         return ImagingApi.getImageJpg(getImageJpgRequest);
-	}
-	
-	/**
-	 * Invokes POST request for postImageJpg operation. Used indirectly by method reference.
-	 * @param imageData Image data
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] postImageJpgPostRequestInvoker(byte[] imageData, String outPath) throws Exception
-	{
-	    postImageJpgRequest.imageData = imageData;
-		postImageJpgRequest.outPath = outPath;
+    }
+    
+    /**
+     * Invokes POST request for postImageJpg operation. Used indirectly by method reference.
+     * @param imageData Image data
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] postImageJpgPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    {
+        postImageJpgRequest.imageData = imageData;
+        postImageJpgRequest.outPath = outPath;
         return ImagingApi.postImageJpg(postImageJpgRequest);
-	}
-	
-	/**
-	 * Tests properties for getImageJpg operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void getImageJpgPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
-		Assert.assertNotNull(resultProperties.getJpegProperties());
-
-        Assert.assertNotNull(originalProperties.getJpegProperties());
-        Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
-        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
-	}
-	
-	/**
-	 * Tests properties for postImageJpg operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void postImageJpgPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
+    }
+    
+    /**
+     * Tests properties for getImageJpg operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void getImageJpgPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
         Assert.assertNotNull(resultProperties.getJpegProperties());
 
         Assert.assertNotNull(originalProperties.getJpegProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
         Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
-	}
+    }
+    
+    /**
+     * Tests properties for postImageJpg operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void postImageJpgPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertNotNull(resultProperties.getJpegProperties());
+
+        Assert.assertNotNull(originalProperties.getJpegProperties());
+        Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
+        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
+    }
 }

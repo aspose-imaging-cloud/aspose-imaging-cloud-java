@@ -29,6 +29,7 @@ package com.aspose.imaging.cloud.test.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import com.aspose.imaging.cloud.test.api.ExamplesTests;
 import com.aspose.imaging.cloud.test.api.FramesGetApiTests;
 import com.aspose.imaging.cloud.test.api.FramesPostApiTests;
 import com.aspose.imaging.cloud.test.api.TiffApiTests;
@@ -39,7 +40,7 @@ import com.aspose.imaging.cloud.test.api.storage.StorageApiTests;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	BmpTestSuite.class,
+    BmpTestSuite.class,
     CropTestSuite.class,
     EmfTestSuite.class,
     GifTestSuite.class,
@@ -59,7 +60,8 @@ import com.aspose.imaging.cloud.test.api.storage.StorageApiTests;
     FramesPostApiTests.class,
     FileApiTests.class,
     FolderApiTests.class,
-    StorageApiTests.class
+    StorageApiTests.class,
+    ExamplesTests.class
 })
 public class V3_0TestSuite {
 

@@ -46,21 +46,21 @@ import java.lang.reflect.Method;
 @RunWith(Parameterized.class)
 public class EmfApiTests extends ApiTester {
 
-	private GetImageEmfRequest getImageEmfRequest;
-	private PostImageEmfRequest postImageEmfRequest;
+    private GetImageEmfRequest getImageEmfRequest;
+    private PostImageEmfRequest postImageEmfRequest;
 
-	@Parameters
-	public static Iterable<Object> data() {
-		return Arrays.asList(new Object[] { true, false });
-	}
+    @Parameters
+    public static Iterable<Object> data() {
+        return Arrays.asList(new Object[] { true, false });
+    }
 
-	private Boolean saveResultToStorage;
+    private Boolean saveResultToStorage;
 
-	public EmfApiTests(Boolean saveResult)
-	{
-		this.saveResultToStorage = saveResult;
-	}
-	
+    public EmfApiTests(Boolean saveResult)
+    {
+        this.saveResultToStorage = saveResult;
+    }
+    
     /**
      * Test operation: Rasterize existing EMF image to PNG using given parameters.
      * 
@@ -69,7 +69,7 @@ public class EmfApiTests extends ApiTester {
      */
     @Test
     public void getImageEmfTest() throws Exception {
-    	String name = "test.emf";
+        String name = "test.emf";
         String bkColor = "gray";
         Integer pageWidth = 300;
         Integer pageHeight = 300;
@@ -79,18 +79,18 @@ public class EmfApiTests extends ApiTester {
         String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-		String outName = name + "_specific." + "png";
-		getImageEmfRequest = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, folder, storage, "png");
-		
-		Method propertiesTester = EmfApiTests.class.getDeclaredMethod("getImageEmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-		propertiesTester.setAccessible(true);
-		Method requestInvoker = EmfApiTests.class.getDeclaredMethod("getImageEmfGetRequestInvoker", String.class, String.class);
-		requestInvoker.setAccessible(true);
-	    this.testGetRequest(
+        String outName = name + "_specific." + "png";
+        getImageEmfRequest = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, folder, storage, "png");
+        
+        Method propertiesTester = EmfApiTests.class.getDeclaredMethod("getImageEmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = EmfApiTests.class.getDeclaredMethod("getImageEmfGetRequestInvoker", String.class, String.class);
+        requestInvoker.setAccessible(true);
+        this.testGetRequest(
             "getImageEmfTest; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; BackColor: %s; Page width: %s; Page height: %s; BorderX: %s; BorderY: %s",
-            		name, bkColor, pageWidth, pageHeight, borderX, borderY),
+                    name, bkColor, pageWidth, pageHeight, borderX, borderY),
             name,
             outName,
             requestInvoker,
@@ -98,7 +98,7 @@ public class EmfApiTests extends ApiTester {
             folder,
             storage);
     }
-	
+    
     /**
      * Test operation: Rasterize EMF image to PNG using given parameters. Image is passed in a request stream.
      * 
@@ -118,18 +118,18 @@ public class EmfApiTests extends ApiTester {
         String storage = TestStorage;
         String folder = getTempFolder();
         String name = "test.emf";
-		String outName = name + "_specific." + "png";
-		postImageEmfRequest = new PostImageEmfRequest(imageData, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, storage, "png");
-		
-		Method propertiesTester = EmfApiTests.class.getDeclaredMethod("postImageEmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-		propertiesTester.setAccessible(true);
-		Method requestInvoker = EmfApiTests.class.getDeclaredMethod("postImageEmfPostRequestInvoker", byte[].class, String.class);
-		requestInvoker.setAccessible(true);
-	    this.testPostRequest(
+        String outName = name + "_specific." + "png";
+        postImageEmfRequest = new PostImageEmfRequest(imageData, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, storage, "png");
+        
+        Method propertiesTester = EmfApiTests.class.getDeclaredMethod("postImageEmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = EmfApiTests.class.getDeclaredMethod("postImageEmfPostRequestInvoker", byte[].class, String.class);
+        requestInvoker.setAccessible(true);
+        this.testPostRequest(
             "postImageEmfTest; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; BackColor: %s; Page width: %s; Page height: %s; BorderX: %s; BorderY: %s",
-            		name, bkColor, pageWidth, pageHeight, borderX, borderY),
+                    name, bkColor, pageWidth, pageHeight, borderX, borderY),
             name,
             outName,
             requestInvoker,
@@ -138,57 +138,57 @@ public class EmfApiTests extends ApiTester {
             storage);
     }
     
-	/**
-	 * Invokes GET request for getImageEmf operation. Used indirectly by method reference.
-	 * @param name Image file name
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] getImageEmfGetRequestInvoker(String name, String outPath) throws Exception
-	{
-		getImageEmfRequest.name = name;
-		getImageEmfRequest.outPath = outPath;
+    /**
+     * Invokes GET request for getImageEmf operation. Used indirectly by method reference.
+     * @param name Image file name
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] getImageEmfGetRequestInvoker(String name, String outPath) throws Exception
+    {
+        getImageEmfRequest.name = name;
+        getImageEmfRequest.outPath = outPath;
         return ImagingApi.getImageEmf(getImageEmfRequest);
-	}
-	
-	/**
-	 * Invokes POST request for postImageEmf operation. Used indirectly by method reference.
-	 * @param imageData Image data
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] postImageEmfPostRequestInvoker(byte[] imageData, String outPath) throws Exception
-	{
-	    postImageEmfRequest.imageData = imageData;
-		postImageEmfRequest.outPath = outPath;
+    }
+    
+    /**
+     * Invokes POST request for postImageEmf operation. Used indirectly by method reference.
+     * @param imageData Image data
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] postImageEmfPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    {
+        postImageEmfRequest.imageData = imageData;
+        postImageEmfRequest.outPath = outPath;
         return ImagingApi.postImageEmf(postImageEmfRequest);
-	}
-	
-	/**
-	 * Tests properties for getImageEmf operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void getImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
-		Assert.assertNotNull(resultProperties.getPngProperties());
-		Assert.assertEquals(getImageEmfRequest.pageWidth + getImageEmfRequest.borderX * 2, (int)resultProperties.getWidth());
-	    Assert.assertEquals(getImageEmfRequest.pageHeight + getImageEmfRequest.borderY * 2, (int)resultProperties.getHeight());
-	}
-	
-	/**
-	 * Tests properties for postImageEmf operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void postImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
-		Assert.assertNotNull(resultProperties.getPngProperties());
+    }
+    
+    /**
+     * Tests properties for getImageEmf operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void getImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertNotNull(resultProperties.getPngProperties());
+        Assert.assertEquals(getImageEmfRequest.pageWidth + getImageEmfRequest.borderX * 2, (int)resultProperties.getWidth());
+        Assert.assertEquals(getImageEmfRequest.pageHeight + getImageEmfRequest.borderY * 2, (int)resultProperties.getHeight());
+    }
+    
+    /**
+     * Tests properties for postImageEmf operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void postImageEmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertNotNull(resultProperties.getPngProperties());
         Assert.assertEquals(postImageEmfRequest.pageWidth + postImageEmfRequest.borderX * 2, (int)resultProperties.getWidth());
-	    Assert.assertEquals(postImageEmfRequest.pageHeight + postImageEmfRequest.borderY * 2, (int)resultProperties.getHeight());
-	}
+        Assert.assertEquals(postImageEmfRequest.pageHeight + postImageEmfRequest.borderY * 2, (int)resultProperties.getHeight());
+    }
 }

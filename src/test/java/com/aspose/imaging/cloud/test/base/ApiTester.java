@@ -28,9 +28,6 @@
 package com.aspose.imaging.cloud.test.base;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -40,10 +37,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 
-import com.aspose.imaging.cloud.sdk.invoker.AuthType;
 import com.aspose.imaging.cloud.sdk.invoker.JSON;
-import com.aspose.imaging.cloud.sdk.invoker.internal.SerializationHelper;
-import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
 import com.aspose.imaging.cloud.sdk.model.FilesList;
 import com.aspose.imaging.cloud.sdk.model.StorageFile;
 import com.aspose.imaging.cloud.sdk.model.requests.CopyFileRequest;
@@ -54,7 +48,6 @@ import com.aspose.imaging.cloud.sdk.model.requests.GetFilesListRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetImagePropertiesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.ObjectExistsRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PostImagePropertiesRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.UploadFileRequest;
 import com.aspose.imaging.cloud.sdk.stablemodel.ImagingResponse;
 
 /**
@@ -87,9 +80,9 @@ public abstract class ApiTester
      */
     protected static com.aspose.imaging.cloud.sdk.api.ImagingApi ImagingApi;
 
-	/**
-	 * The server access file
-	 */
+    /**
+     * The server access file
+     */
     private final static String ServerAccessFile = "serverAccess.json";
 
     /**
@@ -167,8 +160,8 @@ public abstract class ApiTester
             TestStorage = DefaultStorage;
         }
 
-    	createApiInstances();
-    	finalizeTester();
+        createApiInstances();
+        finalizeTester();
     }
     
     /**
@@ -180,7 +173,7 @@ public abstract class ApiTester
     {
         if (!failedAnyTest && RemoveResult && ImagingApi.objectExists(new ObjectExistsRequest(getTempFolder(), TestStorage, null)).isExists())
         {
-        	ImagingApi.deleteFolder(new DeleteFolderRequest(getTempFolder(), TestStorage, true));
+            ImagingApi.deleteFolder(new DeleteFolderRequest(getTempFolder(), TestStorage, true));
         }
     }
 
@@ -275,21 +268,21 @@ public abstract class ApiTester
             
             if (IsAndroid)
             {
-            	if (!isNullOrEmpty(accessData.ApiVersion))
-            	{
-            		apiVersion = accessData.ApiVersion;
-            	}
-            	
-            	if (!isNullOrEmpty(accessData.StorageName))
-            	{
-            		TestStorage = accessData.StorageName;
-            	}
+                if (!isNullOrEmpty(accessData.ApiVersion))
+                {
+                    apiVersion = accessData.ApiVersion;
+                }
+                
+                if (!isNullOrEmpty(accessData.StorageName))
+                {
+                    TestStorage = accessData.StorageName;
+                }
             }
         }
         else
         {
             throw new Exception("Please, specify valid access data (AppKey, AppSid, Base URL)" + "; androidTest value: " 
-        	    + System.getenv("androidTest") + "; Server access creds file: " + serverAccessFile.getCanonicalPath());
+                + System.getenv("androidTest") + "; Server access creds file: " + serverAccessFile.getCanonicalPath());
         }
 
         System.out.println("App key: " + appKey);
@@ -335,7 +328,7 @@ public abstract class ApiTester
      */
     protected static FilesList getStorageFolderInfo(String folder, String storage) throws Exception
     {
-    	return ImagingApi.getFilesList(new GetFilesListRequest(folder, storage));
+        return ImagingApi.getFilesList(new GetFilesListRequest(folder, storage));
     }
 
     /**
@@ -361,10 +354,10 @@ public abstract class ApiTester
     {
         String folder;
         if (!IsAndroid) {
-        	folder = "testData";
+            folder = "testData";
         }
         else {
-        	folder = "/data/local/tmp";
+            folder = "/data/local/tmp";
         }
         
         return folder;
@@ -378,10 +371,10 @@ public abstract class ApiTester
     {
         String folder;
         if (!IsAndroid) {
-        	folder = "ImagingCloudTestJava_";
+            folder = "ImagingCloudTestJava_";
         }
         else {
-        	folder = "ImagingCloudTestAndroid_";
+            folder = "ImagingCloudTestAndroid_";
         }
         
         return folder + getTempFolderId();
@@ -399,10 +392,10 @@ public abstract class ApiTester
      * @throws Exception 
      */
     protected void testGetRequest(String testMethodName, Boolean saveResultToStorage, String parametersLine, String inputFileName, 
-    		String resultFileName, Method requestInvoker, Method propertiesTester) throws Exception
+            String resultFileName, Method requestInvoker, Method propertiesTester) throws Exception
     {
         this.testGetRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName,
-        		requestInvoker, propertiesTester, getTempFolder(), TestStorage);
+                requestInvoker, propertiesTester, getTempFolder(), TestStorage);
     }
     
     /**
@@ -419,23 +412,23 @@ public abstract class ApiTester
      * @throws Exception 
      */
     protected void testGetRequest(String testMethodName, Boolean saveResultToStorage, String parametersLine, String inputFileName, 
-    		String resultFileName, Method requestInvoker, Method propertiesTester, String folder, String storage) throws Exception
+            String resultFileName, Method requestInvoker, Method propertiesTester, String folder, String storage) throws Exception
     {
-		final Boolean finalSaveResultToStorage = saveResultToStorage;
-		final String finalFolder = folder;
-		final String finalResultFileName = resultFileName;
-		final String finalInputFileName = inputFileName;
-		final Method finalRequestInvoker = requestInvoker;
-		final Method obtainMethod = ApiTester.class.getDeclaredMethod("obtainGetResponse", String.class, String.class, Method.class);
-		obtainMethod.setAccessible(true);
-		final Object thisReference = this;
-		
+        final Boolean finalSaveResultToStorage = saveResultToStorage;
+        final String finalFolder = folder;
+        final String finalResultFileName = resultFileName;
+        final String finalInputFileName = inputFileName;
+        final Method finalRequestInvoker = requestInvoker;
+        final Method obtainMethod = ApiTester.class.getDeclaredMethod("obtainGetResponse", String.class, String.class, Method.class);
+        obtainMethod.setAccessible(true);
+        final Object thisReference = this;
+        
         this.testRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName,
             new Callable<byte[]>()
             {
-            	public byte[] call() throws RuntimeException
-            	{
-            		String outPath = finalSaveResultToStorage ? String.format("%s/%s", finalFolder, finalResultFileName) : null;
+                public byte[] call() throws RuntimeException
+                {
+                    String outPath = finalSaveResultToStorage ? String.format("%s/%s", finalFolder, finalResultFileName) : null;
                     try {
                         return (byte[])obtainMethod.invoke(thisReference, finalInputFileName, outPath, finalRequestInvoker);
                     } catch (Exception e) {
@@ -458,10 +451,10 @@ public abstract class ApiTester
      * @throws Exception 
      */
     protected void testPostRequest(String testMethodName, Boolean saveResultToStorage, String parametersLine, String inputFileName, 
-    		String resultFileName, Method requestInvoker, Method propertiesTester) throws Exception
+            String resultFileName, Method requestInvoker, Method propertiesTester) throws Exception
     {
         this.testPostRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName,
-        		requestInvoker, propertiesTester, getTempFolder(), TestStorage);
+                requestInvoker, propertiesTester, getTempFolder(), TestStorage);
     }
     
     /**
@@ -479,29 +472,29 @@ public abstract class ApiTester
      * @throws NoSuchMethodException 
      */
     protected void testPostRequest(String testMethodName, Boolean saveResultToStorage, String parametersLine, String inputFileName, 
-    		String resultFileName, Method requestInvoker, Method propertiesTester, String folder, String storage) throws NoSuchMethodException, Exception
+            String resultFileName, Method requestInvoker, Method propertiesTester, String folder, String storage) throws NoSuchMethodException, Exception
     {
-    	final Boolean finalSaveResultToStorage = saveResultToStorage;
-		final String finalFolder = folder;
-		final String finalResultFileName = resultFileName;
-		final String finalInputFileName = inputFileName;
-		final Method finalRequestInvoker = requestInvoker;
-		final String finalStorage = storage;
-		final Method obtainMethod = ApiTester.class.getDeclaredMethod("obtainPostResponse", String.class, String.class, String.class,
-				Method.class);
-		obtainMethod.setAccessible(true);
-		final Object thisReference = this;
-		
+        final Boolean finalSaveResultToStorage = saveResultToStorage;
+        final String finalFolder = folder;
+        final String finalResultFileName = resultFileName;
+        final String finalInputFileName = inputFileName;
+        final Method finalRequestInvoker = requestInvoker;
+        final String finalStorage = storage;
+        final Method obtainMethod = ApiTester.class.getDeclaredMethod("obtainPostResponse", String.class, String.class, String.class,
+                Method.class);
+        obtainMethod.setAccessible(true);
+        final Object thisReference = this;
+        
         this.testRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName,
             new Callable<byte[]>()
             {
-            	public byte[] call() throws RuntimeException
-            	{
-            		String outPath = finalSaveResultToStorage ? String.format("%s/%s", finalFolder, finalResultFileName) : null;
-            		try {
+                public byte[] call() throws RuntimeException
+                {
+                    String outPath = finalSaveResultToStorage ? String.format("%s/%s", finalFolder, finalResultFileName) : null;
+                    try {
                         return (byte[])obtainMethod.invoke(thisReference, finalFolder + "/" + finalInputFileName, outPath, finalStorage, finalRequestInvoker);
                     } catch (Exception e) {
-            		    throw new RuntimeException(e);
+                        throw new RuntimeException(e);
                     }
                 }
             }, 
@@ -534,9 +527,9 @@ public abstract class ApiTester
      */
     protected void copyInputFileToFolder(String inputFileName, String folder, String storage) throws Exception
     {
-    	if (!ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists())
+        if (!ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists())
         {
-    		ImagingApi.copyFile(new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage, null));
+            ImagingApi.copyFile(new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage, null));
             Assert.assertTrue(ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists());
         }
     }
@@ -562,19 +555,19 @@ public abstract class ApiTester
      */
     private byte[] obtainGetResponse(String inputFileName, String outPath, Method requestInvoker) throws Exception
     {
-    	byte[] result = null;
-    	Object responseObject = requestInvoker.invoke(this, inputFileName, outPath);
+        byte[] result = null;
+        Object responseObject = requestInvoker.invoke(this, inputFileName, outPath);
 
-    	Assert.assertNotNull(responseObject);
-    	result = (byte[])responseObject;
+        Assert.assertNotNull(responseObject);
+        result = (byte[])responseObject;
 
-    	if (outPath == null || outPath.equals(""))
+        if (outPath == null || outPath.equals(""))
         {
             Assert.assertNotNull(result);
             Assert.assertTrue(result.length > 0);
         }
-    	
-    	return result;
+        
+        return result;
     }
 
     /**
@@ -588,10 +581,10 @@ public abstract class ApiTester
      */
     private byte[] obtainPostResponse(String inputPath, String outPath, String storage, Method requestInvoker) throws Exception
     {
-    	byte[] downBytes = ImagingApi.downloadFile(new DownloadFileRequest(inputPath, storage, null));
-    	Object responseObject = requestInvoker.invoke(this, downBytes, outPath);
-    	Assert.assertNotNull(responseObject);
-    	byte[] result = (byte[])responseObject;
+        byte[] downBytes = ImagingApi.downloadFile(new DownloadFileRequest(inputPath, storage, null));
+        Object responseObject = requestInvoker.invoke(this, downBytes, outPath);
+        Assert.assertNotNull(responseObject);
+        byte[] result = (byte[])responseObject;
         if (outPath == null || outPath.equals(""))
         {
             Assert.assertNotNull(result);
@@ -613,10 +606,10 @@ public abstract class ApiTester
      * @throws Exception 
      */
     private void testRequest(String testMethodName, Boolean saveResultToStorage, String parametersLine, String inputFileName, 
-    		String resultFileName, Callable<byte[]> invokeRequestAction, Method propertiesTester) throws Exception
+            String resultFileName, Callable<byte[]> invokeRequestAction, Method propertiesTester) throws Exception
     {
         this.testRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName, 
-        		invokeRequestAction, propertiesTester, getTempFolder(), TestStorage);
+                invokeRequestAction, propertiesTester, getTempFolder(), TestStorage);
     }
 
     /**
@@ -679,13 +672,13 @@ public abstract class ApiTester
                 
                 if (!resultFileName.endsWith(".pdf"))
                 {
-                	resultProperties = ImagingApi.getImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
+                    resultProperties = ImagingApi.getImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
                     Assert.assertNotNull(resultProperties);
                 }
             }
             else if (!resultFileName.endsWith(".pdf"))
             {
-            	resultProperties =
+                resultProperties =
                         ImagingApi.postImageProperties(new PostImagePropertiesRequest(response));
                 Assert.assertNotNull(resultProperties);
             }
@@ -741,12 +734,12 @@ public abstract class ApiTester
             }
             else
             {
-            	System.out.println(exception.getCause().getMessage());
-            	for (StackTraceElement stackTrace : exception.getCause().getStackTrace())
-            	{
-            		System.out.println(stackTrace.toString());
-            	}
-            	
+                System.out.println(exception.getCause().getMessage());
+                for (StackTraceElement stackTrace : exception.getCause().getStackTrace())
+                {
+                    System.out.println(stackTrace.toString());
+                }
+                
                 throw exception;
             }
         }

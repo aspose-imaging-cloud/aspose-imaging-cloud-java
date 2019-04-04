@@ -34,8 +34,8 @@ import com.aspose.imaging.cloud.sdk.model.ImageDuplicatesSet;
 import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextFindDuplicatesRequest;
 
 public class FindDuplicatesTests extends TestImagingAIBase{
-	
-	private final String ComparableImage = "ComparableImage.jpg";
+    
+    private final String ComparableImage = "ComparableImage.jpg";
     private final String ComparingImageSimilarLess15 = "ComparingImageSimilar15.jpg";
     private final String ComparingImageSimilarMore75 = "ComparingImageSimilar75.jpg";
      

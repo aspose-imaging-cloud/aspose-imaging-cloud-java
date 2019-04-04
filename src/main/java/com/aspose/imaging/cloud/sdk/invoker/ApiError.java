@@ -31,16 +31,16 @@ package com.aspose.imaging.cloud.sdk.invoker;
  * API error container.
  */
 public class ApiError {
-	
-	/**
-	 * API error
-	 */
+    
+    /**
+     * API error
+     */
     public com.aspose.imaging.cloud.sdk.model.Error error;
     
     /**
      * ApiError constrcutor.
      */
-	public ApiError() {
-		
-	}
+    public ApiError() {
+        
+    }
 }

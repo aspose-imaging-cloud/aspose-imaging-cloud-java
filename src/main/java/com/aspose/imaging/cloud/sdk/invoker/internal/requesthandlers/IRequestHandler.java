@@ -37,15 +37,15 @@ import java.net.URISyntaxException;
  */
 public interface IRequestHandler
 {
-	/**
-	 * Processes the URL.
-	 * @param url The URL.
-	 * @return Processed URL.
-	 * @throws URISyntaxException 
-	 * @throws IllegalArgumentException 
-	 * @throws IOException 
-	 * @throws Exception 
-	 */
+    /**
+     * Processes the URL.
+     * @param url The URL.
+     * @return Processed URL.
+     * @throws URISyntaxException 
+     * @throws IllegalArgumentException 
+     * @throws IOException 
+     * @throws Exception 
+     */
     String processUrl(String url) throws IllegalArgumentException, URISyntaxException, IOException, Exception;
 
     /**

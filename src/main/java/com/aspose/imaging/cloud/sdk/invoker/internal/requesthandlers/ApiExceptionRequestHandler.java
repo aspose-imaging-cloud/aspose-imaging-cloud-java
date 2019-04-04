@@ -39,11 +39,11 @@ import com.aspose.imaging.cloud.sdk.invoker.internal.SerializationHelper;
  */
 public class ApiExceptionRequestHandler implements IRequestHandler
 {
-	/**
-	 * Processes the URL.
-	 * @param url The URL.
-	 * @return Processed URL.
-	 */
+    /**
+     * Processes the URL.
+     * @param url The URL.
+     * @return Processed URL.
+     */
     public String processUrl(String url)
     {
         return url;
@@ -84,18 +84,18 @@ public class ApiExceptionRequestHandler implements IRequestHandler
         String responseData = "";
         try
         {
-        	responseData = resultData.toString();
-        	ApiError errorResponse = SerializationHelper.deserialize(responseData, ApiError.class);
+            responseData = resultData.toString();
+            ApiError errorResponse = SerializationHelper.deserialize(responseData, ApiError.class);
             resutException = new ApiException(connection.getResponseCode(), errorResponse.error.getMessage(), errorResponse.error);
         }
         catch (Exception e)
         {
-        	if (responseData == "")
-        	{
-        		responseData = connection.getResponseMessage();
-        	}
-        	
-        	resutException = new ApiException(connection.getResponseCode(), responseData);
+            if (responseData == "")
+            {
+                responseData = connection.getResponseMessage();
+            }
+            
+            resutException = new ApiException(connection.getResponseCode(), responseData);
         }
 
         throw resutException;

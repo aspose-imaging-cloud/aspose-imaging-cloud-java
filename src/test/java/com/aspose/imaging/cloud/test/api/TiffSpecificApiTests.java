@@ -46,7 +46,7 @@ import java.lang.reflect.Method;
  */
 public class TiffSpecificApiTests extends ApiTester {
 
-	private GetTiffToFaxRequest getTiffToFaxRequest;
+    private GetTiffToFaxRequest getTiffToFaxRequest;
 
     /**
      * Test operation: Update parameters of existing TIFF image accordingly to fax parameters.
@@ -56,22 +56,22 @@ public class TiffSpecificApiTests extends ApiTester {
      */
     @Test
     public void getTiffToFaxTest() throws Exception {
-    	String name = "test.tiff";
+        String name = "test.tiff";
         String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-		String outName = name + "_fax." + "tiff";
-		getTiffToFaxRequest = new GetTiffToFaxRequest(name, storage, folder, outPath);
-		
-		Method propertiesTester = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-		propertiesTester.setAccessible(true);
-		Method requestInvoker = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxGetRequestInvoker", String.class, String.class);
-		requestInvoker.setAccessible(true);
-	    this.testGetRequest(
+        String outName = name + "_fax." + "tiff";
+        getTiffToFaxRequest = new GetTiffToFaxRequest(name, storage, folder, outPath);
+        
+        Method propertiesTester = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxGetRequestInvoker", String.class, String.class);
+        requestInvoker.setAccessible(true);
+        this.testGetRequest(
             "getTiffToFaxTest", 
             true,
             String.format("Input image: %s",
-            		name),
+                    name),
             name,
             outName,
             requestInvoker,
@@ -150,7 +150,7 @@ public class TiffSpecificApiTests extends ApiTester {
         }
         catch (Exception ex)
         {
-        	failedAnyTest = true;
+            failedAnyTest = true;
             System.out.println(ex.getMessage());
             throw ex;
         }
@@ -164,34 +164,34 @@ public class TiffSpecificApiTests extends ApiTester {
             System.out.println("Test passed: " + passed);
         }
     }
-	
-	/**
-	 * Invokes GET request for getTiffToFax operation. Used indirectly by method reference.
-	 * @param name Image file name
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] getTiffToFaxGetRequestInvoker(String name, String outPath) throws Exception
-	{
-		getTiffToFaxRequest.name = name;
-		getTiffToFaxRequest.outPath = outPath;
+    
+    /**
+     * Invokes GET request for getTiffToFax operation. Used indirectly by method reference.
+     * @param name Image file name
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] getTiffToFaxGetRequestInvoker(String name, String outPath) throws Exception
+    {
+        getTiffToFaxRequest.name = name;
+        getTiffToFaxRequest.outPath = outPath;
         return ImagingApi.getTiffToFax(getTiffToFaxRequest);
-	}
-	
-	/**
-	 * Tests properties for getTiffToFax operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void getTiffToFaxPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
-		Assert.assertNotNull(resultProperties.getTiffProperties());
+    }
+    
+    /**
+     * Tests properties for getTiffToFax operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void getTiffToFaxPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertNotNull(resultProperties.getTiffProperties());
         Assert.assertEquals(1, (int)resultProperties.getBitsPerPixel());
         Assert.assertEquals(196, (int)Math.ceil((double)resultProperties.getVerticalResolution()));
         Assert.assertEquals(204, (int)Math.ceil((double)resultProperties.getHorizontalResolution()));
         Assert.assertEquals(1728, (int)resultProperties.getWidth());
         Assert.assertEquals(2200, (int)resultProperties.getHeight());
-	}
+    }
 }

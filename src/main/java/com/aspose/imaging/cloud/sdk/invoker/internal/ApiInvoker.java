@@ -47,9 +47,9 @@ import com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers.IRequestHan
  */
 public class ApiInvoker
 {
-	/**
-	 * Aspose client header name
-	 */
+    /**
+     * Aspose client header name
+     */
     private final String AsposeClientHeaderName = "x-aspose-client";
 
     /**
@@ -137,11 +137,11 @@ public class ApiInvoker
      */
     public FileInfo toFileInfo(InputStream stream, String paramName) throws IOException
     {
-    	FileInfo fileInfo = new FileInfo();
-    	fileInfo.Name = paramName;
-    	fileInfo.MimeType = "application/octet-stream";
-    	fileInfo.file = StreamHelper.readAsBytes(stream);
-    	return fileInfo;
+        FileInfo fileInfo = new FileInfo();
+        fileInfo.Name = paramName;
+        fileInfo.MimeType = "application/octet-stream";
+        fileInfo.file = StreamHelper.readAsBytes(stream);
+        return fileInfo;
     }
     
     /**
@@ -152,11 +152,11 @@ public class ApiInvoker
      */
     public FileInfo toFileInfo(byte[] data, String paramName)
     {
-    	FileInfo fileInfo = new FileInfo();
-    	fileInfo.Name = paramName;
-    	fileInfo.MimeType = "application/octet-stream";
-    	fileInfo.file = data;
-    	return fileInfo;
+        FileInfo fileInfo = new FileInfo();
+        fileInfo.Name = paramName;
+        fileInfo.MimeType = "application/octet-stream";
+        fileInfo.file = data;
+        return fileInfo;
     }
 
     /**
@@ -166,11 +166,11 @@ public class ApiInvoker
      */
     public FileInfo toFileInfo(byte[] data)
     {
-    	FileInfo fileInfo = new FileInfo();
-    	fileInfo.Name = "file";
-    	fileInfo.MimeType = "application/octet-stream";
-    	fileInfo.file = data;
-    	return fileInfo;
+        FileInfo fileInfo = new FileInfo();
+        fileInfo.Name = "file";
+        fileInfo.MimeType = "application/octet-stream";
+        fileInfo.file = data;
+        return fileInfo;
     }
 
     /**
@@ -181,14 +181,14 @@ public class ApiInvoker
      */
     private static byte[] getMultipartFormData(HashMap<String, Object> postParameters, String boundary)
     {
-    	ByteArrayOutputStream formDataStream = new ByteArrayOutputStream();
-    	
+        ByteArrayOutputStream formDataStream = new ByteArrayOutputStream();
+        
         Boolean needsClrf = false;
         
-    	for (Map.Entry<String, Object> param : postParameters.entrySet())
+        for (Map.Entry<String, Object> param : postParameters.entrySet())
         {
             if (needsClrf)
-            {                	
+            {                    
                 WriteStringToStream(formDataStream, "\r\n");
             }
 
@@ -216,11 +216,11 @@ public class ApiInvoker
                 String stringData;
                 if (paramValue instanceof String)
                 {
-                	stringData = (String)paramValue;
+                    stringData = (String)paramValue;
                 }
                 else
                 {
-                	stringData = SerializationHelper.serialize(paramValue);
+                    stringData = SerializationHelper.serialize(paramValue);
                 }
 
                 String postData =
@@ -243,7 +243,7 @@ public class ApiInvoker
     
     private static void WriteStringToStream(ByteArrayOutputStream formDataStream, String data)
     {
-    	byte[] bytesArray = data.getBytes(Charsets.UTF_8);
+        byte[] bytesArray = data.getBytes(Charsets.UTF_8);
         formDataStream.write(bytesArray, 0, bytesArray.length);
     }
 
@@ -291,7 +291,7 @@ public class ApiInvoker
         
         for (IRequestHandler handler : this.requestHandlers)
         {
-        	path = handler.processUrl(path);
+            path = handler.processUrl(path);
         }
 
         HttpURLConnection request;
@@ -319,23 +319,23 @@ public class ApiInvoker
      * @throws Exception 
      */
     private HttpURLConnection prepareRequest(String path, String method, HashMap<String, Object> formParams, 
-    		HashMap<String, String> headerParams, String body, String contentType) throws Exception
+            HashMap<String, String> headerParams, String body, String contentType) throws Exception
     {
-    	HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
-    	Boolean sendData = (formParams.size() > 0 || (body != null && body != "")) && (method.equals("PUT") || method.equals("POST"));
-    	if (method.equals("PUT") || method.equals("POST"))
-    	{
-    		connection.setFixedLengthStreamingMode(0);
-    	}
-    	
-    	connection.setDoOutput(true);
+        HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
+        Boolean sendData = (formParams.size() > 0 || (body != null && body != "")) && (method.equals("PUT") || method.equals("POST"));
+        if (method.equals("PUT") || method.equals("POST"))
+        {
+            connection.setFixedLengthStreamingMode(0);
+        }
+        
+        connection.setDoOutput(true);
         connection.setUseCaches(false);
-    	connection.setRequestMethod(method);
+        connection.setRequestMethod(method);
 
         byte[] data = null;
         if (formParams.size() > 0)
         {
-        	String formDataBoundary = "Somthing";
+            String formDataBoundary = "Somthing";
             connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + formDataBoundary);
             data = getMultipartFormData(formParams, formDataBoundary);
             connection.setFixedLengthStreamingMode(data.length);
@@ -343,14 +343,14 @@ public class ApiInvoker
 
         for (Map.Entry<String, String> headerParamsItem : this.defaultHeaderMap.entrySet())
         {
-        	connection.setRequestProperty(headerParamsItem.getKey(), headerParamsItem.getValue());
+            connection.setRequestProperty(headerParamsItem.getKey(), headerParamsItem.getValue());
         }
 
         for (Map.Entry<String, String> defaultHeaderMapItem : headerParams.entrySet())
         {
-        	if (!headerParams.containsKey(defaultHeaderMapItem.getKey()))
+            if (!headerParams.containsKey(defaultHeaderMapItem.getKey()))
             {
-            	connection.setRequestProperty(defaultHeaderMapItem.getKey(), defaultHeaderMapItem.getValue());
+                connection.setRequestProperty(defaultHeaderMapItem.getKey(), defaultHeaderMapItem.getValue());
             }
         }
         
@@ -358,9 +358,9 @@ public class ApiInvoker
         ByteArrayOutputStream streamToSend = null;
         try
         {
-        	if (sendData)
-        	{
-        		streamToSend = new ByteArrayOutputStream();
+            if (sendData)
+            {
+                streamToSend = new ByteArrayOutputStream();
 
                 if (data != null)
                 {
@@ -369,52 +369,52 @@ public class ApiInvoker
 
                 if (body != null)
                 {
-                	if (data != null)
-                	{
-                		throw new ApiException(500, "You can't send both form data and body at once.");
-                	}
-                	
-                	byte[] bodyBytes = body.getBytes();
-                	connection.setFixedLengthStreamingMode(bodyBytes.length);
-                	streamToSend.write(bodyBytes, 0, bodyBytes.length);
+                    if (data != null)
+                    {
+                        throw new ApiException(500, "You can't send both form data and body at once.");
+                    }
+                    
+                    byte[] bodyBytes = body.getBytes();
+                    connection.setFixedLengthStreamingMode(bodyBytes.length);
+                    streamToSend.write(bodyBytes, 0, bodyBytes.length);
                 }
-        	}
-        	else
-        	{
-        		
-        	}
+            }
+            else
+            {
+                
+            }
 
             for (IRequestHandler handler : this.requestHandlers)
             {
-            	handler.beforeSend(connection, streamToSend);
+                handler.beforeSend(connection, streamToSend);
             }
             
             connection.setReadTimeout(300000);
             if (streamToSend != null)
             {
-            	if (streamToSend.size() > 0)
-            	{
-            		try {
-            			connection.connect();
-            			outStream = connection.getOutputStream();
-                    	outStream.write(streamToSend.toByteArray());
-					} catch (Exception e) {
-						e.printStackTrace();
-						throw e;
-					}
-            	}
+                if (streamToSend.size() > 0)
+                {
+                    try {
+                        connection.connect();
+                        outStream = connection.getOutputStream();
+                        outStream.write(streamToSend.toByteArray());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        throw e;
+                    }
+                }
             }
         }
         finally
         {
             if (outStream != null)
             {
-            	outStream.flush();
+                outStream.flush();
             }
             
             if (streamToSend != null)
             {
-            	streamToSend.close();
+                streamToSend.close();
             }
         }
 
@@ -429,32 +429,32 @@ public class ApiInvoker
      */
     private byte[] readResponse(HttpURLConnection client) throws Exception
     {
-    	InputStream inputStream = null;
-    	byte[] resultData = null;
-    	
+        InputStream inputStream = null;
+        byte[] resultData = null;
+        
         try
         {
-        	if (client.getResponseCode() == 200)
-        	{
-        		inputStream = client.getInputStream();
-            	resultData = StreamHelper.readAsBytes(inputStream);
-        	}
-        	
-        	for (IRequestHandler handler : this.requestHandlers)
-        	{
-        		handler.processResponse(client, resultData);
-        	}
-        	
+            if (client.getResponseCode() == 200)
+            {
+                inputStream = client.getInputStream();
+                resultData = StreamHelper.readAsBytes(inputStream);
+            }
+            
+            for (IRequestHandler handler : this.requestHandlers)
+            {
+                handler.processResponse(client, resultData);
+            }
+            
             return resultData;
         }
         finally
         {
-        	client.disconnect();
-        	
-        	if (inputStream != null)
-        	{
-        		inputStream.close();
-        	}
+            client.disconnect();
+            
+            if (inputStream != null)
+            {
+                inputStream.close();
+            }
         }
     }
 }
