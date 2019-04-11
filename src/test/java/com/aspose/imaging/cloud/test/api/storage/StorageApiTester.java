@@ -1,4 +1,4 @@
-﻿/*
+/*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StorageApiTester.java">
 *   Copyright (c) 2019  Aspose Pty Ltd.
