@@ -70,7 +70,31 @@ It gives you an ability to:
 * Check if certain file, folder or storage exists
 
 # Usage
-Add Aspose.Imaging Cloud Java SDK as a dependency.
+1. Add Aspose Cloud repository to your pom.xml.
+```xml
+<profiles>
+    <profile>
+        <repositories>
+            <repository>
+                <id>AsposeJavaAPI</id>
+                <name>Aspose Java API</name>
+                <url>http://artifact.aspose.cloud/repo/</url>
+                <snapshots>
+                    <enabled>false</enabled>
+                </snapshots>
+                <releases>
+                    <enabled>true</enabled>
+                </releases>
+            </repository>
+        </repositories>
+        <id>repositoryProfile</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+    </profile>
+</profiles>
+```
+2. Add Aspose.Imaging Cloud Java SDK as a dependency.
 ```xml
 <dependencies>
     <dependency>
