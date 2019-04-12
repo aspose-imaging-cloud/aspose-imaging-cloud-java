@@ -45,8 +45,6 @@ public class StorageApiTests extends StorageApiTester {
         try {
             DiscUsage discUsage = ImagingApi.getDiscUsage(new GetDiscUsageRequest(TestStorage));
             Assert.assertTrue(discUsage.getUsedSize() < discUsage.getTotalSize());
-            Assert.assertTrue(discUsage.getTotalSize() > 0);
-            Assert.assertTrue(discUsage.getUsedSize() > 0);
         } catch (ApiException ex) {
             Assert.assertTrue(ex.errorCode == 501);
         }
