@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.test.api.storage;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.aspose.imaging.cloud.sdk.invoker.ApiException;
@@ -41,6 +42,7 @@ import com.aspose.imaging.cloud.sdk.model.requests.StorageExistsRequest;
  */
 public class StorageApiTests extends StorageApiTester {
     @Test
+    @Ignore("IMAGINGCLOUD-292")
     public void getDiscUsageTest() throws Exception {
         try {
             DiscUsage discUsage = ImagingApi.getDiscUsage(new GetDiscUsageRequest(TestStorage));
