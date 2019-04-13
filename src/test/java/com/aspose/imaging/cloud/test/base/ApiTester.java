@@ -58,7 +58,7 @@ public abstract class ApiTester
     /**
      * The default cloud storage
      */
-    protected final static String DefaultStorage = "Imaging-QA";
+    protected final static String DefaultStorage = "Imaging-CI";
 
     /**
      * Original data folder.
