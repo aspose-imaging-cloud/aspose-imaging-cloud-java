@@ -413,7 +413,7 @@ public class ImagingApi
      * Download file
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] downloadFile(DownloadFileRequest request) throws Exception 
@@ -560,7 +560,7 @@ public class ImagingApi
      * Update parameters of existing BMP image.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageBmp(GetImageBmpRequest request) throws Exception 
@@ -612,7 +612,7 @@ public class ImagingApi
      * Crop an existing image.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageCrop(GetImageCropRequest request) throws Exception 
@@ -673,7 +673,7 @@ public class ImagingApi
      * Process existing EMF imaging using given parameters.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageEmf(GetImageEmfRequest request) throws Exception 
@@ -736,7 +736,7 @@ public class ImagingApi
      * Get separate frame from existing TIFF image.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageFrame(GetImageFrameRequest request) throws Exception 
@@ -830,7 +830,7 @@ public class ImagingApi
      * Update parameters of existing GIF image.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageGif(GetImageGifRequest request) throws Exception 
@@ -873,7 +873,7 @@ public class ImagingApi
      * Update parameters of existing JPEG2000 image.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageJpeg2000(GetImageJpeg2000Request request) throws Exception 
@@ -916,7 +916,7 @@ public class ImagingApi
      * Update parameters of existing JPEG image.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageJpg(GetImageJpgRequest request) throws Exception 
@@ -995,7 +995,7 @@ public class ImagingApi
      * Update parameters of existing PSD image.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImagePsd(GetImagePsdRequest request) throws Exception 
@@ -1034,7 +1034,7 @@ public class ImagingApi
      * Resize an existing image.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageResize(GetImageResizeRequest request) throws Exception 
@@ -1085,7 +1085,7 @@ public class ImagingApi
      * Rotate and/or flip an existing image.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageRotateFlip(GetImageRotateFlipRequest request) throws Exception 
@@ -1131,7 +1131,7 @@ public class ImagingApi
      * Export existing image to another format.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageSaveAs(GetImageSaveAsRequest request) throws Exception 
@@ -1172,7 +1172,7 @@ public class ImagingApi
      * Update parameters of existing TIFF image.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageTiff(GetImageTiffRequest request) throws Exception 
@@ -1226,7 +1226,7 @@ public class ImagingApi
      * Perform scaling, cropping and flipping of an existing image in a single request.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageUpdate(GetImageUpdateRequest request) throws Exception 
@@ -1302,7 +1302,7 @@ public class ImagingApi
      * Update parameters of existing WEBP image.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageWebP(GetImageWebPRequest request) throws Exception 
@@ -1359,7 +1359,7 @@ public class ImagingApi
      * Process existing WMF image using given parameters.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getImageWmf(GetImageWmfRequest request) throws Exception 
@@ -1569,7 +1569,7 @@ public class ImagingApi
      * Get image from search context
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getSearchContextImage(GetSearchContextImageRequest request) throws Exception 
@@ -1694,7 +1694,7 @@ public class ImagingApi
      * Update parameters of existing TIFF image accordingly to fax parameters.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] getTiffToFax(GetTiffToFaxRequest request) throws Exception 
@@ -1882,7 +1882,7 @@ public class ImagingApi
      * Update parameters of BMP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageBmp(PostImageBmpRequest request) throws Exception 
@@ -1935,7 +1935,7 @@ public class ImagingApi
      * Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageCrop(PostImageCropRequest request) throws Exception 
@@ -1997,7 +1997,7 @@ public class ImagingApi
      * Process existing EMF imaging using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageEmf(PostImageEmfRequest request) throws Exception 
@@ -2061,7 +2061,7 @@ public class ImagingApi
      * Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageFrame(PostImageFrameRequest request) throws Exception 
@@ -2156,7 +2156,7 @@ public class ImagingApi
      * Update parameters of GIF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageGif(PostImageGifRequest request) throws Exception 
@@ -2200,7 +2200,7 @@ public class ImagingApi
      * Update parameters of JPEG2000 image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageJpeg2000(PostImageJpeg2000Request request) throws Exception 
@@ -2244,7 +2244,7 @@ public class ImagingApi
      * Update parameters of JPEG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageJpg(PostImageJpgRequest request) throws Exception 
@@ -2324,7 +2324,7 @@ public class ImagingApi
      * Update parameters of PSD image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImagePsd(PostImagePsdRequest request) throws Exception 
@@ -2364,7 +2364,7 @@ public class ImagingApi
      * Resize an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageResize(PostImageResizeRequest request) throws Exception 
@@ -2416,7 +2416,7 @@ public class ImagingApi
      * Rotate and/or flip an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageRotateFlip(PostImageRotateFlipRequest request) throws Exception 
@@ -2463,7 +2463,7 @@ public class ImagingApi
      * Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageSaveAs(PostImageSaveAsRequest request) throws Exception 
@@ -2505,7 +2505,7 @@ public class ImagingApi
      * Update parameters of TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageTiff(PostImageTiffRequest request) throws Exception 
@@ -2560,7 +2560,7 @@ public class ImagingApi
      * Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageUpdate(PostImageUpdateRequest request) throws Exception 
@@ -2637,7 +2637,7 @@ public class ImagingApi
      * Update parameters of WEBP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageWebP(PostImageWebPRequest request) throws Exception 
@@ -2695,7 +2695,7 @@ public class ImagingApi
      * Process existing WMF image using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
     public byte[] postImageWmf(PostImageWmfRequest request) throws Exception 

@@ -208,7 +208,6 @@ public class ApiInvoker
                
                 WriteStringToStream(formDataStream, postData);
 
-                int x = fileInfo.file.length;
                 formDataStream.write(fileInfo.file, 0, fileInfo.file.length);
             }
             else
@@ -322,20 +321,20 @@ public class ApiInvoker
             HashMap<String, String> headerParams, String body, String contentType) throws Exception
     {
         HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
-        Boolean sendData = (formParams.size() > 0 || (body != null && body != "")) && (method.equals("PUT") || method.equals("POST"));
+        Boolean sendData = (formParams.size() > 0 || (body != null && !body.equals(""))) && (method.equals("PUT") || method.equals("POST"));
         if (method.equals("PUT") || method.equals("POST"))
         {
             connection.setFixedLengthStreamingMode(0);
+            connection.setDoOutput(true);
         }
         
-        connection.setDoOutput(true);
         connection.setUseCaches(false);
         connection.setRequestMethod(method);
 
         byte[] data = null;
         if (formParams.size() > 0)
         {
-            String formDataBoundary = "Somthing";
+            String formDataBoundary = java.util.UUID.randomUUID().toString();;
             connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + formDataBoundary);
             data = getMultipartFormData(formParams, formDataBoundary);
             connection.setFixedLengthStreamingMode(data.length);
@@ -378,10 +377,6 @@ public class ApiInvoker
                     connection.setFixedLengthStreamingMode(bodyBytes.length);
                     streamToSend.write(bodyBytes, 0, bodyBytes.length);
                 }
-            }
-            else
-            {
-                
             }
 
             for (IRequestHandler handler : this.requestHandlers)
@@ -438,6 +433,11 @@ public class ApiInvoker
             if (client.getResponseCode() == 200)
             {
                 inputStream = client.getInputStream();
+                resultData = StreamHelper.readAsBytes(inputStream);
+            }
+            else
+            {
+                inputStream = client.getErrorStream();
                 resultData = StreamHelper.readAsBytes(inputStream);
             }
             

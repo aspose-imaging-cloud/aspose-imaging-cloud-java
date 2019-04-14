@@ -29,8 +29,6 @@ package com.aspose.imaging.cloud.test.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import com.aspose.imaging.cloud.test.api.FramesPostApiTests;
-
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         BmpTestSuite.class,

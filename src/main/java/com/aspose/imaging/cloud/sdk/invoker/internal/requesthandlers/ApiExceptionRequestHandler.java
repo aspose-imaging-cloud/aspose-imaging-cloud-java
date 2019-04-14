@@ -84,13 +84,13 @@ public class ApiExceptionRequestHandler implements IRequestHandler
         String responseData = "";
         try
         {
-            responseData = resultData.toString();
+            responseData = new String(resultData);
             ApiError errorResponse = SerializationHelper.deserialize(responseData, ApiError.class);
             resutException = new ApiException(connection.getResponseCode(), errorResponse.error.getMessage(), errorResponse.error);
         }
         catch (Exception e)
         {
-            if (responseData == "")
+            if (responseData.equals(""))
             {
                 responseData = connection.getResponseMessage();
             }

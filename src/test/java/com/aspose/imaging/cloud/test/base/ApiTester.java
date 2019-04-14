@@ -193,7 +193,7 @@ public abstract class ApiTester
      */
     protected static Boolean isNullOrEmpty(String str)
     {
-        return str == null || str == "";
+        return str == null || str.equals("");
     }
 
     /**
