@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="PostImagePngRequest.java">
+* <copyright company="Aspose" file="GetFilesListRequest.java">
 *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -28,42 +28,28 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for PostImagePng request invocation.
+* Class that holds parameters for GetFilesList request invocation.
 **/   
-public class PostImagePngRequest
+public class GetFilesListRequest
 {
-	/**
-	* Initializes a new instance of the PostImagePngRequest class.   
-    * @param imageData Input image
-    * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
-    * @param storage Your Aspose Cloud Storage name.
-	**/
-    public PostImagePngRequest(byte[] imageData, Boolean fromScratch, String outPath, String storage)             
+    /**
+    * Initializes a new instance of the GetFilesListRequest class.   
+    * @param path Folder path e.g. &#39;/folder&#39;
+    * @param storageName Storage name
+    **/
+    public GetFilesListRequest(String path, String storageName)             
     {
-        this.imageData = imageData;
-        this.fromScratch = fromScratch;
-        this.outPath = outPath;
-        this.storage = storage;
+        this.path = path;
+        this.storageName = storageName;
     }
-		
+        
     /**
-    * Input image
+    * Folder path e.g. '/folder'
     **/
-    public byte[] imageData;
+    public String path;
 
     /**
-    * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+    * Storage name
     **/
-    public Boolean fromScratch;
-
-    /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
-
-    /**
-    * Your Aspose Cloud Storage name.
-    **/
-    public String storage;
+    public String storageName;
 }

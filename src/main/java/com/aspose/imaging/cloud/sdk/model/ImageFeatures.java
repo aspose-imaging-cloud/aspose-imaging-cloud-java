@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,17 +37,17 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
 /**
  * Image features.
  */
-public class ImageFeatures extends SaaSposeResponse {
-  @JsonProperty("ImageId")
+public class ImageFeatures {
+  @JsonProperty("imageId")
   private String imageId = null;
 
-  @JsonProperty("FeaturesCount")
+  @JsonProperty("featuresCount")
   private Integer featuresCount = null;
 
-  @JsonProperty("FeatureLengthInBits")
+  @JsonProperty("featureLengthInBits")
   private Integer featureLengthInBits = null;
 
-  @JsonProperty("Features")
+  @JsonProperty("features")
   private byte[] features = null;
 
   public ImageFeatures imageId(String imageId) {
@@ -130,13 +131,12 @@ public class ImageFeatures extends SaaSposeResponse {
     return ObjectUtils.equals(this.imageId, imageFeatures.imageId) &&
     ObjectUtils.equals(this.featuresCount, imageFeatures.featuresCount) &&
     ObjectUtils.equals(this.featureLengthInBits, imageFeatures.featureLengthInBits) &&
-    ObjectUtils.equals(this.features, imageFeatures.features) &&
-    super.equals(o);
+    ObjectUtils.equals(this.features, imageFeatures.features);
   }
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(imageId, featuresCount, featureLengthInBits, features, super.hashCode());
+    return ObjectUtils.hashCodeMulti(imageId, featuresCount, featureLengthInBits, features);
   }
 
 
@@ -144,7 +144,7 @@ public class ImageFeatures extends SaaSposeResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageFeatures {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    imageId: ").append(toIndentedString(imageId)).append("\n");
     sb.append("    featuresCount: ").append(toIndentedString(featuresCount)).append("\n");
     sb.append("    featureLengthInBits: ").append(toIndentedString(featureLengthInBits)).append("\n");

@@ -32,15 +32,15 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImageRotateFlipRequest
 {
-	/**
-	* Initializes a new instance of the GetImageRotateFlipRequest class.   
+    /**
+    * Initializes a new instance of the GetImageRotateFlipRequest class.   
     * @param name Filename of an image.
-    * @param format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * @param format Resulting image format.
     * @param method RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public GetImageRotateFlipRequest(String name, String format, String method, String outPath, String folder, String storage)             
     {
         this.name = name;
@@ -50,14 +50,14 @@ public class GetImageRotateFlipRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Filename of an image.
     **/
     public String name;
 
     /**
-    * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * Resulting image format.
     **/
     public String format;
 

@@ -32,13 +32,13 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class DeleteSearchContextImageRequest
 {
-	/**
-	* Initializes a new instance of the DeleteSearchContextImageRequest class.   
+    /**
+    * Initializes a new instance of the DeleteSearchContextImageRequest class.   
     * @param searchContextId Search context identifier.
     * @param imageId Image identifier.
     * @param folder Folder.
     * @param storage Storage
-	**/
+    **/
     public DeleteSearchContextImageRequest(String searchContextId, String imageId, String folder, String storage)             
     {
         this.searchContextId = searchContextId;
@@ -46,7 +46,7 @@ public class DeleteSearchContextImageRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Search context identifier.
     **/

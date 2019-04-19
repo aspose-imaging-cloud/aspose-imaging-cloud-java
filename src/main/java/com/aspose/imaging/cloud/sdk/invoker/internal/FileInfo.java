@@ -32,9 +32,9 @@ package com.aspose.imaging.cloud.sdk.invoker.internal;
  */
 public class FileInfo
 {
-	/**
-	 * The name of file
-	 */
+    /**
+     * The name of file
+     */
     public String Name;
 
     /**

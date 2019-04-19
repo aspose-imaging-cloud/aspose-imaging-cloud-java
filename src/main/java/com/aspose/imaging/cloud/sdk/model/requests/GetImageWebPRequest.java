@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImageWebPRequest
 {
-	/**
-	* Initializes a new instance of the GetImageWebPRequest class.   
+    /**
+    * Initializes a new instance of the GetImageWebPRequest class.   
     * @param name Filename of image.
     * @param lossLess If WEBP is lossless.
     * @param quality Quality.
@@ -43,7 +43,7 @@ public class GetImageWebPRequest
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public GetImageWebPRequest(String name, Boolean lossLess, Integer quality, Integer animLoopCount, String animBackgroundColor, Boolean fromScratch, String outPath, String folder, String storage)             
     {
         this.name = name;
@@ -56,7 +56,7 @@ public class GetImageWebPRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Filename of image.
     **/

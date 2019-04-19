@@ -26,10 +26,10 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
+import com.aspose.imaging.cloud.sdk.model.StorageFile;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.base.StorageFileInfo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,8 +48,8 @@ import java.util.Collections;
 @RunWith(Parameterized.class)
 public class SaveAsApiTests extends ApiTester {
 
-	private GetImageSaveAsRequest getImageSaveAsRequest;
-	private PostImageSaveAsRequest postImageSaveAsRequest;
+    private GetImageSaveAsRequest getImageSaveAsRequest;
+    private PostImageSaveAsRequest postImageSaveAsRequest;
 
     @Parameters
     public static Iterable<Object[]> data() {
@@ -76,16 +76,16 @@ public class SaveAsApiTests extends ApiTester {
         }
     }
 
-	private String formatExtension;
-	private Boolean saveResultToStorage;
-	String[] additionalExportFormats;
+    private String formatExtension;
+    private Boolean saveResultToStorage;
+    String[] additionalExportFormats;
 
-	public SaveAsApiTests(String extension, Boolean saveResult, String[] additionalFormats)
-	{
-		this.formatExtension = extension;
-		this.saveResultToStorage = saveResult;
-		this.additionalExportFormats = additionalFormats;
-	}
+    public SaveAsApiTests(String extension, Boolean saveResult, String[] additionalFormats)
+    {
+        this.formatExtension = extension;
+        this.saveResultToStorage = saveResult;
+        this.additionalExportFormats = additionalFormats;
+    }
 
     /**
      * Test operation: SaveAs an existing image.
@@ -99,21 +99,21 @@ public class SaveAsApiTests extends ApiTester {
         String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-		String outName = null;
-		
-		ArrayList<String> formatsToExport = new ArrayList<String>();
-		Collections.addAll(formatsToExport, this.BasicExportFormats);
-		for (String additionalExportFormat : additionalExportFormats)
+        String outName = null;
+        
+        ArrayList<String> formatsToExport = new ArrayList<String>();
+        Collections.addAll(formatsToExport, this.BasicExportFormats);
+        for (String additionalExportFormat : additionalExportFormats)
         {
             if (additionalExportFormat != null && !additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat))
             {
                 formatsToExport.add(additionalExportFormat);
             }
         }
-		
-		for (StorageFileInfo inputFile : InputTestFiles)
-		{
-			if (inputFile.getName().endsWith(formatExtension))
+        
+        for (StorageFile inputFile : InputTestFiles)
+        {
+            if (inputFile.getName().endsWith(formatExtension))
             {
                 name = inputFile.getName();
             }
@@ -121,29 +121,29 @@ public class SaveAsApiTests extends ApiTester {
             {
                 continue;
             }
-			
-			for (String format : formatsToExport)
+            
+            for (String format : formatsToExport)
             {
-				getImageSaveAsRequest = new GetImageSaveAsRequest(name, format, outPath, folder, storage);
-				outName = name + "." + format;
-				
-				Method propertiesTester = SaveAsApiTests.class.getDeclaredMethod("getImageSaveAsPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-				propertiesTester.setAccessible(true);
-				Method requestInvoker = SaveAsApiTests.class.getDeclaredMethod("getImageSaveAsGetRequestInvoker", String.class, String.class);
-				requestInvoker.setAccessible(true);
-			    this.testGetRequest(
-		            "getImageSaveAsTest; save result to storage: " + saveResultToStorage, 
-		            saveResultToStorage,
-		            String.format("Input image: %s; Output format: %s",
-		            		name, format),
-		            name,
-		            outName,
-		            requestInvoker,
-		            propertiesTester,
-		            folder,
-		            storage);
+                getImageSaveAsRequest = new GetImageSaveAsRequest(name, format, outPath, folder, storage);
+                outName = name + "." + format;
+                
+                Method propertiesTester = SaveAsApiTests.class.getDeclaredMethod("getImageSaveAsPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                propertiesTester.setAccessible(true);
+                Method requestInvoker = SaveAsApiTests.class.getDeclaredMethod("getImageSaveAsGetRequestInvoker", String.class, String.class);
+                requestInvoker.setAccessible(true);
+                this.testGetRequest(
+                    "getImageSaveAsTest; save result to storage: " + saveResultToStorage, 
+                    saveResultToStorage,
+                    String.format("Input image: %s; Output format: %s",
+                            name, format),
+                    name,
+                    outName,
+                    requestInvoker,
+                    propertiesTester,
+                    folder,
+                    storage);
             }
-		}
+        }
     }
     
     /**
@@ -154,26 +154,26 @@ public class SaveAsApiTests extends ApiTester {
      */
     @Test
     public void postImageSaveAsTest() throws Exception {
-    	byte[] imageData = null;
-		String name = null;
+        byte[] imageData = null;
+        String name = null;
         String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-		String outName = null;
-		
-		ArrayList<String> formatsToExport = new ArrayList<String>();
-		Collections.addAll(formatsToExport, this.BasicExportFormats);
-		for (String additionalExportFormat : additionalExportFormats)
+        String outName = null;
+        
+        ArrayList<String> formatsToExport = new ArrayList<String>();
+        Collections.addAll(formatsToExport, this.BasicExportFormats);
+        for (String additionalExportFormat : additionalExportFormats)
         {
             if (additionalExportFormat != null && !additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat))
             {
                 formatsToExport.add(additionalExportFormat);
             }
         }
-		
-		for (StorageFileInfo inputFile : InputTestFiles)
-		{
-			if (inputFile.getName().endsWith(formatExtension))
+        
+        for (StorageFile inputFile : InputTestFiles)
+        {
+            if (inputFile.getName().endsWith(formatExtension))
             {
                 name = inputFile.getName();
             }
@@ -181,76 +181,76 @@ public class SaveAsApiTests extends ApiTester {
             {
                 continue;
             }
-			
-			for (String format : formatsToExport)
+            
+            for (String format : formatsToExport)
             {
-				postImageSaveAsRequest = new PostImageSaveAsRequest(imageData, format, outPath, storage);
-				outName = name + "." + format;
-				
-				Method propertiesTester = SaveAsApiTests.class.getDeclaredMethod("postImageSaveAsPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-				propertiesTester.setAccessible(true);
-				Method requestInvoker = SaveAsApiTests.class.getDeclaredMethod("postImageSaveAsPostRequestInvoker", byte[].class, String.class);
-				requestInvoker.setAccessible(true);
-			    this.testPostRequest(
-		            "postImageSaveAsTest; save result to storage: " + saveResultToStorage,  
-		            saveResultToStorage,
-		            String.format("Input image: %s; Output format: %s",
-		            		name, format),
-		            name,
-		            outName,
-		            requestInvoker,
-		            propertiesTester,
-		            folder,
-		            storage);
+                postImageSaveAsRequest = new PostImageSaveAsRequest(imageData, format, outPath, storage);
+                outName = name + "." + format;
+                
+                Method propertiesTester = SaveAsApiTests.class.getDeclaredMethod("postImageSaveAsPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                propertiesTester.setAccessible(true);
+                Method requestInvoker = SaveAsApiTests.class.getDeclaredMethod("postImageSaveAsPostRequestInvoker", byte[].class, String.class);
+                requestInvoker.setAccessible(true);
+                this.testPostRequest(
+                    "postImageSaveAsTest; save result to storage: " + saveResultToStorage,  
+                    saveResultToStorage,
+                    String.format("Input image: %s; Output format: %s",
+                            name, format),
+                    name,
+                    outName,
+                    requestInvoker,
+                    propertiesTester,
+                    folder,
+                    storage);
             }
-		}
+        }
     }
-	
+    
     /**
-	 * Invokes GET request for getImageSaveAs operation. Used indirectly by method reference.
-	 * @param name Image file name
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] getImageSaveAsGetRequestInvoker(String name, String outPath) throws Exception
-	{
-		getImageSaveAsRequest.name = name;
-		getImageSaveAsRequest.outPath = outPath;
+     * Invokes GET request for getImageSaveAs operation. Used indirectly by method reference.
+     * @param name Image file name
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] getImageSaveAsGetRequestInvoker(String name, String outPath) throws Exception
+    {
+        getImageSaveAsRequest.name = name;
+        getImageSaveAsRequest.outPath = outPath;
         return ImagingApi.getImageSaveAs(getImageSaveAsRequest);
-	}
-	
-	/**
-	 * Invokes POST request for postImageSaveAs operation. Used indirectly by method reference.
-	 * @param imageData Image data
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] postImageSaveAsPostRequestInvoker(byte[] imageData, String outPath) throws Exception
-	{
-	    postImageSaveAsRequest.imageData = imageData;
-		postImageSaveAsRequest.outPath = outPath;
+    }
+    
+    /**
+     * Invokes POST request for postImageSaveAs operation. Used indirectly by method reference.
+     * @param imageData Image data
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] postImageSaveAsPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    {
+        postImageSaveAsRequest.imageData = imageData;
+        postImageSaveAsRequest.outPath = outPath;
         return ImagingApi.postImageSaveAs(postImageSaveAsRequest);
-	}
-	
-	/**
-	 * Tests properties for getImageSaveAs operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void getImageSaveAsPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
-	}
-	
-	/**
-	 * Tests properties for postImageSaveAs operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void postImageSaveAsPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
-	}
+    }
+    
+    /**
+     * Tests properties for getImageSaveAs operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void getImageSaveAsPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+    }
+    
+    /**
+     * Tests properties for postImageSaveAs operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void postImageSaveAsPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+    }
 }

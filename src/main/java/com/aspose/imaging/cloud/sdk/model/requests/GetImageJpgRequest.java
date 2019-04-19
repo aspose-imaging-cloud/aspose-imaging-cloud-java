@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImageJpgRequest
 {
-	/**
-	* Initializes a new instance of the GetImageJpgRequest class.   
+    /**
+    * Initializes a new instance of the GetImageJpgRequest class.   
     * @param name Filename of image.
     * @param quality Quality of an image from 0 to 100. Default is 75.
     * @param compressionType Compression type.
@@ -41,7 +41,7 @@ public class GetImageJpgRequest
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public GetImageJpgRequest(String name, Integer quality, String compressionType, Boolean fromScratch, String outPath, String folder, String storage)             
     {
         this.name = name;
@@ -52,7 +52,7 @@ public class GetImageJpgRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Filename of image.
     **/

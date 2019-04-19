@@ -38,11 +38,11 @@ import com.aspose.imaging.cloud.sdk.invoker.ApiException;
  */
 public class SerializationHelper
 {
-	/**
-	 * Serializes the specified object.
-	 * @param obj The object.
-	 * @return Serialized object.
-	 */
+    /**
+     * Serializes the specified object.
+     * @param obj The object.
+     * @return Serialized object.
+     */
     public static String serialize(Object obj)
     {
         try
@@ -65,19 +65,19 @@ public class SerializationHelper
     {
         try
         {
-        	if (jsonString.startsWith("{") || jsonString.startsWith("["))
+            if (jsonString.startsWith("{") || jsonString.startsWith("["))
             {
-            	return JSON.deserialize(jsonString, returnType);
+                return JSON.deserialize(jsonString, returnType);
             }
             else
             {
-            	Serializer serializer = new Persister();
-            	return serializer.read(returnType, jsonString);
+                Serializer serializer = new Persister();
+                return serializer.read(returnType, jsonString);
             }
         }
         catch (Exception e)
         {
-        	throw new ApiException(500, e.getMessage());
+            throw new ApiException(500, e.getMessage());
         }
     }        
 }

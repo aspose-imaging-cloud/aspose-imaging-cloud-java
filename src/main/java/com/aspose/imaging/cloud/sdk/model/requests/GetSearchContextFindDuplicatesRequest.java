@@ -32,13 +32,13 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetSearchContextFindDuplicatesRequest
 {
-	/**
-	* Initializes a new instance of the GetSearchContextFindDuplicatesRequest class.   
+    /**
+    * Initializes a new instance of the GetSearchContextFindDuplicatesRequest class.   
     * @param searchContextId The search context identifier.
     * @param similarityThreshold The similarity threshold.
     * @param folder The folder.
     * @param storage The storage.
-	**/
+    **/
     public GetSearchContextFindDuplicatesRequest(String searchContextId, Double similarityThreshold, String folder, String storage)             
     {
         this.searchContextId = searchContextId;
@@ -46,7 +46,7 @@ public class GetSearchContextFindDuplicatesRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * The search context identifier.
     **/

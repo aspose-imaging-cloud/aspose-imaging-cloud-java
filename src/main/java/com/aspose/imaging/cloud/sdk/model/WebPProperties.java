@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,16 +38,16 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents information about image in WEBP format.
  */
 public class WebPProperties {
-  @JsonProperty("Lossless")
+  @JsonProperty("lossless")
   private Boolean lossless = null;
 
-  @JsonProperty("Quality")
+  @JsonProperty("quality")
   private Double quality = null;
 
-  @JsonProperty("AnimLoopCount")
+  @JsonProperty("animLoopCount")
   private Integer animLoopCount = null;
 
-  @JsonProperty("AnimBackgroundColor")
+  @JsonProperty("animBackgroundColor")
   private Long animBackgroundColor = null;
 
   public WebPProperties lossless(Boolean lossless) {
@@ -55,7 +56,7 @@ public class WebPProperties {
   }
 
   /**
-   * Gets or sets a value indicating whether these  is lossless.
+   * Gets or sets a value indicating whether these WebPOptions is lossless.
    * @return lossless
   **/
   public Boolean isLossless() {

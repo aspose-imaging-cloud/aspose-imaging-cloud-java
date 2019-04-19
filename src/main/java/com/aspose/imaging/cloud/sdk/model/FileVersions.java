@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="Jpeg2000Codec.java">
+* <copyright company="Aspose" file="FileVersions.java">
 *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -28,49 +28,83 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-
 /**
- * Represents JPEG2000 image type             
+ * File versions FileVersion.
  */
-public enum Jpeg2000Codec {
-  
-  J2K("J2K"),
-  
-  JP2("Jp2"),
-  
-  JPT("Jpt");
+public class FileVersions {
+  @JsonProperty("value")
+  private List<FileVersion> value = null;
 
-  private String value;
+  public FileVersions value(List<FileVersion> value) {
+    this.value = value;
+    return this;
+  }
 
-  Jpeg2000Codec(String value) {
+  public FileVersions addValueItem(FileVersion valueItem) {
+    if (this.value == null) {
+      this.value = new ArrayList<FileVersion>();
+    }
+    this.value.add(valueItem);
+    return this;
+  }
+
+  /**
+   * File versions FileVersion.
+   * @return value
+  **/
+  public List<FileVersion> getValue() {
+    return value;
+  }  
+
+  public void setValue(List<FileVersion> value) {
     this.value = value;
   }
 
-  @JsonValue
-  public String getValue() {
-    return value;
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
+    FileVersions fileVersions = (FileVersions) o;
+    return ObjectUtils.equals(this.value, fileVersions.value);
   }
 
   @Override
-  public String toString() {
-    return String.valueOf(value);
+  public int hashCode() {
+    return ObjectUtils.hashCodeMulti(value);
   }
 
-  @JsonCreator
-  public static Jpeg2000Codec fromValue(String text) {
-    for (Jpeg2000Codec b : Jpeg2000Codec.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
-    }
-    return null;
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class FileVersions {\n");
+    
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("}");
+    return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

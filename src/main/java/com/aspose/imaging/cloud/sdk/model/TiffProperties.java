@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,14 +38,39 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents properties of TIFF image.
  */
 public class TiffProperties {
-  @JsonProperty("ByteOrder")
+  @JsonProperty("frames")
+  private List<TiffFrame> frames = null;
+
+  @JsonProperty("byteOrder")
   private String byteOrder = null;
 
-  @JsonProperty("ExifData")
+  @JsonProperty("exifData")
   private ExifData exifData = null;
 
-  @JsonProperty("Frames")
-  private List<TiffFrame> frames = null;
+  public TiffProperties frames(List<TiffFrame> frames) {
+    this.frames = frames;
+    return this;
+  }
+
+  public TiffProperties addFramesItem(TiffFrame framesItem) {
+    if (this.frames == null) {
+      this.frames = new ArrayList<TiffFrame>();
+    }
+    this.frames.add(framesItem);
+    return this;
+  }
+
+  /**
+   * Frames information.
+   * @return frames
+  **/
+  public List<TiffFrame> getFrames() {
+    return frames;
+  }  
+
+  public void setFrames(List<TiffFrame> frames) {
+    this.frames = frames;
+  }
 
   public TiffProperties byteOrder(String byteOrder) {
     this.byteOrder = byteOrder;
@@ -80,31 +106,6 @@ public class TiffProperties {
     this.exifData = exifData;
   }
 
-  public TiffProperties frames(List<TiffFrame> frames) {
-    this.frames = frames;
-    return this;
-  }
-
-  public TiffProperties addFramesItem(TiffFrame framesItem) {
-    if (this.frames == null) {
-      this.frames = new ArrayList<TiffFrame>();
-    }
-    this.frames.add(framesItem);
-    return this;
-  }
-
-  /**
-   * Frames information.
-   * @return frames
-  **/
-  public List<TiffFrame> getFrames() {
-    return frames;
-  }  
-
-  public void setFrames(List<TiffFrame> frames) {
-    this.frames = frames;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -115,14 +116,14 @@ public class TiffProperties {
     return false;
   }
     TiffProperties tiffProperties = (TiffProperties) o;
-    return ObjectUtils.equals(this.byteOrder, tiffProperties.byteOrder) &&
-    ObjectUtils.equals(this.exifData, tiffProperties.exifData) &&
-    ObjectUtils.equals(this.frames, tiffProperties.frames);
+    return ObjectUtils.equals(this.frames, tiffProperties.frames) &&
+    ObjectUtils.equals(this.byteOrder, tiffProperties.byteOrder) &&
+    ObjectUtils.equals(this.exifData, tiffProperties.exifData);
   }
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(byteOrder, exifData, frames);
+    return ObjectUtils.hashCodeMulti(frames, byteOrder, exifData);
   }
 
 
@@ -131,9 +132,9 @@ public class TiffProperties {
     StringBuilder sb = new StringBuilder();
     sb.append("class TiffProperties {\n");
     
+    sb.append("    frames: ").append(toIndentedString(frames)).append("\n");
     sb.append("    byteOrder: ").append(toIndentedString(byteOrder)).append("\n");
     sb.append("    exifData: ").append(toIndentedString(exifData)).append("\n");
-    sb.append("    frames: ").append(toIndentedString(frames)).append("\n");
     sb.append("}");
     return sb.toString();
   }

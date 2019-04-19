@@ -34,13 +34,13 @@ import java.net.URISyntaxException;
  */
 public class UrlHelper
 {
-	/**
-	 * Adds the path parameter.
-	 * @param url The URL.
-	 * @param parameterName Name of the parameter.
-	 * @param parameterValue The parameter value.
-	 * @return Resulting URL.
-	 */
+    /**
+     * Adds the path parameter.
+     * @param url The URL.
+     * @param parameterName Name of the parameter.
+     * @param parameterValue The parameter value.
+     * @return Resulting URL.
+     */
     public static String addPathParameter(String url, String parameterName, Object parameterValue)
     {
         if (parameterValue == null || parameterValue.toString() == null || parameterValue.toString().equals(""))
@@ -65,7 +65,7 @@ public class UrlHelper
      * @throws URISyntaxException
      */
     public static String addQueryParameterToUrl(String url, String parameterName, Object parameterValue) 
-    		throws IllegalArgumentException, URISyntaxException
+            throws IllegalArgumentException, URISyntaxException
     {
         if (url.contains("{" + parameterName + "}"))
         {               
@@ -82,15 +82,15 @@ public class UrlHelper
        
         if (parameterValue != null)
         {
-        	if (!url.contains("?"))
-        	{
-        		url = url + "?";
-        	}
-        	else
-        	{
-        		url = url + "&";
-        	}
-        	
+            if (!url.contains("?"))
+            {
+                url = url + "?";
+            }
+            else
+            {
+                url = url + "&";
+            }
+            
             url = url + String.format("%s=%s", parameterName, parameterValue);
         }
         

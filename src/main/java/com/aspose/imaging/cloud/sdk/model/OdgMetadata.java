@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,58 +38,58 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * ODG format metadata
  */
 public class OdgMetadata {
-  @JsonProperty("Generator")
+  @JsonProperty("generator")
   private String generator = null;
 
-  @JsonProperty("Title")
+  @JsonProperty("title")
   private String title = null;
 
-  @JsonProperty("Description")
+  @JsonProperty("description")
   private String description = null;
 
-  @JsonProperty("Subject")
+  @JsonProperty("subject")
   private String subject = null;
 
-  @JsonProperty("Keywords")
+  @JsonProperty("keywords")
   private String keywords = null;
 
-  @JsonProperty("InitialCreator")
+  @JsonProperty("initialCreator")
   private String initialCreator = null;
 
-  @JsonProperty("Creator")
+  @JsonProperty("creator")
   private String creator = null;
 
-  @JsonProperty("PrintedBy")
+  @JsonProperty("printedBy")
   private String printedBy = null;
 
-  @JsonProperty("CreationDateTime")
+  @JsonProperty("creationDateTime")
   private String creationDateTime = null;
 
-  @JsonProperty("ModificationDateTime")
+  @JsonProperty("modificationDateTime")
   private String modificationDateTime = null;
 
-  @JsonProperty("PrintDateTime")
+  @JsonProperty("printDateTime")
   private String printDateTime = null;
 
-  @JsonProperty("DocumentTemplate")
+  @JsonProperty("documentTemplate")
   private String documentTemplate = null;
 
-  @JsonProperty("AutomaticReload")
+  @JsonProperty("automaticReload")
   private String automaticReload = null;
 
-  @JsonProperty("HyperlinkBehavior")
+  @JsonProperty("hyperlinkBehavior")
   private String hyperlinkBehavior = null;
 
-  @JsonProperty("Language")
+  @JsonProperty("language")
   private String language = null;
 
-  @JsonProperty("EditingCycles")
+  @JsonProperty("editingCycles")
   private String editingCycles = null;
 
-  @JsonProperty("EditingDuration")
+  @JsonProperty("editingDuration")
   private String editingDuration = null;
 
-  @JsonProperty("DocumentStatistics")
+  @JsonProperty("documentStatistics")
   private String documentStatistics = null;
 
   public OdgMetadata generator(String generator) {
@@ -97,7 +98,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the generator.             
+   * Gets or sets the generator.
    * @return generator
   **/
   public String getGenerator() {
@@ -114,7 +115,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the title.             
+   * Gets or sets the title.
    * @return title
   **/
   public String getTitle() {
@@ -131,7 +132,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the description.             
+   * Gets or sets the description.
    * @return description
   **/
   public String getDescription() {
@@ -148,7 +149,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the subject.             
+   * Gets or sets the subject.
    * @return subject
   **/
   public String getSubject() {
@@ -165,7 +166,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the keywords.             
+   * Gets or sets the keywords.
    * @return keywords
   **/
   public String getKeywords() {
@@ -182,7 +183,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the initial creator.             
+   * Gets or sets the initial creator.
    * @return initialCreator
   **/
   public String getInitialCreator() {
@@ -199,7 +200,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the creator.             
+   * Gets or sets the creator.
    * @return creator
   **/
   public String getCreator() {
@@ -216,7 +217,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the \&quot;PrintedBy\&quot; record.             
+   * Gets or sets the \&quot;PrintedBy\&quot; record.
    * @return printedBy
   **/
   public String getPrintedBy() {
@@ -233,7 +234,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the creation date and time.             
+   * Gets or sets the creation date and time.
    * @return creationDateTime
   **/
   public String getCreationDateTime() {
@@ -250,7 +251,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the modification date and time.             
+   * Gets or sets the modification date and time.
    * @return modificationDateTime
   **/
   public String getModificationDateTime() {
@@ -267,7 +268,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the print date and time.             
+   * Gets or sets the print date and time.
    * @return printDateTime
   **/
   public String getPrintDateTime() {
@@ -284,7 +285,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the document template.             
+   * Gets or sets the document template.
    * @return documentTemplate
   **/
   public String getDocumentTemplate() {
@@ -301,7 +302,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the automatic reload.             
+   * Gets or sets the automatic reload.
    * @return automaticReload
   **/
   public String getAutomaticReload() {
@@ -318,7 +319,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the hyperlink behavior.             
+   * Gets or sets the hyperlink behavior.
    * @return hyperlinkBehavior
   **/
   public String getHyperlinkBehavior() {
@@ -335,7 +336,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the language.             
+   * Gets or sets the language.
    * @return language
   **/
   public String getLanguage() {
@@ -352,7 +353,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the editing cycles.             
+   * Gets or sets the editing cycles.
    * @return editingCycles
   **/
   public String getEditingCycles() {
@@ -369,7 +370,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the duration of the editing.             
+   * Gets or sets the duration of the editing.
    * @return editingDuration
   **/
   public String getEditingDuration() {
@@ -386,7 +387,7 @@ public class OdgMetadata {
   }
 
   /**
-   * Gets or sets the document statistics.             
+   * Gets or sets the document statistics.
    * @return documentStatistics
   **/
   public String getDocumentStatistics() {

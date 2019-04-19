@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="GetImageDicomRequest.java">
+* <copyright company="Aspose" file="CopyFileRequest.java">
 *   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -28,49 +28,49 @@
 package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
-* Class that holds parameters for GetImageDicom request invocation.
+* Class that holds parameters for CopyFile request invocation.
 **/   
-public class GetImageDicomRequest
+public class CopyFileRequest
 {
-	/**
-	* Initializes a new instance of the GetImageDicomRequest class.   
-    * @param name Filename of image.
-    * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
-    * @param folder Folder with image to process.
-    * @param storage Your Aspose Cloud Storage name.
-	**/
-    public GetImageDicomRequest(String name, Boolean fromScratch, String outPath, String folder, String storage)             
+    /**
+    * Initializes a new instance of the CopyFileRequest class.   
+    * @param srcPath Source file path e.g. &#39;/folder/file.ext&#39;
+    * @param destPath Destination file path
+    * @param srcStorageName Source storage name
+    * @param destStorageName Destination storage name
+    * @param versionId File version ID to copy
+    **/
+    public CopyFileRequest(String srcPath, String destPath, String srcStorageName, String destStorageName, String versionId)             
     {
-        this.name = name;
-        this.fromScratch = fromScratch;
-        this.outPath = outPath;
-        this.folder = folder;
-        this.storage = storage;
+        this.srcPath = srcPath;
+        this.destPath = destPath;
+        this.srcStorageName = srcStorageName;
+        this.destStorageName = destStorageName;
+        this.versionId = versionId;
     }
-		
+        
     /**
-    * Filename of image.
+    * Source file path e.g. '/folder/file.ext'
     **/
-    public String name;
+    public String srcPath;
 
     /**
-    * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+    * Destination file path
     **/
-    public Boolean fromScratch;
+    public String destPath;
 
     /**
-    * Path to updated file (if this is empty, response contains streamed image).
+    * Source storage name
     **/
-    public String outPath;
+    public String srcStorageName;
 
     /**
-    * Folder with image to process.
+    * Destination storage name
     **/
-    public String folder;
+    public String destStorageName;
 
     /**
-    * Your Aspose Cloud Storage name.
+    * File version ID to copy
     **/
-    public String storage;
+    public String versionId;
 }

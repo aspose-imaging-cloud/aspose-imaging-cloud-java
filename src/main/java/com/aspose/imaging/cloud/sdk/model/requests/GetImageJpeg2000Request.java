@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImageJpeg2000Request
 {
-	/**
-	* Initializes a new instance of the GetImageJpeg2000Request class.   
+    /**
+    * Initializes a new instance of the GetImageJpeg2000Request class.   
     * @param name Filename of image.
     * @param comment The comment.
     * @param codec The codec.
@@ -41,7 +41,7 @@ public class GetImageJpeg2000Request
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public GetImageJpeg2000Request(String name, String comment, String codec, Boolean fromScratch, String outPath, String folder, String storage)             
     {
         this.name = name;
@@ -52,7 +52,7 @@ public class GetImageJpeg2000Request
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Filename of image.
     **/

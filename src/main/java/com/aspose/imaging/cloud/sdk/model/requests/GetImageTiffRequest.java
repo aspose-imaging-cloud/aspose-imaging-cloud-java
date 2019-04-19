@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImageTiffRequest
 {
-	/**
-	* Initializes a new instance of the GetImageTiffRequest class.   
+    /**
+    * Initializes a new instance of the GetImageTiffRequest class.   
     * @param name Filename of image.
     * @param compression Compression.
     * @param resolutionUnit New resolution unit.
@@ -44,7 +44,7 @@ public class GetImageTiffRequest
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public GetImageTiffRequest(String name, String compression, String resolutionUnit, Integer bitDepth, Boolean fromScratch, Double horizontalResolution, Double verticalResolution, String outPath, String folder, String storage)             
     {
         this.name = name;
@@ -58,7 +58,7 @@ public class GetImageTiffRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Filename of image.
     **/

@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,307 +38,307 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents common EXIF data section.
  */
 public class ExifData {
-  @JsonProperty("ApertureValue")
+  @JsonProperty("apertureValue")
   private Double apertureValue = null;
 
-  @JsonProperty("BodySerialNumber")
+  @JsonProperty("bodySerialNumber")
   private String bodySerialNumber = null;
 
-  @JsonProperty("BrightnessValue")
+  @JsonProperty("brightnessValue")
   private Double brightnessValue = null;
 
-  @JsonProperty("CFAPattern")
+  @JsonProperty("cfAPattern")
   private byte[] cfAPattern = null;
 
-  @JsonProperty("CameraOwnerName")
+  @JsonProperty("cameraOwnerName")
   private String cameraOwnerName = null;
 
-  @JsonProperty("ColorSpace")
+  @JsonProperty("colorSpace")
   private String colorSpace = null;
 
-  @JsonProperty("ComponentsConfiguration")
+  @JsonProperty("componentsConfiguration")
   private byte[] componentsConfiguration = null;
 
-  @JsonProperty("CompressedBitsPerPixel")
+  @JsonProperty("compressedBitsPerPixel")
   private Double compressedBitsPerPixel = null;
 
-  @JsonProperty("Contrast")
+  @JsonProperty("contrast")
   private String contrast = null;
 
-  @JsonProperty("CustomRendered")
+  @JsonProperty("customRendered")
   private String customRendered = null;
 
-  @JsonProperty("DateTimeDigitized")
+  @JsonProperty("dateTimeDigitized")
   private String dateTimeDigitized = null;
 
-  @JsonProperty("DateTimeOriginal")
+  @JsonProperty("dateTimeOriginal")
   private String dateTimeOriginal = null;
 
-  @JsonProperty("DeviceSettingDescription")
+  @JsonProperty("deviceSettingDescription")
   private byte[] deviceSettingDescription = null;
 
-  @JsonProperty("DigitalZoomRatio")
+  @JsonProperty("digitalZoomRatio")
   private Double digitalZoomRatio = null;
 
-  @JsonProperty("ExifVersion")
+  @JsonProperty("exifVersion")
   private byte[] exifVersion = null;
 
-  @JsonProperty("ExposureBiasValue")
+  @JsonProperty("exposureBiasValue")
   private Double exposureBiasValue = null;
 
-  @JsonProperty("ExposureIndex")
+  @JsonProperty("exposureIndex")
   private Double exposureIndex = null;
 
-  @JsonProperty("ExposureMode")
+  @JsonProperty("exposureMode")
   private String exposureMode = null;
 
-  @JsonProperty("ExposureProgram")
+  @JsonProperty("exposureProgram")
   private String exposureProgram = null;
 
-  @JsonProperty("ExposureTime")
+  @JsonProperty("exposureTime")
   private Double exposureTime = null;
 
-  @JsonProperty("FNumber")
+  @JsonProperty("fnumber")
   private Double fnumber = null;
 
-  @JsonProperty("FileSource")
+  @JsonProperty("fileSource")
   private String fileSource = null;
 
-  @JsonProperty("Flash")
+  @JsonProperty("flash")
   private String flash = null;
 
-  @JsonProperty("FlashEnergy")
+  @JsonProperty("flashEnergy")
   private Double flashEnergy = null;
 
-  @JsonProperty("FlashpixVersion")
+  @JsonProperty("flashpixVersion")
   private byte[] flashpixVersion = null;
 
-  @JsonProperty("FocalLength")
+  @JsonProperty("focalLength")
   private Double focalLength = null;
 
-  @JsonProperty("FocalLengthIn35MmFilm")
+  @JsonProperty("focalLengthIn35MmFilm")
   private Integer focalLengthIn35MmFilm = null;
 
-  @JsonProperty("FocalPlaneResolutionUnit")
+  @JsonProperty("focalPlaneResolutionUnit")
   private String focalPlaneResolutionUnit = null;
 
-  @JsonProperty("FocalPlaneXResolution")
+  @JsonProperty("focalPlaneXResolution")
   private Double focalPlaneXResolution = null;
 
-  @JsonProperty("FocalPlaneYResolution")
+  @JsonProperty("focalPlaneYResolution")
   private Double focalPlaneYResolution = null;
 
-  @JsonProperty("GPSAltitude")
+  @JsonProperty("gpSAltitude")
   private Double gpSAltitude = null;
 
-  @JsonProperty("GPSAltitudeRef")
+  @JsonProperty("gpSAltitudeRef")
   private String gpSAltitudeRef = null;
 
-  @JsonProperty("GPSAreaInformation")
+  @JsonProperty("gpSAreaInformation")
   private byte[] gpSAreaInformation = null;
 
   @JsonProperty("GPSDOP")
   private Double GPSDOP = null;
 
-  @JsonProperty("GPSDestBearing")
+  @JsonProperty("gpSDestBearing")
   private Double gpSDestBearing = null;
 
-  @JsonProperty("GPSDestBearingRef")
+  @JsonProperty("gpSDestBearingRef")
   private String gpSDestBearingRef = null;
 
-  @JsonProperty("GPSDestDistance")
+  @JsonProperty("gpSDestDistance")
   private Double gpSDestDistance = null;
 
-  @JsonProperty("GPSDestDistanceRef")
+  @JsonProperty("gpSDestDistanceRef")
   private String gpSDestDistanceRef = null;
 
-  @JsonProperty("GPSDestLatitude")
+  @JsonProperty("gpSDestLatitude")
   private List<Double> gpSDestLatitude = null;
 
-  @JsonProperty("GPSDestLatitudeRef")
+  @JsonProperty("gpSDestLatitudeRef")
   private String gpSDestLatitudeRef = null;
 
-  @JsonProperty("GPSDestLongitude")
+  @JsonProperty("gpSDestLongitude")
   private List<Double> gpSDestLongitude = null;
 
-  @JsonProperty("GPSDestLongitudeRef")
+  @JsonProperty("gpSDestLongitudeRef")
   private String gpSDestLongitudeRef = null;
 
-  @JsonProperty("GPSDifferential")
+  @JsonProperty("gpSDifferential")
   private Integer gpSDifferential = null;
 
-  @JsonProperty("GPSImgDirection")
+  @JsonProperty("gpSImgDirection")
   private Double gpSImgDirection = null;
 
-  @JsonProperty("GPSImgDirectionRef")
+  @JsonProperty("gpSImgDirectionRef")
   private String gpSImgDirectionRef = null;
 
-  @JsonProperty("GPSDateStamp")
+  @JsonProperty("gpSDateStamp")
   private String gpSDateStamp = null;
 
-  @JsonProperty("GPSLatitude")
+  @JsonProperty("gpSLatitude")
   private List<Double> gpSLatitude = null;
 
-  @JsonProperty("GPSLatitudeRef")
+  @JsonProperty("gpSLatitudeRef")
   private String gpSLatitudeRef = null;
 
-  @JsonProperty("GPSLongitude")
+  @JsonProperty("gpSLongitude")
   private List<Double> gpSLongitude = null;
 
-  @JsonProperty("GPSLongitudeRef")
+  @JsonProperty("gpSLongitudeRef")
   private String gpSLongitudeRef = null;
 
-  @JsonProperty("GPSMapDatum")
+  @JsonProperty("gpSMapDatum")
   private String gpSMapDatum = null;
 
-  @JsonProperty("GPSMeasureMode")
+  @JsonProperty("gpSMeasureMode")
   private String gpSMeasureMode = null;
 
-  @JsonProperty("GPSProcessingMethod")
+  @JsonProperty("gpSProcessingMethod")
   private byte[] gpSProcessingMethod = null;
 
-  @JsonProperty("GPSSatellites")
+  @JsonProperty("gpSSatellites")
   private String gpSSatellites = null;
 
-  @JsonProperty("GPSSpeed")
+  @JsonProperty("gpSSpeed")
   private Double gpSSpeed = null;
 
-  @JsonProperty("GPSSpeedRef")
+  @JsonProperty("gpSSpeedRef")
   private String gpSSpeedRef = null;
 
-  @JsonProperty("GPSStatus")
+  @JsonProperty("gpSStatus")
   private String gpSStatus = null;
 
-  @JsonProperty("GPSTimestamp")
+  @JsonProperty("gpSTimestamp")
   private List<Double> gpSTimestamp = null;
 
-  @JsonProperty("GPSTrack")
+  @JsonProperty("gpSTrack")
   private String gpSTrack = null;
 
-  @JsonProperty("GPSTrackRef")
+  @JsonProperty("gpSTrackRef")
   private String gpSTrackRef = null;
 
-  @JsonProperty("GPSVersionID")
+  @JsonProperty("gpSVersionID")
   private byte[] gpSVersionID = null;
 
-  @JsonProperty("GainControl")
+  @JsonProperty("gainControl")
   private String gainControl = null;
 
-  @JsonProperty("Gamma")
+  @JsonProperty("gamma")
   private Double gamma = null;
 
-  @JsonProperty("ISOSpeed")
+  @JsonProperty("isOSpeed")
   private Long isOSpeed = null;
 
-  @JsonProperty("ISOSpeedLatitudeYYY")
+  @JsonProperty("isOSpeedLatitudeYYY")
   private Long isOSpeedLatitudeYYY = null;
 
-  @JsonProperty("ISOSpeedLatitudeZZZ")
+  @JsonProperty("isOSpeedLatitudeZZZ")
   private Long isOSpeedLatitudeZZZ = null;
 
-  @JsonProperty("PhotographicSensitivity")
+  @JsonProperty("photographicSensitivity")
   private Long photographicSensitivity = null;
 
-  @JsonProperty("ImageUniqueID")
+  @JsonProperty("imageUniqueID")
   private String imageUniqueID = null;
 
-  @JsonProperty("LensMake")
+  @JsonProperty("lensMake")
   private String lensMake = null;
 
-  @JsonProperty("LensModel")
+  @JsonProperty("lensModel")
   private String lensModel = null;
 
-  @JsonProperty("LensSerialNumber")
+  @JsonProperty("lensSerialNumber")
   private String lensSerialNumber = null;
 
-  @JsonProperty("LensSpecification")
+  @JsonProperty("lensSpecification")
   private List<Double> lensSpecification = null;
 
-  @JsonProperty("LightSource")
+  @JsonProperty("lightSource")
   private String lightSource = null;
 
-  @JsonProperty("MakerNoteRawData")
+  @JsonProperty("makerNoteRawData")
   private byte[] makerNoteRawData = null;
 
-  @JsonProperty("MaxApertureValue")
+  @JsonProperty("maxApertureValue")
   private Double maxApertureValue = null;
 
-  @JsonProperty("MeteringMode")
+  @JsonProperty("meteringMode")
   private String meteringMode = null;
 
   @JsonProperty("OECF")
   private byte[] OECF = null;
 
-  @JsonProperty("PixelXDimension")
+  @JsonProperty("pixelXDimension")
   private Long pixelXDimension = null;
 
-  @JsonProperty("PixelYDimension")
+  @JsonProperty("pixelYDimension")
   private Long pixelYDimension = null;
 
-  @JsonProperty("RecommendedExposureIndex")
+  @JsonProperty("recommendedExposureIndex")
   private Long recommendedExposureIndex = null;
 
-  @JsonProperty("RelatedSoundFile")
+  @JsonProperty("relatedSoundFile")
   private String relatedSoundFile = null;
 
-  @JsonProperty("Saturation")
+  @JsonProperty("saturation")
   private String saturation = null;
 
-  @JsonProperty("SceneCaptureType")
+  @JsonProperty("sceneCaptureType")
   private String sceneCaptureType = null;
 
-  @JsonProperty("SceneType")
+  @JsonProperty("sceneType")
   private Integer sceneType = null;
 
-  @JsonProperty("SensingMethod")
+  @JsonProperty("sensingMethod")
   private String sensingMethod = null;
 
-  @JsonProperty("SensitivityType")
+  @JsonProperty("sensitivityType")
   private Integer sensitivityType = null;
 
-  @JsonProperty("Sharpness")
+  @JsonProperty("sharpness")
   private Integer sharpness = null;
 
-  @JsonProperty("ShutterSpeedValue")
+  @JsonProperty("shutterSpeedValue")
   private Double shutterSpeedValue = null;
 
-  @JsonProperty("SpatialFrequencyResponse")
+  @JsonProperty("spatialFrequencyResponse")
   private byte[] spatialFrequencyResponse = null;
 
-  @JsonProperty("SpectralSensitivity")
+  @JsonProperty("spectralSensitivity")
   private String spectralSensitivity = null;
 
-  @JsonProperty("StandardOutputSensitivity")
+  @JsonProperty("standardOutputSensitivity")
   private Long standardOutputSensitivity = null;
 
-  @JsonProperty("SubjectArea")
+  @JsonProperty("subjectArea")
   private List<Integer> subjectArea = null;
 
-  @JsonProperty("SubjectDistance")
+  @JsonProperty("subjectDistance")
   private Double subjectDistance = null;
 
-  @JsonProperty("SubjectDistanceRange")
+  @JsonProperty("subjectDistanceRange")
   private String subjectDistanceRange = null;
 
-  @JsonProperty("SubjectLocation")
+  @JsonProperty("subjectLocation")
   private List<Integer> subjectLocation = null;
 
-  @JsonProperty("SubsecTime")
+  @JsonProperty("subsecTime")
   private String subsecTime = null;
 
-  @JsonProperty("SubsecTimeDigitized")
+  @JsonProperty("subsecTimeDigitized")
   private String subsecTimeDigitized = null;
 
-  @JsonProperty("SubsecTimeOriginal")
+  @JsonProperty("subsecTimeOriginal")
   private String subsecTimeOriginal = null;
 
-  @JsonProperty("UserComment")
+  @JsonProperty("userComment")
   private String userComment = null;
 
-  @JsonProperty("WhiteBalance")
+  @JsonProperty("whiteBalance")
   private String whiteBalance = null;
 
-  @JsonProperty("WhitePoint")
+  @JsonProperty("whitePoint")
   private List<Double> whitePoint = null;
 
   public ExifData apertureValue(Double apertureValue) {

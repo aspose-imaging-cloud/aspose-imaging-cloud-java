@@ -39,11 +39,11 @@ import com.aspose.imaging.cloud.sdk.invoker.internal.SerializationHelper;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * OAuth request handler.
+ * Auth request handler.
  */
-public class OAuthRequestHandler implements IRequestHandler
+public class AuthRequestHandler implements IRequestHandler
 {
-	/**
+    /**
      * The configuration
      */
     private final Configuration configuration;
@@ -67,7 +67,7 @@ public class OAuthRequestHandler implements IRequestHandler
      * Initializes a new instance of the OAuthRequestHandler class.
      * @param configuration The configuration.
      */
-    public OAuthRequestHandler(Configuration configuration)
+    public AuthRequestHandler(Configuration configuration)
     {
         this.configuration = configuration;
 
@@ -83,18 +83,8 @@ public class OAuthRequestHandler implements IRequestHandler
      * @return Processed URL.
      * @throws Exception 
      */
-    public String processUrl(String url) throws Exception
+    public String processUrl(String url)
     {
-        if (this.configuration.AuthType != AuthType.OAuth2)
-        {
-            return url;
-        }
-
-        if (this.accessToken == null || this.accessToken == "")
-        {
-            this.requestToken();
-        }
-
         return url;
     }
 
@@ -102,12 +92,13 @@ public class OAuthRequestHandler implements IRequestHandler
      * Processes parameters before sending.
      * @param connection The connection.
      * @param streamToSend The stream to send.
+     * @throws Exception 
      */
-    public void beforeSend(HttpURLConnection connection, OutputStream streamToSend)
+    public void beforeSend(HttpURLConnection connection, OutputStream streamToSend) throws Exception
     {
-        if (this.configuration.AuthType != AuthType.OAuth2)
+        if (this.accessToken == null || this.accessToken == "")
         {
-            return;
+            this.requestJwtToken();
         }
         
         connection.setRequestProperty("Authorization", "Bearer " + this.accessToken);
@@ -122,59 +113,34 @@ public class OAuthRequestHandler implements IRequestHandler
      */
     public void processResponse(HttpURLConnection connection, byte[] resultData) throws IOException, Exception
     {
-        if (this.configuration.AuthType != AuthType.OAuth2)
-        {
-            return;
-        }
-
-        if (connection.getResponseCode() == 401)
-        {
-            this.refreshToken();
-
-            throw new NeedRepeatRequestException();
-        }
     }
 
     /**
-     * Refreshes the token.
-     * @throws Exception 
+     * Requests the JWT token.
+     * @throws Exception
      */
-    private void refreshToken() throws Exception
+    private void requestJwtToken() throws Exception
     {
-        String requestUrl = this.configuration.getApiBaseUrl() + "oauth2/token";
-
-        String postData = "grant_type=refresh_token";
-        postData += "&refresh_token=" + this.refreshToken;
-
-        byte[] resultData = this.apiInvoker.invokeApi(
-                requestUrl,
-                "POST",
-                postData,
-                null,
-                null,
-                "application/x-www-form-urlencoded");
-        String responseString = new String(resultData);
-
-        GetAccessTokenResult result =
-            SerializationHelper.deserialize(responseString, GetAccessTokenResult.class);
-
-        this.accessToken = result.AccessToken;
-        this.refreshToken = result.RefreshToken;
-    }
-
-    /// <summary>
-    /// Requests the token.
-    /// </summary>
-    private void requestToken() throws Exception
-    {
-    	String requestUrl = this.configuration.getApiBaseUrl() + "oauth2/token";
+        String requestUrl = this.configuration.getApiBaseUrl() + "connect/token";
 
         String postData = "grant_type=client_credentials";
         postData += "&client_id=" + this.configuration.AppSid;
         postData += "&client_secret=" + this.configuration.AppKey;
 
+        this.requestToken(requestUrl, postData);
+    }
+    
+    /**
+     * Requests the token.
+     * @param tokenUrl Token URL.
+     * @param postData Post data.
+     * @param authType Auth type.
+     * @throws Exception
+     */
+    private void requestToken(String tokenUrl, String postData) throws Exception
+    {
         byte[] resultData = this.apiInvoker.invokeApi(
-                requestUrl,
+                tokenUrl,
                 "POST",
                 postData,
                 null,
@@ -186,53 +152,25 @@ public class OAuthRequestHandler implements IRequestHandler
             SerializationHelper.deserialize(responseString, GetAccessTokenResult.class);
 
         this.accessToken = result.AccessToken;
-        this.refreshToken = result.RefreshToken;
     }
 
-    /// <summary>
-    /// Token access result class.
-    /// </summary>
+    /**
+     * Token access result class.
+     */
     public static class GetAccessTokenResult
     {
-    	public GetAccessTokenResult()
-    	{
-    		
-    	}
-    	
-        /// <summary>
-        /// Gets or sets the access token.
-        /// </summary>
-        /// <value>
-        /// The access token.
-        /// </value>
-    	@JsonProperty("access_token")
+        public GetAccessTokenResult()
+        {
+            
+        }
+        
+        @JsonProperty("access_token")
         public String AccessToken;
-
-        /// <summary>
-        /// Gets or sets the refresh token.
-        /// </summary>
-        /// <value>
-        /// The refresh token.
-        /// </value>
-    	@JsonProperty("refresh_token")
-        public String RefreshToken;
-    	
-    	@JsonProperty("expires_in")
-        public Integer ExpiresIn;
-    	
-    	@JsonProperty("token_type")
-        public String Type;
-    	
-    	@JsonProperty("client_id")
-        public String ClientId;
-    	
-    	@JsonProperty("clientRefreshTokenLifeTimeInMinutes")
-        public Integer ClientRefreshTokenLifeTimeInMinutes;
-    	
-    	@JsonProperty(".issued")
-        public String Issued;
-    	
-    	@JsonProperty(".expires")
-        public String Expires;
+        
+        @JsonProperty("expires_in")
+        public String ExpiresIn;
+        
+        @JsonProperty("token_type")
+        public String TokenType;
     }        
 }

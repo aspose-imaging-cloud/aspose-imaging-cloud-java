@@ -32,17 +32,17 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostImageFramePropertiesRequest
 {
-	/**
-	* Initializes a new instance of the PostImageFramePropertiesRequest class.   
+    /**
+    * Initializes a new instance of the PostImageFramePropertiesRequest class.   
     * @param imageData Input image
     * @param frameId Number of a frame.
-	**/
+    **/
     public PostImageFramePropertiesRequest(byte[] imageData, Integer frameId)             
     {
         this.imageData = imageData;
         this.frameId = frameId;
     }
-		
+        
     /**
     * Input image
     **/
