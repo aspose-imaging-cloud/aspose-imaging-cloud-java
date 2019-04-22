@@ -110,7 +110,7 @@ public abstract class TestImagingAIBase extends ApiTester {
     }
 
     protected void waitSearchContextIdle(int maxTimeInSeconds) throws Exception {
-        int timeout = 10;        
+        int timeout = 20;        
         String status = "unknown";
         
         long startTime = System.currentTimeMillis();
