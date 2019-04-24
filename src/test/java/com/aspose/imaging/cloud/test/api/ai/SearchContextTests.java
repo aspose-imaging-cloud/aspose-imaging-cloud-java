@@ -30,6 +30,7 @@ package com.aspose.imaging.cloud.test.api.ai;
 import java.io.IOException;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.aspose.imaging.cloud.sdk.invoker.ApiException;
@@ -135,6 +136,7 @@ public class SearchContextTests extends TestImagingAIBase {
     }
 
     @Test
+    @Ignore("IMAGINGAINET-107")
     public void extractAndAddImageFeaturesFromFolderTest() throws Exception {
         ImagingApi.postSearchContextExtractImageFeatures(new PostSearchContextExtractImageFeaturesRequest(
                 SearchContextId, null, null, OriginalDataFolder + "/FindSimilar", null, TestStorage));
