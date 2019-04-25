@@ -32,10 +32,10 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostImageUpdateRequest
 {
-	/**
-	* Initializes a new instance of the PostImageUpdateRequest class.   
+    /**
+    * Initializes a new instance of the PostImageUpdateRequest class.   
     * @param imageData Input image
-    * @param format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * @param format Resulting image format.
     * @param newWidth New width of the scaled image.
     * @param newHeight New height of the scaled image.
     * @param x X position of start point for cropping rectangle.
@@ -45,7 +45,7 @@ public class PostImageUpdateRequest
     * @param rotateFlipMethod RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public PostImageUpdateRequest(byte[] imageData, String format, Integer newWidth, Integer newHeight, Integer x, Integer y, Integer rectWidth, Integer rectHeight, String rotateFlipMethod, String outPath, String storage)             
     {
         this.imageData = imageData;
@@ -60,14 +60,14 @@ public class PostImageUpdateRequest
         this.outPath = outPath;
         this.storage = storage;
     }
-		
+        
     /**
     * Input image
     **/
     public byte[] imageData;
 
     /**
-    * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * Resulting image format.
     **/
     public String format;
 

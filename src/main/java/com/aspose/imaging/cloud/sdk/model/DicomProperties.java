@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,76 +38,76 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents information about image in dicom format.
  */
 public class DicomProperties {
-  @JsonProperty("PlanarConfiguration")
+  @JsonProperty("planarConfiguration")
   private Integer planarConfiguration = null;
 
-  @JsonProperty("Reds")
+  @JsonProperty("reds")
   private byte[] reds = null;
 
-  @JsonProperty("Greens")
+  @JsonProperty("greens")
   private byte[] greens = null;
 
-  @JsonProperty("Blues")
+  @JsonProperty("blues")
   private byte[] blues = null;
 
-  @JsonProperty("DicomHeaderInfoByBytes")
+  @JsonProperty("dicomHeaderInfoByBytes")
   private byte[] dicomHeaderInfoByBytes = null;
 
-  @JsonProperty("SignedImage")
+  @JsonProperty("signedImage")
   private Boolean signedImage = null;
 
-  @JsonProperty("DicomInfo")
+  @JsonProperty("dicomInfo")
   private List<String> dicomInfo = null;
 
-  @JsonProperty("SamplesPerPixel")
+  @JsonProperty("samplesPerPixel")
   private Integer samplesPerPixel = null;
 
-  @JsonProperty("BitsAllocated")
+  @JsonProperty("bitsAllocated")
   private Integer bitsAllocated = null;
 
-  @JsonProperty("PhotoInterpretation")
+  @JsonProperty("photoInterpretation")
   private String photoInterpretation = null;
 
-  @JsonProperty("WidthTagFound")
+  @JsonProperty("widthTagFound")
   private Boolean widthTagFound = null;
 
-  @JsonProperty("HeightTagFound")
+  @JsonProperty("heightTagFound")
   private Boolean heightTagFound = null;
 
-  @JsonProperty("Width")
+  @JsonProperty("width")
   private Integer width = null;
 
-  @JsonProperty("Height")
+  @JsonProperty("height")
   private Integer height = null;
 
-  @JsonProperty("WindowCentre")
+  @JsonProperty("windowCentre")
   private Double windowCentre = null;
 
-  @JsonProperty("WindowWidth")
+  @JsonProperty("windowWidth")
   private Double windowWidth = null;
 
-  @JsonProperty("PixelRepresentation")
+  @JsonProperty("pixelRepresentation")
   private Integer pixelRepresentation = null;
 
-  @JsonProperty("RescaleIntercept")
+  @JsonProperty("rescaleIntercept")
   private Double rescaleIntercept = null;
 
-  @JsonProperty("RescaleSlope")
+  @JsonProperty("rescaleSlope")
   private Double rescaleSlope = null;
 
-  @JsonProperty("NumberOfFrames")
+  @JsonProperty("numberOfFrames")
   private Integer numberOfFrames = null;
 
-  @JsonProperty("LengthValue")
+  @JsonProperty("lengthValue")
   private Integer lengthValue = null;
 
-  @JsonProperty("IsLittleEndian")
+  @JsonProperty("isLittleEndian")
   private Boolean isLittleEndian = null;
 
-  @JsonProperty("Offset")
+  @JsonProperty("offset")
   private Integer offset = null;
 
-  @JsonProperty("DicomFound")
+  @JsonProperty("dicomFound")
   private Boolean dicomFound = null;
 
   public DicomProperties planarConfiguration(Integer planarConfiguration) {

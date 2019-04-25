@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,11 +37,11 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
 /**
  * Search context status.
  */
-public class SearchContextStatus extends SaaSposeResponse {
-  @JsonProperty("Id")
+public class SearchContextStatus {
+  @JsonProperty("id")
   private String id = null;
 
-  @JsonProperty("SearchStatus")
+  @JsonProperty("searchStatus")
   private String searchStatus = null;
 
   public SearchContextStatus id(String id) {
@@ -88,13 +89,12 @@ public class SearchContextStatus extends SaaSposeResponse {
   }
     SearchContextStatus searchContextStatus = (SearchContextStatus) o;
     return ObjectUtils.equals(this.id, searchContextStatus.id) &&
-    ObjectUtils.equals(this.searchStatus, searchContextStatus.searchStatus) &&
-    super.equals(o);
+    ObjectUtils.equals(this.searchStatus, searchContextStatus.searchStatus);
   }
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(id, searchStatus, super.hashCode());
+    return ObjectUtils.hashCodeMulti(id, searchStatus);
   }
 
 
@@ -102,7 +102,7 @@ public class SearchContextStatus extends SaaSposeResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchContextStatus {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    searchStatus: ").append(toIndentedString(searchStatus)).append("\n");
     sb.append("}");

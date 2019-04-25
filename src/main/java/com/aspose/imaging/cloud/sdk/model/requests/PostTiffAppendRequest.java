@@ -32,13 +32,13 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostTiffAppendRequest
 {
-	/**
-	* Initializes a new instance of the PostTiffAppendRequest class.   
+    /**
+    * Initializes a new instance of the PostTiffAppendRequest class.   
     * @param name Original image file name.
     * @param appendFile Image file name to be appended to original one.
     * @param storage Your Aspose Cloud Storage name.
     * @param folder Folder with images to process.
-	**/
+    **/
     public PostTiffAppendRequest(String name, String appendFile, String storage, String folder)             
     {
         this.name = name;
@@ -46,7 +46,7 @@ public class PostTiffAppendRequest
         this.storage = storage;
         this.folder = folder;
     }
-		
+        
     /**
     * Original image file name.
     **/

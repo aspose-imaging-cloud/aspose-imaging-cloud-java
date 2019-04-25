@@ -32,15 +32,15 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostSearchContextExtractImageFeaturesRequest
 {
-	/**
-	* Initializes a new instance of the PostSearchContextExtractImageFeaturesRequest class.   
+    /**
+    * Initializes a new instance of the PostSearchContextExtractImageFeaturesRequest class.   
     * @param searchContextId The search context identifier.
     * @param imageData Input image
     * @param imageId The image identifier.
     * @param imagesFolder Images folder.
     * @param folder The folder.
     * @param storage The storage.
-	**/
+    **/
     public PostSearchContextExtractImageFeaturesRequest(String searchContextId, byte[] imageData, String imageId, String imagesFolder, String folder, String storage)             
     {
         this.searchContextId = searchContextId;
@@ -50,7 +50,7 @@ public class PostSearchContextExtractImageFeaturesRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * The search context identifier.
     **/

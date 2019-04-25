@@ -30,213 +30,204 @@ package com.aspose.imaging.cloud.test.api.ai;
 import java.io.IOException;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
+import com.aspose.imaging.cloud.sdk.invoker.ApiException;
 import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
 import com.aspose.imaging.cloud.sdk.model.ImageFeatures;
 import com.aspose.imaging.cloud.sdk.model.requests.DeleteSearchContextImageRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.DownloadFileRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextExtractImageFeaturesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextImageFeaturesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextImageRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextStatusRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.ObjectExistsRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextAddImageRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextExtractImageFeaturesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PutSearchContextImageFeaturesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.PutSearchContextImageRequest;
-import com.aspose.storage.model.FileExistResponse;
-import com.aspose.storage.model.ResponseMessage;
 
 public class SearchContextTests extends TestImagingAIBase {
-	private final String SmallTestImage = "ComparableImage.jpg";
-	private final String TestImage = "ComparingImageSimilar15.jpg";
+    private final String SmallTestImage = "ComparableImage.jpg";
+    private final String TestImage = "ComparingImageSimilar15.jpg";
 
-	@Test
-	public void createSearchContextTest() {
-		Assert.assertNotNull(SearchContextId);
-	}
+    @Test
+    public void createSearchContextTest() {
+        Assert.assertNotNull(SearchContextId);
+    }
 
-	@Test(expected = IOException.class)
-	public void deleteSearchContextTest() throws Exception {
-		deleteSearchContext(SearchContextId);
+    @Test(expected = ApiException.class)
+    public void deleteSearchContextTest() throws Exception {
+        deleteSearchContext(SearchContextId);
 
-		ImagingApi
-				.getSearchContextStatus(new GetSearchContextStatusRequest(SearchContextId, null, TestStorage));
-	}
+        ImagingApi
+                .getSearchContextStatus(new GetSearchContextStatusRequest(SearchContextId, null, TestStorage));
+    }
 
-	@Test
-	public void addImageTest() throws Exception {
-		this.addImage(TestImage);
-	}
+    @Test
+    public void addImageTest() throws Exception {
+        this.addImage(TestImage);
+    }
 
-	@Test(expected = IOException.class)
-	public void deleteImageTest() throws Exception {
-		String image = TestImage;
-		this.addImage(image);
+    @Test(expected = ApiException.class)
+    public void deleteImageTest() throws Exception {
+        String image = TestImage;
+        this.addImage(image);
 
-		String destServerPath = getTempFolder() + "/" + image;
+        String destServerPath = getTempFolder() + "/" + image;
 
-		ImagingApi.deleteSearchContextImage(
-				new DeleteSearchContextImageRequest(SearchContextId, destServerPath, null, TestStorage));
+        ImagingApi.deleteSearchContextImage(
+                new DeleteSearchContextImageRequest(SearchContextId, destServerPath, null, TestStorage));
 
-		ImagingApi.getSearchContextImage(
-				new GetSearchContextImageRequest(SearchContextId, destServerPath, null, TestStorage));
-	}
+        ImagingApi.getSearchContextImage(
+                new GetSearchContextImageRequest(SearchContextId, destServerPath, null, TestStorage));
+    }
 
-	@Test
-	public void getImageTest() throws Exception {
-		String image = TestImage;
-		this.addImage(image);
-		byte[] responseStream = this.getImage(image);
-		Assert.assertTrue((int) responseStream.length > 50000);
-	}
+    @Test
+    public void getImageTest() throws Exception {
+        String image = TestImage;
+        this.addImage(image);
+        byte[] responseStream = this.getImage(image);
+        Assert.assertTrue((int) responseStream.length > 50000);
+    }
 
-	@Test
-	public void updateImageTest() throws Exception {
-		String image = TestImage;
-		this.addImage(image);
-		byte[] responseStream = this.getImage(image);
-		Assert.assertTrue(responseStream.length > 50000);
+    @Test
+    public void updateImageTest() throws Exception {
+        String image = TestImage;
+        this.addImage(image);
+        byte[] responseStream = this.getImage(image);
+        Assert.assertTrue(responseStream.length > 50000);
 
-		image = SmallTestImage;
-		String destServerPath = getTempFolder() + "/" + image;
+        image = SmallTestImage;
+        String destServerPath = getTempFolder() + "/" + image;
 
-		String storagePath = OriginalDataFolder + "/" + image;
+        String storagePath = OriginalDataFolder + "/" + image;
 
-		ResponseMessage tagImageStream = StorageApi.GetDownload(storagePath, null, TestStorage);
-		Assert.assertNotNull(tagImageStream);
-		byte[] imageData = StreamHelper.readAsBytes(tagImageStream.getInputStream());
+        byte[] imageData = ImagingApi.downloadFile(new DownloadFileRequest(storagePath, TestStorage, null));
 
-		ImagingApi.putSearchContextImage(new PutSearchContextImageRequest(SearchContextId, destServerPath,
-				imageData, null, TestStorage));
+        ImagingApi.putSearchContextImage(new PutSearchContextImageRequest(SearchContextId, destServerPath,
+                imageData, null, TestStorage));
 
-		responseStream = this.getImage(image);
-		Assert.assertTrue((int) responseStream.length < 40000);
-	}
+        responseStream = this.getImage(image);
+        Assert.assertTrue((int) responseStream.length < 40000);
+    }
 
-	@Test
-	public void extractImageFeaturesTest() throws Exception {
-		String image = TestImage;
+    @Test
+    public void extractImageFeaturesTest() throws Exception {
+        String image = TestImage;
 
-		this.addImage(image);
+        this.addImage(image);
 
-		String destServerPath = getTempFolder() + "/" + image;
+        String destServerPath = getTempFolder() + "/" + image;
 
-		ImageFeatures result = ImagingApi.getSearchContextExtractImageFeatures(
-				new GetSearchContextExtractImageFeaturesRequest(SearchContextId, destServerPath, null, null,
-						TestStorage));
+        ImageFeatures result = ImagingApi.getSearchContextExtractImageFeatures(
+                new GetSearchContextExtractImageFeaturesRequest(SearchContextId, destServerPath, null, null,
+                        TestStorage));
 
-		Assert.assertEquals((long) 200, (long) result.getCode());
-		Assert.assertTrue(result.getImageId().contains(image));
-		Assert.assertTrue(result.getFeatures().length > 0);
+        Assert.assertTrue(result.getImageId().contains(image));
+        Assert.assertTrue(result.getFeatures().length > 0);
 
-	}
+    }
 
-	@Test
-	public void extractAndAddImageFeaturesTest() throws Exception {
-		this.addImageFeatures(TestImage);
-	}
+    @Test
+    public void extractAndAddImageFeaturesTest() throws Exception {
+        this.addImageFeatures(TestImage);
+    }
 
-	@Test
-	public void extractAndAddImageFeaturesFromFolderTest() throws Exception {
-		ImagingApi.postSearchContextExtractImageFeatures(new PostSearchContextExtractImageFeaturesRequest(
-				SearchContextId, null, null, OriginalDataFolder + "/FindSimilar", null, TestStorage));
+    @Test
+    @Ignore("IMAGINGAINET-107")
+    public void extractAndAddImageFeaturesFromFolderTest() throws Exception {
+        ImagingApi.postSearchContextExtractImageFeatures(new PostSearchContextExtractImageFeaturesRequest(
+                SearchContextId, null, null, OriginalDataFolder + "/FindSimilar", null, TestStorage));
 
-		waitSearchContextIdle();
-		  
-		ImageFeatures result = ImagingApi.getSearchContextImageFeatures(new GetSearchContextImageFeaturesRequest(
-				SearchContextId, OriginalDataFolder + "/FindSimilar/3.jpg", null, TestStorage));
+        waitSearchContextIdle();
+          
+        ImageFeatures result = ImagingApi.getSearchContextImageFeatures(new GetSearchContextImageFeaturesRequest(
+                SearchContextId, OriginalDataFolder + "/FindSimilar/3.jpg", null, TestStorage));
 
-		Assert.assertEquals((long) 200, (long) result.getCode());
-		Assert.assertTrue(result.getImageId().contains("3.jp"));
-		Assert.assertTrue(result.getFeatures().length > 0);
-	}
+        Assert.assertTrue(result.getImageId().contains("3.jp"));
+        Assert.assertTrue(result.getFeatures().length > 0);
+    }
 
-	@Test
-	public void getImageFeaturesTest() throws Exception {
-		this.addImageFeatures(TestImage);
-		ImageFeatures response = this.getImageFeatures(TestImage);
-		Assert.assertTrue(response.getImageId().contains(TestImage));
-		byte[] features = response.getFeatures();
-		Assert.assertTrue(features.length > 0);
-	}
+    @Test
+    public void getImageFeaturesTest() throws Exception {
+        this.addImageFeatures(TestImage);
+        ImageFeatures response = this.getImageFeatures(TestImage);
+        Assert.assertTrue(response.getImageId().contains(TestImage));
+        byte[] features = response.getFeatures();
+        Assert.assertTrue(features.length > 0);
+    }
 
-	@Test(expected = IOException.class)
-	public void deleteImageFeaturesTest() throws Exception {
-		String image = TestImage;
-		this.addImageFeatures(image);
-		String destServerPath = getTempFolder() + "/" + image;
-		ImagingApi.deleteSearchContextImage(
-				new DeleteSearchContextImageRequest(SearchContextId, destServerPath, null, TestStorage));
+    @Test(expected = ApiException.class)
+    public void deleteImageFeaturesTest() throws Exception {
+        String image = TestImage;
+        this.addImageFeatures(image);
+        String destServerPath = getTempFolder() + "/" + image;
+        ImagingApi.deleteSearchContextImage(
+                new DeleteSearchContextImageRequest(SearchContextId, destServerPath, null, TestStorage));
 
-		ImagingApi.getSearchContextImage(
-				new GetSearchContextImageRequest(SearchContextId, destServerPath, null, TestStorage));
-	}
+        ImagingApi.getSearchContextImage(
+                new GetSearchContextImageRequest(SearchContextId, destServerPath, null, TestStorage));
+    }
 
-	@Test
-	public void updateImageFeaturesTest() throws Exception {
-		String image = TestImage;
-		this.addImageFeatures(image);
-		ImageFeatures response = this.getImageFeatures(image);
-		Assert.assertTrue(response.getImageId().contains(TestImage));
-		byte[] features = response.getFeatures();
-		int featuresLength = features.length;
+    @Test
+    public void updateImageFeaturesTest() throws Exception {
+        String image = TestImage;
+        this.addImageFeatures(image);
+        ImageFeatures response = this.getImageFeatures(image);
+        Assert.assertTrue(response.getImageId().contains(TestImage));
+        byte[] features = response.getFeatures();
+        int featuresLength = features.length;
 
-		String destServerPath = OriginalDataFolder + "/" + image;
+        String destServerPath = OriginalDataFolder + "/" + image;
 
-		String storagePath = OriginalDataFolder + "/" + SmallTestImage;
+        String storagePath = OriginalDataFolder + "/" + SmallTestImage;
 
-		ResponseMessage tagImageStream = StorageApi.GetDownload(storagePath, null, TestStorage);
-		Assert.assertNotNull(tagImageStream);
-		byte[] imageData = StreamHelper.readAsBytes(tagImageStream.getInputStream());
+        byte[] imageData = ImagingApi.downloadFile(new DownloadFileRequest(storagePath, TestStorage, null));
 
-		ImagingApi.putSearchContextImageFeatures(new PutSearchContextImageFeaturesRequest(SearchContextId,
-				destServerPath, imageData, null, TestStorage));
+        ImagingApi.putSearchContextImageFeatures(new PutSearchContextImageFeaturesRequest(SearchContextId,
+                destServerPath, imageData, null, TestStorage));
 
-		response = this.getImageFeatures(image);
-		Assert.assertTrue(response.getImageId().contains(TestImage));
-		Assert.assertTrue(featuresLength != response.getFeatures().length);
-	}
+        response = this.getImageFeatures(image);
+        Assert.assertTrue(response.getImageId().contains(TestImage));
+        Assert.assertTrue(featuresLength != response.getFeatures().length);
+    }
 
-	private void addImage(String image) throws Exception {
-		String destServerPath = getTempFolder() + "/" + image;
+    private void addImage(String image) throws Exception {
+        String destServerPath = getTempFolder() + "/" + image;
 
-		String storagePath = OriginalDataFolder + "/" + image;
+        String storagePath = OriginalDataFolder + "/" + image;
 
-		ResponseMessage tagImageStream = StorageApi.GetDownload(storagePath, null, TestStorage);
-		Assert.assertNotNull(tagImageStream);
-		byte[] imageData = StreamHelper.readAsBytes(tagImageStream.getInputStream());
+        byte[] imageData = ImagingApi.downloadFile(new DownloadFileRequest(storagePath, TestStorage, null));
 
-		ImagingApi.postSearchContextAddImage(new PostSearchContextAddImageRequest(SearchContextId, destServerPath,
-				imageData, null, TestStorage));
+        ImagingApi.postSearchContextAddImage(new PostSearchContextAddImageRequest(SearchContextId, destServerPath,
+                imageData, null, TestStorage));
 
-		FileExistResponse existResponse = StorageApi.GetIsExist(destServerPath, null, TestStorage);
-		Assert.assertNotNull(existResponse);
-		Assert.assertTrue(existResponse.getFileExist().getIsExist());
-	}
+        Assert.assertTrue(ImagingApi.objectExists(new ObjectExistsRequest(destServerPath, TestStorage, null)).isExists());
+    }
 
-	private byte[] getImage(String image) throws Exception {
-		String destServerPath = getTempFolder() + "/" + image;
+    private byte[] getImage(String image) throws Exception {
+        String destServerPath = getTempFolder() + "/" + image;
 
-		byte[] response = ImagingApi.getSearchContextImage(
-				new GetSearchContextImageRequest(SearchContextId, destServerPath, null, TestStorage));
+        byte[] response = ImagingApi.getSearchContextImage(
+                new GetSearchContextImageRequest(SearchContextId, destServerPath, null, TestStorage));
 
-		return response;
-	}
+        return response;
+    }
 
-	private void addImageFeatures(String image) throws Exception {
-		String destServerPath = OriginalDataFolder + "/" + image;
+    private void addImageFeatures(String image) throws Exception {
+        String destServerPath = OriginalDataFolder + "/" + image;
 
-		ImagingApi.postSearchContextExtractImageFeatures(new PostSearchContextExtractImageFeaturesRequest(
-				SearchContextId, null, destServerPath, null, null, TestStorage));
-	}
+        ImagingApi.postSearchContextExtractImageFeatures(new PostSearchContextExtractImageFeaturesRequest(
+                SearchContextId, null, destServerPath, null, null, TestStorage));
+    }
 
-	private ImageFeatures getImageFeatures(String image) throws Exception {
-		String destServerPath = OriginalDataFolder + "/" + image;
-		ImageFeatures result = ImagingApi.getSearchContextImageFeatures(
-				new GetSearchContextImageFeaturesRequest(SearchContextId, destServerPath, null, TestStorage));
+    private ImageFeatures getImageFeatures(String image) throws Exception {
+        String destServerPath = OriginalDataFolder + "/" + image;
+        ImageFeatures result = ImagingApi.getSearchContextImageFeatures(
+                new GetSearchContextImageFeaturesRequest(SearchContextId, destServerPath, null, TestStorage));
 
-		Assert.assertEquals((long) 200, (long) result.getCode());
-
-		return result;
-	}
+        return result;
+    }
 }

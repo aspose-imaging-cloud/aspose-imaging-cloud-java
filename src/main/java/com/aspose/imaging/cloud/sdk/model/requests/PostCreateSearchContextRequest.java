@@ -32,13 +32,13 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostCreateSearchContextRequest
 {
-	/**
-	* Initializes a new instance of the PostCreateSearchContextRequest class.   
+    /**
+    * Initializes a new instance of the PostCreateSearchContextRequest class.   
     * @param detector The image features detector.
     * @param matchingAlgorithm The matching algorithm.
     * @param folder The folder.
     * @param storage The storage.
-	**/
+    **/
     public PostCreateSearchContextRequest(String detector, String matchingAlgorithm, String folder, String storage)             
     {
         this.detector = detector;
@@ -46,7 +46,7 @@ public class PostCreateSearchContextRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * The image features detector.
     **/

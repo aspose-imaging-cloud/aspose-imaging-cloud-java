@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostImageFrameRequest
 {
-	/**
-	* Initializes a new instance of the PostImageFrameRequest class.   
+    /**
+    * Initializes a new instance of the PostImageFrameRequest class.   
     * @param imageData Input image
     * @param frameId Number of a frame.
     * @param newWidth New width.
@@ -46,7 +46,7 @@ public class PostImageFrameRequest
     * @param saveOtherFrames If result will include all other frames or just a specified frame.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public PostImageFrameRequest(byte[] imageData, Integer frameId, Integer newWidth, Integer newHeight, Integer x, Integer y, Integer rectWidth, Integer rectHeight, String rotateFlipMethod, Boolean saveOtherFrames, String outPath, String storage)             
     {
         this.imageData = imageData;
@@ -62,7 +62,7 @@ public class PostImageFrameRequest
         this.outPath = outPath;
         this.storage = storage;
     }
-		
+        
     /**
     * Input image
     **/

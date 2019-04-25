@@ -27,11 +27,10 @@
 package com.aspose.imaging.cloud.test.api;
 
 import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
+import com.aspose.imaging.cloud.sdk.model.StorageFile;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.base.StorageFileInfo;
-import com.aspose.storage.model.ResponseMessage;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -47,7 +46,7 @@ import java.lang.reflect.Method;
  */
 public class TiffSpecificApiTests extends ApiTester {
 
-	private GetTiffToFaxRequest getTiffToFaxRequest;
+    private GetTiffToFaxRequest getTiffToFaxRequest;
 
     /**
      * Test operation: Update parameters of existing TIFF image accordingly to fax parameters.
@@ -57,22 +56,22 @@ public class TiffSpecificApiTests extends ApiTester {
      */
     @Test
     public void getTiffToFaxTest() throws Exception {
-    	String name = "test.tiff";
+        String name = "test.tiff";
         String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-		String outName = name + "_fax." + "tiff";
-		getTiffToFaxRequest = new GetTiffToFaxRequest(name, storage, folder, outPath);
-		
-		Method propertiesTester = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-		propertiesTester.setAccessible(true);
-		Method requestInvoker = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxGetRequestInvoker", String.class, String.class);
-		requestInvoker.setAccessible(true);
-	    this.testGetRequest(
+        String outName = name + "_fax." + "tiff";
+        getTiffToFaxRequest = new GetTiffToFaxRequest(name, storage, folder, outPath);
+        
+        Method propertiesTester = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxGetRequestInvoker", String.class, String.class);
+        requestInvoker.setAccessible(true);
+        this.testGetRequest(
             "getTiffToFaxTest", 
             true,
             String.format("Input image: %s",
-            		name),
+                    name),
             name,
             outName,
             requestInvoker,
@@ -114,36 +113,18 @@ public class TiffSpecificApiTests extends ApiTester {
             outPath = folder + "/" + resultFileName;
 
             // remove output file from the storage (if exists)
-            if (StorageApi.GetIsExist(outPath, "", storage).getFileExist().getIsExist())
+            if (ImagingApi.objectExists(new ObjectExistsRequest(outPath, storage, null)).isExists())
             {
-                StorageApi.DeleteFile(outPath, "", storage);
+                ImagingApi.deleteFile(new DeleteFileRequest(outPath, storage, null));
             }
             
             this.copyInputFileToFolder(inputFileName, folder, storage);
-
-            ResponseMessage downloadMessage = StorageApi.GetDownload(inputPath, "", storage);
-            Assert.assertNotNull(downloadMessage);
-            Assert.assertEquals(200, (int)downloadMessage.getCode());
-            File targetFile = new File(getTempFile());
-
-            InputStream streamToRead = downloadMessage.getInputStream();
-            FileOutputStream outStream = new FileOutputStream(targetFile);
-            outStream.write(StreamHelper.readAsBytes(streamToRead));
-            streamToRead.close();
-            outStream.flush();
-            outStream.close();
-
-            ResponseMessage storageResponseMessage = StorageApi.PutCreate(outPath, "", storage, targetFile);
-            Assert.assertNotNull(storageResponseMessage);
-            Assert.assertEquals(200, (int)storageResponseMessage.getCode());
-            Assert.assertTrue(StorageApi.GetIsExist(outPath, "", storage).getFileExist().getIsExist());
+            ImagingApi.copyFile(new CopyFileRequest(inputPath, outPath, storage, storage, null));
+            Assert.assertTrue(ImagingApi.objectExists(new ObjectExistsRequest(outPath, storage, null)).isExists());
 
             PostTiffAppendRequest request = new PostTiffAppendRequest(resultFileName, inputFileName, storage, folder);
-            SaaSposeResponse response = ImagingApi.postTiffAppend(request);
-            Assert.assertNotNull(response);
-            Assert.assertEquals(200, (int)response.getCode());
-
-            StorageFileInfo resultInfo = getStorageFileInfo(folder, resultFileName, storage);
+            ImagingApi.postTiffAppend(request);
+            StorageFile resultInfo = getStorageFileInfo(folder, resultFileName, storage);
             if (resultInfo == null)
             {
                 throw new Exception(
@@ -169,54 +150,48 @@ public class TiffSpecificApiTests extends ApiTester {
         }
         catch (Exception ex)
         {
-        	failedAnyTest = true;
+            failedAnyTest = true;
             System.out.println(ex.getMessage());
             throw ex;
         }
         finally
         {
-            if (!failedAnyTest && RemoveResult && StorageApi.GetIsExist(outPath, "", storage).getFileExist().getIsExist())
+            if (!failedAnyTest && RemoveResult && ImagingApi.objectExists(new ObjectExistsRequest(outPath, storage, null)).isExists())
             {
-                StorageApi.DeleteFile(outPath, "", storage);
+                ImagingApi.deleteFile(new DeleteFileRequest(outPath, storage, null));
             }
-
-            File removeFile = new File(resultFileName);
-            if (removeFile.isFile())
-            {
-                Assert.assertTrue(removeFile.delete());
-            }
-
+            
             System.out.println("Test passed: " + passed);
         }
     }
-	
-	/**
-	 * Invokes GET request for getTiffToFax operation. Used indirectly by method reference.
-	 * @param name Image file name
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] getTiffToFaxGetRequestInvoker(String name, String outPath) throws Exception
-	{
-		getTiffToFaxRequest.name = name;
-		getTiffToFaxRequest.outPath = outPath;
+    
+    /**
+     * Invokes GET request for getTiffToFax operation. Used indirectly by method reference.
+     * @param name Image file name
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] getTiffToFaxGetRequestInvoker(String name, String outPath) throws Exception
+    {
+        getTiffToFaxRequest.name = name;
+        getTiffToFaxRequest.outPath = outPath;
         return ImagingApi.getTiffToFax(getTiffToFaxRequest);
-	}
-	
-	/**
-	 * Tests properties for getTiffToFax operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void getTiffToFaxPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
-		Assert.assertNotNull(resultProperties.getTiffProperties());
+    }
+    
+    /**
+     * Tests properties for getTiffToFax operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void getTiffToFaxPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertNotNull(resultProperties.getTiffProperties());
         Assert.assertEquals(1, (int)resultProperties.getBitsPerPixel());
         Assert.assertEquals(196, (int)Math.ceil((double)resultProperties.getVerticalResolution()));
         Assert.assertEquals(204, (int)Math.ceil((double)resultProperties.getHorizontalResolution()));
         Assert.assertEquals(1728, (int)resultProperties.getWidth());
         Assert.assertEquals(2200, (int)resultProperties.getHeight());
-	}
+    }
 }

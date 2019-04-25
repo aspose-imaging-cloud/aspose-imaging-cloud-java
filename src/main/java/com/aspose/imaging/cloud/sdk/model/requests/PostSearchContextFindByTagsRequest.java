@@ -32,15 +32,15 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostSearchContextFindByTagsRequest
 {
-	/**
-	* Initializes a new instance of the PostSearchContextFindByTagsRequest class.   
+    /**
+    * Initializes a new instance of the PostSearchContextFindByTagsRequest class.   
     * @param tags Tags array for searching
     * @param searchContextId The search context identifier.
     * @param similarityThreshold The similarity threshold.
     * @param maxCount The maximum count.
     * @param folder The folder.
     * @param storage The storage.
-	**/
+    **/
     public PostSearchContextFindByTagsRequest(String tags, String searchContextId, Double similarityThreshold, Integer maxCount, String folder, String storage)             
     {
         this.tags = tags;
@@ -50,7 +50,7 @@ public class PostSearchContextFindByTagsRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Tags array for searching
     **/

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="FilesList.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+* <copyright company="Aspose" file="StorageExistsRequest.java">
+*   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,27 +24,25 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-package com.aspose.imaging.cloud.test.base;
 
-import java.util.ArrayList;
+package com.aspose.imaging.cloud.sdk.model.requests;
 
 /**
- * Files list class for storage API response.
- */
-public class FilesList
+* Class that holds parameters for StorageExists request invocation.
+**/   
+public class StorageExistsRequest
 {
-	/**
-	 * Storage files info
-	 */
-	public ArrayList<StorageFileInfo> Files = new ArrayList<StorageFileInfo>();
-	
-	/**
-	 * Response code
-	 */
-	public int Code;
-	
-	/**
-	 * Response status
-	 */
-	public String Status;
+    /**
+    * Initializes a new instance of the StorageExistsRequest class.   
+    * @param storageName Storage name
+    **/
+    public StorageExistsRequest(String storageName)             
+    {
+        this.storageName = storageName;
+    }
+        
+    /**
+    * Storage name
+    **/
+    public String storageName;
 }

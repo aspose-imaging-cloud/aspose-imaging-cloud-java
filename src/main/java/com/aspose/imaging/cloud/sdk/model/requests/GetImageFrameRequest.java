@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImageFrameRequest
 {
-	/**
-	* Initializes a new instance of the GetImageFrameRequest class.   
+    /**
+    * Initializes a new instance of the GetImageFrameRequest class.   
     * @param name Filename of image.
     * @param frameId Number of a frame.
     * @param newWidth New width.
@@ -47,7 +47,7 @@ public class GetImageFrameRequest
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public GetImageFrameRequest(String name, Integer frameId, Integer newWidth, Integer newHeight, Integer x, Integer y, Integer rectWidth, Integer rectHeight, String rotateFlipMethod, Boolean saveOtherFrames, String outPath, String folder, String storage)             
     {
         this.name = name;
@@ -64,7 +64,7 @@ public class GetImageFrameRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Filename of image.
     **/

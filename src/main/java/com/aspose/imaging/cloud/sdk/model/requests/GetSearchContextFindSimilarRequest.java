@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetSearchContextFindSimilarRequest
 {
-	/**
-	* Initializes a new instance of the GetSearchContextFindSimilarRequest class.   
+    /**
+    * Initializes a new instance of the GetSearchContextFindSimilarRequest class.   
     * @param searchContextId The search context identifier.
     * @param similarityThreshold The similarity threshold.
     * @param maxCount The maximum count.
@@ -41,7 +41,7 @@ public class GetSearchContextFindSimilarRequest
     * @param imageId The search image identifier.
     * @param folder The folder.
     * @param storage The storage.
-	**/
+    **/
     public GetSearchContextFindSimilarRequest(String searchContextId, Double similarityThreshold, Integer maxCount, byte[] imageData, String imageId, String folder, String storage)             
     {
         this.searchContextId = searchContextId;
@@ -52,7 +52,7 @@ public class GetSearchContextFindSimilarRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * The search context identifier.
     **/

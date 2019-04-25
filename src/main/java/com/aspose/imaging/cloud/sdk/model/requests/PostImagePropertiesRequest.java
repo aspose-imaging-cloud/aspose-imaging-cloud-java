@@ -32,15 +32,15 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostImagePropertiesRequest
 {
-	/**
-	* Initializes a new instance of the PostImagePropertiesRequest class.   
+    /**
+    * Initializes a new instance of the PostImagePropertiesRequest class.   
     * @param imageData Input image
-	**/
+    **/
     public PostImagePropertiesRequest(byte[] imageData)             
     {
         this.imageData = imageData;
     }
-		
+        
     /**
     * Input image
     **/

@@ -32,13 +32,13 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetTiffToFaxRequest
 {
-	/**
-	* Initializes a new instance of the GetTiffToFaxRequest class.   
+    /**
+    * Initializes a new instance of the GetTiffToFaxRequest class.   
     * @param name Filename of image.
     * @param storage Your Aspose Cloud Storage name.
     * @param folder Folder with image to process.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
-	**/
+    **/
     public GetTiffToFaxRequest(String name, String storage, String folder, String outPath)             
     {
         this.name = name;
@@ -46,7 +46,7 @@ public class GetTiffToFaxRequest
         this.folder = folder;
         this.outPath = outPath;
     }
-		
+        
     /**
     * Filename of image.
     **/

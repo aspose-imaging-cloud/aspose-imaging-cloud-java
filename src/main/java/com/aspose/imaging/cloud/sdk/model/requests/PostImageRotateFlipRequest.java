@@ -32,14 +32,14 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostImageRotateFlipRequest
 {
-	/**
-	* Initializes a new instance of the PostImageRotateFlipRequest class.   
+    /**
+    * Initializes a new instance of the PostImageRotateFlipRequest class.   
     * @param imageData Input image
-    * @param format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * @param format Resulting image format.
     * @param method RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public PostImageRotateFlipRequest(byte[] imageData, String format, String method, String outPath, String storage)             
     {
         this.imageData = imageData;
@@ -48,14 +48,14 @@ public class PostImageRotateFlipRequest
         this.outPath = outPath;
         this.storage = storage;
     }
-		
+        
     /**
     * Input image
     **/
     public byte[] imageData;
 
     /**
-    * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * Resulting image format.
     **/
     public String format;
 

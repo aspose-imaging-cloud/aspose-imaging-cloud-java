@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImageBmpRequest
 {
-	/**
-	* Initializes a new instance of the GetImageBmpRequest class.   
+    /**
+    * Initializes a new instance of the GetImageBmpRequest class.   
     * @param name Filename of image.
     * @param bitsPerPixel Color depth.
     * @param horizontalResolution New horizontal resolution.
@@ -42,7 +42,7 @@ public class GetImageBmpRequest
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public GetImageBmpRequest(String name, Integer bitsPerPixel, Integer horizontalResolution, Integer verticalResolution, Boolean fromScratch, String outPath, String folder, String storage)             
     {
         this.name = name;
@@ -54,7 +54,7 @@ public class GetImageBmpRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Filename of image.
     **/

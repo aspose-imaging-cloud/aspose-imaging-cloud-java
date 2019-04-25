@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,13 +38,13 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents properties of djvu file.
  */
 public class DjvuProperties {
-  @JsonProperty("BackgroundColor")
+  @JsonProperty("backgroundColor")
   private String backgroundColor = null;
 
-  @JsonProperty("HasBackgroundColor")
+  @JsonProperty("hasBackgroundColor")
   private Boolean hasBackgroundColor = null;
 
-  @JsonProperty("PagesCount")
+  @JsonProperty("pagesCount")
   private Integer pagesCount = null;
 
   public DjvuProperties backgroundColor(String backgroundColor) {

@@ -26,10 +26,10 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
+import com.aspose.imaging.cloud.sdk.model.StorageFile;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-import com.aspose.imaging.cloud.test.base.StorageFileInfo;
 
 import org.junit.Test;
 import org.junit.Assert;
@@ -49,8 +49,8 @@ import java.util.Collections;
 @RunWith(Parameterized.class)
 public class UpdateImageApiTests extends ApiTester {
 
-	private GetImageUpdateRequest getImageUpdateRequest;
-	private PostImageUpdateRequest postImageUpdateRequest;
+    private GetImageUpdateRequest getImageUpdateRequest;
+    private PostImageUpdateRequest postImageUpdateRequest;
 
     @Parameters
     public static Iterable<Object[]> data() {
@@ -77,17 +77,17 @@ public class UpdateImageApiTests extends ApiTester {
         }
     }
 
-	private String formatExtension;
-	private Boolean saveResultToStorage;
-	String[] additionalExportFormats;
+    private String formatExtension;
+    private Boolean saveResultToStorage;
+    String[] additionalExportFormats;
 
-	public UpdateImageApiTests(String extension, Boolean saveResult, String[] additionalFormats)
-	{
-		this.formatExtension = extension;
-		this.saveResultToStorage = saveResult;
-		this.additionalExportFormats = additionalFormats;
-	}
-	
+    public UpdateImageApiTests(String extension, Boolean saveResult, String[] additionalFormats)
+    {
+        this.formatExtension = extension;
+        this.saveResultToStorage = saveResult;
+        this.additionalExportFormats = additionalFormats;
+    }
+    
     /**
      * Test operation: Update an existing image.
      *
@@ -107,21 +107,21 @@ public class UpdateImageApiTests extends ApiTester {
         String rotateFlipMethod = "Rotate90FlipX";
         String folder = getTempFolder();
         String storage = TestStorage;
-		String outName = null;
-		
-		ArrayList<String> formatsToExport = new ArrayList<String>();
-		Collections.addAll(formatsToExport, this.BasicExportFormats);
-		for (String additionalExportFormat : additionalExportFormats)
+        String outName = null;
+        
+        ArrayList<String> formatsToExport = new ArrayList<String>();
+        Collections.addAll(formatsToExport, this.BasicExportFormats);
+        for (String additionalExportFormat : additionalExportFormats)
         {
             if (additionalExportFormat != null && !additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat))
             {
                 formatsToExport.add(additionalExportFormat);
             }
         }
-		
-		for (StorageFileInfo inputFile : InputTestFiles)
-		{
-			if (inputFile.getName().endsWith(formatExtension))
+        
+        for (StorageFile inputFile : InputTestFiles)
+        {
+            if (inputFile.getName().endsWith(formatExtension))
             {
                 name = inputFile.getName();
             }
@@ -129,30 +129,30 @@ public class UpdateImageApiTests extends ApiTester {
             {
                 continue;
             }
-			
-			for (String format : formatsToExport)
+            
+            for (String format : formatsToExport)
             {
-				getImageUpdateRequest = new GetImageUpdateRequest(name, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, folder, storage);
-				outName = name + "_update." + format;
-				
-				Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdatePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-				propertiesTester.setAccessible(true);
-				Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdateGetRequestInvoker", String.class, String.class);
-				requestInvoker.setAccessible(true);
-			    this.testGetRequest(
-		            "getImageUpdateTest; save result to storage: " + saveResultToStorage, 
-		            saveResultToStorage,
-		            String.format("Input image: %s; Output format: %s; New width: %s; New height: %s; "
-		            		+ "Rotate/flip method: %s; X: %s; Y: %s; Rect width: %s; Rect height: %s",
-		            		name, format, newWidth, newHeight, rotateFlipMethod, x, y, rectWidth, rectHeight),
-		            name,
-		            outName,
-		            requestInvoker,
-		            propertiesTester,
-		            folder,
-		            storage);
+                getImageUpdateRequest = new GetImageUpdateRequest(name, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, folder, storage);
+                outName = name + "_update." + format;
+                
+                Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdatePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                propertiesTester.setAccessible(true);
+                Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdateGetRequestInvoker", String.class, String.class);
+                requestInvoker.setAccessible(true);
+                this.testGetRequest(
+                    "getImageUpdateTest; save result to storage: " + saveResultToStorage, 
+                    saveResultToStorage,
+                    String.format("Input image: %s; Output format: %s; New width: %s; New height: %s; "
+                            + "Rotate/flip method: %s; X: %s; Y: %s; Rect width: %s; Rect height: %s",
+                            name, format, newWidth, newHeight, rotateFlipMethod, x, y, rectWidth, rectHeight),
+                    name,
+                    outName,
+                    requestInvoker,
+                    propertiesTester,
+                    folder,
+                    storage);
             }
-		}
+        }
     }
     
     /**
@@ -163,8 +163,8 @@ public class UpdateImageApiTests extends ApiTester {
      */
     @Test
     public void postImageUpdateTest() throws Exception {
-    	byte[] imageData = null;
-		String name = null;
+        byte[] imageData = null;
+        String name = null;
         String outPath = null;
         Integer newWidth = 300;
         Integer newHeight = 450;
@@ -175,21 +175,21 @@ public class UpdateImageApiTests extends ApiTester {
         String rotateFlipMethod = "Rotate90FlipX";
         String folder = getTempFolder();
         String storage = TestStorage;
-		String outName = null;
-		
-		ArrayList<String> formatsToExport = new ArrayList<String>();
-		Collections.addAll(formatsToExport, this.BasicExportFormats);
-		for (String additionalExportFormat : additionalExportFormats)
+        String outName = null;
+        
+        ArrayList<String> formatsToExport = new ArrayList<String>();
+        Collections.addAll(formatsToExport, this.BasicExportFormats);
+        for (String additionalExportFormat : additionalExportFormats)
         {
             if (additionalExportFormat != null && !additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat))
             {
                 formatsToExport.add(additionalExportFormat);
             }
         }
-		
-		for (StorageFileInfo inputFile : InputTestFiles)
-		{
-			if (inputFile.getName().endsWith(formatExtension))
+        
+        for (StorageFile inputFile : InputTestFiles)
+        {
+            if (inputFile.getName().endsWith(formatExtension))
             {
                 name = inputFile.getName();
             }
@@ -197,82 +197,82 @@ public class UpdateImageApiTests extends ApiTester {
             {
                 continue;
             }
-			
-			for (String format : formatsToExport)
+            
+            for (String format : formatsToExport)
             {
-				postImageUpdateRequest = new PostImageUpdateRequest(imageData, format, newWidth, newHeight, x, y, rectWidth, rectHeight, 
-						rotateFlipMethod, outPath, storage);
-				outName = name + "_update." + format;
-				
-				Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("postImageUpdatePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-				propertiesTester.setAccessible(true);
-				Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("postImageUpdatePostRequestInvoker", byte[].class, String.class);
-				requestInvoker.setAccessible(true);
-			    this.testPostRequest(
-		            "postImageUpdateTest; save result to storage: " + saveResultToStorage,  
-		            saveResultToStorage,
-		            String.format("Input image: %s; Output format: %s; New width: %s; New height: %s; "
-		            		+ "Rotate/flip method: %s; X: %s; Y: %s; Rect width: %s; Rect height: %s",
-		            		name, format, newWidth, newHeight, rotateFlipMethod, x, y, rectWidth, rectHeight),
-		            name,
-		            outName,
-		            requestInvoker,
-		            propertiesTester,
-		            folder,
-		            storage);
+                postImageUpdateRequest = new PostImageUpdateRequest(imageData, format, newWidth, newHeight, x, y, rectWidth, rectHeight, 
+                        rotateFlipMethod, outPath, storage);
+                outName = name + "_update." + format;
+                
+                Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("postImageUpdatePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                propertiesTester.setAccessible(true);
+                Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("postImageUpdatePostRequestInvoker", byte[].class, String.class);
+                requestInvoker.setAccessible(true);
+                this.testPostRequest(
+                    "postImageUpdateTest; save result to storage: " + saveResultToStorage,  
+                    saveResultToStorage,
+                    String.format("Input image: %s; Output format: %s; New width: %s; New height: %s; "
+                            + "Rotate/flip method: %s; X: %s; Y: %s; Rect width: %s; Rect height: %s",
+                            name, format, newWidth, newHeight, rotateFlipMethod, x, y, rectWidth, rectHeight),
+                    name,
+                    outName,
+                    requestInvoker,
+                    propertiesTester,
+                    folder,
+                    storage);
             }
-		}
+        }
     }
-	
+    
     /**
-	 * Invokes GET request for getImageUpdate operation. Used indirectly by method reference.
-	 * @param name Image file name
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] getImageUpdateGetRequestInvoker(String name, String outPath) throws Exception
-	{
-		getImageUpdateRequest.name = name;
-		getImageUpdateRequest.outPath = outPath;
+     * Invokes GET request for getImageUpdate operation. Used indirectly by method reference.
+     * @param name Image file name
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] getImageUpdateGetRequestInvoker(String name, String outPath) throws Exception
+    {
+        getImageUpdateRequest.name = name;
+        getImageUpdateRequest.outPath = outPath;
         return ImagingApi.getImageUpdate(getImageUpdateRequest);
-	}
-	
-	/**
-	 * Invokes POST request for postImageUpdate operation. Used indirectly by method reference.
-	 * @param imageData Image data
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] postImageUpdatePostRequestInvoker(byte[] imageData, String outPath) throws Exception
-	{
-	    postImageUpdateRequest.imageData = imageData;
-		postImageUpdateRequest.outPath = outPath;
+    }
+    
+    /**
+     * Invokes POST request for postImageUpdate operation. Used indirectly by method reference.
+     * @param imageData Image data
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] postImageUpdatePostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    {
+        postImageUpdateRequest.imageData = imageData;
+        postImageUpdateRequest.outPath = outPath;
         return ImagingApi.postImageUpdate(postImageUpdateRequest);
-	}
-	
-	/**
-	 * Tests properties for getImageUpdate operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void getImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
-		Assert.assertEquals(getImageUpdateRequest.rectHeight, resultProperties.getWidth());
+    }
+    
+    /**
+     * Tests properties for getImageUpdate operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void getImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertEquals(getImageUpdateRequest.rectHeight, resultProperties.getWidth());
         Assert.assertEquals(getImageUpdateRequest.rectWidth, resultProperties.getHeight());
-	}
-	
-	/**
-	 * Tests properties for postImageUpdate operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void postImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
-		Assert.assertEquals(postImageUpdateRequest.rectHeight, resultProperties.getWidth());
+    }
+    
+    /**
+     * Tests properties for postImageUpdate operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void postImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertEquals(postImageUpdateRequest.rectHeight, resultProperties.getWidth());
         Assert.assertEquals(postImageUpdateRequest.rectWidth, resultProperties.getHeight());
-	}
+    }
 }

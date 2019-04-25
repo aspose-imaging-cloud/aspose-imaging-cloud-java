@@ -30,20 +30,20 @@ package com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 
+import com.aspose.imaging.cloud.sdk.invoker.ApiError;
 import com.aspose.imaging.cloud.sdk.invoker.ApiException;
 import com.aspose.imaging.cloud.sdk.invoker.internal.SerializationHelper;
-import com.aspose.imaging.cloud.sdk.stablemodel.SaaSposeResponse;
 
 /**
  * API exception request handler
  */
 public class ApiExceptionRequestHandler implements IRequestHandler
 {
-	/**
-	 * Processes the URL.
-	 * @param url The URL.
-	 * @return Processed URL.
-	 */
+    /**
+     * Processes the URL.
+     * @param url The URL.
+     * @return Processed URL.
+     */
     public String processUrl(String url)
     {
         return url;
@@ -81,20 +81,21 @@ public class ApiExceptionRequestHandler implements IRequestHandler
     private void throwApiException(HttpURLConnection connection, byte[] resultData) throws Exception
     {
         Exception resutException;
+        String responseData = "";
         try
         {
-        	String responseData = resultData.toString();
-        	SaaSposeResponse errorResponse = SerializationHelper.deserialize(responseData, SaaSposeResponse.class);
-        	if (errorResponse.getStatus() == null || errorResponse.getStatus() == "")
-            {
-                errorResponse.setStatus(responseData);
-            }
-
-            resutException = new ApiException(connection.getResponseCode(), errorResponse.getStatus());
+            responseData = new String(resultData);
+            ApiError errorResponse = SerializationHelper.deserialize(responseData, ApiError.class);
+            resutException = new ApiException(connection.getResponseCode(), errorResponse.error.getMessage(), errorResponse.error);
         }
         catch (Exception e)
         {
-            throw new ApiException(connection.getResponseCode(), connection.getResponseMessage());
+            if (responseData.equals(""))
+            {
+                responseData = connection.getResponseMessage();
+            }
+            
+            resutException = new ApiException(connection.getResponseCode(), responseData);
         }
 
         throw resutException;

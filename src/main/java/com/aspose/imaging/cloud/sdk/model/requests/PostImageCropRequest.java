@@ -32,17 +32,17 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostImageCropRequest
 {
-	/**
-	* Initializes a new instance of the PostImageCropRequest class.   
+    /**
+    * Initializes a new instance of the PostImageCropRequest class.   
     * @param imageData Input image
-    * @param format Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * @param format Resulting image format.
     * @param x X position of start point for cropping rectangle.
     * @param y Y position of start point for cropping rectangle.
     * @param width Width of cropping rectangle.
     * @param height Height of cropping rectangle.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public PostImageCropRequest(byte[] imageData, String format, Integer x, Integer y, Integer width, Integer height, String outPath, String storage)             
     {
         this.imageData = imageData;
@@ -54,14 +54,14 @@ public class PostImageCropRequest
         this.outPath = outPath;
         this.storage = storage;
     }
-		
+        
     /**
     * Input image
     **/
     public byte[] imageData;
 
     /**
-    * Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+    * Resulting image format.
     **/
     public String format;
 

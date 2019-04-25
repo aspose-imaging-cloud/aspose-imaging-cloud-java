@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="DicomTestSuite.java">
+ * <copyright company="Aspose" file="StorageTestSuite.java">
  *   Copyright (c) 2019 Aspose Pty Ltd.
  * </copyright>
  * <summary>
@@ -26,15 +26,17 @@
  */
 package com.aspose.imaging.cloud.test.suites;
 
-import com.aspose.imaging.cloud.test.api.DicomApiTests;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import com.aspose.imaging.cloud.test.api.storage.*;
+
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        DicomApiTests.class
+        FileApiTests.class,
+        FolderApiTests.class,
+        StorageApiTests.class
 })
-public class DicomTestSuite {
+public class StorageTestSuite {
 
 }

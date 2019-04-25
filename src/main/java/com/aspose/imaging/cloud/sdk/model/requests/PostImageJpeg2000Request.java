@@ -32,15 +32,15 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostImageJpeg2000Request
 {
-	/**
-	* Initializes a new instance of the PostImageJpeg2000Request class.   
+    /**
+    * Initializes a new instance of the PostImageJpeg2000Request class.   
     * @param imageData Input image
     * @param comment The comment.
     * @param codec The codec.
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public PostImageJpeg2000Request(byte[] imageData, String comment, String codec, Boolean fromScratch, String outPath, String storage)             
     {
         this.imageData = imageData;
@@ -50,7 +50,7 @@ public class PostImageJpeg2000Request
         this.outPath = outPath;
         this.storage = storage;
     }
-		
+        
     /**
     * Input image
     **/

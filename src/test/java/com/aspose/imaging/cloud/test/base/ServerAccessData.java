@@ -34,26 +34,26 @@ public class ServerAccessData
     /**
      * The application SID.
      */
-	public String AppSid;
+    public String AppSid;
 
     /**
      * The application key.
      */
-	public String AppKey;
+    public String AppKey;
 
     /**
      * The base URL.
      */
-	public String BaseURL;
-	
-	/**
+    public String BaseURL;
+    
+    /**
      * The API version (used for Android).
      */
-	public String ApiVersion;
+    public String ApiVersion;
 
     /**
      * The storage name (used for Android).
      */
-	public String StorageName;
+    public String StorageName;
 
 }

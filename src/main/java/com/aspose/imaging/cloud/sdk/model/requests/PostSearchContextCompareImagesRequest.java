@@ -32,15 +32,15 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class PostSearchContextCompareImagesRequest
 {
-	/**
-	* Initializes a new instance of the PostSearchContextCompareImagesRequest class.   
+    /**
+    * Initializes a new instance of the PostSearchContextCompareImagesRequest class.   
     * @param searchContextId The search context identifier.
     * @param imageId1 The first image Id in storage.
     * @param imageData Input image
     * @param imageId2 The second image Idin storage or null(if image loading in request).
     * @param folder The folder.
     * @param storage The storage.
-	**/
+    **/
     public PostSearchContextCompareImagesRequest(String searchContextId, String imageId1, byte[] imageData, String imageId2, String folder, String storage)             
     {
         this.searchContextId = searchContextId;
@@ -50,7 +50,7 @@ public class PostSearchContextCompareImagesRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * The search context identifier.
     **/

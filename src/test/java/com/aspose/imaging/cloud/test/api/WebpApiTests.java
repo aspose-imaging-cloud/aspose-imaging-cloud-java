@@ -46,21 +46,21 @@ import java.lang.reflect.Method;
 @RunWith(Parameterized.class)
 public class WebpApiTests extends ApiTester {
 
-	private GetImageWebPRequest getImageWebPRequest;
-	private PostImageWebPRequest postImageWebPRequest;
+    private GetImageWebPRequest getImageWebPRequest;
+    private PostImageWebPRequest postImageWebPRequest;
 
-	@Parameters
-	public static Iterable<Object> data() {
-		return Arrays.asList(new Object[] { true, false });
-	}
+    @Parameters
+    public static Iterable<Object> data() {
+        return Arrays.asList(new Object[] { true, false });
+    }
 
-	private Boolean saveResultToStorage;
+    private Boolean saveResultToStorage;
 
-	public WebpApiTests(Boolean saveResult)
-	{
-		this.saveResultToStorage = saveResult;
-	}
-	
+    public WebpApiTests(Boolean saveResult)
+    {
+        this.saveResultToStorage = saveResult;
+    }
+    
     /**
      * Test operation: Update parameters of existing WEBP image.
      * 
@@ -69,8 +69,8 @@ public class WebpApiTests extends ApiTester {
      */
     @Test
     public void getImageWebPTest() throws Exception {
-    	String name = "Animation.webp";
-    	Boolean lossless = true;
+        String name = "Animation.webp";
+        Boolean lossless = true;
         Integer quality = 90;
         Integer animLoopCount = 5;
         String animBackgroundColor = "gray";
@@ -78,18 +78,18 @@ public class WebpApiTests extends ApiTester {
         String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-		String outName = name + "_specific." + "webp";
-		getImageWebPRequest = new GetImageWebPRequest(name, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, folder, storage);
-		
-		Method propertiesTester = WebpApiTests.class.getDeclaredMethod("getImageWebPPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-		propertiesTester.setAccessible(true);
-		Method requestInvoker = WebpApiTests.class.getDeclaredMethod("getImageWebPGetRequestInvoker", String.class, String.class);
-		requestInvoker.setAccessible(true);
-	    this.testGetRequest(
+        String outName = name + "_specific." + "webp";
+        getImageWebPRequest = new GetImageWebPRequest(name, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, folder, storage);
+        
+        Method propertiesTester = WebpApiTests.class.getDeclaredMethod("getImageWebPPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = WebpApiTests.class.getDeclaredMethod("getImageWebPGetRequestInvoker", String.class, String.class);
+        requestInvoker.setAccessible(true);
+        this.testGetRequest(
             "getImageWebPTest; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; AnimBackgroundColor: %s; Lossless: %s; Quality: %s; AnimLoopCount: %s; ",
-            		name, animBackgroundColor, lossless, quality, animLoopCount),
+                    name, animBackgroundColor, lossless, quality, animLoopCount),
             name,
             outName,
             requestInvoker,
@@ -97,7 +97,7 @@ public class WebpApiTests extends ApiTester {
             folder,
             storage);
     }
-	
+    
     /**
      * Test operation: Update parameters of WEBP image. Image is passed in a request stream.
      * 
@@ -116,18 +116,18 @@ public class WebpApiTests extends ApiTester {
         String storage = TestStorage;
         String folder = getTempFolder();
         String name = "Animation.webp";
-		String outName = name + "_specific." + "webp";
-		postImageWebPRequest = new PostImageWebPRequest(imageData, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, storage);
-		
-		Method propertiesTester = WebpApiTests.class.getDeclaredMethod("postImageWebPPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-		propertiesTester.setAccessible(true);
-		Method requestInvoker = WebpApiTests.class.getDeclaredMethod("postImageWebPPostRequestInvoker", byte[].class, String.class);
-		requestInvoker.setAccessible(true);
-	    this.testPostRequest(
+        String outName = name + "_specific." + "webp";
+        postImageWebPRequest = new PostImageWebPRequest(imageData, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, storage);
+        
+        Method propertiesTester = WebpApiTests.class.getDeclaredMethod("postImageWebPPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = WebpApiTests.class.getDeclaredMethod("postImageWebPPostRequestInvoker", byte[].class, String.class);
+        requestInvoker.setAccessible(true);
+        this.testPostRequest(
             "postImageWebPTest; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; AnimBackgroundColor: %s; Lossless: %s; Quality: %s; AnimLoopCount: %s; ",
-            		name, animBackgroundColor, lossless, quality, animLoopCount),
+                    name, animBackgroundColor, lossless, quality, animLoopCount),
             name,
             outName,
             requestInvoker,
@@ -136,61 +136,61 @@ public class WebpApiTests extends ApiTester {
             storage);
     }
     
-	/**
-	 * Invokes GET request for getImageWebP operation. Used indirectly by method reference.
-	 * @param name Image file name
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] getImageWebPGetRequestInvoker(String name, String outPath) throws Exception
-	{
-		getImageWebPRequest.name = name;
-		getImageWebPRequest.outPath = outPath;
+    /**
+     * Invokes GET request for getImageWebP operation. Used indirectly by method reference.
+     * @param name Image file name
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] getImageWebPGetRequestInvoker(String name, String outPath) throws Exception
+    {
+        getImageWebPRequest.name = name;
+        getImageWebPRequest.outPath = outPath;
         return ImagingApi.getImageWebP(getImageWebPRequest);
-	}
-	
-	/**
-	 * Invokes POST request for postImageWebP operation. Used indirectly by method reference.
-	 * @param imageData Image data
-	 * @param outPath Out path
-	 * @return API response
-	 * @throws Exception 
-	 */
-	private byte[] postImageWebPPostRequestInvoker(byte[] imageData, String outPath) throws Exception
-	{
-	    postImageWebPRequest.imageData = imageData;
-		postImageWebPRequest.outPath = outPath;
+    }
+    
+    /**
+     * Invokes POST request for postImageWebP operation. Used indirectly by method reference.
+     * @param imageData Image data
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception 
+     */
+    private byte[] postImageWebPPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    {
+        postImageWebPRequest.imageData = imageData;
+        postImageWebPRequest.outPath = outPath;
         return ImagingApi.postImageWebP(postImageWebPRequest);
-	}
-	
-	/**
-	 * Tests properties for getImageWebP operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void getImageWebPPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
-		Assert.assertNotNull(resultProperties.getWebPProperties());
-
-        Assert.assertNotNull(originalProperties.getWebPProperties());
-        Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
-        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
-	}
-	
-	/**
-	 * Tests properties for postImageWebP operation. Used indirectly by method reference.
-	 * @param originalProperties Original image properties
-	 * @param resultProperties Result image properties
-	 * @param resultData Result image data
-	 */
-	private void postImageWebPPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-	{
+    }
+    
+    /**
+     * Tests properties for getImageWebP operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void getImageWebPPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
         Assert.assertNotNull(resultProperties.getWebPProperties());
 
         Assert.assertNotNull(originalProperties.getWebPProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
         Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
-	}
+    }
+    
+    /**
+     * Tests properties for postImageWebP operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void postImageWebPPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertNotNull(resultProperties.getWebPProperties());
+
+        Assert.assertNotNull(originalProperties.getWebPProperties());
+        Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
+        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
+    }
 }

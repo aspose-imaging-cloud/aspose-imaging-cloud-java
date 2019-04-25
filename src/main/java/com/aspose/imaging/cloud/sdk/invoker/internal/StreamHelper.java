@@ -37,21 +37,21 @@ import java.io.OutputStream;
  */
 public class StreamHelper
 {
-	/**
-	 * Copies content of one stream to another.
-	 * @param source The source.
-	 * @param destination The destination.
-	 * @throws IOException
-	 */
-    public static void copyTo(InputStream source, OutputStream destination) throws IOException
-    {
-    	copyTo(source, destination, 81920);
-    }
-	    
     /**
      * Copies content of one stream to another.
-	 * @param source The source.
-	 * @param destination The destination.
+     * @param source The source.
+     * @param destination The destination.
+     * @throws IOException
+     */
+    public static void copyTo(InputStream source, OutputStream destination) throws IOException
+    {
+        copyTo(source, destination, 81920);
+    }
+        
+    /**
+     * Copies content of one stream to another.
+     * @param source The source.
+     * @param destination The destination.
      * @param bufferSize Size of the buffer.
      * @throws IOException
      */
@@ -73,11 +73,11 @@ public class StreamHelper
      */
     public static byte[] readAsBytes(InputStream input) throws IOException
     {
-    	if (input == null)
-    	{
-    		return new byte[0];
-    	}
-    	
+        if (input == null)
+        {
+            return new byte[0];
+        }
+        
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
         int nRead;
@@ -100,7 +100,7 @@ public class StreamHelper
      */
     public static String toString(InputStream input) throws IOException
     {
-    	ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
         int nRead;
         byte[] data = new byte[16 * 1024];

@@ -32,8 +32,8 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 **/   
 public class GetImageGifRequest
 {
-	/**
-	* Initializes a new instance of the GetImageGifRequest class.   
+    /**
+    * Initializes a new instance of the GetImageGifRequest class.   
     * @param name Filename of image.
     * @param backgroundColorIndex Index of the background color.
     * @param colorResolution Color resolution.
@@ -45,7 +45,7 @@ public class GetImageGifRequest
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-	**/
+    **/
     public GetImageGifRequest(String name, Integer backgroundColorIndex, Integer colorResolution, Boolean hasTrailer, Boolean interlaced, Boolean isPaletteSorted, Integer pixelAspectRatio, Boolean fromScratch, String outPath, String folder, String storage)             
     {
         this.name = name;
@@ -60,7 +60,7 @@ public class GetImageGifRequest
         this.folder = folder;
         this.storage = storage;
     }
-		
+        
     /**
     * Filename of image.
     **/

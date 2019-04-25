@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,8 +37,8 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
 /**
  * Search results set.
  */
-public class SearchResultsSet extends SaaSposeResponse {
-  @JsonProperty("Results")
+public class SearchResultsSet {
+  @JsonProperty("results")
   private List<SearchResult> results = null;
 
   public SearchResultsSet results(List<SearchResult> results) {
@@ -75,13 +76,12 @@ public class SearchResultsSet extends SaaSposeResponse {
     return false;
   }
     SearchResultsSet searchResultsSet = (SearchResultsSet) o;
-    return ObjectUtils.equals(this.results, searchResultsSet.results) &&
-    super.equals(o);
+    return ObjectUtils.equals(this.results, searchResultsSet.results);
   }
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(results, super.hashCode());
+    return ObjectUtils.hashCodeMulti(results);
   }
 
 
@@ -89,7 +89,7 @@ public class SearchResultsSet extends SaaSposeResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResultsSet {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
     sb.append("}");
     return sb.toString();

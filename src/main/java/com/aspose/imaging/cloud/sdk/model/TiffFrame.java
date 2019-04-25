@@ -28,6 +28,7 @@
 package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,16 +38,16 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * Represents information about TIFF frame.
  */
 public class TiffFrame {
-  @JsonProperty("FrameOptions")
+  @JsonProperty("frameOptions")
   private TiffOptions frameOptions = null;
 
-  @JsonProperty("Height")
+  @JsonProperty("height")
   private Integer height = null;
 
-  @JsonProperty("Width")
+  @JsonProperty("width")
   private Integer width = null;
 
-  @JsonProperty("ExifData")
+  @JsonProperty("exifData")
   private ExifData exifData = null;
 
   public TiffFrame frameOptions(TiffOptions frameOptions) {

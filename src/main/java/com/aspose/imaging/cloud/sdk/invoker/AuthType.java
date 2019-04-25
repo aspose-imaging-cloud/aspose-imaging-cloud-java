@@ -32,8 +32,13 @@ package com.aspose.imaging.cloud.sdk.invoker;
  */
 public enum AuthType
 {
-	/**
-	 * OAuth 2.0
-	 */
-    OAuth2,
+    /**
+     * JWT
+     */
+    Jwt,
+    
+    /**
+     * OAuth 2.0
+     */
+    OAuth2
 }

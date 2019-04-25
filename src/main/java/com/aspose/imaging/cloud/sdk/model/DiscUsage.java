@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="SaaSposeResponse.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+* <copyright company="Aspose" file="DiscUsage.java">
+*   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,75 +24,87 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-package com.aspose.imaging.cloud.sdk.stablemodel;
+
+package com.aspose.imaging.cloud.sdk.model;
 
 import org.apache.commons.lang3.ObjectUtils;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
- * The basic response class kept from the old Aspose for Cloud Platform. We keep this base class and use it because most probably users are already using it to get API responses. The plan in future is to get rid of it.
+ * Class for disc space information.
  */
-public class SaaSposeResponse {
-  @JsonProperty("Code")
-  private Integer code = null;
+public class DiscUsage {
+  @JsonProperty("usedSize")
+  private Long usedSize = null;
 
-  @JsonProperty("Status")
-  private String status = null;
+  @JsonProperty("totalSize")
+  private Long totalSize = null;
 
-  public SaaSposeResponse() {
+  public DiscUsage usedSize(Long usedSize) {
+    this.usedSize = usedSize;
+    return this;
   }
 
-   /**
-   * HTTP status code.
-   * @return code
+  /**
+   * Application used disc space.
+   * @return usedSize
   **/
-  public Integer getCode() {
-    return code;
+  public Long getUsedSize() {
+    return usedSize;
+  }  
+
+  public void setUsedSize(Long usedSize) {
+    this.usedSize = usedSize;
   }
 
-  public void setCode(Integer code) {
-    this.code = code;
+  public DiscUsage totalSize(Long totalSize) {
+    this.totalSize = totalSize;
+    return this;
   }
 
-   /**
-   * Status description.
-   * @return status
+  /**
+   * Total disc space.
+   * @return totalSize
   **/
-  public String getStatus() {
-    return status;
-  }
+  public Long getTotalSize() {
+    return totalSize;
+  }  
 
-  public void setStatus(String status) {
-    this.status = status;
+  public void setTotalSize(Long totalSize) {
+    this.totalSize = totalSize;
   }
 
 
   @Override
   public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    SaaSposeResponse saaSposeResponse = (SaaSposeResponse) o;
-    return ObjectUtils.equals(this.code, saaSposeResponse.code) &&
-    		ObjectUtils.equals(this.status, saaSposeResponse.status);
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
+    DiscUsage discUsage = (DiscUsage) o;
+    return ObjectUtils.equals(this.usedSize, discUsage.usedSize) &&
+    ObjectUtils.equals(this.totalSize, discUsage.totalSize);
   }
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(code, status);
+    return ObjectUtils.hashCodeMulti(usedSize, totalSize);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SaaSposeResponse {\n");
+    sb.append("class DiscUsage {\n");
     
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    usedSize: ").append(toIndentedString(usedSize)).append("\n");
+    sb.append("    totalSize: ").append(toIndentedString(totalSize)).append("\n");
     sb.append("}");
     return sb.toString();
   }
