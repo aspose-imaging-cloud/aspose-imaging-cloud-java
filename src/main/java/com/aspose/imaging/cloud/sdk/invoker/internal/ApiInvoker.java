@@ -320,7 +320,7 @@ public class ApiInvoker
     private HttpURLConnection prepareRequest(String path, String method, HashMap<String, Object> formParams, 
             HashMap<String, String> headerParams, String body, String contentType) throws Exception
     {
-        HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
+        HttpURLConnection connection = (HttpURLConnection)new URL(path.replace(" ", "%20")).openConnection();
         Boolean sendData = (formParams.size() > 0 || (body != null && !body.equals(""))) && (method.equals("PUT") || method.equals("POST"));
         if (method.equals("PUT") || method.equals("POST"))
         {
