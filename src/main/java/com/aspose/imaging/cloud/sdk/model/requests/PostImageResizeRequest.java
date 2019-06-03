@@ -35,7 +35,7 @@ public class PostImageResizeRequest
     /**
     * Initializes a new instance of the PostImageResizeRequest class.   
     * @param imageData Input image
-    * @param format Resulting image format.
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param newWidth New width.
     * @param newHeight New height.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
@@ -57,7 +57,7 @@ public class PostImageResizeRequest
     public byte[] imageData;
 
     /**
-    * Resulting image format.
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     **/
     public String format;
 

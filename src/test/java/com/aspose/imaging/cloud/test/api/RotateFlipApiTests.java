@@ -96,12 +96,16 @@ public class RotateFlipApiTests extends ApiTester {
      */
     @Test
     public void getImageRotateFlipTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = null;
         String method = "Rotate90FlipX";
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = null;
         
         ArrayList<String> formatsToExport = new ArrayList<String>();
         Collections.addAll(formatsToExport, this.BasicExportFormats);
@@ -126,20 +130,17 @@ public class RotateFlipApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                getImageRotateFlipRequest = new GetImageRotateFlipRequest(name, format, method, outPath, folder, storage);
-                outName = name + "_rotateFlip." + format;
+                getImageRotateFlipRequest = new GetImageRotateFlipRequest(name, format, method, folder, storage);
                 
                 Method propertiesTester = RotateFlipApiTests.class.getDeclaredMethod("getImageRotateFlipPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = RotateFlipApiTests.class.getDeclaredMethod("getImageRotateFlipGetRequestInvoker", String.class, String.class);
+                Method requestInvoker = RotateFlipApiTests.class.getDeclaredMethod("getImageRotateFlipGetRequestInvoker", String.class);
                 requestInvoker.setAccessible(true);
                 this.testGetRequest(
-                    "getImageRotateFlipTest; save result to storage: " + saveResultToStorage, 
-                    saveResultToStorage,
+                    "getImageRotateFlipTest; save result to storage", 
                     String.format("Input image: %s; Output format: %s; Method: %s",
                             name, format, method),
                     name,
-                    outName,
                     requestInvoker,
                     propertiesTester,
                     folder,
@@ -212,14 +213,12 @@ public class RotateFlipApiTests extends ApiTester {
     /**
      * Invokes GET request for getImageRotateFlip operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageRotateFlipGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageRotateFlipGetRequestInvoker(String name) throws Exception
     {
         getImageRotateFlipRequest.name = name;
-        getImageRotateFlipRequest.outPath = outPath;
         return ImagingApi.getImageRotateFlip(getImageRotateFlipRequest);
     }
     

@@ -69,29 +69,31 @@ public class WebpApiTests extends ApiTester {
      */
     @Test
     public void getImageWebPTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "Animation.webp";
         Boolean lossless = true;
         Integer quality = 90;
         Integer animLoopCount = 5;
         String animBackgroundColor = "gray";
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "webp";
-        getImageWebPRequest = new GetImageWebPRequest(name, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, folder, storage);
+        getImageWebPRequest = new GetImageWebPRequest(name, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, folder, storage);
         
         Method propertiesTester = WebpApiTests.class.getDeclaredMethod("getImageWebPPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = WebpApiTests.class.getDeclaredMethod("getImageWebPGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = WebpApiTests.class.getDeclaredMethod("getImageWebPGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImageWebPTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "getImageWebPTest", 
             String.format("Input image: %s; AnimBackgroundColor: %s; Lossless: %s; Quality: %s; AnimLoopCount: %s; ",
                     name, animBackgroundColor, lossless, quality, animLoopCount),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -140,13 +142,11 @@ public class WebpApiTests extends ApiTester {
      * Invokes GET request for getImageWebP operation. Used indirectly by method reference.
      * @param name Image file name
      * @param outPath Out path
-     * @return API response
      * @throws Exception 
      */
-    private byte[] getImageWebPGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageWebPGetRequestInvoker(String name) throws Exception
     {
         getImageWebPRequest.name = name;
-        getImageWebPRequest.outPath = outPath;
         return ImagingApi.getImageWebP(getImageWebPRequest);
     }
     

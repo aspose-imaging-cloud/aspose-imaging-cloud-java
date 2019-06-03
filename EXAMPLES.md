@@ -21,34 +21,26 @@ try {
             localInputImageStream.close();
         }
     }
-
-    // convert image from storage to JPEG and save it to storage
-    // please, use outPath parameter for saving the result to storage
-    GetImageSaveAsRequest getSaveToStorageRequest = 
-        new GetImageSaveAsRequest("inputImage.png", "jpg",
-        "ExampleFolderNet/resultImage.jpg", "ExampleFolderNet", null);
-
-    imagingApi.getImageSaveAs(getSaveToStorageRequest);
-
-    // download saved image from storage and process it
-    byte[] savedFile = imagingApi.downloadFile(
-        new DownloadFileRequest("ExampleFolderNet/resultImage.jpg", null, null));
-
-    // convert image from storage to JPEG and read it from resulting stream
-    // please, set outPath parameter as null to return result in request stream
-    // instead of saving to storage
-    GetImageSaveAsRequest getSaveToStreamRequest = 
-        new GetImageSaveAsRequest("inputImage.png", "jpg", null,
+    
+    // convert image from storage to JPEG
+    GetImageSaveAsRequest getSaveAsRequest = new GetImageSaveAsRequest("inputImage.png", "jpg",
         "ExampleFolderNet", null);
 
-    // process resulting image from response stream
-    byte[] resultGetImageStream = imagingApi.getImageSaveAs(getSaveToStreamRequest);
+    byte[] convertedImage = imagingApi.getImageSaveAs(getSaveAsRequest);
+
+    // process resulting image
+    // for example, save it to storage
+    UploadFileRequest uploadFileRequest = new UploadFileRequest("ExampleFolderNet/resultImage.jpg",
+        convertedImage, null);
+    FilesUploadResult result = imagingApi.uploadFile(uploadFileRequest);
+    // inspect result.getErrors() list if there were any
+    // inspect result.getUploaded() list for uploaded file names
 } finally {
     // remove files from storage
     imagingApi.deleteFile(
-        new DeleteFileRequest("ExampleFolderNet/inputImage.jpg", null, null));
+        new DeleteFileRequest("ExampleFolderNet/inputImage.png", null, null));
     imagingApi.deleteFile(
-        new DeleteFileRequest("ExampleFolderNet/resultImage.png", null, null));
+        new DeleteFileRequest("ExampleFolderNet/resultImage.jpg", null, null));
 }
 
 // other Imaging requests typically follow the same principles regarding stream/storage relations
@@ -95,7 +87,7 @@ try {
 } finally {
     // remove file from storage
     imagingApi.deleteFile(
-        new DeleteFileRequest("ExampleFolderNet/resultImage.png", null, null));
+        new DeleteFileRequest("ExampleFolderNet/resultImage.jpg", null, null));
 }
 
 // other Imaging requests typically follow the same principles regarding stream/storage relations

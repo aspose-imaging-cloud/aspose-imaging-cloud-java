@@ -36,19 +36,17 @@ public class GetImageJpgRequest
     * Initializes a new instance of the GetImageJpgRequest class.   
     * @param name Filename of image.
     * @param quality Quality of an image from 0 to 100. Default is 75.
-    * @param compressionType Compression type.
+    * @param compressionType Compression type: baseline (default), progressive, lossless or jpegls.
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public GetImageJpgRequest(String name, Integer quality, String compressionType, Boolean fromScratch, String outPath, String folder, String storage)             
+    public GetImageJpgRequest(String name, Integer quality, String compressionType, Boolean fromScratch, String folder, String storage)             
     {
         this.name = name;
         this.quality = quality;
         this.compressionType = compressionType;
         this.fromScratch = fromScratch;
-        this.outPath = outPath;
         this.folder = folder;
         this.storage = storage;
     }
@@ -64,7 +62,7 @@ public class GetImageJpgRequest
     public Integer quality;
 
     /**
-    * Compression type.
+    * Compression type: baseline (default), progressive, lossless or jpegls.
     **/
     public String compressionType;
 
@@ -72,11 +70,6 @@ public class GetImageJpgRequest
     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
     **/
     public Boolean fromScratch;
-
-    /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
 
     /**
     * Folder with image to process.

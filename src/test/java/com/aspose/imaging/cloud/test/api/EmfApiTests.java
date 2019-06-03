@@ -69,6 +69,12 @@ public class EmfApiTests extends ApiTester {
      */
     @Test
     public void getImageEmfTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.emf";
         String bkColor = "gray";
         Integer pageWidth = 300;
@@ -76,23 +82,19 @@ public class EmfApiTests extends ApiTester {
         Integer borderX = 50;
         Integer borderY = 50;
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "png";
-        getImageEmfRequest = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, folder, storage, "png");
+        getImageEmfRequest = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, folder, storage, "png");
         
         Method propertiesTester = EmfApiTests.class.getDeclaredMethod("getImageEmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = EmfApiTests.class.getDeclaredMethod("getImageEmfGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = EmfApiTests.class.getDeclaredMethod("getImageEmfGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImageEmfTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "getImageEmfTest", 
             String.format("Input image: %s; BackColor: %s; Page width: %s; Page height: %s; BorderX: %s; BorderY: %s",
                     name, bkColor, pageWidth, pageHeight, borderX, borderY),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -141,14 +143,12 @@ public class EmfApiTests extends ApiTester {
     /**
      * Invokes GET request for getImageEmf operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageEmfGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageEmfGetRequestInvoker(String name) throws Exception
     {
         getImageEmfRequest.name = name;
-        getImageEmfRequest.outPath = outPath;
         return ImagingApi.getImageEmf(getImageEmfRequest);
     }
     

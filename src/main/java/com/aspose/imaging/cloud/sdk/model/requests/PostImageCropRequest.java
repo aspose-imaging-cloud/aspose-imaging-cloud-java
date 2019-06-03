@@ -35,7 +35,7 @@ public class PostImageCropRequest
     /**
     * Initializes a new instance of the PostImageCropRequest class.   
     * @param imageData Input image
-    * @param format Resulting image format.
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param x X position of start point for cropping rectangle.
     * @param y Y position of start point for cropping rectangle.
     * @param width Width of cropping rectangle.
@@ -61,7 +61,7 @@ public class PostImageCropRequest
     public byte[] imageData;
 
     /**
-    * Resulting image format.
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     **/
     public String format;
 

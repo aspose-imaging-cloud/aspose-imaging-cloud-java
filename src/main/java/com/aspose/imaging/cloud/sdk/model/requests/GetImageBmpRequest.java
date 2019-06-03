@@ -39,18 +39,16 @@ public class GetImageBmpRequest
     * @param horizontalResolution New horizontal resolution.
     * @param verticalResolution New vertical resolution.
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public GetImageBmpRequest(String name, Integer bitsPerPixel, Integer horizontalResolution, Integer verticalResolution, Boolean fromScratch, String outPath, String folder, String storage)             
+    public GetImageBmpRequest(String name, Integer bitsPerPixel, Integer horizontalResolution, Integer verticalResolution, Boolean fromScratch, String folder, String storage)             
     {
         this.name = name;
         this.bitsPerPixel = bitsPerPixel;
         this.horizontalResolution = horizontalResolution;
         this.verticalResolution = verticalResolution;
         this.fromScratch = fromScratch;
-        this.outPath = outPath;
         this.folder = folder;
         this.storage = storage;
     }
@@ -79,11 +77,6 @@ public class GetImageBmpRequest
     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
     **/
     public Boolean fromScratch;
-
-    /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
 
     /**
     * Folder with image to process.

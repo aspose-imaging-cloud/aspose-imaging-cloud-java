@@ -35,16 +35,14 @@ public class GetImageSaveAsRequest
     /**
     * Initializes a new instance of the GetImageSaveAsRequest class.   
     * @param name Filename of image.
-    * @param format Resulting image format.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public GetImageSaveAsRequest(String name, String format, String outPath, String folder, String storage)             
+    public GetImageSaveAsRequest(String name, String format, String folder, String storage)             
     {
         this.name = name;
         this.format = format;
-        this.outPath = outPath;
         this.folder = folder;
         this.storage = storage;
     }
@@ -55,14 +53,9 @@ public class GetImageSaveAsRequest
     public String name;
 
     /**
-    * Resulting image format.
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     **/
     public String format;
-
-    /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
 
     /**
     * Folder with image to process.

@@ -69,27 +69,29 @@ public class Jpeg2000ApiTests extends ApiTester {
      */
     @Test
     public void getImageJpeg2000Test() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.j2k";
         String codec = "jp2";
         String comment = "Aspose";
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "jp2";
-        getImageJpeg2000Request = new GetImageJpeg2000Request(name, comment, codec, fromScratch, outPath, folder, storage);
+        getImageJpeg2000Request = new GetImageJpeg2000Request(name, comment, codec, fromScratch, folder, storage);
         
         Method propertiesTester = Jpeg2000ApiTests.class.getDeclaredMethod("getImageJpeg2000PropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = Jpeg2000ApiTests.class.getDeclaredMethod("getImageJpeg2000GetRequestInvoker", String.class, String.class);
+        Method requestInvoker = Jpeg2000ApiTests.class.getDeclaredMethod("getImageJpeg2000GetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
             "getImageJpeg2000Test; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
             String.format("Input image: %s; Comment: %s; Codec: %s",
                     name, comment, codec),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -135,14 +137,12 @@ public class Jpeg2000ApiTests extends ApiTester {
     /**
      * Invokes GET request for getImageJpeg2000 operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageJpeg2000GetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageJpeg2000GetRequestInvoker(String name) throws Exception
     {
         getImageJpeg2000Request.name = name;
-        getImageJpeg2000Request.outPath = outPath;
         return ImagingApi.getImageJpeg2000(getImageJpeg2000Request);
     }
     

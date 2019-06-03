@@ -35,8 +35,8 @@ public class PostImageWebPRequest
     /**
     * Initializes a new instance of the PostImageWebPRequest class.   
     * @param imageData Input image
-    * @param lossLess If WEBP is lossless.
-    * @param quality Quality.
+    * @param lossLess If WEBP should be in lossless format.
+    * @param quality Quality (0-100).
     * @param animLoopCount The animation loop count.
     * @param animBackgroundColor Color of the animation background.
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
@@ -61,12 +61,12 @@ public class PostImageWebPRequest
     public byte[] imageData;
 
     /**
-    * If WEBP is lossless.
+    * If WEBP should be in lossless format.
     **/
     public Boolean lossLess;
 
     /**
-    * Quality.
+    * Quality (0-100).
     **/
     public Integer quality;
 

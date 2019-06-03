@@ -69,6 +69,12 @@ public class WmfApiTests extends ApiTester {
      */
     @Test
     public void getImageWmfTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.wmf";
         String bkColor = "gray";
         Integer pageWidth = 300;
@@ -76,23 +82,20 @@ public class WmfApiTests extends ApiTester {
         Integer borderX = 50;
         Integer borderY = 50;
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "png";
-        getImageWmfRequest = new GetImageWmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, folder, storage, "png");
+        
+        getImageWmfRequest = new GetImageWmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, folder, storage, "png");
         
         Method propertiesTester = WmfApiTests.class.getDeclaredMethod("getImageWmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = WmfApiTests.class.getDeclaredMethod("getImageWmfGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = WmfApiTests.class.getDeclaredMethod("getImageWmfGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImageWmfTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "getImageWmfTest", 
             String.format("Input image: %s; BackColor: %s; Page width: %s; Page height: %s; BorderX: %s; BorderY: %s",
                     name, bkColor, pageWidth, pageHeight, borderX, borderY),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -141,14 +144,12 @@ public class WmfApiTests extends ApiTester {
     /**
      * Invokes GET request for getImageWmf operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageWmfGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageWmfGetRequestInvoker(String name) throws Exception
     {
         getImageWmfRequest.name = name;
-        getImageWmfRequest.outPath = outPath;
         return ImagingApi.getImageWmf(getImageWmfRequest);
     }
     

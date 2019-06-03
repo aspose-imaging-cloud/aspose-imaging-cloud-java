@@ -96,15 +96,19 @@ public class CropApiTests extends ApiTester {
      */
     @Test
     public void getImageCropTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = null;
         Integer x = 10;
         Integer y = 10;
         Integer width = 100;
         Integer height = 150;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = null;
         
         ArrayList<String> formatsToExport = new ArrayList<String>();
         Collections.addAll(formatsToExport, this.BasicExportFormats);
@@ -129,20 +133,17 @@ public class CropApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                getImageCropRequest = new GetImageCropRequest(name, format, x, y, width, height, outPath, folder, storage);
-                outName = name + "_crop." + format;
+                getImageCropRequest = new GetImageCropRequest(name, format, x, y, width, height, folder, storage);
                 
                 Method propertiesTester = CropApiTests.class.getDeclaredMethod("getImageCropPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = CropApiTests.class.getDeclaredMethod("getImageCropGetRequestInvoker", String.class, String.class);
+                Method requestInvoker = CropApiTests.class.getDeclaredMethod("getImageCropGetRequestInvoker", String.class);
                 requestInvoker.setAccessible(true);
                 this.testGetRequest(
-                    "getImageCropTest; save result to storage: " + saveResultToStorage, 
-                    saveResultToStorage,
+                    "getImageCropTest", 
                     String.format("Input image: %s; Output format: %s; Width: %s; Height: %s; X: %s; Y: %s",
                             name, format, width, height, x, y),
                     name,
-                    outName,
                     requestInvoker,
                     propertiesTester,
                     folder,
@@ -218,14 +219,12 @@ public class CropApiTests extends ApiTester {
     /**
      * Invokes GET request for getImageCrop operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageCropGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageCropGetRequestInvoker(String name) throws Exception
     {
         getImageCropRequest.name = name;
-        getImageCropRequest.outPath = outPath;
         return ImagingApi.getImageCrop(getImageCropRequest);
     }
     

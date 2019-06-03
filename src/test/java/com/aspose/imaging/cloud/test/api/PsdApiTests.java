@@ -69,27 +69,29 @@ public class PsdApiTests extends ApiTester {
      */
     @Test
     public void getImagePsdTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.psd";
         int channelsCount = 3;
         String compressionMethod = "raw";
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "psd";
-        getImagePsdRequest = new GetImagePsdRequest(name, channelsCount, compressionMethod, fromScratch, outPath, folder, storage);
+        getImagePsdRequest = new GetImagePsdRequest(name, channelsCount, compressionMethod, fromScratch, folder, storage);
         
         Method propertiesTester = PsdApiTests.class.getDeclaredMethod("getImagePsdPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = PsdApiTests.class.getDeclaredMethod("getImagePsdGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = PsdApiTests.class.getDeclaredMethod("getImagePsdGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
             "getImagePsdTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
             String.format("Input image: %s; Channels count: %s; Compression method: %s",
                     name, channelsCount, compressionMethod),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -135,14 +137,12 @@ public class PsdApiTests extends ApiTester {
     /**
      * Invokes GET request for getImagePsd operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImagePsdGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImagePsdGetRequestInvoker(String name) throws Exception
     {
         getImagePsdRequest.name = name;
-        getImagePsdRequest.outPath = outPath;
         return ImagingApi.getImagePsd(getImagePsdRequest);
     }
     

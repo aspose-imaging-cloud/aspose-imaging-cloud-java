@@ -69,27 +69,29 @@ public class JpgApiTests extends ApiTester {
      */
     @Test
     public void getImageJpgTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.jpg";
         int quality = 65;
         String compressionType = "progressive";
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "jpg";
-        getImageJpgRequest = new GetImageJpgRequest(name, quality, compressionType, fromScratch, outPath, folder, storage);
+        getImageJpgRequest = new GetImageJpgRequest(name, quality, compressionType, fromScratch, folder, storage);
         
         Method propertiesTester = JpgApiTests.class.getDeclaredMethod("getImageJpgPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = JpgApiTests.class.getDeclaredMethod("getImageJpgGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = JpgApiTests.class.getDeclaredMethod("getImageJpgGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
             "getImageJpgTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
             String.format("Input image: %s; Quality: %s; Compression type: %s",
                     name, quality, compressionType),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -139,17 +141,15 @@ public class JpgApiTests extends ApiTester {
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageJpgGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageJpgGetRequestInvoker(String name) throws Exception
     {
         getImageJpgRequest.name = name;
-        getImageJpgRequest.outPath = outPath;
         return ImagingApi.getImageJpg(getImageJpgRequest);
     }
     
     /**
      * Invokes POST request for postImageJpg operation. Used indirectly by method reference.
      * @param imageData Image data
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */

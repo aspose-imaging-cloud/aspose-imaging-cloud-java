@@ -35,16 +35,15 @@ public class GetImageCropRequest
     /**
     * Initializes a new instance of the GetImageCropRequest class.   
     * @param name Filename of an image.
-    * @param format Resulting image format.
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param x X position of start point for cropping rectangle.
     * @param y Y position of start point for cropping rectangle.
     * @param width Width of cropping rectangle
     * @param height Height of cropping rectangle.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public GetImageCropRequest(String name, String format, Integer x, Integer y, Integer width, Integer height, String outPath, String folder, String storage)             
+    public GetImageCropRequest(String name, String format, Integer x, Integer y, Integer width, Integer height, String folder, String storage)             
     {
         this.name = name;
         this.format = format;
@@ -52,7 +51,6 @@ public class GetImageCropRequest
         this.y = y;
         this.width = width;
         this.height = height;
-        this.outPath = outPath;
         this.folder = folder;
         this.storage = storage;
     }
@@ -63,7 +61,7 @@ public class GetImageCropRequest
     public String name;
 
     /**
-    * Resulting image format.
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     **/
     public String format;
 
@@ -86,11 +84,6 @@ public class GetImageCropRequest
     * Height of cropping rectangle.
     **/
     public Integer height;
-
-    /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
 
     /**
     * Folder with image to process.

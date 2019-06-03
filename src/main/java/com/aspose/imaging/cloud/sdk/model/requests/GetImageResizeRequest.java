@@ -35,20 +35,18 @@ public class GetImageResizeRequest
     /**
     * Initializes a new instance of the GetImageResizeRequest class.   
     * @param name Filename of an image.
-    * @param format Resulting image format.
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param newWidth New width.
     * @param newHeight New height.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public GetImageResizeRequest(String name, String format, Integer newWidth, Integer newHeight, String outPath, String folder, String storage)             
+    public GetImageResizeRequest(String name, String format, Integer newWidth, Integer newHeight, String folder, String storage)             
     {
         this.name = name;
         this.format = format;
         this.newWidth = newWidth;
         this.newHeight = newHeight;
-        this.outPath = outPath;
         this.folder = folder;
         this.storage = storage;
     }
@@ -59,7 +57,7 @@ public class GetImageResizeRequest
     public String name;
 
     /**
-    * Resulting image format.
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     **/
     public String format;
 
@@ -72,11 +70,6 @@ public class GetImageResizeRequest
     * New height.
     **/
     public Integer newHeight;
-
-    /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
 
     /**
     * Folder with image to process.

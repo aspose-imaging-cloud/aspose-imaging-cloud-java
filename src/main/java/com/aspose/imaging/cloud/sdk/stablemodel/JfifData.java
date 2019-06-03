@@ -28,11 +28,7 @@
 package com.aspose.imaging.cloud.sdk.stablemodel;
 
 import org.apache.commons.lang3.ObjectUtils;
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
  * Represents JFIF data.

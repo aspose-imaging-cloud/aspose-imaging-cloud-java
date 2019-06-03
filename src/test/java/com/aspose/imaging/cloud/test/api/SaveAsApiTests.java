@@ -95,11 +95,15 @@ public class SaveAsApiTests extends ApiTester {
      */
     @Test
     public void getImageSaveAsTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = null;
         
         ArrayList<String> formatsToExport = new ArrayList<String>();
         Collections.addAll(formatsToExport, this.BasicExportFormats);
@@ -124,20 +128,17 @@ public class SaveAsApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                getImageSaveAsRequest = new GetImageSaveAsRequest(name, format, outPath, folder, storage);
-                outName = name + "." + format;
+                getImageSaveAsRequest = new GetImageSaveAsRequest(name, format, folder, storage);
                 
                 Method propertiesTester = SaveAsApiTests.class.getDeclaredMethod("getImageSaveAsPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = SaveAsApiTests.class.getDeclaredMethod("getImageSaveAsGetRequestInvoker", String.class, String.class);
+                Method requestInvoker = SaveAsApiTests.class.getDeclaredMethod("getImageSaveAsGetRequestInvoker", String.class);
                 requestInvoker.setAccessible(true);
                 this.testGetRequest(
-                    "getImageSaveAsTest; save result to storage: " + saveResultToStorage, 
-                    saveResultToStorage,
+                    "getImageSaveAsTest", 
                     String.format("Input image: %s; Output format: %s",
                             name, format),
                     name,
-                    outName,
                     requestInvoker,
                     propertiesTester,
                     folder,
@@ -209,14 +210,12 @@ public class SaveAsApiTests extends ApiTester {
     /**
      * Invokes GET request for getImageSaveAs operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageSaveAsGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageSaveAsGetRequestInvoker(String name) throws Exception
     {
         getImageSaveAsRequest.name = name;
-        getImageSaveAsRequest.outPath = outPath;
         return ImagingApi.getImageSaveAs(getImageSaveAsRequest);
     }
     

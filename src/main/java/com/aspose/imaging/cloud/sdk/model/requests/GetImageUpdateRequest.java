@@ -35,7 +35,7 @@ public class GetImageUpdateRequest
     /**
     * Initializes a new instance of the GetImageUpdateRequest class.   
     * @param name Filename of an image.
-    * @param format Resulting image format.
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param newWidth New width of the scaled image.
     * @param newHeight New height of the scaled image.
     * @param x X position of start point for cropping rectangle.
@@ -43,11 +43,10 @@ public class GetImageUpdateRequest
     * @param rectWidth Width of cropping rectangle.
     * @param rectHeight Height of cropping rectangle.
     * @param rotateFlipMethod RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public GetImageUpdateRequest(String name, String format, Integer newWidth, Integer newHeight, Integer x, Integer y, Integer rectWidth, Integer rectHeight, String rotateFlipMethod, String outPath, String folder, String storage)             
+    public GetImageUpdateRequest(String name, String format, Integer newWidth, Integer newHeight, Integer x, Integer y, Integer rectWidth, Integer rectHeight, String rotateFlipMethod, String folder, String storage)             
     {
         this.name = name;
         this.format = format;
@@ -58,7 +57,6 @@ public class GetImageUpdateRequest
         this.rectWidth = rectWidth;
         this.rectHeight = rectHeight;
         this.rotateFlipMethod = rotateFlipMethod;
-        this.outPath = outPath;
         this.folder = folder;
         this.storage = storage;
     }
@@ -69,7 +67,7 @@ public class GetImageUpdateRequest
     public String name;
 
     /**
-    * Resulting image format.
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     **/
     public String format;
 
@@ -107,11 +105,6 @@ public class GetImageUpdateRequest
     * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
     **/
     public String rotateFlipMethod;
-
-    /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
 
     /**
     * Folder with image to process.

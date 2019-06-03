@@ -35,8 +35,8 @@ public class PostImageJpeg2000Request
     /**
     * Initializes a new instance of the PostImageJpeg2000Request class.   
     * @param imageData Input image
-    * @param comment The comment.
-    * @param codec The codec.
+    * @param comment The comment (can be either single or comma-separated).
+    * @param codec The codec (j2k or jp2).
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
@@ -57,12 +57,12 @@ public class PostImageJpeg2000Request
     public byte[] imageData;
 
     /**
-    * The comment.
+    * The comment (can be either single or comma-separated).
     **/
     public String comment;
 
     /**
-    * The codec.
+    * The codec (j2k or jp2).
     **/
     public String codec;
 

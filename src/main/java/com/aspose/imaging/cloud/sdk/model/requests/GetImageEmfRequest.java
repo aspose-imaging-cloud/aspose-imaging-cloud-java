@@ -41,12 +41,11 @@ public class GetImageEmfRequest
     * @param borderX Border width.
     * @param borderY Border height.
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
-    * @param format Export format (PNG is the default one).
+    * @param format Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     **/
-    public GetImageEmfRequest(String name, String bkColor, Integer pageWidth, Integer pageHeight, Integer borderX, Integer borderY, Boolean fromScratch, String outPath, String folder, String storage, String format)             
+    public GetImageEmfRequest(String name, String bkColor, Integer pageWidth, Integer pageHeight, Integer borderX, Integer borderY, Boolean fromScratch, String folder, String storage, String format)             
     {
         this.name = name;
         this.bkColor = bkColor;
@@ -55,7 +54,6 @@ public class GetImageEmfRequest
         this.borderX = borderX;
         this.borderY = borderY;
         this.fromScratch = fromScratch;
-        this.outPath = outPath;
         this.folder = folder;
         this.storage = storage;
         this.format = format;
@@ -97,11 +95,6 @@ public class GetImageEmfRequest
     public Boolean fromScratch;
 
     /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
-
-    /**
     * Folder with image to process.
     **/
     public String folder;
@@ -112,7 +105,7 @@ public class GetImageEmfRequest
     public String storage;
 
     /**
-    * Export format (PNG is the default one).
+    * Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     **/
     public String format;
 }

@@ -591,7 +591,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "horizontalResolution", request.horizontalResolution);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "verticalResolution", request.verticalResolution);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -652,7 +651,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "y", request.y);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "width", request.width);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "height", request.height);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -714,7 +712,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "borderX", request.borderX);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "borderY", request.borderY);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
@@ -764,7 +761,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "saveOtherFrames", request.saveOtherFrames);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -852,7 +848,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "isPaletteSorted", request.isPaletteSorted);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "pixelAspectRatio", request.pixelAspectRatio);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -895,7 +890,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "comment", request.comment);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "codec", request.codec);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -934,7 +928,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "quality", request.quality);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "compressionType", request.compressionType);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1013,7 +1006,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "channelsCount", request.channelsCount);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "compressionMethod", request.compressionMethod);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1064,7 +1056,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1110,7 +1101,6 @@ public class ImagingApi
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "method", request.method);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1151,7 +1141,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1181,14 +1170,6 @@ public class ImagingApi
       if (request.name== null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling getImageTiff");
       }
-       // verify the required parameter 'request.compression' is set
-      if (request.compression== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.compression' when calling getImageTiff");
-      }
-       // verify the required parameter 'request.resolutionUnit' is set
-      if (request.resolutionUnit== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.resolutionUnit' when calling getImageTiff");
-      }
        // verify the required parameter 'request.bitDepth' is set
       if (request.bitDepth== null) {
         throw new ApiException(400, "Missing the required parameter 'request.bitDepth' when calling getImageTiff");
@@ -1199,13 +1180,12 @@ public class ImagingApi
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
       
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "bitDepth", request.bitDepth);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "compression", request.compression);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "resolutionUnit", request.resolutionUnit);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "bitDepth", request.bitDepth);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "horizontalResolution", request.horizontalResolution);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "verticalResolution", request.verticalResolution);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1281,7 +1261,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectWidth", request.rectWidth);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1338,7 +1317,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "animLoopCount", request.animLoopCount);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "animBackgroundColor", request.animBackgroundColor);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1400,7 +1378,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "borderX", request.borderX);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "borderY", request.borderY);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
@@ -1711,7 +1688,6 @@ public class ImagingApi
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       
       
       
@@ -2514,14 +2490,6 @@ public class ImagingApi
       if (request.imageData== null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling postImageTiff");
       }
-       // verify the required parameter 'request.compression' is set
-      if (request.compression== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.compression' when calling postImageTiff");
-      }
-       // verify the required parameter 'request.resolutionUnit' is set
-      if (request.resolutionUnit== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.resolutionUnit' when calling postImageTiff");
-      }
        // verify the required parameter 'request.bitDepth' is set
       if (request.bitDepth== null) {
         throw new ApiException(400, "Missing the required parameter 'request.bitDepth' when calling postImageTiff");
@@ -2531,12 +2499,12 @@ public class ImagingApi
       
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "bitDepth", request.bitDepth);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "compression", request.compression);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "resolutionUnit", request.resolutionUnit);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "bitDepth", request.bitDepth);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "horizontalResolution", request.horizontalResolution);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "verticalResolution", request.verticalResolution);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -2557,7 +2525,7 @@ public class ImagingApi
     }
   
     /**
-     * Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
+     * Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return byte[]

@@ -44,11 +44,10 @@ public class GetImageFrameRequest
     * @param rectHeight Height of cropping rectangle.
     * @param rotateFlipMethod RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
     * @param saveOtherFrames If result will include all other frames or just a specified frame.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public GetImageFrameRequest(String name, Integer frameId, Integer newWidth, Integer newHeight, Integer x, Integer y, Integer rectWidth, Integer rectHeight, String rotateFlipMethod, Boolean saveOtherFrames, String outPath, String folder, String storage)             
+    public GetImageFrameRequest(String name, Integer frameId, Integer newWidth, Integer newHeight, Integer x, Integer y, Integer rectWidth, Integer rectHeight, String rotateFlipMethod, Boolean saveOtherFrames, String folder, String storage)             
     {
         this.name = name;
         this.frameId = frameId;
@@ -60,7 +59,6 @@ public class GetImageFrameRequest
         this.rectHeight = rectHeight;
         this.rotateFlipMethod = rotateFlipMethod;
         this.saveOtherFrames = saveOtherFrames;
-        this.outPath = outPath;
         this.folder = folder;
         this.storage = storage;
     }
@@ -114,11 +112,6 @@ public class GetImageFrameRequest
     * If result will include all other frames or just a specified frame.
     **/
     public Boolean saveOtherFrames;
-
-    /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
 
     /**
     * Folder with image to process.

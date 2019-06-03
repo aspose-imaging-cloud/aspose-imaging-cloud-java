@@ -96,8 +96,13 @@ public class UpdateImageApiTests extends ApiTester {
      */
     @Test
     public void getImageUpdateTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = null;
-        String outPath = null;
         Integer newWidth = 300;
         Integer newHeight = 450;
         Integer x = 10;
@@ -107,7 +112,6 @@ public class UpdateImageApiTests extends ApiTester {
         String rotateFlipMethod = "Rotate90FlipX";
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = null;
         
         ArrayList<String> formatsToExport = new ArrayList<String>();
         Collections.addAll(formatsToExport, this.BasicExportFormats);
@@ -132,21 +136,18 @@ public class UpdateImageApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                getImageUpdateRequest = new GetImageUpdateRequest(name, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, folder, storage);
-                outName = name + "_update." + format;
+                getImageUpdateRequest = new GetImageUpdateRequest(name, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, folder, storage);
                 
                 Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdatePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdateGetRequestInvoker", String.class, String.class);
+                Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdateGetRequestInvoker", String.class);
                 requestInvoker.setAccessible(true);
                 this.testGetRequest(
-                    "getImageUpdateTest; save result to storage: " + saveResultToStorage, 
-                    saveResultToStorage,
+                    "getImageUpdateTest", 
                     String.format("Input image: %s; Output format: %s; New width: %s; New height: %s; "
                             + "Rotate/flip method: %s; X: %s; Y: %s; Rect width: %s; Rect height: %s",
                             name, format, newWidth, newHeight, rotateFlipMethod, x, y, rectWidth, rectHeight),
                     name,
-                    outName,
                     requestInvoker,
                     propertiesTester,
                     folder,
@@ -227,14 +228,12 @@ public class UpdateImageApiTests extends ApiTester {
     /**
      * Invokes GET request for getImageUpdate operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageUpdateGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageUpdateGetRequestInvoker(String name) throws Exception
     {
         getImageUpdateRequest.name = name;
-        getImageUpdateRequest.outPath = outPath;
         return ImagingApi.getImageUpdate(getImageUpdateRequest);
     }
     

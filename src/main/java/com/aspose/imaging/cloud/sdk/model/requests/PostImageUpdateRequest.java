@@ -35,7 +35,7 @@ public class PostImageUpdateRequest
     /**
     * Initializes a new instance of the PostImageUpdateRequest class.   
     * @param imageData Input image
-    * @param format Resulting image format.
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param newWidth New width of the scaled image.
     * @param newHeight New height of the scaled image.
     * @param x X position of start point for cropping rectangle.
@@ -67,7 +67,7 @@ public class PostImageUpdateRequest
     public byte[] imageData;
 
     /**
-    * Resulting image format.
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     **/
     public String format;
 

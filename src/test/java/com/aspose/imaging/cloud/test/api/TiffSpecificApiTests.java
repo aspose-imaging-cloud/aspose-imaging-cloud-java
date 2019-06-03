@@ -57,23 +57,20 @@ public class TiffSpecificApiTests extends ApiTester {
     @Test
     public void getTiffToFaxTest() throws Exception {
         String name = "test.tiff";
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_fax." + "tiff";
-        getTiffToFaxRequest = new GetTiffToFaxRequest(name, storage, folder, outPath);
+        
+        getTiffToFaxRequest = new GetTiffToFaxRequest(name, storage, folder);
         
         Method propertiesTester = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
             "getTiffToFaxTest", 
-            true,
             String.format("Input image: %s",
                     name),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -168,14 +165,12 @@ public class TiffSpecificApiTests extends ApiTester {
     /**
      * Invokes GET request for getTiffToFax operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getTiffToFaxGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getTiffToFaxGetRequestInvoker(String name) throws Exception
     {
         getTiffToFaxRequest.name = name;
-        getTiffToFaxRequest.outPath = outPath;
         return ImagingApi.getTiffToFax(getTiffToFaxRequest);
     }
     

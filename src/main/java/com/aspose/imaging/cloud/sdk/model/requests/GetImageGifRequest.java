@@ -42,11 +42,10 @@ public class GetImageGifRequest
     * @param isPaletteSorted Specifies if palette is sorted.
     * @param pixelAspectRatio Pixel aspect ratio.
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public GetImageGifRequest(String name, Integer backgroundColorIndex, Integer colorResolution, Boolean hasTrailer, Boolean interlaced, Boolean isPaletteSorted, Integer pixelAspectRatio, Boolean fromScratch, String outPath, String folder, String storage)             
+    public GetImageGifRequest(String name, Integer backgroundColorIndex, Integer colorResolution, Boolean hasTrailer, Boolean interlaced, Boolean isPaletteSorted, Integer pixelAspectRatio, Boolean fromScratch, String folder, String storage)             
     {
         this.name = name;
         this.backgroundColorIndex = backgroundColorIndex;
@@ -56,7 +55,6 @@ public class GetImageGifRequest
         this.isPaletteSorted = isPaletteSorted;
         this.pixelAspectRatio = pixelAspectRatio;
         this.fromScratch = fromScratch;
-        this.outPath = outPath;
         this.folder = folder;
         this.storage = storage;
     }
@@ -100,11 +98,6 @@ public class GetImageGifRequest
     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
     **/
     public Boolean fromScratch;
-
-    /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
 
     /**
     * Folder with image to process.

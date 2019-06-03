@@ -69,28 +69,30 @@ public class BmpApiTests extends ApiTester {
      */
     @Test
     public void getImageBmpTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.bmp";
         Integer bitsPerPixel = 32;
         Integer horizontalResolution = 300;
         Integer verticalResolution = 300;
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "bmp";
-        getImageBmpRequest = new GetImageBmpRequest(name, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, folder, storage);
+        getImageBmpRequest = new GetImageBmpRequest(name, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, folder, storage);
         
         Method propertiesTester = BmpApiTests.class.getDeclaredMethod("getImageBmpPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = BmpApiTests.class.getDeclaredMethod("getImageBmpGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = BmpApiTests.class.getDeclaredMethod("getImageBmpGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
             "getImageBmpTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
             String.format("Input image: %s; Bits per pixel: %s; Horizontal resolution: %s; Vertical resolution: %s",
                     name, bitsPerPixel, horizontalResolution, verticalResolution),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -137,14 +139,12 @@ public class BmpApiTests extends ApiTester {
     /**
      * Invokes GET request for getImageBmp operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageBmpGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageBmpGetRequestInvoker(String name) throws Exception
     {
         getImageBmpRequest.name = name;
-        getImageBmpRequest.outPath = outPath;
         return ImagingApi.getImageBmp(getImageBmpRequest);
     }
     

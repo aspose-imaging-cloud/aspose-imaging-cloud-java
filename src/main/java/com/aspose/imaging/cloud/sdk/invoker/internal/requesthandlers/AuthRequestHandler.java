@@ -31,10 +31,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 
-import com.aspose.imaging.cloud.sdk.invoker.AuthType;
 import com.aspose.imaging.cloud.sdk.invoker.Configuration;
 import com.aspose.imaging.cloud.sdk.invoker.internal.ApiInvoker;
-import com.aspose.imaging.cloud.sdk.invoker.internal.NeedRepeatRequestException;
 import com.aspose.imaging.cloud.sdk.invoker.internal.SerializationHelper;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -57,11 +55,6 @@ public class AuthRequestHandler implements IRequestHandler
      * The access token
      */
     private String accessToken;
-
-    /**
-     * The refresh token
-     */
-    private String refreshToken;
 
     /**
      * Initializes a new instance of the OAuthRequestHandler class.

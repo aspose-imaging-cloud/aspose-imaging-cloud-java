@@ -35,24 +35,24 @@ public class PostImageTiffRequest
     /**
     * Initializes a new instance of the PostImageTiffRequest class.   
     * @param imageData Input image
-    * @param compression Compression.
-    * @param resolutionUnit New resolution unit.
     * @param bitDepth Bit depth.
-    * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+    * @param compression Compression (none is default). Please, refer to https://apireference.aspose.com/net/imaging/aspose.imaging.fileformats.tiff.enums/tiffcompressions for all possible values.
+    * @param resolutionUnit New resolution unit (none - the default one, inch or centimeter).
     * @param horizontalResolution New horizontal resolution.
-    * @param verticalResolution New verstical resolution.
+    * @param verticalResolution New vertical resolution.
+    * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public PostImageTiffRequest(byte[] imageData, String compression, String resolutionUnit, Integer bitDepth, Boolean fromScratch, Double horizontalResolution, Double verticalResolution, String outPath, String storage)             
+    public PostImageTiffRequest(byte[] imageData, Integer bitDepth, String compression, String resolutionUnit, Double horizontalResolution, Double verticalResolution, Boolean fromScratch, String outPath, String storage)             
     {
         this.imageData = imageData;
+        this.bitDepth = bitDepth;
         this.compression = compression;
         this.resolutionUnit = resolutionUnit;
-        this.bitDepth = bitDepth;
-        this.fromScratch = fromScratch;
         this.horizontalResolution = horizontalResolution;
         this.verticalResolution = verticalResolution;
+        this.fromScratch = fromScratch;
         this.outPath = outPath;
         this.storage = storage;
     }
@@ -63,24 +63,19 @@ public class PostImageTiffRequest
     public byte[] imageData;
 
     /**
-    * Compression.
-    **/
-    public String compression;
-
-    /**
-    * New resolution unit.
-    **/
-    public String resolutionUnit;
-
-    /**
     * Bit depth.
     **/
     public Integer bitDepth;
 
     /**
-    * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+    * Compression (none is default). Please, refer to https://apireference.aspose.com/net/imaging/aspose.imaging.fileformats.tiff.enums/tiffcompressions for all possible values.
     **/
-    public Boolean fromScratch;
+    public String compression;
+
+    /**
+    * New resolution unit (none - the default one, inch or centimeter).
+    **/
+    public String resolutionUnit;
 
     /**
     * New horizontal resolution.
@@ -88,9 +83,14 @@ public class PostImageTiffRequest
     public Double horizontalResolution;
 
     /**
-    * New verstical resolution.
+    * New vertical resolution.
     **/
     public Double verticalResolution;
+
+    /**
+    * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+    **/
+    public Boolean fromScratch;
 
     /**
     * Path to updated file (if this is empty, response contains streamed image).

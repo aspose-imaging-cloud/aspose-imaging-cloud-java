@@ -69,6 +69,12 @@ public class GifApiTests extends ApiTester {
      */
     @Test
     public void getImageGifTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.gif";
         Integer backgroundColorIndex = 5;
         Integer colorResolution = 4;
@@ -77,25 +83,21 @@ public class GifApiTests extends ApiTester {
         Boolean isPaletteSorted = true;
         Integer pixelAspectRatio = 4;
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "gif";
         getImageGifRequest = new GetImageGifRequest(name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted, 
-                pixelAspectRatio, fromScratch, outPath, folder, storage);
+                pixelAspectRatio, fromScratch, folder, storage);
         
         Method propertiesTester = GifApiTests.class.getDeclaredMethod("getImageGifPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = GifApiTests.class.getDeclaredMethod("getImageGifGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = GifApiTests.class.getDeclaredMethod("getImageGifGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
             "getImageGifTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
             String.format("Input image: %s; Back color index: %s; Color resolution: %s; Has trailer: %s; Interlaced: %s; "
                     + "Is palette sorted: %s; Pixel aspect ratio: %s",
                     name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted, pixelAspectRatio),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -147,14 +149,12 @@ public class GifApiTests extends ApiTester {
     /**
      * Invokes GET request for getImageGif operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageGifGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageGifGetRequestInvoker(String name) throws Exception
     {
         getImageGifRequest.name = name;
-        getImageGifRequest.outPath = outPath;
         return ImagingApi.getImageGif(getImageGifRequest);
     }
     

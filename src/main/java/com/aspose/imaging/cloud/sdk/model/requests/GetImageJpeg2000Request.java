@@ -35,20 +35,18 @@ public class GetImageJpeg2000Request
     /**
     * Initializes a new instance of the GetImageJpeg2000Request class.   
     * @param name Filename of image.
-    * @param comment The comment.
-    * @param codec The codec.
+    * @param comment The comment (can be either single or comma-separated).
+    * @param codec The codec (j2k or jp2).
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public GetImageJpeg2000Request(String name, String comment, String codec, Boolean fromScratch, String outPath, String folder, String storage)             
+    public GetImageJpeg2000Request(String name, String comment, String codec, Boolean fromScratch, String folder, String storage)             
     {
         this.name = name;
         this.comment = comment;
         this.codec = codec;
         this.fromScratch = fromScratch;
-        this.outPath = outPath;
         this.folder = folder;
         this.storage = storage;
     }
@@ -59,12 +57,12 @@ public class GetImageJpeg2000Request
     public String name;
 
     /**
-    * The comment.
+    * The comment (can be either single or comma-separated).
     **/
     public String comment;
 
     /**
-    * The codec.
+    * The codec (j2k or jp2).
     **/
     public String codec;
 
@@ -72,11 +70,6 @@ public class GetImageJpeg2000Request
     * Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
     **/
     public Boolean fromScratch;
-
-    /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
 
     /**
     * Folder with image to process.

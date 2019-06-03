@@ -36,7 +36,7 @@ public class PostImagePsdRequest
     * Initializes a new instance of the PostImagePsdRequest class.   
     * @param imageData Input image
     * @param channelsCount Count of color channels.
-    * @param compressionMethod Compression method.
+    * @param compressionMethod Compression method (for now, raw and RLE are supported).
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
@@ -62,7 +62,7 @@ public class PostImagePsdRequest
     public Integer channelsCount;
 
     /**
-    * Compression method.
+    * Compression method (for now, raw and RLE are supported).
     **/
     public String compressionMethod;
 

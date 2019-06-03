@@ -37,14 +37,12 @@ public class GetTiffToFaxRequest
     * @param name Filename of image.
     * @param storage Your Aspose Cloud Storage name.
     * @param folder Folder with image to process.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
     **/
-    public GetTiffToFaxRequest(String name, String storage, String folder, String outPath)             
+    public GetTiffToFaxRequest(String name, String storage, String folder)             
     {
         this.name = name;
         this.storage = storage;
         this.folder = folder;
-        this.outPath = outPath;
     }
         
     /**
@@ -61,9 +59,4 @@ public class GetTiffToFaxRequest
     * Folder with image to process.
     **/
     public String folder;
-
-    /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
 }

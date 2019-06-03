@@ -96,13 +96,17 @@ public class ResizeApiTests extends ApiTester {
      */
     @Test
     public void getImageResizeTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = null;
         Integer newWidth = 100;
         Integer newHeight = 150;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = null;
         
         ArrayList<String> formatsToExport = new ArrayList<String>();
         Collections.addAll(formatsToExport, this.BasicExportFormats);
@@ -127,20 +131,17 @@ public class ResizeApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                getImageResizeRequest = new GetImageResizeRequest(name, format, newWidth, newHeight, outPath, folder, storage);
-                outName = name + "_resize." + format;
+                getImageResizeRequest = new GetImageResizeRequest(name, format, newWidth, newHeight, folder, storage);
                 
                 Method propertiesTester = ResizeApiTests.class.getDeclaredMethod("getImageResizePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = ResizeApiTests.class.getDeclaredMethod("getImageResizeGetRequestInvoker", String.class, String.class);
+                Method requestInvoker = ResizeApiTests.class.getDeclaredMethod("getImageResizeGetRequestInvoker", String.class);
                 requestInvoker.setAccessible(true);
                 this.testGetRequest(
                     "getImageResizeTest; save result to storage: " + saveResultToStorage, 
-                    saveResultToStorage,
                     String.format("Input image: %s; Output format: %s; New width: %s; New height: %s",
                             name, format, newWidth, newHeight),
                     name,
-                    outName,
                     requestInvoker,
                     propertiesTester,
                     folder,
@@ -214,14 +215,12 @@ public class ResizeApiTests extends ApiTester {
     /**
      * Invokes GET request for getImageResize operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageResizeGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageResizeGetRequestInvoker(String name) throws Exception
     {
         getImageResizeRequest.name = name;
-        getImageResizeRequest.outPath = outPath;
         return ImagingApi.getImageResize(getImageResizeRequest);
     }
     

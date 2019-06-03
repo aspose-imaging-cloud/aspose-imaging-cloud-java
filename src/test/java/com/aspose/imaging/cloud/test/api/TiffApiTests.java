@@ -69,6 +69,12 @@ public class TiffApiTests extends ApiTester {
      */
     @Test
     public void getImageTiffTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.tiff";
         String compression = "adobedeflate";
         String resolutionUnit = "inch";
@@ -76,24 +82,21 @@ public class TiffApiTests extends ApiTester {
         double horizontalResolution = 150;
         double verticalResolution = 150;
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "tiff";
-        getImageTiffRequest = new GetImageTiffRequest(name, compression, resolutionUnit, bitDepth, fromScratch, 
-                horizontalResolution, verticalResolution, outPath, folder, storage);
+
+        getImageTiffRequest = new GetImageTiffRequest(name, bitDepth, compression, resolutionUnit,
+                horizontalResolution, verticalResolution, fromScratch, folder, storage);
         
         Method propertiesTester = TiffApiTests.class.getDeclaredMethod("getImageTiffPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = TiffApiTests.class.getDeclaredMethod("getImageTiffGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = TiffApiTests.class.getDeclaredMethod("getImageTiffGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImageTiffTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "getImageTiffTest", 
             String.format("Input image: %s; Compression: %s; Resolution unit: %s; Bit depth: %s; Horizontal resolution: %s; Vertical resolution: %s",
                     name, compression, resolutionUnit, bitDepth, horizontalResolution, verticalResolution),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -120,8 +123,8 @@ public class TiffApiTests extends ApiTester {
         String folder = getTempFolder();
         String name = "test.tiff";
         String outName = name + "_specific." + "tiff";
-        postImageTiffRequest = new PostImageTiffRequest(imageData, compression, resolutionUnit, bitDepth, fromScratch, 
-                horizontalResolution, verticalResolution, outPath, storage);
+        postImageTiffRequest = new PostImageTiffRequest(imageData, bitDepth, compression, resolutionUnit, 
+                horizontalResolution, verticalResolution, fromScratch, outPath, storage);
         
         Method propertiesTester = TiffApiTests.class.getDeclaredMethod("postImageTiffPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
@@ -143,14 +146,12 @@ public class TiffApiTests extends ApiTester {
     /**
      * Invokes GET request for getImageTiff operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageTiffGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageTiffGetRequestInvoker(String name) throws Exception
     {
         getImageTiffRequest.name = name;
-        getImageTiffRequest.outPath = outPath;
         return ImagingApi.getImageTiff(getImageTiffRequest);
     }
     
