@@ -35,9 +35,9 @@ import org.junit.Test;
 
 import com.aspose.imaging.cloud.sdk.model.SearchResultsSet;
 import com.aspose.imaging.cloud.sdk.model.requests.DownloadFileRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextFindSimilarRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextAddTagRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextFindByTagsRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.FindSimilarImagesRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.CreateImageTagRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.FindImagesByTagsRequest;
 import com.google.gson.Gson;
 
 public class FindImagesTests extends TestImagingAIBase {
@@ -50,8 +50,8 @@ public class FindImagesTests extends TestImagingAIBase {
      {
          addImageFeaturesToSearchContext(OriginalDataFolder + "/FindSimilar", true);
          String findImageId = OriginalDataFolder +"/FindSimilar/"+ImageToFind;
-         SearchResultsSet result = ImagingApi.getSearchContextFindSimilar(
-                 new GetSearchContextFindSimilarRequest(SearchContextId, 3.0, 3, null, findImageId, null, TestStorage));
+         SearchResultsSet result = ImagingApi.findSimilarImages(
+                 new FindSimilarImagesRequest(SearchContextId, 3.0, 3, null, findImageId, null, TestStorage));
 
          Assert.assertTrue(result.getResults().size() >= 1);       
      }
@@ -66,14 +66,14 @@ public class FindImagesTests extends TestImagingAIBase {
          String storagePath = OriginalDataFolder + "/" + ImageToFindByTag;
          byte[] imageData = ImagingApi.downloadFile(new DownloadFileRequest(storagePath, TestStorage, null));
          
-         ImagingApi.postSearchContextAddTag(
-                 new PostSearchContextAddTagRequest(imageData, SearchContextId, tag, null, TestStorage));           
+         ImagingApi.createImageTag(
+                 new CreateImageTagRequest(imageData, SearchContextId, tag, null, TestStorage));           
 
          List<String> tagsList = new ArrayList<String>();
          tagsList.add(tag);
          String tags = new Gson().toJson(tagsList);
-         SearchResultsSet result = ImagingApi.postSearchContextFindByTags(
-             new PostSearchContextFindByTagsRequest(tags, SearchContextId, 60.0, 5, null, TestStorage));
+         SearchResultsSet result = ImagingApi.findImagesByTags(
+             new FindImagesByTagsRequest(tags, SearchContextId, 60.0, 5, null, TestStorage));
        
          Assert.assertEquals(1, result.getResults().size());  
          Assert.assertTrue(result.getResults().get(0).getImageId().contains("2.jpg"));  

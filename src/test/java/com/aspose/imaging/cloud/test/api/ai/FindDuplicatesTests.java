@@ -31,7 +31,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.aspose.imaging.cloud.sdk.model.ImageDuplicatesSet;
-import com.aspose.imaging.cloud.sdk.model.requests.GetSearchContextFindDuplicatesRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.FindImageDuplicatesRequest;
 
 public class FindDuplicatesTests extends TestImagingAIBase{
     
@@ -53,8 +53,8 @@ public class FindDuplicatesTests extends TestImagingAIBase{
         image = getStoragePath(ComparingImageSimilarMore75, null);
         addImageFeaturesToSearchContext(image, false);
 
-        ImageDuplicatesSet result = ImagingApi.getSearchContextFindDuplicates(
-            new GetSearchContextFindDuplicatesRequest(SearchContextId, 80.0, null, TestStorage));
+        ImageDuplicatesSet result = ImagingApi.findImageDuplicates(
+            new FindImageDuplicatesRequest(SearchContextId, 80.0, null, TestStorage));
         
         Assert.assertEquals(1, result.getDuplicates().size());
     } 

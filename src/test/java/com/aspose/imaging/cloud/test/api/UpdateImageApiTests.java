@@ -49,8 +49,8 @@ import java.util.Collections;
 @RunWith(Parameterized.class)
 public class UpdateImageApiTests extends ApiTester {
 
-    private GetImageUpdateRequest getImageUpdateRequest;
-    private PostImageUpdateRequest postImageUpdateRequest;
+    private UpdateImageRequest updateImageRequest;
+    private CreateUpdatedImageRequest createUpdatedImageRequest;
 
     @Parameters
     public static Iterable<Object[]> data() {
@@ -95,7 +95,7 @@ public class UpdateImageApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void getImageUpdateTest() throws Exception {
+    public void updateImageTest() throws Exception {
         
         if (saveResultToStorage)
         {
@@ -136,14 +136,14 @@ public class UpdateImageApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                getImageUpdateRequest = new GetImageUpdateRequest(name, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, folder, storage);
+                updateImageRequest = new UpdateImageRequest(name, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, folder, storage);
                 
-                Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdatePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("updateImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("getImageUpdateGetRequestInvoker", String.class);
+                Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("updateImageGetRequestInvoker", String.class);
                 requestInvoker.setAccessible(true);
                 this.testGetRequest(
-                    "getImageUpdateTest", 
+                    "updateImageTest", 
                     String.format("Input image: %s; Output format: %s; New width: %s; New height: %s; "
                             + "Rotate/flip method: %s; X: %s; Y: %s; Rect width: %s; Rect height: %s",
                             name, format, newWidth, newHeight, rotateFlipMethod, x, y, rectWidth, rectHeight),
@@ -163,7 +163,7 @@ public class UpdateImageApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void postImageUpdateTest() throws Exception {
+    public void createUpdatedImageTest() throws Exception {
         byte[] imageData = null;
         String name = null;
         String outPath = null;
@@ -201,16 +201,16 @@ public class UpdateImageApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                postImageUpdateRequest = new PostImageUpdateRequest(imageData, format, newWidth, newHeight, x, y, rectWidth, rectHeight, 
+                createUpdatedImageRequest = new CreateUpdatedImageRequest(imageData, format, newWidth, newHeight, x, y, rectWidth, rectHeight, 
                         rotateFlipMethod, outPath, storage);
                 outName = name + "_update." + format;
                 
-                Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("postImageUpdatePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                Method propertiesTester = UpdateImageApiTests.class.getDeclaredMethod("createUpdatedImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("postImageUpdatePostRequestInvoker", byte[].class, String.class);
+                Method requestInvoker = UpdateImageApiTests.class.getDeclaredMethod("createUpdatedImagePostRequestInvoker", byte[].class, String.class);
                 requestInvoker.setAccessible(true);
                 this.testPostRequest(
-                    "postImageUpdateTest; save result to storage: " + saveResultToStorage,  
+                    "createUpdatedImageTest; save result to storage: " + saveResultToStorage,  
                     saveResultToStorage,
                     String.format("Input image: %s; Output format: %s; New width: %s; New height: %s; "
                             + "Rotate/flip method: %s; X: %s; Y: %s; Rect width: %s; Rect height: %s",
@@ -226,52 +226,52 @@ public class UpdateImageApiTests extends ApiTester {
     }
     
     /**
-     * Invokes GET request for getImageUpdate operation. Used indirectly by method reference.
+     * Invokes GET request for updateImage operation. Used indirectly by method reference.
      * @param name Image file name
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageUpdateGetRequestInvoker(String name) throws Exception
+    private byte[] updateImageGetRequestInvoker(String name) throws Exception
     {
-        getImageUpdateRequest.name = name;
-        return ImagingApi.getImageUpdate(getImageUpdateRequest);
+        updateImageRequest.name = name;
+        return ImagingApi.updateImage(updateImageRequest);
     }
     
     /**
-     * Invokes POST request for postImageUpdate operation. Used indirectly by method reference.
+     * Invokes POST request for createUpdatedImage operation. Used indirectly by method reference.
      * @param imageData Image data
      * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] postImageUpdatePostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createUpdatedImagePostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        postImageUpdateRequest.imageData = imageData;
-        postImageUpdateRequest.outPath = outPath;
-        return ImagingApi.postImageUpdate(postImageUpdateRequest);
+        createUpdatedImageRequest.imageData = imageData;
+        createUpdatedImageRequest.outPath = outPath;
+        return ImagingApi.createUpdatedImage(createUpdatedImageRequest);
     }
     
     /**
-     * Tests properties for getImageUpdate operation. Used indirectly by method reference.
+     * Tests properties for updateImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void getImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void updateImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
-        Assert.assertEquals(getImageUpdateRequest.rectHeight, resultProperties.getWidth());
-        Assert.assertEquals(getImageUpdateRequest.rectWidth, resultProperties.getHeight());
+        Assert.assertEquals(updateImageRequest.rectHeight, resultProperties.getWidth());
+        Assert.assertEquals(updateImageRequest.rectWidth, resultProperties.getHeight());
     }
     
     /**
-     * Tests properties for postImageUpdate operation. Used indirectly by method reference.
+     * Tests properties for createUpdatedImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void postImageUpdatePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createUpdatedImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
-        Assert.assertEquals(postImageUpdateRequest.rectHeight, resultProperties.getWidth());
-        Assert.assertEquals(postImageUpdateRequest.rectWidth, resultProperties.getHeight());
+        Assert.assertEquals(createUpdatedImageRequest.rectHeight, resultProperties.getWidth());
+        Assert.assertEquals(createUpdatedImageRequest.rectWidth, resultProperties.getHeight());
     }
 }

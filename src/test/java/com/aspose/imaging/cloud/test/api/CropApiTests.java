@@ -49,8 +49,8 @@ import java.util.Collections;
 @RunWith(Parameterized.class)
 public class CropApiTests extends ApiTester {
 
-    private GetImageCropRequest getImageCropRequest;
-    private PostImageCropRequest postImageCropRequest;
+    private CropImageRequest cropImageRequest;
+    private CreateCroppedImageRequest createCroppedImageRequest;
 
     @Parameters
     public static Iterable<Object[]> data() {
@@ -95,7 +95,7 @@ public class CropApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void getImageCropTest() throws Exception {
+    public void cropImageTest() throws Exception {
         
         if (saveResultToStorage)
         {
@@ -133,14 +133,14 @@ public class CropApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                getImageCropRequest = new GetImageCropRequest(name, format, x, y, width, height, folder, storage);
+                cropImageRequest = new CropImageRequest(name, format, x, y, width, height, folder, storage);
                 
-                Method propertiesTester = CropApiTests.class.getDeclaredMethod("getImageCropPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                Method propertiesTester = CropApiTests.class.getDeclaredMethod("cropImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = CropApiTests.class.getDeclaredMethod("getImageCropGetRequestInvoker", String.class);
+                Method requestInvoker = CropApiTests.class.getDeclaredMethod("cropImageGetRequestInvoker", String.class);
                 requestInvoker.setAccessible(true);
                 this.testGetRequest(
-                    "getImageCropTest", 
+                    "cropImageTest", 
                     String.format("Input image: %s; Output format: %s; Width: %s; Height: %s; X: %s; Y: %s",
                             name, format, width, height, x, y),
                     name,
@@ -159,7 +159,7 @@ public class CropApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void postImageCropTest() throws Exception {
+    public void createCroppedImageTest() throws Exception {
         byte[] imageData = null;
         String name = null;
         Integer x = 10;
@@ -194,15 +194,15 @@ public class CropApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                postImageCropRequest = new PostImageCropRequest(imageData, format, x, y, width, height, outPath, storage);
+                createCroppedImageRequest = new CreateCroppedImageRequest(imageData, format, x, y, width, height, outPath, storage);
                 outName = name + "_crop." + format;
                 
-                Method propertiesTester = CropApiTests.class.getDeclaredMethod("postImageCropPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                Method propertiesTester = CropApiTests.class.getDeclaredMethod("createCroppedImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = CropApiTests.class.getDeclaredMethod("postImageCropPostRequestInvoker", byte[].class, String.class);
+                Method requestInvoker = CropApiTests.class.getDeclaredMethod("createCroppedImagePostRequestInvoker", byte[].class, String.class);
                 requestInvoker.setAccessible(true);
                 this.testPostRequest(
-                    "postImageCropTest; save result to storage: " + saveResultToStorage,  
+                    "createCroppedImageTest; save result to storage: " + saveResultToStorage,  
                     saveResultToStorage,
                     String.format("Input image: %s; Output format: %s; Width: %s; Height: %s; X: %s; Y: %s",
                             name, format, width, height, x, y),
@@ -217,52 +217,52 @@ public class CropApiTests extends ApiTester {
     }
     
     /**
-     * Invokes GET request for getImageCrop operation. Used indirectly by method reference.
+     * Invokes GET request for cropImage operation. Used indirectly by method reference.
      * @param name Image file name
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageCropGetRequestInvoker(String name) throws Exception
+    private byte[] cropImageGetRequestInvoker(String name) throws Exception
     {
-        getImageCropRequest.name = name;
-        return ImagingApi.getImageCrop(getImageCropRequest);
+        cropImageRequest.name = name;
+        return ImagingApi.cropImage(cropImageRequest);
     }
     
     /**
-     * Invokes POST request for postImageCrop operation. Used indirectly by method reference.
+     * Invokes POST request for createCroppedImage operation. Used indirectly by method reference.
      * @param imageData Image data
      * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] postImageCropPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createCroppedImagePostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        postImageCropRequest.imageData = imageData;
-        postImageCropRequest.outPath = outPath;
-        return ImagingApi.postImageCrop(postImageCropRequest);
+        createCroppedImageRequest.imageData = imageData;
+        createCroppedImageRequest.outPath = outPath;
+        return ImagingApi.createCroppedImage(createCroppedImageRequest);
     }
     
     /**
-     * Tests properties for getImageCrop operation. Used indirectly by method reference.
+     * Tests properties for cropImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void getImageCropPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void cropImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
-        Assert.assertEquals(getImageCropRequest.width, resultProperties.getWidth());
-        Assert.assertEquals(getImageCropRequest.height, resultProperties.getHeight());
+        Assert.assertEquals(cropImageRequest.width, resultProperties.getWidth());
+        Assert.assertEquals(cropImageRequest.height, resultProperties.getHeight());
     }
     
     /**
-     * Tests properties for postImageCrop operation. Used indirectly by method reference.
+     * Tests properties for createCroppedImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void postImageCropPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createCroppedImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
-        Assert.assertEquals(postImageCropRequest.width, resultProperties.getWidth());
-        Assert.assertEquals(postImageCropRequest.height, resultProperties.getHeight());
+        Assert.assertEquals(createCroppedImageRequest.width, resultProperties.getWidth());
+        Assert.assertEquals(createCroppedImageRequest.height, resultProperties.getHeight());
     }
 }

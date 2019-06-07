@@ -46,7 +46,7 @@ import java.lang.reflect.Method;
  */
 public class TiffSpecificApiTests extends ApiTester {
 
-    private GetTiffToFaxRequest getTiffToFaxRequest;
+    private ConvertTiffToFaxRequest convertTiffToFaxRequest;
 
     /**
      * Test operation: Update parameters of existing TIFF image accordingly to fax parameters.
@@ -55,19 +55,19 @@ public class TiffSpecificApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void getTiffToFaxTest() throws Exception {
+    public void convertTiffToFaxTest() throws Exception {
         String name = "test.tiff";
         String folder = getTempFolder();
         String storage = TestStorage;
         
-        getTiffToFaxRequest = new GetTiffToFaxRequest(name, storage, folder);
+        convertTiffToFaxRequest = new ConvertTiffToFaxRequest(name, storage, folder);
         
-        Method propertiesTester = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = TiffSpecificApiTests.class.getDeclaredMethod("convertTiffToFaxPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = TiffSpecificApiTests.class.getDeclaredMethod("getTiffToFaxGetRequestInvoker", String.class);
+        Method requestInvoker = TiffSpecificApiTests.class.getDeclaredMethod("convertTiffToFaxGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getTiffToFaxTest", 
+            "convertTiffToFaxTest", 
             String.format("Input image: %s",
                     name),
             name,
@@ -84,9 +84,9 @@ public class TiffSpecificApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void postTiffAppendTest() throws Exception {
+    public void appendTiffTest() throws Exception {
         Boolean passed = false;
-        System.out.println("Test method: postTiffAppendTest");
+        System.out.println("Test method: appendTiffTest");
 
         String inputFileName = "test.tiff";
         String folder = getTempFolder();
@@ -119,8 +119,8 @@ public class TiffSpecificApiTests extends ApiTester {
             ImagingApi.copyFile(new CopyFileRequest(inputPath, outPath, storage, storage, null));
             Assert.assertTrue(ImagingApi.objectExists(new ObjectExistsRequest(outPath, storage, null)).isExists());
 
-            PostTiffAppendRequest request = new PostTiffAppendRequest(resultFileName, inputFileName, storage, folder);
-            ImagingApi.postTiffAppend(request);
+            AppendTiffRequest request = new AppendTiffRequest(resultFileName, inputFileName, storage, folder);
+            ImagingApi.appendTiff(request);
             StorageFile resultInfo = getStorageFileInfo(folder, resultFileName, storage);
             if (resultInfo == null)
             {
@@ -163,24 +163,24 @@ public class TiffSpecificApiTests extends ApiTester {
     }
     
     /**
-     * Invokes GET request for getTiffToFax operation. Used indirectly by method reference.
+     * Invokes GET request for convertTiffToFax operation. Used indirectly by method reference.
      * @param name Image file name
      * @return API response
      * @throws Exception 
      */
-    private byte[] getTiffToFaxGetRequestInvoker(String name) throws Exception
+    private byte[] convertTiffToFaxGetRequestInvoker(String name) throws Exception
     {
-        getTiffToFaxRequest.name = name;
-        return ImagingApi.getTiffToFax(getTiffToFaxRequest);
+        convertTiffToFaxRequest.name = name;
+        return ImagingApi.convertTiffToFax(convertTiffToFaxRequest);
     }
     
     /**
-     * Tests properties for getTiffToFax operation. Used indirectly by method reference.
+     * Tests properties for convertTiffToFax operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void getTiffToFaxPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void convertTiffToFaxPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getTiffProperties());
         Assert.assertEquals(1, (int)resultProperties.getBitsPerPixel());

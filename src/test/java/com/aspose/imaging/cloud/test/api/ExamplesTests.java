@@ -74,10 +74,10 @@ public class ExamplesTests extends ApiTester {
             }
 
             // convert image from storage to JPEG
-            GetImageSaveAsRequest getSaveAsRequest = new GetImageSaveAsRequest("inputImage.png", "jpg",
+            SaveImageAsRequest getSaveAsRequest = new SaveImageAsRequest("inputImage.png", "jpg",
                     "ExampleFolderNet", null);
 
-            byte[] convertedImage = imagingApi.getImageSaveAs(getSaveAsRequest);
+            byte[] convertedImage = imagingApi.saveImageAs(getSaveAsRequest);
 
             // process resulting image
             // for example, save it to storage
@@ -119,10 +119,10 @@ public class ExamplesTests extends ApiTester {
 
             // convert image from request stream to JPEG and save it to storage
             // please, use outPath parameter for saving the result to storage
-            PostImageSaveAsRequest postSaveToStorageRequest = new PostImageSaveAsRequest(localInputImage, "jpg",
+            CreateSavedImageAsRequest postSaveToStorageRequest = new CreateSavedImageAsRequest(localInputImage, "jpg",
                     "ExampleFolderNet/resultImage.jpg", null);
 
-            imagingApi.postImageSaveAs(postSaveToStorageRequest);
+            imagingApi.createSavedImageAs(postSaveToStorageRequest);
 
             // download saved image from storage and process it
             byte[] savedFile = imagingApi
@@ -131,11 +131,11 @@ public class ExamplesTests extends ApiTester {
             // convert image from request stream to JPEG and read it from resulting stream
             // please, set outPath parameter as null to return result in request stream
             // instead of saving to storage
-            PostImageSaveAsRequest postSaveToStreamRequest = new PostImageSaveAsRequest(localInputImage, "jpg", null,
+            CreateSavedImageAsRequest postSaveToStreamRequest = new CreateSavedImageAsRequest(localInputImage, "jpg", null,
                     null);
 
             // process resulting image from response stream
-            byte[] resultPostImageStream = imagingApi.postImageSaveAs(postSaveToStreamRequest);
+            byte[] resultPostImageStream = imagingApi.createSavedImageAs(postSaveToStreamRequest);
         } finally {
             // remove file from storage
             ImagingApi.deleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.jpg", null, null));

@@ -46,7 +46,7 @@ public abstract class TestImagingAIBase extends ApiTester {
     @After
     public void finalizeTest() throws Exception {
         if (StringUtils.isNotEmpty(SearchContextId)) {
-            deleteSearchContext(SearchContextId);
+            deleteImageSearch(SearchContextId);
         }
 
         if (ImagingApi.objectExists(new ObjectExistsRequest(getTempFolder(), TestStorage, null)).isExists()) {
@@ -64,7 +64,7 @@ public abstract class TestImagingAIBase extends ApiTester {
 
     protected static String createSearchContext() throws Exception {
         SearchContextStatus status = ImagingApi
-                .postCreateSearchContext(new PostCreateSearchContextRequest(null, null, null, TestStorage));
+                .createImageSearch(new CreateImageSearchRequest(null, null, null, TestStorage));
 
         return status.getId();
     }
@@ -86,22 +86,22 @@ public abstract class TestImagingAIBase extends ApiTester {
         return folder + getTempFolderId();
     }
 
-    protected void deleteSearchContext(String searchContextId) throws Exception {
-        ImagingApi.deleteSearchContext(new DeleteSearchContextRequest(searchContextId, null, TestStorage));
+    protected void deleteImageSearch(String searchContextId) throws Exception {
+        ImagingApi.deleteImageSearch(new DeleteImageSearchRequest(searchContextId, null, TestStorage));
     }
 
-    protected String getSearchContextStatus(String searchContextId) throws Exception {
+    protected String getImageSearchStatus(String searchContextId) throws Exception {
         SearchContextStatus status = ImagingApi
-                .getSearchContextStatus(new GetSearchContextStatusRequest(SearchContextId, null, TestStorage));
+                .getImageSearchStatus(new GetImageSearchStatusRequest(SearchContextId, null, TestStorage));
         return status.getSearchStatus();
     }
 
     protected void addImageFeaturesToSearchContext(String storageSourcePath, Boolean isFolder) throws Exception {
         
-        PostSearchContextExtractImageFeaturesRequest request = isFolder 
-                 ? new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, null,  storageSourcePath, null,  TestStorage)
-                 : new PostSearchContextExtractImageFeaturesRequest(SearchContextId, null, storageSourcePath, null, null, TestStorage);
-          ImagingApi.postSearchContextExtractImageFeatures(request);         
+        CreateImageFeaturesRequest request = isFolder 
+                 ? new CreateImageFeaturesRequest(SearchContextId, null, null,  storageSourcePath, null,  TestStorage)
+                 : new CreateImageFeaturesRequest(SearchContextId, null, storageSourcePath, null, null, TestStorage);
+          ImagingApi.createImageFeatures(request);         
         waitSearchContextIdle();        
     }
 
@@ -116,8 +116,8 @@ public abstract class TestImagingAIBase extends ApiTester {
         long startTime = System.currentTimeMillis();
 
         while (!"Idle".equalsIgnoreCase(status) && (System.currentTimeMillis() - startTime) / 1000 < maxTimeInSeconds) {
-            SearchContextStatus contextStatus = ImagingApi.getSearchContextStatus(
-                    new GetSearchContextStatusRequest(this.SearchContextId, null, TestStorage));
+            SearchContextStatus contextStatus = ImagingApi.getImageSearchStatus(
+                    new GetImageSearchStatusRequest(this.SearchContextId, null, TestStorage));
             status = contextStatus.getSearchStatus();
             Thread.sleep(timeout * 1000);
         }

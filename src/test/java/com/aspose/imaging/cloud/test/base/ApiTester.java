@@ -47,7 +47,7 @@ import com.aspose.imaging.cloud.sdk.model.requests.DownloadFileRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetFilesListRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetImagePropertiesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.ObjectExistsRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.PostImagePropertiesRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.ExtractImagePropertiesRequest;
 import com.aspose.imaging.cloud.sdk.stablemodel.ImagingResponse;
 
 /**
@@ -663,7 +663,7 @@ public abstract class ApiTester
             else
             {
                 resultProperties =
-                        ImagingApi.postImageProperties(new PostImagePropertiesRequest(response));
+                        ImagingApi.extractImageProperties(new ExtractImagePropertiesRequest(response));
                 Assert.assertNotNull(resultProperties);
             }
             
