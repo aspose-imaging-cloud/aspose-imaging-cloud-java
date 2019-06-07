@@ -80,7 +80,7 @@ It gives you an ability to:
             <repository>
                 <id>AsposeJavaAPI</id>
                 <name>Aspose Java API</name>
-                <url>http://repository.aspose.cloud/repo/</url>
+                <url>https://repository.aspose.cloud/repo/</url>
                 <snapshots>
                     <enabled>false</enabled>
                 </snapshots>
