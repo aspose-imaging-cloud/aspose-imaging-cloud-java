@@ -135,8 +135,7 @@ public class SearchContextTests extends TestImagingAIBase {
         this.addImageFeatures(TestImage);
     }
 
-    @Test
-    @Ignore("IMAGINGAINET-107")
+    @Test    
     public void extractAndAddImageFeaturesFromFolderTest() throws Exception {
         ImagingApi.postSearchContextExtractImageFeatures(new PostSearchContextExtractImageFeaturesRequest(
                 SearchContextId, null, null, OriginalDataFolder + "/FindSimilar", null, TestStorage));
