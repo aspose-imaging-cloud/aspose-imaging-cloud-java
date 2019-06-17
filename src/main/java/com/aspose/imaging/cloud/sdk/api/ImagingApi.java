@@ -455,7 +455,7 @@ public class ImagingApi
       
       this.apiInvoker.invokeApi(
           resourcePath, 
-          "POST", 
+          "PUT", 
           null, 
           null, 
           formParams);
@@ -3137,7 +3137,7 @@ public class ImagingApi
       }
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
-          "POST", 
+          "PUT", 
           null, 
           null, 
           formParams);
