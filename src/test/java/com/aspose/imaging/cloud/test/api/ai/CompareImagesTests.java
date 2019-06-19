@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CompareImagesTests.java">
-*   Copyright (c) 2019  Aspose Pty Ltd.
+*   Copyright (c) 2018-2019  Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,7 +33,7 @@ import org.junit.Test;
 
 import com.aspose.imaging.cloud.sdk.model.SearchResultsSet;
 import com.aspose.imaging.cloud.sdk.model.requests.DownloadFileRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.PostSearchContextCompareImagesRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.CompareImagesRequest;
 
 public class CompareImagesTests extends TestImagingAIBase{
      private final String ComparableImage = "ComparableImage.jpg";
@@ -49,8 +49,8 @@ public class CompareImagesTests extends TestImagingAIBase{
          String image2 = getStoragePath(ComparingImageSimilarMore75,null);
          addImageFeaturesToSearchContext(image2, false);
 
-         SearchResultsSet result = ImagingApi.postSearchContextCompareImages(
-             new PostSearchContextCompareImagesRequest(SearchContextId, image1, null, image2, null, TestStorage));
+         SearchResultsSet result = ImagingApi.compareImages(
+             new CompareImagesRequest(SearchContextId, image1, null, image2, null, TestStorage));
 
          Assert.assertEquals(1, result.getResults().size());
          Assert.assertTrue(result.getResults().get(0).getSimilarity() >= 70);
@@ -66,8 +66,8 @@ public class CompareImagesTests extends TestImagingAIBase{
 
          byte[] imageData = ImagingApi.downloadFile(new DownloadFileRequest(storagePath, TestStorage, null));
 
-         SearchResultsSet result = ImagingApi.postSearchContextCompareImages(
-             new PostSearchContextCompareImagesRequest(SearchContextId, image, imageData, null, null, TestStorage));
+         SearchResultsSet result = ImagingApi.compareImages(
+             new CompareImagesRequest(SearchContextId, image, imageData, null, null, TestStorage));
 
          Assert.assertEquals(1, result.getResults().size());
          Assert.assertTrue(result.getResults().get(0).getSimilarity() <= 15);

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GifApiTests.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,8 +46,8 @@ import java.lang.reflect.Method;
 @RunWith(Parameterized.class)
 public class GifApiTests extends ApiTester {
 
-    private GetImageGifRequest getImageGifRequest;
-    private PostImageGifRequest postImageGifRequest;
+    private ModifyGifRequest modifyGifRequest;
+    private CreateModifiedGifRequest createModifiedGifRequest;
 
     @Parameters
     public static Iterable<Object> data() {
@@ -68,7 +68,13 @@ public class GifApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void getImageGifTest() throws Exception {
+    public void modifyGifTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.gif";
         Integer backgroundColorIndex = 5;
         Integer colorResolution = 4;
@@ -77,25 +83,21 @@ public class GifApiTests extends ApiTester {
         Boolean isPaletteSorted = true;
         Integer pixelAspectRatio = 4;
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "gif";
-        getImageGifRequest = new GetImageGifRequest(name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted, 
-                pixelAspectRatio, fromScratch, outPath, folder, storage);
+        modifyGifRequest = new ModifyGifRequest(name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted, 
+                pixelAspectRatio, fromScratch, folder, storage);
         
-        Method propertiesTester = GifApiTests.class.getDeclaredMethod("getImageGifPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = GifApiTests.class.getDeclaredMethod("modifyGifPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = GifApiTests.class.getDeclaredMethod("getImageGifGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = GifApiTests.class.getDeclaredMethod("modifyGifGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImageGifTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "modifyGifTest; save result to storage: " + saveResultToStorage, 
             String.format("Input image: %s; Back color index: %s; Color resolution: %s; Has trailer: %s; Interlaced: %s; "
                     + "Is palette sorted: %s; Pixel aspect ratio: %s",
                     name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted, pixelAspectRatio),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -109,7 +111,7 @@ public class GifApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void postImageGifTest() throws Exception {
+    public void createModifiedGifTest() throws Exception {
         byte[] imageData = null;
         Integer backgroundColorIndex = 5;
         Integer colorResolution = 4;
@@ -123,15 +125,15 @@ public class GifApiTests extends ApiTester {
         String folder = getTempFolder();
         String name = "test.gif";
         String outName = name + "_specific." + "gif";
-        postImageGifRequest = new PostImageGifRequest(imageData, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted, 
+        createModifiedGifRequest = new CreateModifiedGifRequest(imageData, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted, 
                 pixelAspectRatio, fromScratch, outPath, storage);
         
-        Method propertiesTester = GifApiTests.class.getDeclaredMethod("postImageGifPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = GifApiTests.class.getDeclaredMethod("createModifiedGifPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = GifApiTests.class.getDeclaredMethod("postImageGifPostRequestInvoker", byte[].class, String.class);
+        Method requestInvoker = GifApiTests.class.getDeclaredMethod("createModifiedGifPostRequestInvoker", byte[].class, String.class);
         requestInvoker.setAccessible(true);
         this.testPostRequest(
-            "postImageGifTest; save result to storage: " + saveResultToStorage, 
+            "createModifiedGifTest; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; Back color index: %s; Color resolution: %s; Has trailer: %s; Interlaced: %s; "
                     + "Is palette sorted: %s; Pixel aspect ratio: %s",
@@ -145,45 +147,43 @@ public class GifApiTests extends ApiTester {
     }
     
     /**
-     * Invokes GET request for getImageGif operation. Used indirectly by method reference.
+     * Invokes GET request for modifyGif operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageGifGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] modifyGifGetRequestInvoker(String name) throws Exception
     {
-        getImageGifRequest.name = name;
-        getImageGifRequest.outPath = outPath;
-        return ImagingApi.getImageGif(getImageGifRequest);
+        modifyGifRequest.name = name;
+        return ImagingApi.modifyGif(modifyGifRequest);
     }
     
     /**
-     * Invokes POST request for postImageGif operation. Used indirectly by method reference.
+     * Invokes POST request for createModifiedGif operation. Used indirectly by method reference.
      * @param imageData Image data
      * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] postImageGifPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createModifiedGifPostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        postImageGifRequest.imageData = imageData;
-        postImageGifRequest.outPath = outPath;
-        return ImagingApi.postImageGif(postImageGifRequest);
+        createModifiedGifRequest.imageData = imageData;
+        createModifiedGifRequest.outPath = outPath;
+        return ImagingApi.createModifiedGif(createModifiedGifRequest);
     }
     
     /**
-     * Tests properties for getImageGif operation. Used indirectly by method reference.
+     * Tests properties for modifyGif operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void getImageGifPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void modifyGifPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getGifProperties());
 
         //Assert.assertEquals(hasTrailer, outProperties.getGifProperties().getHasTrailer());
-        Assert.assertEquals(getImageGifRequest.pixelAspectRatio, resultProperties.getGifProperties().getPixelAspectRatio());
+        Assert.assertEquals(modifyGifRequest.pixelAspectRatio, resultProperties.getGifProperties().getPixelAspectRatio());
 
         Assert.assertNotNull(originalProperties.getGifProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
@@ -191,17 +191,17 @@ public class GifApiTests extends ApiTester {
     }
     
     /**
-     * Tests properties for postImageGif operation. Used indirectly by method reference.
+     * Tests properties for createModifiedGif operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void postImageGifPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createModifiedGifPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getGifProperties());
 
         //Assert.assertEquals(hasTrailer, outProperties.getGifProperties().getHasTrailer());
-        Assert.assertEquals(postImageGifRequest.pixelAspectRatio, resultProperties.getGifProperties().getPixelAspectRatio());
+        Assert.assertEquals(createModifiedGifRequest.pixelAspectRatio, resultProperties.getGifProperties().getPixelAspectRatio());
 
         Assert.assertNotNull(originalProperties.getGifProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());

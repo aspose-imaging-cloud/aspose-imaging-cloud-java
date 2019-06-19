@@ -60,6 +60,8 @@ Process options, change and return images in any supported export format:
 * Image comparison and similarity detection
 * Image features extraction (for now, AKAZE detector is supported)
 
+For the complete list of use-cases, please refer to [common operations format support map](https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap) to see what you can achieve!
+
 # Storage API support
 #### Since version 19.4, SDK includes support of storage operations for better user experience and unification, so now there's no need to use 2 different SDKs!
 
@@ -78,7 +80,7 @@ It gives you an ability to:
             <repository>
                 <id>AsposeJavaAPI</id>
                 <name>Aspose Java API</name>
-                <url>http://artifact.aspose.cloud/repo/</url>
+                <url>https://repository.aspose.cloud/repo/</url>
                 <snapshots>
                     <enabled>false</enabled>
                 </snapshots>
@@ -100,7 +102,7 @@ It gives you an ability to:
     <dependency>
         <groupId>com.aspose</groupId>
         <artifactId>aspose-imaging-cloud</artifactId>
-        <version>19.4</version>
+        <version>19.6</version>
     </dependency>
 </dependencies>
 ```

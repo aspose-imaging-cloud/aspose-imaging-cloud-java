@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TiffApiTests.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,8 +46,8 @@ import java.lang.reflect.Method;
 @RunWith(Parameterized.class)
 public class TiffApiTests extends ApiTester {
 
-    private GetImageTiffRequest getImageTiffRequest;
-    private PostImageTiffRequest postImageTiffRequest;
+    private ModifyTiffRequest modifyTiffRequest;
+    private CreateModifiedTiffRequest createModifiedTiffRequest;
 
     @Parameters
     public static Iterable<Object> data() {
@@ -68,7 +68,13 @@ public class TiffApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void getImageTiffTest() throws Exception {
+    public void modifyTiffTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.tiff";
         String compression = "adobedeflate";
         String resolutionUnit = "inch";
@@ -76,24 +82,21 @@ public class TiffApiTests extends ApiTester {
         double horizontalResolution = 150;
         double verticalResolution = 150;
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "tiff";
-        getImageTiffRequest = new GetImageTiffRequest(name, compression, resolutionUnit, bitDepth, fromScratch, 
-                horizontalResolution, verticalResolution, outPath, folder, storage);
+
+        modifyTiffRequest = new ModifyTiffRequest(name, bitDepth, compression, resolutionUnit,
+                horizontalResolution, verticalResolution, fromScratch, folder, storage);
         
-        Method propertiesTester = TiffApiTests.class.getDeclaredMethod("getImageTiffPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = TiffApiTests.class.getDeclaredMethod("modifyTiffPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = TiffApiTests.class.getDeclaredMethod("getImageTiffGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = TiffApiTests.class.getDeclaredMethod("modifyTiffGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImageTiffTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "modifyTiffTest", 
             String.format("Input image: %s; Compression: %s; Resolution unit: %s; Bit depth: %s; Horizontal resolution: %s; Vertical resolution: %s",
                     name, compression, resolutionUnit, bitDepth, horizontalResolution, verticalResolution),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -107,7 +110,7 @@ public class TiffApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void postImageTiffTest() throws Exception {
+    public void createModifiedTiffTest() throws Exception {
         byte[] imageData = null;
         String compression = "adobedeflate";
         String resolutionUnit = "inch";
@@ -120,15 +123,15 @@ public class TiffApiTests extends ApiTester {
         String folder = getTempFolder();
         String name = "test.tiff";
         String outName = name + "_specific." + "tiff";
-        postImageTiffRequest = new PostImageTiffRequest(imageData, compression, resolutionUnit, bitDepth, fromScratch, 
-                horizontalResolution, verticalResolution, outPath, storage);
+        createModifiedTiffRequest = new CreateModifiedTiffRequest(imageData, bitDepth, compression, resolutionUnit, 
+                horizontalResolution, verticalResolution, fromScratch, outPath, storage);
         
-        Method propertiesTester = TiffApiTests.class.getDeclaredMethod("postImageTiffPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = TiffApiTests.class.getDeclaredMethod("createModifiedTiffPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = TiffApiTests.class.getDeclaredMethod("postImageTiffPostRequestInvoker", byte[].class, String.class);
+        Method requestInvoker = TiffApiTests.class.getDeclaredMethod("createModifiedTiffPostRequestInvoker", byte[].class, String.class);
         requestInvoker.setAccessible(true);
         this.testPostRequest(
-            "postImageTiffTest; save result to storage: " + saveResultToStorage, 
+            "createModifiedTiffTest; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; Compression: %s; Resolution unit: %s; Bit depth: %s; Horizontal resolution: %s; Vertical resolution: %s",
                     name, compression, resolutionUnit, bitDepth, horizontalResolution, verticalResolution),
@@ -141,47 +144,45 @@ public class TiffApiTests extends ApiTester {
     }  
     
     /**
-     * Invokes GET request for getImageTiff operation. Used indirectly by method reference.
+     * Invokes GET request for modifyTiff operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageTiffGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] modifyTiffGetRequestInvoker(String name) throws Exception
     {
-        getImageTiffRequest.name = name;
-        getImageTiffRequest.outPath = outPath;
-        return ImagingApi.getImageTiff(getImageTiffRequest);
+        modifyTiffRequest.name = name;
+        return ImagingApi.modifyTiff(modifyTiffRequest);
     }
     
     /**
-     * Invokes POST request for postImageTiff operation. Used indirectly by method reference.
+     * Invokes POST request for createModifiedTiff operation. Used indirectly by method reference.
      * @param imageData Image data
      * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] postImageTiffPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createModifiedTiffPostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        postImageTiffRequest.imageData = imageData;
-        postImageTiffRequest.outPath = outPath;
-        return ImagingApi.postImageTiff(postImageTiffRequest);
+        createModifiedTiffRequest.imageData = imageData;
+        createModifiedTiffRequest.outPath = outPath;
+        return ImagingApi.createModifiedTiff(createModifiedTiffRequest);
     }
     
     /**
-     * Tests properties for getImageTiff operation. Used indirectly by method reference.
+     * Tests properties for modifyTiff operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void getImageTiffPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void modifyTiffPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getTiffProperties());
-        Integer bitDepth = getImageTiffRequest.bitDepth > 1 ? getImageTiffRequest.bitDepth * 4 : getImageTiffRequest.bitDepth;
+        Integer bitDepth = modifyTiffRequest.bitDepth > 1 ? modifyTiffRequest.bitDepth * 4 : modifyTiffRequest.bitDepth;
         Assert.assertEquals(bitDepth, resultProperties.getBitsPerPixel());
-        Assert.assertEquals((int)Math.ceil((double)getImageTiffRequest.verticalResolution),
+        Assert.assertEquals((int)Math.ceil((double)modifyTiffRequest.verticalResolution),
                 (int)Math.ceil((double)resultProperties.getVerticalResolution()));
-        Assert.assertEquals((int)Math.ceil((double)getImageTiffRequest.horizontalResolution),
+        Assert.assertEquals((int)Math.ceil((double)modifyTiffRequest.horizontalResolution),
                 (int)Math.ceil((double)resultProperties.getHorizontalResolution()));
 
         Assert.assertNotNull(originalProperties.getTiffProperties());
@@ -191,19 +192,19 @@ public class TiffApiTests extends ApiTester {
     }
     
     /**
-     * Tests properties for postImageTiff operation. Used indirectly by method reference.
+     * Tests properties for createModifiedTiff operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void postImageTiffPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createModifiedTiffPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getTiffProperties());
-        Integer bitDepth = postImageTiffRequest.bitDepth > 1 ? postImageTiffRequest.bitDepth * 4 : postImageTiffRequest.bitDepth;
+        Integer bitDepth = createModifiedTiffRequest.bitDepth > 1 ? createModifiedTiffRequest.bitDepth * 4 : createModifiedTiffRequest.bitDepth;
         Assert.assertEquals(bitDepth, resultProperties.getBitsPerPixel());
-        Assert.assertEquals((int)Math.ceil((double)postImageTiffRequest.verticalResolution),
+        Assert.assertEquals((int)Math.ceil((double)createModifiedTiffRequest.verticalResolution),
                 (int)Math.ceil((double)resultProperties.getVerticalResolution()));
-        Assert.assertEquals((int)Math.ceil((double)postImageTiffRequest.horizontalResolution),
+        Assert.assertEquals((int)Math.ceil((double)createModifiedTiffRequest.horizontalResolution),
                 (int)Math.ceil((double)resultProperties.getHorizontalResolution()));
 
         Assert.assertNotNull(originalProperties.getTiffProperties());

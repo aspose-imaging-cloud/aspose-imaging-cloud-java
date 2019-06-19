@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PsdApiTests.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,8 +46,8 @@ import java.lang.reflect.Method;
 @RunWith(Parameterized.class)
 public class PsdApiTests extends ApiTester {
 
-    private GetImagePsdRequest getImagePsdRequest;
-    private PostImagePsdRequest postImagePsdRequest;
+    private ModifyPsdRequest modifyPsdRequest;
+    private CreateModifiedPsdRequest createModifiedPsdRequest;
 
     @Parameters
     public static Iterable<Object> data() {
@@ -68,28 +68,30 @@ public class PsdApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void getImagePsdTest() throws Exception {
+    public void modifyPsdTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.psd";
         int channelsCount = 3;
         String compressionMethod = "raw";
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "psd";
-        getImagePsdRequest = new GetImagePsdRequest(name, channelsCount, compressionMethod, fromScratch, outPath, folder, storage);
+        modifyPsdRequest = new ModifyPsdRequest(name, channelsCount, compressionMethod, fromScratch, folder, storage);
         
-        Method propertiesTester = PsdApiTests.class.getDeclaredMethod("getImagePsdPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = PsdApiTests.class.getDeclaredMethod("modifyPsdPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = PsdApiTests.class.getDeclaredMethod("getImagePsdGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = PsdApiTests.class.getDeclaredMethod("modifyPsdGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImagePsdTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "modifyPsdTest; save result to storage: " + saveResultToStorage, 
             String.format("Input image: %s; Channels count: %s; Compression method: %s",
                     name, channelsCount, compressionMethod),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -103,7 +105,7 @@ public class PsdApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void postImagePsdTest() throws Exception {
+    public void createModifiedPsdTest() throws Exception {
         byte[] imageData = null;
         int channelsCount = 3;
         String compressionMethod = "raw";
@@ -113,14 +115,14 @@ public class PsdApiTests extends ApiTester {
         String folder = getTempFolder();
         String name = "test.psd";
         String outName = name + "_specific." + "psd";
-        postImagePsdRequest = new PostImagePsdRequest(imageData, channelsCount, compressionMethod, fromScratch, outPath, storage);
+        createModifiedPsdRequest = new CreateModifiedPsdRequest(imageData, channelsCount, compressionMethod, fromScratch, outPath, storage);
         
-        Method propertiesTester = PsdApiTests.class.getDeclaredMethod("postImagePsdPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = PsdApiTests.class.getDeclaredMethod("createModifiedPsdPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = PsdApiTests.class.getDeclaredMethod("postImagePsdPostRequestInvoker", byte[].class, String.class);
+        Method requestInvoker = PsdApiTests.class.getDeclaredMethod("createModifiedPsdPostRequestInvoker", byte[].class, String.class);
         requestInvoker.setAccessible(true);
         this.testPostRequest(
-            "postImagePsdTest; save result to storage: " + saveResultToStorage, 
+            "createModifiedPsdTest; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; Channels count: %s; Compression method: %s",
                     name, channelsCount, compressionMethod),
@@ -133,44 +135,42 @@ public class PsdApiTests extends ApiTester {
     }
     
     /**
-     * Invokes GET request for getImagePsd operation. Used indirectly by method reference.
+     * Invokes GET request for modifyPsd operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImagePsdGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] modifyPsdGetRequestInvoker(String name) throws Exception
     {
-        getImagePsdRequest.name = name;
-        getImagePsdRequest.outPath = outPath;
-        return ImagingApi.getImagePsd(getImagePsdRequest);
+        modifyPsdRequest.name = name;
+        return ImagingApi.modifyPsd(modifyPsdRequest);
     }
     
     /**
-     * Invokes POST request for postImagePsd operation. Used indirectly by method reference.
+     * Invokes POST request for createModifiedPsd operation. Used indirectly by method reference.
      * @param imageData Image data
      * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] postImagePsdPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createModifiedPsdPostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        postImagePsdRequest.imageData = imageData;
-        postImagePsdRequest.outPath = outPath;
-        return ImagingApi.postImagePsd(postImagePsdRequest);
+        createModifiedPsdRequest.imageData = imageData;
+        createModifiedPsdRequest.outPath = outPath;
+        return ImagingApi.createModifiedPsd(createModifiedPsdRequest);
     }
     
     /**
-     * Tests properties for getImagePsd operation. Used indirectly by method reference.
+     * Tests properties for modifyPsd operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void getImagePsdPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void modifyPsdPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getPsdProperties());
-        Assert.assertEquals(getImagePsdRequest.compressionMethod, resultProperties.getPsdProperties().getCompression().toLowerCase());
-        Assert.assertEquals(getImagePsdRequest.channelsCount, resultProperties.getPsdProperties().getChannelsCount());
+        Assert.assertEquals(modifyPsdRequest.compressionMethod, resultProperties.getPsdProperties().getCompression().toLowerCase());
+        Assert.assertEquals(modifyPsdRequest.channelsCount, resultProperties.getPsdProperties().getChannelsCount());
 
         Assert.assertNotNull(originalProperties.getPsdProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
@@ -179,16 +179,16 @@ public class PsdApiTests extends ApiTester {
     }
     
     /**
-     * Tests properties for postImagePsd operation. Used indirectly by method reference.
+     * Tests properties for createModifiedPsd operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void postImagePsdPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createModifiedPsdPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getPsdProperties());
-        Assert.assertEquals(postImagePsdRequest.compressionMethod, resultProperties.getPsdProperties().getCompression().toLowerCase());
-        Assert.assertEquals(postImagePsdRequest.channelsCount, resultProperties.getPsdProperties().getChannelsCount());
+        Assert.assertEquals(createModifiedPsdRequest.compressionMethod, resultProperties.getPsdProperties().getCompression().toLowerCase());
+        Assert.assertEquals(createModifiedPsdRequest.channelsCount, resultProperties.getPsdProperties().getChannelsCount());
 
         Assert.assertNotNull(originalProperties.getPsdProperties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
