@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="RotateFlipApiTests.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -49,8 +49,8 @@ import java.util.Collections;
 @RunWith(Parameterized.class)
 public class RotateFlipApiTests extends ApiTester {
 
-    private GetImageRotateFlipRequest getImageRotateFlipRequest;
-    private PostImageRotateFlipRequest postImageRotateFlipRequest;
+    private RotateFlipImageRequest rotateFlipImageRequest;
+    private CreateRotateFlippedImageRequest createRotateFlippedImageRequest;
 
     @Parameters
     public static Iterable<Object[]> data() {
@@ -95,13 +95,17 @@ public class RotateFlipApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void getImageRotateFlipTest() throws Exception {
+    public void rotateFlipImageTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = null;
         String method = "Rotate90FlipX";
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = null;
         
         ArrayList<String> formatsToExport = new ArrayList<String>();
         Collections.addAll(formatsToExport, this.BasicExportFormats);
@@ -126,20 +130,17 @@ public class RotateFlipApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                getImageRotateFlipRequest = new GetImageRotateFlipRequest(name, format, method, outPath, folder, storage);
-                outName = name + "_rotateFlip." + format;
+                rotateFlipImageRequest = new RotateFlipImageRequest(name, format, method, folder, storage);
                 
-                Method propertiesTester = RotateFlipApiTests.class.getDeclaredMethod("getImageRotateFlipPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                Method propertiesTester = RotateFlipApiTests.class.getDeclaredMethod("rotateFlipImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = RotateFlipApiTests.class.getDeclaredMethod("getImageRotateFlipGetRequestInvoker", String.class, String.class);
+                Method requestInvoker = RotateFlipApiTests.class.getDeclaredMethod("rotateFlipImageGetRequestInvoker", String.class);
                 requestInvoker.setAccessible(true);
                 this.testGetRequest(
-                    "getImageRotateFlipTest; save result to storage: " + saveResultToStorage, 
-                    saveResultToStorage,
+                    "rotateFlipImageTest; save result to storage", 
                     String.format("Input image: %s; Output format: %s; Method: %s",
                             name, format, method),
                     name,
-                    outName,
                     requestInvoker,
                     propertiesTester,
                     folder,
@@ -155,7 +156,7 @@ public class RotateFlipApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void postImageRotateFlipTest() throws Exception {
+    public void createRotateFlippedImageTest() throws Exception {
         byte[] imageData = null;
         String name = null;
         String method = "Rotate90FlipX";
@@ -187,15 +188,15 @@ public class RotateFlipApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                postImageRotateFlipRequest = new PostImageRotateFlipRequest(imageData, format, method, outPath, storage);
+                createRotateFlippedImageRequest = new CreateRotateFlippedImageRequest(imageData, format, method, outPath, storage);
                 outName = name + "_rotateFlip." + format;
                 
-                Method propertiesTester = RotateFlipApiTests.class.getDeclaredMethod("postImageRotateFlipPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                Method propertiesTester = RotateFlipApiTests.class.getDeclaredMethod("createRotateFlippedImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = RotateFlipApiTests.class.getDeclaredMethod("postImageRotateFlipPostRequestInvoker", byte[].class, String.class);
+                Method requestInvoker = RotateFlipApiTests.class.getDeclaredMethod("createRotateFlippedImagePostRequestInvoker", byte[].class, String.class);
                 requestInvoker.setAccessible(true);
                 this.testPostRequest(
-                    "postImageRotateFlipTest; save result to storage: " + saveResultToStorage,  
+                    "createRotateFlippedImageTest; save result to storage: " + saveResultToStorage,  
                     saveResultToStorage,
                     String.format("Input image: %s; Output format: %s; Method: %s",
                             name, format, method),
@@ -210,40 +211,38 @@ public class RotateFlipApiTests extends ApiTester {
     }
     
     /**
-     * Invokes GET request for getImageRotateFlip operation. Used indirectly by method reference.
+     * Invokes GET request for rotateFlipImage operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageRotateFlipGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] rotateFlipImageGetRequestInvoker(String name) throws Exception
     {
-        getImageRotateFlipRequest.name = name;
-        getImageRotateFlipRequest.outPath = outPath;
-        return ImagingApi.getImageRotateFlip(getImageRotateFlipRequest);
+        rotateFlipImageRequest.name = name;
+        return ImagingApi.rotateFlipImage(rotateFlipImageRequest);
     }
     
     /**
-     * Invokes POST request for postImageRotateFlip operation. Used indirectly by method reference.
+     * Invokes POST request for createRotateFlippedImage operation. Used indirectly by method reference.
      * @param imageData Image data
      * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] postImageRotateFlipPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createRotateFlippedImagePostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        postImageRotateFlipRequest.imageData = imageData;
-        postImageRotateFlipRequest.outPath = outPath;
-        return ImagingApi.postImageRotateFlip(postImageRotateFlipRequest);
+        createRotateFlippedImageRequest.imageData = imageData;
+        createRotateFlippedImageRequest.outPath = outPath;
+        return ImagingApi.createRotateFlippedImage(createRotateFlippedImageRequest);
     }
     
     /**
-     * Tests properties for getImageRotateFlip operation. Used indirectly by method reference.
+     * Tests properties for rotateFlipImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void getImageRotateFlipPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void rotateFlipImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         try
         {
@@ -265,12 +264,12 @@ public class RotateFlipApiTests extends ApiTester {
     }
     
     /**
-     * Tests properties for postImageRotateFlip operation. Used indirectly by method reference.
+     * Tests properties for createRotateFlippedImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void postImageRotateFlipPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createRotateFlippedImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         try
         {

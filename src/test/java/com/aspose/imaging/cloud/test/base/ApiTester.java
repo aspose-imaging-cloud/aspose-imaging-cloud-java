@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiTester.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,7 +47,7 @@ import com.aspose.imaging.cloud.sdk.model.requests.DownloadFileRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetFilesListRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetImagePropertiesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.ObjectExistsRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.PostImagePropertiesRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.ExtractImagePropertiesRequest;
 import com.aspose.imaging.cloud.sdk.stablemodel.ImagingResponse;
 
 /**
@@ -131,8 +131,7 @@ public abstract class ApiTester
          "png",
          "psd",
          "tiff",
-         "webp",
-         "pdf"
+         "webp"
     };
 
     /**
@@ -383,18 +382,16 @@ public abstract class ApiTester
     /**
      * Tests the typical GET request.
      * @param testMethodName Name of the test method.
-     * @param saveResultToStorage If set to true, save result to storage.
      * @param parametersLine The parameters line.
      * @param inputFileName Name of the input file.
-     * @param resultFileName Name of the result file.
      * @param requestInvoker The request invoker.
      * @param propertiesTester The properties tester.
      * @throws Exception 
      */
-    protected void testGetRequest(String testMethodName, Boolean saveResultToStorage, String parametersLine, String inputFileName, 
+    protected void testGetRequest(String testMethodName, String parametersLine, String inputFileName, 
             String resultFileName, Method requestInvoker, Method propertiesTester) throws Exception
     {
-        this.testGetRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName,
+        this.testGetRequest(testMethodName, parametersLine, inputFileName,
                 requestInvoker, propertiesTester, getTempFolder(), TestStorage);
     }
     
@@ -404,33 +401,28 @@ public abstract class ApiTester
      * @param saveResultToStorage If set to true, save result to storage.
      * @param parametersLine The parameters line.
      * @param inputFileName Name of the input file.
-     * @param resultFileName Name of the result file.
      * @param requestInvoker The request invoker.
      * @param propertiesTester The properties tester.
      * @param folder The folder.
      * @param storage The storage.
      * @throws Exception 
      */
-    protected void testGetRequest(String testMethodName, Boolean saveResultToStorage, String parametersLine, String inputFileName, 
-            String resultFileName, Method requestInvoker, Method propertiesTester, String folder, String storage) throws Exception
+    protected void testGetRequest(String testMethodName, String parametersLine, String inputFileName, 
+            Method requestInvoker, Method propertiesTester, String folder, String storage) throws Exception
     {
-        final Boolean finalSaveResultToStorage = saveResultToStorage;
-        final String finalFolder = folder;
-        final String finalResultFileName = resultFileName;
         final String finalInputFileName = inputFileName;
         final Method finalRequestInvoker = requestInvoker;
-        final Method obtainMethod = ApiTester.class.getDeclaredMethod("obtainGetResponse", String.class, String.class, Method.class);
+        final Method obtainMethod = ApiTester.class.getDeclaredMethod("obtainGetResponse", String.class, Method.class);
         obtainMethod.setAccessible(true);
         final Object thisReference = this;
         
-        this.testRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName,
+        this.testRequest(testMethodName, false, parametersLine, inputFileName, null,
             new Callable<byte[]>()
             {
                 public byte[] call() throws RuntimeException
                 {
-                    String outPath = finalSaveResultToStorage ? String.format("%s/%s", finalFolder, finalResultFileName) : null;
                     try {
-                        return (byte[])obtainMethod.invoke(thisReference, finalInputFileName, outPath, finalRequestInvoker);
+                        return (byte[])obtainMethod.invoke(thisReference, finalInputFileName, finalRequestInvoker);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -548,24 +540,19 @@ public abstract class ApiTester
     /**
      * Obtains the typical GET request response. Used indirectly by method reference.
      * @param inputFileName Name of the input file.
-     * @param outPath The request invoker.
      * @param requestInvoker The output path to save the result.
      * @return Response data.
      * @throws Exception
      */
-    private byte[] obtainGetResponse(String inputFileName, String outPath, Method requestInvoker) throws Exception
+    private byte[] obtainGetResponse(String inputFileName, Method requestInvoker) throws Exception
     {
         byte[] result = null;
-        Object responseObject = requestInvoker.invoke(this, inputFileName, outPath);
+        Object responseObject = requestInvoker.invoke(this, inputFileName);
 
         Assert.assertNotNull(responseObject);
         result = (byte[])responseObject;
-
-        if (outPath == null || outPath.equals(""))
-        {
-            Assert.assertNotNull(result);
-            Assert.assertTrue(result.length > 0);
-        }
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.length > 0);
         
         return result;
     }
@@ -670,16 +657,13 @@ public abstract class ApiTester
                                     resultFileName, folder));
                 }
                 
-                if (!resultFileName.endsWith(".pdf"))
-                {
-                    resultProperties = ImagingApi.getImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
-                    Assert.assertNotNull(resultProperties);
-                }
+                resultProperties = ImagingApi.getImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
+                Assert.assertNotNull(resultProperties);
             }
-            else if (!resultFileName.endsWith(".pdf"))
+            else
             {
                 resultProperties =
-                        ImagingApi.postImageProperties(new PostImagePropertiesRequest(response));
+                        ImagingApi.extractImageProperties(new ExtractImagePropertiesRequest(response));
                 Assert.assertNotNull(resultProperties);
             }
             

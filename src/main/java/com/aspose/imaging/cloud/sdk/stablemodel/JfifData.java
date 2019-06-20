@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="JfifData.java">
-*   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,11 +28,7 @@
 package com.aspose.imaging.cloud.sdk.stablemodel;
 
 import org.apache.commons.lang3.ObjectUtils;
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 /**
  * Represents JFIF data.

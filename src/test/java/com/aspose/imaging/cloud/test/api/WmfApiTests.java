@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="WmfApiTests.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,8 +46,8 @@ import java.lang.reflect.Method;
 @RunWith(Parameterized.class)
 public class WmfApiTests extends ApiTester {
 
-    private GetImageWmfRequest getImageWmfRequest;
-    private PostImageWmfRequest postImageWmfRequest;
+    private ModifyWmfRequest modifyWmfRequest;
+    private CreateModifiedWmfRequest createModifiedWmfRequest;
 
     @Parameters
     public static Iterable<Object> data() {
@@ -68,7 +68,13 @@ public class WmfApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void getImageWmfTest() throws Exception {
+    public void modifyWmfTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.wmf";
         String bkColor = "gray";
         Integer pageWidth = 300;
@@ -76,23 +82,20 @@ public class WmfApiTests extends ApiTester {
         Integer borderX = 50;
         Integer borderY = 50;
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "png";
-        getImageWmfRequest = new GetImageWmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, folder, storage, "png");
         
-        Method propertiesTester = WmfApiTests.class.getDeclaredMethod("getImageWmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        modifyWmfRequest = new ModifyWmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, folder, storage, "png");
+        
+        Method propertiesTester = WmfApiTests.class.getDeclaredMethod("modifyWmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = WmfApiTests.class.getDeclaredMethod("getImageWmfGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = WmfApiTests.class.getDeclaredMethod("modifyWmfGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImageWmfTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "modifyWmfTest", 
             String.format("Input image: %s; BackColor: %s; Page width: %s; Page height: %s; BorderX: %s; BorderY: %s",
                     name, bkColor, pageWidth, pageHeight, borderX, borderY),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -106,7 +109,7 @@ public class WmfApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void postImageWmfTest() throws Exception {
+    public void createModifiedWmfTest() throws Exception {
         byte[] imageData = null;
         String bkColor = "gray";
         Integer pageWidth = 300;
@@ -119,14 +122,14 @@ public class WmfApiTests extends ApiTester {
         String folder = getTempFolder();
         String name = "test.wmf";
         String outName = name + "_specific." + "png";
-        postImageWmfRequest = new PostImageWmfRequest(imageData, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, storage, "png");
+        createModifiedWmfRequest = new CreateModifiedWmfRequest(imageData, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, storage, "png");
         
-        Method propertiesTester = WmfApiTests.class.getDeclaredMethod("postImageWmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = WmfApiTests.class.getDeclaredMethod("createModifiedWmfPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = WmfApiTests.class.getDeclaredMethod("postImageWmfPostRequestInvoker", byte[].class, String.class);
+        Method requestInvoker = WmfApiTests.class.getDeclaredMethod("createModifiedWmfPostRequestInvoker", byte[].class, String.class);
         requestInvoker.setAccessible(true);
         this.testPostRequest(
-            "postImageWmfTest; save result to storage: " + saveResultToStorage, 
+            "createModifiedWmfTest; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; BackColor: %s; Page width: %s; Page height: %s; BorderX: %s; BorderY: %s",
                     name, bkColor, pageWidth, pageHeight, borderX, borderY),
@@ -139,59 +142,57 @@ public class WmfApiTests extends ApiTester {
     }
     
     /**
-     * Invokes GET request for getImageWmf operation. Used indirectly by method reference.
+     * Invokes GET request for modifyWmf operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageWmfGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] modifyWmfGetRequestInvoker(String name) throws Exception
     {
-        getImageWmfRequest.name = name;
-        getImageWmfRequest.outPath = outPath;
-        return ImagingApi.getImageWmf(getImageWmfRequest);
+        modifyWmfRequest.name = name;
+        return ImagingApi.modifyWmf(modifyWmfRequest);
     }
     
     /**
-     * Invokes POST request for postImageWmf operation. Used indirectly by method reference.
+     * Invokes POST request for createModifiedWmf operation. Used indirectly by method reference.
      * @param imageData Image data
      * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] postImageWmfPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createModifiedWmfPostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        postImageWmfRequest.imageData = imageData;
-        postImageWmfRequest.outPath = outPath;
-        return ImagingApi.postImageWmf(postImageWmfRequest);
+        createModifiedWmfRequest.imageData = imageData;
+        createModifiedWmfRequest.outPath = outPath;
+        return ImagingApi.createModifiedWmf(createModifiedWmfRequest);
     }
     
     /**
-     * Tests properties for getImageWmf operation. Used indirectly by method reference.
+     * Tests properties for modifyWmf operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      */
-    private void getImageWmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void modifyWmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getPngProperties());
-        Assert.assertEquals((int)(getImageWmfRequest.pageWidth + getImageWmfRequest.borderX * 2),
+        Assert.assertEquals((int)(modifyWmfRequest.pageWidth + modifyWmfRequest.borderX * 2),
                 (int)resultProperties.getWidth());
-        Assert.assertEquals((int)(getImageWmfRequest.pageHeight + getImageWmfRequest.borderY * 2),
+        Assert.assertEquals((int)(modifyWmfRequest.pageHeight + modifyWmfRequest.borderY * 2),
                 (int)resultProperties.getHeight());
     }
     
     /**
-     * Tests properties for postImageWmf operation. Used indirectly by method reference.
+     * Tests properties for createModifiedWmf operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void postImageWmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createModifiedWmfPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getPngProperties());
-        Assert.assertEquals((int)(postImageWmfRequest.pageWidth + postImageWmfRequest.borderX * 2),
+        Assert.assertEquals((int)(createModifiedWmfRequest.pageWidth + createModifiedWmfRequest.borderX * 2),
                 (int)resultProperties.getWidth());
-        Assert.assertEquals((int)(postImageWmfRequest.pageHeight + postImageWmfRequest.borderY * 2),
+        Assert.assertEquals((int)(createModifiedWmfRequest.pageHeight + createModifiedWmfRequest.borderY * 2),
                 (int)resultProperties.getHeight());
     }
 }
