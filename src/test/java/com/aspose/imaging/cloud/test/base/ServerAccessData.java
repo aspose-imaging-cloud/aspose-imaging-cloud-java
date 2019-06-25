@@ -55,5 +55,9 @@ public class ServerAccessData
      * The storage name (used for Android).
      */
     public String StorageName;
-
+    
+    /**
+     * If the metered license is used by on-premise APIs (used for Android).
+     */
+    public String IsMetered;
 }

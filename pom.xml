@@ -38,7 +38,7 @@
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
-        <releaseVersion>19.6</releaseVersion>
+        <releaseVersion>19.7</releaseVersion>
         <testCategories></testCategories>
     </properties>
     

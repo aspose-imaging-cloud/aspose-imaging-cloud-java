@@ -110,6 +110,17 @@ It gives you an ability to:
 # Examples
 Please, look at [Examples](EXAMPLES.md) document.
 
+### Aspose Cloud-hosted service VS on-premise deployment
+Starting from v19.7, you can choose either to use Aspose Cloud-hosted image processing service (the standard way) or the Docker image from Docker Hub deployed on-premise to serve the requests.
+The details about key differences and deployment process is described on the dedicated Docker Hub page.
+
+To succeed with your on-premise service usage by the SDK, you need to:
+1. Use the new API class constructors with either single base URL parameter, or additional API version and debug mode parameters.
+```java
+ImagingApi imagingApi = new ImagingApi("yourServiceUrl");
+```
+2. Set *storage* or *storageName* parameters for each request where they're present (mandatory!).
+
 # Tests 
 Tests from this repo are intended for internal usage only.
 
