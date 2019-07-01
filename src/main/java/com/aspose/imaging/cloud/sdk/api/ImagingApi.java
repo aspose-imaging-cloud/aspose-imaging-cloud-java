@@ -43,7 +43,7 @@ public class ImagingApi
     /**
      * Current SDK version
      */
-    public static final String Version = "19.6";
+    public static final String Version = "19.7";
 
     /**
      * The configuration
@@ -54,9 +54,21 @@ public class ImagingApi
      * The API invoker
      */
     private ApiInvoker apiInvoker;
+       
+    /**
+     * Initializes a new instance of the ImagingApi class for on-premise deployment service usage.
+     *  @param baseUrl The base URL.
+     */
+    public ImagingApi(String baseUrl)
+    {
+        Configuration config = new Configuration();
+        config.setApiBaseUrl(baseUrl);
+        config.IsMetered = true;
+        this.initImagingApi(config);
+    }
 
     /**
-     * Initializes a new instance of the ImagingApi class.
+     * Initializes a new instance of the ImagingApi class for Aspose Cloud-hosted service usage.
      * @param appKey The app key.
      * @param appSid The app SID.
      */
@@ -67,9 +79,26 @@ public class ImagingApi
         config.AppSid = appSid;
         this.initImagingApi(config);
     }
+    
+    /**
+     * Initializes a new instance of the ImagingApi class for on-premise deployment service usage.
+     *  @param baseUrl The base URL.
+     *  @param apiVersion API version.
+     *  @param debug If debug mode is enabled.
+     * @throws Exception 
+     */
+    public ImagingApi(String baseUrl, String apiVersion, Boolean debugMode) throws Exception
+    {
+        Configuration config = new Configuration();
+        config.setApiBaseUrl(baseUrl);
+        config.setApiVersion(apiVersion);
+        config.setDebugMode(debugMode);
+        config.IsMetered = true;
+        this.initImagingApi(config);
+    }
 
     /**
-     * Initializes a new instance of the ImagingApi class.
+     * Initializes a new instance of the ImagingApi class for Aspose Cloud-hosted service usage.
      * @param appKey The app key.
      * @param appSid The app SID.
      * @param baseUrl The base URL.
@@ -84,7 +113,7 @@ public class ImagingApi
     }
 
     /**
-     * Initializes a new instance of the ImagingApi class.
+     * Initializes a new instance of the ImagingApi class for Aspose Cloud-hosted service usage.
      * @param appKey The app key.
      * @param appSid The app SID.
      * @param baseUrl The base URL.
@@ -101,7 +130,7 @@ public class ImagingApi
     }
 
     /**
-     * Initializes a new instance of the ImagingApi class.
+     * Initializes a new instance of the ImagingApi class for Aspose Cloud-hosted service usage.
      * @param appKey The app key.
      * @param appSid The app SID.
      * @param baseUrl The base URL.
@@ -126,10 +155,15 @@ public class ImagingApi
     private void initImagingApi(Configuration configuration)
     {
         this.Configuration = configuration;
-        IRequestHandler[] requestHandlers = new IRequestHandler[3];
-        requestHandlers[0] = new AuthRequestHandler(this.Configuration);
-        requestHandlers[1] = new DebugLogRequestHandler(this.Configuration);
-        requestHandlers[2] = new ApiExceptionRequestHandler();
+        int handlersCount = configuration.IsMetered ? 2 : 3;
+        IRequestHandler[] requestHandlers = new IRequestHandler[handlersCount];
+        requestHandlers[--handlersCount] = new ApiExceptionRequestHandler();
+        requestHandlers[--handlersCount] = new DebugLogRequestHandler(this.Configuration);
+        if (!configuration.IsMetered)
+        {
+            requestHandlers[--handlersCount] = new AuthRequestHandler(this.Configuration);
+        }
+        
         this.apiInvoker = new ApiInvoker(requestHandlers, this.Configuration);
     }
     
