@@ -68,9 +68,9 @@ public class Configuration
         public String AppSid;
         
         /**
-         * If API service uses metered license with on-premise deployment
+         * If API service uses on-premise deployment with metered license
          */
-        public Boolean IsMetered = false;
+        public Boolean OnPremise = false;
 
         /**
          * Get Aspose Cloud API base URL.

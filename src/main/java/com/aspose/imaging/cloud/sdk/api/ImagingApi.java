@@ -63,7 +63,7 @@ public class ImagingApi
     {
         Configuration config = new Configuration();
         config.setApiBaseUrl(baseUrl);
-        config.IsMetered = true;
+        config.OnPremise = true;
         this.initImagingApi(config);
     }
 
@@ -93,7 +93,7 @@ public class ImagingApi
         config.setApiBaseUrl(baseUrl);
         config.setApiVersion(apiVersion);
         config.setDebugMode(debugMode);
-        config.IsMetered = true;
+        config.OnPremise = true;
         this.initImagingApi(config);
     }
 
@@ -155,11 +155,11 @@ public class ImagingApi
     private void initImagingApi(Configuration configuration)
     {
         this.Configuration = configuration;
-        int handlersCount = configuration.IsMetered ? 2 : 3;
+        int handlersCount = configuration.OnPremise ? 2 : 3;
         IRequestHandler[] requestHandlers = new IRequestHandler[handlersCount];
         requestHandlers[--handlersCount] = new ApiExceptionRequestHandler();
         requestHandlers[--handlersCount] = new DebugLogRequestHandler(this.Configuration);
-        if (!configuration.IsMetered)
+        if (!configuration.OnPremise)
         {
             requestHandlers[--handlersCount] = new AuthRequestHandler(this.Configuration);
         }

@@ -384,8 +384,8 @@ public class ApiInvoker
                 handler.beforeSend(connection, streamToSend);
             }
             
-            connection.setConnectTimeout(500000);
-            connection.setReadTimeout(500000);
+            connection.setConnectTimeout(600000);
+            connection.setReadTimeout(600000);
             if (streamToSend != null)
             {
                 if (streamToSend.size() > 0)
