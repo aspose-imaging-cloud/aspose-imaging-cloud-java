@@ -103,7 +103,7 @@ It gives you an ability to:
     <dependency>
         <groupId>com.aspose</groupId>
         <artifactId>aspose-imaging-cloud</artifactId>
-        <version>19.6</version>
+        <version>19.7</version>
     </dependency>
 </dependencies>
 ```
