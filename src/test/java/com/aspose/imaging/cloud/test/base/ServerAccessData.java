@@ -59,5 +59,5 @@ public class ServerAccessData
     /**
      * If the metered license is used by on-premise APIs (used for Android).
      */
-    public String IsMetered;
+    public String OnPremise;
 }

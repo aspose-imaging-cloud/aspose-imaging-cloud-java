@@ -198,14 +198,14 @@ public abstract class ApiTester
     protected static void createApiInstances() throws Exception
     {
         System.out.println("Trying to obtain configuration from environment variables.");
-        String meteredString = System.getenv("IsMetered");
-        Boolean isMetered = !isNullOrEmpty(meteredString) && meteredString.equals("true");
-        String appKey = isMetered ? "" : System.getenv("AppKey");
-        String appSid = isMetered ? "" : System.getenv("AppSid");
+        String onPremiseString = System.getenv("OnPremise");
+        Boolean onPremise = !isNullOrEmpty(onPremiseString) && onPremiseString.equals("true");
+        String appKey = onPremise ? "" : System.getenv("AppKey");
+        String appSid = onPremise ? "" : System.getenv("AppSid");
         String baseUrl = System.getenv("ApiEndpoint");
         String apiVersion = System.getenv("ApiVersion");
 
-        if ((!isMetered && (isNullOrEmpty(appKey) || isNullOrEmpty(appSid))) || isNullOrEmpty(baseUrl) || isNullOrEmpty(apiVersion))
+        if ((!onPremise && (isNullOrEmpty(appKey) || isNullOrEmpty(appSid))) || isNullOrEmpty(baseUrl) || isNullOrEmpty(apiVersion))
         {
             System.out.println("Access data isn't set completely by environment variables. Filling unset data with server cred file values.");
         }
@@ -234,17 +234,17 @@ public abstract class ApiTester
                     TestStorage = accessData.StorageName;
                 }
                 
-                meteredString = accessData.IsMetered;
-                isMetered = !isNullOrEmpty(meteredString) && meteredString.equals("true");
+                onPremiseString = accessData.OnPremise;
+                onPremise = !isNullOrEmpty(onPremiseString) && onPremiseString.equals("true");
             }
             
-            if (isNullOrEmpty(appKey) && !isMetered)
+            if (isNullOrEmpty(appKey) && !onPremise)
             {
                 appKey = accessData.AppKey;
                 System.out.println("Set default App key");
             }
 
-            if (isNullOrEmpty(appSid) && !isMetered)
+            if (isNullOrEmpty(appSid) && !onPremise)
             {
                 appSid = accessData.AppSid;
                 System.out.println("Set default App SID");
@@ -256,20 +256,20 @@ public abstract class ApiTester
                 System.out.println("Set default base URL");
             }
         }
-        else if (!isMetered)
+        else if (!onPremise)
         {
             throw new Exception("Please, specify valid access data (AppKey, AppSid, Base URL)" + "; androidTest value: " 
                 + System.getenv("androidTest") + "; Server access creds file: " + serverAccessFile.getCanonicalPath());
         }
 
-        System.out.println("Is metered: " + meteredString);
+        System.out.println("On-premise: " + onPremise);
         System.out.println("App key: " + appKey);
         System.out.println("App SID: " + appSid);
         System.out.println("Storage: " + TestStorage);
         System.out.println("Base URL: " + baseUrl);
         System.out.println("API version: " + apiVersion);
 
-        if (!isMetered)
+        if (!onPremise)
         {
             ImagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(appKey, appSid, baseUrl, apiVersion);
         }

@@ -217,7 +217,7 @@ public class FileApiTests extends StorageApiTester {
 
     @Test
     public void fileVersionsCreateTest() throws Exception {
-        if (ImagingApi.Configuration.IsMetered)
+        if (ImagingApi.Configuration.OnPremise)
         {
             return;
         }
@@ -263,7 +263,7 @@ public class FileApiTests extends StorageApiTester {
 
     @Test
     public void fileVersionsDownloadTest() throws Exception {
-        if (ImagingApi.Configuration.IsMetered)
+        if (ImagingApi.Configuration.OnPremise)
         {
             return;
         }
@@ -306,7 +306,7 @@ public class FileApiTests extends StorageApiTester {
 
     @Test
     public void fileVersionsCopyTest() throws Exception {
-        if (ImagingApi.Configuration.IsMetered)
+        if (ImagingApi.Configuration.OnPremise)
         {
             return;
         }
@@ -356,7 +356,7 @@ public class FileApiTests extends StorageApiTester {
 
     @Test
     public void fileVersionsMoveTest() throws Exception {
-        if (ImagingApi.Configuration.IsMetered)
+        if (ImagingApi.Configuration.OnPremise)
         {
             return;
         }
@@ -412,7 +412,7 @@ public class FileApiTests extends StorageApiTester {
 
     @Test
     public void fileVersionsDeleteTest() throws Exception {
-        if (ImagingApi.Configuration.IsMetered)
+        if (ImagingApi.Configuration.OnPremise)
         {
             return;
         }
