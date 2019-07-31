@@ -66,6 +66,11 @@ public class Configuration
          * Gets or sets the app SID.
          */
         public String AppSid;
+        
+        /**
+         * If API service uses on-premise deployment with metered license
+         */
+        public Boolean OnPremise = false;
 
         /**
          * Get Aspose Cloud API base URL.

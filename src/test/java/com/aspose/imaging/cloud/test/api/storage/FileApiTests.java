@@ -217,6 +217,11 @@ public class FileApiTests extends StorageApiTester {
 
     @Test
     public void fileVersionsCreateTest() throws Exception {
+        if (ImagingApi.Configuration.OnPremise)
+        {
+            return;
+        }
+        
         String folder = getTempFolder() + "/Storage";
         String file1 = "Storage.txt";
         String file2 = "Folder1/Folder1.txt";
@@ -258,6 +263,11 @@ public class FileApiTests extends StorageApiTester {
 
     @Test
     public void fileVersionsDownloadTest() throws Exception {
+        if (ImagingApi.Configuration.OnPremise)
+        {
+            return;
+        }
+        
         String folder = getTempFolder() + "/Storage";
         String file1 = "Storage.txt";
         String file2 = "Folder1/Folder1.txt";
@@ -296,6 +306,11 @@ public class FileApiTests extends StorageApiTester {
 
     @Test
     public void fileVersionsCopyTest() throws Exception {
+        if (ImagingApi.Configuration.OnPremise)
+        {
+            return;
+        }
+        
         String folder = getTempFolder() + "/Storage";
         String file1 = "Storage.txt";
         String file2 = "Folder1/Folder1.txt";
@@ -341,6 +356,11 @@ public class FileApiTests extends StorageApiTester {
 
     @Test
     public void fileVersionsMoveTest() throws Exception {
+        if (ImagingApi.Configuration.OnPremise)
+        {
+            return;
+        }
+        
         String folder = getTempFolder() + "/Storage";
         String file1 = "Storage.txt";
         String file2 = "Folder1/Folder1.txt";
@@ -392,6 +412,11 @@ public class FileApiTests extends StorageApiTester {
 
     @Test
     public void fileVersionsDeleteTest() throws Exception {
+        if (ImagingApi.Configuration.OnPremise)
+        {
+            return;
+        }
+        
         String folder = getTempFolder() + "/Storage";
         String file1 = "Storage.txt";
         String file2 = "Folder1/Folder1.txt";

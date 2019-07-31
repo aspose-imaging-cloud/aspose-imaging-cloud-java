@@ -88,9 +88,7 @@ public class FolderApiTests extends StorageApiTester {
             Assert.assertEquals(originalFiles.size(), copiedFiles.size());
             int count = originalFiles.size();
             for (int x = 0; x < count; x++) {
-                Assert.assertEquals(originalFiles.get(x).isIsFolder(), copiedFiles.get(x).isIsFolder());
-                Assert.assertEquals(originalFiles.get(x).getName(), copiedFiles.get(x).getName());
-                Assert.assertEquals(originalFiles.get(x).getSize(), copiedFiles.get(x).getSize());
+                Assert.assertTrue(equalFileIsInList(originalFiles.get(x), copiedFiles));
             }
         } finally {
             if (ImagingApi.objectExists(new ObjectExistsRequest(folder, TestStorage, null)).isExists()) {
@@ -136,9 +134,7 @@ public class FolderApiTests extends StorageApiTester {
             Assert.assertEquals(originalFiles.size(), copiedFiles.size());
             int count = originalFiles.size();
             for (int x = 0; x < count; x++) {
-                Assert.assertEquals(originalFiles.get(x).isIsFolder(), copiedFiles.get(x).isIsFolder());
-                Assert.assertEquals(originalFiles.get(x).getName(), copiedFiles.get(x).getName());
-                Assert.assertEquals(originalFiles.get(x).getSize(), copiedFiles.get(x).getSize());
+                Assert.assertTrue(equalFileIsInList(originalFiles.get(x), copiedFiles));
             }
         } finally {
             if (ImagingApi.objectExists(new ObjectExistsRequest(folder, TestStorage, null)).isExists()) {
@@ -209,4 +205,25 @@ public class FolderApiTests extends StorageApiTester {
                 new Long((long) (StringUtils.strip(folder3File.getPath(), "/").length())));
     }
 
+    /**
+     * Checks if list contains equal file.
+     * @param file Reference file.
+     * @param list List to check.
+     * @return If list contains equal file.
+     */
+    private Boolean equalFileIsInList(StorageFile file, List<StorageFile> list)
+    {
+        int size = list.size();
+        for (int x = 0; x < size; x++)
+        {
+            StorageFile curFile = list.get(x);
+            if (curFile.isIsFolder() == file.isIsFolder() && curFile.getName().equals(file.getName()) && 
+                    curFile.getSize() == file.getSize())
+            {
+                return true;
+            }     
+        }
+        
+        return false;
+    }
 }

@@ -91,16 +91,6 @@ public abstract class ApiTester
     private final static String ApiVersion = "v3.0";
 
     /**
-     * The application key
-     */
-    private final static String AppKey = "xxx";
-
-    /**
-     * The application SID
-     */
-    private final static String AppSid = "xxx";
-
-    /**
      * The base URL
      */
     private final static String BaseUrl = "https://api.aspose.cloud/";
@@ -175,15 +165,6 @@ public abstract class ApiTester
             ImagingApi.deleteFolder(new DeleteFolderRequest(getTempFolder(), TestStorage, true));
         }
     }
-
-    /**
-     * Creates the API instances using default access parameters.
-     * @throws Exception 
-     */
-    protected static void createApiInstances() throws Exception
-    {
-        createApiInstances(AppKey, AppSid, BaseUrl, ApiVersion, false);
-    }
     
     /**
      * Checks if string is null or empty.
@@ -212,26 +193,19 @@ public abstract class ApiTester
     
     /**
      * Creates the API instances using given access parameters.
-     * @param appKey The application key.
-     * @param appSid The application SID.
-     * @param baseUrl The base URL.
-     * @param apiVersion The API version.
-     * @param debug If set to true, debug.
      * @throws Exception 
      */
-    protected static void createApiInstances(String appKey, String appSid, String baseUrl, String apiVersion, Boolean debug) throws Exception
+    protected static void createApiInstances() throws Exception
     {
-        if (appKey.equals(AppKey) || appSid.equals(AppSid))
-        {
-            System.out.println("Access data isn't set explicitly. Trying to obtain it from environment variables.");
+        System.out.println("Trying to obtain configuration from environment variables.");
+        String onPremiseString = System.getenv("OnPremise");
+        Boolean onPremise = !isNullOrEmpty(onPremiseString) && onPremiseString.equals("true");
+        String appKey = onPremise ? "" : System.getenv("AppKey");
+        String appSid = onPremise ? "" : System.getenv("AppSid");
+        String baseUrl = System.getenv("ApiEndpoint");
+        String apiVersion = System.getenv("ApiVersion");
 
-            appKey = System.getenv("AppKey");
-            appSid = System.getenv("AppSid");
-            baseUrl = System.getenv("ApiEndpoint");
-            apiVersion = System.getenv("ApiVersion");
-        }
-
-        if (isNullOrEmpty(appKey) || isNullOrEmpty(appSid) || isNullOrEmpty(baseUrl) || isNullOrEmpty(apiVersion))
+        if ((!onPremise && (isNullOrEmpty(appKey) || isNullOrEmpty(appSid))) || isNullOrEmpty(baseUrl) || isNullOrEmpty(apiVersion))
         {
             System.out.println("Access data isn't set completely by environment variables. Filling unset data with server cred file values.");
         }
@@ -247,23 +221,6 @@ public abstract class ApiTester
         {
             String serverCredentials = FileUtils.readFileToString(serverAccessFile);
             ServerAccessData accessData = JSON.deserialize(serverCredentials, ServerAccessData.class);
-            if (isNullOrEmpty(appKey))
-            {
-                appKey = accessData.AppKey;
-                System.out.println("Set default App key");
-            }
-
-            if (isNullOrEmpty(appSid))
-            {
-                appSid = accessData.AppSid;
-                System.out.println("Set default App SID");
-            }
-
-            if (isNullOrEmpty(baseUrl))
-            {
-                baseUrl = accessData.BaseURL;
-                System.out.println("Set default base URL");
-            }
             
             if (IsAndroid)
             {
@@ -276,22 +233,51 @@ public abstract class ApiTester
                 {
                     TestStorage = accessData.StorageName;
                 }
+                
+                onPremiseString = accessData.OnPremise;
+                onPremise = !isNullOrEmpty(onPremiseString) && onPremiseString.equals("true");
+            }
+            
+            if (isNullOrEmpty(appKey) && !onPremise)
+            {
+                appKey = accessData.AppKey;
+                System.out.println("Set default App key");
+            }
+
+            if (isNullOrEmpty(appSid) && !onPremise)
+            {
+                appSid = accessData.AppSid;
+                System.out.println("Set default App SID");
+            }
+
+            if (isNullOrEmpty(baseUrl))
+            {
+                baseUrl = accessData.BaseURL;
+                System.out.println("Set default base URL");
             }
         }
-        else
+        else if (!onPremise)
         {
             throw new Exception("Please, specify valid access data (AppKey, AppSid, Base URL)" + "; androidTest value: " 
                 + System.getenv("androidTest") + "; Server access creds file: " + serverAccessFile.getCanonicalPath());
         }
 
+        System.out.println("On-premise: " + onPremise);
         System.out.println("App key: " + appKey);
         System.out.println("App SID: " + appSid);
         System.out.println("Storage: " + TestStorage);
         System.out.println("Base URL: " + baseUrl);
         System.out.println("API version: " + apiVersion);
 
-        ImagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(appKey, appSid, baseUrl, apiVersion, debug);
-
+        if (!onPremise)
+        {
+            ImagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(appKey, appSid, baseUrl, apiVersion);
+        }
+        else
+        {
+            ImagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(baseUrl, apiVersion, false);
+        }
+        
         InputTestFiles = fetchInputTestFilesInfo();
     }
 
