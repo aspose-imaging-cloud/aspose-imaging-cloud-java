@@ -82,13 +82,12 @@ public class CompareImages extends ImagingAIBase {
                             searchContextId, comparableImage, null, comparingImageSimilarMore75, folder, storage));
             Double similarity = searchResults.getResults().get(0).getSimilarity();
             System.out.println("Images Similarity: " + similarity.toString());
-
-            // Delete the search context
-            deleteImageSearch(searchContextId);
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        // Delete the search context
+        deleteImageSearch(searchContextId);
     }
 
     /*
@@ -133,11 +132,11 @@ public class CompareImages extends ImagingAIBase {
             Double similarity = searchResults.getResults().get(0).getSimilarity();
             System.out.println("Images Similarity: " + similarity.toString());
 
-            // Delete the search context
-            deleteImageSearch(searchContextId);
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        // Delete the search context
+        deleteImageSearch(searchContextId);
     }
 }

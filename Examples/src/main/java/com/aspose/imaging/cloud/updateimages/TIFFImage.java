@@ -80,10 +80,15 @@ public class TIFFImage extends ImagingBase {
             byte[] updatedImage = imagingApi.modifyTiff(modifyTiffRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out.tiff");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out.tiff");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -163,10 +168,15 @@ public class TIFFImage extends ImagingBase {
             byte[] updatedImage = imagingApi.createModifiedTiff(modifiedTiffRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out.tiff");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out.tiff");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -204,10 +214,15 @@ public class TIFFImage extends ImagingBase {
             byte[] updatedImage = imagingApi.convertTiffToFax(tiffToFaxRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out.tiff");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out.tiff");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -258,10 +273,15 @@ public class TIFFImage extends ImagingBase {
             byte[] updatedImage = imagingApi.downloadFile(downloadFileRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out.tiff");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out.tiff");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

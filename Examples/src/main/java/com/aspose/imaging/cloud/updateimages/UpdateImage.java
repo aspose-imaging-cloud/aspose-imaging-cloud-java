@@ -84,10 +84,15 @@ public class UpdateImage extends ImagingBase {
             byte[] updatedImage = imagingApi.updateImage(updateImageRequest);;
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out." + format);
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out." + format);
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -174,10 +179,15 @@ public class UpdateImage extends ImagingBase {
             byte[] updatedImage = imagingApi.createUpdatedImage(updatedImageRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out." + format);
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out." + format);
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

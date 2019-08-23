@@ -76,10 +76,15 @@ public class UpdateJPEG2000Image extends ImagingBase {
             byte[] updatedImage = imagingApi.modifyJpeg2000(modifyJpeg2000Request);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out.jp2");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out.jp2");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -151,10 +156,15 @@ public class UpdateJPEG2000Image extends ImagingBase {
             byte[] updatedImage = imagingApi.createModifiedJpeg2000(modifiedJpeg2000Request);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out.jp2");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out.jp2");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

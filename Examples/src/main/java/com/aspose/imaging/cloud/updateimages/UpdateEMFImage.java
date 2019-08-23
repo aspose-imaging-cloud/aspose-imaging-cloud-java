@@ -83,9 +83,15 @@ public class UpdateEMFImage extends ImagingBase {
             byte[] updatedImage = imagingApi.modifyEmf(modifyEmfRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "SampleEMF_out.png");
-            fos.write(updatedImage);
-            fos.close();
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "SampleEMF_out.png");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -118,10 +124,15 @@ public class UpdateEMFImage extends ImagingBase {
             byte[] updatedImage = imagingApi.createModifiedEmf(modifiedEmfRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "SampleEMF_out.png");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "SampleEMF_out.png");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

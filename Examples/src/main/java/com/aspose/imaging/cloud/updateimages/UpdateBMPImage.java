@@ -78,9 +78,15 @@ public class UpdateBMPImage extends ImagingBase {
             byte[] updatedImage = imagingApi.modifyBmp(modifyBmpRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Watermark_out.bmp");
-            fos.write(updatedImage);
-            fos.close();
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Watermark_out.bmp");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -111,10 +117,15 @@ public class UpdateBMPImage extends ImagingBase {
             byte[] updatedImage = imagingApi.createModifiedBmp(createModifiedBmpRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Watermark_out.bmp");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Watermark_out.bmp");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

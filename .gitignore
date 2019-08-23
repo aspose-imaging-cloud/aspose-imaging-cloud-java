@@ -25,4 +25,6 @@ build
 .classpath
 .project
 
+.iml
+
 .idea/*

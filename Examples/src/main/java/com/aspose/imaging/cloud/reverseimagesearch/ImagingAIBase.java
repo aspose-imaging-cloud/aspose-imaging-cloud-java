@@ -38,14 +38,15 @@ public class ImagingAIBase extends ImagingBase {
         // Create ImagingApi instance
         ImagingApi imagingApi = new ImagingApi(APP_KEY, APP_SID);
 
-        String detector = "akaze";
-        String matchingAlgorithm = "randomBinaryTree";
+        String detector = null; // The image features detector. Default value is akaze.
+        String matchingAlgorithm = null; // The matching algorithm. Default value is randomBinaryTree.
         String folder = null; // File will be saved at the root of the storage
         String storage = null; // We are using default Cloud Storage
 
         try {
             CreateImageSearchRequest createSearchContextRequest = new CreateImageSearchRequest(detector,
-                    matchingAlgorithm, folder, storage);
+                   matchingAlgorithm, folder, storage);
+
             SearchContextStatus status = imagingApi.createImageSearch(createSearchContextRequest);
             return status.getId();
         } catch (Exception e) {

@@ -193,7 +193,7 @@ public class Main {
         // Find Similar Images
         FindImages findImages = new FindImages();
         findImages.findSimilarImages();
-        findImages.findImagesByTag();
+        //findImages.findImagesByTag();
 
         SearchContext searchContext = new SearchContext();
         // Extract features from image without adding to search context

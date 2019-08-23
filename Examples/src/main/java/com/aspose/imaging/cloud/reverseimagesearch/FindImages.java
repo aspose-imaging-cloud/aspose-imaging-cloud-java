@@ -43,16 +43,12 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by muhammadsohailismail on 21/07/2019.
- */
 public class FindImages extends ImagingAIBase {
 
     /*
      * Find similar images.
      */
-    public void findSimilarImages()
-    {
+    public void findSimilarImages() {
         // Create ImagingApi instance
         ImagingApi imagingApi = new ImagingApi(APP_KEY, APP_SID);
 
@@ -94,19 +90,18 @@ public class FindImages extends ImagingAIBase {
                     new FindSimilarImagesRequest(searchContextId, similarityThreshold, maxCount, null, findImageId,
                                                                                                     folder, storage));
             System.out.println("Results Count: " + searchResultsSet.getResults().size());
-
-            // Delete the search context
-            deleteImageSearch(searchContextId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        // Delete the search context
+        deleteImageSearch(searchContextId);
     }
 
     /*
      * Find images by tags.
      */
-    public void findImagesByTag()
-    {
+    public void findImagesByTag() {
         // Create ImagingApi instance
         ImagingApi imagingApi = new ImagingApi(APP_KEY, APP_SID);
 
@@ -146,11 +141,11 @@ public class FindImages extends ImagingAIBase {
             for (SearchResult searchResult : searchResultsSet.getResults()) {
                 System.out.println("ImageName: " + searchResult.getImageId() + ", Similarity: " + searchResult.getSimilarity());
             }
-
-            // Delete the search context
-            deleteImageSearch(searchContextId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        // Delete the search context
+        deleteImageSearch(searchContextId);
     }
 }

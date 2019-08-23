@@ -79,10 +79,15 @@ public class ResizeImage extends ImagingBase {
             byte[] updatedImage = imagingApi.resizeImage(resizeImageRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out.gif");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out.gif");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -160,10 +165,15 @@ public class ResizeImage extends ImagingBase {
             byte[] updatedImage = imagingApi.createResizedImage(resizedImageRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out.gif");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out.gif");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

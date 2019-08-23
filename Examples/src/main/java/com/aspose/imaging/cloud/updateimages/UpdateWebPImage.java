@@ -81,10 +81,15 @@ public class UpdateWebPImage extends ImagingBase {
             byte[] updatedImage = imagingApi.modifyWebP(modifyWebPRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "asposelogo_out.webp");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "asposelogo_out.webp");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -164,10 +169,15 @@ public class UpdateWebPImage extends ImagingBase {
             byte[] updatedImage = imagingApi.createModifiedWebP(modifiedWebPRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "asposelogo_out.webp");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "asposelogo_out.webp");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

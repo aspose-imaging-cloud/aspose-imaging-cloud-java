@@ -75,10 +75,15 @@ public class UpdatePSDImage extends ImagingBase {
             byte[] updatedImage = imagingApi.modifyPsd(modifyPsdRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out.psd");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out.psd");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -118,10 +123,10 @@ public class UpdatePSDImage extends ImagingBase {
 
             byte[] updatedImage = imagingApi.modifyPsd(modifyPsdRequest);
 
-            // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out.psd");
-            fos.write(updatedImage);
-            fos.close();
+            // Upload updated image to cloud storage
+            String outPath = "Sample_out.psd";
+            UploadFileRequest uploadFileRequest = new UploadFileRequest(outPath, updatedImage, null);
+            FilesUploadResult result = imagingApi.uploadFile(uploadFileRequest);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -150,10 +155,15 @@ public class UpdatePSDImage extends ImagingBase {
             byte[] updatedImage = imagingApi.createModifiedPsd(modifiedPsdRequest);
 
             // Save updated image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Sample_out.psd");
-            fos.write(updatedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Sample_out.psd");
+                fos.write(updatedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

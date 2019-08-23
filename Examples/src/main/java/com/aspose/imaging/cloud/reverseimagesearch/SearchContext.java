@@ -34,7 +34,6 @@ import org.apache.commons.io.IOUtils;
 import java.io.File;
 import java.io.FileInputStream;
 
-
 public class SearchContext extends ImagingAIBase {
 
     /*
@@ -72,12 +71,12 @@ public class SearchContext extends ImagingAIBase {
 
             ImageFeatures imageFeatures = imagingApi.extractImageFeatures(extractImageFeaturesRequest);
             System.out.println(imageFeatures);
-
-            // Delete the search context
-            deleteImageSearch(searchContextId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        // Delete the search context
+        deleteImageSearch(searchContextId);
     }
 
     /*
@@ -108,11 +107,11 @@ public class SearchContext extends ImagingAIBase {
             if (inputStream != null) {
                 inputStream.close();
             }
-
-            // Delete the search context
-            deleteImageSearch(searchContextId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        // Delete the search context
+        deleteImageSearch(searchContextId);
     }
 }

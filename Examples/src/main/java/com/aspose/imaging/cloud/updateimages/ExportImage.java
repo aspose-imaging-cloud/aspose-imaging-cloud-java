@@ -78,9 +78,15 @@ public class ExportImage extends ImagingBase {
             byte[] exportedImage = imagingApi.saveImageAs(getSaveToStorageRequest);
 
             // Save exported image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Watermark_out.pdf");
-            fos.write(exportedImage);
-            fos.close();
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Watermark_out.pdf");
+                fos.write(exportedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -156,10 +162,15 @@ public class ExportImage extends ImagingBase {
             byte[] exportedImage = imagingApi.createSavedImageAs(savedImageAsRequest);
 
             // Save exported image to local storage
-            FileOutputStream fos = new FileOutputStream(DATA_PATH + "Watermark_out.pdf");
-            fos.write(exportedImage);
-            fos.close();
-
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(DATA_PATH + "Watermark_out.pdf");
+                fos.write(exportedImage);
+            } finally {
+                if(fos != null) {
+                    fos.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

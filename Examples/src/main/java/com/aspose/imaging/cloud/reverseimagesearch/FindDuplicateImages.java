@@ -95,5 +95,8 @@ public class FindDuplicateImages extends ImagingAIBase {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        // Delete the search context
+        deleteImageSearch(searchContextId);
     }
 }

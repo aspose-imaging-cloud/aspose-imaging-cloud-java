@@ -36,7 +36,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-
 public class SearchContextImages extends ImagingAIBase {
 
     /*
@@ -61,12 +60,12 @@ public class SearchContextImages extends ImagingAIBase {
             FileOutputStream fos = new FileOutputStream(DATA_PATH + "Watermark_out.bmp");
             fos.write(retrievedImage);
             fos.close();
-
-            // Delete the search context
-            deleteImageSearch(searchContextId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        // Delete the search context
+        deleteImageSearch(searchContextId);
     }
 
     /*
@@ -93,12 +92,12 @@ public class SearchContextImages extends ImagingAIBase {
              AddSearchImageRequest request =
                             new AddSearchImageRequest(searchContextId, imageId, imageData, folder, storage);
              imagingApi.addSearchImage(request);
-
-             // Delete the search context
-             deleteImageSearch(searchContextId);
          } catch (Exception e) {
              System.out.println(e.getMessage());
          }
+
+         // Delete the search context
+         deleteImageSearch(searchContextId);
      }
 
     /*
@@ -120,12 +119,12 @@ public class SearchContextImages extends ImagingAIBase {
                      new DeleteSearchImageRequest(searchContextId, imageId, folder, storage);
 
              imagingApi.deleteSearchImage(request);
-
-             // Delete the search context
-             deleteImageSearch(searchContextId);
          } catch (Exception e) {
              System.out.println(e.getMessage());
          }
+
+         // Delete the search context
+         deleteImageSearch(searchContextId);
      }
 
     /*
@@ -147,12 +146,12 @@ public class SearchContextImages extends ImagingAIBase {
              UpdateSearchImageRequest request =
                             new UpdateSearchImageRequest(searchContextId, imageId, imageData, folder, storage);
              imagingApi.updateSearchImage(request);
-
-             // Delete the search context
-             deleteImageSearch(searchContextId);
          } catch (Exception e) {
              System.out.println(e.getMessage());
          }
+
+         // Delete the search context
+         deleteImageSearch(searchContextId);
      }
 
 }
