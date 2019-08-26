@@ -32,13 +32,14 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jackson-version>2.9.9</jackson-version>
+        <jackson-databind-version>2.9.9.2</jackson-databind-version>
         <maven-plugin-version>1.0.0</maven-plugin-version>
         <junit-version>4.12</junit-version>
         <skipTests>true</skipTests>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
-        <releaseVersion>19.7</releaseVersion>
+        <releaseVersion>19.8</releaseVersion>
         <testCategories></testCategories>
     </properties>
     
@@ -235,7 +236,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-version}</version>
+            <version>${jackson-databind-version}</version>
         </dependency>
         
         <dependency>
