@@ -578,6 +578,54 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createModifiedSvg"></a>
+## **createModifiedSvg**
+> byte[] createModifiedSvg(CreateModifiedSvgRequest request)
+
+Update parameters of SVG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### **CreateModifiedSvgRequest** Parameters
+```java
+CreateModifiedSvgRequest(
+    byte[] imageData, 
+    String colorType, 
+    Boolean textAsShapes, 
+    Double scaleX, 
+    Double scaleY, 
+    Integer pageWidth, 
+    Integer pageHeight, 
+    Integer borderX, 
+    Integer borderY, 
+    String bkColor, 
+    Boolean fromScratch, 
+    String outPath, 
+    String storage, 
+    String format)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **byte[]**| Input image |
+ **colorType** | **String**| Color type for SVG image. | [optional] [default to Rgb]
+ **textAsShapes** | **Boolean**| Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false | [optional] [default to false]
+ **scaleX** | **Double**| Scale X. | [optional] [default to 0.0]
+ **scaleY** | **Double**| Scale Y. | [optional] [default to 0.0]
+ **pageWidth** | **Integer**| Width of the page. | [optional]
+ **pageHeight** | **Integer**| Height of the page. | [optional]
+ **borderX** | **Integer**| Border width. | [optional]
+ **borderY** | **Integer**| Border height. | [optional]
+ **bkColor** | **String**| Background color (Default is white). | [optional] [default to white]
+ **fromScratch** | **Boolean**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
+ **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image). | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+ **format** | **String**| Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] [default to png]
+
+### Return type
+
+**byte[]**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createModifiedTiff"></a>
 ## **createModifiedTiff**
 > byte[] createModifiedTiff(CreateModifiedTiffRequest request)
@@ -1643,6 +1691,54 @@ Name | Type | Description  | Notes
  **fromScratch** | **Boolean**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
  **folder** | **String**| Folder with image to process. | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+
+### Return type
+
+**byte[]**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="modifySvg"></a>
+## **modifySvg**
+> byte[] modifySvg(ModifySvgRequest request)
+
+Update parameters of existing SVG image.
+
+### **ModifySvgRequest** Parameters
+```java
+ModifySvgRequest(
+    String name, 
+    String colorType, 
+    Boolean textAsShapes, 
+    Double scaleX, 
+    Double scaleY, 
+    Integer pageWidth, 
+    Integer pageHeight, 
+    Integer borderX, 
+    Integer borderY, 
+    String bkColor, 
+    Boolean fromScratch, 
+    String folder, 
+    String storage, 
+    String format)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Filename of image. |
+ **colorType** | **String**| Color type for SVG image. | [optional] [default to Rgb]
+ **textAsShapes** | **Boolean**| Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false | [optional] [default to false]
+ **scaleX** | **Double**| Scale X. | [optional] [default to 0.0]
+ **scaleY** | **Double**| Scale Y. | [optional] [default to 0.0]
+ **pageWidth** | **Integer**| Width of the page. | [optional]
+ **pageHeight** | **Integer**| Height of the page. | [optional]
+ **borderX** | **Integer**| Border width. | [optional]
+ **borderY** | **Integer**| Border height. | [optional]
+ **bkColor** | **String**| Background color (Default is white). | [optional] [default to white]
+ **fromScratch** | **Boolean**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
+ **folder** | **String**| Folder with image to process. | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+ **format** | **String**| Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] [default to svg]
 
 ### Return type
 

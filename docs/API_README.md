@@ -23,6 +23,7 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**createModifiedJpeg**](ImagingApi.md#createmodifiedjpeg) | **POST** /imaging/jpg | Update parameters of JPEG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createModifiedJpeg2000**](ImagingApi.md#createmodifiedjpeg2000) | **POST** /imaging/jpg2000 | Update parameters of JPEG2000 image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createModifiedPsd**](ImagingApi.md#createmodifiedpsd) | **POST** /imaging/psd | Update parameters of PSD image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+*ImagingApi* | [**createModifiedSvg**](ImagingApi.md#createmodifiedsvg) | **POST** /imaging/svg | Update parameters of SVG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createModifiedTiff**](ImagingApi.md#createmodifiedtiff) | **POST** /imaging/tiff | Update parameters of TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createModifiedWebP**](ImagingApi.md#createmodifiedwebp) | **POST** /imaging/webp | Update parameters of WEBP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createModifiedWmf**](ImagingApi.md#createmodifiedwmf) | **POST** /imaging/wmf | Process existing WMF image using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
@@ -58,6 +59,7 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**modifyJpeg**](ImagingApi.md#modifyjpeg) | **GET** /imaging/{name}/jpg | Update parameters of existing JPEG image.
 *ImagingApi* | [**modifyJpeg2000**](ImagingApi.md#modifyjpeg2000) | **GET** /imaging/{name}/jpg2000 | Update parameters of existing JPEG2000 image.
 *ImagingApi* | [**modifyPsd**](ImagingApi.md#modifypsd) | **GET** /imaging/{name}/psd | Update parameters of existing PSD image.
+*ImagingApi* | [**modifySvg**](ImagingApi.md#modifysvg) | **GET** /imaging/{name}/svg | Update parameters of existing SVG image.
 *ImagingApi* | [**modifyTiff**](ImagingApi.md#modifytiff) | **GET** /imaging/{name}/tiff | Update parameters of existing TIFF image.
 *ImagingApi* | [**modifyWebP**](ImagingApi.md#modifywebp) | **GET** /imaging/{name}/webp | Update parameters of existing WEBP image.
 *ImagingApi* | [**modifyWmf**](ImagingApi.md#modifywmf) | **GET** /imaging/{name}/wmf | Process existing WMF image using given parameters.
