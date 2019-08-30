@@ -41,7 +41,7 @@ import java.util.Arrays;
 import java.lang.reflect.Method;
 
 /**
- * Class for testing EMF-related API calls
+ * Class for testing SVG-related API calls
  */
 @RunWith(Parameterized.class)
 public class SvgApiTests extends ApiTester {
@@ -62,13 +62,13 @@ public class SvgApiTests extends ApiTester {
     }
 
     /**
-     * Test operation: Rasterize existing EMF image to PNG using given parameters.
+     * Test operation: Rasterize existing SVG image to PNG using given size parameters.
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-    public void modifySvgTest() throws Exception {
+    public void modifySvgSizeRasterizationTest() throws Exception {
 
         if (saveResultToStorage)
         {
@@ -79,19 +79,20 @@ public class SvgApiTests extends ApiTester {
         String bkColor = "gray";
         Integer pageWidth = 300;
         Integer pageHeight = 300;
-        Integer borderX = 50;
-        Integer borderY = 50;
+        // borderX and borderY are not supported right now, see IMAGINGNET-3543
+        Integer borderX = 0;
+        Integer borderY = 0;
         Boolean fromScratch = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        modifySvgRequest = new ModifySvgRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, folder, storage, "png");
+        modifySvgRequest = new ModifySvgRequest(name, null, null, null, null, pageWidth, pageHeight, borderX, borderY, bkColor, fromScratch, folder, storage, "png");
 
-        Method propertiesTester = SvgApiTests.class.getDeclaredMethod("modifySvgPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = SvgApiTests.class.getDeclaredMethod("modifySvgSizeRasterizationPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
         Method requestInvoker = SvgApiTests.class.getDeclaredMethod("modifySvgGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-                "modifySvgTest",
+                "modifySvgSizeRasterizationTest",
                 String.format("Input image: %s; BackColor: %s; Page width: %s; Page height: %s; BorderX: %s; BorderY: %s",
                         name, bkColor, pageWidth, pageHeight, borderX, borderY),
                 name,
@@ -102,36 +103,187 @@ public class SvgApiTests extends ApiTester {
     }
 
     /**
-     * Test operation: Rasterize EMF image to PNG using given parameters. Image is passed in a request stream.
+     * Test operation: Rasterize existing SVG image to PNG using given scale parameters.
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-    public void createModifiedSvgTest() throws Exception {
+    public void modifySvgScaleRasterizationTest() throws Exception {
+
+        if (saveResultToStorage)
+        {
+            return;
+        }
+
+        String name = "test.svg";
+        String bkColor = "gray";
+        Double scaleX = 2.0;
+        Double scaleY = 2.0;
+        Boolean fromScratch = null;
+        String folder = getTempFolder();
+        String storage = TestStorage;
+        modifySvgRequest = new ModifySvgRequest(name, null, null, scaleX, scaleY, null, null, null, null, bkColor, fromScratch, folder, storage, "png");
+
+        Method propertiesTester = SvgApiTests.class.getDeclaredMethod("modifySvgScaleRasterizationPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = SvgApiTests.class.getDeclaredMethod("modifySvgGetRequestInvoker", String.class);
+        requestInvoker.setAccessible(true);
+        this.testGetRequest(
+                "modifySvgScaleRasterizationTest",
+                String.format("Input image: %s; BackColor: %s; Scale X: %s; Scale Y: %s",
+                        name, bkColor, scaleX, scaleY),
+                name,
+                requestInvoker,
+                propertiesTester,
+                folder,
+                storage);
+    }
+
+    /**
+     * Test operation: Update properties of the existing SVG image.
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void modifySvgUpdatePropertiesTest() throws Exception {
+
+        if (saveResultToStorage)
+        {
+            return;
+        }
+
+        String name = "test.svg";
+        // Only RGB color type is supported right now, see IMAGINGNET-3543
+        String colorType = "rgb";
+        Boolean textAsShapes = true;
+        Boolean fromScratch = null;
+        String folder = getTempFolder();
+        String storage = TestStorage;
+        modifySvgRequest = new ModifySvgRequest(name, colorType, textAsShapes, null, null, null, null, null, null, null, fromScratch, folder, storage, "svg");
+
+        Method propertiesTester = SvgApiTests.class.getDeclaredMethod("modifySvgUpdatePropertiesPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = SvgApiTests.class.getDeclaredMethod("modifySvgGetRequestInvoker", String.class);
+        requestInvoker.setAccessible(true);
+        this.testGetRequest(
+                "modifySvgUpdatePropertiesTest",
+                String.format("Input image: %s; Color type: %s; Text as shapes: %s",
+                        name, colorType, textAsShapes),
+                name,
+                requestInvoker,
+                propertiesTester,
+                folder,
+                storage);
+    }
+
+    /**
+     * Test operation: Rasterize SVG image to PNG using given size parameters. Image is passed in a request stream.
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void createModifiedSvgSizeRasterizationTest() throws Exception {
         byte[] imageData = null;
         String bkColor = "gray";
         Integer pageWidth = 300;
         Integer pageHeight = 300;
-        Integer borderX = 50;
-        Integer borderY = 50;
+        // borderX and borderY are not supported right now, see IMAGINGNET-3543
+        Integer borderX = 0;
+        Integer borderY = 0;
         Boolean fromScratch = null;
         String outPath = null;
         String storage = TestStorage;
         String folder = getTempFolder();
         String name = "test.svg";
         String outName = name + "_specific." + "png";
-        createModifiedSvgRequest = new CreateModifiedSvgRequest(imageData, bkColor, pageWidth, pageHeight, borderX, borderY, fromScratch, outPath, storage, "png");
+        createModifiedSvgRequest = new CreateModifiedSvgRequest(imageData, null, null, null, null, pageWidth, pageHeight, borderX, borderY, bkColor, fromScratch, outPath, storage, "png");
 
-        Method propertiesTester = SvgApiTests.class.getDeclaredMethod("createModifiedSvgPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = SvgApiTests.class.getDeclaredMethod("createModifiedSvgSizeRasterizationPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
         Method requestInvoker = SvgApiTests.class.getDeclaredMethod("createModifiedSvgPostRequestInvoker", byte[].class, String.class);
         requestInvoker.setAccessible(true);
         this.testPostRequest(
-                "createModifiedSvgTest; save result to storage: " + saveResultToStorage,
+                "createModifiedSvgSizeRasterizationTest; save result to storage: " + saveResultToStorage,
                 saveResultToStorage,
                 String.format("Input image: %s; BackColor: %s; Page width: %s; Page height: %s; BorderX: %s; BorderY: %s",
                         name, bkColor, pageWidth, pageHeight, borderX, borderY),
+                name,
+                outName,
+                requestInvoker,
+                propertiesTester,
+                folder,
+                storage);
+    }
+
+    /**
+     * Test operation: Rasterize SVG image to PNG using given scale parameters. Image is passed in a request stream.
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void createModifiedSvgScaleRasterizationTest() throws Exception {
+        byte[] imageData = null;
+        String bkColor = "gray";
+        Double scaleX = 2.0;
+        Double scaleY = 2.0;
+        Boolean fromScratch = null;
+        String outPath = null;
+        String storage = TestStorage;
+        String folder = getTempFolder();
+        String name = "test.svg";
+        String outName = name + "_specific." + "png";
+        createModifiedSvgRequest = new CreateModifiedSvgRequest(imageData, null, null, scaleX, scaleY, null, null, null, null, bkColor, fromScratch, outPath, storage, "png");
+
+        Method propertiesTester = SvgApiTests.class.getDeclaredMethod("createModifiedSvgScaleRasterizationPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = SvgApiTests.class.getDeclaredMethod("createModifiedSvgPostRequestInvoker", byte[].class, String.class);
+        requestInvoker.setAccessible(true);
+        this.testPostRequest(
+                "createModifiedSvgScaleRasterizationTest; save result to storage: " + saveResultToStorage,
+                saveResultToStorage,
+                String.format("Input image: %s; BackColor: %s; Scale X: %s; Scale Y: %s",
+                        name, bkColor, scaleX, scaleY),
+                name,
+                outName,
+                requestInvoker,
+                propertiesTester,
+                folder,
+                storage);
+    }
+
+    /**
+     * Test operation: Update properties of the existing SVG image. Image is passed in a request stream.
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void createModifiedSvgUpdatePropertiesTest() throws Exception {
+        byte[] imageData = null;
+        // Only RGB color type is supported right now, see IMAGINGNET-3543
+        String colorType = "rgb";
+        Boolean textAsShapes = true;
+        Boolean fromScratch = null;
+        String outPath = null;
+        String storage = TestStorage;
+        String folder = getTempFolder();
+        String name = "test.svg";
+        String outName = name + "_specific." + "png";
+        createModifiedSvgRequest = new CreateModifiedSvgRequest(imageData, colorType, textAsShapes, null, null, null, null, null, null, null, fromScratch, outPath, storage, "svg");
+
+        Method propertiesTester = SvgApiTests.class.getDeclaredMethod("createModifiedSvgUpdatePropertiesPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = SvgApiTests.class.getDeclaredMethod("createModifiedSvgPostRequestInvoker", byte[].class, String.class);
+        requestInvoker.setAccessible(true);
+        this.testPostRequest(
+                "createModifiedSvgUpdatePropertiesTest; save result to storage: " + saveResultToStorage,
+                saveResultToStorage,
+                String.format("Input image: %s; Color type: %s; Text as shapes: %s",
+                        name, colorType, textAsShapes),
                 name,
                 outName,
                 requestInvoker,
@@ -167,12 +319,12 @@ public class SvgApiTests extends ApiTester {
     }
 
     /**
-     * Tests properties for modifySvg operation. Used indirectly by method reference.
+     * Tests properties for modifySvg for size rasterization operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void modifySvgPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void modifySvgSizeRasterizationPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getPngProperties());
         Assert.assertEquals(modifySvgRequest.pageWidth + modifySvgRequest.borderX * 2, (int)resultProperties.getWidth());
@@ -180,15 +332,65 @@ public class SvgApiTests extends ApiTester {
     }
 
     /**
-     * Tests properties for createModifiedSvg operation. Used indirectly by method reference.
+     * Tests properties for modifySvg for scale rasterization operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void createModifiedSvgPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void modifySvgScaleRasterizationPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertNotNull(resultProperties.getPngProperties());
+        Assert.assertEquals((int) (originalProperties.getWidth() * modifySvgRequest.scaleX), (int)resultProperties.getWidth());
+        Assert.assertEquals((int)(originalProperties.getHeight() * modifySvgRequest.scaleY), (int)resultProperties.getHeight());
+    }
+
+    /**
+     * Tests properties for modifySvg for properties update. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void modifySvgUpdatePropertiesPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertNotNull(resultProperties.getSvgProperties());
+        Assert.assertEquals(modifySvgRequest.colorType, resultProperties.getSvgProperties().getColorType());
+    }
+
+    /**
+     * Tests properties for createModifiedSvg for size rasterization operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void createModifiedSvgSizeRasterizationPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getPngProperties());
         Assert.assertEquals(createModifiedSvgRequest.pageWidth + createModifiedSvgRequest.borderX * 2, (int)resultProperties.getWidth());
         Assert.assertEquals(createModifiedSvgRequest.pageHeight + createModifiedSvgRequest.borderY * 2, (int)resultProperties.getHeight());
+    }
+
+    /**
+     * Tests properties for createModifiedSvg for scake rasterization operation. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void createModifiedSvgScaleRasterizationPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertNotNull(resultProperties.getPngProperties());
+        Assert.assertEquals((int) (originalProperties.getWidth() * createModifiedSvgRequest.scaleX), (int)resultProperties.getWidth());
+        Assert.assertEquals((int)(originalProperties.getHeight() * createModifiedSvgRequest.scaleY), (int)resultProperties.getHeight());
+    }
+
+    /**
+     * Tests properties for createModifiedSvg for properties update. Used indirectly by method reference.
+     * @param originalProperties Original image properties
+     * @param resultProperties Result image properties
+     * @param resultData Result image data
+     */
+    private void createModifiedSvgUpdatePropertiesPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    {
+        Assert.assertNotNull(resultProperties.getSvgProperties());
+        Assert.assertEquals(createModifiedSvgRequest.colorType, resultProperties.getSvgProperties().getColorType());
     }
 }

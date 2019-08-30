@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
  - [com.aspose.imaging.cloud.sdk.model.SearchResultsSet](SearchResultsSet.md)
  - [com.aspose.imaging.cloud.sdk.model.StorageExist](StorageExist.md)
  - [com.aspose.imaging.cloud.sdk.model.StorageFile](StorageFile.md)
+ - [com.aspose.imaging.cloud.sdk.model.SvgProperties](SvgProperties.md)
  - [com.aspose.imaging.cloud.sdk.model.TiffFrame](TiffFrame.md)
  - [com.aspose.imaging.cloud.sdk.model.TiffOptions](TiffOptions.md)
  - [com.aspose.imaging.cloud.sdk.model.TiffProperties](TiffProperties.md)

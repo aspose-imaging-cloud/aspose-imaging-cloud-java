@@ -606,7 +606,7 @@ CreateModifiedSvgRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **byte[]**| Input image |
- **colorType** | **String**| Color type for SVG image. | [optional] [default to Rgb]
+ **colorType** | **String**| Color type for SVG image. Only RGB is supported for now. | [optional] [default to Rgb]
  **textAsShapes** | **Boolean**| Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false | [optional] [default to false]
  **scaleX** | **Double**| Scale X. | [optional] [default to 0.0]
  **scaleY** | **Double**| Scale Y. | [optional] [default to 0.0]
@@ -1726,7 +1726,7 @@ ModifySvgRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Filename of image. |
- **colorType** | **String**| Color type for SVG image. | [optional] [default to Rgb]
+ **colorType** | **String**| Color type for SVG image. Only RGB is supported for now. | [optional] [default to Rgb]
  **textAsShapes** | **Boolean**| Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false | [optional] [default to false]
  **scaleX** | **Double**| Scale X. | [optional] [default to 0.0]
  **scaleY** | **Double**| Scale Y. | [optional] [default to 0.0]

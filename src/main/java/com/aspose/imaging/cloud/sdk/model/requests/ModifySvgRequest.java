@@ -35,7 +35,7 @@ public class ModifySvgRequest
     /**
     * Initializes a new instance of the ModifySvgRequest class.   
     * @param name Filename of image.
-    * @param colorType Color type for SVG image.
+    * @param colorType Color type for SVG image. Only RGB is supported for now.
     * @param textAsShapes Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false
     * @param scaleX Scale X.
     * @param scaleY Scale Y.
@@ -73,7 +73,7 @@ public class ModifySvgRequest
     public String name;
 
     /**
-    * Color type for SVG image.
+    * Color type for SVG image. Only RGB is supported for now.
     **/
     public String colorType;
 

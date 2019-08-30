@@ -35,7 +35,7 @@ public class CreateModifiedSvgRequest
     /**
     * Initializes a new instance of the CreateModifiedSvgRequest class.   
     * @param imageData Input image
-    * @param colorType Color type for SVG image.
+    * @param colorType Color type for SVG image. Only RGB is supported for now.
     * @param textAsShapes Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false
     * @param scaleX Scale X.
     * @param scaleY Scale Y.
@@ -73,7 +73,7 @@ public class CreateModifiedSvgRequest
     public byte[] imageData;
 
     /**
-    * Color type for SVG image.
+    * Color type for SVG image. Only RGB is supported for now.
     **/
     public String colorType;
 
