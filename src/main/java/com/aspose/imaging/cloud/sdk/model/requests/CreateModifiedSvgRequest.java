@@ -41,8 +41,8 @@ public class CreateModifiedSvgRequest
     * @param scaleY Scale Y.
     * @param pageWidth Width of the page.
     * @param pageHeight Height of the page.
-    * @param borderX Border width.
-    * @param borderY Border height.
+    * @param borderX Border width. Only 0 is supported for now.
+    * @param borderY Border height. Only 0 is supported for now.
     * @param bkColor Background color (Default is white).
     * @param fromScratch Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
@@ -103,12 +103,12 @@ public class CreateModifiedSvgRequest
     public Integer pageHeight;
 
     /**
-    * Border width.
+    * Border width. Only 0 is supported for now.
     **/
     public Integer borderX;
 
     /**
-    * Border height.
+    * Border height. Only 0 is supported for now.
     **/
     public Integer borderY;
 
