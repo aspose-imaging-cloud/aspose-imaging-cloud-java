@@ -26,19 +26,8 @@
 */
 package com.aspose.imaging.cloud.sdk.stablemodel;
 
+import com.aspose.imaging.cloud.sdk.model.*;
 import org.apache.commons.lang3.ObjectUtils;
-import com.aspose.imaging.cloud.sdk.model.BmpProperties;
-import com.aspose.imaging.cloud.sdk.model.DicomProperties;
-import com.aspose.imaging.cloud.sdk.model.DjvuProperties;
-import com.aspose.imaging.cloud.sdk.model.DngProperties;
-import com.aspose.imaging.cloud.sdk.model.GifProperties;
-import com.aspose.imaging.cloud.sdk.model.Jpeg2000Properties;
-import com.aspose.imaging.cloud.sdk.model.JpegProperties;
-import com.aspose.imaging.cloud.sdk.model.OdgProperties;
-import com.aspose.imaging.cloud.sdk.model.PngProperties;
-import com.aspose.imaging.cloud.sdk.model.PsdProperties;
-import com.aspose.imaging.cloud.sdk.model.TiffProperties;
-import com.aspose.imaging.cloud.sdk.model.WebPProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -89,6 +78,9 @@ public class ImagingResponse {
 
   @JsonProperty("odgProperties")
   private OdgProperties odgProperties = null;
+  
+  @JsonProperty("svgProperties")
+  private SvgProperties svgProperties = null;
 
   @JsonProperty("horizontalResolution")
   private Double horizontalResolution = null;
@@ -353,6 +345,18 @@ public class ImagingResponse {
   public void setOdgProperties(OdgProperties odgProperties) {
     this.odgProperties = odgProperties;
   }
+
+  /**
+   * Gets or sets the the SVG properties.
+   * @return svgProperties
+   **/
+  public SvgProperties getSvgProperties() {
+    return svgProperties;
+  }
+
+  public void setSvgProperties(SvgProperties svgProperties) {
+    this.svgProperties = svgProperties;
+  }  
 
   public ImagingResponse horizontalResolution(Double horizontalResolution) {
     this.horizontalResolution = horizontalResolution;
