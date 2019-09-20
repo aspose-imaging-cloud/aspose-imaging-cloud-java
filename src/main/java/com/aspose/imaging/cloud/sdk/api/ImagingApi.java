@@ -33,6 +33,7 @@ import com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers.*;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
+import java.io.File;
 import java.util.HashMap;
 
 /**
@@ -193,8 +194,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -233,8 +233,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       
-      
-      
+            
       this.apiInvoker.invokeApi(
           resourcePath, 
           "POST", 
@@ -272,8 +271,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -315,8 +313,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -355,8 +352,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "destStorageName", request.destStorageName);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "versionId", request.versionId);
       
-      
-      
+            
       this.apiInvoker.invokeApi(
           resourcePath, 
           "PUT", 
@@ -392,8 +388,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "srcStorageName", request.srcStorageName);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "destStorageName", request.destStorageName);
       
-      
-      
+            
       this.apiInvoker.invokeApi(
           resourcePath, 
           "PUT", 
@@ -449,8 +444,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -485,8 +479,7 @@ public class ImagingApi
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storageName", request.storageName);
       
-      
-      
+            
       this.apiInvoker.invokeApi(
           resourcePath, 
           "PUT", 
@@ -519,8 +512,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -567,8 +559,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -602,8 +593,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "POST", 
@@ -650,8 +640,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -701,8 +690,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -765,8 +753,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -809,8 +796,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -849,8 +835,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -893,8 +878,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -933,8 +917,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -981,8 +964,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1028,8 +1010,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1086,8 +1067,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1150,8 +1130,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1202,8 +1181,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1249,8 +1227,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1291,8 +1268,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1368,8 +1344,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1431,8 +1406,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -1465,8 +1439,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storageName", request.storageName);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "versionId", request.versionId);
       
-      
-      
+            
       this.apiInvoker.invokeApi(
           resourcePath, 
           "DELETE", 
@@ -1497,8 +1470,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storageName", request.storageName);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "recursive", request.recursive);
       
-      
-      
+            
       this.apiInvoker.invokeApi(
           resourcePath, 
           "DELETE", 
@@ -1534,8 +1506,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       this.apiInvoker.invokeApi(
           resourcePath, 
           "DELETE", 
@@ -1566,8 +1537,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       this.apiInvoker.invokeApi(
           resourcePath, 
           "DELETE", 
@@ -1603,8 +1573,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       this.apiInvoker.invokeApi(
           resourcePath, 
           "DELETE", 
@@ -1636,8 +1605,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storageName", request.storageName);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "versionId", request.versionId);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -1676,8 +1644,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1721,8 +1688,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addPathParameter(resourcePath, "frameId", request.frameId);
       
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1761,8 +1727,7 @@ public class ImagingApi
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1780,6 +1745,55 @@ public class ImagingApi
       }
       
       return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
+    }
+  
+    /**
+     * Performs filtering effects on an existing image.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] filterEffectImage(FilterEffectImageRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.name' is set
+      if (request.name== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.name' when calling filterEffectImage");
+      }
+       // verify the required parameter 'request.format' is set
+      if (request.format== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.format' when calling filterEffectImage");
+      }
+       // verify the required parameter 'request.filterType' is set
+      if (request.filterType== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.filterType' when calling filterEffectImage");
+      }
+       // verify the required parameter 'request.filterProperties' is set
+      if (request.filterProperties== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.filterProperties' when calling filterEffectImage");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/filterEffect";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "filterType", request.filterType);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+      String postBody = SerializationHelper.serialize(request.filterProperties);
+      
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "PUT", 
+          postBody, 
+          null, 
+          formParams);
+          
+      return response;
+      
     }
   
     /**
@@ -1809,8 +1823,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -1863,8 +1876,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.tags != null) 
+            if (request.tags != null) 
       {
           formParams.put("tags", request.tags);
       }
@@ -1917,8 +1929,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -1954,8 +1965,7 @@ public class ImagingApi
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storageName", request.storageName);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -1993,8 +2003,7 @@ public class ImagingApi
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storageName", request.storageName);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2032,8 +2041,7 @@ public class ImagingApi
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storageName", request.storageName);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2077,8 +2085,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2130,8 +2137,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2170,8 +2176,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2210,8 +2215,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2250,8 +2254,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2295,8 +2298,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2346,8 +2348,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2408,8 +2409,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2450,8 +2450,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2488,8 +2487,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2530,8 +2528,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2568,8 +2565,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2614,8 +2610,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2659,8 +2654,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2715,8 +2709,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2777,8 +2770,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2817,8 +2809,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "destStorageName", request.destStorageName);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "versionId", request.versionId);
       
-      
-      
+            
       this.apiInvoker.invokeApi(
           resourcePath, 
           "PUT", 
@@ -2854,8 +2845,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "srcStorageName", request.srcStorageName);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "destStorageName", request.destStorageName);
       
-      
-      
+            
       this.apiInvoker.invokeApi(
           resourcePath, 
           "PUT", 
@@ -2887,8 +2877,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storageName", request.storageName);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "versionId", request.versionId);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2942,8 +2931,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -2987,8 +2975,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -3027,8 +3014,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -3060,8 +3046,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addPathParameter(resourcePath, "storageName", request.storageName);
       
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -3140,8 +3125,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      
+            
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "GET", 
@@ -3179,8 +3163,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -3219,8 +3202,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-      
-      if (request.imageData != null) 
+            if (request.imageData != null) 
       {
           formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
       }
@@ -3258,8 +3240,7 @@ public class ImagingApi
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storageName", request.storageName);
       
-      
-      if (request.File != null) 
+            if (request.File != null) 
       {
           formParams.put("file", this.apiInvoker.toFileInfo(request.File, "File"));
       }

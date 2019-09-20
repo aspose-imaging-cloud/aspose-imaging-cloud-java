@@ -27,6 +27,8 @@
 
 package com.aspose.imaging.cloud.sdk.model.requests;
 
+import com.aspose.imaging.cloud.sdk.model.*;
+
 /**
 * Class that holds parameters for ResizeImage request invocation.
 **/   

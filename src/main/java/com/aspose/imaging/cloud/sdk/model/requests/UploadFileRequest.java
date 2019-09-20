@@ -27,6 +27,8 @@
 
 package com.aspose.imaging.cloud.sdk.model.requests;
 
+import com.aspose.imaging.cloud.sdk.model.*;
+
 /**
 * Class that holds parameters for UploadFile request invocation.
 **/   
@@ -60,3 +62,5 @@ public class UploadFileRequest
     **/
     public String storageName;
 }
+
+
