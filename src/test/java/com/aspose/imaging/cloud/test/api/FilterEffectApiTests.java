@@ -109,13 +109,18 @@ public class FilterEffectApiTests extends ApiTester {
 
     @Parameters
     public static Iterable<Object[]> data() {
-        return Arrays.asList(new Object[][]{
-                {".dicom", new String[]{}},
-                {".djvu", new String[]{}},
-                {".gif", new String[]{}},
+        if (isExtendedTests()) {
+            return Arrays.asList(new Object[][]{
+                    {".dicom", new String[]{}},
+                    {".djvu", new String[]{}},
+                    {".gif", new String[]{}},
+                    {".psd", new String[]{}},
+                    {".tiff", new String[]{}},
+                    {".webp", new String[]{}}});
+        }
+        else return Arrays.asList(new Object[][]{
                 {".psd", new String[]{}},
-                {".tiff", new String[]{}},
-                {".webp", new String[]{}}});
+        });
     }
 
     private String formatExtension;
