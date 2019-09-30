@@ -62,5 +62,3 @@ public class UploadFileRequest
     **/
     public String storageName;
 }
-
-

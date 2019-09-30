@@ -1748,7 +1748,7 @@ public class ImagingApi
     }
   
     /**
-     * Performs filtering effects on an existing image.
+     * Apply filtering effects to an existing image.
      * 
      * @param request Holds parameters for this request invocation.
      * @return byte[]
