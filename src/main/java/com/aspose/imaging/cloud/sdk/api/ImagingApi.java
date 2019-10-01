@@ -43,7 +43,7 @@ public class ImagingApi
     /**
      * Current SDK version
      */
-    public static final String Version = "19.8";
+    public static final String Version = "19.9";
 
     /**
      * The configuration
@@ -932,6 +932,54 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+      
+      if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
+    }
+  
+    /**
+     * Update parameters of SVG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] createModifiedSvg(CreateModifiedSvgRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createModifiedSvg");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/svg";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "colorType", request.colorType);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "textAsShapes", request.textAsShapes);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "scaleX", request.scaleX);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "scaleY", request.scaleY);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "pageWidth", request.pageWidth);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "pageHeight", request.pageHeight);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "borderX", request.borderX);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "borderY", request.borderY);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       
       
       if (request.imageData != null) 
@@ -2519,6 +2567,52 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+      
+      
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
+    }
+  
+    /**
+     * Update parameters of existing SVG image.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] modifySvg(ModifySvgRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.name' is set
+      if (request.name== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.name' when calling modifySvg");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/svg";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "colorType", request.colorType);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "textAsShapes", request.textAsShapes);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "scaleX", request.scaleX);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "scaleY", request.scaleY);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "pageWidth", request.pageWidth);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "pageHeight", request.pageHeight);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "borderX", request.borderX);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "borderY", request.borderY);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       
       
       
