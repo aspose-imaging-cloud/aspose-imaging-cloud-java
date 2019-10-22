@@ -321,6 +321,7 @@ public class ApiInvoker
             HashMap<String, String> headerParams, String body, String contentType) throws Exception
     {
         HttpURLConnection connection = (HttpURLConnection)new URL(path.replace(" ", "%20")).openConnection();
+        connection.setRequestProperty("Content-Type", contentType);
         Boolean sendData = (formParams.size() > 0 || (body != null && !body.equals(""))) && (method.equals("PUT") || method.equals("POST"));
         if (method.equals("PUT") || method.equals("POST"))
         {
@@ -352,6 +353,7 @@ public class ApiInvoker
                 connection.setRequestProperty(defaultHeaderMapItem.getKey(), defaultHeaderMapItem.getValue());
             }
         }
+
         
         OutputStream outStream = null;
         ByteArrayOutputStream streamToSend = null;

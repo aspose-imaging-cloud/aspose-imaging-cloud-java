@@ -93,6 +93,22 @@ try {
 // other Imaging requests typically follow the same principles regarding stream/storage relations
 ```
 
+### Imaging - Apply a filter to an image
+```java
+ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+
+// set the filter properties
+FilterPropertiesBase filterProperties = new GaussianBlurFilterProperties()
+{{
+    setRadius(2);
+    setSigma(0.5);
+}};
+
+// apply the filter to the image and obtain the result
+byte[] filteredImage = ImagingApi.filterEffectImage(
+    new FilterEffectImageRequest(name, format, "GaussianBlur", filter, folder, storage));
+```
+
 ### Imaging.AI - Compare two images
 ```java
 ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
