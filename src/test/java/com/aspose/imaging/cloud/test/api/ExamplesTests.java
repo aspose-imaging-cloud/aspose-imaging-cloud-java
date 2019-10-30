@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ExamplesTests.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -50,10 +50,11 @@ public class ExamplesTests extends ApiTester {
      */
     @Test
     public void saveAsFromStorageExampleTest() throws Exception {
+        Configuration config = ImagingApi.Configuration;
         try {
-            Configuration config = ImagingApi.Configuration;
-            com.aspose.imaging.cloud.sdk.api.ImagingApi imagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(
-                    config.AppKey, config.AppSid, config.getApiBaseUrl());
+            com.aspose.imaging.cloud.sdk.api.ImagingApi imagingApi = config.OnPremise ? 
+                new com.aspose.imaging.cloud.sdk.api.ImagingApi(config.getApiBaseUrl(), config.getApiVersion(), config.getDebugMode()) :
+                new com.aspose.imaging.cloud.sdk.api.ImagingApi(config.AppKey, config.AppSid, config.getApiBaseUrl());
 
             // get local image
             File testFile = new File(getLocalTestFolder(), "test.png");
@@ -63,7 +64,7 @@ public class ExamplesTests extends ApiTester {
 
                 // upload local image to storage
                 UploadFileRequest uploadFileRequest = new UploadFileRequest("ExampleFolderNet/inputImage.png",
-                        localInputImage, null);
+                        localInputImage, config.OnPremise ? TestStorage : null);
                 FilesUploadResult result = imagingApi.uploadFile(uploadFileRequest);
                 // inspect result.getErrors() list if there were any
                 // inspect result.getUploaded() list for uploaded file names
@@ -73,29 +74,23 @@ public class ExamplesTests extends ApiTester {
                 }
             }
 
-            // convert image from storage to JPEG and save it to storage
-            // please, use outPath parameter for saving the result to storage
-            GetImageSaveAsRequest getSaveToStorageRequest = new GetImageSaveAsRequest("inputImage.png", "jpg",
-                    "ExampleFolderNet/resultImage.jpg", "ExampleFolderNet", null);
+            // convert image from storage to JPEG
+            SaveImageAsRequest getSaveAsRequest = new SaveImageAsRequest("inputImage.png", "jpg",
+                    "ExampleFolderNet", config.OnPremise ? TestStorage : null);
 
-            imagingApi.getImageSaveAs(getSaveToStorageRequest);
+            byte[] convertedImage = imagingApi.saveImageAs(getSaveAsRequest);
 
-            // download saved image from storage and process it
-            byte[] savedFile = imagingApi
-                    .downloadFile(new DownloadFileRequest("ExampleFolderNet/resultImage.jpg", null, null));
-
-            // convert image from storage to JPEG and read it from resulting stream
-            // please, set outPath parameter as null to return result in request stream
-            // instead of saving to storage
-            GetImageSaveAsRequest getSaveToStreamRequest = new GetImageSaveAsRequest("inputImage.png", "jpg", null,
-                    "ExampleFolderNet", null);
-
-            // process resulting image from response stream
-            byte[] resultGetImageStream = imagingApi.getImageSaveAs(getSaveToStreamRequest);
+            // process resulting image
+            // for example, save it to storage
+            UploadFileRequest uploadFileRequest = new UploadFileRequest("ExampleFolderNet/resultImage.jpg",
+                    convertedImage, config.OnPremise ? TestStorage : null);
+            FilesUploadResult result = imagingApi.uploadFile(uploadFileRequest);
+            // inspect result.getErrors() list if there were any
+            // inspect result.getUploaded() list for uploaded file names
         } finally {
             // remove files from storage
-            ImagingApi.deleteFile(new DeleteFileRequest("ExampleFolderNet/inputImage.jpg", null, null));
-            ImagingApi.deleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.png", null, null));
+            ImagingApi.deleteFile(new DeleteFileRequest("ExampleFolderNet/inputImage.png", config.OnPremise ? TestStorage : null, null));
+            ImagingApi.deleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.jpg", config.OnPremise ? TestStorage : null, null));
         }
     }
 
@@ -106,10 +101,11 @@ public class ExamplesTests extends ApiTester {
      */
     @Test
     public void saveAsFromStreamExampleTest() throws Exception {
+        Configuration config = ImagingApi.Configuration;
         try {
-            Configuration config = ImagingApi.Configuration;
-            com.aspose.imaging.cloud.sdk.api.ImagingApi imagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(
-                    config.AppKey, config.AppSid, config.getApiBaseUrl());
+            com.aspose.imaging.cloud.sdk.api.ImagingApi imagingApi = config.OnPremise ? 
+                    new com.aspose.imaging.cloud.sdk.api.ImagingApi(config.getApiBaseUrl(), config.getApiVersion(), config.getDebugMode()) :
+                    new com.aspose.imaging.cloud.sdk.api.ImagingApi(config.AppKey, config.AppSid, config.getApiBaseUrl());
 
             // get local image
             File testFile = new File(getLocalTestFolder(), "test.png");
@@ -125,26 +121,26 @@ public class ExamplesTests extends ApiTester {
 
             // convert image from request stream to JPEG and save it to storage
             // please, use outPath parameter for saving the result to storage
-            PostImageSaveAsRequest postSaveToStorageRequest = new PostImageSaveAsRequest(localInputImage, "jpg",
-                    "ExampleFolderNet/resultImage.png", null);
+            CreateSavedImageAsRequest postSaveToStorageRequest = new CreateSavedImageAsRequest(localInputImage, "jpg",
+                    "ExampleFolderNet/resultImage.jpg", config.OnPremise ? TestStorage : null);
 
-            imagingApi.postImageSaveAs(postSaveToStorageRequest);
+            imagingApi.createSavedImageAs(postSaveToStorageRequest);
 
             // download saved image from storage and process it
             byte[] savedFile = imagingApi
-                    .downloadFile(new DownloadFileRequest("ExampleFolderNet/resultImage.jpg", null, null));
+                    .downloadFile(new DownloadFileRequest("ExampleFolderNet/resultImage.jpg", config.OnPremise ? TestStorage : null, null));
 
             // convert image from request stream to JPEG and read it from resulting stream
             // please, set outPath parameter as null to return result in request stream
             // instead of saving to storage
-            PostImageSaveAsRequest postSaveToStreamRequest = new PostImageSaveAsRequest(localInputImage, "jpg", null,
-                    null);
+            CreateSavedImageAsRequest postSaveToStreamRequest = new CreateSavedImageAsRequest(localInputImage, "jpg", 
+                    null, config.OnPremise ? TestStorage : null);
 
             // process resulting image from response stream
-            byte[] resultPostImageStream = imagingApi.postImageSaveAs(postSaveToStreamRequest);
+            byte[] resultPostImageStream = imagingApi.createSavedImageAs(postSaveToStreamRequest);
         } finally {
             // remove file from storage
-            ImagingApi.deleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.png", null, null));
+            ImagingApi.deleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.jpg", config.OnPremise ? TestStorage : null, null));
         }
     }
 }

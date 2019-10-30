@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ServerAccessData.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -55,5 +55,9 @@ public class ServerAccessData
      * The storage name (used for Android).
      */
     public String StorageName;
-
+    
+    /**
+     * If the metered license is used by on-premise APIs (used for Android).
+     */
+    public String OnPremise;
 }

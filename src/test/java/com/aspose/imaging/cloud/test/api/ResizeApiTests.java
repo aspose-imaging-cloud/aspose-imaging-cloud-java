@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ResizeApiTests.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -49,8 +49,8 @@ import java.util.Collections;
 @RunWith(Parameterized.class)
 public class ResizeApiTests extends ApiTester {
 
-    private GetImageResizeRequest getImageResizeRequest;
-    private PostImageResizeRequest postImageResizeRequest;
+    private ResizeImageRequest resizeImageRequest;
+    private CreateResizedImageRequest createResizedImageRequest;
 
     @Parameters
     public static Iterable<Object[]> data() {
@@ -95,14 +95,18 @@ public class ResizeApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void getImageResizeTest() throws Exception {
+    public void resizeImageTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = null;
         Integer newWidth = 100;
         Integer newHeight = 150;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = null;
         
         ArrayList<String> formatsToExport = new ArrayList<String>();
         Collections.addAll(formatsToExport, this.BasicExportFormats);
@@ -127,20 +131,17 @@ public class ResizeApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                getImageResizeRequest = new GetImageResizeRequest(name, format, newWidth, newHeight, outPath, folder, storage);
-                outName = name + "_resize." + format;
+                resizeImageRequest = new ResizeImageRequest(name, format, newWidth, newHeight, folder, storage);
                 
-                Method propertiesTester = ResizeApiTests.class.getDeclaredMethod("getImageResizePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                Method propertiesTester = ResizeApiTests.class.getDeclaredMethod("resizeImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = ResizeApiTests.class.getDeclaredMethod("getImageResizeGetRequestInvoker", String.class, String.class);
+                Method requestInvoker = ResizeApiTests.class.getDeclaredMethod("resizeImageGetRequestInvoker", String.class);
                 requestInvoker.setAccessible(true);
                 this.testGetRequest(
-                    "getImageResizeTest; save result to storage: " + saveResultToStorage, 
-                    saveResultToStorage,
+                    "resizeImageTest; save result to storage: " + saveResultToStorage, 
                     String.format("Input image: %s; Output format: %s; New width: %s; New height: %s",
                             name, format, newWidth, newHeight),
                     name,
-                    outName,
                     requestInvoker,
                     propertiesTester,
                     folder,
@@ -156,7 +157,7 @@ public class ResizeApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void postImageResizeTest() throws Exception {
+    public void createResizedImageTest() throws Exception {
         byte[] imageData = null;
         String name = null;
         Integer newWidth = 100;
@@ -189,15 +190,15 @@ public class ResizeApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                postImageResizeRequest = new PostImageResizeRequest(imageData, format, newWidth, newHeight, outPath, storage);
+                createResizedImageRequest = new CreateResizedImageRequest(imageData, format, newWidth, newHeight, outPath, storage);
                 outName = name + "_resize." + format;
                 
-                Method propertiesTester = ResizeApiTests.class.getDeclaredMethod("postImageResizePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                Method propertiesTester = ResizeApiTests.class.getDeclaredMethod("createResizedImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = ResizeApiTests.class.getDeclaredMethod("postImageResizePostRequestInvoker", byte[].class, String.class);
+                Method requestInvoker = ResizeApiTests.class.getDeclaredMethod("createResizedImagePostRequestInvoker", byte[].class, String.class);
                 requestInvoker.setAccessible(true);
                 this.testPostRequest(
-                    "postImageResizeTest; save result to storage: " + saveResultToStorage,  
+                    "createResizedImageTest; save result to storage: " + saveResultToStorage,  
                     saveResultToStorage,
                     String.format("Input image: %s; Output format: %s; New width: %s; New height: %s",
                             name, format, newWidth, newHeight),
@@ -212,54 +213,52 @@ public class ResizeApiTests extends ApiTester {
     }
     
     /**
-     * Invokes GET request for getImageResize operation. Used indirectly by method reference.
+     * Invokes GET request for resizeImage operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageResizeGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] resizeImageGetRequestInvoker(String name) throws Exception
     {
-        getImageResizeRequest.name = name;
-        getImageResizeRequest.outPath = outPath;
-        return ImagingApi.getImageResize(getImageResizeRequest);
+        resizeImageRequest.name = name;
+        return ImagingApi.resizeImage(resizeImageRequest);
     }
     
     /**
-     * Invokes POST request for postImageResize operation. Used indirectly by method reference.
+     * Invokes POST request for createResizedImage operation. Used indirectly by method reference.
      * @param imageData Image data
      * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] postImageResizePostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createResizedImagePostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        postImageResizeRequest.imageData = imageData;
-        postImageResizeRequest.outPath = outPath;
-        return ImagingApi.postImageResize(postImageResizeRequest);
+        createResizedImageRequest.imageData = imageData;
+        createResizedImageRequest.outPath = outPath;
+        return ImagingApi.createResizedImage(createResizedImageRequest);
     }
     
     /**
-     * Tests properties for getImageResize operation. Used indirectly by method reference.
+     * Tests properties for resizeImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void getImageResizePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void resizeImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
-        Assert.assertEquals(getImageResizeRequest.newWidth, resultProperties.getWidth());
-        Assert.assertEquals(getImageResizeRequest.newHeight, resultProperties.getHeight());
+        Assert.assertEquals(resizeImageRequest.newWidth, resultProperties.getWidth());
+        Assert.assertEquals(resizeImageRequest.newHeight, resultProperties.getHeight());
     }
     
     /**
-     * Tests properties for postImageResize operation. Used indirectly by method reference.
+     * Tests properties for createResizedImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void postImageResizePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createResizedImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
-        Assert.assertEquals(postImageResizeRequest.newWidth, resultProperties.getWidth());
-        Assert.assertEquals(postImageResizeRequest.newHeight, resultProperties.getHeight());
+        Assert.assertEquals(createResizedImageRequest.newWidth, resultProperties.getWidth());
+        Assert.assertEquals(createResizedImageRequest.newHeight, resultProperties.getHeight());
     }
 }

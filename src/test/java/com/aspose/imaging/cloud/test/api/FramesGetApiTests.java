@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FramesGetApiTests.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,34 +32,15 @@ import com.aspose.imaging.cloud.test.base.ApiTester;
 
 import org.junit.Test;
 import org.junit.Assert;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import static org.junit.runners.Parameterized.Parameters;
-
-import java.lang.Iterable;
-import java.util.Arrays;
 import java.lang.reflect.Method;
 
 /**
  * Class for testing TIFF frames related API GET calls
  */
-@RunWith(Parameterized.class)
 public class FramesGetApiTests extends ApiTester {
 
     private GetImageFrameRequest getImageFrameRequest;
 
-    @Parameters
-    public static Iterable<Object> data() {
-        return Arrays.asList(new Object[] { true, false });
-    }
-
-    private Boolean saveResultToStorage;
-
-    public FramesGetApiTests(Boolean saveResult)
-    {
-        this.saveResultToStorage = saveResult;
-    }
-    
     /**
      * Test operation: Get separate frame from existing TIFF image.
      * 
@@ -78,25 +59,21 @@ public class FramesGetApiTests extends ApiTester {
         Integer rectHeight = 300;
         String rotateFlipMethod = "Rotate90FlipX";
         Boolean saveOtherFrames = false;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_singleFrame." + "tiff";
         getImageFrameRequest = new GetImageFrameRequest(name, frameId, newWidth, newHeight, x, y, 
-                rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, outPath, folder, storage);
+                rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, folder, storage);
         
         Method propertiesTester = FramesGetApiTests.class.getDeclaredMethod("getImageFramePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = FramesGetApiTests.class.getDeclaredMethod("getImageFrameRequestInvoker", String.class, String.class);
+        Method requestInvoker = FramesGetApiTests.class.getDeclaredMethod("getImageFrameRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImageSingleFrameTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "getImageSingleFrameTest", 
             String.format("Input image: %s; Frame ID: %s; New width: %s; New height: %s; Rotate/flip method: %s; Save other frames: %s; X: %s; Y: %s; "
                     + "Rect width: %s; Rect height: %s",
                     name, frameId, newWidth, newHeight, rotateFlipMethod, saveOtherFrames, x, y, rectWidth, rectHeight),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -121,25 +98,21 @@ public class FramesGetApiTests extends ApiTester {
         Integer rectHeight = 300;
         String rotateFlipMethod = "Rotate90FlipX";
         Boolean saveOtherFrames = true;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_allFrames." + "tiff";
         getImageFrameRequest = new GetImageFrameRequest(name, frameId, newWidth, newHeight, x, y, 
-                rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, outPath, folder, storage);
+                rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, folder, storage);
         
         Method propertiesTester = FramesGetApiTests.class.getDeclaredMethod("getImageAllFramesPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = FramesGetApiTests.class.getDeclaredMethod("getImageFrameRequestInvoker", String.class, String.class);
+        Method requestInvoker = FramesGetApiTests.class.getDeclaredMethod("getImageFrameRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImageAllFramesTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "getImageAllFramesTest",
             String.format("Input image: %s; Frame ID: %s; New width: %s; New height: %s; Rotate/flip method: %s; Save other frames: %s; X: %s; Y: %s; "
                     + "Rect width: %s; Rect height: %s",
                     name, frameId, newWidth, newHeight, rotateFlipMethod, saveOtherFrames, x, y, rectWidth, rectHeight),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -153,10 +126,9 @@ public class FramesGetApiTests extends ApiTester {
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageFrameRequestInvoker(String name, String outPath) throws Exception
+    private byte[] getImageFrameRequestInvoker(String name) throws Exception
     {
         getImageFrameRequest.name = name;
-        getImageFrameRequest.outPath = outPath;
         return ImagingApi.getImageFrame(getImageFrameRequest);
     }
     
@@ -182,23 +154,6 @@ public class FramesGetApiTests extends ApiTester {
                 (long)resultProperties.getTiffProperties().getFrames().get(0).getFrameOptions().getImageLength());
         Assert.assertEquals(getImageFrameRequest.rectHeight, resultProperties.getWidth());
         Assert.assertEquals(getImageFrameRequest.rectWidth, resultProperties.getHeight());
-        
-        if (!saveResultToStorage) return;
-        
-        GetImageFramePropertiesRequest framePropertiesRequest = new GetImageFramePropertiesRequest(getImageFrameRequest.name + "_singleFrame." + "tiff", 0, 
-                getImageFrameRequest.folder, getImageFrameRequest.storage);
-        ImagingResponse framePropertiesResponse = ImagingApi.getImageFrameProperties(framePropertiesRequest);
-        Assert.assertNotNull(framePropertiesResponse);
-        Assert.assertNotNull(framePropertiesResponse.getTiffProperties());
-        Assert.assertNotNull(framePropertiesResponse.getTiffProperties().getFrames());
-        Assert.assertEquals(getImageFrameRequest.rectHeight, framePropertiesResponse.getWidth());
-        Assert.assertEquals(getImageFrameRequest.rectWidth, framePropertiesResponse.getHeight());
-        Assert.assertEquals(framePropertiesResponse.getTiffProperties().getFrames().get(0).getWidth(), framePropertiesResponse.getWidth());
-        Assert.assertEquals(framePropertiesResponse.getTiffProperties().getFrames().get(0).getHeight(), framePropertiesResponse.getHeight());
-        Assert.assertEquals((long)framePropertiesResponse.getTiffProperties().getFrames().get(0).getFrameOptions().getImageWidth(), 
-                (long)framePropertiesResponse.getWidth());
-        Assert.assertEquals((long)framePropertiesResponse.getTiffProperties().getFrames().get(0).getFrameOptions().getImageLength(), 
-                (long)framePropertiesResponse.getHeight());
     }
     
     /**

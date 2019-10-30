@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiInvoker.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -320,7 +320,8 @@ public class ApiInvoker
     private HttpURLConnection prepareRequest(String path, String method, HashMap<String, Object> formParams, 
             HashMap<String, String> headerParams, String body, String contentType) throws Exception
     {
-        HttpURLConnection connection = (HttpURLConnection)new URL(path).openConnection();
+        HttpURLConnection connection = (HttpURLConnection)new URL(path.replace(" ", "%20")).openConnection();
+        connection.setRequestProperty("Content-Type", contentType);
         Boolean sendData = (formParams.size() > 0 || (body != null && !body.equals(""))) && (method.equals("PUT") || method.equals("POST"));
         if (method.equals("PUT") || method.equals("POST"))
         {
@@ -352,6 +353,7 @@ public class ApiInvoker
                 connection.setRequestProperty(defaultHeaderMapItem.getKey(), defaultHeaderMapItem.getValue());
             }
         }
+
         
         OutputStream outStream = null;
         ByteArrayOutputStream streamToSend = null;
@@ -384,8 +386,8 @@ public class ApiInvoker
                 handler.beforeSend(connection, streamToSend);
             }
             
-            connection.setConnectTimeout(500000);
-            connection.setReadTimeout(500000);
+            connection.setConnectTimeout(600000);
+            connection.setReadTimeout(600000);
             if (streamToSend != null)
             {
                 if (streamToSend.size() > 0)

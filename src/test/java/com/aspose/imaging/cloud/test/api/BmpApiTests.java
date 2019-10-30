@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="BmpApiTests.java">
-*   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,8 +46,8 @@ import java.lang.reflect.Method;
 @RunWith(Parameterized.class)
 public class BmpApiTests extends ApiTester {
 
-    private GetImageBmpRequest getImageBmpRequest;
-    private PostImageBmpRequest postImageBmpRequest;
+    private ModifyBmpRequest modifyBmpRequest;
+    private CreateModifiedBmpRequest createModifiedBmpRequest;
 
     @Parameters
     public static Iterable<Object> data() {
@@ -68,29 +68,31 @@ public class BmpApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void getImageBmpTest() throws Exception {
+    public void modifyBmpTest() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.bmp";
         Integer bitsPerPixel = 32;
         Integer horizontalResolution = 300;
         Integer verticalResolution = 300;
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "bmp";
-        getImageBmpRequest = new GetImageBmpRequest(name, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, folder, storage);
+        modifyBmpRequest = new ModifyBmpRequest(name, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, folder, storage);
         
-        Method propertiesTester = BmpApiTests.class.getDeclaredMethod("getImageBmpPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = BmpApiTests.class.getDeclaredMethod("modifyBmpPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = BmpApiTests.class.getDeclaredMethod("getImageBmpGetRequestInvoker", String.class, String.class);
+        Method requestInvoker = BmpApiTests.class.getDeclaredMethod("modifyBmpGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImageBmpTest; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "modifyBmpTest; save result to storage: " + saveResultToStorage, 
             String.format("Input image: %s; Bits per pixel: %s; Horizontal resolution: %s; Vertical resolution: %s",
                     name, bitsPerPixel, horizontalResolution, verticalResolution),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -104,7 +106,7 @@ public class BmpApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void postImageBmpTest() throws Exception {
+    public void createModifiedBmpTest() throws Exception {
         byte[] imageData = null;
         Integer bitsPerPixel = 32;
         Integer horizontalResolution = 300;
@@ -115,14 +117,14 @@ public class BmpApiTests extends ApiTester {
         String folder = getTempFolder();
         String name = "test.bmp";
         String outName = name + "_specific." + "bmp";
-        postImageBmpRequest = new PostImageBmpRequest(imageData, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
+        createModifiedBmpRequest = new CreateModifiedBmpRequest(imageData, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
         
-        Method propertiesTester = BmpApiTests.class.getDeclaredMethod("postImageBmpPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = BmpApiTests.class.getDeclaredMethod("createModifiedBmpPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = BmpApiTests.class.getDeclaredMethod("postImageBmpPostRequestInvoker", byte[].class, String.class);
+        Method requestInvoker = BmpApiTests.class.getDeclaredMethod("createModifiedBmpPostRequestInvoker", byte[].class, String.class);
         requestInvoker.setAccessible(true);
         this.testPostRequest(
-            "postImageBmpTest; save result to storage: " + saveResultToStorage, 
+            "createModifiedBmpTest; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; Bits per pixel: %s; Horizontal resolution: %s; Vertical resolution: %s",
                     name, bitsPerPixel, horizontalResolution, verticalResolution),
@@ -135,45 +137,43 @@ public class BmpApiTests extends ApiTester {
     }
     
     /**
-     * Invokes GET request for getImageBmp operation. Used indirectly by method reference.
+     * Invokes GET request for modifyBmp operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageBmpGetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] modifyBmpGetRequestInvoker(String name) throws Exception
     {
-        getImageBmpRequest.name = name;
-        getImageBmpRequest.outPath = outPath;
-        return ImagingApi.getImageBmp(getImageBmpRequest);
+        modifyBmpRequest.name = name;
+        return ImagingApi.modifyBmp(modifyBmpRequest);
     }
     
     /**
-     * Invokes POST request for postImageBmp operation. Used indirectly by method reference.
+     * Invokes POST request for createModifiedBmp operation. Used indirectly by method reference.
      * @param imageData Image data
      * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] postImageBmpPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createModifiedBmpPostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        postImageBmpRequest.imageData = imageData;
-        postImageBmpRequest.outPath = outPath;
-        return ImagingApi.postImageBmp(postImageBmpRequest);
+        createModifiedBmpRequest.imageData = imageData;
+        createModifiedBmpRequest.outPath = outPath;
+        return ImagingApi.createModifiedBmp(createModifiedBmpRequest);
     }
     
     /**
-     * Tests properties for getImageBmp operation. Used indirectly by method reference.
+     * Tests properties for modifyBmp operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void getImageBmpPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void modifyBmpPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getBmpProperties());
-        Assert.assertEquals(getImageBmpRequest.bitsPerPixel, resultProperties.getBitsPerPixel());
-        Assert.assertEquals((int)getImageBmpRequest.verticalResolution, (int)Math.ceil(resultProperties.getVerticalResolution()));
-        Assert.assertEquals((int)getImageBmpRequest.horizontalResolution, (int)Math.ceil(resultProperties.getHorizontalResolution()));
+        Assert.assertEquals(modifyBmpRequest.bitsPerPixel, resultProperties.getBitsPerPixel());
+        Assert.assertEquals((int)modifyBmpRequest.verticalResolution, (int)Math.ceil(resultProperties.getVerticalResolution()));
+        Assert.assertEquals((int)modifyBmpRequest.horizontalResolution, (int)Math.ceil(resultProperties.getHorizontalResolution()));
 
         Assert.assertNotNull(originalProperties.getBmpProperties());
         Assert.assertEquals(originalProperties.getBmpProperties().getCompression(), resultProperties.getBmpProperties().getCompression());
@@ -182,17 +182,17 @@ public class BmpApiTests extends ApiTester {
     }
     
     /**
-     * Tests properties for postImageBmp operation. Used indirectly by method reference.
+     * Tests properties for createModifiedBmp operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultProperties Result image data
      */
-    private void postImageBmpPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createModifiedBmpPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getBmpProperties());
-        Assert.assertEquals(postImageBmpRequest.bitsPerPixel, resultProperties.getBitsPerPixel());
-        Assert.assertEquals((int)postImageBmpRequest.verticalResolution, (int)Math.ceil(resultProperties.getVerticalResolution()));
-        Assert.assertEquals((int)postImageBmpRequest.horizontalResolution, (int)Math.ceil(resultProperties.getHorizontalResolution()));
+        Assert.assertEquals(createModifiedBmpRequest.bitsPerPixel, resultProperties.getBitsPerPixel());
+        Assert.assertEquals((int)createModifiedBmpRequest.verticalResolution, (int)Math.ceil(resultProperties.getVerticalResolution()));
+        Assert.assertEquals((int)createModifiedBmpRequest.horizontalResolution, (int)Math.ceil(resultProperties.getHorizontalResolution()));
 
         Assert.assertNotNull(originalProperties.getBmpProperties());
         Assert.assertEquals(originalProperties.getBmpProperties().getCompression(), resultProperties.getBmpProperties().getCompression());

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Configuration.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -66,6 +66,11 @@ public class Configuration
          * Gets or sets the app SID.
          */
         public String AppSid;
+        
+        /**
+         * If API service uses on-premise deployment with metered license
+         */
+        public Boolean OnPremise = false;
 
         /**
          * Get Aspose Cloud API base URL.

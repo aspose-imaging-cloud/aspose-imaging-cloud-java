@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="CopyFileRequest.java">
-*   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,6 +26,8 @@
 */
 
 package com.aspose.imaging.cloud.sdk.model.requests;
+
+import com.aspose.imaging.cloud.sdk.model.*;
 
 /**
 * Class that holds parameters for CopyFile request invocation.

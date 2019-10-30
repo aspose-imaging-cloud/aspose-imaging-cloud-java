@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="FramesPostApiTests.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,7 +46,7 @@ import java.lang.reflect.Method;
 @RunWith(Parameterized.class)
 public class FramesPostApiTests extends ApiTester {
 
-    private PostImageFrameRequest postImageFrameRequest;
+    private CreateImageFrameRequest createImageFrameRequest;
 
     @Parameters
     public static Iterable<Object> data() {
@@ -83,12 +83,12 @@ public class FramesPostApiTests extends ApiTester {
         String folder = getTempFolder();
         String storage = TestStorage;
         String outName = name + "_singleFrame." + "tiff";
-        postImageFrameRequest = new PostImageFrameRequest(imageData, frameId, newWidth, newHeight, x, y, 
+        createImageFrameRequest = new CreateImageFrameRequest(imageData, frameId, newWidth, newHeight, x, y, 
                 rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, outPath, storage);
         
-        Method propertiesTester = FramesPostApiTests.class.getDeclaredMethod("postImageFramePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = FramesPostApiTests.class.getDeclaredMethod("extractImageFramePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = FramesPostApiTests.class.getDeclaredMethod("postImageFrameRequestInvoker", byte[].class, String.class);
+        Method requestInvoker = FramesPostApiTests.class.getDeclaredMethod("createImageFrameRequestInvoker", byte[].class, String.class);
         requestInvoker.setAccessible(true);
         this.testPostRequest(
             "getImageSingleFrameTest; save result to storage: " + saveResultToStorage, 
@@ -127,12 +127,12 @@ public class FramesPostApiTests extends ApiTester {
         String folder = getTempFolder();
         String storage = TestStorage;
         String outName = name + "_allFrames." + "tiff";
-        postImageFrameRequest = new PostImageFrameRequest(imageData, frameId, newWidth, newHeight, x, y, 
+        createImageFrameRequest = new CreateImageFrameRequest(imageData, frameId, newWidth, newHeight, x, y, 
                 rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, outPath, storage);
         
         Method propertiesTester = FramesPostApiTests.class.getDeclaredMethod("postImageAllFramesPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = FramesPostApiTests.class.getDeclaredMethod("postImageFrameRequestInvoker", byte[].class, String.class);
+        Method requestInvoker = FramesPostApiTests.class.getDeclaredMethod("createImageFrameRequestInvoker", byte[].class, String.class);
         requestInvoker.setAccessible(true);
         this.testPostRequest(
             "getImageAllFramesTest; save result to storage: " + saveResultToStorage, 
@@ -149,41 +149,41 @@ public class FramesPostApiTests extends ApiTester {
     }
     
     /**
-     * Invokes POST request for postImageFrame operation. Used indirectly by method reference.
+     * Invokes POST request for createImageFrame operation. Used indirectly by method reference.
      * @param name Image file name
      * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] postImageFrameRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createImageFrameRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        postImageFrameRequest.imageData = imageData;
-        postImageFrameRequest.outPath = outPath;
-        return ImagingApi.postImageFrame(postImageFrameRequest);
+        createImageFrameRequest.imageData = imageData;
+        createImageFrameRequest.outPath = outPath;
+        return ImagingApi.createImageFrame(createImageFrameRequest);
     }
     
     /**
-     * Tests properties for postImageFrame operation. Used indirectly by method reference.
+     * Tests properties for createImageFrame operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      * @throws Exception 
      */
-    private void postImageFramePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData) throws Exception
+    private void extractImageFramePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData) throws Exception
     {
         Assert.assertNotNull(resultProperties.getTiffProperties());
         Assert.assertNotNull(resultProperties.getTiffProperties().getFrames());
         Assert.assertEquals(1, resultProperties.getTiffProperties().getFrames().size());
 
         // please note that rotation was performed, so switching of width and height comparison is valid
-        Assert.assertEquals(postImageFrameRequest.rectHeight, resultProperties.getTiffProperties().getFrames().get(0).getWidth());
-        Assert.assertEquals(postImageFrameRequest.rectWidth, resultProperties.getTiffProperties().getFrames().get(0).getHeight());
-        Assert.assertEquals((long)postImageFrameRequest.rectHeight,
+        Assert.assertEquals(createImageFrameRequest.rectHeight, resultProperties.getTiffProperties().getFrames().get(0).getWidth());
+        Assert.assertEquals(createImageFrameRequest.rectWidth, resultProperties.getTiffProperties().getFrames().get(0).getHeight());
+        Assert.assertEquals((long)createImageFrameRequest.rectHeight,
                 (long)resultProperties.getTiffProperties().getFrames().get(0).getFrameOptions().getImageWidth());
-        Assert.assertEquals((long)postImageFrameRequest.rectWidth,
+        Assert.assertEquals((long)createImageFrameRequest.rectWidth,
                 (long)resultProperties.getTiffProperties().getFrames().get(0).getFrameOptions().getImageLength());
-        Assert.assertEquals(postImageFrameRequest.rectHeight, resultProperties.getWidth());
-        Assert.assertEquals(postImageFrameRequest.rectWidth, resultProperties.getHeight());
+        Assert.assertEquals(createImageFrameRequest.rectHeight, resultProperties.getWidth());
+        Assert.assertEquals(createImageFrameRequest.rectWidth, resultProperties.getHeight());
         
         ImagingResponse framePropertiesResponse = null;
         if (saveResultToStorage)
@@ -193,15 +193,15 @@ public class FramesPostApiTests extends ApiTester {
         }
         else
         {
-            PostImageFramePropertiesRequest framePropertiesRequest = new PostImageFramePropertiesRequest(resultData, 0);
-            framePropertiesResponse = ImagingApi.postImageFrameProperties(framePropertiesRequest);
+            ExtractImageFramePropertiesRequest framePropertiesRequest = new ExtractImageFramePropertiesRequest(resultData, 0);
+            framePropertiesResponse = ImagingApi.extractImageFrameProperties(framePropertiesRequest);
         }
         
         Assert.assertNotNull(framePropertiesResponse);
         Assert.assertNotNull(framePropertiesResponse.getTiffProperties());
         Assert.assertNotNull(framePropertiesResponse.getTiffProperties().getFrames());
-        Assert.assertEquals(postImageFrameRequest.rectHeight, framePropertiesResponse.getWidth());
-        Assert.assertEquals(postImageFrameRequest.rectWidth, framePropertiesResponse.getHeight());
+        Assert.assertEquals(createImageFrameRequest.rectHeight, framePropertiesResponse.getWidth());
+        Assert.assertEquals(createImageFrameRequest.rectWidth, framePropertiesResponse.getHeight());
         Assert.assertEquals(framePropertiesResponse.getTiffProperties().getFrames().get(0).getWidth(), framePropertiesResponse.getWidth());
         Assert.assertEquals(framePropertiesResponse.getTiffProperties().getFrames().get(0).getHeight(), framePropertiesResponse.getHeight());
         Assert.assertEquals((long)framePropertiesResponse.getTiffProperties().getFrames().get(0).getFrameOptions().getImageWidth(), 
@@ -231,13 +231,13 @@ public class FramesPostApiTests extends ApiTester {
         Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
 
         // please note that rotation was performed, so switching of width and height comparison is valid
-        Assert.assertEquals(postImageFrameRequest.rectHeight,
-                resultProperties.getTiffProperties().getFrames().get(postImageFrameRequest.frameId).getWidth());
-        Assert.assertEquals(postImageFrameRequest.rectWidth,
-                resultProperties.getTiffProperties().getFrames().get(postImageFrameRequest.frameId).getHeight());
-        Assert.assertEquals((long)postImageFrameRequest.rectHeight,
-                (long)resultProperties.getTiffProperties().getFrames().get(postImageFrameRequest.frameId).getFrameOptions().getImageWidth());
-        Assert.assertEquals((long)postImageFrameRequest.rectWidth,
-                (long)resultProperties.getTiffProperties().getFrames().get(postImageFrameRequest.frameId).getFrameOptions().getImageLength());
+        Assert.assertEquals(createImageFrameRequest.rectHeight,
+                resultProperties.getTiffProperties().getFrames().get(createImageFrameRequest.frameId).getWidth());
+        Assert.assertEquals(createImageFrameRequest.rectWidth,
+                resultProperties.getTiffProperties().getFrames().get(createImageFrameRequest.frameId).getHeight());
+        Assert.assertEquals((long)createImageFrameRequest.rectHeight,
+                (long)resultProperties.getTiffProperties().getFrames().get(createImageFrameRequest.frameId).getFrameOptions().getImageWidth());
+        Assert.assertEquals((long)createImageFrameRequest.rectWidth,
+                (long)resultProperties.getTiffProperties().getFrames().get(createImageFrameRequest.frameId).getFrameOptions().getImageLength());
     }
 }

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiTester.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,7 +47,7 @@ import com.aspose.imaging.cloud.sdk.model.requests.DownloadFileRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetFilesListRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.GetImagePropertiesRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.ObjectExistsRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.PostImagePropertiesRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.ExtractImagePropertiesRequest;
 import com.aspose.imaging.cloud.sdk.stablemodel.ImagingResponse;
 
 /**
@@ -91,16 +91,6 @@ public abstract class ApiTester
     private final static String ApiVersion = "v3.0";
 
     /**
-     * The application key
-     */
-    private final static String AppKey = "xxx";
-
-    /**
-     * The application SID
-     */
-    private final static String AppSid = "xxx";
-
-    /**
      * The base URL
      */
     private final static String BaseUrl = "https://api.aspose.cloud/";
@@ -131,8 +121,7 @@ public abstract class ApiTester
          "png",
          "psd",
          "tiff",
-         "webp",
-         "pdf"
+         "webp"
     };
 
     /**
@@ -176,15 +165,6 @@ public abstract class ApiTester
             ImagingApi.deleteFolder(new DeleteFolderRequest(getTempFolder(), TestStorage, true));
         }
     }
-
-    /**
-     * Creates the API instances using default access parameters.
-     * @throws Exception 
-     */
-    protected static void createApiInstances() throws Exception
-    {
-        createApiInstances(AppKey, AppSid, BaseUrl, ApiVersion, false);
-    }
     
     /**
      * Checks if string is null or empty.
@@ -213,26 +193,19 @@ public abstract class ApiTester
     
     /**
      * Creates the API instances using given access parameters.
-     * @param appKey The application key.
-     * @param appSid The application SID.
-     * @param baseUrl The base URL.
-     * @param apiVersion The API version.
-     * @param debug If set to true, debug.
      * @throws Exception 
      */
-    protected static void createApiInstances(String appKey, String appSid, String baseUrl, String apiVersion, Boolean debug) throws Exception
+    protected static void createApiInstances() throws Exception
     {
-        if (appKey.equals(AppKey) || appSid.equals(AppSid))
-        {
-            System.out.println("Access data isn't set explicitly. Trying to obtain it from environment variables.");
+        System.out.println("Trying to obtain configuration from environment variables.");
+        String onPremiseString = System.getenv("OnPremise");
+        Boolean onPremise = !isNullOrEmpty(onPremiseString) && onPremiseString.equals("true");
+        String appKey = onPremise ? "" : System.getenv("AppKey");
+        String appSid = onPremise ? "" : System.getenv("AppSid");
+        String baseUrl = System.getenv("ApiEndpoint");
+        String apiVersion = System.getenv("ApiVersion");
 
-            appKey = System.getenv("AppKey");
-            appSid = System.getenv("AppSid");
-            baseUrl = System.getenv("ApiEndpoint");
-            apiVersion = System.getenv("ApiVersion");
-        }
-
-        if (isNullOrEmpty(appKey) || isNullOrEmpty(appSid) || isNullOrEmpty(baseUrl) || isNullOrEmpty(apiVersion))
+        if ((!onPremise && (isNullOrEmpty(appKey) || isNullOrEmpty(appSid))) || isNullOrEmpty(baseUrl) || isNullOrEmpty(apiVersion))
         {
             System.out.println("Access data isn't set completely by environment variables. Filling unset data with server cred file values.");
         }
@@ -248,23 +221,6 @@ public abstract class ApiTester
         {
             String serverCredentials = FileUtils.readFileToString(serverAccessFile);
             ServerAccessData accessData = JSON.deserialize(serverCredentials, ServerAccessData.class);
-            if (isNullOrEmpty(appKey))
-            {
-                appKey = accessData.AppKey;
-                System.out.println("Set default App key");
-            }
-
-            if (isNullOrEmpty(appSid))
-            {
-                appSid = accessData.AppSid;
-                System.out.println("Set default App SID");
-            }
-
-            if (isNullOrEmpty(baseUrl))
-            {
-                baseUrl = accessData.BaseURL;
-                System.out.println("Set default base URL");
-            }
             
             if (IsAndroid)
             {
@@ -277,22 +233,51 @@ public abstract class ApiTester
                 {
                     TestStorage = accessData.StorageName;
                 }
+                
+                onPremiseString = accessData.OnPremise;
+                onPremise = !isNullOrEmpty(onPremiseString) && onPremiseString.equals("true");
+            }
+            
+            if (isNullOrEmpty(appKey) && !onPremise)
+            {
+                appKey = accessData.AppKey;
+                System.out.println("Set default App key");
+            }
+
+            if (isNullOrEmpty(appSid) && !onPremise)
+            {
+                appSid = accessData.AppSid;
+                System.out.println("Set default App SID");
+            }
+
+            if (isNullOrEmpty(baseUrl))
+            {
+                baseUrl = accessData.BaseURL;
+                System.out.println("Set default base URL");
             }
         }
-        else
+        else if (!onPremise)
         {
             throw new Exception("Please, specify valid access data (AppKey, AppSid, Base URL)" + "; androidTest value: " 
                 + System.getenv("androidTest") + "; Server access creds file: " + serverAccessFile.getCanonicalPath());
         }
 
+        System.out.println("On-premise: " + onPremise);
         System.out.println("App key: " + appKey);
         System.out.println("App SID: " + appSid);
         System.out.println("Storage: " + TestStorage);
         System.out.println("Base URL: " + baseUrl);
         System.out.println("API version: " + apiVersion);
 
-        ImagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(appKey, appSid, baseUrl, apiVersion, debug);
-
+        if (!onPremise)
+        {
+            ImagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(appKey, appSid, baseUrl, apiVersion);
+        }
+        else
+        {
+            ImagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(baseUrl, apiVersion, false);
+        }
+        
         InputTestFiles = fetchInputTestFilesInfo();
     }
 
@@ -383,18 +368,16 @@ public abstract class ApiTester
     /**
      * Tests the typical GET request.
      * @param testMethodName Name of the test method.
-     * @param saveResultToStorage If set to true, save result to storage.
      * @param parametersLine The parameters line.
      * @param inputFileName Name of the input file.
-     * @param resultFileName Name of the result file.
      * @param requestInvoker The request invoker.
      * @param propertiesTester The properties tester.
      * @throws Exception 
      */
-    protected void testGetRequest(String testMethodName, Boolean saveResultToStorage, String parametersLine, String inputFileName, 
+    protected void testGetRequest(String testMethodName, String parametersLine, String inputFileName, 
             String resultFileName, Method requestInvoker, Method propertiesTester) throws Exception
     {
-        this.testGetRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName,
+        this.testGetRequest(testMethodName, parametersLine, inputFileName,
                 requestInvoker, propertiesTester, getTempFolder(), TestStorage);
     }
     
@@ -404,33 +387,28 @@ public abstract class ApiTester
      * @param saveResultToStorage If set to true, save result to storage.
      * @param parametersLine The parameters line.
      * @param inputFileName Name of the input file.
-     * @param resultFileName Name of the result file.
      * @param requestInvoker The request invoker.
      * @param propertiesTester The properties tester.
      * @param folder The folder.
      * @param storage The storage.
      * @throws Exception 
      */
-    protected void testGetRequest(String testMethodName, Boolean saveResultToStorage, String parametersLine, String inputFileName, 
-            String resultFileName, Method requestInvoker, Method propertiesTester, String folder, String storage) throws Exception
+    protected void testGetRequest(String testMethodName, String parametersLine, String inputFileName, 
+            Method requestInvoker, Method propertiesTester, String folder, String storage) throws Exception
     {
-        final Boolean finalSaveResultToStorage = saveResultToStorage;
-        final String finalFolder = folder;
-        final String finalResultFileName = resultFileName;
         final String finalInputFileName = inputFileName;
         final Method finalRequestInvoker = requestInvoker;
-        final Method obtainMethod = ApiTester.class.getDeclaredMethod("obtainGetResponse", String.class, String.class, Method.class);
+        final Method obtainMethod = ApiTester.class.getDeclaredMethod("obtainGetResponse", String.class, Method.class);
         obtainMethod.setAccessible(true);
         final Object thisReference = this;
         
-        this.testRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName,
+        this.testRequest(testMethodName, false, parametersLine, inputFileName, null,
             new Callable<byte[]>()
             {
                 public byte[] call() throws RuntimeException
                 {
-                    String outPath = finalSaveResultToStorage ? String.format("%s/%s", finalFolder, finalResultFileName) : null;
                     try {
-                        return (byte[])obtainMethod.invoke(thisReference, finalInputFileName, outPath, finalRequestInvoker);
+                        return (byte[])obtainMethod.invoke(thisReference, finalInputFileName, finalRequestInvoker);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -548,24 +526,19 @@ public abstract class ApiTester
     /**
      * Obtains the typical GET request response. Used indirectly by method reference.
      * @param inputFileName Name of the input file.
-     * @param outPath The request invoker.
      * @param requestInvoker The output path to save the result.
      * @return Response data.
      * @throws Exception
      */
-    private byte[] obtainGetResponse(String inputFileName, String outPath, Method requestInvoker) throws Exception
+    private byte[] obtainGetResponse(String inputFileName, Method requestInvoker) throws Exception
     {
         byte[] result = null;
-        Object responseObject = requestInvoker.invoke(this, inputFileName, outPath);
+        Object responseObject = requestInvoker.invoke(this, inputFileName);
 
         Assert.assertNotNull(responseObject);
         result = (byte[])responseObject;
-
-        if (outPath == null || outPath.equals(""))
-        {
-            Assert.assertNotNull(result);
-            Assert.assertTrue(result.length > 0);
-        }
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.length > 0);
         
         return result;
     }
@@ -670,16 +643,13 @@ public abstract class ApiTester
                                     resultFileName, folder));
                 }
                 
-                if (!resultFileName.endsWith(".pdf"))
-                {
-                    resultProperties = ImagingApi.getImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
-                    Assert.assertNotNull(resultProperties);
-                }
+                resultProperties = ImagingApi.getImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
+                Assert.assertNotNull(resultProperties);
             }
-            else if (!resultFileName.endsWith(".pdf"))
+            else
             {
                 resultProperties =
-                        ImagingApi.postImageProperties(new PostImagePropertiesRequest(response));
+                        ImagingApi.extractImageProperties(new ExtractImagePropertiesRequest(response));
                 Assert.assertNotNull(resultProperties);
             }
             

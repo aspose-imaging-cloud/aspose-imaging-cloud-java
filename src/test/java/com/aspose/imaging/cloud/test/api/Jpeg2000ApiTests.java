@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Jpeg2000ApiTests.java">
-*   Copyright (c) 2019 Aspose Pty Ltd.
+*   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,8 +46,8 @@ import java.lang.reflect.Method;
 @RunWith(Parameterized.class)
 public class Jpeg2000ApiTests extends ApiTester {
 
-    private GetImageJpeg2000Request getImageJpeg2000Request;
-    private PostImageJpeg2000Request postImageJpeg2000Request;
+    private ModifyJpeg2000Request modifyJpeg2000Request;
+    private CreateModifiedJpeg2000Request createModifiedJpeg2000Request;
 
     @Parameters
     public static Iterable<Object> data() {
@@ -68,28 +68,30 @@ public class Jpeg2000ApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void getImageJpeg2000Test() throws Exception {
+    public void modifyJpeg2000Test() throws Exception {
+        
+        if (saveResultToStorage)
+        {
+            return;
+        }
+        
         String name = "test.j2k";
         String codec = "jp2";
         String comment = "Aspose";
         Boolean fromScratch = null;
-        String outPath = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        String outName = name + "_specific." + "jp2";
-        getImageJpeg2000Request = new GetImageJpeg2000Request(name, comment, codec, fromScratch, outPath, folder, storage);
+        modifyJpeg2000Request = new ModifyJpeg2000Request(name, comment, codec, fromScratch, folder, storage);
         
-        Method propertiesTester = Jpeg2000ApiTests.class.getDeclaredMethod("getImageJpeg2000PropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = Jpeg2000ApiTests.class.getDeclaredMethod("modifyJpeg2000PropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = Jpeg2000ApiTests.class.getDeclaredMethod("getImageJpeg2000GetRequestInvoker", String.class, String.class);
+        Method requestInvoker = Jpeg2000ApiTests.class.getDeclaredMethod("modifyJpeg2000GetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
         this.testGetRequest(
-            "getImageJpeg2000Test; save result to storage: " + saveResultToStorage, 
-            saveResultToStorage,
+            "modifyJpeg2000Test; save result to storage: " + saveResultToStorage, 
             String.format("Input image: %s; Comment: %s; Codec: %s",
                     name, comment, codec),
             name,
-            outName,
             requestInvoker,
             propertiesTester,
             folder,
@@ -103,7 +105,7 @@ public class Jpeg2000ApiTests extends ApiTester {
      *          if the Api call fails
      */
     @Test
-    public void postImageJpeg2000Test() throws Exception {
+    public void createModifiedJpeg2000Test() throws Exception {
         byte[] imageData = null;
         String codec = "jp2";
         String comment = "Aspose";
@@ -113,14 +115,14 @@ public class Jpeg2000ApiTests extends ApiTester {
         String folder = getTempFolder();
         String name = "test.j2k";
         String outName = name + "_specific." + "jp2";
-        postImageJpeg2000Request = new PostImageJpeg2000Request(imageData, comment, codec, fromScratch, outPath, storage);
+        createModifiedJpeg2000Request = new CreateModifiedJpeg2000Request(imageData, comment, codec, fromScratch, outPath, storage);
         
-        Method propertiesTester = Jpeg2000ApiTests.class.getDeclaredMethod("postImageJpeg2000PropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = Jpeg2000ApiTests.class.getDeclaredMethod("createModifiedJpeg2000PropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
-        Method requestInvoker = Jpeg2000ApiTests.class.getDeclaredMethod("postImageJpeg2000PostRequestInvoker", byte[].class, String.class);
+        Method requestInvoker = Jpeg2000ApiTests.class.getDeclaredMethod("createModifiedJpeg2000PostRequestInvoker", byte[].class, String.class);
         requestInvoker.setAccessible(true);
         this.testPostRequest(
-            "postImageJpeg2000Test; save result to storage: " + saveResultToStorage, 
+            "createModifiedJpeg2000Test; save result to storage: " + saveResultToStorage, 
             saveResultToStorage,
             String.format("Input image: %s; Comment: %s; Codec: %s",
                     name, comment, codec),
@@ -133,68 +135,66 @@ public class Jpeg2000ApiTests extends ApiTester {
     }
     
     /**
-     * Invokes GET request for getImageJpeg2000 operation. Used indirectly by method reference.
+     * Invokes GET request for modifyJpeg2000 operation. Used indirectly by method reference.
      * @param name Image file name
-     * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] getImageJpeg2000GetRequestInvoker(String name, String outPath) throws Exception
+    private byte[] modifyJpeg2000GetRequestInvoker(String name) throws Exception
     {
-        getImageJpeg2000Request.name = name;
-        getImageJpeg2000Request.outPath = outPath;
-        return ImagingApi.getImageJpeg2000(getImageJpeg2000Request);
+        modifyJpeg2000Request.name = name;
+        return ImagingApi.modifyJpeg2000(modifyJpeg2000Request);
     }
     
     /**
-     * Invokes POST request for postImageJpeg2000 operation. Used indirectly by method reference.
+     * Invokes POST request for createModifiedJpeg2000 operation. Used indirectly by method reference.
      * @param imageData Image data
      * @param outPath Out path
      * @return API response
      * @throws Exception 
      */
-    private byte[] postImageJpeg2000PostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createModifiedJpeg2000PostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        postImageJpeg2000Request.imageData = imageData;
-        postImageJpeg2000Request.outPath = outPath;
-        return ImagingApi.postImageJpeg2000(postImageJpeg2000Request);
+        createModifiedJpeg2000Request.imageData = imageData;
+        createModifiedJpeg2000Request.outPath = outPath;
+        return ImagingApi.createModifiedJpeg2000(createModifiedJpeg2000Request);
     }
     
     /**
-     * Tests properties for getImageJpeg2000 operation. Used indirectly by method reference.
+     * Tests properties for modifyJpeg2000 operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void getImageJpeg2000PropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void modifyJpeg2000PropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
-        Assert.assertEquals(getImageJpeg2000Request.codec, resultProperties.getJpeg2000Properties().getCodec().toString().toLowerCase());
+        Assert.assertEquals(modifyJpeg2000Request.codec, resultProperties.getJpeg2000Properties().getCodec().toString().toLowerCase());
         Assert.assertNotNull(resultProperties.getJpeg2000Properties().getComments());
-        Assert.assertTrue(resultProperties.getJpeg2000Properties().getComments().contains(getImageJpeg2000Request.comment));
+        Assert.assertTrue(resultProperties.getJpeg2000Properties().getComments().contains(modifyJpeg2000Request.comment));
 
         Assert.assertNotNull(originalProperties.getJpeg2000Properties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
         Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
         Assert.assertNotNull(originalProperties.getJpeg2000Properties().getComments());
-        Assert.assertFalse(originalProperties.getJpeg2000Properties().getComments().contains(getImageJpeg2000Request.comment));
+        Assert.assertFalse(originalProperties.getJpeg2000Properties().getComments().contains(modifyJpeg2000Request.comment));
     }
     
     /**
-     * Tests properties for postImageJpeg2000 operation. Used indirectly by method reference.
+     * Tests properties for createModifiedJpeg2000 operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void postImageJpeg2000PropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createModifiedJpeg2000PropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
-        Assert.assertEquals(postImageJpeg2000Request.codec, resultProperties.getJpeg2000Properties().getCodec().toString().toLowerCase());
+        Assert.assertEquals(createModifiedJpeg2000Request.codec, resultProperties.getJpeg2000Properties().getCodec().toString().toLowerCase());
         Assert.assertNotNull(resultProperties.getJpeg2000Properties().getComments());
-        Assert.assertTrue(resultProperties.getJpeg2000Properties().getComments().contains(postImageJpeg2000Request.comment));
+        Assert.assertTrue(resultProperties.getJpeg2000Properties().getComments().contains(createModifiedJpeg2000Request.comment));
 
         Assert.assertNotNull(originalProperties.getJpeg2000Properties());
         Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
         Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
         Assert.assertNotNull(originalProperties.getJpeg2000Properties().getComments());
-        Assert.assertFalse(originalProperties.getJpeg2000Properties().getComments().contains(postImageJpeg2000Request.comment));
+        Assert.assertFalse(originalProperties.getJpeg2000Properties().getComments().contains(createModifiedJpeg2000Request.comment));
     }
 }
