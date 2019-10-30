@@ -1144,6 +1144,38 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="filterEffectImage"></a>
+## **filterEffectImage**
+> byte[] filterEffectImage(FilterEffectImageRequest request)
+
+Apply filtering effects to an existing image.
+
+### **FilterEffectImageRequest** Parameters
+```java
+FilterEffectImageRequest(
+    String name, 
+    String format, 
+    String filterType, 
+    FilterPropertiesBase filterProperties, 
+    String folder, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Filename of an image. |
+ **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
+ **filterType** | **String**| Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing). |
+ **filterProperties** | [**FilterPropertiesBase**](FilterPropertiesBase.md)| Filter properties. |
+ **folder** | **String**| Folder with image to process. | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+
+### Return type
+
+**byte[]**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="findImageDuplicates"></a>
 ## **findImageDuplicates**
 > [ImageDuplicatesSet](ImageDuplicatesSet.md) findImageDuplicates(FindImageDuplicatesRequest request)
