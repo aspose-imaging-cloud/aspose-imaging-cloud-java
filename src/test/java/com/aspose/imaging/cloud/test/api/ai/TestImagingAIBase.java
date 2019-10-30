@@ -114,7 +114,7 @@ public abstract class TestImagingAIBase extends ApiTester {
         String status = "unknown";
         
         long startTime = System.currentTimeMillis();
-        Thread.sleep(timeout * 1000);
+
         while (!"Idle".equalsIgnoreCase(status) && (System.currentTimeMillis() - startTime) / 1000 < maxTimeInSeconds) {
             SearchContextStatus contextStatus = ImagingApi.getImageSearchStatus(
                     new GetImageSearchStatusRequest(this.SearchContextId, null, TestStorage));
