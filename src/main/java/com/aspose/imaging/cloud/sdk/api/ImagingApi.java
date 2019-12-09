@@ -1360,6 +1360,42 @@ public class ImagingApi
     }
   
     /**
+     * Extract images features from web page and add them to search context
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @throws Exception 
+     */
+    public void createWebSiteImageFeatures(CreateWebSiteImageFeaturesRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.searchContextId' is set
+      if (request.searchContextId== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.searchContextId' when calling createWebSiteImageFeatures");
+      }
+       // verify the required parameter 'request.imagesSource' is set
+      if (request.imagesSource== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imagesSource' when calling createWebSiteImageFeatures");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features/web";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imagesSource", request.imagesSource);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            
+      this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+          
+    }
+  
+    /**
      * Crop an existing image.
      * 
      * @param request Holds parameters for this request invocation.

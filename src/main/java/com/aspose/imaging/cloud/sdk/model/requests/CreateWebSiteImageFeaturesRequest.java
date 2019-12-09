@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="CreateImageFeaturesRequest.java">
+* <copyright company="Aspose" file="CreateWebSiteImageFeaturesRequest.java">
 *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -30,25 +30,21 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 import com.aspose.imaging.cloud.sdk.model.*;
 
 /**
-* Class that holds parameters for CreateImageFeatures request invocation.
+* Class that holds parameters for CreateWebSiteImageFeatures request invocation.
 **/   
-public class CreateImageFeaturesRequest
+public class CreateWebSiteImageFeaturesRequest
 {
     /**
-    * Initializes a new instance of the CreateImageFeaturesRequest class.   
+    * Initializes a new instance of the CreateWebSiteImageFeaturesRequest class.   
     * @param searchContextId The search context identifier.
-    * @param imageData Input image
-    * @param imageId The image identifier.
-    * @param imagesFolder Images source - a folder
+    * @param imagesSource Images source - a web page
     * @param folder The folder.
     * @param storage The storage.
     **/
-    public CreateImageFeaturesRequest(String searchContextId, byte[] imageData, String imageId, String imagesFolder, String folder, String storage)             
+    public CreateWebSiteImageFeaturesRequest(String searchContextId, String imagesSource, String folder, String storage)             
     {
         this.searchContextId = searchContextId;
-        this.imageData = imageData;
-        this.imageId = imageId;
-        this.imagesFolder = imagesFolder;
+        this.imagesSource = imagesSource;
         this.folder = folder;
         this.storage = storage;
     }
@@ -59,19 +55,9 @@ public class CreateImageFeaturesRequest
     public String searchContextId;
 
     /**
-    * Input image
+    * Images source - a web page
     **/
-    public byte[] imageData;
-
-    /**
-    * The image identifier.
-    **/
-    public String imageId;
-
-    /**
-    * Images source - a folder
-    **/
-    public String imagesFolder;
+    public String imagesSource;
 
     /**
     * The folder.
