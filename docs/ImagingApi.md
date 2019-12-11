@@ -883,7 +883,6 @@ Extract images features from web page and add them to search context
 CreateWebSiteImageFeaturesRequest(
     String searchContextId, 
     String imagesSource, 
-    byte[] imageData, 
     String folder, 
     String storage)
 ```
@@ -892,7 +891,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **searchContextId** | **String**| The search context identifier. |
  **imagesSource** | **String**| Images source - a web page |
- **imageData** | **byte[]**| Input image | [optional]
  **folder** | **String**| The folder. | [optional]
  **storage** | **String**| The storage. | [optional]
 
