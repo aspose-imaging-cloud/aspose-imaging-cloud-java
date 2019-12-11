@@ -38,13 +38,15 @@ public class CreateWebSiteImageFeaturesRequest
     * Initializes a new instance of the CreateWebSiteImageFeaturesRequest class.   
     * @param searchContextId The search context identifier.
     * @param imagesSource Images source - a web page
+    * @param imageData Input image
     * @param folder The folder.
     * @param storage The storage.
     **/
-    public CreateWebSiteImageFeaturesRequest(String searchContextId, String imagesSource, String folder, String storage)             
+    public CreateWebSiteImageFeaturesRequest(String searchContextId, String imagesSource, byte[] imageData, String folder, String storage)             
     {
         this.searchContextId = searchContextId;
         this.imagesSource = imagesSource;
+        this.imageData = imageData;
         this.folder = folder;
         this.storage = storage;
     }
@@ -58,6 +60,11 @@ public class CreateWebSiteImageFeaturesRequest
     * Images source - a web page
     **/
     public String imagesSource;
+
+    /**
+    * Input image
+    **/
+    public byte[] imageData;
 
     /**
     * The folder.
