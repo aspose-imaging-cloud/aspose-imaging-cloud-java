@@ -210,6 +210,36 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createDeskewedImage"></a>
+## **createDeskewedImage**
+> byte[] createDeskewedImage(CreateDeskewedImageRequest request)
+
+Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### **CreateDeskewedImageRequest** Parameters
+```java
+CreateDeskewedImageRequest(
+    byte[] imageData, 
+    Boolean resizeProportionally, 
+    String bkColor, 
+    String outPath, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **byte[]**| Input image |
+ **resizeProportionally** | **Boolean**| Resize proportionally |
+ **bkColor** | **String**| background color | [optional]
+ **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image) | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+
+### Return type
+
+**byte[]**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createFolder"></a>
 ## **createFolder**
 > void createFolder(CreateFolderRequest request)
@@ -1067,6 +1097,36 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="deskewImage"></a>
+## **deskewImage**
+> byte[] deskewImage(DeskewImageRequest request)
+
+Deskew an existing image.
+
+### **DeskewImageRequest** Parameters
+```java
+DeskewImageRequest(
+    String name, 
+    Boolean resizeProportionally, 
+    String bkColor, 
+    String folder, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Filename of an image. |
+ **resizeProportionally** | **Boolean**| Resize proportionally |
+ **bkColor** | **String**| Background color | [optional]
+ **folder** | **String**| Folder | [optional]
+ **storage** | **String**| Storage | [optional]
+
+### Return type
+
+**byte[]**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
