@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 ## **createDeskewedImage**
 > byte[] createDeskewedImage(CreateDeskewedImageRequest request)
 
-Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **CreateDeskewedImageRequest** Parameters
 ```java
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **byte[]**| Input image |
  **resizeProportionally** | **Boolean**| Resize proportionally |
- **bkColor** | **String**| background color | [optional]
+ **bkColor** | **String**| Background color | [optional]
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image) | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 

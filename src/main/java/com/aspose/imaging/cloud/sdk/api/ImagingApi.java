@@ -460,7 +460,7 @@ public class ImagingApi
     }
   
     /**
-     * Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return byte[]

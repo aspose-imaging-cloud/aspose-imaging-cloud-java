@@ -38,7 +38,7 @@ public class CreateDeskewedImageRequest
     * Initializes a new instance of the CreateDeskewedImageRequest class.   
     * @param imageData Input image
     * @param resizeProportionally Resize proportionally
-    * @param bkColor background color
+    * @param bkColor Background color
     * @param outPath Path to updated file (if this is empty, response contains streamed image)
     * @param storage Your Aspose Cloud Storage name.
     **/
@@ -62,7 +62,7 @@ public class CreateDeskewedImageRequest
     public Boolean resizeProportionally;
 
     /**
-    * background color
+    * Background color
     **/
     public String bkColor;
 
