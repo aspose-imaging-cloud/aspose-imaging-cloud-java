@@ -52,8 +52,13 @@ public class SearchContextTests extends TestImagingAIBase {
     public void deleteImageSearchTest() throws Exception {
         deleteImageSearch(SearchContextId);
 
-        ImagingApi
+		try{
+			ImagingApi
                 .getImageSearchStatus(new GetImageSearchStatusRequest(SearchContextId, null, TestStorage));
+		}
+		finally{				
+			SearchContextId = null;
+		}
     }
 
     @Test
