@@ -184,11 +184,11 @@ Crop an image. Image data is passed as zero-indexed multipart/form-data content 
 ```java
 CreateCroppedImageRequest(
     byte[] imageData, 
-    String format, 
     Integer x, 
     Integer y, 
     Integer width, 
     Integer height, 
+    String format, 
     String outPath, 
     String storage)
 ```
@@ -196,11 +196,11 @@ CreateCroppedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **byte[]**| Input image |
- **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **x** | **Integer**| X position of start point for cropping rectangle. |
  **y** | **Integer**| Y position of start point for cropping rectangle. |
  **width** | **Integer**| Width of cropping rectangle. |
  **height** | **Integer**| Height of cropping rectangle. |
+ **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image). | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 
@@ -780,9 +780,9 @@ Resize an image. Image data is passed as zero-indexed multipart/form-data conten
 ```java
 CreateResizedImageRequest(
     byte[] imageData, 
-    String format, 
     Integer newWidth, 
     Integer newHeight, 
+    String format, 
     String outPath, 
     String storage)
 ```
@@ -790,9 +790,9 @@ CreateResizedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **byte[]**| Input image |
- **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **newWidth** | **Integer**| New width. |
  **newHeight** | **Integer**| New height. |
+ **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image). | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 
@@ -870,7 +870,6 @@ Perform scaling, cropping and flipping of an image in a single request. Image da
 ```java
 CreateUpdatedImageRequest(
     byte[] imageData, 
-    String format, 
     Integer newWidth, 
     Integer newHeight, 
     Integer x, 
@@ -878,6 +877,7 @@ CreateUpdatedImageRequest(
     Integer rectWidth, 
     Integer rectHeight, 
     String rotateFlipMethod, 
+    String format, 
     String outPath, 
     String storage)
 ```
@@ -885,7 +885,6 @@ CreateUpdatedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **byte[]**| Input image |
- **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **newWidth** | **Integer**| New width of the scaled image. |
  **newHeight** | **Integer**| New height of the scaled image. |
  **x** | **Integer**| X position of start point for cropping rectangle. |
@@ -893,6 +892,7 @@ Name | Type | Description  | Notes
  **rectWidth** | **Integer**| Width of cropping rectangle. |
  **rectHeight** | **Integer**| Height of cropping rectangle. |
  **rotateFlipMethod** | **String**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. |
+ **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image). | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 
@@ -940,11 +940,11 @@ Crop an existing image.
 ```java
 CropImageRequest(
     String name, 
-    String format, 
     Integer x, 
     Integer y, 
     Integer width, 
     Integer height, 
+    String format, 
     String folder, 
     String storage)
 ```
@@ -952,11 +952,11 @@ CropImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Filename of an image. |
- **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **x** | **Integer**| X position of start point for cropping rectangle. |
  **y** | **Integer**| Y position of start point for cropping rectangle. |
  **width** | **Integer**| Width of cropping rectangle |
  **height** | **Integer**| Height of cropping rectangle. |
+ **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **folder** | **String**| Folder with image to process. | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 
@@ -2074,9 +2074,9 @@ Resize an existing image.
 ```java
 ResizeImageRequest(
     String name, 
-    String format, 
     Integer newWidth, 
     Integer newHeight, 
+    String format, 
     String folder, 
     String storage)
 ```
@@ -2084,9 +2084,9 @@ ResizeImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Filename of an image. |
- **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **newWidth** | **Integer**| New width. |
  **newHeight** | **Integer**| New height. |
+ **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **folder** | **String**| Folder with image to process. | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 
@@ -2186,7 +2186,6 @@ Perform scaling, cropping and flipping of an existing image in a single request.
 ```java
 UpdateImageRequest(
     String name, 
-    String format, 
     Integer newWidth, 
     Integer newHeight, 
     Integer x, 
@@ -2194,6 +2193,7 @@ UpdateImageRequest(
     Integer rectWidth, 
     Integer rectHeight, 
     String rotateFlipMethod, 
+    String format, 
     String folder, 
     String storage)
 ```
@@ -2201,7 +2201,6 @@ UpdateImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Filename of an image. |
- **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **newWidth** | **Integer**| New width of the scaled image. |
  **newHeight** | **Integer**| New height of the scaled image. |
  **x** | **Integer**| X position of start point for cropping rectangle. |
@@ -2209,6 +2208,7 @@ Name | Type | Description  | Notes
  **rectWidth** | **Integer**| Width of cropping rectangle. |
  **rectHeight** | **Integer**| Height of cropping rectangle. |
  **rotateFlipMethod** | **String**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. |
+ **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **folder** | **String**| Folder with image to process. | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 

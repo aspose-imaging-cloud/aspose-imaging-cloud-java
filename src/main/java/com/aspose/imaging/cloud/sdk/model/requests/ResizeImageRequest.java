@@ -37,18 +37,18 @@ public class ResizeImageRequest
     /**
     * Initializes a new instance of the ResizeImageRequest class.   
     * @param name Filename of an image.
-    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param newWidth New width.
     * @param newHeight New height.
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public ResizeImageRequest(String name, String format, Integer newWidth, Integer newHeight, String folder, String storage)             
+    public ResizeImageRequest(String name, Integer newWidth, Integer newHeight, String format, String folder, String storage)             
     {
         this.name = name;
-        this.format = format;
         this.newWidth = newWidth;
         this.newHeight = newHeight;
+        this.format = format;
         this.folder = folder;
         this.storage = storage;
     }
@@ -59,11 +59,6 @@ public class ResizeImageRequest
     public String name;
 
     /**
-    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-    **/
-    public String format;
-
-    /**
     * New width.
     **/
     public Integer newWidth;
@@ -72,6 +67,11 @@ public class ResizeImageRequest
     * New height.
     **/
     public Integer newHeight;
+
+    /**
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+    **/
+    public String format;
 
     /**
     * Folder with image to process.
