@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
  **searchContextId** | **String**| The search context identifier. |
  **imageData** | **byte[]**| Input image | [optional]
  **imageId** | **String**| The image identifier. | [optional]
- **imagesFolder** | **String**| Images folder. | [optional]
+ **imagesFolder** | **String**| Images source - a folder | [optional]
  **folder** | **String**| The folder. | [optional]
  **storage** | **String**| The storage. | [optional]
 
@@ -869,6 +869,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 **byte[]**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createWebSiteImageFeatures"></a>
+## **createWebSiteImageFeatures**
+> void createWebSiteImageFeatures(CreateWebSiteImageFeaturesRequest request)
+
+Extract images features from web page and add them to search context
+
+### **CreateWebSiteImageFeaturesRequest** Parameters
+```java
+CreateWebSiteImageFeaturesRequest(
+    String searchContextId, 
+    String imagesSource, 
+    String folder, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchContextId** | **String**| The search context identifier. |
+ **imagesSource** | **String**| Images source - a web page |
+ **folder** | **String**| The folder. | [optional]
+ **storage** | **String**| The storage. | [optional]
+
+### Return type
+
+void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 

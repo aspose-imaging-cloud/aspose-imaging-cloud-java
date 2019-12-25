@@ -28,7 +28,9 @@
 package com.aspose.imaging.cloud.test.api.ai;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
+import com.aspose.imaging.cloud.sdk.model.requests.*;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -36,17 +38,6 @@ import org.junit.Test;
 import com.aspose.imaging.cloud.sdk.invoker.ApiException;
 import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
 import com.aspose.imaging.cloud.sdk.model.ImageFeatures;
-import com.aspose.imaging.cloud.sdk.model.requests.DeleteSearchImageRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.DownloadFileRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.ExtractImageFeaturesRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.GetImageFeaturesRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.GetSearchImageRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.GetImageSearchStatusRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.ObjectExistsRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.AddSearchImageRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.CreateImageFeaturesRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.UpdateImageFeaturesRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.UpdateSearchImageRequest;
 
 public class SearchContextTests extends TestImagingAIBase {
     private final String SmallTestImage = "ComparableImage.jpg";
@@ -61,8 +52,13 @@ public class SearchContextTests extends TestImagingAIBase {
     public void deleteImageSearchTest() throws Exception {
         deleteImageSearch(SearchContextId);
 
-        ImagingApi
+		try{
+			ImagingApi
                 .getImageSearchStatus(new GetImageSearchStatusRequest(SearchContextId, null, TestStorage));
+		}
+		finally{				
+			SearchContextId = null;
+		}
     }
 
     @Test
@@ -146,6 +142,19 @@ public class SearchContextTests extends TestImagingAIBase {
                 SearchContextId, OriginalDataFolder + "/FindSimilar/3.jpg", null, TestStorage));
 
         Assert.assertTrue(result.getImageId().contains("3.jp"));
+        Assert.assertTrue(result.getFeatures().length > 0);
+    }
+
+    @Test
+    public void extractAndAddImageFeaturesFromWebsiteTest() throws Exception {
+        String imageSourceUrl = URLEncoder.encode("https://www.f1news.ru/interview/hamilton/140909.shtml", "UTF-8");
+        ImagingApi.createWebSiteImageFeatures(new CreateWebSiteImageFeaturesRequest(SearchContextId, imageSourceUrl, null, TestStorage));
+
+        waitSearchContextIdle();
+
+        String image_url = URLEncoder.encode("https://cdn.f1ne.ws/userfiles/hamilton/140909.jpg", "UTF-8");
+        ImageFeatures result = ImagingApi.getImageFeatures(new GetImageFeaturesRequest(SearchContextId, image_url, null, TestStorage));
+
         Assert.assertTrue(result.getFeatures().length > 0);
     }
 
