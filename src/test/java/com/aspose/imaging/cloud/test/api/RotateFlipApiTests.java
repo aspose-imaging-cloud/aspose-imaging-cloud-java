@@ -56,17 +56,17 @@ public class RotateFlipApiTests extends ApiTester {
     public static Iterable<Object[]> data() {
         if (isExtendedTests()) {
             return Arrays.asList(new Object[][] {
-                    { ".bmp", true, new String[] {} }, { ".bmp", false, new String[] {} },
-                    { ".dicom", true, new String[] {} }, { ".dicom", false, new String[] {} },
+                    { ".bmp", true, new String[] {null} }, { ".bmp", false, new String[] {null} },
+                    { ".dicom", true, new String[] {null} }, { ".dicom", false, new String[] {null} },
                     /* TODO: enable after IMAGINGCLOUD-51 is resolved
-                    { ".gif", true, new String[] {} }, { ".gif", false, new String[] {} },
+                    { ".gif", true, new String[] {null} }, { ".gif", false, new String[] {null} },
                     */
-                    { ".j2k", true, new String[] {} }, { ".j2k", false, new String[] {} },
-                    { ".jpg", true, new String[] {} }, { ".jpg", false, new String[] {} },
-                    { ".png", true, new String[] {} }, { ".png", false, new String[] {} },
-                    { ".psd", true, new String[] {} }, { ".psd", false, new String[] {} },
-                    { ".tiff", true, new String[] {} }, { ".tiff", false, new String[] {} },
-                    { ".webp", true, new String[] {} }, { ".webp", false, new String[] {} }
+                    { ".j2k", true, new String[] {null} }, { ".j2k", false, new String[] {null} },
+                    { ".jpg", true, new String[] {null} }, { ".jpg", false, new String[] {null} },
+                    { ".png", true, new String[] {null} }, { ".png", false, new String[] {null} },
+                    { ".psd", true, new String[] {null} }, { ".psd", false, new String[] {null} },
+                    { ".tiff", true, new String[] {null} }, { ".tiff", false, new String[] {null} },
+                    { ".webp", true, new String[] {null} }, { ".webp", false, new String[] {null} }
             });
         }
         else {
@@ -111,7 +111,7 @@ public class RotateFlipApiTests extends ApiTester {
         Collections.addAll(formatsToExport, this.BasicExportFormats);
         for (String additionalExportFormat : additionalExportFormats)
         {
-            if (additionalExportFormat != null && !additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat))
+            if (additionalExportFormat == null || (!additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat)))
             {
                 formatsToExport.add(additionalExportFormat);
             }
@@ -130,7 +130,7 @@ public class RotateFlipApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                rotateFlipImageRequest = new RotateFlipImageRequest(name, format, method, folder, storage);
+                rotateFlipImageRequest = new RotateFlipImageRequest(name, method, format, folder, storage);
                 
                 Method propertiesTester = RotateFlipApiTests.class.getDeclaredMethod("rotateFlipImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
@@ -169,7 +169,7 @@ public class RotateFlipApiTests extends ApiTester {
         Collections.addAll(formatsToExport, this.BasicExportFormats);
         for (String additionalExportFormat : additionalExportFormats)
         {
-            if (additionalExportFormat != null && !additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat))
+            if (additionalExportFormat == null || (!additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat)))
             {
                 formatsToExport.add(additionalExportFormat);
             }
@@ -188,7 +188,7 @@ public class RotateFlipApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                createRotateFlippedImageRequest = new CreateRotateFlippedImageRequest(imageData, format, method, outPath, storage);
+                createRotateFlippedImageRequest = new CreateRotateFlippedImageRequest(imageData, method, format, outPath, storage);
                 outName = name + "_rotateFlip." + format;
                 
                 Method propertiesTester = RotateFlipApiTests.class.getDeclaredMethod("createRotateFlippedImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);

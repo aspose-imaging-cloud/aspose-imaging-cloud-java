@@ -114,7 +114,7 @@ public class CropApiTests extends ApiTester {
         Collections.addAll(formatsToExport, this.BasicExportFormats);
         for (String additionalExportFormat : additionalExportFormats)
         {
-            if (!additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat))
+            if (additionalExportFormat == null || (!additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat)))
             {
                 formatsToExport.add(additionalExportFormat);
             }

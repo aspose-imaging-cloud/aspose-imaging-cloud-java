@@ -117,7 +117,7 @@ public class UpdateImageApiTests extends ApiTester {
         Collections.addAll(formatsToExport, this.BasicExportFormats);
         for (String additionalExportFormat : additionalExportFormats)
         {
-            if (!additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat))
+            if (additionalExportFormat == null || (!additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat)))
             {
                 formatsToExport.add(additionalExportFormat);
             }
@@ -182,7 +182,7 @@ public class UpdateImageApiTests extends ApiTester {
         Collections.addAll(formatsToExport, this.BasicExportFormats);
         for (String additionalExportFormat : additionalExportFormats)
         {
-            if (!additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat))
+            if (additionalExportFormat == null || (!additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat)))
             {
                 formatsToExport.add(additionalExportFormat);
             }

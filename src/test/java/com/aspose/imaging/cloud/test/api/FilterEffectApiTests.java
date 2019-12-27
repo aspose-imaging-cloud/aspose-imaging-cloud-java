@@ -145,7 +145,7 @@ public class FilterEffectApiTests extends ApiTester {
         ArrayList<String> formatsToExport = new ArrayList<String>();
         Collections.addAll(formatsToExport, this.BasicExportFormats);
         for (String additionalExportFormat : additionalExportFormats) {
-            if (additionalExportFormat != null && !additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat)) {
+            if (additionalExportFormat == null || (!additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat))) {
                 formatsToExport.add(additionalExportFormat);
             }
         }
@@ -159,7 +159,7 @@ public class FilterEffectApiTests extends ApiTester {
 
             for (Filter filter  : filters) {
                 for (String format : formatsToExport) {
-                    filterEffectImageRequest = new FilterEffectImageRequest(name, format, filter.filterType, filter.filterProperties, folder, storage);
+                    filterEffectImageRequest = new FilterEffectImageRequest(name,  filter.filterType, filter.filterProperties, format, folder, storage);
 
                     Method propertiesTester = FilterEffectApiTests.class.getDeclaredMethod("filterEffectPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                     propertiesTester.setAccessible(true);

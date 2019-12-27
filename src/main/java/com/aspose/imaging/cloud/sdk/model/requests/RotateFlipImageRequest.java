@@ -37,16 +37,16 @@ public class RotateFlipImageRequest
     /**
     * Initializes a new instance of the RotateFlipImageRequest class.   
     * @param name Filename of an image.
-    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param method RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public RotateFlipImageRequest(String name, String format, String method, String folder, String storage)             
+    public RotateFlipImageRequest(String name, String method, String format, String folder, String storage)             
     {
         this.name = name;
-        this.format = format;
         this.method = method;
+        this.format = format;
         this.folder = folder;
         this.storage = storage;
     }
@@ -57,14 +57,14 @@ public class RotateFlipImageRequest
     public String name;
 
     /**
-    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-    **/
-    public String format;
-
-    /**
     * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
     **/
     public String method;
+
+    /**
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+    **/
+    public String format;
 
     /**
     * Folder with image to process.
