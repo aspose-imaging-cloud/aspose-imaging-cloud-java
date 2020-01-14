@@ -1118,7 +1118,7 @@ DeskewImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Filename of an image. |
+ **name** | **String**| Image file name. |
  **resizeProportionally** | **Boolean**| Resize proportionally |
  **bkColor** | **String**| Background color | [optional]
  **folder** | **String**| Folder | [optional]
