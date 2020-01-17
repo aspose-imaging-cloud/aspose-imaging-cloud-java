@@ -36,7 +36,7 @@ public class DeskewImageRequest
 {
     /**
     * Initializes a new instance of the DeskewImageRequest class.   
-    * @param name Filename of an image.
+    * @param name Image file name.
     * @param resizeProportionally Resize proportionally
     * @param bkColor Background color
     * @param folder Folder
@@ -52,7 +52,7 @@ public class DeskewImageRequest
     }
         
     /**
-    * Filename of an image.
+    * Image file name.
     **/
     public String name;
 
