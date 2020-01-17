@@ -57,7 +57,7 @@ public class CropApiTests extends ApiTester {
         if (isExtendedTests()) {
             return Arrays.asList(new Object[][] {
                     { ".bmp", true, new String[] { null } }, { ".bmp", false, new String[] { null } },
-                    { ".dicom", true, new String[] {null} }, { ".dicom", false, new String[] {null} },
+                    { ".dicom", true, new String[] {} }, { ".dicom", false, new String[] {} },
                     /* TODO: enable after IMAGINGCLOUD-51 is resolved
                     { ".gif", true, new String[] {null} }, { ".gif", false, new String[] {null} },
                     */
