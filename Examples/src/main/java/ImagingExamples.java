@@ -212,7 +212,7 @@ public class ImagingExamples {
 
         if (errors.isEmpty()) return new ArgumentValues(appKey, appSid, baseUrl);
 
-        System.out.println("Failed to launch examples:" + System.lineSeparator() + String.join(System.lineSeparator(), errors));
+        System.out.println("Failed to launch examples:" + System.lineSeparator() + join(System.lineSeparator(), errors));
         System.exit(1);
         return null;
     }
@@ -288,5 +288,20 @@ public class ImagingExamples {
             }
         }
         Files.delete(path);
+    }
+
+    private static String join(String joinStr, List<String> strings) {
+        if (strings == null || strings.size() == 0) {
+            return "";
+        } else if (strings.size() == 1) {
+            return strings.get(0);
+        } else {
+            StringBuilder sb = new StringBuilder(strings.size() + strings.get(0).length());
+            sb.append(strings.get(0));
+            for (int i = 1; i < strings.size(); i++) {
+                sb.append(joinStr).append(strings.get(i));
+            }
+            return sb.toString();
+        }
     }
 }
