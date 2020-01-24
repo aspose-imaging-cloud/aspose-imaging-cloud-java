@@ -460,6 +460,48 @@ public class ImagingApi
     }
   
     /**
+     * Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] createDeskewedImage(CreateDeskewedImageRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createDeskewedImage");
+      }
+       // verify the required parameter 'request.resizeProportionally' is set
+      if (request.resizeProportionally== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.resizeProportionally' when calling createDeskewedImage");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/deskew";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "resizeProportionally", request.resizeProportionally);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
+    }
+  
+    /**
      * Create the folder
      * 
      * @param request Holds parameters for this request invocation.
@@ -1617,6 +1659,46 @@ public class ImagingApi
           null, 
           formParams);
           
+    }
+  
+    /**
+     * Deskew an existing image.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] deskewImage(DeskewImageRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.name' is set
+      if (request.name== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.name' when calling deskewImage");
+      }
+       // verify the required parameter 'request.resizeProportionally' is set
+      if (request.resizeProportionally== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.resizeProportionally' when calling deskewImage");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/deskew";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "resizeProportionally", request.resizeProportionally);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
     }
   
     /**
