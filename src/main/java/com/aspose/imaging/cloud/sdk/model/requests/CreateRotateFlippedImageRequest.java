@@ -37,16 +37,16 @@ public class CreateRotateFlippedImageRequest
     /**
     * Initializes a new instance of the CreateRotateFlippedImageRequest class.   
     * @param imageData Input image
-    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param method RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public CreateRotateFlippedImageRequest(byte[] imageData, String format, String method, String outPath, String storage)             
+    public CreateRotateFlippedImageRequest(byte[] imageData, String method, String format, String outPath, String storage)             
     {
         this.imageData = imageData;
-        this.format = format;
         this.method = method;
+        this.format = format;
         this.outPath = outPath;
         this.storage = storage;
     }
@@ -57,14 +57,14 @@ public class CreateRotateFlippedImageRequest
     public byte[] imageData;
 
     /**
-    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-    **/
-    public String format;
-
-    /**
     * RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
     **/
     public String method;
+
+    /**
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+    **/
+    public String format;
 
     /**
     * Path to updated file (if this is empty, response contains streamed image).

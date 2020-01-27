@@ -37,22 +37,22 @@ public class CreateCroppedImageRequest
     /**
     * Initializes a new instance of the CreateCroppedImageRequest class.   
     * @param imageData Input image
-    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param x X position of start point for cropping rectangle.
     * @param y Y position of start point for cropping rectangle.
     * @param width Width of cropping rectangle.
     * @param height Height of cropping rectangle.
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public CreateCroppedImageRequest(byte[] imageData, String format, Integer x, Integer y, Integer width, Integer height, String outPath, String storage)             
+    public CreateCroppedImageRequest(byte[] imageData, Integer x, Integer y, Integer width, Integer height, String format, String outPath, String storage)             
     {
         this.imageData = imageData;
-        this.format = format;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.format = format;
         this.outPath = outPath;
         this.storage = storage;
     }
@@ -61,11 +61,6 @@ public class CreateCroppedImageRequest
     * Input image
     **/
     public byte[] imageData;
-
-    /**
-    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-    **/
-    public String format;
 
     /**
     * X position of start point for cropping rectangle.
@@ -86,6 +81,11 @@ public class CreateCroppedImageRequest
     * Height of cropping rectangle.
     **/
     public Integer height;
+
+    /**
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+    **/
+    public String format;
 
     /**
     * Path to updated file (if this is empty, response contains streamed image).

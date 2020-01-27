@@ -37,22 +37,22 @@ public class CropImageRequest
     /**
     * Initializes a new instance of the CropImageRequest class.   
     * @param name Filename of an image.
-    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param x X position of start point for cropping rectangle.
     * @param y Y position of start point for cropping rectangle.
     * @param width Width of cropping rectangle
     * @param height Height of cropping rectangle.
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public CropImageRequest(String name, String format, Integer x, Integer y, Integer width, Integer height, String folder, String storage)             
+    public CropImageRequest(String name, Integer x, Integer y, Integer width, Integer height, String format, String folder, String storage)             
     {
         this.name = name;
-        this.format = format;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.format = format;
         this.folder = folder;
         this.storage = storage;
     }
@@ -61,11 +61,6 @@ public class CropImageRequest
     * Filename of an image.
     **/
     public String name;
-
-    /**
-    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-    **/
-    public String format;
 
     /**
     * X position of start point for cropping rectangle.
@@ -86,6 +81,11 @@ public class CropImageRequest
     * Height of cropping rectangle.
     **/
     public Integer height;
+
+    /**
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+    **/
+    public String format;
 
     /**
     * Folder with image to process.

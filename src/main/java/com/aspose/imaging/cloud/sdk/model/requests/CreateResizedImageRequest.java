@@ -37,18 +37,18 @@ public class CreateResizedImageRequest
     /**
     * Initializes a new instance of the CreateResizedImageRequest class.   
     * @param imageData Input image
-    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param newWidth New width.
     * @param newHeight New height.
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public CreateResizedImageRequest(byte[] imageData, String format, Integer newWidth, Integer newHeight, String outPath, String storage)             
+    public CreateResizedImageRequest(byte[] imageData, Integer newWidth, Integer newHeight, String format, String outPath, String storage)             
     {
         this.imageData = imageData;
-        this.format = format;
         this.newWidth = newWidth;
         this.newHeight = newHeight;
+        this.format = format;
         this.outPath = outPath;
         this.storage = storage;
     }
@@ -59,11 +59,6 @@ public class CreateResizedImageRequest
     public byte[] imageData;
 
     /**
-    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-    **/
-    public String format;
-
-    /**
     * New width.
     **/
     public Integer newWidth;
@@ -72,6 +67,11 @@ public class CreateResizedImageRequest
     * New height.
     **/
     public Integer newHeight;
+
+    /**
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+    **/
+    public String format;
 
     /**
     * Path to updated file (if this is empty, response contains streamed image).

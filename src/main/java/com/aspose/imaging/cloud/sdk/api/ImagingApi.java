@@ -411,10 +411,6 @@ public class ImagingApi
       if (request.imageData== null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createCroppedImage");
       }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling createCroppedImage");
-      }
        // verify the required parameter 'request.x' is set
       if (request.x== null) {
         throw new ApiException(400, "Missing the required parameter 'request.x' when calling createCroppedImage");
@@ -436,11 +432,11 @@ public class ImagingApi
       
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "x", request.x);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "y", request.y);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "width", request.width);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "height", request.height);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1200,10 +1196,6 @@ public class ImagingApi
       if (request.imageData== null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createResizedImage");
       }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling createResizedImage");
-      }
        // verify the required parameter 'request.newWidth' is set
       if (request.newWidth== null) {
         throw new ApiException(400, "Missing the required parameter 'request.newWidth' when calling createResizedImage");
@@ -1217,9 +1209,9 @@ public class ImagingApi
       
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1251,10 +1243,6 @@ public class ImagingApi
       if (request.imageData== null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createRotateFlippedImage");
       }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling createRotateFlippedImage");
-      }
        // verify the required parameter 'request.method' is set
       if (request.method== null) {
         throw new ApiException(400, "Missing the required parameter 'request.method' when calling createRotateFlippedImage");
@@ -1264,8 +1252,8 @@ public class ImagingApi
       
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "method", request.method);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1338,10 +1326,6 @@ public class ImagingApi
       if (request.imageData== null) {
         throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createUpdatedImage");
       }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling createUpdatedImage");
-      }
        // verify the required parameter 'request.newWidth' is set
       if (request.newWidth== null) {
         throw new ApiException(400, "Missing the required parameter 'request.newWidth' when calling createUpdatedImage");
@@ -1375,7 +1359,6 @@ public class ImagingApi
       
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "x", request.x);
@@ -1383,6 +1366,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectWidth", request.rectWidth);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1450,10 +1434,6 @@ public class ImagingApi
       if (request.name== null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling cropImage");
       }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling cropImage");
-      }
        // verify the required parameter 'request.x' is set
       if (request.x== null) {
         throw new ApiException(400, "Missing the required parameter 'request.x' when calling cropImage");
@@ -1476,11 +1456,11 @@ public class ImagingApi
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
       
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "x", request.x);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "y", request.y);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "width", request.width);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "height", request.height);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1878,10 +1858,6 @@ public class ImagingApi
       if (request.name== null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling filterEffectImage");
       }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling filterEffectImage");
-      }
        // verify the required parameter 'request.filterType' is set
       if (request.filterType== null) {
         throw new ApiException(400, "Missing the required parameter 'request.filterType' when calling filterEffectImage");
@@ -1896,8 +1872,8 @@ public class ImagingApi
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
       
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "filterType", request.filterType);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -3025,10 +3001,6 @@ public class ImagingApi
       if (request.name== null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling resizeImage");
       }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling resizeImage");
-      }
        // verify the required parameter 'request.newWidth' is set
       if (request.newWidth== null) {
         throw new ApiException(400, "Missing the required parameter 'request.newWidth' when calling resizeImage");
@@ -3043,9 +3015,9 @@ public class ImagingApi
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
       
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -3074,10 +3046,6 @@ public class ImagingApi
       if (request.name== null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling rotateFlipImage");
       }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling rotateFlipImage");
-      }
        // verify the required parameter 'request.method' is set
       if (request.method== null) {
         throw new ApiException(400, "Missing the required parameter 'request.method' when calling rotateFlipImage");
@@ -3088,8 +3056,8 @@ public class ImagingApi
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
       
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "method", request.method);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -3194,10 +3162,6 @@ public class ImagingApi
       if (request.name== null) {
         throw new ApiException(400, "Missing the required parameter 'request.name' when calling updateImage");
       }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling updateImage");
-      }
        // verify the required parameter 'request.newWidth' is set
       if (request.newWidth== null) {
         throw new ApiException(400, "Missing the required parameter 'request.newWidth' when calling updateImage");
@@ -3232,7 +3196,6 @@ public class ImagingApi
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
       
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "x", request.x);
@@ -3240,6 +3203,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectWidth", request.rectWidth);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
