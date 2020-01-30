@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="CreateResizedImageRequest.java">
+* <copyright company="Aspose" file="DeskewImageRequest.java">
 *   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -30,56 +30,49 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 import com.aspose.imaging.cloud.sdk.model.*;
 
 /**
-* Class that holds parameters for CreateResizedImage request invocation.
+* Class that holds parameters for DeskewImage request invocation.
 **/   
-public class CreateResizedImageRequest
+public class DeskewImageRequest
 {
     /**
-    * Initializes a new instance of the CreateResizedImageRequest class.   
-    * @param imageData Input image
-    * @param newWidth New width.
-    * @param newHeight New height.
-    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
-    * @param storage Your Aspose Cloud Storage name.
+    * Initializes a new instance of the DeskewImageRequest class.   
+    * @param name Image file name.
+    * @param resizeProportionally Resize proportionally
+    * @param bkColor Background color
+    * @param folder Folder
+    * @param storage Storage
     **/
-    public CreateResizedImageRequest(byte[] imageData, Integer newWidth, Integer newHeight, String format, String outPath, String storage)             
+    public DeskewImageRequest(String name, Boolean resizeProportionally, String bkColor, String folder, String storage)             
     {
-        this.imageData = imageData;
-        this.newWidth = newWidth;
-        this.newHeight = newHeight;
-        this.format = format;
-        this.outPath = outPath;
+        this.name = name;
+        this.resizeProportionally = resizeProportionally;
+        this.bkColor = bkColor;
+        this.folder = folder;
         this.storage = storage;
     }
         
     /**
-    * Input image
+    * Image file name.
     **/
-    public byte[] imageData;
+    public String name;
 
     /**
-    * New width.
+    * Resize proportionally
     **/
-    public Integer newWidth;
+    public Boolean resizeProportionally;
 
     /**
-    * New height.
+    * Background color
     **/
-    public Integer newHeight;
+    public String bkColor;
 
     /**
-    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+    * Folder
     **/
-    public String format;
+    public String folder;
 
     /**
-    * Path to updated file (if this is empty, response contains streamed image).
-    **/
-    public String outPath;
-
-    /**
-    * Your Aspose Cloud Storage name.
+    * Storage
     **/
     public String storage;
 }

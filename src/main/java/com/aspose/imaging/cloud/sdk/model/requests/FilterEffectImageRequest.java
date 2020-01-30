@@ -37,18 +37,18 @@ public class FilterEffectImageRequest
     /**
     * Initializes a new instance of the FilterEffectImageRequest class.   
     * @param name Filename of an image.
-    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param filterType Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing).
     * @param filterProperties Filter properties.
+    * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public FilterEffectImageRequest(String name, String format, String filterType, FilterPropertiesBase filterProperties, String folder, String storage)             
+    public FilterEffectImageRequest(String name, String filterType, FilterPropertiesBase filterProperties, String format, String folder, String storage)             
     {
         this.name = name;
-        this.format = format;
         this.filterType = filterType;
         this.filterProperties = filterProperties;
+        this.format = format;
         this.folder = folder;
         this.storage = storage;
     }
@@ -59,11 +59,6 @@ public class FilterEffectImageRequest
     public String name;
 
     /**
-    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-    **/
-    public String format;
-
-    /**
     * Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing).
     **/
     public String filterType;
@@ -72,6 +67,11 @@ public class FilterEffectImageRequest
     * Filter properties.
     **/
     public FilterPropertiesBase filterProperties;
+
+    /**
+    * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+    **/
+    public String format;
 
     /**
     * Folder with image to process.
