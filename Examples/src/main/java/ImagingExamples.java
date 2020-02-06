@@ -188,7 +188,7 @@ public class ImagingExamples {
             // Find Similar Images
             FindSimilarImages findSimilarImages = new FindSimilarImages(imagingApi);
             findSimilarImages.PrepareSearchContext();
-            findSimilarImages.FindSimilarImages();
+            findSimilarImages.FindImagesSimilar();
             findSimilarImages.FindImagesByTag();
             findSimilarImages.DeleteSearchContext();
         }

@@ -84,7 +84,7 @@ public class FindSimilarImages extends ImagingAiBase {
      *
      * @throws Exception
      */
-    public void FindSimilarImages() throws Exception {
+    public void FindImagesSimilar() throws Exception {
         System.out.println("Finds the similar images");
 
         String imageToFind = "4.jpg";
