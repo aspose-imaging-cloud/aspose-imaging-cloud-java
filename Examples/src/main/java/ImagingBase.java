@@ -41,17 +41,15 @@ import java.nio.file.Paths;
  */
 public abstract class ImagingBase {
     /**
-     * The example images folder path.
-     */
-    protected final static String ExampleImagesFolder = Paths.get((Paths.get(System.getProperty("user.dir"))
-            .getParent().toString()), "Examples", "Images").toString();
-
-    /**
      * The output folder path.
      */
     public final static String OutputFolder = Paths.get((Paths.get(System.getProperty("user.dir"))
             .getParent().toString()), "Examples", "Output").toString();
-
+    /**
+     * The example images folder path.
+     */
+    protected final static String ExampleImagesFolder = Paths.get((Paths.get(System.getProperty("user.dir"))
+            .getParent().toString()), "Examples", "Images").toString();
     /**
      * The cloud path.
      */
@@ -67,6 +65,16 @@ public abstract class ImagingBase {
      */
     public ImagingBase(ImagingApi imagingApi) {
         ImagingApi = imagingApi;
+    }
+
+    /**
+     * Prints the example header.
+     *
+     * @param header The example header.
+     */
+    protected static void printHeader(String header) {
+        System.out.println(header);
+        System.out.println();
     }
 
     /**
@@ -174,15 +182,5 @@ public abstract class ImagingBase {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Prints the example header.
-     *
-     * @param header The example header.
-     */
-    protected static void printHeader(String header) {
-        System.out.println(header);
-        System.out.println();
     }
 }

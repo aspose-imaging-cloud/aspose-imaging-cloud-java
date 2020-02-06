@@ -58,6 +58,7 @@ public class UpdateBmpImage extends ImagingBase {
 
     /**
      * Update parameters of a BMP image. The image is saved in the cloud.
+     *
      * @throws Exception
      */
     public void ModifyBmpFromStorage() throws Exception {
@@ -80,8 +81,8 @@ public class UpdateBmpImage extends ImagingBase {
         System.out.println(String.format("Call ModifyBmp with params: bits per pixel: %s, horizontal resolution: %s, vertical resolution: %s", bitsPerPixel, horizontalResolution, verticalResolution));
 
         byte[] updatedImage = ImagingApi.modifyBmp(request);
-            // Save updated image to local storage
-            saveUpdatedSampleImageToOutput(updatedImage, false, null);
+        // Save updated image to local storage
+        saveUpdatedSampleImageToOutput(updatedImage, false, null);
 
         System.out.println();
     }
@@ -116,25 +117,26 @@ public class UpdateBmpImage extends ImagingBase {
 
     /**
      * Update parameters of a BMP image. Image data is passed in a request stream.
+     *
      * @throws Exception
      */
     public void CreateModifiedBmpFromRequestBody() throws Exception {
         System.out.println("Update parameters of a BMP image from request body");
 
-            Integer bitsPerPixel = 32;
-            Integer horizontalResolution = 300;
-            Integer verticalResolution = 300;
-            Boolean fromScratch = null;
-            String outPath = null; // Path to updated file (if this is empty, response contains streamed image)
-            String storage = null; // We are using default Cloud Storage
+        Integer bitsPerPixel = 32;
+        Integer horizontalResolution = 300;
+        Integer verticalResolution = 300;
+        Boolean fromScratch = null;
+        String outPath = null; // Path to updated file (if this is empty, response contains streamed image)
+        String storage = null; // We are using default Cloud Storage
 
-            byte[] inputStream = Files.readAllBytes(Paths.get(ExampleImagesFolder, getSampleImageFileName()));
+        byte[] inputStream = Files.readAllBytes(Paths.get(ExampleImagesFolder, getSampleImageFileName()));
         CreateModifiedBmpRequest request = new CreateModifiedBmpRequest(inputStream, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
 
-            System.out.println(String.format("Call CreateModifiedBmp with params: bits per pixel: %s, horizontal resolution:%s, vertical resolution: %s", bitsPerPixel, horizontalResolution, verticalResolution));
+        System.out.println(String.format("Call CreateModifiedBmp with params: bits per pixel: %s, horizontal resolution:%s, vertical resolution: %s", bitsPerPixel, horizontalResolution, verticalResolution));
 
-            byte[] updatedImage = ImagingApi.createModifiedBmp(request);
-            saveUpdatedSampleImageToOutput(updatedImage, true, null);
+        byte[] updatedImage = ImagingApi.createModifiedBmp(request);
+        saveUpdatedSampleImageToOutput(updatedImage, true, null);
 
         System.out.println();
     }

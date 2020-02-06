@@ -41,6 +41,7 @@ import java.util.List;
 public class ImagingExamples {
     /**
      * Main function.
+     *
      * @param args --appKey and --appSid are required arguments, --baseUrl is optional.
      */
     public static void main(String[] args) {
@@ -191,15 +192,14 @@ public class ImagingExamples {
             findSimilarImages.FindImagesSimilar();
             findSimilarImages.FindImagesByTag();
             findSimilarImages.DeleteSearchContext();
-        }
-        catch (Exception exception)
-        {
+        } catch (Exception exception) {
             System.out.println("Something goes wrong: " + exception);
         }
     }
 
     /**
      * Process CLI arguments, exit on invalid input.
+     *
      * @param args CLI arguments.
      * @return Argument values.
      */
@@ -219,10 +219,11 @@ public class ImagingExamples {
 
     /**
      * Retrieves argument value or writes error message.
-     * @param args CLI arguments.
-     * @param key Argument key.
+     *
+     * @param args        CLI arguments.
+     * @param key         Argument key.
      * @param description Argument description (for error message).
-     * @param errors Errors to append to.
+     * @param errors      Errors to append to.
      * @return Argument value, if found.
      */
     private static String processArgument(String[] args, String key, String description, List<String> errors) {
@@ -231,25 +232,24 @@ public class ImagingExamples {
 
     /**
      * Retrieves argument value or writes error message.
-     * @param args CLI arguments.
-     * @param key Argument key.
-     * @param description Argument description (for error message).
-     * @param errors Errors to append to.
+     *
+     * @param args         CLI arguments.
+     * @param key          Argument key.
+     * @param description  Argument description (for error message).
+     * @param errors       Errors to append to.
      * @param defaultValue Default value for optional parameter
      * @return Argument value, if found.
      */
     private static String processArgument(String[] args, String key, String description, List<String> errors, String defaultValue) {
         String argumentValue = null;
-        for (int i = 0; i < args.length; i++)     {
+        for (int i = 0; i < args.length; i++) {
             String arg = args[i];
             if (!arg.startsWith(key)) continue;
 
-            if (arg.contains("="))
-            {
+            if (arg.contains("=")) {
                 argumentValue = arg.substring(arg.indexOf("=") + 1);
-            }
-            else {
-               argumentValue = args[i+1];
+            } else {
+                argumentValue = args[i + 1];
             }
             break;
         }
@@ -262,21 +262,6 @@ public class ImagingExamples {
             argumentValue = defaultValue;
 
         return argumentValue;
-    }
-
-    private static final class ArgumentValues
-    {
-        public final String AppKey;
-
-        public final String AppSid;
-
-        public final String BaseUrl;
-
-        public ArgumentValues(String appKey, String appSid, String baseUrl) {
-            AppKey = appKey;
-            AppSid = appSid;
-            BaseUrl = baseUrl;
-        }
     }
 
     private static void deleteDirectoryRecursively(Path path) throws IOException {
@@ -302,6 +287,20 @@ public class ImagingExamples {
                 sb.append(joinStr).append(strings.get(i));
             }
             return sb.toString();
+        }
+    }
+
+    private static final class ArgumentValues {
+        public final String AppKey;
+
+        public final String AppSid;
+
+        public final String BaseUrl;
+
+        public ArgumentValues(String appKey, String appSid, String baseUrl) {
+            AppKey = appKey;
+            AppSid = appSid;
+            BaseUrl = baseUrl;
         }
     }
 }
