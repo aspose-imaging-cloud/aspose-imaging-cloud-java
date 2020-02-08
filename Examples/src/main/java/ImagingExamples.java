@@ -65,6 +65,12 @@ public class ImagingExamples {
             cropImage.CropImageAndUploadToStorage();
             cropImage.CreateCroppedImageFromRequestBody();
 
+            // Deskew an existing image
+            DeskewImage deskewImage = new DeskewImage(imagingApi);
+            deskewImage.DeskewImageFromStorage();
+            deskewImage.DeskewImageAndUploadToStorage();
+            deskewImage.CreateDeskewedImageFromRequestBody();
+
             // Process existing EMF imaging using given parameters
             UpdateEmfImage updateEmfImage = new UpdateEmfImage(imagingApi);
             updateEmfImage.ModifyEmfFromStorage();
