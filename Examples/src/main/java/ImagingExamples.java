@@ -194,7 +194,9 @@ public class ImagingExamples {
             findSimilarImages.DeleteSearchContext();
         } catch (Exception exception) {
             System.out.println("Something goes wrong: " + exception);
+            System.exit(1);
         }
+        System.exit(0);
     }
 
     /**
