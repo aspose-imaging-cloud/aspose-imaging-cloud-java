@@ -28,6 +28,7 @@
 import AI.CompareImages;
 import AI.FindDuplicateImages;
 import AI.FindSimilarImages;
+import AI.SearchImages;
 import com.aspose.imaging.cloud.sdk.api.ImagingApi;
 
 import java.io.IOException;
@@ -192,6 +193,12 @@ public class ImagingExamples {
             findSimilarImages.FindImagesSimilar();
             findSimilarImages.FindImagesByTag();
             findSimilarImages.DeleteSearchContext();
+
+            // Search Images
+            SearchImages searchImages = new SearchImages(imagingApi);
+            searchImages.PrepareSearchContext();
+            searchImages.SearchImageFromWebSource();
+            searchImages.DeleteSearchContext();
         } catch (Exception exception) {
             System.out.println("Something goes wrong: " + exception);
             System.exit(1);
