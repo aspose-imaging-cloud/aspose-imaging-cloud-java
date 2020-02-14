@@ -264,32 +264,6 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
-<a name="createGrayscaledImage"></a>
-## **createGrayscaledImage**
-> byte[] createGrayscaledImage(CreateGrayscaledImageRequest request)
-
-Grayscales an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-
-### **CreateGrayscaledImageRequest** Parameters
-```java
-CreateGrayscaledImageRequest(
-    byte[] imageData, 
-    String outPath, 
-    String storage)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **imageData** | **byte[]**| Input image |
- **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image) | [optional]
- **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
-
-### Return type
-
-**byte[]**
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
 <a name="createImageFeatures"></a>
 ## **createImageFeatures**
 > void createImageFeatures(CreateImageFeaturesRequest request)
@@ -1626,32 +1600,6 @@ Name | Type | Description  | Notes
  **searchContextId** | **String**| Search context identifier. |
  **imageId** | **String**| Image identifier. |
  **folder** | **String**| Folder. | [optional]
- **storage** | **String**| Storage | [optional]
-
-### Return type
-
-**byte[]**
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
-<a name="grayscaleImage"></a>
-## **grayscaleImage**
-> byte[] grayscaleImage(GrayscaleImageRequest request)
-
-Grayscale an existing image.
-
-### **GrayscaleImageRequest** Parameters
-```java
-GrayscaleImageRequest(
-    String name, 
-    String folder, 
-    String storage)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| Image file name. |
- **folder** | **String**| Folder | [optional]
  **storage** | **String**| Storage | [optional]
 
 ### Return type
