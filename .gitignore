@@ -24,7 +24,3 @@ build
 .settings
 .classpath
 .project
-
-.idea
-Examples/.idea
-Examples/Output
