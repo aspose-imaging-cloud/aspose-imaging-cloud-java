@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="GifApiTests.java">
+ * <copyright company="Aspose" file="GrayscaleApiTests.java">
  *   Copyright (c) 2018-2019 Aspose Pty Ltd.
  * </copyright>
  * <summary>
@@ -26,185 +26,182 @@
  */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.model.requests.*;
-import com.aspose.imaging.cloud.sdk.stablemodel.*;
+import com.aspose.imaging.cloud.sdk.model.StorageFile;
+import com.aspose.imaging.cloud.sdk.model.requests.CreateGrayscaledImageRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.GrayscaleImageRequest;
+import com.aspose.imaging.cloud.sdk.stablemodel.ImagingResponse;
 import com.aspose.imaging.cloud.test.base.ApiTester;
-
-import org.junit.Test;
 import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+
 import static org.junit.runners.Parameterized.Parameters;
 
-import java.lang.Iterable;
-import java.util.Arrays;
-import java.lang.reflect.Method;
-
 /**
- * Class for testing GIF-related API calls
+ * Class for testing Grayscale-related API calls
  */
 @RunWith(Parameterized.class)
-public class GifApiTests extends ApiTester {
+public class GrayscaleApiTests extends ApiTester {
 
-    private ModifyGifRequest modifyGifRequest;
-    private CreateModifiedGifRequest createModifiedGifRequest;
+    private GrayscaleImageRequest grayscaleImageRequest;
+    private CreateGrayscaledImageRequest createGrayscaledImageRequest;
 
     @Parameters
-    public static Iterable<Object> data() {
-        return Arrays.asList(new Object[] { true, false });
+    public static Iterable<Object[]> data() {
+        return Arrays.asList(new Object[][] {
+                { ".jpg", true }, { ".jpg", false }
+        });
     }
 
+    private String formatExtension;
     private Boolean saveResultToStorage;
 
-    public GifApiTests(Boolean saveResult)
+    public GrayscaleApiTests(String extension, Boolean saveResult)
     {
+        this.formatExtension = extension;
         this.saveResultToStorage = saveResult;
     }
 
     /**
-     * Test operation: Update parameters of existing GIF image.
+     * Test operation: Grayscale an existing image.
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-    public void modifyGifTest() throws Exception {
+    public void grayscalemageTest() throws Exception {
 
         if (saveResultToStorage)
         {
             return;
         }
 
-        String name = "test.gif";
-        Integer backgroundColorIndex = 5;
-        Integer colorResolution = 4;
-        Boolean hasTrailer = true;
-        Boolean interlaced = false;
-        Boolean isPaletteSorted = true;
-        Integer pixelAspectRatio = 4;
-        Boolean fromScratch = null;
+        String name = null;
         String folder = getTempFolder();
         String storage = TestStorage;
-        modifyGifRequest = new ModifyGifRequest(name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted,
-                pixelAspectRatio, fromScratch, folder, storage);
 
-        Method propertiesTester = GifApiTests.class.getDeclaredMethod("modifyGifPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-        propertiesTester.setAccessible(true);
-        Method requestInvoker = GifApiTests.class.getDeclaredMethod("modifyGifGetRequestInvoker", String.class);
-        requestInvoker.setAccessible(true);
-        this.testGetRequest(
-                "modifyGifTest; save result to storage: " + saveResultToStorage,
-                String.format("Input image: %s; Back color index: %s; Color resolution: %s; Has trailer: %s; Interlaced: %s; "
-                                + "Is palette sorted: %s; Pixel aspect ratio: %s",
-                        name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted, pixelAspectRatio),
-                name,
-                requestInvoker,
-                propertiesTester,
-                folder,
-                storage);
+        for (StorageFile inputFile : InputTestFiles)
+        {
+            if (inputFile.getName().endsWith(formatExtension))
+            {
+                name = inputFile.getName();
+            }
+            else
+            {
+                continue;
+            }
+
+            grayscaleImageRequest = new GrayscaleImageRequest(name, folder, storage);
+
+            Method propertiesTester = GrayscaleApiTests.class.getDeclaredMethod("grayscaleImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+            propertiesTester.setAccessible(true);
+            Method requestInvoker = GrayscaleApiTests.class.getDeclaredMethod("grayscaleImageGetRequestInvoker", String.class);
+            requestInvoker.setAccessible(true);
+            this.testGetRequest(
+                    "grayscaleImageTest",
+                    String.format("Input image: %s; Output format: %s;",
+                            name, formatExtension),
+                    name,
+                    requestInvoker,
+                    propertiesTester,
+                    folder,
+                    storage);
+        }
     }
 
     /**
-     * Test operation: Update parameters of GIF image. Image is passed in a request stream.
+     * Test operation: Grayscale an image. Image is passed in a request stream.
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-    public void createModifiedGifTest() throws Exception {
+    public void createGrayscaledImageTest() throws Exception {
         byte[] imageData = null;
-        Integer backgroundColorIndex = 5;
-        Integer colorResolution = 4;
-        Boolean hasTrailer = true;
-        Boolean interlaced = false;
-        Boolean isPaletteSorted = true;
-        Integer pixelAspectRatio = 4;
-        Boolean fromScratch = null;
+        String name = null;
         String outPath = null;
-        String storage = TestStorage;
         String folder = getTempFolder();
-        String name = "test.gif";
-        String outName = name + "_specific." + "gif";
-        createModifiedGifRequest = new CreateModifiedGifRequest(imageData, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted,
-                pixelAspectRatio, fromScratch, outPath, storage);
+        String storage = TestStorage;
+        String outName = null;
 
-        Method propertiesTester = GifApiTests.class.getDeclaredMethod("createModifiedGifPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
-        propertiesTester.setAccessible(true);
-        Method requestInvoker = GifApiTests.class.getDeclaredMethod("createModifiedGifPostRequestInvoker", byte[].class, String.class);
-        requestInvoker.setAccessible(true);
-        this.testPostRequest(
-                "createModifiedGifTest; save result to storage: " + saveResultToStorage,
-                saveResultToStorage,
-                String.format("Input image: %s; Back color index: %s; Color resolution: %s; Has trailer: %s; Interlaced: %s; "
-                                + "Is palette sorted: %s; Pixel aspect ratio: %s",
-                        name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted, pixelAspectRatio),
-                name,
-                outName,
-                requestInvoker,
-                propertiesTester,
-                folder,
-                storage);
+        for (StorageFile inputFile : InputTestFiles) {
+            if (inputFile.getName().endsWith(formatExtension)) {
+                name = inputFile.getName();
+            } else {
+                continue;
+            }
+
+            createGrayscaledImageRequest = new CreateGrayscaledImageRequest(imageData, outPath, storage);
+            outName = name + "_grayscale" + formatExtension;
+
+            Method propertiesTester = GrayscaleApiTests.class.getDeclaredMethod("createGrayscaledImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+            propertiesTester.setAccessible(true);
+            Method requestInvoker = GrayscaleApiTests.class.getDeclaredMethod("createGrayscaledImagePostRequestInvoker", byte[].class, String.class);
+            requestInvoker.setAccessible(true);
+            this.testPostRequest(
+                    "createGrayscaledImageTest; save result to storage: " + saveResultToStorage,
+                    saveResultToStorage,
+                    String.format("Input image: %s; Output format: %s;",
+                            name, formatExtension),
+                    name,
+                    outName,
+                    requestInvoker,
+                    propertiesTester,
+                    folder,
+                    storage);
+        }
     }
 
     /**
-     * Invokes GET request for modifyGif operation. Used indirectly by method reference.
+     * Invokes GET request for GrayscaleImage operation. Used indirectly by method reference.
      * @param name Image file name
      * @return API response
      * @throws Exception
      */
-    private byte[] modifyGifGetRequestInvoker(String name) throws Exception
+    private byte[] grayscaleImageGetRequestInvoker(String name) throws Exception
     {
-        modifyGifRequest.name = name;
-        return ImagingApi.modifyGif(modifyGifRequest);
+        grayscaleImageRequest.name = name;
+        return ImagingApi.grayscaleImage(grayscaleImageRequest);
     }
 
     /**
-     * Invokes POST request for createModifiedGif operation. Used indirectly by method reference.
+     * Invokes POST request for createGrayscaledImage operation. Used indirectly by method reference.
      * @param imageData Image data
      * @param outPath Out path
      * @return API response
      * @throws Exception
      */
-    private byte[] createModifiedGifPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createGrayscaledImagePostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        createModifiedGifRequest.imageData = imageData;
-        createModifiedGifRequest.outPath = outPath;
-        return ImagingApi.createModifiedGif(createModifiedGifRequest);
+        createGrayscaledImageRequest.imageData = imageData;
+        createGrayscaledImageRequest.outPath = outPath;
+        return ImagingApi.createGrayscaledImage(createGrayscaledImageRequest);
     }
 
     /**
-     * Tests properties for modifyGif operation. Used indirectly by method reference.
+     * Tests properties for grayscaleImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void modifyGifPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void grayscaleImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
-        Assert.assertNotNull(resultProperties.getGifProperties());
-
-        //Assert.assertEquals(hasTrailer, outProperties.getGifProperties().getHasTrailer());
-        Assert.assertEquals(modifyGifRequest.pixelAspectRatio, resultProperties.getGifProperties().getPixelAspectRatio());
-
-        Assert.assertNotNull(originalProperties.getGifProperties());
-        Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
-        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
+        Assert.assertNotNull(resultData);
+        Assert.assertTrue(resultData.length > 0);
     }
 
     /**
-     * Tests properties for createModifiedGif operation. Used indirectly by method reference.
+     * Tests properties for createGrayscaledImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void createModifiedGifPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createGrayscaledImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
-        Assert.assertNotNull(resultProperties.getGifProperties());
-
-        //Assert.assertEquals(hasTrailer, outProperties.getGifProperties().getHasTrailer());
-        Assert.assertEquals(createModifiedGifRequest.pixelAspectRatio, resultProperties.getGifProperties().getPixelAspectRatio());
-
-        Assert.assertNotNull(originalProperties.getGifProperties());
-        Assert.assertEquals(originalProperties.getWidth(), resultProperties.getWidth());
-        Assert.assertEquals(originalProperties.getHeight(), resultProperties.getHeight());
+        Assert.assertEquals(originalProperties.getBitsPerPixel(), resultProperties.getBitsPerPixel());
     }
 }
