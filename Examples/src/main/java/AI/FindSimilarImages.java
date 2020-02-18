@@ -29,11 +29,12 @@ package AI;
 
 import com.aspose.imaging.cloud.sdk.model.SearchResult;
 import com.aspose.imaging.cloud.sdk.model.SearchResultsSet;
-import com.aspose.imaging.cloud.sdk.model.requests.CreateImageTagRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.FindImagesByTagsRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.FindSimilarImagesRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.google.gson.Gson;
 
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -116,7 +117,7 @@ public class FindSimilarImages extends ImagingAiBase {
         String tagName = "ImageTag";
         Double similarityThreshold = 60.0;
         Integer maxCount = 5;
-        String folder = null; // Path to input files
+        String folder = CloudPath; // Path to input files
         String storage = null; // We are using default Cloud Storage
 
         byte[] inputStream = Files.readAllBytes(Paths.get(ExampleImagesFolder, fileName));
@@ -141,5 +142,55 @@ public class FindSimilarImages extends ImagingAiBase {
         }
 
         System.out.println();
+    }
+
+    /**
+     * Finds the similar images rom the URL source.
+     *
+     * @throws Exception
+     */
+    public void FindSimilarImagesFromUrl() throws Exception {
+        System.out.println("Finds similar images from URL:");
+
+        Double similarityThreshold = 30.0;
+        Integer maxCount = 5;
+        String folder = CloudPath; // Path to input files
+        String storage = null; // We are using default Cloud Storage
+
+        String imageSourceUrl = URLEncoder.encode("https://www.f1news.ru/interview/hamilton/140909.shtml", "UTF-8");
+
+        // Add images from the website to the search context
+        ImagingApi.createWebSiteImageFeatures(new CreateWebSiteImageFeaturesRequest(SearchContextId, imageSourceUrl, folder, storage));
+
+        WaitIdle(SearchContextId);
+
+        // Upload a sample file from that website
+        // It will be resized to demonstrate search capabilities
+        String imageName = CloudPath + "/" + "ReverseSearch.jpg";
+        CreateSampleFile("https://cdn.f1ne.ws/userfiles/hamilton/140909.jpg", imageName, storage);
+
+        // Find similar images in the search context
+        SearchResultsSet findResponse = ImagingApi.findSimilarImages(new FindSimilarImagesRequest(SearchContextId, similarityThreshold, maxCount, null, imageName, folder, storage));
+
+        System.out.println("Similar images found: " + findResponse.getResults().size());
+    }
+
+    /**
+     * Creates a sample file int he cloud; download file from the url; resizes it and upload to cloud.
+     *
+     * @param url     The file url.
+     * @param path    The path in the cloud.
+     * @param storage The storage name.
+     * @throws Exception
+     */
+    private void CreateSampleFile(String url, String path, String storage) throws Exception {
+        InputStream inputStream = new URL(url).openStream();
+        byte[] imageData = new byte[inputStream.available()];
+        inputStream.read(imageData);
+
+        byte[] rotatedImage = ImagingApi.createResizedImage(new CreateResizedImageRequest(imageData, 600, 400, "jpg", null, storage));
+
+        UploadFileRequest uploadFileRequest = new UploadFileRequest(path, rotatedImage, storage);
+        ImagingApi.uploadFile(uploadFileRequest);
     }
 }

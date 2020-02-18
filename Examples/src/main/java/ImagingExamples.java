@@ -192,6 +192,7 @@ public class ImagingExamples {
             findSimilarImages.PrepareSearchContext();
             findSimilarImages.FindImagesSimilar();
             findSimilarImages.FindImagesByTag();
+            findSimilarImages.FindSimilarImagesFromUrl();
             findSimilarImages.DeleteSearchContext();
 
             // Search Images
