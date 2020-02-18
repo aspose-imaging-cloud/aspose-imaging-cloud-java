@@ -74,7 +74,7 @@ public class ResizeImage extends ImagingBase {
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
-        ResizeImageRequest resizeImageRequest = new ResizeImageRequest(getSampleImageFileName(), format, newWidth, newHeight, folder, storage);
+        ResizeImageRequest resizeImageRequest = new ResizeImageRequest(getSampleImageFileName(), newWidth, newHeight, format, folder, storage);
 
         System.out.println(String.format("Call ResizeImage with params: new width: %s, new height: %s, format: %s", newWidth, newHeight, format));
 
@@ -104,7 +104,7 @@ public class ResizeImage extends ImagingBase {
         String storage = null; // We are using default Cloud Storage
 
         ResizeImageRequest resizeImageRequest = new ResizeImageRequest(
-                getSampleImageFileName(), format, newWidth, newHeight, folder, storage);
+                getSampleImageFileName(), newWidth, newHeight, format, folder, storage);
 
         System.out.println(String.format("Call ResizeImage with params: new width: %s, new height: %s, format: %s", newWidth, newHeight, format));
 
@@ -132,7 +132,7 @@ public class ResizeImage extends ImagingBase {
 
         byte[] inputStream = Files.readAllBytes(Paths.get(ExampleImagesFolder, getSampleImageFileName()));
         CreateResizedImageRequest createResizedImageRequest = new CreateResizedImageRequest(
-                inputStream, format, newWidth, newHeight, outPath, storage);
+                inputStream, newWidth, newHeight, format, outPath, storage);
 
         System.out.println(String.format("Call CreateResizedImageRequest with params: new width: %s, new height: %s, format: %s", newWidth, newHeight, format));
 

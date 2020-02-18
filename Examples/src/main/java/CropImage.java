@@ -75,7 +75,7 @@ public class CropImage extends ImagingBase {
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
-        CropImageRequest request = new CropImageRequest(getSampleImageFileName(), format, x, y, width, height, folder, storage);
+        CropImageRequest request = new CropImageRequest(getSampleImageFileName(), x, y, width, height, format, folder, storage);
 
         System.out.println(String.format("Call CropImage with params: x: %s, y: %s, width: %s, height: %s", x, y, width, height));
 
@@ -105,7 +105,7 @@ public class CropImage extends ImagingBase {
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
-        CropImageRequest request = new CropImageRequest(getSampleImageFileName(), format, x, y, width, height, folder, storage);
+        CropImageRequest request = new CropImageRequest(getSampleImageFileName(), x, y, width, height, format, folder, storage);
 
         System.out.println(String.format("Call CropImage with params: x: %s, y: %s, width: %s, height: %s", x, y, width, height));
 
@@ -134,7 +134,7 @@ public class CropImage extends ImagingBase {
         String outPath = null; // Path to updated file (if this is empty, response contains streamed image)
 
         byte[] inputStream = Files.readAllBytes(Paths.get(ExampleImagesFolder, getSampleImageFileName()));
-        CreateCroppedImageRequest request = new CreateCroppedImageRequest(inputStream, format, x, y, width, height, outPath, storage);
+        CreateCroppedImageRequest request = new CreateCroppedImageRequest(inputStream, x, y, width, height, format, outPath, storage);
 
         System.out.println(String.format("Call CreateCroppedImageRequest with params: x: %s, y: %s, width: %s, height: %s", x, y, width, height));
 
