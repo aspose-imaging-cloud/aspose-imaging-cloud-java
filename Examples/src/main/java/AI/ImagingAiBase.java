@@ -176,6 +176,6 @@ public abstract class ImagingAiBase {
         UploadFileRequest request = new UploadFileRequest(Paths.get(CloudPath, imageName).toString(), inputStream, null);
         ImagingApi.uploadFile(request);
 
-        System.out.println("Image {imageName} was uploaded to cloud storage");
+        System.out.println("Image " + imageName + " was uploaded to cloud storage");
     }
 }
