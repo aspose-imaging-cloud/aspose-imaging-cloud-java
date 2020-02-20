@@ -77,6 +77,11 @@ public class ImagingExamples {
             exportImage.SaveImageAsAndUploadToStorage();
             exportImage.CreateSavedImageAsFromRequestBody();
 
+            // Apply a filtering effect to an image
+            FilterImage filterImage = new FilterImage(imagingApi);
+            filterImage.FilterImageFromStorage();
+            filterImage.FilterImageAndUploadToStorage();
+
             // Get properties of an image
             ImageProperties imageProperties = new ImageProperties(imagingApi);
             imageProperties.GetImagePropertiesFromStorage();
