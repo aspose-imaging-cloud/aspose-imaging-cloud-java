@@ -25,10 +25,6 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-import AI.CompareImages;
-import AI.FindDuplicateImages;
-import AI.FindSimilarImages;
-import AI.SearchImages;
 import com.aspose.imaging.cloud.sdk.api.ImagingApi;
 
 import java.io.IOException;
@@ -170,36 +166,6 @@ public class ImagingExamples {
             updateWmfImage.ModifyWmfFromStorage();
             updateWmfImage.ModifyWmfAndUploadToStorage();
             updateWmfImage.CreateModifiedWmfFromRequestBody();
-
-            // AI APIs
-            System.out.println("Running AI examples:" + System.lineSeparator());
-
-            // Compare two images
-            CompareImages compareImages = new CompareImages(imagingApi);
-            compareImages.PrepareSearchContext();
-            compareImages.CompareTwoImagesInCloud();
-            compareImages.CompareLoadedImageToImageInCloud();
-            compareImages.DeleteSearchContext();
-
-            // Find Duplicate Images
-            FindDuplicateImages findDuplicateImages = new FindDuplicateImages(imagingApi);
-            findDuplicateImages.PrepareSearchContext();
-            findDuplicateImages.FindImageDuplicates();
-            findDuplicateImages.DeleteSearchContext();
-
-            // Find Similar Images
-            FindSimilarImages findSimilarImages = new FindSimilarImages(imagingApi);
-            findSimilarImages.PrepareSearchContext();
-            findSimilarImages.FindImagesSimilar();
-            findSimilarImages.FindImagesByTag();
-            findSimilarImages.FindSimilarImagesFromUrl();
-            findSimilarImages.DeleteSearchContext();
-
-            // Search Images
-            SearchImages searchImages = new SearchImages(imagingApi);
-            searchImages.PrepareSearchContext();
-            searchImages.SearchImageFromWebSource();
-            searchImages.DeleteSearchContext();
         } catch (Exception exception) {
             System.out.println("Something goes wrong: " + exception);
             System.exit(1);
