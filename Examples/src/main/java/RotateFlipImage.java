@@ -101,7 +101,7 @@ public class RotateFlipImage extends ImagingBase {
         String storage = null; // We are using default Cloud Storage
 
         RotateFlipImageRequest getImageRotateFlipRequest = new RotateFlipImageRequest(
-                getSampleImageFileName(), format, method, folder, storage);
+                getSampleImageFileName(), method, format, folder, storage);
 
         System.out.println(String.format("Call RotateFlipImage with params: method: %s, format: %s", method, format));
 
