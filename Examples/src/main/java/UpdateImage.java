@@ -78,9 +78,7 @@ public class UpdateImage extends ImagingBase {
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
-        UpdateImageRequest getImageUpdateRequest = new UpdateImageRequest(
-                getSampleImageFileName(), format, newWidth,
-                newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, folder, storage);
+        UpdateImageRequest getImageUpdateRequest = new UpdateImageRequest(getSampleImageFileName(), newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, format, folder, storage);
 
         System.out.println(String.format("Call UpdateImage with params: new width: %s, new height: %s, x:{x}, y:{y}, rect width: %s, rectHeight: %s, rotate/flip method: %s, format: %s", newWidth, newHeight, rectWidth, rectHeight, rotateFlipMethod, format));
 
@@ -113,8 +111,8 @@ public class UpdateImage extends ImagingBase {
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
-        UpdateImageRequest getImageUpdateRequest = new UpdateImageRequest(getSampleImageFileName(), format, newWidth,
-                newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, folder, storage);
+        UpdateImageRequest getImageUpdateRequest = new UpdateImageRequest(getSampleImageFileName(), newWidth,
+                newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, format, folder, storage);
 
         System.out.println(String.format("Call UpdateImage with params: new width: %s, new height: %s, x:{x}, y:{y}, rect width: %s, rectHeight: %s, rotate/flip method: %s, format: %s", newWidth, newHeight, rectWidth, rectHeight, rotateFlipMethod, format));
 
@@ -146,9 +144,7 @@ public class UpdateImage extends ImagingBase {
         String storage = null; // We are using default Cloud Storage
 
         byte[] inputStream = Files.readAllBytes(Paths.get(ExampleImagesFolder, getSampleImageFileName()));
-        CreateUpdatedImageRequest postImageUpdateRequest = new CreateUpdatedImageRequest(
-                inputStream, format, newWidth,
-                newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, storage);
+        CreateUpdatedImageRequest postImageUpdateRequest = new CreateUpdatedImageRequest(inputStream, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, format, outPath, storage);
 
         System.out.println(String.format("Call CreateUpdatedImageRequest with params: new width: %s, new height: %s, x:{x}, y:{y}, rect width: %s, rectHeight: %s, rotate/flip method: %s, format: %s", newWidth, newHeight, rectWidth, rectHeight, rotateFlipMethod, format));
 

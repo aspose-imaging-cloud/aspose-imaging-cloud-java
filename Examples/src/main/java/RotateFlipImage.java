@@ -73,7 +73,7 @@ public class RotateFlipImage extends ImagingBase {
         String storage = null; // We are using default Cloud Storage
 
         RotateFlipImageRequest getImageRotateFlipRequest = new RotateFlipImageRequest(
-                getSampleImageFileName(), format, method, folder, storage);
+                getSampleImageFileName(), method, format, folder, storage);
 
         System.out.println(String.format("Call RotateFlipImage with params: method: %s, format: %s", method, format));
 
@@ -101,7 +101,7 @@ public class RotateFlipImage extends ImagingBase {
         String storage = null; // We are using default Cloud Storage
 
         RotateFlipImageRequest getImageRotateFlipRequest = new RotateFlipImageRequest(
-                getSampleImageFileName(), format, method, folder, storage);
+                getSampleImageFileName(), method, format, folder, storage);
 
         System.out.println(String.format("Call RotateFlipImage with params: method: %s, format: %s", method, format));
 
@@ -128,7 +128,7 @@ public class RotateFlipImage extends ImagingBase {
 
         byte[] inputStream = Files.readAllBytes(Paths.get(ExampleImagesFolder, getSampleImageFileName()));
         CreateRotateFlippedImageRequest createRotateFlippedImageRequest =
-                new CreateRotateFlippedImageRequest(inputStream, format, method, outPath, storage);
+                new CreateRotateFlippedImageRequest(inputStream, method, format, outPath, storage);
 
         System.out.println(String.format("Call createRotateFlippedImageRequest with params: method: %s, format: %s", method, format));
 
