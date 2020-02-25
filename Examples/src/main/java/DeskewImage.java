@@ -52,7 +52,7 @@ public class DeskewImage extends ImagingBase {
      */
     @Override
     protected java.lang.String getSampleImageFileName() {
-        return "DeskewSampleImage.bmp";
+        return "DeskewSampleImage.tif";
     }
 
     /**
@@ -66,7 +66,7 @@ public class DeskewImage extends ImagingBase {
         uploadSampleImageToCloud();
 
         Boolean resizeProportionally = true;
-        String bkColor = "green";
+        String bkColor = "white";
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
@@ -91,7 +91,7 @@ public class DeskewImage extends ImagingBase {
         uploadSampleImageToCloud();
 
         Boolean resizeProportionally = true;
-        String bkColor = "green";
+        String bkColor = "white";
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
@@ -114,7 +114,7 @@ public class DeskewImage extends ImagingBase {
         System.out.println("Deskews the image from request body");
 
         Boolean resizeProportionally = true;
-        String bkColor = "green";
+        String bkColor = "white";
         String storage = null; // We are using default Cloud Storage
         String outPath = null; // Path to updated file (if this is empty, response contains streamed image)
 
