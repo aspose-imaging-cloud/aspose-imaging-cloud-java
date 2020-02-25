@@ -25,8 +25,7 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-import com.aspose.imaging.cloud.sdk.model.BigRectangularFilterProperties;
-import com.aspose.imaging.cloud.sdk.model.FilterPropertiesBase;
+import com.aspose.imaging.cloud.sdk.model.GaussianBlurFilterProperties;
 import com.aspose.imaging.cloud.sdk.model.requests.FilterEffectImageRequest;
 
 /**
@@ -63,17 +62,20 @@ public class FilterImage extends ImagingBase {
 
         uploadSampleImageToCloud();
 
-        String filterType = "BigRectangular";
-        FilterPropertiesBase filterProperties = new BigRectangularFilterProperties();
-        String format = "gif";
+        String filterType = "GaussianBlur";
+        GaussianBlurFilterProperties filterProperties = new GaussianBlurFilterProperties() {{
+            setRadius(4);
+            setSigma(2.1);
+        }};
+        String format = "bmp";
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         FilterEffectImageRequest request = new FilterEffectImageRequest(getSampleImageFileName(), filterType,
                 filterProperties, format, folder, storage);
 
-        System.out.println(String.format("Call FilterEffectImage with params: filter type: %s, format: %s",
-                filterType, format));
+        System.out.println(String.format("Call FilterEffectImage with params: filter type: %s, radius: %s, sigma: %s, format: %s",
+                filterType, filterProperties.getRadius(), filterProperties.getSigma(), format));
 
         byte[] updatedImage = ImagingApi.filterEffectImage(request);
         saveUpdatedSampleImageToOutput(updatedImage, false, format);
@@ -91,17 +93,20 @@ public class FilterImage extends ImagingBase {
 
         uploadSampleImageToCloud();
 
-        String filterType = "BigRectangular";
-        FilterPropertiesBase filterProperties = new BigRectangularFilterProperties();
-        String format = "gif";
+        String filterType = "GaussianBlur";
+        GaussianBlurFilterProperties filterProperties = new GaussianBlurFilterProperties() {{
+            setRadius(4);
+            setSigma(2.1);
+        }};
+        String format = "bmp";
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         FilterEffectImageRequest request = new FilterEffectImageRequest(getSampleImageFileName(), filterType,
                 filterProperties, format, folder, storage);
 
-        System.out.println(String.format("Call FilterEffectImage with params: filter type: %s, format: %s",
-                filterType, format));
+        System.out.println(String.format("Call FilterEffectImage with params: filter type: %s, radius: %s, sigma: %s, format: %s",
+                filterType, filterProperties.getRadius(), filterProperties.getSigma(), format));
 
         byte[] updatedImage = ImagingApi.filterEffectImage(request);
         uploadImageToCloud(getModifiedSampleImageFileName(false, format), updatedImage);
