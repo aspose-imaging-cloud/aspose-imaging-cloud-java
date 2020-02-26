@@ -71,6 +71,12 @@ public class ImagingExamples {
             deskewImage.DeskewImageAndUploadToStorage();
             deskewImage.CreateDeskewedImageFromRequestBody();
 
+            // Grayscale an existing image
+            GrayscaleImage grayscaleImage = new GrayscaleImage(imagingApi);
+            grayscaleImage.GrayscaleImageFromStorage();
+            grayscaleImage.GrayscaleImageAndUploadToStorage();
+            grayscaleImage.CreateGrayscaledImageFromRequestBody();
+
             // Process existing EMF imaging using given parameters
             UpdateEmfImage updateEmfImage = new UpdateEmfImage(imagingApi);
             updateEmfImage.ModifyEmfFromStorage();
