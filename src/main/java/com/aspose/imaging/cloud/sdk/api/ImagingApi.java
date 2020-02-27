@@ -44,7 +44,7 @@ public class ImagingApi
     /**
      * Current SDK version
      */
-    public static final String Version = "20.1";
+    public static final String Version = "20.2";
 
     /**
      * The configuration
@@ -525,6 +525,42 @@ public class ImagingApi
           null, 
           formParams);
           
+    }
+  
+    /**
+     * Grayscales an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] createGrayscaledImage(CreateGrayscaledImageRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createGrayscaledImage");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/grayscale";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
     }
   
     /**
@@ -2389,6 +2425,40 @@ public class ImagingApi
       resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
+    }
+  
+    /**
+     * Grayscale an existing image.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] grayscaleImage(GrayscaleImageRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.name' is set
+      if (request.name== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.name' when calling grayscaleImage");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/grayscale";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
+      
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
