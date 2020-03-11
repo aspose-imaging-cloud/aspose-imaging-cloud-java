@@ -89,7 +89,7 @@ public class FindSimilarImages extends ImagingAiBase {
         System.out.println("Finds the similar images");
 
         String imageToFind = "4.jpg";
-        String findImageId = Paths.get(CloudPath, imageToFind).toString();
+        String findImageId = Paths.get(CloudPath, ImagesPath, imageToFind).toString();
         Double similarityThreshold = 60.0; // The similarity threshold
         Integer maxCount = 3; // The maximum count
         String folder = null;
