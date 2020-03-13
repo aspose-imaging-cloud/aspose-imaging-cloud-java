@@ -151,13 +151,9 @@ public abstract class ImagingAiBase {
 
         ImagingApi.createImageFeatures(request);
 
-        if (isFolder) {
-            System.out.println("Creating Search context image features...");
+        System.out.println(isFolder ? "Creating Search context image features..." : "Created Search context image features for " + sourcePath);
 
-            WaitIdle(SearchContextId);
-        } else {
-            System.out.println("Created Search context image features for " + sourcePath);
-        }
+        WaitIdle(SearchContextId);
     }
 
     /**
