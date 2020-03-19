@@ -74,16 +74,16 @@ public class JpegExifData extends ExifData {
   @JsonProperty("transferFunction")
   private List<Integer> transferFunction = null;
 
-  @JsonProperty("xresolution")
+  @JsonProperty("xResolution")
   private Double xresolution = null;
 
-  @JsonProperty("ycbCrCoefficients")
+  @JsonProperty("yCbCrCoefficients")
   private List<Double> ycbCrCoefficients = null;
 
-  @JsonProperty("ycbCrPositioning")
+  @JsonProperty("yCbCrPositioning")
   private String ycbCrPositioning = null;
 
-  @JsonProperty("yresolution")
+  @JsonProperty("yResolution")
   private Double yresolution = null;
 
   public JpegExifData artist(String artist) {

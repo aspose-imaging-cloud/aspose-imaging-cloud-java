@@ -47,7 +47,7 @@ public class ExifData {
   @JsonProperty("brightnessValue")
   private Double brightnessValue = null;
 
-  @JsonProperty("cfAPattern")
+  @JsonProperty("CFAPattern")
   private byte[] cfAPattern = null;
 
   @JsonProperty("cameraOwnerName")
