@@ -37,13 +37,11 @@ public class UploadFileRequest
     /**
     * Initializes a new instance of the UploadFileRequest class.   
     * @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
-    * @param file File to upload
     * @param storageName Storage name
     **/
-    public UploadFileRequest(String path, byte[] file, String storageName)             
+    public UploadFileRequest(String path, String storageName)             
     {
         this.path = path;
-        this.File = file;
         this.storageName = storageName;
     }
         
@@ -51,11 +49,6 @@ public class UploadFileRequest
     * Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
     **/
     public String path;
-
-    /**
-    * File to upload
-    **/
-    public byte[] File;
 
     /**
     * Storage name

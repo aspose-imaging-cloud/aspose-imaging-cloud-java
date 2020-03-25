@@ -1158,7 +1158,7 @@ Name | Type | Description  | Notes
 
 <a name="downloadFile"></a>
 ## **downloadFile**
-> byte[] downloadFile(DownloadFileRequest request)
+> [File](File.md) downloadFile(DownloadFileRequest request)
 
 Download file
 
@@ -1178,7 +1178,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
@@ -2340,14 +2340,12 @@ Upload file
 ```java
 UploadFileRequest(
     String path, 
-    byte[] file, 
     String storageName)
 ```
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **String**| Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.              |
- **file** | **byte[]**| File to upload |
  **storageName** | **String**| Storage name | [optional]
 
 ### Return type
