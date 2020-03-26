@@ -32,6 +32,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.MapperFeature;
 
 import java.io.IOException;
 
@@ -39,8 +40,17 @@ import java.io.IOException;
  * JSON helper class.
  */
 public class JSON {
-    static final ObjectMapper mapper = new ObjectMapper();
-    static final ObjectWriter writer = mapper.writerWithDefaultPrettyPrinter();
+
+    private static final ObjectWriter writer;
+
+    private static final ObjectMapper mapper;
+
+    static {
+        mapper = new ObjectMapper();
+        mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+
+        writer = mapper.writerWithDefaultPrettyPrinter();
+    }
     
     public static String serialize(Object object) throws JsonProcessingException
     {
