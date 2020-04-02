@@ -123,7 +123,7 @@ public class UpdateImageApiTests extends ApiTester {
             }
         }
         
-        for (StorageFile inputFile : InputTestFiles)
+        for (StorageFile inputFile : BasicInputTestFiles)
         {
             if (inputFile.getName().endsWith(formatExtension))
             {
@@ -188,7 +188,7 @@ public class UpdateImageApiTests extends ApiTester {
             }
         }
         
-        for (StorageFile inputFile : InputTestFiles)
+        for (StorageFile inputFile : BasicInputTestFiles)
         {
             if (inputFile.getName().endsWith(formatExtension))
             {
