@@ -326,7 +326,7 @@ void (empty response body)
 ## **createImageFrame**
 > byte[] createImageFrame(CreateImageFrameRequest request)
 
-Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **CreateImageFrameRequest** Parameters
 ```java
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 ## **createImageFrameRange**
 > byte[] createImageFrameRange(CreateImageFrameRangeRequest request)
 
-Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **CreateImageFrameRangeRequest** Parameters
 ```java
@@ -1262,7 +1262,7 @@ Name | Type | Description  | Notes
 ## **extractImageFrameProperties**
 > [ImagingResponse](ImagingResponse.md) extractImageFrameProperties(ExtractImageFramePropertiesRequest request)
 
-Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get separate frame properties of existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **ExtractImageFramePropertiesRequest** Parameters
 ```java
@@ -1532,7 +1532,7 @@ Name | Type | Description  | Notes
 ## **getImageFrame**
 > byte[] getImageFrame(GetImageFrameRequest request)
 
-Get separate frame from existing TIFF image.
+Get separate frame from existing image.
 
 ### **GetImageFrameRequest** Parameters
 ```java
@@ -1576,7 +1576,7 @@ Name | Type | Description  | Notes
 ## **getImageFrameProperties**
 > [ImagingResponse](ImagingResponse.md) getImageFrameProperties(GetImageFramePropertiesRequest request)
 
-Get separate frame properties of existing TIFF image.
+Get separate frame properties of existing image.
 
 ### **GetImageFramePropertiesRequest** Parameters
 ```java
@@ -1604,7 +1604,7 @@ Name | Type | Description  | Notes
 ## **getImageFrameRange**
 > byte[] getImageFrameRange(GetImageFrameRangeRequest request)
 
-Get frames range from existing TIFF image.
+Get frames range from existing image.
 
 ### **GetImageFrameRangeRequest** Parameters
 ```java

@@ -600,7 +600,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return byte[]
@@ -649,7 +649,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return byte[]
@@ -1853,7 +1853,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Get separate frame properties of existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return ImagingResponse
@@ -2287,7 +2287,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame from existing TIFF image.
+     * Get separate frame from existing image.
      * 
      * @param request Holds parameters for this request invocation.
      * @return byte[]
@@ -2334,7 +2334,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame properties of existing TIFF image.
+     * Get separate frame properties of existing image.
      * 
      * @param request Holds parameters for this request invocation.
      * @return ImagingResponse
@@ -2378,7 +2378,7 @@ public class ImagingApi
     }
   
     /**
-     * Get frames range from existing TIFF image.
+     * Get frames range from existing image.
      * 
      * @param request Holds parameters for this request invocation.
      * @return byte[]
