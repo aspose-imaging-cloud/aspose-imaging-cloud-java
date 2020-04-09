@@ -499,6 +499,42 @@ public class ImagingApi
     }
   
     /**
+     * Update parameters of TIFF image accordingly to fax parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] createFaxTiff(CreateFaxTiffRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createFaxTiff");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/tiff/toFax";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
+    }
+  
+    /**
      * Create the folder
      * 
      * @param request Holds parameters for this request invocation.
