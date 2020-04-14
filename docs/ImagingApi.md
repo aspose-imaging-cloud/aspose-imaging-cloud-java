@@ -868,6 +868,40 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createObjectBounds"></a>
+## **createObjectBounds**
+> [List&lt;DetectedObject&gt;](DetectedObject.md) createObjectBounds(CreateObjectBoundsRequest request)
+
+Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### **CreateObjectBoundsRequest** Parameters
+```java
+CreateObjectBoundsRequest(
+    byte[] imageData, 
+    String method, 
+    Integer threshold, 
+    Boolean includeClass, 
+    Boolean includeScore, 
+    String outPath, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **byte[]**| Input image |
+ **method** | **String**| Object detection method | [optional] [default to ssd]
+ **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
+ **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to true]
+ **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to true]
+ **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image) | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+
+### Return type
+
+[**List&lt;DetectedObject&gt;**](DetectedObject.md)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createResizedImage"></a>
 ## **createResizedImage**
 > byte[] createResizedImage(CreateResizedImageRequest request)
@@ -992,6 +1026,40 @@ Name | Type | Description  | Notes
  **rotateFlipMethod** | **String**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. |
  **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional]
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image). | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+
+### Return type
+
+**byte[]**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createVisualObjectBounds"></a>
+## **createVisualObjectBounds**
+> byte[] createVisualObjectBounds(CreateVisualObjectBoundsRequest request)
+
+Detect objects bounds and draw them on the original image
+
+### **CreateVisualObjectBoundsRequest** Parameters
+```java
+CreateVisualObjectBoundsRequest(
+    byte[] imageData, 
+    String method, 
+    Integer threshold, 
+    Boolean includeClass, 
+    Boolean includeScore, 
+    String outPath, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **byte[]**| Input image |
+ **method** | **String**| Object detection method | [optional] [default to ssd]
+ **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
+ **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to true]
+ **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to true]
+ **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image) | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 
 ### Return type
@@ -2208,6 +2276,40 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="objectBounds"></a>
+## **objectBounds**
+> [List&lt;DetectedObject&gt;](DetectedObject.md) objectBounds(ObjectBoundsRequest request)
+
+Detect objects&#39; bounds
+
+### **ObjectBoundsRequest** Parameters
+```java
+ObjectBoundsRequest(
+    String name, 
+    String method, 
+    Integer threshold, 
+    Boolean inlcudeClass, 
+    Boolean includeScore, 
+    String folder, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Image file name. |
+ **method** | **String**| Object detection method | [optional] [default to ssd]
+ **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
+ **inlcudeClass** | **Boolean**| Return detected objects classes | [optional] [default to true]
+ **includeScore** | **Boolean**| Return detected objects score | [optional] [default to true]
+ **folder** | **String**| Folder | [optional]
+ **storage** | **String**| Storage | [optional]
+
+### Return type
+
+[**List&lt;DetectedObject&gt;**](DetectedObject.md)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="objectExists"></a>
 ## **objectExists**
 > [ObjectExist](ObjectExist.md) objectExists(ObjectExistsRequest request)
@@ -2471,6 +2573,40 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FilesUploadResult**](FilesUploadResult.md)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="visualObjectBounds"></a>
+## **visualObjectBounds**
+> byte[] visualObjectBounds(VisualObjectBoundsRequest request)
+
+Detect objects bounds and draw them on the original image
+
+### **VisualObjectBoundsRequest** Parameters
+```java
+VisualObjectBoundsRequest(
+    String name, 
+    String method, 
+    Integer threshold, 
+    Boolean includeClass, 
+    Boolean includeScore, 
+    String folder, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The image features detector. |
+ **method** | **String**| Object detection method | [optional] [default to ssd]
+ **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
+ **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to true]
+ **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to true]
+ **folder** | **String**| The folder. | [optional]
+ **storage** | **String**| The storage. | [optional]
+
+### Return type
+
+**byte[]**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 

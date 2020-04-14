@@ -31,10 +31,12 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**createModifiedTiff**](ImagingApi.md#createmodifiedtiff) | **POST** /imaging/tiff | Update parameters of TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createModifiedWebP**](ImagingApi.md#createmodifiedwebp) | **POST** /imaging/webp | Update parameters of WEBP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createModifiedWmf**](ImagingApi.md#createmodifiedwmf) | **POST** /imaging/wmf | Process existing WMF image using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+*ImagingApi* | [**createObjectBounds**](ImagingApi.md#createobjectbounds) | **POST** /imaging/ai/objectdetection/bounds | Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createResizedImage**](ImagingApi.md#createresizedimage) | **POST** /imaging/resize | Resize an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createRotateFlippedImage**](ImagingApi.md#createrotateflippedimage) | **POST** /imaging/rotateflip | Rotate and/or flip an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createSavedImageAs**](ImagingApi.md#createsavedimageas) | **POST** /imaging/saveAs | Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
 *ImagingApi* | [**createUpdatedImage**](ImagingApi.md#createupdatedimage) | **POST** /imaging/updateImage | Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+*ImagingApi* | [**createVisualObjectBounds**](ImagingApi.md#createvisualobjectbounds) | **POST** /imaging/ai/objectdetection/visualbounds | Detect objects bounds and draw them on the original image
 *ImagingApi* | [**createWebSiteImageFeatures**](ImagingApi.md#createwebsiteimagefeatures) | **POST** /imaging/ai/imageSearch/{searchContextId}/features/web | Extract images features from web page and add them to search context
 *ImagingApi* | [**cropImage**](ImagingApi.md#cropimage) | **GET** /imaging/{name}/crop | Crop an existing image.
 *ImagingApi* | [**deleteFile**](ImagingApi.md#deletefile) | **DELETE** /imaging/storage/file/{path} | Delete file
@@ -74,6 +76,7 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**modifyWmf**](ImagingApi.md#modifywmf) | **GET** /imaging/{name}/wmf | Process existing WMF image using given parameters.
 *ImagingApi* | [**moveFile**](ImagingApi.md#movefile) | **PUT** /imaging/storage/file/move/{srcPath} | Move file
 *ImagingApi* | [**moveFolder**](ImagingApi.md#movefolder) | **PUT** /imaging/storage/folder/move/{srcPath} | Move folder
+*ImagingApi* | [**objectBounds**](ImagingApi.md#objectbounds) | **GET** /imaging/ai/objectdetection/bounds | Detect objects&#39; bounds
 *ImagingApi* | [**objectExists**](ImagingApi.md#objectexists) | **GET** /imaging/storage/exist/{path} | Check if file or folder exists
 *ImagingApi* | [**resizeImage**](ImagingApi.md#resizeimage) | **GET** /imaging/{name}/resize | Resize an existing image.
 *ImagingApi* | [**rotateFlipImage**](ImagingApi.md#rotateflipimage) | **GET** /imaging/{name}/rotateflip | Rotate and/or flip an existing image.
@@ -83,12 +86,14 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**updateImageFeatures**](ImagingApi.md#updateimagefeatures) | **PUT** /imaging/ai/imageSearch/{searchContextId}/features | Update images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**updateSearchImage**](ImagingApi.md#updatesearchimage) | **PUT** /imaging/ai/imageSearch/{searchContextId}/image | Update image and images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**uploadFile**](ImagingApi.md#uploadfile) | **PUT** /imaging/storage/file/{path} | Upload file
+*ImagingApi* | [**visualObjectBounds**](ImagingApi.md#visualobjectbounds) | **GET** /imaging/ai/objectdetection/visualbounds | Detect objects bounds and draw them on the original image
 
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
  - [com.aspose.imaging.cloud.sdk.model.BmpProperties](BmpProperties.md)
+ - [com.aspose.imaging.cloud.sdk.model.DetectedObject](DetectedObject.md)
  - [com.aspose.imaging.cloud.sdk.model.DicomProperties](DicomProperties.md)
  - [com.aspose.imaging.cloud.sdk.model.DiscUsage](DiscUsage.md)
  - [com.aspose.imaging.cloud.sdk.model.DjvuProperties](DjvuProperties.md)
@@ -113,6 +118,7 @@ Class | Method | HTTP request | Description
  - [com.aspose.imaging.cloud.sdk.model.OdgProperties](OdgProperties.md)
  - [com.aspose.imaging.cloud.sdk.model.PngProperties](PngProperties.md)
  - [com.aspose.imaging.cloud.sdk.model.PsdProperties](PsdProperties.md)
+ - [com.aspose.imaging.cloud.sdk.model.Rectangle](Rectangle.md)
  - [com.aspose.imaging.cloud.sdk.model.SearchContextStatus](SearchContextStatus.md)
  - [com.aspose.imaging.cloud.sdk.model.SearchResult](SearchResult.md)
  - [com.aspose.imaging.cloud.sdk.model.SearchResultsSet](SearchResultsSet.md)
