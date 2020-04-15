@@ -59,7 +59,7 @@ public class FramesApiTests extends ApiTester {
 
     @Parameters
     public static Iterable<Object[]> data() {
-        if (true) {
+        if (isExtendedTests()) {
             return Arrays.asList(new Object[][]{
                     {".cdr", true}, {".cdr", false},
                     {".cmx", true}, {".cmx", false},
