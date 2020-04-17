@@ -29,10 +29,12 @@ package com.aspose.imaging.cloud.test.base;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.tika.Tika;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -69,11 +71,21 @@ public abstract class ApiTester
      * If program runs in Android environment
      */
     protected static Boolean IsAndroid = !isNullOrEmpty(System.getenv("ANDROID_BOOTLOGO"));
-    
+
     /**
      * Input test files info
      */
     protected static List<StorageFile> InputTestFiles;
+
+    /**
+     * Basic input test files info
+     */
+    protected static List<StorageFile> BasicInputTestFiles;
+
+    /**
+     * Multipage input test files info
+     */
+    protected static List<StorageFile> MultipageInputTestFiles;
 
     /**
      * Aspose.Imaging API
@@ -279,6 +291,14 @@ public abstract class ApiTester
         }
         
         InputTestFiles = fetchInputTestFilesInfo();
+        BasicInputTestFiles = new ArrayList<StorageFile>();
+        MultipageInputTestFiles = new ArrayList<StorageFile>();
+        for (StorageFile file: InputTestFiles){
+            if (file.getName().startsWith("multipage_"))
+                MultipageInputTestFiles.add(file);
+            else
+                BasicInputTestFiles.add(file);
+        }
     }
 
     /**
@@ -339,7 +359,7 @@ public abstract class ApiTester
     {
         String folder;
         if (!IsAndroid) {
-            folder = "testData";
+            folder = "testdata";
         }
         else {
             folder = "/data/local/tmp";
@@ -384,7 +404,6 @@ public abstract class ApiTester
     /**
      * Tests the typical GET request.
      * @param testMethodName Name of the test method.
-     * @param saveResultToStorage If set to true, save result to storage.
      * @param parametersLine The parameters line.
      * @param inputFileName Name of the input file.
      * @param requestInvoker The request invoker.
@@ -642,11 +661,12 @@ public abstract class ApiTester
                             String.format("Result file %s doesn't exist in the specified storage folder: %s. Result isn't present in the storage by an unknown reason.",
                                     resultFileName, folder));
                 }
-                
-                resultProperties = ImagingApi.getImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
-                Assert.assertNotNull(resultProperties);
+                if (!resultFileName.endsWith(".pdf")) {
+                    resultProperties = ImagingApi.getImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
+                    Assert.assertNotNull(resultProperties);
+                }
             }
-            else
+            else if (!(new Tika().detect(response).equals("application/pdf")))
             {
                 resultProperties =
                         ImagingApi.extractImageProperties(new ExtractImagePropertiesRequest(response));

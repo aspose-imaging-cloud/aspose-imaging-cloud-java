@@ -150,7 +150,7 @@ public class FilterEffectApiTests extends ApiTester {
             }
         }
 
-        for (StorageFile inputFile : InputTestFiles) {
+        for (StorageFile inputFile : BasicInputTestFiles) {
             if (inputFile.getName().endsWith(formatExtension)) {
                 name = inputFile.getName();
             } else {

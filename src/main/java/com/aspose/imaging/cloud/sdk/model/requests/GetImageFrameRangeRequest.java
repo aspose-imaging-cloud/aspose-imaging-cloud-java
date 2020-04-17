@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="GetImageFrameRequest.java">
+* <copyright company="Aspose" file="GetImageFrameRangeRequest.java">
 *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -30,14 +30,15 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 import com.aspose.imaging.cloud.sdk.model.*;
 
 /**
-* Class that holds parameters for GetImageFrame request invocation.
+* Class that holds parameters for GetImageFrameRange request invocation.
 **/   
-public class GetImageFrameRequest
+public class GetImageFrameRangeRequest
 {
     /**
-    * Initializes a new instance of the GetImageFrameRequest class.   
+    * Initializes a new instance of the GetImageFrameRangeRequest class.   
     * @param name Filename of image.
-    * @param frameId Number of a frame.
+    * @param startFrameId Index of the first frame in range.
+    * @param endFrameId Index of the last frame in range.
     * @param newWidth New width.
     * @param newHeight New height.
     * @param x X position of start point for cropping rectangle.
@@ -49,10 +50,11 @@ public class GetImageFrameRequest
     * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public GetImageFrameRequest(String name, Integer frameId, Integer newWidth, Integer newHeight, Integer x, Integer y, Integer rectWidth, Integer rectHeight, String rotateFlipMethod, Boolean saveOtherFrames, String folder, String storage)             
+    public GetImageFrameRangeRequest(String name, Integer startFrameId, Integer endFrameId, Integer newWidth, Integer newHeight, Integer x, Integer y, Integer rectWidth, Integer rectHeight, String rotateFlipMethod, Boolean saveOtherFrames, String folder, String storage)             
     {
         this.name = name;
-        this.frameId = frameId;
+        this.startFrameId = startFrameId;
+        this.endFrameId = endFrameId;
         this.newWidth = newWidth;
         this.newHeight = newHeight;
         this.x = x;
@@ -71,9 +73,14 @@ public class GetImageFrameRequest
     public String name;
 
     /**
-    * Number of a frame.
+    * Index of the first frame in range.
     **/
-    public Integer frameId;
+    public Integer startFrameId;
+
+    /**
+    * Index of the last frame in range.
+    **/
+    public Integer endFrameId;
 
     /**
     * New width.
