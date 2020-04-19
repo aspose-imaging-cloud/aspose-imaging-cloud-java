@@ -26,8 +26,6 @@
  */
 package com.aspose.imaging.cloud.test.suites;
 
-import com.aspose.imaging.cloud.test.api.FramesGetApiTests;
-import com.aspose.imaging.cloud.test.api.FramesPostApiTests;
 import com.aspose.imaging.cloud.test.api.TiffApiTests;
 import com.aspose.imaging.cloud.test.api.TiffSpecificApiTests;
 
@@ -37,9 +35,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         TiffApiTests.class,
-        FramesGetApiTests.class,
         TiffSpecificApiTests.class,
-        FramesPostApiTests.class
 })
 public class TiffTestSuite {
 

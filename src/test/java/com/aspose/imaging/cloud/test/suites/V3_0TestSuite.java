@@ -30,8 +30,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import com.aspose.imaging.cloud.test.api.ExamplesTests;
-import com.aspose.imaging.cloud.test.api.FramesGetApiTests;
-import com.aspose.imaging.cloud.test.api.FramesPostApiTests;
 import com.aspose.imaging.cloud.test.api.TiffApiTests;
 import com.aspose.imaging.cloud.test.api.TiffSpecificApiTests;
 import com.aspose.imaging.cloud.test.api.storage.FileApiTests;
@@ -54,10 +52,8 @@ import com.aspose.imaging.cloud.test.api.storage.StorageApiTests;
     WebpTestSuite.class,
     WmfTestSuite.class,
     TiffApiTests.class,
-    FramesGetApiTests.class,
     TiffSpecificApiTests.class,
     AITestSuite.class,
-    FramesPostApiTests.class,
     FileApiTests.class,
     FolderApiTests.class,
     StorageApiTests.class,
