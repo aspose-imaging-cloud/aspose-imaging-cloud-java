@@ -240,6 +240,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createFaxTiff"></a>
+## **createFaxTiff**
+> byte[] createFaxTiff(CreateFaxTiffRequest request)
+
+Update parameters of TIFF image accordingly to fax parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### **CreateFaxTiffRequest** Parameters
+```java
+CreateFaxTiffRequest(
+    byte[] imageData, 
+    String outPath, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **byte[]**| Input image |
+ **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image). | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+
+### Return type
+
+**byte[]**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createFolder"></a>
 ## **createFolder**
 > void createFolder(CreateFolderRequest request)
