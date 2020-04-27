@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 
  - [com.aspose.imaging.cloud.sdk.model.BmpProperties](BmpProperties.md)
  - [com.aspose.imaging.cloud.sdk.model.DetectedObject](DetectedObject.md)
+ - [com.aspose.imaging.cloud.sdk.model.DetectedObjectList](DetectedObjectList.md)
  - [com.aspose.imaging.cloud.sdk.model.DicomProperties](DicomProperties.md)
  - [com.aspose.imaging.cloud.sdk.model.DiscUsage](DiscUsage.md)
  - [com.aspose.imaging.cloud.sdk.model.DjvuProperties](DjvuProperties.md)

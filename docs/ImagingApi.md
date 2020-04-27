@@ -870,7 +870,7 @@ Name | Type | Description  | Notes
 
 <a name="createObjectBounds"></a>
 ## **createObjectBounds**
-> [List&lt;DetectedObject&gt;](DetectedObject.md) createObjectBounds(CreateObjectBoundsRequest request)
+> [DetectedObjectList](DetectedObjectList.md) createObjectBounds(CreateObjectBoundsRequest request)
 
 Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
@@ -898,7 +898,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;DetectedObject&gt;**](DetectedObject.md)
+[**DetectedObjectList**](DetectedObjectList.md)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
@@ -2278,7 +2278,7 @@ void (empty response body)
 
 <a name="objectBounds"></a>
 ## **objectBounds**
-> [List&lt;DetectedObject&gt;](DetectedObject.md) objectBounds(ObjectBoundsRequest request)
+> [DetectedObjectList](DetectedObjectList.md) objectBounds(ObjectBoundsRequest request)
 
 Detect objects&#39; bounds
 
@@ -2288,7 +2288,7 @@ ObjectBoundsRequest(
     String name, 
     String method, 
     Integer threshold, 
-    Boolean inlcudeClass, 
+    Boolean includeClass, 
     Boolean includeScore, 
     String folder, 
     String storage)
@@ -2299,14 +2299,14 @@ Name | Type | Description  | Notes
  **name** | **String**| Image file name. |
  **method** | **String**| Object detection method | [optional] [default to ssd]
  **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
- **inlcudeClass** | **Boolean**| Return detected objects classes | [optional] [default to true]
+ **includeClass** | **Boolean**| Return detected objects classes | [optional] [default to true]
  **includeScore** | **Boolean**| Return detected objects score | [optional] [default to true]
  **folder** | **String**| Folder | [optional]
  **storage** | **String**| Storage | [optional]
 
 ### Return type
 
-[**List&lt;DetectedObject&gt;**](DetectedObject.md)
+[**DetectedObjectList**](DetectedObjectList.md)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 

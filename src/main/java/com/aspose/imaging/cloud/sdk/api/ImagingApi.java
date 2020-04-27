@@ -36,7 +36,6 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Aspose.Imaging Cloud API
@@ -1315,10 +1314,10 @@ public class ImagingApi
      * Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return List&lt;DetectedObject&gt;
+     * @return DetectedObjectList
      * @throws Exception 
      */
-    public List<DetectedObject> createObjectBounds(CreateObjectBoundsRequest request) throws Exception
+    public DetectedObjectList createObjectBounds(CreateObjectBoundsRequest request) throws Exception 
     {
        // verify the required parameter 'request.imageData' is set
       if (request.imageData== null) {
@@ -1353,7 +1352,7 @@ public class ImagingApi
           return null;
       }
       
-      return SerializationHelper.deserialize(new String(response), List.class);
+      return SerializationHelper.deserialize(new String(response), DetectedObjectList.class);
     }
   
     /**
@@ -3252,10 +3251,10 @@ public class ImagingApi
      * Detect objects&#39; bounds
      * 
      * @param request Holds parameters for this request invocation.
-     * @return List&lt;DetectedObject&gt;
+     * @return DetectedObjectList
      * @throws Exception 
      */
-    public List<DetectedObject> objectBounds(ObjectBoundsRequest request) throws Exception
+    public DetectedObjectList objectBounds(ObjectBoundsRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name== null) {
@@ -3269,7 +3268,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "name", request.name);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "method", request.method);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "inlcudeClass", request.inlcudeClass);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeClass", request.includeClass);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
@@ -3288,7 +3287,7 @@ public class ImagingApi
           return null;
       }
       
-      return SerializationHelper.deserialize(new String(response), List.class);
+      return SerializationHelper.deserialize(new String(response), DetectedObjectList.class);
     }
   
     /**

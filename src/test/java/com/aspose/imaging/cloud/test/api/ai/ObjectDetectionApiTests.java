@@ -27,6 +27,7 @@
 package com.aspose.imaging.cloud.test.api.ai;
 
 import com.aspose.imaging.cloud.sdk.model.DetectedObject;
+import com.aspose.imaging.cloud.sdk.model.DetectedObjectList;
 import com.aspose.imaging.cloud.sdk.model.StorageFile;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.ImagingResponse;
@@ -234,13 +235,13 @@ public class ObjectDetectionApiTests extends ApiTester {
      * @return API response
      * @throws Exception 
      */
-    private List<DetectedObject> objectBoundsGetRequestInvoker(String name) throws Exception
+    private DetectedObjectList objectBoundsGetRequestInvoker(String name) throws Exception
     {
         objectBoundsRequest.name = name;
         return ImagingApi.objectBounds(objectBoundsRequest);
     }
 
-    private List<DetectedObject> objectBoundsPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private DetectedObjectList objectBoundsPostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
         createObjectBoundsRequest.imageData = imageData;
         createObjectBoundsRequest.outPath = outPath;
