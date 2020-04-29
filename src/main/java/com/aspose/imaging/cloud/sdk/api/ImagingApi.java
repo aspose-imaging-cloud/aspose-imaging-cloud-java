@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ImagingApi.java">
-*   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
+*   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,6 +24,7 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
+
 package com.aspose.imaging.cloud.sdk.api;
 
 import com.aspose.imaging.cloud.sdk.model.*;
@@ -44,7 +45,7 @@ public class ImagingApi
     /**
      * Current SDK version
      */
-    public static final String Version = "20.3";
+    public static final String Version = "20.4";
 
     /**
      * The configuration
@@ -498,6 +499,42 @@ public class ImagingApi
     }
   
     /**
+     * Update parameters of TIFF image accordingly to fax parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] createFaxTiff(CreateFaxTiffRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createFaxTiff");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/tiff/toFax";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
+    }
+  
+    /**
      * Create the folder
      * 
      * @param request Holds parameters for this request invocation.
@@ -600,7 +637,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return byte[]
@@ -622,6 +659,60 @@ public class ImagingApi
       HashMap<String, Object> formParams = new HashMap<String, Object>();
       resourcePath = UrlHelper.addPathParameter(resourcePath, "frameId", request.frameId);
       
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "x", request.x);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "y", request.y);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectWidth", request.rectWidth);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "saveOtherFrames", request.saveOtherFrames);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
+    }
+  
+    /**
+     * Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] createImageFrameRange(CreateImageFrameRangeRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createImageFrameRange");
+      }
+       // verify the required parameter 'request.startFrameId' is set
+      if (request.startFrameId== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.startFrameId' when calling createImageFrameRange");
+      }
+       // verify the required parameter 'request.endFrameId' is set
+      if (request.endFrameId== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.endFrameId' when calling createImageFrameRange");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/frames/range";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "startFrameId", request.startFrameId);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "endFrameId", request.endFrameId);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "x", request.x);
@@ -1799,7 +1890,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Get separate frame properties of existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return ImagingResponse
@@ -2233,7 +2324,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame from existing TIFF image.
+     * Get separate frame from existing image.
      * 
      * @param request Holds parameters for this request invocation.
      * @return byte[]
@@ -2280,7 +2371,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame properties of existing TIFF image.
+     * Get separate frame properties of existing image.
      * 
      * @param request Holds parameters for this request invocation.
      * @return ImagingResponse
@@ -2321,6 +2412,58 @@ public class ImagingApi
       }
       
       return SerializationHelper.deserialize(new String(response), ImagingResponse.class);
+    }
+  
+    /**
+     * Get frames range from existing image.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] getImageFrameRange(GetImageFrameRangeRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.name' is set
+      if (request.name== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.name' when calling getImageFrameRange");
+      }
+       // verify the required parameter 'request.startFrameId' is set
+      if (request.startFrameId== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.startFrameId' when calling getImageFrameRange");
+      }
+       // verify the required parameter 'request.endFrameId' is set
+      if (request.endFrameId== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.endFrameId' when calling getImageFrameRange");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/frames/range";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "startFrameId", request.startFrameId);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "endFrameId", request.endFrameId);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "x", request.x);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "y", request.y);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectWidth", request.rectWidth);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "saveOtherFrames", request.saveOtherFrames);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
     }
   
     /**

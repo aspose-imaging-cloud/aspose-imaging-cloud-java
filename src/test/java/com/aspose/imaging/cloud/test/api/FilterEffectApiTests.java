@@ -144,13 +144,14 @@ public class FilterEffectApiTests extends ApiTester {
 
         ArrayList<String> formatsToExport = new ArrayList<String>();
         Collections.addAll(formatsToExport, this.BasicExportFormats);
+	
         for (String additionalExportFormat : additionalExportFormats) {
             if (additionalExportFormat == null || (!additionalExportFormat.trim().equals("") && !formatsToExport.contains(additionalExportFormat))) {
                 formatsToExport.add(additionalExportFormat);
             }
         }
 
-        for (StorageFile inputFile : InputTestFiles) {
+        for (StorageFile inputFile : BasicInputTestFiles) {
             if (inputFile.getName().endsWith(formatExtension)) {
                 name = inputFile.getName();
             } else {
@@ -158,7 +159,12 @@ public class FilterEffectApiTests extends ApiTester {
             }
 
             for (Filter filter  : filters) {
-                for (String format : formatsToExport) {
+                for (String format : formatsToExport) {		
+
+					if (formatExtension == ".psd" && format == "webp") {
+						continue;
+					}				
+
                     filterEffectImageRequest = new FilterEffectImageRequest(name,  filter.filterType, filter.filterProperties, format, folder, storage);
 
                     Method propertiesTester = FilterEffectApiTests.class.getDeclaredMethod("filterEffectPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);

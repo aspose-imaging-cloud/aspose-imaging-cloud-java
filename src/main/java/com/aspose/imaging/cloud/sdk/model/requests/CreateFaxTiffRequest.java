@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ImagingBase.java">
-*   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
+* <copyright company="Aspose" file="CreateFaxTiffRequest.java">
+*   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -10,10 +10,10 @@
 *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 *  copies of the Software, and to permit persons to whom the Software is
 *  furnished to do so, subject to the following conditions:
-*
+* 
 *  The above copyright notice and this permission notice shall be included in all
 *  copies or substantial portions of the Software.
-*
+* 
 *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,12 +24,41 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-package com.aspose.imaging.cloud;
 
-public class ImagingBase {
+package com.aspose.imaging.cloud.sdk.model.requests;
 
-    public static final String APP_KEY = "";  // Get AppKey and AppSID from https:dashboard.aspose.cloud/
-    public static final String APP_SID = ""; // Get AppKey and AppSID from https:dashboard.aspose.cloud/
-    public static final String DATA_PATH = "src/main/resources/";
+import com.aspose.imaging.cloud.sdk.model.*;
 
+/**
+* Class that holds parameters for CreateFaxTiff request invocation.
+**/   
+public class CreateFaxTiffRequest
+{
+    /**
+    * Initializes a new instance of the CreateFaxTiffRequest class.   
+    * @param imageData Input image
+    * @param outPath Path to updated file (if this is empty, response contains streamed image).
+    * @param storage Your Aspose Cloud Storage name.
+    **/
+    public CreateFaxTiffRequest(byte[] imageData, String outPath, String storage)             
+    {
+        this.imageData = imageData;
+        this.outPath = outPath;
+        this.storage = storage;
+    }
+        
+    /**
+    * Input image
+    **/
+    public byte[] imageData;
+
+    /**
+    * Path to updated file (if this is empty, response contains streamed image).
+    **/
+    public String outPath;
+
+    /**
+    * Your Aspose Cloud Storage name.
+    **/
+    public String storage;
 }

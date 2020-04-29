@@ -26,27 +26,41 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.invoker.internal.StreamHelper;
 import com.aspose.imaging.cloud.sdk.model.StorageFile;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-
 import org.junit.Test;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 /**
  * Class for testing TIFF-related API calls
  */
+@RunWith(Parameterized.class)
 public class TiffSpecificApiTests extends ApiTester {
 
     private ConvertTiffToFaxRequest convertTiffToFaxRequest;
+
+    private CreateFaxTiffRequest createFaxTiffRequest;
+
+
+    @Parameterized.Parameters
+    public static Iterable<Object> data() {
+        return Arrays.asList(new Object[] { true, false });
+    }
+
+    private Boolean saveResultToStorage;
+
+    public TiffSpecificApiTests(Boolean saveResult)
+    {
+        this.saveResultToStorage = saveResult;
+    }
 
     /**
      * Test operation: Update parameters of existing TIFF image accordingly to fax parameters.
@@ -62,7 +76,7 @@ public class TiffSpecificApiTests extends ApiTester {
         
         convertTiffToFaxRequest = new ConvertTiffToFaxRequest(name, storage, folder);
         
-        Method propertiesTester = TiffSpecificApiTests.class.getDeclaredMethod("convertTiffToFaxPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        Method propertiesTester = TiffSpecificApiTests.class.getDeclaredMethod("tiffToFaxPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
         propertiesTester.setAccessible(true);
         Method requestInvoker = TiffSpecificApiTests.class.getDeclaredMethod("convertTiffToFaxGetRequestInvoker", String.class);
         requestInvoker.setAccessible(true);
@@ -75,6 +89,40 @@ public class TiffSpecificApiTests extends ApiTester {
             propertiesTester,
             folder,
             storage);
+    }
+
+    /**
+     * Test operation: Update parameters of TIFF image from request accordingly to fax parameters.
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void createFaxTiffTest() throws Exception {
+        byte[] imageData = null;
+        String outPath = null;
+        String name = "test.tiff";
+        String folder = getTempFolder();
+        String storage = TestStorage;
+        String outName = name + "_specific." + "tiff";
+
+        createFaxTiffRequest = new CreateFaxTiffRequest(imageData, outPath, storage);
+
+        Method propertiesTester = TiffSpecificApiTests.class.getDeclaredMethod("tiffToFaxPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+        propertiesTester.setAccessible(true);
+        Method requestInvoker = TiffSpecificApiTests.class.getDeclaredMethod("createFaxTiffPostRequestInvoker", byte[].class, String.class);
+        requestInvoker.setAccessible(true);
+        this.testPostRequest(
+                "createFaxTiffTest",
+                saveResultToStorage,
+                String.format("Input image: %s",
+                        name),
+                name,
+                outName,
+                requestInvoker,
+                propertiesTester,
+                folder,
+                storage);
     }
     
     /**
@@ -173,14 +221,28 @@ public class TiffSpecificApiTests extends ApiTester {
         convertTiffToFaxRequest.name = name;
         return ImagingApi.convertTiffToFax(convertTiffToFaxRequest);
     }
+
+    /**
+     * Invokes POST request for createFaxTiff operation. Used indirectly by method reference.
+     * @param imageData Image data
+     * @param outPath Out path
+     * @return API response
+     * @throws Exception
+     */
+    private byte[] createFaxTiffPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    {
+        createFaxTiffRequest.imageData = imageData;
+        createFaxTiffRequest.outPath = outPath;
+        return ImagingApi.createFaxTiff(createFaxTiffRequest);
+    }
     
     /**
-     * Tests properties for convertTiffToFax operation. Used indirectly by method reference.
+     * Tests properties for convertTiffToFax and createFaxTiff operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void convertTiffToFaxPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void tiffToFaxPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
         Assert.assertNotNull(resultProperties.getTiffProperties());
         Assert.assertEquals(1, (int)resultProperties.getBitsPerPixel());

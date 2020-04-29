@@ -84,7 +84,7 @@ public class GrayscaleApiTests extends ApiTester {
         String folder = getTempFolder();
         String storage = TestStorage;
 
-        for (StorageFile inputFile : InputTestFiles)
+        for (StorageFile inputFile : BasicInputTestFiles)
         {
             if (inputFile.getName().endsWith(formatExtension))
             {
@@ -128,7 +128,7 @@ public class GrayscaleApiTests extends ApiTester {
         String storage = TestStorage;
         String outName = null;
 
-        for (StorageFile inputFile : InputTestFiles) {
+        for (StorageFile inputFile : BasicInputTestFiles) {
             if (inputFile.getName().endsWith(formatExtension)) {
                 name = inputFile.getName();
             } else {

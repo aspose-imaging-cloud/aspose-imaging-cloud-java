@@ -240,6 +240,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createFaxTiff"></a>
+## **createFaxTiff**
+> byte[] createFaxTiff(CreateFaxTiffRequest request)
+
+Update parameters of TIFF image accordingly to fax parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### **CreateFaxTiffRequest** Parameters
+```java
+CreateFaxTiffRequest(
+    byte[] imageData, 
+    String outPath, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **byte[]**| Input image |
+ **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image). | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+
+### Return type
+
+**byte[]**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createFolder"></a>
 ## **createFolder**
 > void createFolder(CreateFolderRequest request)
@@ -326,7 +352,7 @@ void (empty response body)
 ## **createImageFrame**
 > byte[] createImageFrame(CreateImageFrameRequest request)
 
-Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **CreateImageFrameRequest** Parameters
 ```java
@@ -349,6 +375,52 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **byte[]**| Input image |
  **frameId** | **Integer**| Number of a frame. |
+ **newWidth** | **Integer**| New width. | [optional]
+ **newHeight** | **Integer**| New height. | [optional]
+ **x** | **Integer**| X position of start point for cropping rectangle. | [optional]
+ **y** | **Integer**| Y position of start point for cropping rectangle. | [optional]
+ **rectWidth** | **Integer**| Width of cropping rectangle. | [optional]
+ **rectHeight** | **Integer**| Height of cropping rectangle. | [optional]
+ **rotateFlipMethod** | **String**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | [optional]
+ **saveOtherFrames** | **Boolean**| If result will include all other frames or just a specified frame. | [optional] [default to false]
+ **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image). | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+
+### Return type
+
+**byte[]**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createImageFrameRange"></a>
+## **createImageFrameRange**
+> byte[] createImageFrameRange(CreateImageFrameRangeRequest request)
+
+Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### **CreateImageFrameRangeRequest** Parameters
+```java
+CreateImageFrameRangeRequest(
+    byte[] imageData, 
+    Integer startFrameId, 
+    Integer endFrameId, 
+    Integer newWidth, 
+    Integer newHeight, 
+    Integer x, 
+    Integer y, 
+    Integer rectWidth, 
+    Integer rectHeight, 
+    String rotateFlipMethod, 
+    Boolean saveOtherFrames, 
+    String outPath, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **byte[]**| Input image |
+ **startFrameId** | **Integer**| Index of the first frame in range. |
+ **endFrameId** | **Integer**| Index of the last frame in range. |
  **newWidth** | **Integer**| New width. | [optional]
  **newHeight** | **Integer**| New height. | [optional]
  **x** | **Integer**| X position of start point for cropping rectangle. | [optional]
@@ -1216,7 +1288,7 @@ Name | Type | Description  | Notes
 ## **extractImageFrameProperties**
 > [ImagingResponse](ImagingResponse.md) extractImageFrameProperties(ExtractImageFramePropertiesRequest request)
 
-Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get separate frame properties of existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **ExtractImageFramePropertiesRequest** Parameters
 ```java
@@ -1486,7 +1558,7 @@ Name | Type | Description  | Notes
 ## **getImageFrame**
 > byte[] getImageFrame(GetImageFrameRequest request)
 
-Get separate frame from existing TIFF image.
+Get separate frame from existing image.
 
 ### **GetImageFrameRequest** Parameters
 ```java
@@ -1530,7 +1602,7 @@ Name | Type | Description  | Notes
 ## **getImageFrameProperties**
 > [ImagingResponse](ImagingResponse.md) getImageFrameProperties(GetImageFramePropertiesRequest request)
 
-Get separate frame properties of existing TIFF image.
+Get separate frame properties of existing image.
 
 ### **GetImageFramePropertiesRequest** Parameters
 ```java
@@ -1551,6 +1623,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ImagingResponse**](ImagingResponse.md)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="getImageFrameRange"></a>
+## **getImageFrameRange**
+> byte[] getImageFrameRange(GetImageFrameRangeRequest request)
+
+Get frames range from existing image.
+
+### **GetImageFrameRangeRequest** Parameters
+```java
+GetImageFrameRangeRequest(
+    String name, 
+    Integer startFrameId, 
+    Integer endFrameId, 
+    Integer newWidth, 
+    Integer newHeight, 
+    Integer x, 
+    Integer y, 
+    Integer rectWidth, 
+    Integer rectHeight, 
+    String rotateFlipMethod, 
+    Boolean saveOtherFrames, 
+    String folder, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Filename of image. |
+ **startFrameId** | **Integer**| Index of the first frame in range. |
+ **endFrameId** | **Integer**| Index of the last frame in range. |
+ **newWidth** | **Integer**| New width. | [optional]
+ **newHeight** | **Integer**| New height. | [optional]
+ **x** | **Integer**| X position of start point for cropping rectangle. | [optional]
+ **y** | **Integer**| Y position of start point for cropping rectangle. | [optional]
+ **rectWidth** | **Integer**| Width of cropping rectangle. | [optional]
+ **rectHeight** | **Integer**| Height of cropping rectangle. | [optional]
+ **rotateFlipMethod** | **String**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | [optional]
+ **saveOtherFrames** | **Boolean**| If result will include all other frames or just a specified frame. | [optional] [default to false]
+ **folder** | **String**| Folder with image to process. | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+
+### Return type
+
+**byte[]**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
