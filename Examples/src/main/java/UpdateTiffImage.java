@@ -173,6 +173,32 @@ public class UpdateTiffImage extends ImagingBase {
     }
 
     /**
+     * Update parameters of TIFF image according to fax parameters. Image data is passed in a request stream.
+     *
+     * @throws Exception
+     */
+    public void ConvertTiffToFaxFromRequestBody() throws Exception {
+        System.out.println("Update parameters of TIFF image from request body according to fax parameters.");
+
+        uploadSampleImageToCloud();
+
+        // Update TIFF Image parameters according to fax parameters
+        String outPath = null;
+        String storage = null; // We are using default Cloud Storage
+
+        byte[] inputStream = Files.readAllBytes(Paths.get(ExampleImagesFolder, getSampleImageFileName()));
+        CreateFaxTiffRequest createFaxTiffRequest = new CreateFaxTiffRequest(
+                inputStream, outPath, storage);
+
+        System.out.println("Call CreateFaxTiff");
+
+        byte[] updatedImage = ImagingApi.createFaxTiff(createFaxTiffRequest);
+        saveUpdatedSampleImageToOutput(updatedImage, true, null);
+
+        System.out.println();
+    }
+
+    /**
      * Appends existing TIFF image to another existing TIFF image (i.e. merges TIFF images).
      *
      * @throws Exception
