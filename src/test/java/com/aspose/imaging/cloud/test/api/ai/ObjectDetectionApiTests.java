@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="DeskewApiTests.java">
+* <copyright company="Aspose" file="ObjectDetectionApiTests.java">
 *   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
@@ -69,12 +69,6 @@ public class ObjectDetectionApiTests extends ApiTester {
         this.saveResultToStorage = saveResult;
     }
 
-    /**
-     * Test operation: detect object bounds for an existing image.
-     * 
-     * @throws Exception
-     *          if the Api call fails
-     */
     @Test
     public void objectBoundsTest() throws Exception {
         
@@ -98,7 +92,7 @@ public class ObjectDetectionApiTests extends ApiTester {
             objectBoundsRequest = new ObjectBoundsRequest(name, null, 60,
                 true, true, folder, storage);
 
-            Method propertiesTester = ObjectDetectionApiTests.class.getDeclaredMethod("ObjectDetectionBoundsTester", List.class);
+            Method propertiesTester = ObjectDetectionApiTests.class.getDeclaredMethod("ObjectDetectionBoundsTester", DetectedObjectList.class);
             propertiesTester.setAccessible(true);
             Method requestInvoker = ObjectDetectionApiTests.class.getDeclaredMethod("objectBoundsGetRequestInvoker", String.class);
             requestInvoker.setAccessible(true);
@@ -151,13 +145,6 @@ public class ObjectDetectionApiTests extends ApiTester {
         }
     }
 
-
-    /**
-     * Test operation: Deskew an image. Image is passed in a request stream.
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
     @Test
     public void createObjectBoundsTest() throws Exception {
         byte[] imageData = null;
@@ -176,7 +163,7 @@ public class ObjectDetectionApiTests extends ApiTester {
 
             createObjectBoundsRequest = new CreateObjectBoundsRequest(imageData, null, 60, true, true, outPath, storage);
 
-            Method propertiesTester = ObjectDetectionApiTests.class.getDeclaredMethod("ObjectDetectionBoundsTester", List.class);
+            Method propertiesTester = ObjectDetectionApiTests.class.getDeclaredMethod("ObjectDetectionBoundsTester", DetectedObjectList.class);
             propertiesTester.setAccessible(true);
             Method requestInvoker = ObjectDetectionApiTests.class.getDeclaredMethod("objectBoundsPostRequestInvoker", byte[].class, String.class);
             requestInvoker.setAccessible(true);
@@ -228,13 +215,6 @@ public class ObjectDetectionApiTests extends ApiTester {
         }
     }
 
-
-    /**
-     * Invokes GET request for object bounds operation. Used indirectly by method reference.
-     * @param name Image file name
-     * @return API response
-     * @throws Exception 
-     */
     private DetectedObjectList objectBoundsGetRequestInvoker(String name) throws Exception
     {
         objectBoundsRequest.name = name;
@@ -261,29 +241,11 @@ public class ObjectDetectionApiTests extends ApiTester {
         return ImagingApi.createVisualObjectBounds(createVisualObjectBoundsRequest);
     }
 
-    /**
-     * Invokes POST request for createVisualObjectBoundsImage operation. Used indirectly by method reference.
-     * @param imageData Image data
-     * @param outPath Out path
-     * @return API response
-     * @throws Exception 
-     */
-    /*private byte[] createDeskewedImagePostRequestInvoker(byte[] imageData, String outPath) throws Exception
-    {
-        createDeskewedImageRequest.imageData = imageData;
-        createDeskewedImageRequest.outPath = outPath;
-        createDeskewedImageRequest.resizeProportionally = this.resizeProportionally;
-        createDeskewedImageRequest.bkColor = this.bkColor;
-        return ImagingApi.createDeskewedImage(createDeskewedImageRequest);
-    }*/
-    /**
-     * Tests properties for deskewImage operation. Used indirectly by method reference.
-     * @param resultData Result image data
-     */
-    private void ObjectDetectionBoundsTester(List<DetectedObject> resultData)
+    private void ObjectDetectionBoundsTester(DetectedObjectList resultData)
     {
         Assert.assertNotNull(resultData);
-        Assert.assertTrue(resultData.size() > 0);
+        Assert.assertNotNull(resultData.getDetectedObjects());
+        Assert.assertTrue(resultData.getDetectedObjects().size() > 0);
     }
 
     private void VisualObjectDetectionBoundsTester(byte[] resultData)
@@ -291,15 +253,4 @@ public class ObjectDetectionApiTests extends ApiTester {
         Assert.assertNotNull(resultData);
         Assert.assertTrue(resultData.length > 0);
     }
-
-    /**
-     * Tests properties for createDeskewedImage operation. Used indirectly by method reference.
-     * @param originalProperties Original image properties
-     * @param resultProperties Result image properties
-     * @param resultData Result image data
-     */
-    /*private void createDeskewedImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
-    {
-        Assert.assertEquals(originalProperties.getBitsPerPixel(), resultProperties.getBitsPerPixel());
-    }*/
 }
