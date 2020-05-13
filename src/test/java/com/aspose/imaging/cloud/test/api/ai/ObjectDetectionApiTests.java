@@ -26,11 +26,9 @@
 */
 package com.aspose.imaging.cloud.test.api.ai;
 
-import com.aspose.imaging.cloud.sdk.model.DetectedObject;
 import com.aspose.imaging.cloud.sdk.model.DetectedObjectList;
 import com.aspose.imaging.cloud.sdk.model.StorageFile;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
-import com.aspose.imaging.cloud.sdk.stablemodel.ImagingResponse;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,8 +37,6 @@ import org.junit.runners.Parameterized;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.List;
-
 import static org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -55,18 +51,20 @@ public class ObjectDetectionApiTests extends ApiTester {
     private CreateVisualObjectBoundsRequest createVisualObjectBoundsRequest;
 
     @Parameters
-    public static Iterable<Object[]> data() {
-        return Arrays.asList(new Object[][] {
+    public static Iterable<Boolean[]> data() {
+        return Arrays.asList(new Boolean[][] {
                 { false }
         });
     }
 
     private Boolean saveResultToStorage;
+    private String imageName;
 
 
     public ObjectDetectionApiTests(Boolean saveResult)
     {
         this.saveResultToStorage = saveResult;
+        this.imageName = "test.bmp";
     }
 
     @Test
@@ -84,12 +82,12 @@ public class ObjectDetectionApiTests extends ApiTester {
         for (StorageFile inputFile : InputTestFiles)
         {
             name = inputFile.getName();
-            if (!name.equalsIgnoreCase("object_detection_example.jpg"))
+            if (!name.equalsIgnoreCase(imageName))
             {
                 continue;
             }
 
-            objectBoundsRequest = new ObjectBoundsRequest(name, null, 60,
+            objectBoundsRequest = new ObjectBoundsRequest(name, null, 20,
                 true, true, folder, storage);
 
             Method propertiesTester = ObjectDetectionApiTests.class.getDeclaredMethod("ObjectDetectionBoundsTester", DetectedObjectList.class);
@@ -97,8 +95,8 @@ public class ObjectDetectionApiTests extends ApiTester {
             Method requestInvoker = ObjectDetectionApiTests.class.getDeclaredMethod("objectBoundsGetRequestInvoker", String.class);
             requestInvoker.setAccessible(true);
             this.testObjectDetectionGetRequest(
-                "objectDetectionImageTest",
-                String.format("Input image: %s;", name),
+                "objectDetection_objectbounds_test",
+                String.format("Input image: %s; SaveResultToStorage: %s; method: ssd; threshold: 20", name, saveResultToStorage),
                 name,
                 requestInvoker,
                 propertiesTester,
@@ -122,12 +120,12 @@ public class ObjectDetectionApiTests extends ApiTester {
         for (StorageFile inputFile : InputTestFiles)
         {
             name = inputFile.getName();
-            if (!name.equalsIgnoreCase("object_detection_example.jpg"))
+            if (!name.equalsIgnoreCase(imageName))
             {
                 continue;
             }
 
-            visualObjectBoundsRequest = new VisualObjectBoundsRequest(name, null, 60,
+            visualObjectBoundsRequest = new VisualObjectBoundsRequest(name, null, 20,
                     true, true, folder, storage);
 
             Method propertiesTester = ObjectDetectionApiTests.class.getDeclaredMethod("VisualObjectDetectionBoundsTester", byte[].class);
@@ -135,8 +133,8 @@ public class ObjectDetectionApiTests extends ApiTester {
             Method requestInvoker = ObjectDetectionApiTests.class.getDeclaredMethod("visualObjectBoundsGetRequestInvoker", String.class);
             requestInvoker.setAccessible(true);
             this.testObjectDetectionGetRequest(
-                    "visualObjectDetectionImageTest",
-                    String.format("Input image: %s;", name),
+                    "objectdetection_visualobjectbounds_test",
+                    String.format("Input image: %s; SaveResultToStorage: %s; method: ssd; threshold: 20", name, saveResultToStorage),
                     name,
                     requestInvoker,
                     propertiesTester,
@@ -156,21 +154,21 @@ public class ObjectDetectionApiTests extends ApiTester {
 
         for (StorageFile inputFile : InputTestFiles) {
             name = inputFile.getName();
-            if (!name.equalsIgnoreCase("object_detection_example.jpg"))
+            if (!name.equalsIgnoreCase(imageName))
             {
                 continue;
             }
 
-            createObjectBoundsRequest = new CreateObjectBoundsRequest(imageData, null, 60, true, true, outPath, storage);
+            createObjectBoundsRequest = new CreateObjectBoundsRequest(imageData, null, 20, true, true, outPath, storage);
 
             Method propertiesTester = ObjectDetectionApiTests.class.getDeclaredMethod("ObjectDetectionBoundsTester", DetectedObjectList.class);
             propertiesTester.setAccessible(true);
             Method requestInvoker = ObjectDetectionApiTests.class.getDeclaredMethod("objectBoundsPostRequestInvoker", byte[].class, String.class);
             requestInvoker.setAccessible(true);
             this.testObjectDetectionPostRequest(
-                    "createObjectBoundsTest; save result to storage: " + saveResultToStorage,
+                    "objectdetection_createobjectbounds_test",
                     saveResultToStorage,
-                    String.format("Input image: %s; ", name),
+                    String.format("Input image: %s; SaveResultToStorage: %s; method: ssd; threshold: 20", name, saveResultToStorage),
                     name,
                     name,
                     requestInvoker,
@@ -191,7 +189,7 @@ public class ObjectDetectionApiTests extends ApiTester {
 
         for (StorageFile inputFile : InputTestFiles) {
             name = inputFile.getName();
-            if (!name.equalsIgnoreCase("object_detection_example.jpg"))
+            if (!name.equalsIgnoreCase(imageName))
             {
                 continue;
             }
@@ -203,9 +201,9 @@ public class ObjectDetectionApiTests extends ApiTester {
             Method requestInvoker = ObjectDetectionApiTests.class.getDeclaredMethod("visualObjectBoundsPostRequestInvoker", byte[].class, String.class);
             requestInvoker.setAccessible(true);
             this.testObjectDetectionPostRequest(
-                    "createVisualObjectBoundsTest; save result to storage: " + saveResultToStorage,
+                    "objectdetection_createvisualobjectbounds_test",
                     saveResultToStorage,
-                    String.format("Input image: %s; ", name),
+                    String.format("Input image: %s; SaveResultToStorage: %s; method: ssd; threshold: 20", name, saveResultToStorage),
                     name,
                     name,
                     requestInvoker,
@@ -246,6 +244,10 @@ public class ObjectDetectionApiTests extends ApiTester {
         Assert.assertNotNull(resultData);
         Assert.assertNotNull(resultData.getDetectedObjects());
         Assert.assertTrue(resultData.getDetectedObjects().size() > 0);
+        Assert.assertNotNull(resultData.getDetectedObjects().get(0).getLabel());
+        Assert.assertNotNull(resultData.getDetectedObjects().get(0).getScore());
+        Assert.assertNotNull(resultData.getDetectedObjects().get(0).getBounds());
+        Assert.assertNotNull(resultData.getDetectedObjects().get(0).getBounds());
     }
 
     private void VisualObjectDetectionBoundsTester(byte[] resultData)
