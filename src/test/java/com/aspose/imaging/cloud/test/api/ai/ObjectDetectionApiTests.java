@@ -246,8 +246,10 @@ public class ObjectDetectionApiTests extends ApiTester {
         Assert.assertTrue(resultData.getDetectedObjects().size() > 0);
         Assert.assertNotNull(resultData.getDetectedObjects().get(0).getLabel());
         Assert.assertNotNull(resultData.getDetectedObjects().get(0).getScore());
+        Assert.assertTrue(resultData.getDetectedObjects().get(0).getScore() > 0);
         Assert.assertNotNull(resultData.getDetectedObjects().get(0).getBounds());
-        Assert.assertNotNull(resultData.getDetectedObjects().get(0).getBounds());
+        Assert.assertTrue(resultData.getDetectedObjects().get(0).getBounds().getHeight() > 0);
+        Assert.assertTrue(resultData.getDetectedObjects().get(0).getBounds().getWidth() > 0);
     }
 
     private void VisualObjectDetectionBoundsTester(byte[] resultData)
