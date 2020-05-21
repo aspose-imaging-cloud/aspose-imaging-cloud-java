@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="UploadFileRequest.java">
+* <copyright company="Aspose" file="VisualObjectBoundsRequest.java">
 *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -30,35 +30,64 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 import com.aspose.imaging.cloud.sdk.model.*;
 
 /**
-* Class that holds parameters for UploadFile request invocation.
+* Class that holds parameters for VisualObjectBounds request invocation.
 **/   
-public class UploadFileRequest
+public class VisualObjectBoundsRequest
 {
     /**
-    * Initializes a new instance of the UploadFileRequest class.   
-    * @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
-    * @param file File to upload
-    * @param storageName Storage name
+    * Initializes a new instance of the VisualObjectBoundsRequest class.   
+    * @param name The image features detector.
+    * @param method Object detection method
+    * @param threshold Object detection probability threshold in percents
+    * @param includeClass Draw detected objects classes
+    * @param includeScore Draw detected objects scores
+    * @param folder The folder.
+    * @param storage The storage.
     **/
-    public UploadFileRequest(String path, byte[] file, String storageName)             
+    public VisualObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeClass, Boolean includeScore, String folder, String storage)             
     {
-        this.path = path;
-        this.File = file;
-        this.storageName = storageName;
+        this.name = name;
+        this.method = method;
+        this.threshold = threshold;
+        this.includeClass = includeClass;
+        this.includeScore = includeScore;
+        this.folder = folder;
+        this.storage = storage;
     }
         
     /**
-    * Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext             If the content is multipart and path does not contains the file name it tries to get them from filename parameter             from Content-Disposition header.             
+    * The image features detector.
     **/
-    public String path;
+    public String name;
 
     /**
-    * File to upload
+    * Object detection method
     **/
-    public byte[] File;
+    public String method;
 
     /**
-    * Storage name
+    * Object detection probability threshold in percents
     **/
-    public String storageName;
+    public Integer threshold;
+
+    /**
+    * Draw detected objects classes
+    **/
+    public Boolean includeClass;
+
+    /**
+    * Draw detected objects scores
+    **/
+    public Boolean includeScore;
+
+    /**
+    * The folder.
+    **/
+    public String folder;
+
+    /**
+    * The storage.
+    **/
+    public String storage;
 }
+

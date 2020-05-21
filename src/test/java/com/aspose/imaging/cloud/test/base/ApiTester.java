@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import com.aspose.imaging.cloud.sdk.model.DetectedObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.tika.Tika;
 import org.junit.AfterClass;
@@ -436,6 +437,37 @@ public abstract class ApiTester
             propertiesTester, folder, storage);
     }
 
+    protected <T> void testObjectDetectionGetRequest(
+            String testMethodName,
+            String parametersLine,
+            String inputFileName,
+            Method requestInvoker,
+            Method propertiesTester,
+            String folder,
+            String storage) throws Exception
+    {
+        final String finalInputFileName = inputFileName;
+        final Method finalRequestInvoker = requestInvoker;
+        final Method obtainMethod = ApiTester.class.getDeclaredMethod("obtainObjectDetectionGetResponse", String.class, Method.class);
+        obtainMethod.setAccessible(true);
+        final Object thisReference = this;
+
+        this.testObjectDetectionRequest(testMethodName, false, parametersLine, inputFileName, null,
+                new Callable<T>()
+                {
+                    public T call() throws RuntimeException
+                    {
+                        try {
+                            return (T)obtainMethod.invoke(thisReference, finalInputFileName, finalRequestInvoker);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                propertiesTester, folder, storage);
+    }
+
+
     /**
      * Tests the typical POST request.
      * @param testMethodName Name of the test method.
@@ -497,6 +529,38 @@ public abstract class ApiTester
             }, 
             propertiesTester, folder, storage);
         }
+
+    protected <T> void testObjectDetectionPostRequest(String testMethodName, Boolean saveResultToStorage, String parametersLine, String inputFileName,
+                                                      String resultFileName, Method requestInvoker, Method propertiesTester, String folder, String storage) throws NoSuchMethodException, Exception
+    {
+        final Boolean finalSaveResultToStorage = saveResultToStorage;
+        final String finalFolder = folder;
+        final String finalResultFileName = resultFileName;
+        final String finalInputFileName = inputFileName;
+        final Method finalRequestInvoker = requestInvoker;
+        final String finalStorage = storage;
+        final Method obtainMethod = ApiTester.class.getDeclaredMethod("obtainObjectDetectionPostResponse", String.class, String.class, String.class,
+                Method.class);
+        obtainMethod.setAccessible(true);
+        final Object thisReference = this;
+
+        this.testObjectDetectionRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName,
+                new Callable<T>()
+                {
+                    public T call() throws RuntimeException
+                    {
+                        String outPath = finalSaveResultToStorage ? String.format("%s/%s", finalFolder, finalResultFileName) : null;
+                        try {
+                            return (T)obtainMethod.invoke(thisReference, finalFolder + "/" + finalInputFileName, outPath, finalStorage, finalRequestInvoker);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                propertiesTester, folder, storage);
+    }
+
+
     /**
      * Checks if input file exists.
      * @param inputFileName Name of the input file.
@@ -562,6 +626,18 @@ public abstract class ApiTester
         return result;
     }
 
+    private <T>T obtainObjectDetectionGetResponse(String inputFileName, Method requestInvoker) throws Exception
+    {
+        T result = null;
+        Object responseObject = requestInvoker.invoke(this, inputFileName);
+
+        Assert.assertNotNull(responseObject);
+        result = (T)responseObject;
+        Assert.assertNotNull(result);
+
+        return result;
+    }
+
     /**
      * Obtains the typical POST request response. Used indirectly by method reference.
      * @param inputPath The input path.
@@ -583,6 +659,21 @@ public abstract class ApiTester
             Assert.assertTrue(result.length > 0);
         }
         
+        return result;
+    }
+
+    private <T> T obtainObjectDetectionPostResponse(String inputPath, String outPath, String storage, Method requestInvoker) throws Exception
+    {
+        byte[] downBytes = ImagingApi.downloadFile(new DownloadFileRequest(inputPath, storage, null));
+        Object responseObject = requestInvoker.invoke(this, downBytes, outPath);
+        Assert.assertNotNull(responseObject);
+        T result = (T)responseObject;
+        if (outPath == null || outPath.equals(""))
+        {
+            Assert.assertNotNull(result);
+            //Assert.assertTrue(result.length > 0);
+        }
+
         return result;
     }
 
@@ -702,6 +793,72 @@ public abstract class ApiTester
         }
     }
 
+
+    private <T> void testObjectDetectionRequest(
+            String testMethodName,
+            Boolean saveResultToStorage,
+            String parametersLine,
+            String inputFileName,
+            String resultFileName,
+            Callable<T> invokeRequestAction,
+            Method propertiesTester,
+            String folder,
+            String storage) throws Exception
+    {
+        System.out.println("Test method: " + testMethodName);
+
+        if (!checkInputFileExists(inputFileName))
+        {
+            throw new Exception(
+                    String.format("Input file %s doesn't exist in the specified storage folder: %s. Please, upload it first.",
+                            inputFileName, folder));
+        }
+
+        this.copyInputFileToFolder(inputFileName, folder, storage);
+
+        Boolean passed = false;
+        String outPath = null;
+
+        try
+        {
+            System.out.println(parametersLine);
+
+            if (saveResultToStorage)
+            {
+                outPath = folder + "/" + resultFileName;
+                // remove output file from the storage (if exists)
+                if (ImagingApi.objectExists(new ObjectExistsRequest(outPath, storage, null)).isExists())
+                {
+                    ImagingApi.deleteFile(new DeleteFileRequest(outPath, storage, null));
+                }
+            }
+
+            T response = this.invokeObjectDetectionRequestWithRetry(invokeRequestAction, this.retryCount);
+
+            if (propertiesTester != null)
+            {
+                propertiesTester.invoke(this, response);
+            }
+
+            passed = true;
+        }
+        catch (Exception ex)
+        {
+            failedAnyTest = true;
+            System.out.println(ex.getMessage());
+            throw ex;
+        }
+        finally
+        {
+            if (passed && saveResultToStorage && RemoveResult && ImagingApi.objectExists(new ObjectExistsRequest(outPath, storage, null)).isExists())
+            {
+                ImagingApi.deleteFile(new DeleteFileRequest(outPath, storage, null));
+            }
+
+            System.out.println("Test passed: " + passed);
+        }
+    }
+
     /**
      * Invokes test request with attempts to retry on fail.
      * @param invokeRequestAction Request.
@@ -730,6 +887,33 @@ public abstract class ApiTester
                     System.out.println(stackTrace.toString());
                 }
                 
+                throw exception;
+            }
+        }
+    }
+
+    private <T> T invokeObjectDetectionRequestWithRetry(Callable<T> invokeRequestAction, int currentRetryCount) throws Exception
+    {
+        try
+        {
+            return invokeRequestAction.call();
+        }
+        catch (RuntimeException exception)
+        {
+            if (--currentRetryCount > 0)
+            {
+                Thread.sleep(this.retryTime * 1000);
+                System.out.println("Retrying request invocation");
+                return this.invokeObjectDetectionRequestWithRetry(invokeRequestAction, currentRetryCount);
+            }
+            else
+            {
+                System.out.println(exception.getCause().getMessage());
+                for (StackTraceElement stackTrace : exception.getCause().getStackTrace())
+                {
+                    System.out.println(stackTrace.toString());
+                }
+
                 throw exception;
             }
         }
