@@ -1897,10 +1897,10 @@ public class ImagingApi
      * Download file
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
-    public File downloadFile(DownloadFileRequest request) throws Exception 
+    public byte[] downloadFile(DownloadFileRequest request) throws Exception 
     {
        // verify the required parameter 'request.path' is set
       if (request.path== null) {
@@ -1923,13 +1923,8 @@ public class ImagingApi
           null, 
           formParams);
           
+      return response;
       
-      if (response == null)
-      {
-          return null;
-      }
-      
-      return SerializationHelper.deserialize(new String(response), File.class);
     }
   
     /**
@@ -3656,6 +3651,10 @@ public class ImagingApi
       if (request.path== null) {
         throw new ApiException(400, "Missing the required parameter 'request.path' when calling uploadFile");
       }
+       // verify the required parameter 'request.file' is set
+      if (request.File== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.file' when calling uploadFile");
+      }
       // create path and map variables
       String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/storage/file/{path}";
       
@@ -3664,7 +3663,10 @@ public class ImagingApi
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storageName", request.storageName);
       
-            
+            if (request.File != null) 
+      {
+          formParams.put("file", this.apiInvoker.toFileInfo(request.File, "File"));
+      }
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "PUT", 
