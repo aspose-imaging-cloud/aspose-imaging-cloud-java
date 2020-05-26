@@ -126,7 +126,7 @@ public class ObjectDetectionApiTests extends ApiTester {
             }
 
             visualObjectBoundsRequest = new VisualObjectBoundsRequest(name, null, 20,
-                    true, true, folder, storage);
+                    true, true, "blue", folder, storage);
 
             Method propertiesTester = ObjectDetectionApiTests.class.getDeclaredMethod("VisualObjectDetectionBoundsTester", byte[].class);
             propertiesTester.setAccessible(true);
@@ -134,7 +134,7 @@ public class ObjectDetectionApiTests extends ApiTester {
             requestInvoker.setAccessible(true);
             this.testObjectDetectionGetRequest(
                     "objectdetection_visualobjectbounds_test",
-                    String.format("Input image: %s; SaveResultToStorage: %s; method: ssd; threshold: 20", name, saveResultToStorage),
+                    String.format("Input image: %s; SaveResultToStorage: %s; method: ssd; threshold: 20, color: blue", name, saveResultToStorage),
                     name,
                     requestInvoker,
                     propertiesTester,
@@ -194,7 +194,7 @@ public class ObjectDetectionApiTests extends ApiTester {
                 continue;
             }
 
-            createVisualObjectBoundsRequest = new CreateVisualObjectBoundsRequest(imageData, null, 60, true, true, outPath, storage);
+            createVisualObjectBoundsRequest = new CreateVisualObjectBoundsRequest(imageData, null, 60, true, true, "blue", outPath, storage);
 
             Method propertiesTester = ObjectDetectionApiTests.class.getDeclaredMethod("VisualObjectDetectionBoundsTester", byte[].class);
             propertiesTester.setAccessible(true);
@@ -203,7 +203,7 @@ public class ObjectDetectionApiTests extends ApiTester {
             this.testObjectDetectionPostRequest(
                     "objectdetection_createvisualobjectbounds_test",
                     saveResultToStorage,
-                    String.format("Input image: %s; SaveResultToStorage: %s; method: ssd; threshold: 20", name, saveResultToStorage),
+                    String.format("Input image: %s; SaveResultToStorage: %s; method: ssd; threshold: 20; color: blue", name, saveResultToStorage),
                     name,
                     name,
                     requestInvoker,

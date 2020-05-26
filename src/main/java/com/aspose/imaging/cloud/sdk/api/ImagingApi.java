@@ -1579,6 +1579,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeClass", request.includeClass);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "color", request.color);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -3706,6 +3707,7 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeClass", request.includeClass);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "color", request.color);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       

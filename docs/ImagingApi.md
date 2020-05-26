@@ -891,8 +891,8 @@ Name | Type | Description  | Notes
  **imageData** | **byte[]**| Input image |
  **method** | **String**| Object detection method | [optional] [default to ssd]
  **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to true]
- **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to true]
+ **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to false]
+ **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to false]
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image) | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 
@@ -1048,6 +1048,7 @@ CreateVisualObjectBoundsRequest(
     Integer threshold, 
     Boolean includeClass, 
     Boolean includeScore, 
+    String color, 
     String outPath, 
     String storage)
 ```
@@ -1057,8 +1058,9 @@ Name | Type | Description  | Notes
  **imageData** | **byte[]**| Input image |
  **method** | **String**| Object detection method | [optional] [default to ssd]
  **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to true]
- **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to true]
+ **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to false]
+ **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to false]
+ **color** | **String**| Bounds, labels, and scores text color | [optional]
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image) | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 
@@ -2299,8 +2301,8 @@ Name | Type | Description  | Notes
  **name** | **String**| Image file name. |
  **method** | **String**| Object detection method | [optional] [default to ssd]
  **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **Boolean**| Return detected objects classes | [optional] [default to true]
- **includeScore** | **Boolean**| Return detected objects score | [optional] [default to true]
+ **includeClass** | **Boolean**| Return detected objects classes | [optional] [default to false]
+ **includeScore** | **Boolean**| Return detected objects score | [optional] [default to false]
  **folder** | **String**| Folder | [optional]
  **storage** | **String**| Storage | [optional]
 
@@ -2590,6 +2592,7 @@ VisualObjectBoundsRequest(
     Integer threshold, 
     Boolean includeClass, 
     Boolean includeScore, 
+    String color, 
     String folder, 
     String storage)
 ```
@@ -2599,8 +2602,9 @@ Name | Type | Description  | Notes
  **name** | **String**| The image features detector. |
  **method** | **String**| Object detection method | [optional] [default to ssd]
  **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to true]
- **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to true]
+ **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to false]
+ **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to false]
+ **color** | **String**| Bounds, labels, and scores text color | [optional]
  **folder** | **String**| The folder. | [optional]
  **storage** | **String**| The storage. | [optional]
 

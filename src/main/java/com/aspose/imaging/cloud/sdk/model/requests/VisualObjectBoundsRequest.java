@@ -41,16 +41,18 @@ public class VisualObjectBoundsRequest
     * @param threshold Object detection probability threshold in percents
     * @param includeClass Draw detected objects classes
     * @param includeScore Draw detected objects scores
+    * @param color Bounds, labels, and scores text color
     * @param folder The folder.
     * @param storage The storage.
     **/
-    public VisualObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeClass, Boolean includeScore, String folder, String storage)             
+    public VisualObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeClass, Boolean includeScore, String color, String folder, String storage)             
     {
         this.name = name;
         this.method = method;
         this.threshold = threshold;
         this.includeClass = includeClass;
         this.includeScore = includeScore;
+        this.color = color;
         this.folder = folder;
         this.storage = storage;
     }
@@ -79,6 +81,11 @@ public class VisualObjectBoundsRequest
     * Draw detected objects scores
     **/
     public Boolean includeScore;
+
+    /**
+    * Bounds, labels, and scores text color
+    **/
+    public String color;
 
     /**
     * The folder.
