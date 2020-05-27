@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="VisualObjectBoundsRequest.java">
+* <copyright company="Aspose" file="GetObjectBoundsRequest.java">
 *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -30,33 +30,33 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 import com.aspose.imaging.cloud.sdk.model.*;
 
 /**
-* Class that holds parameters for VisualObjectBounds request invocation.
+* Class that holds parameters for GetObjectBounds request invocation.
 **/   
-public class VisualObjectBoundsRequest
+public class GetObjectBoundsRequest
 {
     /**
-    * Initializes a new instance of the VisualObjectBoundsRequest class.   
-    * @param name The image features detector.
+    * Initializes a new instance of the GetObjectBoundsRequest class.   
+    * @param name Image file name.
     * @param method Object detection method
     * @param threshold Object detection probability threshold in percents
-    * @param includeClass Draw detected objects classes
-    * @param includeScore Draw detected objects scores
-    * @param folder The folder.
-    * @param storage The storage.
+    * @param includeLabel Return detected objects labels
+    * @param includeScore Return detected objects score
+    * @param folder Folder
+    * @param storage Storage
     **/
-    public VisualObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeClass, Boolean includeScore, String folder, String storage)             
+    public GetObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeLabel, Boolean includeScore, String folder, String storage)             
     {
         this.name = name;
         this.method = method;
         this.threshold = threshold;
-        this.includeClass = includeClass;
+        this.includeLabel = includeLabel;
         this.includeScore = includeScore;
         this.folder = folder;
         this.storage = storage;
     }
         
     /**
-    * The image features detector.
+    * Image file name.
     **/
     public String name;
 
@@ -71,23 +71,22 @@ public class VisualObjectBoundsRequest
     public Integer threshold;
 
     /**
-    * Draw detected objects classes
+    * Return detected objects labels
     **/
-    public Boolean includeClass;
+    public Boolean includeLabel;
 
     /**
-    * Draw detected objects scores
+    * Return detected objects score
     **/
     public Boolean includeScore;
 
     /**
-    * The folder.
+    * Folder
     **/
     public String folder;
 
     /**
-    * The storage.
+    * Storage
     **/
     public String storage;
 }
-

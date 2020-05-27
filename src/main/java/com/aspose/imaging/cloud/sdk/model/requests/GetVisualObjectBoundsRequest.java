@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ObjectBoundsRequest.java">
+* <copyright company="Aspose" file="GetVisualObjectBoundsRequest.java">
 *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -30,33 +30,35 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 import com.aspose.imaging.cloud.sdk.model.*;
 
 /**
-* Class that holds parameters for ObjectBounds request invocation.
+* Class that holds parameters for GetVisualObjectBounds request invocation.
 **/   
-public class ObjectBoundsRequest
+public class GetVisualObjectBoundsRequest
 {
     /**
-    * Initializes a new instance of the ObjectBoundsRequest class.   
-    * @param name Image file name.
+    * Initializes a new instance of the GetVisualObjectBoundsRequest class.   
+    * @param name The image features detector.
     * @param method Object detection method
     * @param threshold Object detection probability threshold in percents
-    * @param includeClass Return detected objects classes
-    * @param includeScore Return detected objects score
-    * @param folder Folder
-    * @param storage Storage
+    * @param includeLabel Draw detected objects labels
+    * @param includeScore Draw detected objects scores
+    * @param color Bounds, labels, and scores text color
+    * @param folder The folder.
+    * @param storage The storage.
     **/
-    public ObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeClass, Boolean includeScore, String folder, String storage)             
+    public GetVisualObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeLabel, Boolean includeScore, String color, String folder, String storage)             
     {
         this.name = name;
         this.method = method;
         this.threshold = threshold;
-        this.includeClass = includeClass;
+        this.includeLabel = includeLabel;
         this.includeScore = includeScore;
+        this.color = color;
         this.folder = folder;
         this.storage = storage;
     }
         
     /**
-    * Image file name.
+    * The image features detector.
     **/
     public String name;
 
@@ -71,22 +73,27 @@ public class ObjectBoundsRequest
     public Integer threshold;
 
     /**
-    * Return detected objects classes
+    * Draw detected objects labels
     **/
-    public Boolean includeClass;
+    public Boolean includeLabel;
 
     /**
-    * Return detected objects score
+    * Draw detected objects scores
     **/
     public Boolean includeScore;
 
     /**
-    * Folder
+    * Bounds, labels, and scores text color
+    **/
+    public String color;
+
+    /**
+    * The folder.
     **/
     public String folder;
 
     /**
-    * Storage
+    * The storage.
     **/
     public String storage;
 }
