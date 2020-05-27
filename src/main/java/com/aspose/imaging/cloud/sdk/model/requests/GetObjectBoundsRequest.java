@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ObjectBoundsRequest.java">
+* <copyright company="Aspose" file="GetObjectBoundsRequest.java">
 *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -30,26 +30,26 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 import com.aspose.imaging.cloud.sdk.model.*;
 
 /**
-* Class that holds parameters for ObjectBounds request invocation.
+* Class that holds parameters for GetObjectBounds request invocation.
 **/   
-public class ObjectBoundsRequest
+public class GetObjectBoundsRequest
 {
     /**
-    * Initializes a new instance of the ObjectBoundsRequest class.   
+    * Initializes a new instance of the GetObjectBoundsRequest class.   
     * @param name Image file name.
     * @param method Object detection method
     * @param threshold Object detection probability threshold in percents
-    * @param includeClass Return detected objects classes
+    * @param includeLabel Return detected objects labels
     * @param includeScore Return detected objects score
     * @param folder Folder
     * @param storage Storage
     **/
-    public ObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeClass, Boolean includeScore, String folder, String storage)             
+    public GetObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeLabel, Boolean includeScore, String folder, String storage)             
     {
         this.name = name;
         this.method = method;
         this.threshold = threshold;
-        this.includeClass = includeClass;
+        this.includeLabel = includeLabel;
         this.includeScore = includeScore;
         this.folder = folder;
         this.storage = storage;
@@ -71,9 +71,9 @@ public class ObjectBoundsRequest
     public Integer threshold;
 
     /**
-    * Return detected objects classes
+    * Return detected objects labels
     **/
-    public Boolean includeClass;
+    public Boolean includeLabel;
 
     /**
     * Return detected objects score

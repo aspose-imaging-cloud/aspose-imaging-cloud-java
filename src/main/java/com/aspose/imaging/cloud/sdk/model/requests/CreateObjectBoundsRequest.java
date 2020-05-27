@@ -39,17 +39,17 @@ public class CreateObjectBoundsRequest
     * @param imageData Input image
     * @param method Object detection method
     * @param threshold Object detection probability threshold in percents
-    * @param includeClass Draw detected objects classes
+    * @param includeLabel Draw detected objects labels
     * @param includeScore Draw detected objects scores
     * @param outPath Path to updated file (if this is empty, response contains streamed image)
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public CreateObjectBoundsRequest(byte[] imageData, String method, Integer threshold, Boolean includeClass, Boolean includeScore, String outPath, String storage)             
+    public CreateObjectBoundsRequest(byte[] imageData, String method, Integer threshold, Boolean includeLabel, Boolean includeScore, String outPath, String storage)             
     {
         this.imageData = imageData;
         this.method = method;
         this.threshold = threshold;
-        this.includeClass = includeClass;
+        this.includeLabel = includeLabel;
         this.includeScore = includeScore;
         this.outPath = outPath;
         this.storage = storage;
@@ -71,9 +71,9 @@ public class CreateObjectBoundsRequest
     public Integer threshold;
 
     /**
-    * Draw detected objects classes
+    * Draw detected objects labels
     **/
-    public Boolean includeClass;
+    public Boolean includeLabel;
 
     /**
     * Draw detected objects scores

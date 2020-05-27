@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="VisualObjectBoundsRequest.java">
+* <copyright company="Aspose" file="GetVisualObjectBoundsRequest.java">
 *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -30,27 +30,27 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 import com.aspose.imaging.cloud.sdk.model.*;
 
 /**
-* Class that holds parameters for VisualObjectBounds request invocation.
+* Class that holds parameters for GetVisualObjectBounds request invocation.
 **/   
-public class VisualObjectBoundsRequest
+public class GetVisualObjectBoundsRequest
 {
     /**
-    * Initializes a new instance of the VisualObjectBoundsRequest class.   
+    * Initializes a new instance of the GetVisualObjectBoundsRequest class.   
     * @param name The image features detector.
     * @param method Object detection method
     * @param threshold Object detection probability threshold in percents
-    * @param includeClass Draw detected objects classes
+    * @param includeLabel Draw detected objects labels
     * @param includeScore Draw detected objects scores
     * @param color Bounds, labels, and scores text color
     * @param folder The folder.
     * @param storage The storage.
     **/
-    public VisualObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeClass, Boolean includeScore, String color, String folder, String storage)             
+    public GetVisualObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeLabel, Boolean includeScore, String color, String folder, String storage)             
     {
         this.name = name;
         this.method = method;
         this.threshold = threshold;
-        this.includeClass = includeClass;
+        this.includeLabel = includeLabel;
         this.includeScore = includeScore;
         this.color = color;
         this.folder = folder;
@@ -73,9 +73,9 @@ public class VisualObjectBoundsRequest
     public Integer threshold;
 
     /**
-    * Draw detected objects classes
+    * Draw detected objects labels
     **/
-    public Boolean includeClass;
+    public Boolean includeLabel;
 
     /**
     * Draw detected objects scores
@@ -97,4 +97,3 @@ public class VisualObjectBoundsRequest
     **/
     public String storage;
 }
-

@@ -45,8 +45,8 @@ import static org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class ObjectDetectionApiTests extends ApiTester {
 
-    private ObjectBoundsRequest objectBoundsRequest;
-    private VisualObjectBoundsRequest visualObjectBoundsRequest;
+    private GetObjectBoundsRequest objectBoundsRequest;
+    private GetVisualObjectBoundsRequest visualObjectBoundsRequest;
     private CreateObjectBoundsRequest createObjectBoundsRequest;
     private CreateVisualObjectBoundsRequest createVisualObjectBoundsRequest;
 
@@ -87,7 +87,7 @@ public class ObjectDetectionApiTests extends ApiTester {
                 continue;
             }
 
-            objectBoundsRequest = new ObjectBoundsRequest(name, null, 20,
+            objectBoundsRequest = new GetObjectBoundsRequest(name, null, 20,
                 true, true, folder, storage);
 
             Method propertiesTester = ObjectDetectionApiTests.class.getDeclaredMethod("ObjectDetectionBoundsTester", DetectedObjectList.class);
@@ -125,7 +125,7 @@ public class ObjectDetectionApiTests extends ApiTester {
                 continue;
             }
 
-            visualObjectBoundsRequest = new VisualObjectBoundsRequest(name, null, 20,
+            visualObjectBoundsRequest = new GetVisualObjectBoundsRequest(name, null, 20,
                     true, true, "blue", folder, storage);
 
             Method propertiesTester = ObjectDetectionApiTests.class.getDeclaredMethod("VisualObjectDetectionBoundsTester", byte[].class);
@@ -216,7 +216,7 @@ public class ObjectDetectionApiTests extends ApiTester {
     private DetectedObjectList objectBoundsGetRequestInvoker(String name) throws Exception
     {
         objectBoundsRequest.name = name;
-        return ImagingApi.objectBounds(objectBoundsRequest);
+        return ImagingApi.getObjectBounds(objectBoundsRequest);
     }
 
     private DetectedObjectList objectBoundsPostRequestInvoker(byte[] imageData, String outPath) throws Exception
@@ -229,7 +229,7 @@ public class ObjectDetectionApiTests extends ApiTester {
     private byte[] visualObjectBoundsGetRequestInvoker(String name) throws Exception
     {
         visualObjectBoundsRequest.name = name;
-        return ImagingApi.visualObjectBounds(visualObjectBoundsRequest);
+        return ImagingApi.getVisualObjectBounds(visualObjectBoundsRequest);
     }
 
     private byte[] visualObjectBoundsPostRequestInvoker(byte[] imageData, String outPath) throws Exception

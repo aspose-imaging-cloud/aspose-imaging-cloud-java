@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 ## **createImageFrameRange**
 > byte[] createImageFrameRange(CreateImageFrameRangeRequest request)
 
-Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get frames range from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **CreateImageFrameRangeRequest** Parameters
 ```java
@@ -880,7 +880,7 @@ CreateObjectBoundsRequest(
     byte[] imageData, 
     String method, 
     Integer threshold, 
-    Boolean includeClass, 
+    Boolean includeLabel, 
     Boolean includeScore, 
     String outPath, 
     String storage)
@@ -891,7 +891,7 @@ Name | Type | Description  | Notes
  **imageData** | **byte[]**| Input image |
  **method** | **String**| Object detection method | [optional] [default to ssd]
  **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to false]
+ **includeLabel** | **Boolean**| Draw detected objects labels | [optional] [default to false]
  **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to false]
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image) | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
@@ -1038,7 +1038,7 @@ Name | Type | Description  | Notes
 ## **createVisualObjectBounds**
 > byte[] createVisualObjectBounds(CreateVisualObjectBoundsRequest request)
 
-Detect objects bounds and draw them on the original image
+Detects objects bounds and draw them on the original image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream
 
 ### **CreateVisualObjectBoundsRequest** Parameters
 ```java
@@ -1046,7 +1046,7 @@ CreateVisualObjectBoundsRequest(
     byte[] imageData, 
     String method, 
     Integer threshold, 
-    Boolean includeClass, 
+    Boolean includeLabel, 
     Boolean includeScore, 
     String color, 
     String outPath, 
@@ -1058,7 +1058,7 @@ Name | Type | Description  | Notes
  **imageData** | **byte[]**| Input image |
  **method** | **String**| Object detection method | [optional] [default to ssd]
  **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to false]
+ **includeLabel** | **Boolean**| Draw detected objects classes | [optional] [default to false]
  **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to false]
  **color** | **String**| Bounds, labels, and scores text color | [optional]
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image) | [optional]
@@ -1794,6 +1794,40 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="getObjectBounds"></a>
+## **getObjectBounds**
+> [DetectedObjectList](DetectedObjectList.md) getObjectBounds(GetObjectBoundsRequest request)
+
+Detects objects&#39; bounds
+
+### **GetObjectBoundsRequest** Parameters
+```java
+GetObjectBoundsRequest(
+    String name, 
+    String method, 
+    Integer threshold, 
+    Boolean includeLabel, 
+    Boolean includeScore, 
+    String folder, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Image file name. |
+ **method** | **String**| Object detection method | [optional] [default to ssd]
+ **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
+ **includeLabel** | **Boolean**| Return detected objects labels | [optional] [default to false]
+ **includeScore** | **Boolean**| Return detected objects score | [optional] [default to false]
+ **folder** | **String**| Folder | [optional]
+ **storage** | **String**| Storage | [optional]
+
+### Return type
+
+[**DetectedObjectList**](DetectedObjectList.md)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="getSearchImage"></a>
 ## **getSearchImage**
 > byte[] getSearchImage(GetSearchImageRequest request)
@@ -1815,6 +1849,42 @@ Name | Type | Description  | Notes
  **imageId** | **String**| Image identifier. |
  **folder** | **String**| Folder. | [optional]
  **storage** | **String**| Storage | [optional]
+
+### Return type
+
+**byte[]**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="getVisualObjectBounds"></a>
+## **getVisualObjectBounds**
+> byte[] getVisualObjectBounds(GetVisualObjectBoundsRequest request)
+
+Detects objects bounds and draw them on the original image
+
+### **GetVisualObjectBoundsRequest** Parameters
+```java
+GetVisualObjectBoundsRequest(
+    String name, 
+    String method, 
+    Integer threshold, 
+    Boolean includeLabel, 
+    Boolean includeScore, 
+    String color, 
+    String folder, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| The image features detector. |
+ **method** | **String**| Object detection method | [optional] [default to ssd]
+ **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
+ **includeLabel** | **Boolean**| Draw detected objects labels | [optional] [default to false]
+ **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to false]
+ **color** | **String**| Bounds, labels, and scores text color | [optional]
+ **folder** | **String**| The folder. | [optional]
+ **storage** | **String**| The storage. | [optional]
 
 ### Return type
 
@@ -2278,40 +2348,6 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
-<a name="objectBounds"></a>
-## **objectBounds**
-> [DetectedObjectList](DetectedObjectList.md) objectBounds(ObjectBoundsRequest request)
-
-Detect objects&#39; bounds
-
-### **ObjectBoundsRequest** Parameters
-```java
-ObjectBoundsRequest(
-    String name, 
-    String method, 
-    Integer threshold, 
-    Boolean includeClass, 
-    Boolean includeScore, 
-    String folder, 
-    String storage)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| Image file name. |
- **method** | **String**| Object detection method | [optional] [default to ssd]
- **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **Boolean**| Return detected objects classes | [optional] [default to false]
- **includeScore** | **Boolean**| Return detected objects score | [optional] [default to false]
- **folder** | **String**| Folder | [optional]
- **storage** | **String**| Storage | [optional]
-
-### Return type
-
-[**DetectedObjectList**](DetectedObjectList.md)
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
 <a name="objectExists"></a>
 ## **objectExists**
 > [ObjectExist](ObjectExist.md) objectExists(ObjectExistsRequest request)
@@ -2575,42 +2611,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FilesUploadResult**](FilesUploadResult.md)
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
-<a name="visualObjectBounds"></a>
-## **visualObjectBounds**
-> byte[] visualObjectBounds(VisualObjectBoundsRequest request)
-
-Detect objects bounds and draw them on the original image
-
-### **VisualObjectBoundsRequest** Parameters
-```java
-VisualObjectBoundsRequest(
-    String name, 
-    String method, 
-    Integer threshold, 
-    Boolean includeClass, 
-    Boolean includeScore, 
-    String color, 
-    String folder, 
-    String storage)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| The image features detector. |
- **method** | **String**| Object detection method | [optional] [default to ssd]
- **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **Boolean**| Draw detected objects classes | [optional] [default to false]
- **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to false]
- **color** | **String**| Bounds, labels, and scores text color | [optional]
- **folder** | **String**| The folder. | [optional]
- **storage** | **String**| The storage. | [optional]
-
-### Return type
-
-**byte[]**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
