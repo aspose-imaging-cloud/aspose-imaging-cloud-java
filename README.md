@@ -74,7 +74,7 @@ Detalied official documentation can be found at the [following link](https://doc
 
 ## Getting Started
 1. **Sign Up**. Before you begin, you need to sign up for an account on our [Dashboard](https://dashboard.aspose.cloud/) and retrieve your [credentials](https://dashboard.aspose.cloud/#/apps).
-2. **Minimum requirements**. This SDK requires [Java 1.6 or later](https://java.com/download/).
+2. **Minimum requirements**. This SDK requires [Java 1.8 or later](https://java.com/download/).
 3. **Add Aspose.Imaging Cloud Java SDK to your project**. 
 
 Add Aspose Cloud repository to your pom.xml.
@@ -131,7 +131,7 @@ ImagingApi imagingApi = new ImagingApi("yourServiceUrl");
 You may check our full [API endpoints list](docs/API_README.md#documentation-for-api-endpoints) or [models available](docs/API_README.md#documentation-for-models) in the SDK.
 
 ## Dependencies
-* [Java 1.6 or later](https://java.com/download/)
+* [Java 1.8 or later](https://java.com/download/)
 
 ## Licensing
 All Aspose.Imaging Cloud SDKs, helper scripts and templates are licensed under [MIT License](LICENSE).
