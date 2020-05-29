@@ -114,28 +114,16 @@ public class ImagingExamples {
             rotateFlipImage.RotateFlipImageAndUploadToStorage();
             rotateFlipImage.CreateRotateFlippedImageFromRequestBody();
 
-            // TIFF Frames
-            TiffFrames tiffFrames = new TiffFrames(imagingApi);
-            // Get a specified frame from existing TIFF image
-            tiffFrames.GetImageFrameFromStorage();
-            // Get a specified frame from existing TIFF image, and upload the frame to Cloud Storage
-            tiffFrames.GetImageFrameAndUploadToStorage();
-            // Resize a TIFF frame
-            tiffFrames.ResizeImageFrameFromStorage();
-            // Crop a TIFF frame
-            tiffFrames.CropImageFrameFromStorage();
-            // RotateFlip a TIFF frame
-            tiffFrames.RotateFlipImageFrameFromStorage();
-            // Get other frames from existing TIFF image
-            tiffFrames.GetAllImageFramesFromStorage();
-            // Get separate frame from existing TIFF image.
-            // Image data is passed as zero-indexed multipart/form-data content or as raw body stream
-            tiffFrames.CreateImageFrameFromRequestBody();
-            // Get separate frame properties of existing TIFF image
-            tiffFrames.GetImageFramePropertiesFromStorage();
-            // Get separate frame properties of existing TIFF image.
-            // Image data is passed as zero-indexed multipart/form-data content or as raw body stream
-            tiffFrames.ExtractImageFramePropertiesFromRequestBody();
+            // Multiframe image
+            MultiframeImage multiframeImage = new MultiframeImage(imagingApi);
+            multiframeImage.GetImageFrameFromStorage();
+            multiframeImage.GetImageFrameAndUploadToStorage();
+            multiframeImage.CreateImageFrameFromRequestBody();
+            multiframeImage.GetImageFrameRangeFromStorage();
+            multiframeImage.GetImageFrameRangeAndUploadToStorage();
+            multiframeImage.CreateImageFrameRangeFromRequestBody();
+            multiframeImage.GetImageFramePropertiesFromStorage();
+            multiframeImage.ExtractImageFramePropertiesFromRequestBody();
 
             // Update parameters of existing TIFF image
             UpdateTiffImage updateTiffImage = new UpdateTiffImage(imagingApi);
@@ -143,6 +131,7 @@ public class ImagingExamples {
             updateTiffImage.ModifyTiffAndUploadToStorage();
             updateTiffImage.CreateModifiedTiffFromRequestBody();
             updateTiffImage.ConvertTiffToFaxFromStorage();
+            updateTiffImage.ConvertTiffToFaxFromRequestBody();
             updateTiffImage.AppendTiffFromStorage();
 
             // Update parameters of existing GIF image

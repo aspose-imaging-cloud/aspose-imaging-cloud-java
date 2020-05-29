@@ -45,7 +45,7 @@ public class ImagingApi
     /**
      * Current SDK version
      */
-    public static final String Version = "20.4";
+    public static final String Version = "20.5";
 
     /**
      * The configuration
@@ -686,7 +686,7 @@ public class ImagingApi
     }
   
     /**
-     * Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * Get frames range from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
      * @return byte[]
@@ -1311,6 +1311,51 @@ public class ImagingApi
     }
   
     /**
+     * Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return DetectedObjectList
+     * @throws Exception 
+     */
+    public DetectedObjectList createObjectBounds(CreateObjectBoundsRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createObjectBounds");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/objectdetection/bounds";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "method", request.method);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+          
+      
+      if (response == null)
+      {
+          return null;
+      }
+      
+      return SerializationHelper.deserialize(new String(response), DetectedObjectList.class);
+    }
+  
+    /**
      * Resize an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
@@ -1494,6 +1539,47 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
+    }
+  
+    /**
+     * Detects objects bounds and draw them on the original image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] createVisualObjectBounds(CreateVisualObjectBoundsRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createVisualObjectBounds");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/objectdetection/visualbounds";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "method", request.method);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "color", request.color);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -2545,6 +2631,49 @@ public class ImagingApi
     }
   
     /**
+     * Detects objects&#39; bounds
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return DetectedObjectList
+     * @throws Exception 
+     */
+    public DetectedObjectList getObjectBounds(GetObjectBoundsRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.name' is set
+      if (request.name== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.name' when calling getObjectBounds");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/objectdetection/{name}/bounds";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "method", request.method);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+          
+      
+      if (response == null)
+      {
+          return null;
+      }
+      
+      return SerializationHelper.deserialize(new String(response), DetectedObjectList.class);
+    }
+  
+    /**
      * Get image from search context
      * 
      * @param request Holds parameters for this request invocation.
@@ -2568,6 +2697,45 @@ public class ImagingApi
       resourcePath = UrlHelper.addPathParameter(resourcePath, "searchContextId", request.searchContextId);
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
+    }
+  
+    /**
+     * Detects objects bounds and draw them on the original image
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] getVisualObjectBounds(GetVisualObjectBoundsRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.name' is set
+      if (request.name== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.name' when calling getVisualObjectBounds");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/objectdetection/{name}/visualbounds";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "method", request.method);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "color", request.color);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
