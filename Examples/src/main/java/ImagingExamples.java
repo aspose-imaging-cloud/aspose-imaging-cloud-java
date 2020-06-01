@@ -55,7 +55,7 @@ public class ImagingExamples {
             Files.createDirectory(Paths.get(ImagingBase.OutputFolder));
 
             System.out.println("Running Imaging Cloud examples:" + System.lineSeparator());
-
+/*
             // Update parameters of existing BMP image
             UpdateBmpImage bmpImage = new UpdateBmpImage(imagingApi);
             bmpImage.ModifyBmpFromStorage();
@@ -199,7 +199,7 @@ public class ImagingExamples {
             findSimilarImages.FindImagesByTag();
             findSimilarImages.FindSimilarImagesFromUrl();
             findSimilarImages.DeleteSearchContext();
-
+*/
             //Object detection
             ObjectDetectionImage objectDetectionImages = new ObjectDetectionImage(imagingApi);
             objectDetectionImages.DetectObjectsImageFromStorage();
