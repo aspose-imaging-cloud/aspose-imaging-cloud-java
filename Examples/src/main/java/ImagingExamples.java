@@ -199,6 +199,14 @@ public class ImagingExamples {
             findSimilarImages.FindImagesByTag();
             findSimilarImages.FindSimilarImagesFromUrl();
             findSimilarImages.DeleteSearchContext();
+
+            //Object detection
+            ObjectDetectionImage objectDetectionImages = new ObjectDetectionImage(imagingApi);
+            objectDetectionImages.DetectObjectsImageFromStorage();
+            objectDetectionImages.DetectObjectsImageFromRequestBody();
+            objectDetectionImages.VisualiizeDetectObjectsAndUploadToStorage();
+            objectDetectionImages.VisualizeDetectedObjectsImageFromRequestBody();
+
         } catch (Exception exception) {
             System.out.println("Something goes wrong: " + exception);
             System.exit(1);

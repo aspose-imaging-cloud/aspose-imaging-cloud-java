@@ -13,13 +13,13 @@ import java.nio.file.Paths;
 /**
  * Object detection image example.
  */
-public class ObjectDetection extends ImagingBase {
+public class ObjectDetectionImage extends ImagingBase {
     /**
      * Initializes a new instance of the ObjectDetection class
      *
      * @param imagingApi The imaging API.
      */
-    public ObjectDetection(com.aspose.imaging.cloud.sdk.api.ImagingApi imagingApi) {
+    public ObjectDetectionImage(com.aspose.imaging.cloud.sdk.api.ImagingApi imagingApi) {
         super(imagingApi);
         printHeader("Object detection image example:");
     }
