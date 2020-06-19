@@ -41,17 +41,21 @@ public class GetVisualObjectBoundsRequest
     * @param threshold Object detection probability threshold in percents
     * @param includeLabel Draw detected objects labels
     * @param includeScore Draw detected objects scores
+    * @param allowedLabels Comma-separated list of allowed labels
+    * @param blockedLabels Comma-separated list of blocked labels
     * @param color Bounds, labels, and scores text color
     * @param folder The folder.
     * @param storage The storage.
     **/
-    public GetVisualObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeLabel, Boolean includeScore, String color, String folder, String storage)             
+    public GetVisualObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeLabel, Boolean includeScore, String allowedLabels, String blockedLabels, String color, String folder, String storage)             
     {
         this.name = name;
         this.method = method;
         this.threshold = threshold;
         this.includeLabel = includeLabel;
         this.includeScore = includeScore;
+        this.allowedLabels = allowedLabels;
+        this.blockedLabels = blockedLabels;
         this.color = color;
         this.folder = folder;
         this.storage = storage;
@@ -81,6 +85,16 @@ public class GetVisualObjectBoundsRequest
     * Draw detected objects scores
     **/
     public Boolean includeScore;
+
+    /**
+    * Comma-separated list of allowed labels
+    **/
+    public String allowedLabels;
+
+    /**
+    * Comma-separated list of blocked labels
+    **/
+    public String blockedLabels;
 
     /**
     * Bounds, labels, and scores text color

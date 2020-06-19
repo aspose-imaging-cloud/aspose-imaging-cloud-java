@@ -41,16 +41,20 @@ public class GetObjectBoundsRequest
     * @param threshold Object detection probability threshold in percents
     * @param includeLabel Return detected objects labels
     * @param includeScore Return detected objects score
+    * @param allowedLabels Comma-separated list of allowed labels
+    * @param blockedLabels Comma-separated list of blocked labels
     * @param folder Folder
     * @param storage Storage
     **/
-    public GetObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeLabel, Boolean includeScore, String folder, String storage)             
+    public GetObjectBoundsRequest(String name, String method, Integer threshold, Boolean includeLabel, Boolean includeScore, String allowedLabels, String blockedLabels, String folder, String storage)             
     {
         this.name = name;
         this.method = method;
         this.threshold = threshold;
         this.includeLabel = includeLabel;
         this.includeScore = includeScore;
+        this.allowedLabels = allowedLabels;
+        this.blockedLabels = blockedLabels;
         this.folder = folder;
         this.storage = storage;
     }
@@ -79,6 +83,16 @@ public class GetObjectBoundsRequest
     * Return detected objects score
     **/
     public Boolean includeScore;
+
+    /**
+    * Comma-separated list of allowed labels
+    **/
+    public String allowedLabels;
+
+    /**
+    * Comma-separated list of blocked labels
+    **/
+    public String blockedLabels;
 
     /**
     * Folder

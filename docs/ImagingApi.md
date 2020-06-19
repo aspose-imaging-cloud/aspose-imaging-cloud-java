@@ -882,6 +882,8 @@ CreateObjectBoundsRequest(
     Integer threshold, 
     Boolean includeLabel, 
     Boolean includeScore, 
+    String allowedLabels, 
+    String blockedLabels, 
     String outPath, 
     String storage)
 ```
@@ -893,6 +895,8 @@ Name | Type | Description  | Notes
  **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
  **includeLabel** | **Boolean**| Draw detected objects labels | [optional] [default to false]
  **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to false]
+ **allowedLabels** | **String**| Comma-separated list of allowed labels | [optional] [default to ]
+ **blockedLabels** | **String**| Comma-separated list of blocked labels | [optional] [default to ]
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image) | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 
@@ -1048,6 +1052,8 @@ CreateVisualObjectBoundsRequest(
     Integer threshold, 
     Boolean includeLabel, 
     Boolean includeScore, 
+    String allowedLabels, 
+    String blockedLabels, 
     String color, 
     String outPath, 
     String storage)
@@ -1060,6 +1066,8 @@ Name | Type | Description  | Notes
  **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
  **includeLabel** | **Boolean**| Draw detected objects classes | [optional] [default to false]
  **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to false]
+ **allowedLabels** | **String**| Comma-separated list of allowed labels | [optional] [default to ]
+ **blockedLabels** | **String**| Comma-separated list of blocked labels | [optional] [default to ]
  **color** | **String**| Bounds, labels, and scores text color | [optional]
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image) | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
@@ -1526,6 +1534,28 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="getAvailableLabels"></a>
+## **getAvailableLabels**
+> [AvailableLabelsList](AvailableLabelsList.md) getAvailableLabels(GetAvailableLabelsRequest request)
+
+Detects objects bounds and draw them on the original image
+
+### **GetAvailableLabelsRequest** Parameters
+```java
+GetAvailableLabelsRequest(
+    String method)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **method** | **String**| Object detection method |
+
+### Return type
+
+[**AvailableLabelsList**](AvailableLabelsList.md)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="getDiscUsage"></a>
 ## **getDiscUsage**
 > [DiscUsage](DiscUsage.md) getDiscUsage(GetDiscUsageRequest request)
@@ -1808,6 +1838,8 @@ GetObjectBoundsRequest(
     Integer threshold, 
     Boolean includeLabel, 
     Boolean includeScore, 
+    String allowedLabels, 
+    String blockedLabels, 
     String folder, 
     String storage)
 ```
@@ -1819,6 +1851,8 @@ Name | Type | Description  | Notes
  **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
  **includeLabel** | **Boolean**| Return detected objects labels | [optional] [default to false]
  **includeScore** | **Boolean**| Return detected objects score | [optional] [default to false]
+ **allowedLabels** | **String**| Comma-separated list of allowed labels | [optional] [default to ]
+ **blockedLabels** | **String**| Comma-separated list of blocked labels | [optional] [default to ]
  **folder** | **String**| Folder | [optional]
  **storage** | **String**| Storage | [optional]
 
@@ -1870,6 +1904,8 @@ GetVisualObjectBoundsRequest(
     Integer threshold, 
     Boolean includeLabel, 
     Boolean includeScore, 
+    String allowedLabels, 
+    String blockedLabels, 
     String color, 
     String folder, 
     String storage)
@@ -1882,6 +1918,8 @@ Name | Type | Description  | Notes
  **threshold** | **Integer**| Object detection probability threshold in percents | [optional] [default to 50]
  **includeLabel** | **Boolean**| Draw detected objects labels | [optional] [default to false]
  **includeScore** | **Boolean**| Draw detected objects scores | [optional] [default to false]
+ **allowedLabels** | **String**| Comma-separated list of allowed labels | [optional] [default to ]
+ **blockedLabels** | **String**| Comma-separated list of blocked labels | [optional] [default to ]
  **color** | **String**| Bounds, labels, and scores text color | [optional]
  **folder** | **String**| The folder. | [optional]
  **storage** | **String**| The storage. | [optional]
