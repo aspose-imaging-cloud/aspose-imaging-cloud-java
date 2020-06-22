@@ -26,6 +26,7 @@
 */
 package com.aspose.imaging.cloud.test.api.ai;
 
+import com.aspose.imaging.cloud.sdk.model.AvailableLabelsList;
 import com.aspose.imaging.cloud.sdk.model.DetectedObjectList;
 import com.aspose.imaging.cloud.sdk.model.StorageFile;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
@@ -49,6 +50,7 @@ public class ObjectDetectionApiTests extends ApiTester {
     private GetVisualObjectBoundsRequest visualObjectBoundsRequest;
     private CreateObjectBoundsRequest createObjectBoundsRequest;
     private CreateVisualObjectBoundsRequest createVisualObjectBoundsRequest;
+    private GetAvailableLabelsRequest availableLabelsRequest;
 
     @Parameters
     public static Iterable<Boolean[]> data() {
@@ -93,8 +95,8 @@ public class ObjectDetectionApiTests extends ApiTester {
                     20,
                     true,
                     true,
-                    null,
                     "dog",
+                    null,
                     folder,
                     storage);
 
@@ -139,8 +141,8 @@ public class ObjectDetectionApiTests extends ApiTester {
                     20,
                     true,
                     true,
-                    null,
                     "dog",
+                    null,
                     "blue",
                     folder,
                     storage);
@@ -182,8 +184,8 @@ public class ObjectDetectionApiTests extends ApiTester {
                     20,
                     true,
                     true,
-                    null,
                     "dog",
+                    null,
                     outPath,
                     storage);
 
@@ -226,8 +228,8 @@ public class ObjectDetectionApiTests extends ApiTester {
                     1,
                     true,
                     true,
-                    null,
                     "dog",
+                    null,
                     "blue",
                     outPath,
                     storage);
@@ -247,6 +249,14 @@ public class ObjectDetectionApiTests extends ApiTester {
                     folder,
                     storage);
         }
+    }
+
+    @Test
+    public void getAvailableLabelsTest() throws Exception {
+        availableLabelsRequest = new GetAvailableLabelsRequest("ssd");
+        AvailableLabelsList list = ImagingApi.getAvailableLabels(availableLabelsRequest);
+        Assert.assertNotNull(list);
+        Assert.assertTrue(list.getAvailableLabels().size() > 0);
     }
 
     private DetectedObjectList objectBoundsGetRequestInvoker(String name) throws Exception
