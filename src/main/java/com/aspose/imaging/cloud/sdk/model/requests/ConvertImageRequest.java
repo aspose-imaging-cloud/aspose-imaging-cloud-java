@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="CreateSavedImageAsRequest.java">
+* <copyright company="Aspose" file="ConvertImageRequest.java">
 *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -30,32 +30,39 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 import com.aspose.imaging.cloud.sdk.model.*;
 
 /**
-* Class that holds parameters for CreateSavedImageAs request invocation.
+* Class that holds parameters for ConvertImage request invocation.
 **/   
-public class CreateSavedImageAsRequest
+public class ConvertImageRequest
 {
     /**
-    * Initializes a new instance of the CreateSavedImageAsRequest class.   
+    * Initializes a new instance of the ConvertImageRequest class.   
+    * @param name Filename of image.
     * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-    * @param outPath Path to updated file (if this is empty, response contains streamed image).
+    * @param folder Folder with image to process.
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public CreateSavedImageAsRequest(String format, String outPath, String storage)             
+    public ConvertImageRequest(String name, String format, String folder, String storage)             
     {
+        this.name = name;
         this.format = format;
-        this.outPath = outPath;
+        this.folder = folder;
         this.storage = storage;
     }
         
+    /**
+    * Filename of image.
+    **/
+    public String name;
+
     /**
     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     **/
     public String format;
 
     /**
-    * Path to updated file (if this is empty, response contains streamed image).
+    * Folder with image to process.
     **/
-    public String outPath;
+    public String folder;
 
     /**
     * Your Aspose Cloud Storage name.
