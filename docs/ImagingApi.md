@@ -1020,6 +1020,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createSavedImageAs"></a>
+## **createSavedImageAs**
+> [File](File.md) createSavedImageAs(CreateSavedImageAsRequest request)
+
+Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
+
+### **CreateSavedImageAsRequest** Parameters
+```java
+CreateSavedImageAsRequest(
+    String format, 
+    String outPath, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
+ **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image). | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+
+### Return type
+
+[**File**](File.md)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createUpdatedImage"></a>
 ## **createUpdatedImage**
 > byte[] createUpdatedImage(CreateUpdatedImageRequest request)
@@ -2461,6 +2487,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 **byte[]**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="saveImageAs"></a>
+## **saveImageAs**
+> [File](File.md) saveImageAs(SaveImageAsRequest request)
+
+Export existing image to another format.
+
+### **SaveImageAsRequest** Parameters
+```java
+SaveImageAsRequest(
+    String name, 
+    String format, 
+    String folder, 
+    String storage)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String**| Filename of image. |
+ **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
+ **folder** | **String**| Folder with image to process. | [optional]
+ **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
+
+### Return type
+
+[**File**](File.md)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
