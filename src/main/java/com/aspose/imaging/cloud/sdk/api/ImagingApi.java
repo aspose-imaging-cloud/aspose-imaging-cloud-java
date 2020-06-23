@@ -1525,45 +1525,6 @@ public class ImagingApi
     }
   
     /**
-     * Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
-     * 
-     * @param request Holds parameters for this request invocation.
-     * @return File
-     * @throws Exception 
-     */
-    public File createSavedImageAs(CreateSavedImageAsRequest request) throws Exception 
-    {
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling createSavedImageAs");
-      }
-      // create path and map variables
-      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/saveAs";
-      
-      HashMap<String, Object> formParams = new HashMap<String, Object>();
-      
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
-      
-            
-      byte[] response = this.apiInvoker.invokeApi(
-          resourcePath, 
-          "POST", 
-          null, 
-          null, 
-          formParams);
-          
-      
-      if (response == null)
-      {
-          return null;
-      }
-      
-      return SerializationHelper.deserialize(new String(response), File.class);
-    }
-  
-    /**
      * Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
@@ -3530,50 +3491,6 @@ public class ImagingApi
           
       return response;
       
-    }
-  
-    /**
-     * Export existing image to another format.
-     * 
-     * @param request Holds parameters for this request invocation.
-     * @return File
-     * @throws Exception 
-     */
-    public File saveImageAs(SaveImageAsRequest request) throws Exception 
-    {
-       // verify the required parameter 'request.name' is set
-      if (request.name== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.name' when calling saveImageAs");
-      }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling saveImageAs");
-      }
-      // create path and map variables
-      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/saveAs";
-      
-      HashMap<String, Object> formParams = new HashMap<String, Object>();
-      resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
-      
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
-      
-            
-      byte[] response = this.apiInvoker.invokeApi(
-          resourcePath, 
-          "GET", 
-          null, 
-          null, 
-          formParams);
-          
-      
-      if (response == null)
-      {
-          return null;
-      }
-      
-      return SerializationHelper.deserialize(new String(response), File.class);
     }
   
     /**
