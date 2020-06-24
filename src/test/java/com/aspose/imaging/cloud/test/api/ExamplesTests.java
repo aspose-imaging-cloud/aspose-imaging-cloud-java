@@ -44,12 +44,12 @@ import org.junit.Test;
 public class ExamplesTests extends ApiTester {
 
     /**
-     * Save as from storage example test.
+     * Convert from storage example test.
      * 
      * @throws Exception if the Api call fails
      */
     @Test
-    public void saveAsFromStorageExampleTest() throws Exception {
+    public void convertFromStorageExampleTest() throws Exception {
         Configuration config = ImagingApi.Configuration;
         try {
             com.aspose.imaging.cloud.sdk.api.ImagingApi imagingApi = config.OnPremise ? 
@@ -75,10 +75,10 @@ public class ExamplesTests extends ApiTester {
             }
 
             // convert image from storage to JPEG
-            SaveImageAsRequest getSaveAsRequest = new SaveImageAsRequest("inputImage.png", "jpg",
+            ConvertImageRequest getConvertRequest = new ConvertImageRequest("inputImage.png", "jpg",
                     "ExampleFolderNet", config.OnPremise ? TestStorage : null);
 
-            byte[] convertedImage = imagingApi.saveImageAs(getSaveAsRequest);
+            byte[] convertedImage = imagingApi.convertImage(getConvertRequest);
 
             // process resulting image
             // for example, save it to storage
@@ -95,12 +95,12 @@ public class ExamplesTests extends ApiTester {
     }
 
     /**
-     * SaveAs as from stream example test.
+     * Convert as from stream example test.
      * 
      * @throws Exception if the Api call fails
      */
     @Test
-    public void saveAsFromStreamExampleTest() throws Exception {
+    public void convertFromStreamExampleTest() throws Exception {
         Configuration config = ImagingApi.Configuration;
         try {
             com.aspose.imaging.cloud.sdk.api.ImagingApi imagingApi = config.OnPremise ? 
@@ -121,10 +121,10 @@ public class ExamplesTests extends ApiTester {
 
             // convert image from request stream to JPEG and save it to storage
             // please, use outPath parameter for saving the result to storage
-            CreateSavedImageAsRequest postSaveToStorageRequest = new CreateSavedImageAsRequest(localInputImage, "jpg",
+            CreateConvertedImageRequest postConvertToStorageRequest = new CreateConvertedImageRequest(localInputImage, "jpg",
                     "ExampleFolderNet/resultImage.jpg", config.OnPremise ? TestStorage : null);
 
-            imagingApi.createSavedImageAs(postSaveToStorageRequest);
+            imagingApi.createConvertedImage(postConvertToStorageRequest);
 
             // download saved image from storage and process it
             byte[] savedFile = imagingApi
@@ -133,11 +133,11 @@ public class ExamplesTests extends ApiTester {
             // convert image from request stream to JPEG and read it from resulting stream
             // please, set outPath parameter as null to return result in request stream
             // instead of saving to storage
-            CreateSavedImageAsRequest postSaveToStreamRequest = new CreateSavedImageAsRequest(localInputImage, "jpg", 
+            CreateConvertedImageRequest postSaveToStreamRequest = new CreateConvertedImageRequest(localInputImage, "jpg", 
                     null, config.OnPremise ? TestStorage : null);
 
             // process resulting image from response stream
-            byte[] resultPostImageStream = imagingApi.createSavedImageAs(postSaveToStreamRequest);
+            byte[] resultPostImageStream = imagingApi.createConvertedImage(postSaveToStreamRequest);
         } finally {
             // remove file from storage
             ImagingApi.deleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.jpg", config.OnPremise ? TestStorage : null, null));
