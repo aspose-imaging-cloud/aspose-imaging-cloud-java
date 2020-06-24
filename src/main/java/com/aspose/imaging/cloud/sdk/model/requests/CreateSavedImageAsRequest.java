@@ -36,17 +36,24 @@ public class CreateSavedImageAsRequest
 {
     /**
     * Initializes a new instance of the CreateSavedImageAsRequest class.   
+    * @param imageData Input image
     * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public CreateSavedImageAsRequest(String format, String outPath, String storage)             
+    public CreateSavedImageAsRequest(byte[] imageData, String format, String outPath, String storage)             
     {
+        this.imageData = imageData;
         this.format = format;
         this.outPath = outPath;
         this.storage = storage;
     }
         
+    /**
+    * Input image
+    **/
+    public byte[] imageData;
+
     /**
     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
     **/
