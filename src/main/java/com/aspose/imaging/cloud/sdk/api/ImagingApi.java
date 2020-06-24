@@ -293,45 +293,6 @@ public class ImagingApi
     }
   
     /**
-     * Convert existing image to another format.
-     * 
-     * @param request Holds parameters for this request invocation.
-     * @return byte[]
-     * @throws Exception 
-     */
-    public byte[] convertImage(ConvertImageRequest request) throws Exception 
-    {
-       // verify the required parameter 'request.name' is set
-      if (request.name== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.name' when calling convertImage");
-      }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling convertImage");
-      }
-      // create path and map variables
-      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/convert";
-      
-      HashMap<String, Object> formParams = new HashMap<String, Object>();
-      resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
-      
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
-      
-            
-      byte[] response = this.apiInvoker.invokeApi(
-          resourcePath, 
-          "GET", 
-          null, 
-          null, 
-          formParams);
-          
-      return response;
-      
-    }
-  
-    /**
      * Update parameters of existing TIFF image accordingly to fax parameters.
      * 
      * @param request Holds parameters for this request invocation.
@@ -436,47 +397,6 @@ public class ImagingApi
           null, 
           formParams);
           
-    }
-  
-    /**
-     * Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
-     * 
-     * @param request Holds parameters for this request invocation.
-     * @return byte[]
-     * @throws Exception 
-     */
-    public byte[] createConvertedImage(CreateConvertedImageRequest request) throws Exception 
-    {
-       // verify the required parameter 'request.imageData' is set
-      if (request.imageData== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createConvertedImage");
-      }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling createConvertedImage");
-      }
-      // create path and map variables
-      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/convert";
-      
-      HashMap<String, Object> formParams = new HashMap<String, Object>();
-      
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
-      
-            if (request.imageData != null) 
-      {
-          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
-      }
-      byte[] response = this.apiInvoker.invokeApi(
-          resourcePath, 
-          "POST", 
-          null, 
-          null, 
-          formParams);
-          
-      return response;
-      
     }
   
     /**
@@ -1530,11 +1450,15 @@ public class ImagingApi
      * Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
-    public File createSavedImageAs(CreateSavedImageAsRequest request) throws Exception 
+    public byte[] createSavedImageAs(CreateSavedImageAsRequest request) throws Exception 
     {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createSavedImageAs");
+      }
        // verify the required parameter 'request.format' is set
       if (request.format== null) {
         throw new ApiException(400, "Missing the required parameter 'request.format' when calling createSavedImageAs");
@@ -1548,7 +1472,10 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
-            
+            if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
       byte[] response = this.apiInvoker.invokeApi(
           resourcePath, 
           "POST", 
@@ -1556,13 +1483,8 @@ public class ImagingApi
           null, 
           formParams);
           
+      return response;
       
-      if (response == null)
-      {
-          return null;
-      }
-      
-      return SerializationHelper.deserialize(new String(response), File.class);
     }
   
     /**
@@ -3581,10 +3503,10 @@ public class ImagingApi
      * Export existing image to another format.
      * 
      * @param request Holds parameters for this request invocation.
-     * @return File
+     * @return byte[]
      * @throws Exception 
      */
-    public File saveImageAs(SaveImageAsRequest request) throws Exception 
+    public byte[] saveImageAs(SaveImageAsRequest request) throws Exception 
     {
        // verify the required parameter 'request.name' is set
       if (request.name== null) {
@@ -3612,13 +3534,8 @@ public class ImagingApi
           null, 
           formParams);
           
+      return response;
       
-      if (response == null)
-      {
-          return null;
-      }
-      
-      return SerializationHelper.deserialize(new String(response), File.class);
     }
   
     /**

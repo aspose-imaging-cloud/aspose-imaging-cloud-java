@@ -90,34 +90,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
-<a name="convertImage"></a>
-## **convertImage**
-> byte[] convertImage(ConvertImageRequest request)
-
-Convert existing image to another format.
-
-### **ConvertImageRequest** Parameters
-```java
-ConvertImageRequest(
-    String name, 
-    String format, 
-    String folder, 
-    String storage)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| Filename of image. |
- **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
- **folder** | **String**| Folder with image to process. | [optional]
- **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
-
-### Return type
-
-**byte[]**
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
 <a name="convertTiffToFax"></a>
 ## **convertTiffToFax**
 > byte[] convertTiffToFax(ConvertTiffToFaxRequest request)
@@ -199,34 +171,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
-<a name="createConvertedImage"></a>
-## **createConvertedImage**
-> byte[] createConvertedImage(CreateConvertedImageRequest request)
-
-Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
-
-### **CreateConvertedImageRequest** Parameters
-```java
-CreateConvertedImageRequest(
-    byte[] imageData, 
-    String format, 
-    String outPath, 
-    String storage)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **imageData** | **byte[]**| Input image |
- **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
- **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image). | [optional]
- **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
-
-### Return type
-
-**byte[]**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
@@ -1026,13 +970,14 @@ Name | Type | Description  | Notes
 
 <a name="createSavedImageAs"></a>
 ## **createSavedImageAs**
-> [File](File.md) createSavedImageAs(CreateSavedImageAsRequest request)
+> byte[] createSavedImageAs(CreateSavedImageAsRequest request)
 
 Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
 
 ### **CreateSavedImageAsRequest** Parameters
 ```java
 CreateSavedImageAsRequest(
+    byte[] imageData, 
     String format, 
     String outPath, 
     String storage)
@@ -1040,13 +985,14 @@ CreateSavedImageAsRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **imageData** | **byte[]**| Input image |
  **format** | **String**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. |
  **outPath** | **String**| Path to updated file (if this is empty, response contains streamed image). | [optional]
  **storage** | **String**| Your Aspose Cloud Storage name. | [optional]
 
 ### Return type
 
-[**File**](File.md)
+**byte[]**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
@@ -2530,7 +2476,7 @@ Name | Type | Description  | Notes
 
 <a name="saveImageAs"></a>
 ## **saveImageAs**
-> [File](File.md) saveImageAs(SaveImageAsRequest request)
+> byte[] saveImageAs(SaveImageAsRequest request)
 
 Export existing image to another format.
 
@@ -2552,7 +2498,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**File**](File.md)
+**byte[]**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
