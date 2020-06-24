@@ -8,9 +8,11 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**addSearchImage**](ImagingApi.md#addsearchimage) | **POST** /imaging/ai/imageSearch/{searchContextId}/image | Add image and images features to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**appendTiff**](ImagingApi.md#appendtiff) | **POST** /imaging/tiff/{name}/appendTiff | Appends existing TIFF image to another existing TIFF image (i.e. merges TIFF images).
 *ImagingApi* | [**compareImages**](ImagingApi.md#compareimages) | **POST** /imaging/ai/imageSearch/{searchContextId}/compare | Compare two images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
+*ImagingApi* | [**convertImage**](ImagingApi.md#convertimage) | **GET** /imaging/{name}/convert | Convert existing image to another format.
 *ImagingApi* | [**convertTiffToFax**](ImagingApi.md#converttifftofax) | **GET** /imaging/tiff/{name}/toFax | Update parameters of existing TIFF image accordingly to fax parameters.
 *ImagingApi* | [**copyFile**](ImagingApi.md#copyfile) | **PUT** /imaging/storage/file/copy/{srcPath} | Copy file
 *ImagingApi* | [**copyFolder**](ImagingApi.md#copyfolder) | **PUT** /imaging/storage/folder/copy/{srcPath} | Copy folder
+*ImagingApi* | [**createConvertedImage**](ImagingApi.md#createconvertedimage) | **POST** /imaging/convert | Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
 *ImagingApi* | [**createCroppedImage**](ImagingApi.md#createcroppedimage) | **POST** /imaging/crop | Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createDeskewedImage**](ImagingApi.md#createdeskewedimage) | **POST** /imaging/deskew | Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createFaxTiff**](ImagingApi.md#createfaxtiff) | **POST** /imaging/tiff/toFax | Update parameters of TIFF image accordingly to fax parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
@@ -34,7 +36,6 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**createObjectBounds**](ImagingApi.md#createobjectbounds) | **POST** /imaging/ai/objectdetection/bounds | Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createResizedImage**](ImagingApi.md#createresizedimage) | **POST** /imaging/resize | Resize an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createRotateFlippedImage**](ImagingApi.md#createrotateflippedimage) | **POST** /imaging/rotateflip | Rotate and/or flip an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-*ImagingApi* | [**createSavedImageAs**](ImagingApi.md#createsavedimageas) | **POST** /imaging/saveAs | Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
 *ImagingApi* | [**createUpdatedImage**](ImagingApi.md#createupdatedimage) | **POST** /imaging/updateImage | Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**createVisualObjectBounds**](ImagingApi.md#createvisualobjectbounds) | **POST** /imaging/ai/objectdetection/visualbounds | Detects objects bounds and draw them on the original image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream
 *ImagingApi* | [**createWebSiteImageFeatures**](ImagingApi.md#createwebsiteimagefeatures) | **POST** /imaging/ai/imageSearch/{searchContextId}/features/web | Extract images features from web page and add them to search context
@@ -81,7 +82,6 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**objectExists**](ImagingApi.md#objectexists) | **GET** /imaging/storage/exist/{path} | Check if file or folder exists
 *ImagingApi* | [**resizeImage**](ImagingApi.md#resizeimage) | **GET** /imaging/{name}/resize | Resize an existing image.
 *ImagingApi* | [**rotateFlipImage**](ImagingApi.md#rotateflipimage) | **GET** /imaging/{name}/rotateflip | Rotate and/or flip an existing image.
-*ImagingApi* | [**saveImageAs**](ImagingApi.md#saveimageas) | **GET** /imaging/{name}/saveAs | Export existing image to another format.
 *ImagingApi* | [**storageExists**](ImagingApi.md#storageexists) | **GET** /imaging/storage/{storageName}/exist | Check if storage exists
 *ImagingApi* | [**updateImage**](ImagingApi.md#updateimage) | **GET** /imaging/{name}/updateImage | Perform scaling, cropping and flipping of an existing image in a single request.
 *ImagingApi* | [**updateImageFeatures**](ImagingApi.md#updateimagefeatures) | **PUT** /imaging/ai/imageSearch/{searchContextId}/features | Update images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.

@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="SaveImageAsRequest.java">
+* <copyright company="Aspose" file="CreateConvertedImageRequest.java">
 *   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 * </copyright>
 * <summary>
@@ -30,29 +30,29 @@ package com.aspose.imaging.cloud.sdk.model.requests;
 import com.aspose.imaging.cloud.sdk.model.*;
 
 /**
-* Class that holds parameters for SaveImageAs request invocation.
+* Class that holds parameters for CreateConvertedImage request invocation.
 **/   
-public class SaveImageAsRequest
+public class CreateConvertedImageRequest
 {
     /**
-    * Initializes a new instance of the SaveImageAsRequest class.   
-    * @param name Filename of image.
+    * Initializes a new instance of the CreateConvertedImageRequest class.   
+    * @param imageData Input image
     * @param format Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-    * @param folder Folder with image to process.
+    * @param outPath Path to updated file (if this is empty, response contains streamed image).
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public SaveImageAsRequest(String name, String format, String folder, String storage)             
+    public CreateConvertedImageRequest(byte[] imageData, String format, String outPath, String storage)             
     {
-        this.name = name;
+        this.imageData = imageData;
         this.format = format;
-        this.folder = folder;
+        this.outPath = outPath;
         this.storage = storage;
     }
         
     /**
-    * Filename of image.
+    * Input image
     **/
-    public String name;
+    public byte[] imageData;
 
     /**
     * Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
@@ -60,9 +60,9 @@ public class SaveImageAsRequest
     public String format;
 
     /**
-    * Folder with image to process.
+    * Path to updated file (if this is empty, response contains streamed image).
     **/
-    public String folder;
+    public String outPath;
 
     /**
     * Your Aspose Cloud Storage name.
