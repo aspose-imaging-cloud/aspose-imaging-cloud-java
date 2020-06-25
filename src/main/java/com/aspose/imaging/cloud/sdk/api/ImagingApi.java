@@ -1332,6 +1332,8 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1579,6 +1581,8 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "color", request.color);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
@@ -2257,6 +2261,43 @@ public class ImagingApi
     }
   
     /**
+     * Detects objects bounds and draw them on the original image
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return AvailableLabelsList
+     * @throws Exception 
+     */
+    public AvailableLabelsList getAvailableLabels(GetAvailableLabelsRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.method' is set
+      if (request.method== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.method' when calling getAvailableLabels");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/objectdetection/availablelabels/{method}";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      resourcePath = UrlHelper.addPathParameter(resourcePath, "method", request.method);
+      
+      
+            
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+          
+      
+      if (response == null)
+      {
+          return null;
+      }
+      
+      return SerializationHelper.deserialize(new String(response), AvailableLabelsList.class);
+    }
+  
+    /**
      * Get disc usage
      * 
      * @param request Holds parameters for this request invocation.
@@ -2653,6 +2694,8 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -2735,6 +2778,8 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "color", request.color);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);

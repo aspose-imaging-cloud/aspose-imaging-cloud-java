@@ -41,17 +41,21 @@ public class CreateVisualObjectBoundsRequest
     * @param threshold Object detection probability threshold in percents
     * @param includeLabel Draw detected objects classes
     * @param includeScore Draw detected objects scores
+    * @param allowedLabels Comma-separated list of allowed labels
+    * @param blockedLabels Comma-separated list of blocked labels
     * @param color Bounds, labels, and scores text color
     * @param outPath Path to updated file (if this is empty, response contains streamed image)
     * @param storage Your Aspose Cloud Storage name.
     **/
-    public CreateVisualObjectBoundsRequest(byte[] imageData, String method, Integer threshold, Boolean includeLabel, Boolean includeScore, String color, String outPath, String storage)             
+    public CreateVisualObjectBoundsRequest(byte[] imageData, String method, Integer threshold, Boolean includeLabel, Boolean includeScore, String allowedLabels, String blockedLabels, String color, String outPath, String storage)             
     {
         this.imageData = imageData;
         this.method = method;
         this.threshold = threshold;
         this.includeLabel = includeLabel;
         this.includeScore = includeScore;
+        this.allowedLabels = allowedLabels;
+        this.blockedLabels = blockedLabels;
         this.color = color;
         this.outPath = outPath;
         this.storage = storage;
@@ -81,6 +85,16 @@ public class CreateVisualObjectBoundsRequest
     * Draw detected objects scores
     **/
     public Boolean includeScore;
+
+    /**
+    * Comma-separated list of allowed labels
+    **/
+    public String allowedLabels;
+
+    /**
+    * Comma-separated list of blocked labels
+    **/
+    public String blockedLabels;
 
     /**
     * Bounds, labels, and scores text color

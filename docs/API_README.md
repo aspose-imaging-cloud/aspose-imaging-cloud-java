@@ -53,6 +53,7 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**findImageDuplicates**](ImagingApi.md#findimageduplicates) | **GET** /imaging/ai/imageSearch/{searchContextId}/findDuplicates | Find images duplicates.
 *ImagingApi* | [**findImagesByTags**](ImagingApi.md#findimagesbytags) | **POST** /imaging/ai/imageSearch/{searchContextId}/findByTags | Find images by tags. Tags JSON string is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**findSimilarImages**](ImagingApi.md#findsimilarimages) | **GET** /imaging/ai/imageSearch/{searchContextId}/findSimilar | Find similar images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
+*ImagingApi* | [**getAvailableLabels**](ImagingApi.md#getavailablelabels) | **GET** /imaging/ai/objectdetection/availablelabels/{method} | Detects objects bounds and draw them on the original image
 *ImagingApi* | [**getDiscUsage**](ImagingApi.md#getdiscusage) | **GET** /imaging/storage/disc | Get disc usage
 *ImagingApi* | [**getFileVersions**](ImagingApi.md#getfileversions) | **GET** /imaging/storage/version/{path} | Get file versions
 *ImagingApi* | [**getFilesList**](ImagingApi.md#getfileslist) | **GET** /imaging/storage/folder/{path} | Get all files and folders within a folder
@@ -92,6 +93,7 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [com.aspose.imaging.cloud.sdk.model.AvailableLabelsList](AvailableLabelsList.md)
  - [com.aspose.imaging.cloud.sdk.model.BmpProperties](BmpProperties.md)
  - [com.aspose.imaging.cloud.sdk.model.DetectedObject](DetectedObject.md)
  - [com.aspose.imaging.cloud.sdk.model.DetectedObjectList](DetectedObjectList.md)
