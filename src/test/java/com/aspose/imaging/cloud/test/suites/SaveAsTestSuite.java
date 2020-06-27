@@ -29,11 +29,11 @@ package com.aspose.imaging.cloud.test.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import com.aspose.imaging.cloud.test.api.SaveAsApiTests;
+import com.aspose.imaging.cloud.test.api.ConvertApiTests;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        SaveAsApiTests.class
+        ConvertApiTests.class
 })
 public class SaveAsTestSuite {
 
