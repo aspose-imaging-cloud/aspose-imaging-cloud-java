@@ -69,12 +69,6 @@ public class DicomProperties {
   @JsonProperty("photoInterpretation")
   private String photoInterpretation = null;
 
-  @JsonProperty("widthTagFound")
-  private Boolean widthTagFound = null;
-
-  @JsonProperty("heightTagFound")
-  private Boolean heightTagFound = null;
-
   @JsonProperty("width")
   private Integer width = null;
 
@@ -99,17 +93,11 @@ public class DicomProperties {
   @JsonProperty("numberOfFrames")
   private Integer numberOfFrames = null;
 
-  @JsonProperty("lengthValue")
-  private Integer lengthValue = null;
-
   @JsonProperty("isLittleEndian")
   private Boolean isLittleEndian = null;
 
   @JsonProperty("offset")
   private Integer offset = null;
-
-  @JsonProperty("dicomFound")
-  private Boolean dicomFound = null;
 
   public DicomProperties planarConfiguration(Integer planarConfiguration) {
     this.planarConfiguration = planarConfiguration;
@@ -289,40 +277,6 @@ public class DicomProperties {
     this.photoInterpretation = photoInterpretation;
   }
 
-  public DicomProperties widthTagFound(Boolean widthTagFound) {
-    this.widthTagFound = widthTagFound;
-    return this;
-  }
-
-  /**
-   * Gets or sets a value indicating whether width tag found.
-   * @return widthTagFound
-  **/
-  public Boolean isWidthTagFound() {
-    return widthTagFound;
-  }  
-
-  public void setWidthTagFound(Boolean widthTagFound) {
-    this.widthTagFound = widthTagFound;
-  }
-
-  public DicomProperties heightTagFound(Boolean heightTagFound) {
-    this.heightTagFound = heightTagFound;
-    return this;
-  }
-
-  /**
-   * Gets or sets a value indicating whether height tag found.
-   * @return heightTagFound
-  **/
-  public Boolean isHeightTagFound() {
-    return heightTagFound;
-  }  
-
-  public void setHeightTagFound(Boolean heightTagFound) {
-    this.heightTagFound = heightTagFound;
-  }
-
   public DicomProperties width(Integer width) {
     this.width = width;
     return this;
@@ -459,23 +413,6 @@ public class DicomProperties {
     this.numberOfFrames = numberOfFrames;
   }
 
-  public DicomProperties lengthValue(Integer lengthValue) {
-    this.lengthValue = lengthValue;
-    return this;
-  }
-
-  /**
-   * Gets or sets the length of element.
-   * @return lengthValue
-  **/
-  public Integer getLengthValue() {
-    return lengthValue;
-  }  
-
-  public void setLengthValue(Integer lengthValue) {
-    this.lengthValue = lengthValue;
-  }
-
   public DicomProperties isLittleEndian(Boolean isLittleEndian) {
     this.isLittleEndian = isLittleEndian;
     return this;
@@ -510,23 +447,6 @@ public class DicomProperties {
     this.offset = offset;
   }
 
-  public DicomProperties dicomFound(Boolean dicomFound) {
-    this.dicomFound = dicomFound;
-    return this;
-  }
-
-  /**
-   * Gets or sets a value indicating whether \&quot;DICOM\&quot; data is found.
-   * @return dicomFound
-  **/
-  public Boolean isDicomFound() {
-    return dicomFound;
-  }  
-
-  public void setDicomFound(Boolean dicomFound) {
-    this.dicomFound = dicomFound;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -547,8 +467,6 @@ public class DicomProperties {
     ObjectUtils.equals(this.samplesPerPixel, dicomProperties.samplesPerPixel) &&
     ObjectUtils.equals(this.bitsAllocated, dicomProperties.bitsAllocated) &&
     ObjectUtils.equals(this.photoInterpretation, dicomProperties.photoInterpretation) &&
-    ObjectUtils.equals(this.widthTagFound, dicomProperties.widthTagFound) &&
-    ObjectUtils.equals(this.heightTagFound, dicomProperties.heightTagFound) &&
     ObjectUtils.equals(this.width, dicomProperties.width) &&
     ObjectUtils.equals(this.height, dicomProperties.height) &&
     ObjectUtils.equals(this.windowCentre, dicomProperties.windowCentre) &&
@@ -557,15 +475,13 @@ public class DicomProperties {
     ObjectUtils.equals(this.rescaleIntercept, dicomProperties.rescaleIntercept) &&
     ObjectUtils.equals(this.rescaleSlope, dicomProperties.rescaleSlope) &&
     ObjectUtils.equals(this.numberOfFrames, dicomProperties.numberOfFrames) &&
-    ObjectUtils.equals(this.lengthValue, dicomProperties.lengthValue) &&
     ObjectUtils.equals(this.isLittleEndian, dicomProperties.isLittleEndian) &&
-    ObjectUtils.equals(this.offset, dicomProperties.offset) &&
-    ObjectUtils.equals(this.dicomFound, dicomProperties.dicomFound);
+    ObjectUtils.equals(this.offset, dicomProperties.offset);
   }
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(planarConfiguration, reds, greens, blues, dicomHeaderInfoByBytes, signedImage, dicomInfo, samplesPerPixel, bitsAllocated, photoInterpretation, widthTagFound, heightTagFound, width, height, windowCentre, windowWidth, pixelRepresentation, rescaleIntercept, rescaleSlope, numberOfFrames, lengthValue, isLittleEndian, offset, dicomFound);
+    return ObjectUtils.hashCodeMulti(planarConfiguration, reds, greens, blues, dicomHeaderInfoByBytes, signedImage, dicomInfo, samplesPerPixel, bitsAllocated, photoInterpretation, width, height, windowCentre, windowWidth, pixelRepresentation, rescaleIntercept, rescaleSlope, numberOfFrames, isLittleEndian, offset);
   }
 
 
@@ -584,8 +500,6 @@ public class DicomProperties {
     sb.append("    samplesPerPixel: ").append(toIndentedString(samplesPerPixel)).append("\n");
     sb.append("    bitsAllocated: ").append(toIndentedString(bitsAllocated)).append("\n");
     sb.append("    photoInterpretation: ").append(toIndentedString(photoInterpretation)).append("\n");
-    sb.append("    widthTagFound: ").append(toIndentedString(widthTagFound)).append("\n");
-    sb.append("    heightTagFound: ").append(toIndentedString(heightTagFound)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    windowCentre: ").append(toIndentedString(windowCentre)).append("\n");
@@ -594,10 +508,8 @@ public class DicomProperties {
     sb.append("    rescaleIntercept: ").append(toIndentedString(rescaleIntercept)).append("\n");
     sb.append("    rescaleSlope: ").append(toIndentedString(rescaleSlope)).append("\n");
     sb.append("    numberOfFrames: ").append(toIndentedString(numberOfFrames)).append("\n");
-    sb.append("    lengthValue: ").append(toIndentedString(lengthValue)).append("\n");
     sb.append("    isLittleEndian: ").append(toIndentedString(isLittleEndian)).append("\n");
     sb.append("    offset: ").append(toIndentedString(offset)).append("\n");
-    sb.append("    dicomFound: ").append(toIndentedString(dicomFound)).append("\n");
     sb.append("}");
     return sb.toString();
   }

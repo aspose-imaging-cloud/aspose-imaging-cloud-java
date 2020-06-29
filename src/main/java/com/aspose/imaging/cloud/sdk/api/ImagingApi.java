@@ -45,7 +45,7 @@ public class ImagingApi
     /**
      * Current SDK version
      */
-    public static final String Version = "20.5";
+    public static final String Version = "20.6";
 
     /**
      * The configuration
@@ -293,6 +293,45 @@ public class ImagingApi
     }
   
     /**
+     * Convert existing image to another format.
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] convertImage(ConvertImageRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.name' is set
+      if (request.name== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.name' when calling convertImage");
+      }
+       // verify the required parameter 'request.format' is set
+      if (request.format== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.format' when calling convertImage");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/convert";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
+    }
+  
+    /**
      * Update parameters of existing TIFF image accordingly to fax parameters.
      * 
      * @param request Holds parameters for this request invocation.
@@ -397,6 +436,47 @@ public class ImagingApi
           null, 
           formParams);
           
+    }
+  
+    /**
+     * Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return byte[]
+     * @throws Exception 
+     */
+    public byte[] createConvertedImage(CreateConvertedImageRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.imageData' is set
+      if (request.imageData== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createConvertedImage");
+      }
+       // verify the required parameter 'request.format' is set
+      if (request.format== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.format' when calling createConvertedImage");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/convert";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
+      
+            if (request.imageData != null) 
+      {
+          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
+      }
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "POST", 
+          null, 
+          null, 
+          formParams);
+          
+      return response;
+      
     }
   
     /**
@@ -1332,6 +1412,8 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -1445,47 +1527,6 @@ public class ImagingApi
     }
   
     /**
-     * Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
-     * 
-     * @param request Holds parameters for this request invocation.
-     * @return byte[]
-     * @throws Exception 
-     */
-    public byte[] createSavedImageAs(CreateSavedImageAsRequest request) throws Exception 
-    {
-       // verify the required parameter 'request.imageData' is set
-      if (request.imageData== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.imageData' when calling createSavedImageAs");
-      }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling createSavedImageAs");
-      }
-      // create path and map variables
-      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/saveAs";
-      
-      HashMap<String, Object> formParams = new HashMap<String, Object>();
-      
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
-      
-            if (request.imageData != null) 
-      {
-          formParams.put("imageData", this.apiInvoker.toFileInfo(request.imageData, "imageData"));
-      }
-      byte[] response = this.apiInvoker.invokeApi(
-          resourcePath, 
-          "POST", 
-          null, 
-          null, 
-          formParams);
-          
-      return response;
-      
-    }
-  
-    /**
      * Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
      * 
      * @param request Holds parameters for this request invocation.
@@ -1579,6 +1620,8 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "color", request.color);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "outPath", request.outPath);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
@@ -2257,6 +2300,43 @@ public class ImagingApi
     }
   
     /**
+     * Detects objects bounds and draw them on the original image
+     * 
+     * @param request Holds parameters for this request invocation.
+     * @return AvailableLabelsList
+     * @throws Exception 
+     */
+    public AvailableLabelsList getAvailableLabels(GetAvailableLabelsRequest request) throws Exception 
+    {
+       // verify the required parameter 'request.method' is set
+      if (request.method== null) {
+        throw new ApiException(400, "Missing the required parameter 'request.method' when calling getAvailableLabels");
+      }
+      // create path and map variables
+      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/ai/objectdetection/availablelabels/{method}";
+      
+      HashMap<String, Object> formParams = new HashMap<String, Object>();
+      resourcePath = UrlHelper.addPathParameter(resourcePath, "method", request.method);
+      
+      
+            
+      byte[] response = this.apiInvoker.invokeApi(
+          resourcePath, 
+          "GET", 
+          null, 
+          null, 
+          formParams);
+          
+      
+      if (response == null)
+      {
+          return null;
+      }
+      
+      return SerializationHelper.deserialize(new String(response), AvailableLabelsList.class);
+    }
+  
+    /**
      * Get disc usage
      * 
      * @param request Holds parameters for this request invocation.
@@ -2653,6 +2733,8 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
       
@@ -2735,6 +2817,8 @@ public class ImagingApi
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "threshold", request.threshold);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "color", request.color);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
@@ -3438,45 +3522,6 @@ public class ImagingApi
       resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
       
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "method", request.method);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
-      resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);
-      
-            
-      byte[] response = this.apiInvoker.invokeApi(
-          resourcePath, 
-          "GET", 
-          null, 
-          null, 
-          formParams);
-          
-      return response;
-      
-    }
-  
-    /**
-     * Export existing image to another format.
-     * 
-     * @param request Holds parameters for this request invocation.
-     * @return byte[]
-     * @throws Exception 
-     */
-    public byte[] saveImageAs(SaveImageAsRequest request) throws Exception 
-    {
-       // verify the required parameter 'request.name' is set
-      if (request.name== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.name' when calling saveImageAs");
-      }
-       // verify the required parameter 'request.format' is set
-      if (request.format== null) {
-        throw new ApiException(400, "Missing the required parameter 'request.format' when calling saveImageAs");
-      }
-      // create path and map variables
-      String resourcePath = this.Configuration.getApiRootUrl() + "/imaging/{name}/saveAs";
-      
-      HashMap<String, Object> formParams = new HashMap<String, Object>();
-      resourcePath = UrlHelper.addPathParameter(resourcePath, "name", request.name);
-      
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "format", request.format);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "folder", request.folder);
       resourcePath = UrlHelper.addQueryParameterToUrl(resourcePath, "storage", request.storage);

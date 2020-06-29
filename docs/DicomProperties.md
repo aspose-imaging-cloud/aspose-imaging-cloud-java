@@ -14,8 +14,6 @@ Name | Type | Description | Notes
 **samplesPerPixel** | **Integer** | Gets or sets samples per pixel count. | 
 **bitsAllocated** | **Integer** | Gets or sets allocated bits count. | 
 **photoInterpretation** | **String** | Gets or sets the photo interpretation. |  [optional]
-**widthTagFound** | **Boolean** | Gets or sets a value indicating whether width tag found. | 
-**heightTagFound** | **Boolean** | Gets or sets a value indicating whether height tag found. | 
 **width** | **Integer** | Gets or sets the width. | 
 **height** | **Integer** | Gets or sets the height. | 
 **windowCentre** | **Double** | Gets or sets the window centre. | 
@@ -24,10 +22,8 @@ Name | Type | Description | Notes
 **rescaleIntercept** | **Double** | Gets or sets a value of the rescale intercept. | 
 **rescaleSlope** | **Double** | Gets or sets a value of the rescale slope. | 
 **numberOfFrames** | **Integer** | Gets or sets the number of frames. | 
-**lengthValue** | **Integer** | Gets or sets the length of element. | 
 **isLittleEndian** | **Boolean** | Indicates if DICOM image has little endian byte order. | 
 **offset** | **Integer** | Gets or sets the offset. | 
-**dicomFound** | **Boolean** | Gets or sets a value indicating whether \&quot;DICOM\&quot; data is found. | 
 
 
 [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to API_README]](API_README.md)

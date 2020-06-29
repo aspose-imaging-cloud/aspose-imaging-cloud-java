@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="SaveAsApiTests.java">
+* <copyright company="Aspose" file="ConvertApiTests.java">
 *   Copyright (c) 2018-2019 Aspose Pty Ltd.
 * </copyright>
 * <summary>
@@ -46,10 +46,10 @@ import java.util.Collections;
  * Class for testing crop-related API calls
  */
 @RunWith(Parameterized.class)
-public class SaveAsApiTests extends ApiTester {
+public class ConvertApiTests extends ApiTester {
 
-    private SaveImageAsRequest saveImageAsRequest;
-    private CreateSavedImageAsRequest createSavedImageAsRequest;
+    private ConvertImageRequest convertImageRequest;
+    private CreateConvertedImageRequest createConvertedImageRequest;
 
     @Parameters
     public static Iterable<Object[]> data() {
@@ -80,7 +80,7 @@ public class SaveAsApiTests extends ApiTester {
     private Boolean saveResultToStorage;
     String[] additionalExportFormats;
 
-    public SaveAsApiTests(String extension, Boolean saveResult, String[] additionalFormats)
+    public ConvertApiTests(String extension, Boolean saveResult, String[] additionalFormats)
     {
         this.formatExtension = extension;
         this.saveResultToStorage = saveResult;
@@ -88,13 +88,13 @@ public class SaveAsApiTests extends ApiTester {
     }
 
     /**
-     * Test operation: SaveAs an existing image.
+     * Test operation: Convert an existing image.
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-    public void saveImageAsTest() throws Exception {
+    public void convertImageTest() throws Exception {
         
         if (saveResultToStorage)
         {
@@ -128,14 +128,14 @@ public class SaveAsApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                saveImageAsRequest = new SaveImageAsRequest(name, format, folder, storage);
+                convertImageRequest = new ConvertImageRequest(name, format, folder, storage);
                 
-                Method propertiesTester = SaveAsApiTests.class.getDeclaredMethod("saveImageAsPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                Method propertiesTester = ConvertApiTests.class.getDeclaredMethod("convertImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = SaveAsApiTests.class.getDeclaredMethod("saveImageAsGetRequestInvoker", String.class);
+                Method requestInvoker = ConvertApiTests.class.getDeclaredMethod("convertImageGetRequestInvoker", String.class);
                 requestInvoker.setAccessible(true);
                 this.testGetRequest(
-                    "saveImageAsTest", 
+                    "convertImageTest", 
                     String.format("Input image: %s; Output format: %s",
                             name, format),
                     name,
@@ -148,13 +148,13 @@ public class SaveAsApiTests extends ApiTester {
     }
     
     /**
-     * Test operation: SaveAs an image. Image is passed in a request stream.
+     * Test operation: Convert an image. Image is passed in a request stream.
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-    public void createSavedImageAsTest() throws Exception {
+    public void createConvertedImageAsTest() throws Exception {
         byte[] imageData = null;
         String name = null;
         String outPath = null;
@@ -185,15 +185,15 @@ public class SaveAsApiTests extends ApiTester {
             
             for (String format : formatsToExport)
             {
-                createSavedImageAsRequest = new CreateSavedImageAsRequest(imageData, format, outPath, storage);
+                createConvertedImageRequest = new CreateConvertedImageRequest(imageData, format, outPath, storage);
                 outName = name + "." + format;
                 
-                Method propertiesTester = SaveAsApiTests.class.getDeclaredMethod("createSavedImageAsPropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
+                Method propertiesTester = ConvertApiTests.class.getDeclaredMethod("createConvertedImagePropertiesTester", ImagingResponse.class, ImagingResponse.class, byte[].class);
                 propertiesTester.setAccessible(true);
-                Method requestInvoker = SaveAsApiTests.class.getDeclaredMethod("createSavedImageAsPostRequestInvoker", byte[].class, String.class);
+                Method requestInvoker = ConvertApiTests.class.getDeclaredMethod("createConvertedImagePostRequestInvoker", byte[].class, String.class);
                 requestInvoker.setAccessible(true);
                 this.testPostRequest(
-                    "createSavedImageAsTest; save result to storage: " + saveResultToStorage,  
+                    "createConvertedImageTest; save result to storage: " + saveResultToStorage,  
                     saveResultToStorage,
                     String.format("Input image: %s; Output format: %s",
                             name, format),
@@ -208,15 +208,15 @@ public class SaveAsApiTests extends ApiTester {
     }
     
     /**
-     * Invokes GET request for saveImageAs operation. Used indirectly by method reference.
+     * Invokes GET request for convertImage operation. Used indirectly by method reference.
      * @param name Image file name
      * @return API response
      * @throws Exception 
      */
-    private byte[] saveImageAsGetRequestInvoker(String name) throws Exception
+    private byte[] convertImageGetRequestInvoker(String name) throws Exception
     {
-        saveImageAsRequest.name = name;
-        return ImagingApi.saveImageAs(saveImageAsRequest);
+        convertImageRequest.name = name;
+        return ImagingApi.convertImage(convertImageRequest);
     }
     
     /**
@@ -226,30 +226,30 @@ public class SaveAsApiTests extends ApiTester {
      * @return API response
      * @throws Exception 
      */
-    private byte[] createSavedImageAsPostRequestInvoker(byte[] imageData, String outPath) throws Exception
+    private byte[] createConvertedImagePostRequestInvoker(byte[] imageData, String outPath) throws Exception
     {
-        createSavedImageAsRequest.imageData = imageData;
-        createSavedImageAsRequest.outPath = outPath;
-        return ImagingApi.createSavedImageAs(createSavedImageAsRequest);
+        createConvertedImageRequest.imageData = imageData;
+        createConvertedImageRequest.outPath = outPath;
+        return ImagingApi.createConvertedImage(createConvertedImageRequest);
     }
     
     /**
-     * Tests properties for saveImageAs operation. Used indirectly by method reference.
+     * Tests properties for convertImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void saveImageAsPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void convertImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
     }
     
     /**
-     * Tests properties for createSavedImageAs operation. Used indirectly by method reference.
+     * Tests properties for createConvertedImage operation. Used indirectly by method reference.
      * @param originalProperties Original image properties
      * @param resultProperties Result image properties
      * @param resultData Result image data
      */
-    private void createSavedImageAsPropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
+    private void createConvertedImagePropertiesTester(ImagingResponse originalProperties, ImagingResponse resultProperties, byte[] resultData)
     {
     }
 }
