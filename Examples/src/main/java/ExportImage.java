@@ -25,8 +25,8 @@
  * --------------------------------------------------------------------------------------------------------------------
  */
 
-import com.aspose.imaging.cloud.sdk.model.requests.CreateSavedImageAsRequest;
-import com.aspose.imaging.cloud.sdk.model.requests.SaveImageAsRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.ConvertImageRequest;
+import com.aspose.imaging.cloud.sdk.model.requests.CreateConvertedImageRequest;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -71,11 +71,12 @@ public class ExportImage extends ImagingBase {
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // Cloud Storage name
 
-        SaveImageAsRequest request = new SaveImageAsRequest(getSampleImageFileName(), format, folder, storage);
+
+        ConvertImageRequest request = new ConvertImageRequest(getSampleImageFileName(), format, folder, storage);
 
         System.out.println("Call SaveImageAs with params: format: " + format);
 
-        byte[] updatedImage = ImagingApi.saveImageAs(request);
+        byte[] updatedImage = ImagingApi.convertImage(request);
         saveUpdatedSampleImageToOutput(updatedImage, false, format);
 
         System.out.println();
@@ -97,11 +98,11 @@ public class ExportImage extends ImagingBase {
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // Cloud Storage name
 
-        SaveImageAsRequest request = new SaveImageAsRequest(getSampleImageFileName(), format, folder, storage);
+        ConvertImageRequest request = new ConvertImageRequest(getSampleImageFileName(), format, folder, storage);
 
         System.out.println("Call SaveImageAs with params: format: " + format);
 
-        byte[] updatedImage = ImagingApi.saveImageAs(request);
+        byte[] updatedImage = ImagingApi.convertImage(request);
         uploadImageToCloud(getModifiedSampleImageFileName(false, format), updatedImage);
 
         System.out.println();
@@ -121,11 +122,12 @@ public class ExportImage extends ImagingBase {
         String outPath = null; // Path to updated file (if this is empty, response contains streamed image)
         String storage = null; // Cloud Storage name
 
-        CreateSavedImageAsRequest request = new CreateSavedImageAsRequest(inputStream, format, outPath, storage);
+
+        CreateConvertedImageRequest request = new CreateConvertedImageRequest(inputStream, format, outPath, storage);
 
         System.out.println("Call CreateSavedImageAs with params: format: " + format);
 
-        byte[] updatedImage = ImagingApi.createSavedImageAs(request);
+        byte[] updatedImage = ImagingApi.createConvertedImage(request);
         saveUpdatedSampleImageToOutput(updatedImage, true, format);
 
         System.out.println();
