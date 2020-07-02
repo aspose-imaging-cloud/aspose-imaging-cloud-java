@@ -48,10 +48,12 @@ public class ObjectDetectionImage extends ImagingBase {
         int threshold = 50;
         Boolean includeLabel = true;
         Boolean includeScore = true;
+        String allowedLabels = "cat";
+        String blockedLabels = "dog";
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
-        GetObjectBoundsRequest request = new GetObjectBoundsRequest(getSampleImageFileName(), method, threshold, includeLabel, includeScore, folder, storage);
+        GetObjectBoundsRequest request = new GetObjectBoundsRequest(getSampleImageFileName(), method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, folder, storage);
 
         System.out.println(String.format("Call ObjectBoundsRequest with params: method: %s, threshold: %s, includeLabel: %s, includeScore: %s", method, threshold, includeLabel, includeScore));
 
@@ -75,11 +77,13 @@ public class ObjectDetectionImage extends ImagingBase {
         int threshold = 50;
         Boolean includeLabel = true;
         Boolean includeScore = true;
+        String allowedLabels = "cat";
+        String blockedLabels = "dog";
         String color = "blue";
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
-        GetVisualObjectBoundsRequest request = new GetVisualObjectBoundsRequest(getSampleImageFileName(), method, threshold, includeLabel, includeScore, color, folder, storage);
+        GetVisualObjectBoundsRequest request = new GetVisualObjectBoundsRequest(getSampleImageFileName(), method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, color, folder, storage);
 
         System.out.println(String.format("Call VisualObjectBoundsRequest with params: method: %s, threshold: %s, includeLabel: %s, includeScore: %s, color: %s", method, threshold, includeLabel, includeScore, color));
 
@@ -102,11 +106,13 @@ public class ObjectDetectionImage extends ImagingBase {
         int threshold = 50;
         Boolean includeLabel = true;
         Boolean includeScore = true;
+        String allowedLabels = "cat";
+        String blockedLabels = "dog";
         String outPath = null;
         String storage = null; // We are using default Cloud Storage
         byte[] inputStream = Files.readAllBytes(Paths.get(ExampleImagesFolder, getSampleImageFileName()));
 
-        CreateObjectBoundsRequest request = new CreateObjectBoundsRequest(inputStream, method, threshold, includeLabel, includeScore, outPath, storage);
+        CreateObjectBoundsRequest request = new CreateObjectBoundsRequest(inputStream, method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, outPath, storage);
 
         System.out.println(String.format("Call CreateObjectBoundsRequest with params: method: %s, threshold: %s, includeLabel: %s, includeScore: %s", method, threshold, includeLabel, includeScore));
 
@@ -129,12 +135,14 @@ public class ObjectDetectionImage extends ImagingBase {
         int threshold = 50;
         Boolean includeLabel = true;
         Boolean includeScore = true;
+        String allowedLabels = "cat";
+        String blockedLabels = "dog";
         String color = null;
         String outPath = null;
         String storage = null; // We are using default Cloud Storage
 
         byte[] inputStream = Files.readAllBytes(Paths.get(ExampleImagesFolder, getSampleImageFileName()));
-        CreateVisualObjectBoundsRequest request = new CreateVisualObjectBoundsRequest(inputStream, method, threshold, includeLabel, includeScore, color, outPath, storage);
+        CreateVisualObjectBoundsRequest request = new CreateVisualObjectBoundsRequest(inputStream, method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, color, outPath, storage);
 
         System.out.println(String.format("Call CreateVisualObjectBoundsRequest with params: method: %s, threshold: %s, includeLabel: %s, includeScore: %s, color: null", method, threshold, includeLabel, includeScore));
 
