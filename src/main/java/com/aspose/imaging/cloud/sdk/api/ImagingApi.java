@@ -2300,7 +2300,7 @@ public class ImagingApi
     }
   
     /**
-     * Detects objects bounds and draw them on the original image
+     * Gets available labels for selected object detection method.
      * 
      * @param request Holds parameters for this request invocation.
      * @return AvailableLabelsList
