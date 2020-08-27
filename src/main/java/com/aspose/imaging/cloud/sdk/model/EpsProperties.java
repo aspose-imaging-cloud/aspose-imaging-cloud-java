@@ -39,12 +39,6 @@ import com.aspose.imaging.cloud.sdk.stablemodel.*;
  * EpsProperties
  */
 public class EpsProperties {
-  @JsonProperty("width")
-  private Integer width = null;
-
-  @JsonProperty("height")
-  private Integer height = null;
-
   @JsonProperty("boundingBoxString")
   private String boundingBoxString = null;
 
@@ -59,40 +53,6 @@ public class EpsProperties {
 
   @JsonProperty("title")
   private String title = null;
-
-  public EpsProperties width(Integer width) {
-    this.width = width;
-    return this;
-  }
-
-  /**
-   * Gets the width.
-   * @return width
-  **/
-  public Integer getWidth() {
-    return width;
-  }  
-
-  public void setWidth(Integer width) {
-    this.width = width;
-  }
-
-  public EpsProperties height(Integer height) {
-    this.height = height;
-    return this;
-  }
-
-  /**
-   * Gets the height.
-   * @return height
-  **/
-  public Integer getHeight() {
-    return height;
-  }  
-
-  public void setHeight(Integer height) {
-    this.height = height;
-  }
 
   public EpsProperties boundingBoxString(String boundingBoxString) {
     this.boundingBoxString = boundingBoxString;
@@ -189,9 +149,7 @@ public class EpsProperties {
     return false;
   }
     EpsProperties epsProperties = (EpsProperties) o;
-    return ObjectUtils.equals(this.width, epsProperties.width) &&
-    ObjectUtils.equals(this.height, epsProperties.height) &&
-    ObjectUtils.equals(this.boundingBoxString, epsProperties.boundingBoxString) &&
+    return ObjectUtils.equals(this.boundingBoxString, epsProperties.boundingBoxString) &&
     ObjectUtils.equals(this.creationDateString, epsProperties.creationDateString) &&
     ObjectUtils.equals(this.creator, epsProperties.creator) &&
     ObjectUtils.equals(this.postScriptVersion, epsProperties.postScriptVersion) &&
@@ -200,7 +158,7 @@ public class EpsProperties {
 
   @Override
   public int hashCode() {
-    return ObjectUtils.hashCodeMulti(width, height, boundingBoxString, creationDateString, creator, postScriptVersion, title);
+    return ObjectUtils.hashCodeMulti(boundingBoxString, creationDateString, creator, postScriptVersion, title);
   }
 
 
@@ -209,8 +167,6 @@ public class EpsProperties {
     StringBuilder sb = new StringBuilder();
     sb.append("class EpsProperties {\n");
     
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
-    sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    boundingBoxString: ").append(toIndentedString(boundingBoxString)).append("\n");
     sb.append("    creationDateString: ").append(toIndentedString(creationDateString)).append("\n");
     sb.append("    creator: ").append(toIndentedString(creator)).append("\n");

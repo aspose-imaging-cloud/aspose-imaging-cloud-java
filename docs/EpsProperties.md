@@ -4,8 +4,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**width** | **Integer** | Gets the width. | 
-**height** | **Integer** | Gets the height. | 
 **boundingBoxString** | **String** | Gets the BoundingBox. |  [optional]
 **creationDateString** | **String** | Gets the CreationDate. |  [optional]
 **creator** | **String** | Gets the Creator. |  [optional]
