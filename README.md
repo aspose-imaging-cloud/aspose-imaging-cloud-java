@@ -107,7 +107,7 @@ Add Aspose.Imaging Cloud Java SDK as a dependency.
     <dependency>
         <groupId>com.aspose</groupId>
         <artifactId>aspose-imaging-cloud</artifactId>
-        <version>20.7</version>
+        <version>20.8</version>
     </dependency>
 </dependencies>
 ```
