@@ -82,6 +82,9 @@ public class ImagingResponse {
   @JsonProperty("svgProperties")
   private SvgProperties svgProperties = null;
 
+  @JsonProperty("epsProperties")
+  private EpsProperties epsProperties = null;
+
   @JsonProperty("horizontalResolution")
   private Double horizontalResolution = null;
 
@@ -363,6 +366,18 @@ public class ImagingResponse {
     return this;
   }
 
+  /**
+   * Gets or sets the the SVG properties.
+   * @return epsProperties
+   **/
+  public EpsProperties getEpsProperties() {
+    return epsProperties;
+  }
+
+  public void setEpsProperties(EpsProperties epsProperties) {
+    this.epsProperties = epsProperties;
+  }
+
    /**
    * Gets or sets the horizontal resolution of an image.
    * @return horizontalResolution
@@ -434,6 +449,7 @@ public class ImagingResponse {
         ObjectUtils.equals(this.dicomProperties, imagingResponse.dicomProperties) &&
         ObjectUtils.equals(this.dngProperties, imagingResponse.dngProperties) &&
         ObjectUtils.equals(this.odgProperties, imagingResponse.odgProperties) &&
+        ObjectUtils.equals(this.epsProperties, imagingResponse.epsProperties) &&
         ObjectUtils.equals(this.horizontalResolution, imagingResponse.horizontalResolution) &&
         ObjectUtils.equals(this.verticalResolution, imagingResponse.verticalResolution) &&
         ObjectUtils.equals(this.isCached, imagingResponse.isCached) &&
@@ -466,6 +482,7 @@ public class ImagingResponse {
     sb.append("    dicomProperties: ").append(toIndentedString(dicomProperties)).append("\n");
     sb.append("    dngProperties: ").append(toIndentedString(dngProperties)).append("\n");
     sb.append("    odgProperties: ").append(toIndentedString(odgProperties)).append("\n");
+    sb.append("    epsProperties: ").append(toIndentedString(epsProperties)).append("\n");
     sb.append("    horizontalResolution: ").append(toIndentedString(horizontalResolution)).append("\n");
     sb.append("    verticalResolution: ").append(toIndentedString(verticalResolution)).append("\n");
     sb.append("    isCached: ").append(toIndentedString(isCached)).append("\n");

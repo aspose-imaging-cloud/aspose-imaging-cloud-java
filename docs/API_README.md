@@ -54,7 +54,7 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**findImageDuplicates**](ImagingApi.md#findimageduplicates) | **GET** /imaging/ai/imageSearch/{searchContextId}/findDuplicates | Find images duplicates.
 *ImagingApi* | [**findImagesByTags**](ImagingApi.md#findimagesbytags) | **POST** /imaging/ai/imageSearch/{searchContextId}/findByTags | Find images by tags. Tags JSON string is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**findSimilarImages**](ImagingApi.md#findsimilarimages) | **GET** /imaging/ai/imageSearch/{searchContextId}/findSimilar | Find similar images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
-*ImagingApi* | [**getAvailableLabels**](ImagingApi.md#getavailablelabels) | **GET** /imaging/ai/objectdetection/availablelabels/{method} | Detects objects bounds and draw them on the original image
+*ImagingApi* | [**getAvailableLabels**](ImagingApi.md#getavailablelabels) | **GET** /imaging/ai/objectdetection/availablelabels/{method} | Gets available labels for selected object detection method.
 *ImagingApi* | [**getDiscUsage**](ImagingApi.md#getdiscusage) | **GET** /imaging/storage/disc | Get disc usage
 *ImagingApi* | [**getFileVersions**](ImagingApi.md#getfileversions) | **GET** /imaging/storage/version/{path} | Get file versions
 *ImagingApi* | [**getFilesList**](ImagingApi.md#getfileslist) | **GET** /imaging/storage/folder/{path} | Get all files and folders within a folder
@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
  - [com.aspose.imaging.cloud.sdk.model.DiscUsage](DiscUsage.md)
  - [com.aspose.imaging.cloud.sdk.model.DjvuProperties](DjvuProperties.md)
  - [com.aspose.imaging.cloud.sdk.model.DngProperties](DngProperties.md)
+ - [com.aspose.imaging.cloud.sdk.model.EpsProperties](EpsProperties.md)
  - [com.aspose.imaging.cloud.sdk.model.Error](Error.md)
  - [com.aspose.imaging.cloud.sdk.model.ErrorDetails](ErrorDetails.md)
  - [com.aspose.imaging.cloud.sdk.model.ExifData](ExifData.md)

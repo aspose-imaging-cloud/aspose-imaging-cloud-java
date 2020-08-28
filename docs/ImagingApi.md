@@ -1566,7 +1566,7 @@ Name | Type | Description  | Notes
 ## **getAvailableLabels**
 > [AvailableLabelsList](AvailableLabelsList.md) getAvailableLabels(GetAvailableLabelsRequest request)
 
-Detects objects bounds and draw them on the original image
+Gets available labels for selected object detection method.
 
 ### **GetAvailableLabelsRequest** Parameters
 ```java

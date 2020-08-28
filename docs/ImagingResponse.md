@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **dngProperties** | [**DngProperties**](DngProperties.md) | Gets or sets the DNG properties. |  [optional]
 **odgProperties** | [**OdgProperties**](OdgProperties.md) | Gets or sets the the ODG properties. |  [optional]
 **svgProperties** | [**SvgProperties**](SvgProperties.md) | Gets or sets the SVG properties. |  [optional]
+**epsProperties** | [**EpsProperties**](EpsProperties.md) | Gets or sets the EPS properties. |  [optional]
 **horizontalResolution** | **Double** | Gets or sets the horizontal resolution of an image. | 
 **verticalResolution** | **Double** | Gets or sets the vertical resolution of an image. | 
 **isCached** | **Boolean** | Gets or sets a value indicating whether image is cached. | 
