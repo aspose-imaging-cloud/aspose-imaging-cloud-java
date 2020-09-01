@@ -452,8 +452,6 @@ public class ApiInvoker
         }
         finally
         {
-            client.disconnect();
-            
             if (inputStream != null)
             {
                 inputStream.close();
