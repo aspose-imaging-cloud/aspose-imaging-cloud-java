@@ -32,6 +32,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.Ignore;
 
 import com.aspose.imaging.cloud.sdk.model.FileVersion;
 import com.aspose.imaging.cloud.sdk.model.FilesUploadResult;
