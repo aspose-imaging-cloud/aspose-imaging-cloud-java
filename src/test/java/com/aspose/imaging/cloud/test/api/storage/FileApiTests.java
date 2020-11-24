@@ -32,6 +32,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.Ignore;
 
 import com.aspose.imaging.cloud.sdk.model.FileVersion;
 import com.aspose.imaging.cloud.sdk.model.FilesUploadResult;
@@ -216,6 +217,7 @@ public class FileApiTests extends StorageApiTester {
     }
 
     @Test
+	@Ignore("IMAGINGCLOUD-644")
     public void fileVersionsCreateTest() throws Exception {
         if (ImagingApi.Configuration.OnPremise)
         {
@@ -262,6 +264,7 @@ public class FileApiTests extends StorageApiTester {
     }
 
     @Test
+	@Ignore("IMAGINGCLOUD-644")
     public void fileVersionsDownloadTest() throws Exception {
         if (ImagingApi.Configuration.OnPremise)
         {
@@ -305,6 +308,7 @@ public class FileApiTests extends StorageApiTester {
     }
 
     @Test
+	@Ignore("IMAGINGCLOUD-644")
     public void fileVersionsCopyTest() throws Exception {
         if (ImagingApi.Configuration.OnPremise)
         {
@@ -355,6 +359,7 @@ public class FileApiTests extends StorageApiTester {
     }
 
     @Test
+	@Ignore("IMAGINGCLOUD-644")
     public void fileVersionsMoveTest() throws Exception {
         if (ImagingApi.Configuration.OnPremise)
         {
@@ -411,6 +416,7 @@ public class FileApiTests extends StorageApiTester {
     }
 
     @Test
+	@Ignore("IMAGINGCLOUD-644")
     public void fileVersionsDeleteTest() throws Exception {
         if (ImagingApi.Configuration.OnPremise)
         {
