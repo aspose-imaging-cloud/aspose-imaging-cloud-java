@@ -32,14 +32,14 @@ package com.aspose.imaging.cloud.test.base;
 public class ServerAccessData
 {
     /**
-     * The application SID.
+     * The Client ID.
      */
-    public String AppSid;
+    public String ClientId;
 
     /**
-     * The application key.
+     * The Client Secret.
      */
-    public String AppKey;
+    public String ClientSecret;
 
     /**
      * The base URL.

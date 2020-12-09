@@ -42,13 +42,13 @@ public class ImagingExamples {
     /**
      * Main function.
      *
-     * @param args --appKey and --appSid are required arguments, --baseUrl is optional.
+     * @param args --clientSecret and --clientId are required arguments, --baseUrl is optional.
      */
     public static void main(String[] args) {
         ArgumentValues argumentValues = processArguments(args);
 
         try {
-            ImagingApi imagingApi = new ImagingApi(argumentValues.AppKey, argumentValues.AppSid, argumentValues.BaseUrl);
+            ImagingApi imagingApi = new ImagingApi(argumentValues.ClientSecret, argumentValues.ClientId, argumentValues.BaseUrl);
 
             if (Files.exists(Paths.get(ImagingBase.OutputFolder)))
                 deleteDirectoryRecursively(Paths.get(ImagingBase.OutputFolder));
@@ -223,11 +223,11 @@ public class ImagingExamples {
     private static ArgumentValues processArguments(String[] args) {
         List<String> errors = new ArrayList<>();
 
-        String appKey = processArgument(args, "--appKey", "app key", errors);
-        String appSid = processArgument(args, "--appSid", "app sid", errors);
+        String clientSecret = processArgument(args, "--clientSecret", "Client Secret", errors);
+        String clientId = processArgument(args, "--clientId", "Client ID", errors);
         String baseUrl = processArgument(args, "--baseUrl", "Base url", errors, "https://api.aspose.cloud/");
 
-        if (errors.isEmpty()) return new ArgumentValues(appKey, appSid, baseUrl);
+        if (errors.isEmpty()) return new ArgumentValues(clientSecret, clientId, baseUrl);
 
         System.out.println("Failed to launch examples:" + System.lineSeparator() + join(System.lineSeparator(), errors));
         System.exit(1);
@@ -308,15 +308,15 @@ public class ImagingExamples {
     }
 
     private static final class ArgumentValues {
-        public final String AppKey;
+        public final String ClientSecret;
 
-        public final String AppSid;
+        public final String ClientId;
 
         public final String BaseUrl;
 
-        public ArgumentValues(String appKey, String appSid, String baseUrl) {
-            AppKey = appKey;
-            AppSid = appSid;
+        public ArgumentValues(String clientSecret, String clientId, String baseUrl) {
+            ClientSecret = clientSecret;
+            ClientId = clientId;
             BaseUrl = baseUrl;
         }
     }

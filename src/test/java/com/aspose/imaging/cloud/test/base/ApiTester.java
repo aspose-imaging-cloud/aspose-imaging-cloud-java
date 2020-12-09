@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import com.aspose.imaging.cloud.sdk.model.DetectedObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.tika.Tika;
 import org.junit.AfterClass;
@@ -213,12 +212,12 @@ public abstract class ApiTester
         System.out.println("Trying to obtain configuration from environment variables.");
         String onPremiseString = System.getenv("OnPremise");
         Boolean onPremise = !isNullOrEmpty(onPremiseString) && onPremiseString.equals("true");
-        String appKey = onPremise ? "" : System.getenv("AppKey");
-        String appSid = onPremise ? "" : System.getenv("AppSid");
+        String clientSecret = onPremise ? "" : System.getenv("ClientSecret");
+        String clientId = onPremise ? "" : System.getenv("ClientId");
         String baseUrl = System.getenv("ApiEndpoint");
         String apiVersion = System.getenv("ApiVersion");
 
-        if ((!onPremise && (isNullOrEmpty(appKey) || isNullOrEmpty(appSid))) || isNullOrEmpty(baseUrl) || isNullOrEmpty(apiVersion))
+        if ((!onPremise && (isNullOrEmpty(clientSecret) || isNullOrEmpty(clientId))) || isNullOrEmpty(baseUrl) || isNullOrEmpty(apiVersion))
         {
             System.out.println("Access data isn't set completely by environment variables. Filling unset data with server cred file values.");
         }
@@ -251,16 +250,16 @@ public abstract class ApiTester
                 onPremise = !isNullOrEmpty(onPremiseString) && onPremiseString.equals("true");
             }
             
-            if (isNullOrEmpty(appKey) && !onPremise)
+            if (isNullOrEmpty(clientSecret) && !onPremise)
             {
-                appKey = accessData.AppKey;
-                System.out.println("Set default App key");
+                clientSecret = accessData.ClientSecret;
+                System.out.println("Set default Client Secret");
             }
 
-            if (isNullOrEmpty(appSid) && !onPremise)
+            if (isNullOrEmpty(clientId) && !onPremise)
             {
-                appSid = accessData.AppSid;
-                System.out.println("Set default App SID");
+                clientId = accessData.ClientId;
+                System.out.println("Set default Client ID");
             }
 
             if (isNullOrEmpty(baseUrl))
@@ -271,20 +270,20 @@ public abstract class ApiTester
         }
         else if (!onPremise)
         {
-            throw new Exception("Please, specify valid access data (AppKey, AppSid, Base URL)" + "; androidTest value: " 
+            throw new Exception("Please, specify valid access data (ClientSecret, ClientId, Base URL)" + "; androidTest value: " 
                 + System.getenv("androidTest") + "; Server access creds file: " + serverAccessFile.getCanonicalPath());
         }
 
         System.out.println("On-premise: " + onPremise);
-        System.out.println("App key: " + appKey);
-        System.out.println("App SID: " + appSid);
+        System.out.println("Client Secret: " + clientSecret);
+        System.out.println("Client ID: " + clientId);
         System.out.println("Storage: " + TestStorage);
         System.out.println("Base URL: " + baseUrl);
         System.out.println("API version: " + apiVersion);
 
         if (!onPremise)
         {
-            ImagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(appKey, appSid, baseUrl, apiVersion);
+            ImagingApi = new com.aspose.imaging.cloud.sdk.api.ImagingApi(clientSecret, clientId, baseUrl, apiVersion);
         }
         else
         {
