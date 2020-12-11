@@ -34,6 +34,7 @@ import com.aspose.imaging.cloud.sdk.invoker.internal.requesthandlers.*;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
 
+import java.io.File;
 import java.util.HashMap;
 
 /**
