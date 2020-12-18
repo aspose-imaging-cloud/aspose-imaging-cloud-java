@@ -58,14 +58,14 @@ public class Configuration
         private Boolean debugMode = false;
 
         /**
-         * Gets or sets the app key.
+         * Gets or sets the Client Secret.
          */
-        public String AppKey;
+        public String ClientSecret;
 
         /**
-         * Gets or sets the app SID.
+         * Gets or sets the Client ID.
          */
-        public String AppSid;
+        public String ClientId;
         
         /**
          * If API service uses on-premise deployment with metered license

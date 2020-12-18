@@ -1,7 +1,7 @@
 ### Imaging - Save as: convert image from storage to another format
 ```java
 // optional parameters are base URL, API version and debug mode
-ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+ImagingApi imagingApi = new ImagingApi("clientSecret", "clientId");
 
 try {
     // get local image
@@ -49,7 +49,7 @@ try {
 ### Imaging - Save as: convert image from stream to another format
 ```java
 // optional parameters are base URL, API version and debug mode
-ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+ImagingApi imagingApi = new ImagingApi("clientSecret", "clientId");
 
 try {
     // get local image
@@ -95,7 +95,7 @@ try {
 
 ### Imaging - Apply a filter to an image
 ```java
-ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+ImagingApi imagingApi = new ImagingApi("clientSecret", "clientId");
 
 // set the filter properties
 FilterPropertiesBase filterProperties = new GaussianBlurFilterProperties()
@@ -111,7 +111,7 @@ byte[] filteredImage = ImagingApi.filterEffectImage(
 
 ### Imaging.AI - Compare two images
 ```java
-ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+ImagingApi imagingApi = new ImagingApi("clientSecret", "clientId");
      
 // create search context or use existing search context ID if search context was created earlier
 SearchContextStatus status = imagingApi.createImageSearch(
@@ -131,7 +131,7 @@ Double similarity = result.getResults().get(0).getSimilarity();
 
 ### Imaging.AI - Find similar images
 ```java
-ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+ImagingApi imagingApi = new ImagingApi("clientSecret", "clientId");
      
 // create search context or use existing search context ID if search context was created earlier
 SearchContextStatus status = imagingApi.createImageSearch(
@@ -195,7 +195,7 @@ for (SearchResult searchResult : results.getResults())
 
 ### Imaging.AI - Find duplicate images
 ```java
-ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+ImagingApi imagingApi = new ImagingApi("clientSecret", "clientId");
      
 // create search context or use existing search context ID if search context was created earlier
 SearchContextStatus status = imagingApi.createImageSearch(
@@ -233,7 +233,7 @@ for (ImageDuplicates duplicates : result.getDuplicates())
 
 ### Imaging.AI - Search images by tags
 ```java
-ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+ImagingApi imagingApi = new ImagingApi("clientSecret", "clientId");
      
 // create search context or use existing search context ID if search context was created earlier
 SearchContextStatus status = imagingApi.createImageSearch(
