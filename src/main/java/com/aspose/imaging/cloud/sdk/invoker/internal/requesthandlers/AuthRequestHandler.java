@@ -117,8 +117,8 @@ public class AuthRequestHandler implements IRequestHandler
         String requestUrl = this.configuration.getApiBaseUrl() + "connect/token";
 
         String postData = "grant_type=client_credentials";
-        postData += "&client_id=" + this.configuration.AppSid;
-        postData += "&client_secret=" + this.configuration.AppKey;
+        postData += "&client_id=" + this.configuration.ClientId;
+        postData += "&client_secret=" + this.configuration.ClientSecret;
 
         this.requestToken(requestUrl, postData);
     }

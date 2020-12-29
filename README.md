@@ -3,7 +3,7 @@
 
 This repository contains [Aspose.Imaging Cloud Java SDK](https://products.aspose.cloud/imaging/java) source code. This SDK allows you to work with Aspose.Imaging Cloud REST APIs in your Java applications quickly and easily, with zero initial cost.
 
-To use this SDK, you will need App SID and App Key which can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) (free registration in Aspose Cloud is required for this).
+To use this SDK, you will need Client ID and Client Secret which can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) (free registration in Aspose Cloud is required for this).
 
 ## Key Features
 #### Image Formats Support
@@ -107,7 +107,7 @@ Add Aspose.Imaging Cloud Java SDK as a dependency.
     <dependency>
         <groupId>com.aspose</groupId>
         <artifactId>aspose-imaging-cloud</artifactId>
-        <version>20.9</version>
+        <version>20.12</version>
     </dependency>
 </dependencies>
 ```

@@ -45,7 +45,7 @@ public class ImagingApi
     /**
      * Current SDK version
      */
-    public static final String Version = "20.9";
+    public static final String Version = "20.12";
 
     /**
      * The configuration
@@ -71,14 +71,14 @@ public class ImagingApi
 
     /**
      * Initializes a new instance of the ImagingApi class for Aspose Cloud-hosted service usage.
-     * @param appKey The app key.
-     * @param appSid The app SID.
+     * @param clientSecret The Client Secret.
+     * @param clientId The Client ID.
      */
-    public ImagingApi(String appKey, String appSid)
+    public ImagingApi(String clientSecret, String clientId)
     {
         Configuration config = new Configuration();
-        config.AppKey = appKey;
-        config.AppSid = appSid;
+        config.ClientSecret = clientSecret;
+        config.ClientId = clientId;
         this.initImagingApi(config);
     }
     
@@ -101,31 +101,31 @@ public class ImagingApi
 
     /**
      * Initializes a new instance of the ImagingApi class for Aspose Cloud-hosted service usage.
-     * @param appKey The app key.
-     * @param appSid The app SID.
+     * @param clientSecret The Client Secret.
+     * @param clientId The Client ID.
      * @param baseUrl The base URL.
      */
-    public ImagingApi(String appKey, String appSid, String baseUrl)
+    public ImagingApi(String clientSecret, String clientId, String baseUrl)
     {
         Configuration config = new Configuration();
-        config.AppKey = appKey;
-        config.AppSid = appSid;
+        config.ClientSecret = clientSecret;
+        config.ClientId = clientId;
         config.setApiBaseUrl(baseUrl);
         this.initImagingApi(config);
     }
 
     /**
      * Initializes a new instance of the ImagingApi class for Aspose Cloud-hosted service usage.
-     * @param appKey The app key.
-     * @param appSid The app SID.
+     * @param clientSecret The Client Secret.
+     * @param clientId The Client ID.
      * @param baseUrl The base URL.
      * @param apiVersion API version.
      */
-    public ImagingApi(String appKey, String appSid, String baseUrl, String apiVersion) throws Exception
+    public ImagingApi(String clientSecret, String clientId, String baseUrl, String apiVersion) throws Exception
     {
         Configuration config = new Configuration();
-        config.AppKey = appKey;
-        config.AppSid = appSid;
+        config.ClientSecret = clientSecret;
+        config.ClientId = clientId;
         config.setApiBaseUrl(baseUrl);
         config.setApiVersion(apiVersion);
         this.initImagingApi(config);
@@ -133,17 +133,17 @@ public class ImagingApi
 
     /**
      * Initializes a new instance of the ImagingApi class for Aspose Cloud-hosted service usage.
-     * @param appKey The app key.
-     * @param appSid The app SID.
+     * @param clientSecret The Client Secret.
+     * @param clientId The Client ID.
      * @param baseUrl The base URL.
      * @param apiVersion API version.
      * @param debug If debug mode is enabled.
      */
-    public ImagingApi(String appKey, String appSid, String baseUrl, String apiVersion, Boolean debug) throws Exception
+    public ImagingApi(String clientSecret, String clientId, String baseUrl, String apiVersion, Boolean debug) throws Exception
     {
         Configuration config = new Configuration();
-        config.AppKey = appKey;
-        config.AppSid = appSid;
+        config.ClientSecret = clientSecret;
+        config.ClientId = clientId;
         config.setApiBaseUrl(baseUrl);
         config.setApiVersion(apiVersion);
         config.setDebugMode(debug);

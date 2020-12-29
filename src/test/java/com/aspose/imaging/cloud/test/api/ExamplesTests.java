@@ -54,7 +54,7 @@ public class ExamplesTests extends ApiTester {
         try {
             com.aspose.imaging.cloud.sdk.api.ImagingApi imagingApi = config.OnPremise ? 
                 new com.aspose.imaging.cloud.sdk.api.ImagingApi(config.getApiBaseUrl(), config.getApiVersion(), config.getDebugMode()) :
-                new com.aspose.imaging.cloud.sdk.api.ImagingApi(config.AppKey, config.AppSid, config.getApiBaseUrl());
+                new com.aspose.imaging.cloud.sdk.api.ImagingApi(config.ClientSecret, config.ClientId, config.getApiBaseUrl());
 
             // get local image
             File testFile = new File(getLocalTestFolder(), "test.png");
@@ -105,7 +105,7 @@ public class ExamplesTests extends ApiTester {
         try {
             com.aspose.imaging.cloud.sdk.api.ImagingApi imagingApi = config.OnPremise ? 
                     new com.aspose.imaging.cloud.sdk.api.ImagingApi(config.getApiBaseUrl(), config.getApiVersion(), config.getDebugMode()) :
-                    new com.aspose.imaging.cloud.sdk.api.ImagingApi(config.AppKey, config.AppSid, config.getApiBaseUrl());
+                    new com.aspose.imaging.cloud.sdk.api.ImagingApi(config.ClientSecret, config.ClientId, config.getApiBaseUrl());
 
             // get local image
             File testFile = new File(getLocalTestFolder(), "test.png");
