@@ -94,6 +94,17 @@ Add Aspose.Imaging Cloud Java SDK as a dependency.
 ```
 4. **Using the SDK**. The best way to become familiar with how to use the SDK is to read the [Developer Guide](https://docs.aspose.cloud/imaging/developer-guide/). The [Getting Started Guide](https://docs.aspose.cloud/imaging/getting-started/) will help you to become familiar with the common concepts.
 
+## Convert JPG to PNG in Java
+
+```java
+	// Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
+	ImagingApi api = new ImagingApi("MY_CLIENT_SECRET", "MY_CLIENT_ID");
+
+	ConvertImageRequest request =  new ConvertImageRequest("sample.jpg", "png", "tempFolder", "My_Storage_Name");
+	byte[] response = api.convertImage(request);
+```
+
+
 ## Quick Examples
 Please, look at [Examples](EXAMPLES.md) document for basic usage or use the [Examples](Examples) folder for more sophisticated scenarios.
 
