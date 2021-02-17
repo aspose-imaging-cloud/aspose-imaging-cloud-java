@@ -32,14 +32,14 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jackson-version>2.9.10</jackson-version>
-        <jackson-databind-version>2.9.10.5</jackson-databind-version>
+        <jackson-databind-version>2.9.10.7</jackson-databind-version>
         <maven-plugin-version>1.0.0</maven-plugin-version>
-        <junit-version>4.12</junit-version>
+        <junit-version>4.13.1</junit-version>
         <skipTests>true</skipTests>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
-        <releaseVersion>20.12</releaseVersion>
+        <releaseVersion>21.2</releaseVersion>
         <testCategories></testCategories>
     </properties>
     
