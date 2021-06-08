@@ -45,7 +45,7 @@ public class ImagingApi
     /**
      * Current SDK version
      */
-    public static final String Version = "21.2";
+    public static final String Version = "21.6";
 
     /**
      * The configuration
