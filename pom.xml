@@ -39,7 +39,7 @@
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
-        <releaseVersion>21.2</releaseVersion>
+        <releaseVersion>21.6</releaseVersion>
         <testCategories></testCategories>
     </properties>
     
@@ -273,7 +273,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.4</version>
+            <version>2.7</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>
