@@ -106,7 +106,7 @@ public class RotateFlipImage extends ImagingBase {
         System.out.println(String.format("Call RotateFlipImage with params: method: %s, format: %s", method, format));
 
         byte[] updatedImage = ImagingApi.rotateFlipImage(getImageRotateFlipRequest);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, format), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, format));
 
         System.out.println();
     }

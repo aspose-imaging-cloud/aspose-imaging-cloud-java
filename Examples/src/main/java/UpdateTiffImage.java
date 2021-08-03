@@ -113,7 +113,7 @@ public class UpdateTiffImage extends ImagingBase {
         System.out.println(String.format("Call ModifyTiff with params: compression: %s, resolution unit: %s, bit depth: %s, horizontal resolution: %s, vertical resolution: %s", compression, resolutionUnit, bitDepth, horizontalResolution, verticalResolution));
 
         byte[] updatedImage = ImagingApi.modifyTiff(getImageTiffRequest);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, null), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, null));
 
         System.out.println();
     }
@@ -212,7 +212,7 @@ public class UpdateTiffImage extends ImagingBase {
 
         // Upload file be appended to cloud storage
         byte[] inputStream = Files.readAllBytes(Paths.get(ExampleImagesFolder, appendFileName));
-        uploadImageToCloud(appendFileName, inputStream);
+        uploadImageToCloudExample(inputStream, appendFileName);
 
         // Update TIFF Image parameters according to fax parameters
         String folder = CloudPath; // Input file is saved at the Examples folder in the storage

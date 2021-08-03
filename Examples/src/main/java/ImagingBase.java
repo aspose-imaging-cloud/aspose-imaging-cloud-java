@@ -109,21 +109,25 @@ public abstract class ImagingBase {
      */
     protected void uploadSampleImageToCloud() throws Exception {
         byte[] inputImage = Files.readAllBytes(Paths.get(ExampleImagesFolder, getSampleImageFileName()));
-        uploadImageToCloud(getSampleImageFileName(), inputImage);
+        uploadImageToCloudExample(inputImage, getSampleImageFileName());
     }
 
     /**
      * Uploads the image to cloud.
-     *
-     * @param imageName Name of the image.
      * @param image     The image.
+     * @param imageName Name of the image.
+     *
      * @throws Exception
      */
-    protected void uploadImageToCloud(String imageName, byte[] image) throws Exception {
-        UploadFileRequest request = new UploadFileRequest(Paths.get(CloudPath, imageName).toString(), image, null);
+    protected void uploadImageToCloudExample(byte[] image, String imageFileName) throws Exception { 
+    	// Create an instance of upload file request
+        UploadFileRequest request = new UploadFileRequest(Paths.get(CloudPath, imageFileName).toString(), image, null);
+       
+        // Upload image to storage
         FilesUploadResult response = ImagingApi.uploadFile(request);
+        
         System.out.println(response.getErrors() == null || response.getErrors().size() == 0
-                ? "Image " + imageName + " is uploaded to cloud storage"
+                ? "Image " + imageFileName + " is uploaded to cloud storage"
                 : "Uploading errors count: " + response.getErrors().size());
 
     }

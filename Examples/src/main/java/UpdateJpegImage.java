@@ -104,7 +104,7 @@ public class UpdateJpegImage extends ImagingBase {
         System.out.println(String.format("Call ModifyJpeg with params: quality: %s, compression type: %s", quality, compressionType));
 
         byte[] updatedImage = ImagingApi.modifyJpeg(modifyJpegRequest);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, null), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, null));
 
         System.out.println();
     }

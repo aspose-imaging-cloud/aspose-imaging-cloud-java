@@ -118,7 +118,7 @@ public class UpdateWmfImage extends ImagingBase {
         System.out.println(String.format("Call ModifyWmf with params: background color: %s, page width: %s, page height: %s, border X: %s, border Y: %s", bkColor, pageWidth, pageHeight, borderX, borderY));
 
         byte[] updatedImage = ImagingApi.modifyWmf(getImageWmfRequest);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, null), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, null));
 
         System.out.println();
     }

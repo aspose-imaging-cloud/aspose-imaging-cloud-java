@@ -104,7 +104,7 @@ public class UpdatePsdImage extends ImagingBase {
         System.out.println(String.format("Call ModifyPsd with params: channels count: %s, compression method: %s", channelsCount, compressionMethod));
 
         byte[] updatedImage = ImagingApi.modifyPsd(modifyPsdRequest);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, null), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, null));
 
         System.out.println();
     }

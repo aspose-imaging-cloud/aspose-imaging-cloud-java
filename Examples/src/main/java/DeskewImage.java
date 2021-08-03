@@ -100,7 +100,7 @@ public class DeskewImage extends ImagingBase {
         System.out.println(String.format("Call DeskewImage with params: resizeProportionally: %s, bkColor: %s", resizeProportionally, bkColor));
 
         byte[] updatedImage = ImagingApi.deskewImage(request);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, "bmp"), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, "bmp"));
 
         System.out.println();
     }

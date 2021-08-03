@@ -115,7 +115,7 @@ public class UpdateEmfImage extends ImagingBase {
         System.out.println(String.format("Call ModifyEmf with params: background color: %s, width: %s, height: %s, border x: %s, border y: %s, format: %s", bkColor, pageWidth, pageHeight, borderX, borderY, format));
 
         byte[] updatedImage = ImagingApi.modifyEmf(request);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, format), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, format));
 
         System.out.println();
     }

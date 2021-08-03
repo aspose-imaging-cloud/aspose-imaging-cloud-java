@@ -1,4 +1,3 @@
-import AI.ImagingAiBase;
 import com.aspose.imaging.cloud.sdk.model.DetectedObjectList;
 import com.aspose.imaging.cloud.sdk.model.requests.CreateObjectBoundsRequest;
 import com.aspose.imaging.cloud.sdk.model.requests.CreateVisualObjectBoundsRequest;
@@ -88,7 +87,7 @@ public class ObjectDetectionImage extends ImagingBase {
         System.out.println(String.format("Call VisualObjectBoundsRequest with params: method: %s, threshold: %s, includeLabel: %s, includeScore: %s, color: %s", method, threshold, includeLabel, includeScore, color));
 
         byte[] updatedImage = ImagingApi.getVisualObjectBounds(request);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, "jpg"), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, "jpg"));
 
         System.out.println();
     }
@@ -147,7 +146,7 @@ public class ObjectDetectionImage extends ImagingBase {
         System.out.println(String.format("Call CreateVisualObjectBoundsRequest with params: method: %s, threshold: %s, includeLabel: %s, includeScore: %s, color: null", method, threshold, includeLabel, includeScore));
 
         byte[] updatedImage = ImagingApi.createVisualObjectBounds(request);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, "jpg"), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, "jpg"));
 
         System.out.println();
     }

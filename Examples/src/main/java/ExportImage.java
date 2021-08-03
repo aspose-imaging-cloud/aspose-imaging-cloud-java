@@ -103,7 +103,7 @@ public class ExportImage extends ImagingBase {
         System.out.println("Call SaveImageAs with params: format: " + format);
 
         byte[] updatedImage = ImagingApi.convertImage(request);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, format), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, format));
 
         System.out.println();
     }

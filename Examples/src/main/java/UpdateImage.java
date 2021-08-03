@@ -117,7 +117,7 @@ public class UpdateImage extends ImagingBase {
         System.out.println(String.format("Call UpdateImage with params: new width: %s, new height: %s, x:{x}, y:{y}, rect width: %s, rectHeight: %s, rotate/flip method: %s, format: %s", newWidth, newHeight, rectWidth, rectHeight, rotateFlipMethod, format));
 
         byte[] updatedImage = ImagingApi.updateImage(getImageUpdateRequest);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, null), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, null));
 
         System.out.println();
     }

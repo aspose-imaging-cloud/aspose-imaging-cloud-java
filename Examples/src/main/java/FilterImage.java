@@ -109,7 +109,7 @@ public class FilterImage extends ImagingBase {
                 filterType, filterProperties.getRadius(), filterProperties.getSigma(), format));
 
         byte[] updatedImage = ImagingApi.filterEffectImage(request);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, format), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, format));
 
         System.out.println();
     }

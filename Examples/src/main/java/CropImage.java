@@ -110,7 +110,7 @@ public class CropImage extends ImagingBase {
         System.out.println(String.format("Call CropImage with params: x: %s, y: %s, width: %s, height: %s", x, y, width, height));
 
         byte[] updatedImage = ImagingApi.cropImage(request);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, format), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, format));
 
         System.out.println();
     }

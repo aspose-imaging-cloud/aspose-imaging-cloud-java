@@ -96,7 +96,7 @@ public class GrayscaleImage extends ImagingBase {
         System.out.println(String.format("Call GrayscaleImage"));
 
         byte[] updatedImage = ImagingApi.grayscaleImage(request);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, "bmp"), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, "bmp"));
 
         System.out.println();
     }

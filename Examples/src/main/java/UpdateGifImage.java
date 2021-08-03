@@ -115,7 +115,7 @@ public class UpdateGifImage extends ImagingBase {
         System.out.println(String.format("Call ModifyGif with params: background color index: %s, color resolution: %s, has trailer: %s, interlaced: %s, is palette sorted: %s, pixel aspect ratio: %s", backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted, pixelAspectRatio));
 
         byte[] updatedImage = ImagingApi.modifyGif(getImageGifRequest);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, null), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, null));
 
         System.out.println();
     }

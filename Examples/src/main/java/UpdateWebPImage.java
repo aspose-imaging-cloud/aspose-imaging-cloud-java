@@ -108,7 +108,7 @@ public class UpdateWebPImage extends ImagingBase {
         System.out.println(String.format("Call ModifyWebP with params: lossless: %s, quality: %s, anim loop count: %s, anim background color: %s", lossless, quality, animLoopCount, animBackgroundColor));
 
         byte[] updatedImage = ImagingApi.modifyWebP(getImageWebPRequest);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, null), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, null));
 
         System.out.println();
     }

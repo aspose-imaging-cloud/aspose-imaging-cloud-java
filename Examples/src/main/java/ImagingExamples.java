@@ -56,6 +56,12 @@ public class ImagingExamples {
 
             System.out.println("Running Imaging Cloud examples:" + System.lineSeparator());
 
+            // Convert image
+            ConvertImage convertImage = new ConvertImage(imagingApi);
+            convertImage.convertImageFromStorage();
+            convertImage.convertImageAndUploadToStorage();
+            convertImage.createConvertedImageFromReques();
+            
             // Update parameters of existing BMP image
             UpdateBmpImage bmpImage = new UpdateBmpImage(imagingApi);
             bmpImage.ModifyBmpFromStorage();

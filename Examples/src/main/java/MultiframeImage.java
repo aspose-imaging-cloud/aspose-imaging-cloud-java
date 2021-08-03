@@ -98,7 +98,7 @@ public class MultiframeImage extends ImagingBase {
         System.out.println(String.format("Call GetImageFrame with params: frame Id: %s", frameId));
 
         byte[] imageFrame = ImagingApi.getImageFrame(getImageFrameRequest);
-        uploadImageToCloud("SingleFrame.tiff", imageFrame);
+        uploadImageToCloudExample(imageFrame, "SingleFrame.tiff");
 
         System.out.println();
     }
@@ -171,7 +171,7 @@ public class MultiframeImage extends ImagingBase {
         System.out.println(String.format("Call GetImageFrame with params: start frame Id: %s, end frame Id: %s", startFrameId, endFrameId));
 
         byte[] imageFrame = ImagingApi.getImageFrameRange(getImageFrameRangeRequest);
-        uploadImageToCloud("FrameRange.djvu", imageFrame);
+        uploadImageToCloudExample(imageFrame, "FrameRange.djvu");
 
         System.out.println();
     }

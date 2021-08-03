@@ -109,7 +109,7 @@ public class ResizeImage extends ImagingBase {
         System.out.println(String.format("Call ResizeImage with params: new width: %s, new height: %s, format: %s", newWidth, newHeight, format));
 
         byte[] updatedImage = ImagingApi.resizeImage(resizeImageRequest);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, format), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, format));
 
         System.out.println();
     }

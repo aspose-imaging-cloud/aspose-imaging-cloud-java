@@ -110,7 +110,7 @@ public class UpdateBmpImage extends ImagingBase {
         System.out.println(String.format("Call ModifyBmp with params: bits per pixel: %s, horizontal resolution: %s, vertical resolution: %s", bitsPerPixel, horizontalResolution, verticalResolution));
 
         byte[] updatedImage = ImagingApi.modifyBmp(request);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, null), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, null));
 
         System.out.println();
     }

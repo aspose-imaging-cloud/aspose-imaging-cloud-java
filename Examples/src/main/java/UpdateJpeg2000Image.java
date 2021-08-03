@@ -104,7 +104,7 @@ public class UpdateJpeg2000Image extends ImagingBase {
         System.out.println(String.format("Call ModifyJpeg2000 with params: codec: %s, comment: %s", codec, comment));
 
         byte[] updatedImage = ImagingApi.modifyJpeg2000(getImageJpeg2000Request);
-        uploadImageToCloud(getModifiedSampleImageFileName(false, null), updatedImage);
+        uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, null));
 
         System.out.println();
     }
