@@ -70,7 +70,7 @@ public class UpdateWebPImage extends ImagingBase {
         Integer animLoopCount = 5;
         String animBackgroundColor = "gray";
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyWebPRequest getImageWebPRequest = new ModifyWebPRequest(getSampleImageFileName(), lossless, quality,
@@ -99,7 +99,7 @@ public class UpdateWebPImage extends ImagingBase {
         Integer animLoopCount = 5;
         String animBackgroundColor = "gray";
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyWebPRequest getImageWebPRequest = new ModifyWebPRequest(getSampleImageFileName(), lossless, quality,

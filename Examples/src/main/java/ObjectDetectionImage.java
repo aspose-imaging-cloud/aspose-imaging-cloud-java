@@ -49,7 +49,7 @@ public class ObjectDetectionImage extends ImagingBase {
         Boolean includeScore = true;
         String allowedLabels = "cat";
         String blockedLabels = "dog";
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         GetObjectBoundsRequest request = new GetObjectBoundsRequest(getSampleImageFileName(), method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, folder, storage);
@@ -79,7 +79,7 @@ public class ObjectDetectionImage extends ImagingBase {
         String allowedLabels = "cat";
         String blockedLabels = "dog";
         String color = "blue";
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         GetVisualObjectBoundsRequest request = new GetVisualObjectBoundsRequest(getSampleImageFileName(), method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, color, folder, storage);

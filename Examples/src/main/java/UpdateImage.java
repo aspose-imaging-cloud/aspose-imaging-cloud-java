@@ -75,7 +75,7 @@ public class UpdateImage extends ImagingBase {
         Integer rectWidth = 200;
         Integer rectHeight = 300;
         String rotateFlipMethod = "Rotate90FlipX";
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         UpdateImageRequest getImageUpdateRequest = new UpdateImageRequest(getSampleImageFileName(), newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, format, folder, storage);
@@ -108,7 +108,7 @@ public class UpdateImage extends ImagingBase {
         Integer rectWidth = 200;
         Integer rectHeight = 300;
         String rotateFlipMethod = "Rotate90FlipX";
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         UpdateImageRequest getImageUpdateRequest = new UpdateImageRequest(getSampleImageFileName(), newWidth,

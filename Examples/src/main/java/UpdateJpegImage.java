@@ -68,7 +68,7 @@ public class UpdateJpegImage extends ImagingBase {
         Integer quality = 65;
         String compressionType = "progressive";
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyJpegRequest modifyJpegRequest = new ModifyJpegRequest(getSampleImageFileName(), quality, compressionType,
@@ -95,7 +95,7 @@ public class UpdateJpegImage extends ImagingBase {
         Integer quality = 65;
         String compressionType = "progressive";
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyJpegRequest modifyJpegRequest =

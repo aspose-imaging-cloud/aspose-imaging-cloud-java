@@ -53,7 +53,7 @@ public abstract class ImagingBase {
     /**
      * The cloud path.
      */
-    protected final static String CloudPath = "Examples";
+    protected final static String CloudImageFolder = "Examples";
 
     /**
      * Gets the imaging API.
@@ -121,7 +121,7 @@ public abstract class ImagingBase {
      */
     protected void uploadImageToCloudExample(byte[] image, String imageFileName) throws Exception { 
     	// Create an instance of upload file request
-        UploadFileRequest request = new UploadFileRequest(Paths.get(CloudPath, imageFileName).toString(), image, null);
+        UploadFileRequest request = new UploadFileRequest(Paths.get(CloudImageFolder, imageFileName).toString(), image, null);
        
         // Upload image to storage
         FilesUploadResult response = ImagingApi.uploadFile(request);

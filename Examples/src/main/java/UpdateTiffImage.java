@@ -71,7 +71,7 @@ public class UpdateTiffImage extends ImagingBase {
         Double horizontalResolution = 150.0;
         Double verticalResolution = 150.0;
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyTiffRequest getImageTiffRequest =
@@ -103,7 +103,7 @@ public class UpdateTiffImage extends ImagingBase {
         Double horizontalResolution = 150.0;
         Double verticalResolution = 150.0;
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyTiffRequest getImageTiffRequest =
@@ -158,7 +158,7 @@ public class UpdateTiffImage extends ImagingBase {
         uploadSampleImageToCloud();
 
         // Update TIFF Image parameters according to fax parameters
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ConvertTiffToFaxRequest getTiffToFaxRequest = new ConvertTiffToFaxRequest(
@@ -215,7 +215,7 @@ public class UpdateTiffImage extends ImagingBase {
         uploadImageToCloudExample(inputStream, appendFileName);
 
         // Update TIFF Image parameters according to fax parameters
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         AppendTiffRequest request = new AppendTiffRequest(getSampleImageFileName(), appendFileName, storage, folder);
@@ -226,7 +226,7 @@ public class UpdateTiffImage extends ImagingBase {
 
         // Download updated file to local storage
         DownloadFileRequest downloadFileRequest = new DownloadFileRequest(
-                Paths.get(CloudPath, getSampleImageFileName()).toString(), storage, null);
+                Paths.get(CloudImageFolder, getSampleImageFileName()).toString(), storage, null);
         byte[] updatedImage = ImagingApi.downloadFile(downloadFileRequest);
         saveUpdatedImageToOutput("AppendToTiff.tiff", updatedImage);
 

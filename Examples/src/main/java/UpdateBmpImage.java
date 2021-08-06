@@ -71,7 +71,7 @@ public class UpdateBmpImage extends ImagingBase {
         Integer horizontalResolution = 300;
         Integer verticalResolution = 300;
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyBmpRequest request = new ModifyBmpRequest(
@@ -100,7 +100,7 @@ public class UpdateBmpImage extends ImagingBase {
         Integer horizontalResolution = 300;
         Integer verticalResolution = 300;
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyBmpRequest request = new ModifyBmpRequest(

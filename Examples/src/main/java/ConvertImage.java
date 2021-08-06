@@ -86,7 +86,7 @@ public class ConvertImage extends ImagingBase {
         // Please refer to https://docs.aspose.cloud/imaging/supported-file-formats/#convert 
         // for possible output formats
         String outFormat = "pdf";
-        byte[] updatedImage = ConvertImageFromStorageExample(getSampleImageFileName(), CloudPath, "outFormat");
+        byte[] updatedImage = ConvertImageFromStorageExample(getSampleImageFileName(), CloudImageFolder, "outFormat");
         saveUpdatedSampleImageToOutput(updatedImage, false, outFormat);        
 
         System.out.println();
@@ -104,7 +104,7 @@ public class ConvertImage extends ImagingBase {
         // Please refer to https://docs.aspose.cloud/imaging/supported-file-formats/#convert 
         // for possible output formats
         String outFormat = "pdf";            
-        byte[] updatedImage = ConvertImageFromStorageExample(getSampleImageFileName(), CloudPath, outFormat);        
+        byte[] updatedImage = ConvertImageFromStorageExample(getSampleImageFileName(), CloudImageFolder, outFormat);        
         uploadImageToCloudExample(updatedImage, getModifiedSampleImageFileName(false, outFormat));        
 
         System.out.println();
@@ -149,7 +149,7 @@ public class ConvertImage extends ImagingBase {
 	*/
     private byte[] ConvertImageFromStorageExample(String imageFileName, String storageImageFolder, String outFormat) throws Exception
     {
-        // see UploadImageToCloudExample
+        // see uploadImageToCloudExample
 
         String storage = null; // Cloud Storage name, null - default storage
 

@@ -68,7 +68,7 @@ public class ExportImage extends ImagingBase {
         // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs)
         // for possible output formats
         String format = "pdf";
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // Cloud Storage name
 
 
@@ -95,7 +95,7 @@ public class ExportImage extends ImagingBase {
         // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs)
         // for possible output formats
         String format = "pdf";
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // Cloud Storage name
 
         ConvertImageRequest request = new ConvertImageRequest(getSampleImageFileName(), format, folder, storage);

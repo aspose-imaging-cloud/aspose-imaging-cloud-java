@@ -68,7 +68,7 @@ public class UpdateJpeg2000Image extends ImagingBase {
         String codec = "jp2";
         String comment = "Aspose";
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyJpeg2000Request getImageJpeg2000Request =
@@ -95,7 +95,7 @@ public class UpdateJpeg2000Image extends ImagingBase {
         String codec = "jp2";
         String comment = "Aspose";
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyJpeg2000Request getImageJpeg2000Request =

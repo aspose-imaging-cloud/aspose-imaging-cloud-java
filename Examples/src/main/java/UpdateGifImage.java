@@ -73,7 +73,7 @@ public class UpdateGifImage extends ImagingBase {
         Boolean isPaletteSorted = true;
         Integer pixelAspectRatio = 4;
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyGifRequest getImageGifRequest = new ModifyGifRequest(getSampleImageFileName(), backgroundColorIndex,
@@ -105,7 +105,7 @@ public class UpdateGifImage extends ImagingBase {
         Boolean isPaletteSorted = true;
         Integer pixelAspectRatio = 4;
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyGifRequest getImageGifRequest = new ModifyGifRequest(getSampleImageFileName(), backgroundColorIndex,

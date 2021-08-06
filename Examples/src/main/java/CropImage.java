@@ -72,7 +72,7 @@ public class CropImage extends ImagingBase {
         Integer y = 10;
         Integer width = 100;
         Integer height = 150;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         CropImageRequest request = new CropImageRequest(getSampleImageFileName(), x, y, width, height, format, folder, storage);
@@ -102,7 +102,7 @@ public class CropImage extends ImagingBase {
         Integer y = 10;
         Integer width = 100;
         Integer height = 150;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         CropImageRequest request = new CropImageRequest(getSampleImageFileName(), x, y, width, height, format, folder, storage);

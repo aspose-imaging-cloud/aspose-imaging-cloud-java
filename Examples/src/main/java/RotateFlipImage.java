@@ -69,7 +69,7 @@ public class RotateFlipImage extends ImagingBase {
         // for possible output formats
         String format = "gif";
         String method = "Rotate90FlipX"; // RotateFlip method
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         RotateFlipImageRequest getImageRotateFlipRequest = new RotateFlipImageRequest(
@@ -97,7 +97,7 @@ public class RotateFlipImage extends ImagingBase {
         // for possible output formats
         String format = "gif";
         String method = "Rotate90FlipX"; // RotateFlip method
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         RotateFlipImageRequest getImageRotateFlipRequest = new RotateFlipImageRequest(

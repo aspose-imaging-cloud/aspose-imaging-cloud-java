@@ -67,7 +67,7 @@ public class DeskewImage extends ImagingBase {
 
         Boolean resizeProportionally = true;
         String bkColor = "white";
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         DeskewImageRequest request = new DeskewImageRequest(getSampleImageFileName(), resizeProportionally, bkColor, folder, storage);
@@ -92,7 +92,7 @@ public class DeskewImage extends ImagingBase {
 
         Boolean resizeProportionally = true;
         String bkColor = "white";
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         DeskewImageRequest request = new DeskewImageRequest(getSampleImageFileName(), resizeProportionally, bkColor, folder, storage);

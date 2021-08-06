@@ -68,7 +68,7 @@ public class UpdatePsdImage extends ImagingBase {
         Integer channelsCount = 3;
         String compressionMethod = "raw";
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyPsdRequest modifyPsdRequest =
@@ -95,7 +95,7 @@ public class UpdatePsdImage extends ImagingBase {
         Integer channelsCount = 3;
         String compressionMethod = "raw";
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ModifyPsdRequest modifyPsdRequest =

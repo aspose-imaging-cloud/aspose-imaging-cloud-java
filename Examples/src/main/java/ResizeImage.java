@@ -71,7 +71,7 @@ public class ResizeImage extends ImagingBase {
         String format = "gif";
         Integer newWidth = 100;
         Integer newHeight = 150;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ResizeImageRequest resizeImageRequest = new ResizeImageRequest(getSampleImageFileName(), newWidth, newHeight, format, folder, storage);
@@ -100,7 +100,7 @@ public class ResizeImage extends ImagingBase {
         String format = "gif";
         Integer newWidth = 100;
         Integer newHeight = 150;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         ResizeImageRequest resizeImageRequest = new ResizeImageRequest(

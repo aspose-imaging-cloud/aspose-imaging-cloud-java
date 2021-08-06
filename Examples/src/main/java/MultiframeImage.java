@@ -66,7 +66,7 @@ public class MultiframeImage extends ImagingBase {
         uploadSampleImageToCloud();
 
         Integer frameId = 1; // Index of the frame
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(getSampleImageFileName(), frameId, null, null, null, null, null, null, null, null, folder, storage);
@@ -90,7 +90,7 @@ public class MultiframeImage extends ImagingBase {
         uploadSampleImageToCloud();
 
         Integer frameId = 1; // Index of the frame
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(getSampleImageFileName(), frameId, null, null, null, null, null, null, null, null, folder, storage);
@@ -138,7 +138,7 @@ public class MultiframeImage extends ImagingBase {
 
         Integer startFrameId = 1; // Index of the first frame in range
         Integer endFrameId = 4; // Index of the last frame in range
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         GetImageFrameRangeRequest getImageFrameRangeRequest = new GetImageFrameRangeRequest(getSampleImageFileName(), startFrameId, endFrameId, null, null, null, null, null, null, null, null, folder, storage);
@@ -163,7 +163,7 @@ public class MultiframeImage extends ImagingBase {
 
         Integer startFrameId = 1; // Index of the first frame in range
         Integer endFrameId = 4; // Index of the last frame in range
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         GetImageFrameRangeRequest getImageFrameRangeRequest = new GetImageFrameRangeRequest(getSampleImageFileName(), startFrameId, endFrameId, null, null, null, null, null, null, null, null, folder, storage);
@@ -211,7 +211,7 @@ public class MultiframeImage extends ImagingBase {
         uploadSampleImageToCloud();
 
         Integer frameId = 1; // Number of a frame
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         GetImageFramePropertiesRequest imageFramePropertiesRequest =

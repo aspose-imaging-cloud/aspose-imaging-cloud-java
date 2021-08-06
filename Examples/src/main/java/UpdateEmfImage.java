@@ -73,7 +73,7 @@ public class UpdateEmfImage extends ImagingBase {
         Integer borderY = 50;
         String format = "png";
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // As we are using default Cloud Storage
 
         ModifyEmfRequest request = new ModifyEmfRequest(
@@ -105,7 +105,7 @@ public class UpdateEmfImage extends ImagingBase {
         Integer borderY = 50;
         String format = "png";
         Boolean fromScratch = null;
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // As we are using default Cloud Storage
 
         ModifyEmfRequest request = new ModifyEmfRequest(

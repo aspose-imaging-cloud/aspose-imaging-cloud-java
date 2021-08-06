@@ -65,7 +65,7 @@ public class GrayscaleImage extends ImagingBase {
 
         uploadSampleImageToCloud();
 
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         GrayscaleImageRequest request = new GrayscaleImageRequest(getSampleImageFileName(), folder, storage);
@@ -88,7 +88,7 @@ public class GrayscaleImage extends ImagingBase {
 
         uploadSampleImageToCloud();
 
-        String folder = CloudPath; // Input file is saved at the Examples folder in the storage
+        String folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
         String storage = null; // We are using default Cloud Storage
 
         GrayscaleImageRequest request = new GrayscaleImageRequest(getSampleImageFileName(), folder, storage);
