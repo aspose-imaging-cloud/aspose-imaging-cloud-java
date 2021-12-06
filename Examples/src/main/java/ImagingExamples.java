@@ -206,6 +206,10 @@ public class ImagingExamples {
             objectDetectionImages.DetectObjectsImageFromRequestBody();
             objectDetectionImages.VisualiizeDetectObjectsAndUploadToStorage();
             objectDetectionImages.VisualizeDetectedObjectsImageFromRequestBody();
+            
+            // custom fonts
+            LoadCustomFonts customFonts = new LoadCustomFonts(imagingApi);
+            customFonts.usingCustomFontsForVectorImageConversion(); 
 
         } catch (Exception exception) {
             System.out.println("Something goes wrong: " + exception);
