@@ -42,7 +42,7 @@ public class LoadCustomFonts extends ImagingBase {
      */
     public LoadCustomFonts(com.aspose.imaging.cloud.sdk.api.ImagingApi imagingApi) {
         super(imagingApi);
-        printHeader("Export image example:");
+        printHeader("Load custom fonts example:");
     }
 
     /**
