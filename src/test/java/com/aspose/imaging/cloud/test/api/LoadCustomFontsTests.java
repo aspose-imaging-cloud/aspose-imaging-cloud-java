@@ -56,7 +56,7 @@ public class LoadCustomFontsTests extends ApiTester {
 		 
 		 	String name = null;
 		 	String format ="png";
-	        String folder = getTempFolder();
+	        String folder = getTempFolder()+ "/UseCases";
 	        String storage = TestStorage;
 	        convertImageRequest = new ConvertImageRequest(name, format, folder, storage);
 		    		  
