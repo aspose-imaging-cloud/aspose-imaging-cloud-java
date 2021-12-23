@@ -52,25 +52,27 @@ public class LoadCustomFontsTests extends ApiTester {
 	 protected final static String OriginalDataFolder = ApiTester.OriginalDataFolder + "/UseCases";
 	 
 	 @Test
-	    public void usingCustomFontsForVectorImageTest() throws Exception {
-		 
-		 	String name = "image.emz";
-		 	String format ="png";
-	        String folder = getTempFolder()+ "/UseCases";
-	        String storage = TestStorage;
-	        convertImageRequest = new ConvertImageRequest(name, format, folder, storage);
-		    		  
-		    Method requestInvoker = LoadCustomFontsTests.class.getDeclaredMethod("convertImageAsGetRequestInvoker", String.class);
-		    requestInvoker.setAccessible(true);
-		    this.testGetRequest(
-		        "usingCustomFontsForVectorImageTest", 
-		        String.format("Input image: %s; Output format: %s",
-		                name, format),
-		        name,
-		        requestInvoker,
-		        null,
-		        folder,
-		        storage);
+     public void usingCustomFontsForVectorImageTest() throws Exception {
+	 
+	 	String name = "image.emz";
+	 	String format ="png";
+        String folder = getTempFolder();
+        String storage = TestStorage;
+        
+        copyInputFileToFolder(name, folder, storage);
+        
+        convertImageRequest = new ConvertImageRequest(name, format, folder, storage);	    		  
+	    Method requestInvoker = LoadCustomFontsTests.class.getDeclaredMethod("convertImageAsGetRequestInvoker", String.class);
+	    requestInvoker.setAccessible(true);
+	    this.testGetRequest(
+	        "usingCustomFontsForVectorImageTest", 
+	        String.format("Input image: %s; Output format: %s",
+	                name, format),
+	        name,
+	        requestInvoker,
+	        null,
+	        folder,
+	        storage);
 	 }
 	 
 	 /**
@@ -85,5 +87,14 @@ public class LoadCustomFontsTests extends ApiTester {
 	        byte[] res = ImagingApi.convertImage(convertImageRequest);
 	        Assert.assertTrue(Math.abs((int)res.length - 11454) < 100);
 	        return res;
+	    }
+	    
+	    protected void copyInputFileToFolder(String inputFileName, String folder, String storage) throws Exception
+	    {
+	        if (!ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists())
+	        {
+	            ImagingApi.copyFile(new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage, null));
+	            Assert.assertTrue(ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists());
+	        }
 	    }
 }
