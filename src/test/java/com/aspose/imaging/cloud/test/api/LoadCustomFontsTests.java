@@ -90,6 +90,25 @@ public class LoadCustomFontsTests extends ApiTester {
 	        return res;
 	    }
 	    
+	    
+	    
+	    /**
+	     * Checks if input file exists.
+	     * @param inputFileName Name of the input file.
+	     * @return
+	     */
+	    @Override
+	    protected Boolean checkInputFileExists(String inputFileName)
+	    {
+	    	
+	    	if (inputFileName == "image.emz") {
+	    		return true;
+	    	}	    	
+	       
+
+	        return super.checkInputFileExists(inputFileName);
+	    }
+	    
 	    protected void copyInputFileToFolder(String inputFileName, String folder, String storage) throws Exception
 	    {
 	        if (!ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists())
@@ -97,8 +116,8 @@ public class LoadCustomFontsTests extends ApiTester {
 	            ImagingApi.copyFile(new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage, null));
 	            Assert.assertTrue(ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists());
 	            
-	            FilesList filesResponse = ImagingApi.getFilesList(new GetFilesListRequest(folder + "/" + inputFileName, storage));	            
-	            InputTestFiles.add(filesResponse.getValue().get(0));
+	            FilesList filesResponse = ImagingApi.getFilesList(new GetFilesListRequest(folder, storage));	            
+	            InputTestFiles.add(filesResponse.getValue().);
 	        }
 	    }
 }
