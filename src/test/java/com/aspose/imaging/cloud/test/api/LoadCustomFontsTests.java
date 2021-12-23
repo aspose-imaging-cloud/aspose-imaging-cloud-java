@@ -46,7 +46,6 @@ import java.lang.Math;
 /**
  * Class for testing using custom fonts 
  */
-@RunWith(Parameterized.class)
 public class LoadCustomFontsTests extends ApiTester {
 	 private ConvertImageRequest convertImageRequest;
 	 
