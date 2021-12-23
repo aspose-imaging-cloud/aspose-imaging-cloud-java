@@ -114,10 +114,7 @@ public class LoadCustomFontsTests extends ApiTester {
 	        if (!ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists())
 	        {
 	            ImagingApi.copyFile(new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage, null));
-	            Assert.assertTrue(ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists());
-	            
-	            FilesList filesResponse = ImagingApi.getFilesList(new GetFilesListRequest(folder, storage));	            
-	            InputTestFiles.add(filesResponse.getValue().);
+	            Assert.assertTrue(ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists());	
 	        }
 	    }
 }
