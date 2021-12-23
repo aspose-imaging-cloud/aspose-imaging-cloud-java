@@ -26,6 +26,7 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
+import com.aspose.imaging.cloud.sdk.model.FilesList;
 import com.aspose.imaging.cloud.sdk.model.StorageFile;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
 import com.aspose.imaging.cloud.sdk.stablemodel.*;
@@ -59,8 +60,8 @@ public class LoadCustomFontsTests extends ApiTester {
         String folder = getTempFolder();
         String storage = TestStorage;
         
-        copyInputFileToFolder(name, folder, storage);
-        
+        copyInputFileToFolder(name, folder, storage);        
+              
         convertImageRequest = new ConvertImageRequest(name, format, folder, storage);	    		  
 	    Method requestInvoker = LoadCustomFontsTests.class.getDeclaredMethod("convertImageAsGetRequestInvoker", String.class);
 	    requestInvoker.setAccessible(true);
@@ -95,6 +96,9 @@ public class LoadCustomFontsTests extends ApiTester {
 	        {
 	            ImagingApi.copyFile(new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage, null));
 	            Assert.assertTrue(ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists());
+	            
+	            FilesList filesResponse = ImagingApi.getFilesList(new GetFilesListRequest(folder + "/" + inputFileName, storage));	            
+	            InputTestFiles.add(filesResponse.getValue().get(0));
 	        }
 	    }
 }
