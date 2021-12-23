@@ -54,7 +54,7 @@ public class LoadCustomFontsTests extends ApiTester {
 	 @Test
 	    public void usingCustomFontsForVectorImageTest() throws Exception {
 		 
-		 	String name = null;
+		 	String name = "image.emz";
 		 	String format ="png";
 	        String folder = getTempFolder()+ "/UseCases";
 	        String storage = TestStorage;
