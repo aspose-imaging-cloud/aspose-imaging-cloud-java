@@ -26,95 +26,101 @@
 */
 package com.aspose.imaging.cloud.test.api;
 
-import com.aspose.imaging.cloud.sdk.model.FilesList;
-import com.aspose.imaging.cloud.sdk.model.StorageFile;
 import com.aspose.imaging.cloud.sdk.model.requests.*;
-import com.aspose.imaging.cloud.sdk.stablemodel.*;
 import com.aspose.imaging.cloud.test.base.ApiTester;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import static org.junit.runners.Parameterized.Parameters;
-
-import java.lang.Iterable;
-import java.util.Arrays;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.lang.Math;
 
 /**
- * Class for testing using custom fonts 
+ * Class for testing using custom fonts
  */
 public class LoadCustomFontsTests extends ApiTester {
-	 private ConvertImageRequest convertImageRequest;
-	 
-	 protected final static String OriginalDataFolder = ApiTester.OriginalDataFolder + "/UseCases";
-	 
-	 @Test
-     public void usingCustomFontsForVectorImageTest() throws Exception {
-	 
-	 	String name = "image.emz";
-	 	String format ="png";
-        String folder = getTempFolder();
-        String storage = TestStorage;
-        
-        copyInputFileToFolder(name, folder, storage);        
-              
-        convertImageRequest = new ConvertImageRequest(name, format, folder, storage);	    		  
-	    Method requestInvoker = LoadCustomFontsTests.class.getDeclaredMethod("convertImageAsGetRequestInvoker", String.class);
-	    requestInvoker.setAccessible(true);
-	    this.testGetRequest(
-	        "usingCustomFontsForVectorImageTest", 
-	        String.format("Input image: %s; Output format: %s",
-	                name, format),
-	        name,
-	        requestInvoker,
-	        null,
-	        folder,
-	        storage);
-	 }
-	 
-	 /**
-	     * Invokes GET request for saveImageAs operation. Used indirectly by method reference.
-	     * @param name Image file name
-	     * @return API response
-	     * @throws Exception 
-	     */
-	    private byte[] convertImageAsGetRequestInvoker(String name) throws Exception
-	    {
-	    	convertImageRequest.name = name;
-	        byte[] res = ImagingApi.convertImage(convertImageRequest);
-	        Assert.assertTrue(Math.abs((int)res.length - 11454) < 100);
-	        return res;
-	    }
-	    
-	    
-	    
-	    /**
-	     * Checks if input file exists.
-	     * @param inputFileName Name of the input file.
-	     * @return
-	     */
-	    @Override
-	    protected Boolean checkInputFileExists(String inputFileName)
-	    {
-	    	
-	    	if (inputFileName == "image.emz") {
-	    		return true;
-	    	}	    	
-	       
+	
+	/**
+     * Original data folder.
+     */
+	protected final static String OriginalDataFolder = ApiTester.OriginalDataFolder + "/UseCases";
+	
+	/**
+	 * Convert image request.
+	 */
+	private ConvertImageRequest convertImageRequest;
 
-	        return super.checkInputFileExists(inputFileName);
-	    }
-	    
-	    protected void copyInputFileToFolder(String inputFileName, String folder, String storage) throws Exception
-	    {
-	        if (!ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists())
-	        {
-	            ImagingApi.copyFile(new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage, null));
-	            Assert.assertTrue(ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists());	
-	        }
-	    }
+	/**
+	 * Using custom fonts for vector image test.
+	 */
+	@Test
+	public void usingCustomFontsForVectorImageTest() throws Exception {
+
+		/*
+		 * custom fonts should be loaded to storage to 'Fonts' folder 'Fonts' folder
+		 * should be placed to the root of the cloud storage
+		 */
+
+		String name = "image.emz";
+		String format = "png";
+		String folder = getTempFolder();
+		String storage = TestStorage;
+
+		copyInputFileToFolder(name, folder, storage);
+
+		convertImageRequest = new ConvertImageRequest(name, format, folder, storage);
+		Method requestInvoker = LoadCustomFontsTests.class.getDeclaredMethod("convertImageAsGetRequestInvoker",
+				String.class);
+		requestInvoker.setAccessible(true);
+		this.testGetRequest("usingCustomFontsForVectorImageTest",
+				String.format("Input image: %s; Output format: %s", name, format), name, requestInvoker, null, folder,
+				storage);
+	}
+
+	/**
+	 * Invokes GET request for saveImageAs operation. Used indirectly by method
+	 * reference.
+	 * 
+	 * @param name Image file name
+	 * @return API response
+	 * @throws Exception
+	 */
+	private byte[] convertImageAsGetRequestInvoker(String name) throws Exception {
+		convertImageRequest.name = name;
+		byte[] res = ImagingApi.convertImage(convertImageRequest);
+		Assert.assertTrue(Math.abs((int) res.length - 11454) < 100);
+		return res;
+	}
+
+	/**
+	 * Checks if input file exists.
+	 * 
+	 * @param inputFileName Name of the input file.
+	 * @return
+	 */
+	@Override
+	protected Boolean checkInputFileExists(String inputFileName) {
+
+		if (inputFileName == "image.emz") {
+			return true;
+		}
+
+		return super.checkInputFileExists(inputFileName);
+	}
+
+	/**
+	 * Copy input file to folder.
+	 * 
+	 * @param inputFileName Input file name.
+	 * @param folder        Output folder.
+	 * @param storage       Storage name.
+	 * @throws Exception
+	 */
+	protected void copyInputFileToFolder(String inputFileName, String folder, String storage) throws Exception {
+		if (!ImagingApi.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists()) {
+			ImagingApi.copyFile(new CopyFileRequest(OriginalDataFolder + "/" + inputFileName,
+					folder + "/" + inputFileName, storage, storage, null));
+			Assert.assertTrue(ImagingApi
+					.objectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage, null)).isExists());
+		}
+	}
 }
