@@ -50,6 +50,8 @@ import java.lang.Math;
 public class LoadCustomFontsTests extends ApiTester {
 	 private ConvertImageRequest convertImageRequest;
 	 
+	 protected final static String OriginalDataFolder = ApiTester.OriginalDataFolder + "/UseCases";
+	 
 	 @Test
 	    public void usingCustomFontsForVectorImageTest() throws Exception {
 		 
