@@ -32,7 +32,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jackson-version>2.14.2</jackson-version>
-        <jackson-databind-version>2.13.4.1</jackson-databind-version>
+        <jackson-databind-version>2.13.4.2</jackson-databind-version>
         <maven-plugin-version>1.0.0</maven-plugin-version>
         <junit-version>4.13.1</junit-version>
         <skipTests>true</skipTests>
