@@ -32,14 +32,14 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jackson-version>2.14.2</jackson-version>
-        <jackson-databind-version>2.13.4.1</jackson-databind-version>
+        <jackson-databind-version>2.13.4.2</jackson-databind-version>
         <maven-plugin-version>1.0.0</maven-plugin-version>
         <junit-version>4.13.1</junit-version>
         <skipTests>true</skipTests>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
-        <releaseVersion>23.5</releaseVersion>
+        <releaseVersion>25.4</releaseVersion>
         <testCategories></testCategories>
     </properties>
     
@@ -278,7 +278,7 @@
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-core</artifactId>
-            <version>1.22</version>
+            <version>1.28.3</version>
             <scope>test</scope>
         </dependency>
 

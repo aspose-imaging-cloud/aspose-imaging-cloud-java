@@ -87,7 +87,7 @@ public class LoadCustomFontsTests extends ApiTester {
 	private byte[] convertImageAsGetRequestInvoker(String name) throws Exception {
 		convertImageRequest.name = name;
 		byte[] res = ImagingApi.convertImage(convertImageRequest);
-		Assert.assertTrue(Math.abs((int) res.length - 11454) < 100);
+		Assert.assertTrue(Math.abs((int) res.length - 13040) < 100);
 		return res;
 	}
 

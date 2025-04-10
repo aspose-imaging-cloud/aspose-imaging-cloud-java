@@ -152,7 +152,7 @@ public class SearchContextTests extends TestImagingAIBase {
 
         waitSearchContextIdle();
 
-        String image_url = URLEncoder.encode("https://cdn.f1ne.ws/userfiles/hamilton/140909.jpg", "UTF-8");
+        String image_url = URLEncoder.encode("https://c.f1news.ru/userfiles/hamilton/140909.jpg", "UTF-8");
         ImageFeatures result = ImagingApi.getImageFeatures(new GetImageFeaturesRequest(SearchContextId, image_url, null, TestStorage));
 
         Assert.assertTrue(result.getFeatures().length > 0);
